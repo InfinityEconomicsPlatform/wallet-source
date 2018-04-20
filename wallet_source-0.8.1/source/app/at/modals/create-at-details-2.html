@@ -1,0 +1,206 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <br>
+        <div class="centering text-left">
+            <form name="createATForm2">
+
+                <div class="col-md-12">
+                    <div class="ucsb"> Code
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="This is where you place your AT code."
+                        ></i>
+
+                    </div>
+                    <h5>
+
+                        <textarea class="form-control" rows="3" id="code"
+                                  placeholder="" style="resize: none;"
+                                  ng-model="createATForm2.code" validator="required" initial-validity="false"
+                                  minlength="10" maxlength="1000">
+                        </textarea>
+
+
+                    </h5>
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                          <div class="col-md-12">
+
+                            <button type="button" class="btn btn-default btn-md" ng-click="Data = !Data"
+
+                              popover-placement="left"
+                              popover-trigger="'mouseenter'"
+                              uib-popover="This is the data space of the AT, or the -harddisk- for simplicity."
+
+                            ><i
+                                    class="fa fa-code" aria-hidden="true"></i> &nbsp; Machine Data
+                            </button>
+                            &nbsp;
+                            <button type="button" class="btn btn-default btn-md" ng-click="Bytes = !Bytes"><i
+                                    class="fa fa-code" aria-hidden="true"></i> &nbsp; Creation Bytes
+                            </button>
+
+                            <br><br>
+                            <div uib-collapse="!Data" class="collapse" aria-expanded="false" aria-hidden="true"
+                                 style="height: 0px;">
+
+                                 <textarea class="form-control" rows="3" id="data"
+                                           placeholder="Machine Data" style="resize: none;"
+                                           ng-model="createATForm2.data"  initial-validity="false"
+                                           minlength="0" maxlength="1000">
+                                 </textarea>
+
+                            </div>
+                            &nbsp;
+                            <div uib-collapse="!Bytes" class="collapse" aria-expanded="false" aria-hidden="true"
+                                 style="height: 0px;">
+
+                                 <textarea class="form-control" rows="3" id="bytes"
+                                           placeholder="Creation Bytes" style="resize: none;"
+                                           ng-model="createATForm2.bytes"  initial-validity="false"
+                                           minlength="0" maxlength="1000">
+                                 </textarea>
+
+                            </div>
+
+                          </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb"> Data
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="This is the size of the memory to allocate for your AT. The memory in AT is working on chunks of 256 bytes which we call pages. If you don’t define any data in the Data field above, because you don’t have any initial values to define, but you still need to allocate memory, this is where you do it. For instance, if you want to add 1024 bytes of memory for the AT then you need to set the Data Pages field to 4. Each page is 256 bytes."
+                        ></i>
+
+                    </div>
+                    <h5>
+
+                      <h5 class="input-group">
+                          <input type="number" class="form-control" id="dpages"
+                                 placeholder="" validator="required"
+                                 ng-model="createATForm2.dpages"
+                                 ng-min="0"
+                                 ng-max="10"
+                                 min="0"
+                                 max="10"
+                                 ng-init="createATForm2.dpages=0">
+
+                          <span class="input-group-addon" id="addon-shares">PAGES</span>
+                      </h5>
+
+                    </h5>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb"> Call Stack
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="Call stack memory. This will only be used in specific situations, if your code is using PUSH/POP commands, for example. It’s extra memory to allocate to the AT."
+                        ></i>
+
+
+                    </div>
+                    <h5>
+
+                      <h5 class="input-group">
+                          <input type="number" class="form-control" id="cspages"
+                                 placeholder="" validator="required"
+                                 ng-model="createATForm2.cspages"
+                                 ng-min="0"
+                                 ng-max="10"
+                                 min="0"
+                                 max="10"
+                                 ng-init="createATForm2.cspages=0">
+
+                          <span class="input-group-addon" id="addon-shares">PAGES</span>
+                      </h5>
+
+                    </h5>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb"> User Stack
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="User stack memory. This will only be used in specific situations, if your code is using PUSH/POP commands, for example. It’s extra memory to allocate to the AT."
+                        ></i>
+
+                    </div>
+                    <h5>
+
+                        <h5 class="input-group">
+                            <input type="number" class="form-control" id="uspages"
+                                   placeholder="" validator="required"
+                                   ng-model="createATForm2.uspages"
+                                   ng-min="0"
+                                   ng-max="10"
+                                   min="0"
+                                   max="10"
+                                   ng-init="createATForm2.uspages=0">
+
+                            <span class="input-group-addon" id="addon-shares">PAGES</span>
+                        </h5>
+
+
+                    </h5>
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-12">
+
+                    <button ng-disabled="!createATForm2.$valid" class="btn btn-infinity pull-right"
+                            ng-click="$nextStep()">
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+
+                    <button ng-disabled="$isFirst()" class="btn btn-default pull-left" ng-click="$previousStep()">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+    <div ng-init="initStep1() "></div>
+</div>

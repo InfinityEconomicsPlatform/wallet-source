@@ -1,0 +1,81 @@
+
+<div class="container-fluid" ng-init="readNews()" >
+
+    <div class="row-fluid">
+
+        <div class="centering text-left">
+
+          <br>
+
+          <div class="col-lg-4 col-md-4 ">
+
+            <div class="ucsb"> Date </div>
+            <h5>  </strong> {{params.date}} </strong> </h5>
+
+          </div>
+
+          <div class="col-lg-4 col-md-4 ">
+
+            <div class="ucsb"> Type </div>
+            <h5>  </strong> <div compile="params.section|newsSection" style="margin-top:0px;"> </div> </strong> </h5>
+
+          </div>
+
+          <div class="col-lg-4 col-md-4 ">
+
+            <div class="ucsb"> Priority </div>
+            <h5>  </strong> <div compile="params.priority|newsPriority" style="margin-top:0px;"> </div> </strong> </h5>
+
+          </div>
+
+          <div class="col-lg-12 col-md-12"> <hr/> </div>
+
+          <div class="col-lg-12 col-md-12 ">
+
+            <div class="ucsb"> Title </div>
+            <h5> </strong>  {{params.title}} </strong> </h5>
+
+          </div>
+
+          <div class="col-lg-12 col-md-12"> <hr/> </div>
+
+          <div class="col-lg-12">
+            <div class="ucsb"> Message </div>
+            <h5> </strong>  {{params.body}} </strong> </h5>
+          </div>
+
+          <div class="col-lg-12"> <hr/> </div>
+
+          <div class="col-lg-4 col-md-4 ">
+
+            <div class="ucsb"> </small> Author </small>  </div>
+            <h5>  </small> </strong> {{params.author}} </strong> </small></h5>
+
+          </div>
+
+          <div class="col-lg-4 col-md-4 ">
+
+            <div class="ucsb"> </small> Credits </small>  </div>
+            <h5>  </small> </strong> {{params.credits}} </strong> </small></h5>
+
+          </div>
+
+          <div class="col-lg-4 col-md-4 ">
+
+            <div class="ucsb"> </small> Score </small>  </div>
+            <h5>  </small> </strong> {{params.score}} </strong> </small>  </h5>
+
+          </div>
+
+          <div class="col-lg-4 col-md-12 ">
+
+
+            </small> <small> {{params._id}} </small> </small>   
+
+          </div>
+
+
+        </div>
+
+    </div>
+</div>

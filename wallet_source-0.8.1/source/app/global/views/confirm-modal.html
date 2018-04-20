@@ -1,0 +1,11 @@
+<div class="modal-header modal-default">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h3 class="modal-title has-error">{{data.title}}</h3>
+</div>
+<div class="modal-body text-danger" >
+    {{data.text}}
+</div>
+<div class="modal-footer">
+    <button ng-click="ok()" class="pull-right" style="font-size: 15px;background-color: #fff; color:#008080; border:none;text-shadow: 0px 0px 0px #008080; margin-left:30px">{{data.ok}}</button>
+    <button ng-click="cancel()" class="pull-right" style="font-size: 15px;background-color: #fff; color:#b5b5b5; border:none;">{{data.cancel}}</button>
+</div>

@@ -1,0 +1,52 @@
+<div class="container-fluid" cg-busy="startShufflePromise">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+          <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
+
+<br>
+<div ng-show="showStart">
+            <form name="startShuffleForm">
+
+                <div class="col-md-10">
+                    <div class="ucsb"> Recipient publickey
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="The recipient public key. Just create a new account and copy the key into this form field."
+                        ></i>
+
+
+                    </div>
+                    <h5>
+                        <input type="text" class="form-control" id="name" placeholder="Public Key"
+                               ng-model="startShuffleForm.recipientPublickey" validator="required"
+                               required-error-message="">
+                    </h5>
+                </div>
+
+                <div class="col-md-2">
+                  <div class="ucsb"> &nbsp; </div>
+                  <h5>
+                    <button ng-disabled="!startShuffleForm.$valid" class="btn btn-infinity pull-right"
+                            ng-click="startShuffle(startShuffleForm)"><i
+                            class="fa fa-chevron-right"
+                            aria-hidden="true"></i>
+                    </button>
+                    </h5>
+                </div>
+
+            </form>
+
+</div>
+
+        </div>
+    </div>
+</div>
+<div ng-init="initStep1()"></div>

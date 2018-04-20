@@ -1,0 +1,45 @@
+<div class="container-fluid" ng-init="initStep1()">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+            <br>
+
+            <div class="col-md-6 ">
+                <div class="ucsb"> Shuffling id
+                </div>
+                <h5> {{cancelShuffleForm.shufflingId}} </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-12 ">
+                <div class="col-md-6 ">
+                    <div class="ucsb"> Shuffling State hash
+                    </div>
+                    <h5> {{cancelShuffleForm.shufflingStateHash}} </h5>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="ucsb"> &nbsp; </div>
+                <h5>
+                    <button class="btn btn-infinity pull-right"
+                            ng-click="$nextStep()" ng-disabled="!(cancelShuffleForm.shufflingStateHash)"><i
+                            class="fa fa-chevron-right"
+                            aria-hidden="true"></i>
+                    </button>
+                </h5>
+            </div>
+
+
+        </div>
+    </div>
+</div>

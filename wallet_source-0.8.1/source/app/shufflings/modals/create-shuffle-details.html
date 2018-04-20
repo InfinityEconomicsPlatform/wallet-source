@@ -1,0 +1,209 @@
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+
+
+
+        <div class="centering text-left" >
+
+            <form name="createShuffleForm">
+
+              <div class="col-md-12">
+                  <div uib-alert ng-class="'alert-' + (alert.type || 'info')">
+                      To shuffle your passphrase is used to sign transactions. For security reasons shuffling is only available on your local node
+                      or a manual node (preferably your own trusted node and set in options connection mode).
+                      After creating or joining a shuffling you must keep your node online and your shuffler running.
+                      Make sure your balance is able to cover the 12 token shuffling fees until the shuffling completes.
+                      If you don't and miss your turn you will be charged 1.000 token.
+
+                  </div>
+              </div>
+
+
+              <!-- <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div> -->
+                <br>
+
+                <div class="col-md-6 ">
+                    <div class="ucsb"> Holding type
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="Holding types are token, assets or currencies. Currencies can have a non-shuffable tag means you can't shuffle currencies with this tag created."
+                        ></i>
+
+                    </div>
+                    <h5>
+                        <select class="form-control" ng-model="createShuffleForm.holdingType" validator="required"
+                                id="votingModel"
+                                ng-init="createShuffleForm.holdingType= holdingOptions[0].value"
+                        >
+                            <option value="0">XIN</option>
+                            <option value="1">Asset</option>
+                            <option value="2">Currency</option>
+                        </select>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-6 ">
+
+                    <div ng-show="createShuffleForm.holdingType==1" class="form-group">
+                        <div class="ucsb"> Asset ID
+
+                            &nbsp;
+                            <i
+                                    class="fa fa-question-circle-o"
+                                    aria-hidden="true"
+                                    style="color:#000000;"
+                                    popover-placement="left"
+                                    popover-trigger="'mouseenter'"
+                                    data-container="body"
+                                    uib-popover="Enter the asset ID (numeric)"
+                            ></i>
+
+                        </div><h5>
+                        <input type="text" class="form-control" id="asset" placeholder="Asset ID"
+                               ng-model="createShuffleForm.holding" ng-change="getAsset(createShuffleForm.holding)">
+                    </h5>
+                    </div>
+
+                    <div ng-show="createShuffleForm.holdingType==2" class="form-group">
+                        <div class="ucsb"> Currency Ticker
+
+                            &nbsp;
+                            <i
+                                    class="fa fa-question-circle-o"
+                                    aria-hidden="true"
+                                    style="color:#000000;"
+                                    popover-placement="left"
+                                    popover-trigger="'mouseenter'"
+                                    data-container="body"
+                                    uib-popover="Enter the currency ticker (text)"
+                            ></i>
+
+                        </div><h5>
+                        <input type="text" class="form-control" id="currency" placeholder="Currency Code/Ticker"
+                               ng-model="createShuffleForm.holding" ng-change="getCurrency(createShuffleForm.holding)">
+                    </h5>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Amount
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="The amount to shuffle. Min. 1.000 Token."
+                        ></i>
+
+
+                    </div>
+                    <h5>
+                        <input type="text" class="form-control" id="name" placeholder="Amount"
+                               ng-model="createShuffleForm.amount" validator="required"
+                               ng-init="createShuffleForm.amount=1000"
+                               required-error-message="" min="1000" >
+                    </h5>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Participant Count
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="The minimum number of participants to activate this shuffling. Min. 3 and max. 30."
+                        ></i>
+
+
+                    </div>
+
+                    <h5>
+                        <input type="number" class="form-control" id="name" placeholder="Participant count"
+                               ng-model="createShuffleForm.participantCount" validator="required"
+                               ng-init="createShuffleForm.minNumberOfOptions=3"
+                               required-error-message="" min="3" max="30">
+                    </h5>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-6" ng-init="getBlockChainStatus()">
+
+                    <div class="ucsb">
+                        Register in Blocks Until
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="The registration duration for this shuffle. 1.440 Blocks are equal one day."
+                        ></i>
+
+                    </div>
+                    <h5>
+                        <div class="input-group">
+                            <input type="number" class="form-control" ng-name="finishHeight" placeholder="1440"
+                                   ng-init="createShuffleForm.finishHeight=1440"
+                                   ng-model="createShuffleForm.finishHeight" ng-value="{{finishHeight}}" ng-min="1440"
+                                   ng-max="20160" required>
+                            <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="min()"> <i class="fa fa-fast-backward"
+                                                                                             aria-hidden="true"></i> </button>
+                          <button type="button" class="btn btn-default" ng-click="decrement()"> <i
+                                  class="glyphicon glyphicon-minus"></i>  </button>
+                          <button type="button" class="btn btn-default" ng-click="increment()"> <i
+                                  class="glyphicon glyphicon-plus"></i>  </button>
+                          <button type="button" class="btn btn-default" ng-click="max()"> <i class="fa fa-fast-forward"
+                                                                                             aria-hidden="true"></i> </button>
+                        </span>
+                        </div>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-6">
+
+                  <div class="ucsb"> &nbsp; </div>
+                    <h5>
+                      <button ng-disabled="isLocalhostOrTestnet===false || !createShuffleForm.$valid" class="btn btn-infinity pull-right" ng-click="$nextStep()"><i
+                              class="fa fa-chevron-right"
+                              aria-hidden="true"></i>
+                      </button>
+                    </h5>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

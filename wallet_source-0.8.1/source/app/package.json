@@ -1,0 +1,13 @@
+{
+  "name": "XIN-Wallet",
+  "version": "0.8.1b",
+  "main": "main.js",
+  "description": "SmartWallet",
+  "author": "IEPCommunityDevs",
+  "build": {
+    "appId": "com.xin",
+    "win":{
+      "icon":"images/logo.ico"
+    }
+  }
+}
