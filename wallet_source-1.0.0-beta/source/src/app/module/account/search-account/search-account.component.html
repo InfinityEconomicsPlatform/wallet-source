@@ -8,7 +8,7 @@
 						<app-breadcrumb></app-breadcrumb>
 					</div>
 				<div class="card-body mt-4">
-					<div class="card-block mr-3 ml-3">
+					<div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
 						<form class="form inner-form" #f="ngForm" novalidate>
 							<div class="form-body">
 								<div class="form-group">
@@ -37,8 +37,10 @@
 							</ngx-datatable-column>
 							<ngx-datatable-column prop="accountRS" name="Action">
 								<ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-									<button class="btn badge badge-success" (click)="openAddressBook(value, row.name)">
+									<div class="btn-group-raised">
+									<button class="btn btn-grey btn-icon btn-sm" (click)="openAddressBook(value, row.name)">
 										<i class="fa fa-plus"></i></button>
+									</div>
 								</ng-template>
 							</ngx-datatable-column>
 						</ngx-datatable>

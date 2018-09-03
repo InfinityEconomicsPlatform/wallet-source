@@ -26,13 +26,13 @@
                    ngbPopover="The recipient account for this property.">
                 </i>
               </label>
-             <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-             <div class="col-md-9">       
+             <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+             <div class="col-md-9 pl-0">       
                  <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control" placeholder="XIN - _____ - _____ - _____ - _____"
                        name="recipientRS" #recipientRS="ngModel"
                        [(ngModel)]="setAccountPropertyForm.recipientRS" required>
              </div>
-             <div class="col-md-3">
+             <div class="col-md-3 btn-icon-group text-right pr-1">
                               <span class="btn btn-primary"
                                     triggers="mouseenter:mouseleave"
                                     placement="top" container="body"
@@ -50,7 +50,7 @@
                                     placement="top"
                                     (click)="loadBookmarkView()" container="body"
                                     ngbPopover="Open your bookmarks to insert an account id">
-                                <i class="fa fa-address-card"></i>
+                                <i class="fa fa-bookmark"></i>
                               </span>
              </div>
                 

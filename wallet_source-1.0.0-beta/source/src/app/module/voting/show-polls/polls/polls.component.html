@@ -18,16 +18,17 @@
     </div>
 </div>
 <div class="card-body">
-    <div class="card-block">
-        <form class="form" *ngIf="pollType=='ALL'">
+    <div class="card-block pt-0">
+        <form class="form  inner-form" *ngIf="pollType=='ALL'">
             <div class="form-body">
                 <div class="form-group">
-                    <div class="position-relative has-icon-left">
-                        <input type="text" class="form-control" name="form-control-with-icon" [(ngModel)]="searchQuery" (input)="onSearchChange($event.target.value)">
-                        <div class="form-control-position">
-                            <i class="ft-search info"></i>
-                        </div>
-                    </div>
+                    <div class="position-relative">
+                                        <input type="text" class="form-control input-search pb-2" name="form-control-with-icon" [(ngModel)]="searchQuery" (input)="onSearchChange($event.target.value)">
+                                        <div class="form-control-position btn-search">
+                                            <i class="ft-search info mr-2"></i>Search
+                                        </div>
+                                    </div>
+                  
                 </div>
             </div>
         </form>

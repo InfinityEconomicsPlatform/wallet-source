@@ -14,7 +14,7 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <div class="form-group m-0">
+                                            <div class="form-group">
                                                 <label>Recipient
                                                     <i class="fa fa-question-circle-o"
                                                        triggers="mouseenter:mouseleave"
@@ -23,18 +23,18 @@
                                                        ngbPopover="The recipient account to send token to">
                                                     </i>
                                                 </label>
-                                               <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                                                <div class="col-9 col-lg-10">
+                                               <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                                                <div class="col-9 col-lg-10 pl-0">
                                                             <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                            placeholder="XIN - _____ - _____ - _____ - _____"
                                                            [(ngModel)]="escrowForm.recipientRS"
                                                            name="recipientRS"
                                                            #recipientRS="ngModel" required>
                                                   </div>
-                                                  <div class="col-3 col-lg-2">
-                                                    <div class="icon-buttons-group row">
-                                                      <div class="col-6 text-right pr-0" >
-                                                            <span class="btn btn-grey" *isExpertView="true"
+                                                  <div class="col-3 col-lg-2 pr-1">
+                                                    <div class="btn-icon-group text-right">
+                                                     
+                                                            <span class="btn btn-primary" *isExpertView="true"
                                                                   triggers="mouseenter:mouseleave"
                                                                   placement="top"
                                                                   (click)="loadBookmarkView()"
@@ -42,9 +42,8 @@
                                                                   ngbPopover="Open your bookmarks to insert an account id">
                                                                 <i class="fa fa-address-card"></i>
                                                             </span>
-                                                        </div>
-                                                          <div class="col-6">
-                                                            <span class="btn btn-grey"  *isAppEnabled="'Aliases'"
+                                                      
+                                                            <span class="btn btn-primary"  *isAppEnabled="'Aliases'"
                                                                 (click)="searchAliases()"
                                                                 triggers="mouseenter:mouseleave"
                                                                 placement="top"
@@ -52,7 +51,7 @@
                                                                 ngbPopover="Enter an alias connected to an account to get the account Id.">
                                                                 <i class="fa fa-share-alt"></i>
                                                             </span>
-                                                        </div>
+                                                       
                                                            
                                                       </div>
                                                 </div>
@@ -69,7 +68,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <div class="form-group m-0">
+                                            <div class="form-group">
                                                 <label>Amount
                                                     <i class="fa fa-question-circle-o"
                                                        triggers="mouseenter:mouseleave"
@@ -78,14 +77,14 @@
                                                        ngbPopover="The amount you like to send to the recipient account.">
                                                     </i>
                                                 </label>
-                                                <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                                                  <div class="col-11">
+                                                <div class="input-group  ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                                                  <div class="col-10 pl-0">
                                                    
                                                             <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                            [(ngModel)]="escrowForm.amount"
                                                            name="amount" #amount="ngModel" required minValue="1">
                                                   </div>
-                                                  <div class="col-1">
+                                                  <div class="col-2">
                                                     <span class="input-group-text">XIN</span>
                                                   </div>
                                                    
@@ -116,7 +115,7 @@
                                                     </i>
                                                 </label>
                                                 <div class="input-group m-0 sign_in_inputs row form-border-bottom">
-                                                  <div class="col-md-2">
+                                                  <div class="col-md-2 pl-0">
                                                      <span class="input-group-text">{{days}} Day(s)</span>
                                                   </div>
                                                   <div class="col-md-8">
@@ -125,18 +124,18 @@
                                                            name="escrowDeadline" #escrowDeadline="ngModel" required
                                                            minValue="1">
                                                   </div>
-                                                  <div class="col-md-2">
-                                                      <div class="icon-buttons-group row">
-                                                    <div class="col-6 text-right pr-0" (click)="decrement()">
-                                                        <a class="btn btn-count">
+                                                  <div class="col-md-2 pr-1">
+                                                     <div class="btn-icon-group text-right">
+                                                    <span (click)="decrement()">
+                                                        <a class="btn btn-primary">
                                                             <i class="fa fa-minus"></i>
                                                         </a>
-                                                    </div>
-                                                    <div class="col-6" (click)="increment()">
-                                                        <a class="btn btn-count">
+                                                    </span>
+                                                    <span (click)="increment()">
+                                                        <a class="btn btn-primary">
                                                             <i class="fa fa-plus"></i>
                                                         </a>
-                                                    </div>
+                                                    </span>
                                                   </div>
                                                   </div>                                              
                                                    

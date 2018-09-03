@@ -12,13 +12,13 @@
             <div class="form-body">
               <div class="row">
                 <div class="col-md-12">
-                  <div class="form-group mb-0">
+                  <div class="form-group">
                     <label>Text Input
                       <i class="fa fa-question-circle-o" container="body" placement="right" triggers="mouseenter:mouseleave" ngbPopover="Enter a random text and use the hash as transaction secret. By revealing this text, the receiver can claim the transaction."></i>
                     </label>
                     <div class="input-group mb-0">
                       <input type="text" [(ngModel)]="calculateHashForm.input" name="input" #input="ngModel" class="form-control" required max="99" placeholder="Type in the text you like to generate a hash for">
-                      <div>
+                      <div class="mt-3">
                         <span class="btn btn-gradient" [ngClass]="{'disabled':f.invalid}" (click)="calculateHash()">
                           Calculate
                         </span>
@@ -32,7 +32,7 @@
                   </div>
                 </div>
               </div>
-              <hr>
+            
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">

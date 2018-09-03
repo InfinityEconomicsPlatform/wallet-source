@@ -8,16 +8,19 @@
             <app-breadcrumb></app-breadcrumb>
           </div>
           <div class="card-body mt-4">
-            <div class="card-block mr-3 ml-3">
-              <form class="form">
+              <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
+             <form class="form inner-form">
                 <div class="form-body">
                   <div class="form-group">
-                    <div class="position-relative has-icon-left">
-                      <input type="text" class="form-control" name="form-control-with-icon"
+                    <h3>Search for Assets Info
+                    <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave" placement="right" container="body" ngbPopover="Enter word(s) to search for assets with info and description."></i>
+                  </h3>
+                   <div class="position-relative mt-4">
+                      <input type="text" class="form-control input-search pb-2" name="form-control-with-icon"
                              [(ngModel)]="searchQuery"
-                             (input)="onSearchChange($event.target.value)">
-                      <div class="form-control-position">
-                        <i class="ft-search info"></i>
+                             (input)="onSearchChange($event.target.value)" placeholder="Enter search words">
+                     <div class="form-control-position btn-search">
+                      <i class="ft-search info mr-2"></i>Search
                       </div>
                     </div>
                   </div>
@@ -36,13 +39,14 @@
                 </ngx-datatable-column>
                 <ngx-datatable-column prop="asset" name="Actions">
                   <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-
-                    <a class="btn btn-outline-danger" (click)="goToAssetDetails(row.asset)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="Details">
+                    <div class="btn-group-raised">
+                    <a class="btn btn-grey btn-icon btn-sm" (click)="goToAssetDetails(row.asset)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="Details">
                       <i class="fa fa-info-circle"></i>
                     </a>
-                    <a class="btn btn-outline-danger" (click)="goToTradeDesk(row.asset)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="TradeDesk">
+                    <a class="btn btn-grey btn-icon btn-sm" (click)="goToTradeDesk(row.asset)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="TradeDesk">
                       <i class="fa fa-bar-chart"></i>
                     </a>
+                  </div>
                   </ng-template>
                 </ngx-datatable-column>
               </ngx-datatable>

@@ -158,7 +158,7 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group m-0">
+                                            <div class="form-group">
                                                 <label>Minimum options
                                                     <i class="fa fa-question-circle-o" placement="right"
                                                        triggers="mouseenter:mouseleave" container="body"
@@ -183,7 +183,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group m-0">
+                                            <div class="form-group">
                                                 <label>Maximum options
                                                     <i class="fa fa-question-circle-o" placement="right"
                                                        triggers="mouseenter:mouseleave" container="body"
@@ -217,15 +217,15 @@
                                         </label>
                                         <div>
                                             <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-0">
-                                                <div class="col-md-9">      
+                                                <div class="col-md-9 pl-0">      
                                                     <input type="number" id="finishHeight" class="form-control pl-0"
                                                        placeholder="1440" name="duration" #duration="ngModel"
                                                        [(ngModel)]="finishHeight"
                                                        (ngModelChange)="validateStepTwo()"
                                                        required minValue="1440" maxValue="20000">
                                                 </div>
-                                                <div class="col-md-3">   
-                                                    <div class="row input-single-group pull-right">
+                                                <div class="col-md-3 pr-0">   
+                                                  <div class="btn-icon-group text-right">
                                                         <button class="btn btn-primary" (click)="min()">
                                                             <i class="fa fa-fast-backward"></i>
                                                         </button>
@@ -262,7 +262,7 @@
                                             (click)="addNewOption()">
                                         <i class="fa fa-plus"></i> Add options for this Poll
                                     </button>
-                                    <hr *ngIf="pollOptions.length != 0">
+                                    <!-- <hr *ngIf="pollOptions.length != 0"> -->
                                     <div class="row" *ngIf="pollOptions.length != 0">
                                         <div class="col-md-6" *ngFor="let option of pollOptions; let i = index;">
                                             <div class="form-group">
@@ -330,12 +330,12 @@
                             </button>
                             
                             <div class="form-group" *ngIf="unsignedTx">
-                                <div class="position-relative">
+                                <div class="position-relative sign_in_inputs">
                                     <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
-                                              class="form-control" name="key"></textarea>
+                                              class="form-control pl-0" name="key"></textarea>
                                 </div>
                             </div>
-                            <div>
+                            <div class="mt-4">
                                 <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
                                         (click)="broadcastTransaction(transactionBytes)">
                                     <i class="fa fa-check"></i> Finish

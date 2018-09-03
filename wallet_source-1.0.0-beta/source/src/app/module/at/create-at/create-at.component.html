@@ -16,7 +16,7 @@
                 <div class="form-body">
                   <div class="row">
                     <div class="col-sm-6">
-                      <div class="form-group m-0">
+                      <div class="form-group">
                         <label>Name
                           <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The AT name. Min. 3 max. 30 chars. AT names are unique!">
                           </i>
@@ -34,17 +34,17 @@
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <div class="form-group m-0">
+                      <div class="form-group">
                         <label>Minimum activation amount
                           <i class="fa fa-question-circle-o  ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This defines the minimum transaction amount this specific AT will be able to see. All transactions below that amount are blind to the AT and will be ignored.">
                           </i>
                         </label>
                         <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-0">
-                                            <div class="col-md-11">
+                                            <div class="col-11 pl-1">
                                            <input type="number" class="l-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="createAtForm.minActivationAmount" name="minActivationAmount" #minActivationAmount="ngModel"
                             minValue="0" maxValue="100" required>
                                             </div>
-                                            <div class="col-md-1">
+                                            <div class="col-1">
                                                 <div class="row input-single-group">
                                                         <div class="col-md-12">
                                                             <span class="input-group-text">XIN</span>
@@ -86,7 +86,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="left">
+                      <div class="mt-4 left">
                         <button type="button" [disabled]="f1.invalid" class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
                           <i class="fa fa-chevron-right"></i> Next
                         </button>
@@ -131,7 +131,7 @@
                     <i class="fa fa-code"></i> Creation Bytes
                   </button>
 
-                  <div class="form-group" *ngIf="hasMachineData">
+                  <div class="form-group mt-3" *ngIf="hasMachineData">
                     <div class="position-relative sign_in_inputs">
                       <label>Machine Data</label>
                       <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.data" name="data" #data="ngModel" maxlength="1000"></textarea>
@@ -143,7 +143,7 @@
                       <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.bytes" name="bytes" #bytes="ngModel" maxlength="1000"></textarea>
                     </div>
                   </div>
-                  <hr *ngIf="hasCreationBytes || hasMachineData">
+                  <!-- <hr *ngIf="hasCreationBytes || hasMachineData"> -->
                   <div class="row mt-4">
                     <div class="col-sm-4">
                       <div class="form-group m-0">
@@ -151,10 +151,12 @@
                           <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is the size of the memory to allocate for your AT. The memory in AT is working on chunks of 256 bytes which we call pages. If you don’t define any data in the Data field above, because you don’t have any initial values to define, but you still need to allocate memory, this is where you do it. For instance, if you want to add 1024 bytes of memory for the AT then you need to set the Data Pages field to 4. Each page is 256 bytes.">
                           </i>
                         </label>
-                        <div class="input-group m-0">
-                          <input type="number" class="form-control" [(ngModel)]="createAtForm.dpages" name="dpages" #dpages="ngModel" minValue="0"
+                       <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                         <div class="col-9 col-lg-10 pl-0">      
+                          <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="createAtForm.dpages" name="dpages" #dpages="ngModel" minValue="0"
                             maxValue="10" required>
-                          <div class="input-group-append">
+                          </div>
+                         <div class="col-3 col-lg-2">
                             <span class="input-group-text">PAGES</span>
                           </div>
                         </div>
@@ -178,10 +180,12 @@
                           <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Call stack memory. This will only be used in specific situations, if your code is using PUSH/POP commands, for example. It’s extra memory to allocate to the AT.">
                           </i>
                         </label>
-                        <div class="input-group m-0">
-                          <input type="number" class="form-control" [(ngModel)]="createAtForm.cspages" name="cspages" #cspages="ngModel" minValue="0"
+                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                           <div class="col-9 col-lg-10 pl-0">    
+                          <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="createAtForm.cspages" name="cspages" #cspages="ngModel" minValue="0"
                             maxValue="10" required>
-                          <div class="input-group-append">
+                          </div>
+                          <div class="col-3 col-lg-2">
                             <span class="input-group-text">PAGES</span>
                           </div>
                         </div>
@@ -204,10 +208,12 @@
                           <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="User stack memory. This will only be used in specific situations, if your code is using PUSH/POP commands, for example. It’s extra memory to allocate to the AT.">
                           </i>
                         </label>
-                        <div class="input-group m-0">
-                          <input type="number" class="form-control" [(ngModel)]="createAtForm.uspages" name="uspages" #uspages="ngModel" minValue="0"
+                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                         <div class="col-9 col-lg-10 pl-0">    
+                          <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="createAtForm.uspages" name="uspages" #uspages="ngModel" minValue="0"
                             maxValue="10" required>
-                          <div class="input-group-append">
+                          </div>
+                           <div class="col-3 col-lg-2">
                             <span class="input-group-text">PAGES</span>
                           </div>
                           <div *ngIf="uspages?.invalid && (uspages?.dirty || uspages?.touched)" class="input-error">
@@ -225,7 +231,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-actions">
+                  <div class="mt-4">
                     <button type="button" [disabled]="f2.invalid" class="btn btn-gradient mr-3 mb-0 float-right" (click)="createAT()" awNextStep>
                       <i class="fa fa-chevron-right"></i> Next
                     </button>
@@ -312,7 +318,7 @@
                   <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0" name="key"></textarea>
                 </div>
               </div>
-              <div class="form-actions">
+              <div class="mt-4">
                 <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes)" class="btn btn-gradient float-right">
                   <i class="fa fa-check"></i> Finish
                 </button>

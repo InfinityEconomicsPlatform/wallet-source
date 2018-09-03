@@ -26,7 +26,7 @@
                 <div class="form-body">
                   <div class="row mt-4">
                     <div class="col-md-6">
-                      <div class="form-group m-0">
+                      <div class="form-group ml-0 mr-0">
                         <label>Holding Type
                           <i class="fa fa-question-circle-o" 
                             placement="right" 
@@ -45,7 +45,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group m-0" *ngIf="createShuffleForm.holdingType==1">
+                      <div class="form-group  ml-0 mr-0" *ngIf="createShuffleForm.holdingType==1">
                         <label>Asset ID
                           <i class="fa fa-question-circle-o"
                             placement="right"
@@ -61,7 +61,7 @@
                           }}
                         </div>
                       </div>
-                      <div class="form-group m-0" *ngIf="createShuffleForm.holdingType==2">
+                      <div class="form-group  ml-0 mr-0" *ngIf="createShuffleForm.holdingType==2">
                         <label>Currency Ticker
                           <i class="fa fa-question-circle-o"
                             placement="right"
@@ -83,7 +83,7 @@
                 
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="form-group m-0">
+                      <div class="form-group  ml-0 mr-0">
                         <label>Amount
                           <i class="fa fa-question-circle-o"
                             placement="right"
@@ -92,7 +92,7 @@
                             ngbPopover="The amount to shuffle. Min. 1.000 Token.">
                           </i>
                         </label>
-                        <div class="input-group m-0">
+                        <div class="input-group  ml-0 mr-0">
                           <input type="number" class="form-control" [(ngModel)]="createShuffleForm.amount" name="amount" #amount="ngModel" required [minValue]=1000>
                         </div>
                         <div *ngIf="amount?.invalid && (amount?.dirty || amount?.touched)" class="input-error">
@@ -106,7 +106,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group m-0">
+                      <div class="form-group  ml-0 mr-0">
                         <label>Participant Count
                           <i class="fa fa-question-circle-o"
                             placement="right"
@@ -134,7 +134,7 @@
                     </div>
                   </div>
                 
-                  <div class="form-group m-0">
+                  <div class="form-group  ml-0 mr-0">
                     <label>Register in block until
                       <i class="fa fa-question-circle-o"
                         placement="right"
@@ -147,8 +147,8 @@
                       <div class="col-9 col-lg-10 pl-0">
                              <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="createShuffleForm.finishHeight" name="finishHeight" #finishHeight="ngModel" required minValue="1440" maxValue="20160">
                     </div>
-                    <div class="col-3 col-lg-2">
-                     <div class="btn-group-raised">
+                    <div class="col-3 col-lg-2 pr-1">
+                     <div class="btn-icon-group text-right">
                         <a class="btn btn-primary" (click)="min()">
                           <i class="fa fa-fast-backward"></i>
                         </a>

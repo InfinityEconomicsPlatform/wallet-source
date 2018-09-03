@@ -15,7 +15,7 @@
                 <div class="form-body">
                   <div class="row mt-4">
                     <div class="col-md-6">
-                      <div class="form-group m-0">
+                      <div class="form-group">
                         <label>Name
                           <i class="fa fa-question-circle-o" 
                             triggers="mouseenter:mouseleave" 
@@ -39,7 +39,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group m-0">
+                      <div class="form-group">
                         <label>Code
                           <i class="fa fa-question-circle-o"
                             triggers="mouseenter:mouseleave"
@@ -83,7 +83,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="left">
+                <div class="mt-4 left">
                   <button type="button" [disabled]="f1.invalid" (click)="getBlockChainStatus()" class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
                     <i class="fa fa-chevron-right"></i> Next
                   </button>
@@ -105,11 +105,11 @@
                           </i>
                         </label>
                          <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                            <div class="col-md-10 pl-0">  
+                            <div class="col-9 pl-0">  
                           <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="campaignForm.initialSupply" name="initialSupply" #initialSupply="ngModel"
                             [minValue]="0" required>
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-3">
                             <div class="input-single-group">
                                  <span class="input-group-text">
                                                     UNITS
@@ -138,11 +138,11 @@
                           </i>
                         </label>
                          <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                          <div class="col-md-10 pl-0">  
+                          <div class="col-9 pl-0">  
                                  <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="changeMinAmount()" [(ngModel)]="campaignForm.reserveSupply" name="reserveSupply"
                             #reserveSupply="ngModel" [minValue]="1" required>
                           </div>
-                           <div class="col-md-2">
+                           <div class="col-3">
                                               <div class="input-single-group">
                                                   <span class="input-group-text">
                                                     UNITS
@@ -171,11 +171,11 @@
                           </i>
                         </label>
                          <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                           <div class="col-md-10 pl-0">  
+                           <div class="col-9 pl-0">  
                                 <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="changeMinAmount()" [(ngModel)]="campaignForm.minReservePerUnitTQT" name="minReservePerUnitTQT"
                             #minReservePerUnitTQT="ngModel" [minValue]="1" required>
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-3">
                                               <div class="input-single-group">
                                                   <span class="input-group-text">
                                                     XIN
@@ -208,10 +208,10 @@
                           </i>
                         </label>
                         <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                                              <div class="col-md-10 pl-0">  
+                                              <div class="col-9 pl-0">  
                                               <input type="number" [attr.disabled]="true" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="campaignForm.totalAmount" name="totalAmount">
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-3">
                                               <div class="input-single-group">
                                                   <span class="input-group-text">
                                                     XIN
@@ -233,22 +233,22 @@
                           </i>
                         </label>
                         <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">  
-                           <div class="col-md-2 pl-0"> 
+                           <div class="col-2 pl-0"> 
                            <span class="input-group-text">
                               BLOCK : {{ campaignForm.currentHeight }}
                             </span>  
                            </div>
-                           <div class="col-md-5">   
+                           <div class="col-5">   
                             <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="campaignForm.issuanceHeight" name="issuanceHeight" [minValue]="1440" [maxValue]="43200"
                           #issuanceHeight="ngModel" required placeholder="1440">
                            </div>
-                           <div class="col-md-2">  
+                           <div class="col-2">  
                            <span class="input-group-text">
                               {{ campaignForm.days }} Day(s)
                             </span> 
                            </div>
-                           <div class="col-md-3"> 
-                               <div class="row input-single-group">
+                           <div class="col-md-3 pr-1"> 
+                               <div class="btn-icon-group text-right">
                                       <a class="btn btn-primary" (click)="min()">
                                         <i class="fa fa-fast-backward"></i>
                                       </a>
@@ -380,7 +380,7 @@
                   <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0" name="key"></textarea>
                 </div>
               </div>
-              <div>
+              <div class="mt-4">
                 <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right" (click)="broadcastTransaction(transactionBytes)">
                   <i class="fa fa-check"></i> Finish
                 </button>

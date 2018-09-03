@@ -49,10 +49,10 @@
 									<i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Ensure you are running a local node before enter your passphrase to prevent security risks. You can switch over anytime to a local node by choosing LOCAL_HOST for connection mode in options."></i>
 								</label>
 								<div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-									<div class="col-md-9 col-lg-9">
+									<div class="col-md-9 col-lg-9 pl-0">
 										<input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control" required [(ngModel)]="blockGenerationForm.secretPhrase" name="secretPhrase" placeholder="Type in your secret phrase"></div>
 									<div class="col-md-3 col-lg-3">
-										<div class="icon-dingle-group">
+										<div class="icon-dingle-group btn-icon-group text-right">
 											<button class="btn btn-primary" (click)="runBlockGeneration(0)" [disabled]="hasLocal===false || !blockGenerationForm.$valid">
 												<i class="fa fa-plug" placement="top" triggers="mouseenter:mouseleave" container="body" ngbPopover="Show block generation status."></i>
 											</button>

@@ -94,11 +94,11 @@
 					<div class="col-md-6">
 						<div class="card">
 							<div class="card-header">
-								<h3 class="card-title">BUY > {{assetDetails.name}}</h3>
+								<h3 class="card-title border-0">BUY > {{assetDetails.name}}</h3>
 							</div>
 							<div class="card-body">
 								<div class="card-block">
-									<div class="form-actions box-header">
+									<div class="form-actions box-header box-header-green">
 										<span class="btn-group-raised">
 											<button type="button" class="btn mb-0 btn-icon btn-grey" (click)="getSellOrders()">
 											<i class="fa fa-refresh"></i> </button>
@@ -106,19 +106,19 @@
 										<span class="pull-right"><strong> {{balanceTQT | amountTqt}} XIN </strong></span>
 									</div>
 								
-									<form class="form inner-form mt-4" #f1="ngForm" novalidate>
+									<form class="form inner-form mt-3" #f1="ngForm" novalidate>
 										<div class="form-body">
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group m-0">
 														<label>Price</label>
-														<div class="input-group m-0 sign_in_inputs row form-border-bottom">
+														<div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
 																<div class="col-9">		
 																	       <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="buyFormOnChange()" [(ngModel)]="buyOrderForm.price" name="price" #price="ngModel" minValue="0" required>
 																</div>
 																<div class="col-3">
 
-																	<span class="input-group-text">XIN</span>
+																	<span class="input-group-text text-yellow">XIN</span>
 																
 																</div>	
 														</div>						
@@ -135,7 +135,7 @@
 												<div class="col-md-6">
 													<div class="form-group m-0">
 														<label>Quantity</label>
-														<div class="input-group m-0">
+														<div class="input-group ml-0 mr-0">
 															<input type="number" class="form-control" (input)="buyFormOnChange()" [(ngModel)]="buyOrderForm.quantity" name="quantity" #quantity="ngModel" minValue="0" required>
 														</div>
 														<div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)" class="input-error">
@@ -151,20 +151,20 @@
 												<div class="col-md-6">
 													<div class="form-group m-0">
 														<label>Total</label>
-														<div class="input-group m-0 sign_in_inputs row form-border-bottom">
+														<div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
 																<div class="col-9">	
 																	       <input type="text" disabled class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="buyOrderForm.totalPrice" name="totalPrice" #totalPrice="ngModel">
 																</div>
 																<div class="col-3">
 
-																	<span class="input-group-text">XIN</span>
+																	<span class="input-group-text text-yellow">XIN</span>
 																
 																</div>	
 														</div>						
 													</div>
 												</div>
 												<div class="col-md-6">
-													<button type="button" [disabled]="f1.invalid && !enableBuy" class="btn btn-raised mt-4 btn-gradient btn-create" (click)="placeOrderClick(buyOrderForm,'bid')">
+													<button type="button" [disabled]="f1.invalid && !enableBuy" class="btn btn-raised mt-4 btn-gradient btn-green btn-create" (click)="placeOrderClick(buyOrderForm,'bid')">
 													Buy
 												</button>
 												</div>
@@ -172,7 +172,7 @@
 											</div>
 										</div>
 									</form>
-									<h3 class="card-title mb-3 mt-4">Sell Orders</h3>
+									<h3 class="card-title mb-3 mt-3">Sell Orders</h3>
 									<ngx-datatable [rows]="sellOrdersRows" [columnMode]="'standard'" [scrollbarH]="true" [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [count]="sellOrdersPage.totalElements" [offset]="sellOrdersPage.pageNumber" [limit]="sellOrdersPage.size" (page)='getSellOrders($event)' (autoRefresh)="getSellOrders()">
 										<ngx-datatable-column prop="priceTQT" name="Price per share">
 											<ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
@@ -211,11 +211,11 @@
 					<div class="col-md-6">
 						<div class="card">
 							<div class="card-header">
-								<h3 class="card-title">Sell > {{assetDetails.name}}</h3>
+								<h3 class="card-title border-0">Sell > {{assetDetails.name}}</h3>
 							</div>
 							<div class="card-body">
 								<div class="card-block">
-									<div class="form-actions box-header">
+									<div class="form-actions box-header  box-header-red">
 										<span class="btn-group-raised">
 											<button type="button" class="btn mb-0 btn-icon btn-grey" (click)="getBuyOrders()">
 											<i class="fa fa-refresh"></i> </button>
@@ -223,19 +223,19 @@
 										<span class="pull-right"><strong> {{unconfirmedQuantityQNT |quantityToShare:assetDetails.decimals | amountTkn }} </strong><small>{{assetDetails.name}}</small></span>
 									</div>
 									
-									<form class="form inner-form mt-4" #f2="ngForm" novalidate>
+									<form class="form inner-form mt-3" #f2="ngForm" novalidate>
 										<div class="form-body">
 											<div class="row">
 												<div class="col-sm-6">
 													<div class="form-group m-0">
 														<label>Price</label>
-														<div class="input-group m-0 sign_in_inputs row form-border-bottom">
+														<div class="input-group ml-0 mr-0  sign_in_inputs row form-border-bottom">
 																<div class="col-9">																
 																	       <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="sellFormOnChange()" [(ngModel)]="askOrderForm.price" name="price" #price="ngModel" minValue="0" required>
 																</div>
 																<div class="col-3">
 
-																	<span class="input-group-text">XIN</span>
+																	<span class="input-group-text text-yellow">XIN</span>
 																
 																</div>															
 														
@@ -253,7 +253,7 @@
 												<div class="col-sm-6">
 													<div class="form-group m-0">
 														<label>Quantity</label>
-														<div class="input-group m-0">
+														<div class="input-group ml-0 mr-0 ">
 															<input type="number" class="form-control" (input)="sellFormOnChange()" [(ngModel)]="askOrderForm.quantity" name="quantity" #quantity="ngModel" minValue="0" required>
 														</div>
 														<div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)" class="input-error">
@@ -269,13 +269,13 @@
 												<div class="col-md-6">
 													<div class="form-group m-0">
 														<label>Total</label>
-														<div class="input-group m-0 sign_in_inputs row form-border-bottom">
+														<div class="input-group ml-0 mr-0  sign_in_inputs row form-border-bottom">
 																<div class="col-9">	
 																	       <input type="text" disabled class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="askOrderForm.totalPrice" name="totalPrice" #totalPrice="ngModel">
 																</div>
 																<div class="col-3">
 
-																	<span class="input-group-text">XIN</span>
+																	<span class="input-group-text text-yellow">XIN</span>
 																
 																</div>	
 														</div>			
@@ -283,7 +283,7 @@
 													</div>
 												</div>
 												<div class="col-md-6">
-												<button type="button" [disabled]="f2.invalid && !enableSell" class="btn btn-raised mt-4 btn-gradient btn-create" (click)="placeOrderClick(askOrderForm,'ask')">
+												<button type="button" [disabled]="f2.invalid && !enableSell" class="btn btn-raised mt-4 btn-gradient btn-red btn-create" (click)="placeOrderClick(askOrderForm,'ask')">
 													Sell
 												</button>
 												</div>
@@ -291,7 +291,7 @@
 											
 										</div>
 									</form>
-									<h3 class="card-title mb-3 mt-4">Buy Orders</h3>
+									<h3 class="card-title mb-3 mt-3">Buy Orders</h3>
 									<ngx-datatable [rows]="buyOrdersRows" [columnMode]="'standard'" [scrollbarH]="true" [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [count]="buyOrdersPage.totalElements" [offset]="buyOrdersPage.pageNumber" [limit]="buyOrdersPage.size" (page)='getBuyOrders($event)' (autoRefresh)="getBuyOrders()">
 										<ngx-datatable-column prop="priceTQT" name="Price per share">
 											<ng-template let-value="value" let-row="row" ngx-datatable-cell-template>

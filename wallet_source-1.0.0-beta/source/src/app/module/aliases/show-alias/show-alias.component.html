@@ -7,17 +7,18 @@
                         <h2 class="main-title">Aliases</h2>
                         <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
                     </div>
-                     <div class="row mt-4">                        
+                     <div class="row mt-4 ml-1 mr-1 ml-md-2 mr-md-2" >                        
                              <div class="col-11">
-                                 <form class="form inner-form ">
+                                <form class="form inner-form" >
                                     <div class="form-body">
                                         <div class="form-group">
-                                            <div class="position-relative btn-group-raised">
-                                                <input type="text" class="form-control pb-2 search-box" name="form-control-with-icon"
+                                            <div class="position-relative">
+                                              <input type="text" class="form-control input-search pb-2" name="form-control-with-icon"
                                                        [(ngModel)]="searchText">
-                                                <div class="form-control-position" (click)="onSearchChange(searchText);">
-                                                    <span class=" btn btn-sm btn-icon btn-grey"><i class="ft-search"></i></span>
-                                                </div>
+                    <div class="form-control-position btn-search">
+                      <i class="ft-search info mr-2"></i>Search
+                    </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

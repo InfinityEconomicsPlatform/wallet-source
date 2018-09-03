@@ -25,7 +25,7 @@
                                                        ngbPopover="Alias with max. 100 characters. Aliases are CASE-INSENSITIVE.">
                                                     </i>
                                                 </label>
-                                                <div class="input-group m-0">
+                                                <div class="input-group">
                                                     <input type="text" name="name"
                                                            #name="ngModel"
                                                            [(ngModel)]="alias.aliasName"
@@ -140,13 +140,13 @@
                                     class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
                                 <i class="fa fa-key"></i> Signed Transaction
                             </button>
-                            <div class="form-group" *ngIf="unsignedTx">
-                                <div class="position-relative">
+                            <div class="form-group mt-3" *ngIf="unsignedTx">
+                                <div class="position-relative sign_in_inputs">
                                     <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
-                                              class="form-control readonly-note" name="key"></textarea>
+                                              class="form-control pl-0" name="key"></textarea>
                                 </div>
                             </div>
-                            <div>
+                            <div class="mt-4">
                                 <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
                                         (click)="broadcastTransaction(transactionBytes)">
                                     <i class="fa fa-check"></i> Finish
