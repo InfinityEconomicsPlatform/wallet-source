@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-12 mb-1">
+		<div class="content-header">
+			<h3>Tools Online</h3>
+		</div>
+	</div>
+</div>
+<div class="row tool-boxes mt-4" matchHeight="card">
+	<div class="col-xl-3 col-lg-6 col-12 mb-3" *ngFor="let extension of extensionsOnline">
+		<div class="card">
+			<div class="card-header">
+				<h4><i [class]="extension.icon"></i> {{extension.title}}</h4>
+			</div>
+			<div class="card-body">
+				<div class="card-block">
+					<p>{{extension.description}}</p>
+				</div>
+				<div class="text-center mt-4"><a href="{{ extension?.link }}" target="{{ extension?.target }}"><span class="btn btn-gradient btn-create white">Show</span></a></div>
+			</div>
+		</div>
+	</div>
+</div>

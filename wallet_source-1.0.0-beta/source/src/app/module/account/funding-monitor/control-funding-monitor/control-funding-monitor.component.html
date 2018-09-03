@@ -1,0 +1,108 @@
+<div class="card-header">
+  <h3 class="card-title">Start New Funding Monitor</h3>
+</div>
+<div class="card-body">
+  <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
+    <form class="form inner-form" #startFundingMonitorForm="ngForm">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="alert alert-info readonly-note">
+              To start the funding monitor your passphrase is used to sign transactions. For security reasons the funding monitor is only available on your local node or a manual node (preferably your own trusted node and set in options/connection mode).
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="form-group m-0">
+              <label>Account Property
+                <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The name of the account property."></i>
+              </label>
+              <input type="text" class="form-control" name="property" #property="ngModel" [(ngModel)]="fundingMonitorForm.property" id="property" placeholder="" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group m-0">
+              <label>Amount
+                <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The amount (token/shares/currency) to fund the recipient account with."></i>
+              </label>
+              <input type="number" class="form-control" name="amount" #amount="ngModel" [(ngModel)]="fundingMonitorForm.amount" id="amount" placeholder="" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group m-0">
+              <label>Threshold
+                <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The threshold which triggers the funding."></i>
+              </label>
+              <input type="number" class="form-control" name="threshold" #threshold="ngModel" [(ngModel)]="fundingMonitorForm.threshold" id="threshold" placeholder="" min="10" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group m-0">
+              <label>Interval
+                <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The number of blocks to wait after before funding the recipient (min. 10)."></i>
+              </label>
+              <input type="number" class="form-control" name="interval" #interval="ngModel" [(ngModel)]="fundingMonitorForm.interval" id="interval" placeholder="" min="10" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group m-0">
+              <label>Holding Type
+                <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Holding types are token, assets or currencies."></i>
+              </label>
+              <div class="position-relative">
+                <select class="form-control" name="holdingType" #holdingType="ngModel" [(ngModel)]="fundingMonitorForm.holdingType" id="holdingType" required>
+                  <option *ngFor="let option of holdingOptions" value="{{ option.value }}">{{ option.label }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group m-0" *ngIf="fundingMonitorForm.holdingType == 1">
+              <label>Asset ID
+                <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Enter the asset ID (numeric)"></i>
+              </label>
+              <input type="text" class="form-control" name="asset" #asset="ngModel" [(ngModel)]="fundingMonitorForm.holding" id="assetId" placeholder="Asset ID" (change)="getAsset(fundingMonitorForm.holding)">
+            </div>
+            <div class="form-group m-0" *ngIf="fundingMonitorForm.holdingType == 2">
+              <label>Currency Ticker
+                <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Enter the currency ticker (text)"></i>
+              </label>
+              <input type="text" class="form-control" name="currency" #currency="ngModel" [(ngModel)]="fundingMonitorForm.holding" id="currencyId" placeholder="Currency Code/Ticker" (change)="getCurrency(fundingMonitorForm.holding)">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group m-0">
+              <label>Admin Password
+                <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The admin password entered in your node."></i>
+              </label>
+              <input type="password" class="form-control" name="adminPassword" #adminPassword="ngModel" [(ngModel)]="fundingMonitorForm.adminPassword" id="adminPassword" placeholder="" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group m-0">
+              <label>Secret Phrase
+                <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Ensure you are running a local node before enter your passphrase to prevent security risks. You can switch over anytime to a local node by choosing LOCAL_HOST for connection mode in options."></i>
+              </label>
+              <input type="password" class="form-control" name="secretPhrase" #secretPhrase="ngModel" [(ngModel)]="fundingMonitorForm.secretPhrase" id="secretPhrase" placeholder="" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="left">
+        <button type="button" class="btn btn-gradient" [disabled]="hasLocal === false || !startFundingMonitorForm.valid || fundingMonitorForm.interval < 10 || fundingMonitorForm.threshold < 10" (click)="fundingMonitorActions()">
+          <i class="fa fa-play"></i> Start
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

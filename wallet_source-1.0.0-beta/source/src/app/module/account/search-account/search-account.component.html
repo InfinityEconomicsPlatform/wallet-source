@@ -1,0 +1,51 @@
+<section>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-block main-card-block">
+					<div class="border-bt">
+						<h2 class="main-title">Search Account</h2>
+						<app-breadcrumb></app-breadcrumb>
+					</div>
+				<div class="card-body mt-4">
+					<div class="card-block mr-3 ml-3">
+						<form class="form inner-form" #f="ngForm" novalidate>
+							<div class="form-body">
+								<div class="form-group">
+									<h3>Search for Account Info
+										<i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave" placement="right" container="body" ngbPopover="Enter word(s) to search for accounts with info and description."></i>
+									</h3>
+									<div class="position-relative mt-4">
+										<input type="text" class="form-control input-search pb-2" name="form-control-with-icon" [(ngModel)]="searchAccountForm.query" placeholder="Enter search words" (input)="onSearchChange($event.target.value)" required>
+										<div class="form-control-position btn-search">
+											<i class="ft-search info mr-2"></i>Search
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<ngx-datatable class="material" [rows]="accounts" [columnMode]="'force'" [rowHeight]="'auto'" [footerHeight]="50">
+							<ngx-datatable-column prop="name" name="Name">
+								<ng-template let-value="value" ngx-datatable-cell-template>
+									{{value}}
+								</ng-template>
+							</ngx-datatable-column>
+							<ngx-datatable-column prop="accountRS" name="Account">
+								<ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+									<a class="hyperlink" (click)="goToAccountDetails(value)">{{value}}</a>
+								</ng-template>
+							</ngx-datatable-column>
+							<ngx-datatable-column prop="accountRS" name="Action">
+								<ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+									<button class="btn badge badge-success" (click)="openAddressBook(value, row.name)">
+										<i class="fa fa-plus"></i></button>
+								</ng-template>
+							</ngx-datatable-column>
+						</ngx-datatable>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>

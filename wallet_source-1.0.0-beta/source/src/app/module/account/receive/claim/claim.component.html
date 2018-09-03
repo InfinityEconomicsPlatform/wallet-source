@@ -1,0 +1,79 @@
+<div class="card-header">
+  <h3 class="card-title">Claim Secret Transaction</h3>
+</div>
+<div class="card-body">
+  <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
+    <form class="form">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Transaction Full Hash
+                <i class="fa fa-question-circle-o" placement="right"
+                   triggers="mouseenter:mouseleave" container="body"
+                   ngbPopover="To claim a secret transaction you have to enter the transaction full hash.">
+                </i>
+              </label>
+              <div class="input-group sign_in_inputs">
+                <input type="text"
+                       class="form-control pl-0 col-md-9 col-lg-10  mb-0"
+                       [(ngModel)]="claimSeceretForm.fullHash"
+                       name="transaction_hash"
+                       placeholder="Type in the hash">
+                <div class="input-group-append col-md-3 col-lg-2">
+                  <span class="input-group-text btn-inline">HASH</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Revealed Secret Text
+                <i class="fa fa-question-circle-o" placement="right"
+                   triggers="mouseenter:mouseleave" container="body"
+                   ngbPopover="Enter the secret from sender to claim your transaction before the transaction expires.">
+                </i>
+              </label>
+              <div class="input-group sign_in_inputs">
+                <input type="text"
+                       class="form-control pl-0 col-md-9 col-lg-10  mb-0"
+                       [(ngModel)]="claimSeceretForm.secretText"
+                       placeholder="Enter secret text"
+                       name="secret_text">
+                <div class="input-group-append col-md-3 col-lg-2"
+                     (click)="confirmControlledTransaction(claimSeceretForm.fullHash, claimSeceretForm.secretText)">
+                                                                      <span class="input-group-text btn-inline"><i
+                                                                              class="fa fa-user-secret"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12" *ngIf="validBytes">
+            <hr/>
+
+            <button type="button"
+                    [ngClass]="{'btn-success': !addMessage, 'btn-danger': addMessage}"
+                    class="btn btn-raised mb-0"
+                    (click)="signedTx=!signedTx">
+              <i class="fa fa-key"></i> Signed Transaction
+            </button>
+            <hr *ngIf="signedTx">
+            <div class="form-group" *ngIf="signedTx">
+              <div class="position-relative">
+                            <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
+                                      class="form-control" name="key"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" [disabled]="!validBytes"
+                      (click)="broadcastTransaction(transactionBytes)"
+                      class="btn btn-primary float-right">
+                <i class="fa fa-check"></i> Finish
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

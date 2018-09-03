@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Cancel Subscription Confirmation</h4>
+                <h5 class="back-button" (click)="goBack()">
+                    <i class="fa fa-chevron-left"></i> Back
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="card-block mr-3 ml-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ucsb"> Subscription ID
+                            </div>
+                            <h4> {{data.id}} </h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ucsb"> Recipient
+                            </div>
+                            <h4> {{data.account}} </h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ucsb"> Valid
+                            </div>
+                            <h4 [innerHTML]="validBytes | txIsValid"></h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ucsb"> Service Fee
+                            </div>
+                            <h4> {{ '1.00' | amountTkn }}
+                                <small> XIN</small>
+                            </h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <button type="button" class="btn btn-raised mr-1 mb-0 btn-success"
+                            (click)="unsignedTx = !unsignedTx">
+                        <i class="fa fa-key"></i> Signed Transaction
+                    </button>
+                    <hr *ngIf="unsignedTx">
+                    <div class="form-group" *ngIf="unsignedTx">
+                        <div class="position-relative">
+                            <textarea disabled="true" rows="3" type="text" class="form-control" name="key">{{transactionBytes}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes);"
+                                class="btn btn-primary float-right">
+                            <i class="fa fa-check"></i> Finish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

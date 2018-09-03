@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Shuffling Details</h4>
+        <h5 class="back-button" (click)="goBack()">
+          <i class="fa fa-chevron-left"></i> Back
+        </h5>
+      </div>
+      <div class="card-body" *ngIf="shuffle">
+        <div class="card-block mr-3 ml-3">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ucsb"> Shuffling ID
+              </div>
+              <h4> {{shuffle.shuffling}} </h4>
+            </div>
+            <div class="col-md-4">
+              <div class="ucsb"> Holding Type
+              </div>
+              <h4> {{shuffle.holdingType|holdingType}} </h4>
+            </div>
+            <div class="col-md-4">
+              <div class="ucsb"> Amount
+              </div>
+              <h4> {{shuffle.amount|quantToAmount|numberString}} 
+                <small> {{shuffle.holdingType|holdingType}} </small>
+              </h4>
+            </div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ucsb"> Issuer
+              </div>
+              <h4> {{shuffle.issuerRS}} </h4>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Last Assigne
+              </div>
+              <h4> {{shuffle.assigneeRS}} </h4>
+            </div>
+            <div class="col-md-4">
+              <div class="ucsb"> Block remaining
+              </div>
+              <h4> {{shuffle.blocksRemaining}} </h4>
+            </div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ucsb"> Participant count
+              </div>
+              <h4> {{shuffle.participantCount}} </h4>
+            </div>
+            <div class="col-md-4">
+              <div class="ucsb"> Registrant Count
+              </div>
+              <h4> {{shuffle.registrantCount}} </h4>
+            </div>
+            <div class="col-md-4">
+              <div class="ucsb"> State
+              </div>
+              <h4> {{shuffle.stage|shufflingStage}} </h4>
+            </div>
+          </div>
+          <hr/>
+        </div>
+        <div class="card-block mr-3 ml-3">
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <ngb-tabset type="pills">
+                <ngb-tab>
+                  <ng-template ngbTabTitle>
+                    <i class="fa fa-hashtag"></i> Full Hash</ng-template>
+                  <ng-template ngbTabContent>
+                    <p> {{shuffle.shufflingFullHash}} </p>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                  <ng-template ngbTabTitle>
+                    <i class="fa fa-hashtag"></i> Stage Hash</ng-template>
+                  <ng-template ngbTabContent>
+                    <p> {{shuffle.shufflingStateHash}} </p>
+                  </ng-template>
+                </ngb-tab>
+              </ngb-tabset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

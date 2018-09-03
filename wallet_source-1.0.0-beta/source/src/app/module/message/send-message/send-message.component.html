@@ -1,0 +1,253 @@
+<div class="row">
+    <div class="col-sm-12" *ngIf="!openBookMarks">
+        <div class="card">
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">Send Message</h2>
+                    <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
+                    <h3 class="back-button" (click)="goBack()">
+                        <i class="fa fa-chevron-left"></i> Back
+                    </h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-body">
+                    <div class="card-block mr-3 ml-3">
+                        <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                                <form #f="ngForm" class="form" name="sendMessageForm" novalidate>
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Recipient
+                                                        <i class="fa fa-question-circle-o ml-1 icon-yellow" container="body"
+                                                           placement="right" triggers="mouseenter:mouseleave"
+                                                           ngbPopover="The account you like to send an encrypted message to.">
+                                                        </i>
+
+                                                    </label>
+
+
+
+                                                 <div class="input-group m-0 sign_in_inputs row form-border-bottom">  
+                                                   <div class="col-7 col-lg-9">   
+                                                         <input type="text" [(ngModel)]="sendMessageForm.recipientRS"
+                                                               name="recipientRS" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                               #recipientRS="ngModel" required
+                                                               placeholder="XIN - _____ - _____ - _____ - _____">
+                                                    </div>
+                                                      <div class="col-5 col-lg-3">
+                                                        <div class="icon-buttons-group row text-center">
+                                                            <div class="col-6 pr-0 text-right" *isAppEnabled="'Aliases'">
+                                                                <span class="btn btn-grey mlmr-auto"
+                                                                          (click)="searchAliases()"
+                                                                          triggers="mouseenter:mouseleave"
+                                                                          placement="top"
+                                                                          container="body"
+                                                                          ngbPopover="Enter an alias connected to an account to get the account Id.">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                    </span>
+                                                            </div>
+                                                             <div class="col-6 pl-0" *isExpertView="true">
+                                                                    <span class="btn btn-grey btn-left"  triggers="mouseenter:mouseleave" placement="top" (click)="loadBookmarkView()" container="body" ngbPopover="Open your bookmarks to insert an account id">
+                                                                        <i class="fa fa-bookmark"></i>
+                                                                    </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                       
+                                                        
+                                                        
+                                                    </div>
+                                                    <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
+                                                         class="input-error">
+                                                        <div *ngIf="recipientRS?.errors.required">
+                                                            Recipient address is required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Type
+                                                        <i class="fa fa-question-circle-o ml-1 icon-yellow" container="body"
+                                                           placement="right" triggers="mouseenter:mouseleave"
+                                                           ngbPopover="ON chain or OFF chain. Non-prunable with max. 160 chars or prunable messages with max. 42Kb. Prunable messages are deleted after two weeks.">
+                                                        </i>
+
+                                                    </label>
+                                                    <div class="position-relative sign_in_inputs form-border-bottom">
+                                                        <select name="type" class="form-control mb-0 pl-0" name="prunable"
+                                                                [(ngModel)]="sendMessageForm.prunable">
+                                                            <option value="false">On chain (160 Chars)</option>
+                                                            <option value="true">Off chain (24k Chars)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Message
+                                                <i class="fa fa-question-circle-o" placement="right"
+                                                   triggers="mouseenter:mouseleave" container="body"
+                                                   ngbPopover="Encrypted messages with max. 160 characters unless prunable which is max. 42Kb.">
+                                                </i>
+                                            </label>
+                                            <div class="position-relative sign_in_inputs">
+                                                <textarea rows="3" name="message" [(ngModel)]="sendMessageForm.message"
+                                                          (ngModelChange)="onChangeMessageInfo($event)"
+                                                          class="form-control pl-0"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="button"
+                                                [ngClass]="{'btn-success': !hasReceiverPublicKey, 'btn-danger': hasReceiverPublicKey}"
+                                                class="btn btn-raised mb-0"
+                                                (click)="setPublicKye()">
+                                            <i class="fa fa-key"></i> {{ hasReceiverPublicKey ? 'Remove' : 'Add' }}
+                                            Recipient Public Key
+                                        </button>
+                                        <div class="form-group" *ngIf="hasReceiverPublicKey">
+                                            <div class="ucsb" placement="left" trigger="'mouseenter:mouseleave'"
+                                                 ngbPopover="Additional security for brand new accounts without any outbound transaction.">
+                                                <label>Recipient Public Key Announcement (Optional)
+                                                    <i class="fa fa-question-circle-o" placement="right"
+                                                       triggers="mouseenter:mouseleave" container="body"
+                                                       ngbPopover="Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key.">
+                                                    </i>
+                                                </label>
+                                            </div>
+                                            <div class="position-relative sign_in_inputs">
+                                                <input type="text" name="pubkey" class="form-control pl-0"
+                                                       [(ngModel)]="sendMessageForm.pubkey">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="left">
+                                        <button [disabled]="f.invalid" (click)="getAndVerifyAccount(sendMessageForm)"
+                                                type="button" class="btn btn-gradient mr-1 mb-0 float-right"
+                                                awNextStep>
+                                            <i class="fa fa-chevron-right"></i> Next
+                                        </button>
+                                    </div>
+                                </form>
+                            </aw-wizard-step>
+                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Recipient Account
+                                        </div>
+                                        <h4> {{sendMessageForm.recipientRS}} </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Recipient Name
+                                        </div>
+                                        <h4> {{accountDetails.name | notSet}} </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Recipient Balance
+                                        </div>
+                                        <h4> {{accountDetails.balanceTQT| amountTqt}}
+                                            <small> XIN</small>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Service Fee
+                                        </div>
+                                        <h4> {{ tx_fee | amountTkn }}
+                                            <small> XIN</small>
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Valid
+                                        </div>
+                                        <h4 [innerHTML]="validBytes | txIsValid"></h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Public Key
+                                        </div>
+                                        <h4 [innerHTML]="validBytes | txIsValid"></h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="ucsb"> Message
+                                        </div>
+                                        <h4>{{sendMessageForm.message}}</h4>
+                                    </div>
+                                </div>
+                                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
+                                        class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                                    <i class="fa fa-key"></i> Signed Transaction
+                                </button>
+                                <button type="button" [ngClass]="{'btn-success': !aMessage, 'btn-danger': aMessage}"
+                                        class="btn btn-raised mb-0" (click)="aMessage = !aMessage">
+                                    <i class="fa fa-lock"></i> Encrypted Message
+                                </button>
+                                <button type="button"
+                                        [ngClass]="{'btn-success': !aprunableAttachmentJSON, 'btn-danger': aprunableAttachmentJSON}"
+                                        class="btn btn-raised mb-0"
+                                        (click)="aprunableAttachmentJSON = !aprunableAttachmentJSON">
+                                    <i class="fa fa-lock"></i> Attachment
+                                </button>
+                                <hr *ngIf="unsignedTx || aMessage || aprunableAttachmentJSON">
+                                <div class="form-group" *ngIf="unsignedTx">
+                                    <label>Signed Transaction</label>
+                                    <div class="position-relative">
+                                        <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
+                                                  class="form-control" name="key"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group" *ngIf="aMessage">
+                                    <label>Encrypted Message</label>
+                                    <div class="position-relative">
+                                        <textarea disabled="true" rows="3" [(ngModel)]="encrypted" class="form-control"
+                                                  name="message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group" *ngIf="aprunableAttachmentJSON">
+                                    <label>Attachment</label>
+                                    <div class="position-relative">
+                                        <textarea disabled="true" rows="3" [(ngModel)]="prunableAttachmentString"
+                                                  class="form-control" name="message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" [disabled]="!validBytes"
+                                            (click)="broadcastMessage(transactionBytes, prunableAttachmentJSON);"
+                                            class="btn btn-gradient float-right">
+                                        <i class="fa fa-check"></i> Finish
+                                    </button>
+                                    <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                        <i class="fa fa-chevron-left"></i> Previous
+                                    </button>
+                                </div>
+                            </aw-wizard-step>
+                        </aw-wizard>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="openBookMarks">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">My Bookmarks</h4>
+                <h5 class="back-button" (click)="goBack()">
+                    <i class="fa fa-chevron-left"></i> Back
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="card-block ml-3 mr-3">
+                    <h5 class="mb-1">Bookmark List</h5>
+                    <app-bookmark-list [viewFor]="'sendmessage'"
+                                       (selectEvent)="bookmarkSelected($event)"></app-bookmark-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

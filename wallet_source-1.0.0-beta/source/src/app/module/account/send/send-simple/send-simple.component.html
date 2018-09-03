@@ -1,0 +1,189 @@
+<ng-container>
+    <ng-container *ngTemplateOutlet="sendtemp;">
+    </ng-container>
+</ng-container>
+<ng-template #sendtemp>
+    <div class="card-header">
+        <h3 class="card-title">SEND XIN</h3>
+    </div>
+    <div class="card-body">
+        <div class="card-block ml-sm-3 mr-sm-3">
+            <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                    <form class="form inner-form" #f="ngForm" novalidate>
+                        <div class="form-body">
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <div class="form-group m-0">
+                                        <label>Recipient
+                                            <i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The recipient account to send token to."></i>
+                                        </label>
+                                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">  
+                                            <div class="col-7 col-lg-9">                                          
+                                            <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="sendForm.recipientRS" name="recipientRS" #recipientRS="ngModel" required placeholder="XIN - _____ - _____ - _____ - _____">
+                                            </div>
+                                            <div class="col-5 col-lg-3">
+                                                <div class="icon-buttons-group row text-center">
+                                                    <div class="col-6 pr-0 text-right" *isAppEnabled="'Aliases'">
+                                                        <span class="btn btn-grey btn-seperator" (click)="searchAliases()" triggers="mouseenter:mouseleave" placement="top" container="body" ngbPopover="Enter an alias connected to an account to get the account Id.">
+                                                            <i class="fa fa-share-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-6 pl-0" *isExpertView="true">
+                                                        <span class="btn btn-grey btn-left"  triggers="mouseenter:mouseleave" placement="top" (click)="loadBookmarkView()" container="body" ngbPopover="Open your bookmarks to insert an account id">
+                                                            <i class="fa fa-bookmark"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)" class="input-error">
+                                            <div *ngIf="recipientRS?.errors.required">
+                                                Recipient address is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group m-0">
+                                        <label>Amount
+                                            <i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The amount you like to send to the recipient account."></i>
+                                        </label>
+                                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                            <div class="col-10 col-md-11">                                          
+                                           <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="sendForm.amount" name="amount" #amount="ngModel" required minValue="1">
+                                            </div>
+                                            <div class="col-2 col-md-1">
+                                                <div class="row input-single-group">
+                                                        <div class="col-md-12">
+                                                            <span class="input-group-text">XIN</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div *ngIf="amount?.invalid && (amount?.dirty || amount?.touched)" class="input-error">
+                                            <div *ngIf="amount?.errors.required">
+                                                Amount is required
+                                            </div>
+                                            <div *ngIf="amount?.errors.minValue && !amount?.errors.required">
+                                                Amount must be greater than 0
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                            <button type="button" [ngClass]="{'btn-success': !hasPrivateMessage, 'btn-danger': hasPrivateMessage}" class="btn btn-raised mr-1 mb-0 mr-3" (click)="setMessage()">
+                                <i class="fa fa-plus"></i> {{ hasPrivateMessage ? 'Remove' : 'Add' }} Private Message
+                            </button>
+                            <button type="button" [ngClass]="{'btn-success': !hasReceiverPublicKey, 'btn-danger': hasReceiverPublicKey}" class="btn btn-raised mb-0" (click)="setPublicKey()">
+                                <i class="fa fa-plus"></i> {{ hasReceiverPublicKey ? 'Remove' : 'Add' }} Recipient Public Key
+                            </button>
+                            </div>
+                            <hr *ngIf="hasPrivateMessage || hasReceiverPublicKey">
+                            <div class="form-group" *ngIf="hasPrivateMessage">
+                                <label>Message (MAX. 160 CHARS)
+                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="For message encryption the recipient public key needs to be known. This is not the case for accounts without any outbound transaction."></i>
+                                </label>
+                                <div class="position-relative sign_in_inputs">
+                                    <input [(ngModel)]="sendForm.message" rows="5" class="form-control pl-0" name="message">
+                                </div>
+                            </div>
+                            <div class="form-group" *ngIf="hasReceiverPublicKey">
+                                <label>Recipient Public Key (OPTIONAL)
+                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key."></i>
+                                </label>
+                                <div class="position-relative sign_in_inputs">
+                                    <input [(ngModel)]="sendForm.pubkey" type="text" class="form-control pl-0" name="publickey">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 fright">
+                            <button [disabled]="f.invalid" type="button" class="btn btn-gradient mr-1 mb-0 float-right" (click)="getAndVerifyAccount(sendForm);" awNextStep>
+                                <i class="fa fa-chevron-right"></i> Next
+                            </button>
+                        </div>
+                    </form>
+                </aw-wizard-step>
+                <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="ucsb"> Recipient Account </div>
+                            <h4> {{sendForm.recipientRS}} </h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ucsb"> Recipient Name </div>
+                            <h4> {{accountDetails.name | notSet}} </h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ucsb"> Recipient Balance </div>
+                            <h4> {{accountDetails.balanceTQT | amountTqt}}
+                                <small> XIN</small>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="ucsb"> Token Send </div>
+                            <h4> {{tx_amount | amountTkn}}
+                                <small> XIN</small>
+                            </h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ucsb"> Service Fee </div>
+                            <h4> {{ tx_fee | amountTkn }}
+                                <small> XIN</small>
+                            </h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ucsb"> Token Total </div>
+                            <h4> {{ tx_total | amountTkn }} </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="ucsb"> Valid </div>
+                            <h4 [innerHTML]="validBytes | txIsValid"></h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ucsb"> Message Added </div>
+                            <h4 [innerHTML]="hasMessageAdded | isEnabled"></h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ucsb"> Public Key Added </div>
+                            <h4 [innerHTML]="hasPublicKeyAdded | isEnabled"></h4>
+                        </div>
+                    </div>
+                    <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}" class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                        <i class="fa fa-key"></i> Signed Transaction
+                    </button>
+                    <button type="button" [ngClass]="{'btn-success': !addMessage, 'btn-danger': addMessage}" class="btn btn-raised mb-0" (click)="addMessage=!addMessage">
+                        <i class="fa fa-key"></i> Encrypted Message
+                    </button>
+                    <hr *ngIf="unsignedTx || addMessage">
+                    <div class="form-group" *ngIf="unsignedTx">
+                        <label>Signed Transaction</label>
+                        <div class="position-relative">
+                            <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control" name="key"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" *ngIf="addMessage">
+                        <label>Encrypted Message</label>
+                        <div class="position-relative">
+                            <input disabled="true" rows="5" [(ngModel)]="encrypted" class="form-control" name="message">
+                        </div>
+                    </div>
+                    <div class="form-actions mt-3 mobile-center">
+                        <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes)" class="btn btn-gradient float-right">
+                            <i class="fa fa-check"></i> Finish
+                        </button>
+                        <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                            <i class="fa fa-chevron-left"></i> Previous
+                        </button>
+                    </div>
+                </aw-wizard-step>
+            </aw-wizard>
+        </div>
+    </div>
+</ng-template>

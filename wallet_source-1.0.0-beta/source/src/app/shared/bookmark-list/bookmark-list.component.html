@@ -1,0 +1,27 @@
+<ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [rowHeight]="'auto'" [footerHeight]="50" [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size" (page)='setPage($event)'>
+    <ngx-datatable-column prop="accountRS" name="Account">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="tags" name="Tag">
+        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+            {{value}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column *ngIf="isSelectView" name="Action">
+        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+            <a class="btn btn-outline-success" (click)="onAction('select', row)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="Select">
+                <i class="fa fa-plus"></i>
+            </a>
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Action" *ngIf="!isSelectView">
+        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+            <a class="btn btn-outline-danger" (click)="onAction('delete', row)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="Delete">
+                <i class="fa fa-close"></i>
+            </a>
+        </ng-template>
+    </ngx-datatable-column>
+</ngx-datatable>

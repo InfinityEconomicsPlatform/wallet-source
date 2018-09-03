@@ -1,0 +1,33 @@
+{
+  "welcome": {
+    "title": "Willkommen zu Infinity Economics",
+    "redirect_login_btn": "Mein Konto",
+    "redirect_signup_btn": "Jetzt Anmelden",
+    "no_account": "Sie haben noch kein Konto"
+  },
+  "signup": {
+    "disclaimer": {
+      "title": "Haftungsausschluss akzeptieren",
+      "text": "In diesen Schritten wird ein neues Konto erstellt. Das Verfahren besteht aus komplexen kryptografischen Vorgängen, die eine PASSPHRASE (eine Folge von 15 zufälligen Wörtern) verwenden, um Ihre EINZIGARTIGE KONTENADRESSE zu erstellen. Diese PASSPHRASE ist äußerst wichtig und muss an einem sicheren Ort aufbewahrt werden, da DER EINZIGE WEG auf Ihr Konto zugreift. Wenn Sie es verlieren, verlieren Sie den Zugang zu Ihrem Konto und Ihrem Geld! Die Stiftung haftet nicht für verlorene Gelder, die aus falsch gesetzten Passphrasen resultieren. Die Passphrase des Accounts und andere wichtige Informationen müssen sofort gespeichert und zu Ihrer eigenen Sicherheit gespeichert werden. Stellen Sie sicher, dass Sie die gesamte Passphrasenlänge auswählen, bevor Sie sie behalten, und überprüfen Sie erneut Ihre Kontoadresse, indem Sie sich anmelden und die Kontoadresse mit der von diesem PASSPHRASE generierten Kontoadresse vergleichen, bevor Sie Ihre erste Übertragung vornehmen. Bitte gehen Sie nur vor, wenn Sie diesen Haftungsausschluss verstehen und akzeptieren."
+    },
+    "passphrase": {
+      "title": "Passphrase generieren",
+      "generate_new_btn":"Generiere neu",
+      "note": "Stellen Sie sicher, dass Sie die Passphrase sicher aufbewahren. Wenn Sie später Ihre Passphrase verlieren, kann Ihr Konto nicht wiederhergestellt werden und alle Ihre Gelder gehen verloren. <strong> Notieren Sie </strong> Ihre Passphrase im nächsten Schritt. Sie werden aufgefordert, sie zur Bestätigung erneut einzugeben."
+    },
+    "confirm": {
+      "title": "Bestätigen Sie PassPhrase und melden Sie sich an",
+    "passphrase_placeholder": "Mindestens 35 Zeichen oder 15 Wörter",
+    "error_passphrase_required": "Passphrase ist erforderlich.",
+      "confirm_and_login_btn":"BESTÄTIGEN & LOGIN",
+      "note": "Stellen Sie sicher, dass Sie die Passphrase sicher aufbewahren. Wenn Sie später Ihre Passphrase verlieren, kann Ihr Konto nicht wiederhergestellt werden und alle Ihre Gelder gehen verloren. <strong> Bei der ersten Anmeldung vergleichen Sie die Kontoadresse, die in den Kontodetails angezeigt wird, mit der Adresse, die Sie während der Erstellung dieses neuen Kontos notiert haben, und vergewissern Sie sich, dass sie übereinstimmen. </ strong>"
+    }
+  },
+  "login": {
+    "title": "Bitte geben Sie Ihre Passphrase ein",
+    "login_btn": "Anmelden",
+    "passphrase_placeholder": "Mindestens 35 Zeichen oder 15 Wörter",
+    "error_passphrase_required": "Passphrase ist erforderlich.",
+    "note": "<strong>Hinweis</strong>: Jede Transaktion wird lokal signiert und an einen zufälligen Node übertragen, ohne dass Ihre Wallet-Passphrase oder Ihr privater Schlüssel angezeigt wird."
+  }
+}

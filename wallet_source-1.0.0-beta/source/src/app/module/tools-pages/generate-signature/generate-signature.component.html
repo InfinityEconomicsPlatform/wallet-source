@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+
+       <div class="card-block main-card-block pb-0">
+                    <div class="border-bt">
+                        <h2 class="main-title">Generate Signature</h2>
+                        <app-breadcrumb></app-breadcrumb>
+                    </div>                    
+       </div>
+      <div class="card-body">
+        <div class="card-block mr-3 ml-3">
+          <form #f="ngForm" class="form inner-form" name="generateSignatureForm" novalidate>
+            <div class="form-body">
+              <div class="row mt-4">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Signature Input
+                      <i class="fa fa-question-circle-o" container="body" placement="right" triggers="mouseenter:mouseleave" ngbPopover="The text you like to sign with your key. Can be any text (UTF8). This tool can be used to verify account holder on a specific account and also a building block for additional authentication models."></i>
+                    </label>
+                    <div class="input-group">
+                      <input type="text" [(ngModel)]="generateSignatureForm.input" name="input" class="form-control" placeholder="Type in the text you like to generate a token for.">
+                      <div>
+                        <span class="btn btn-gradient" (click)="generateToken()">
+                          Generate
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Signature Output
+                      <i class="fa fa-question-circle-o" container="body" placement="right" triggers="mouseenter:mouseleave" ngbPopover="The signature hash based on the input."></i>
+                    </label>
+                    <div class="position-relative">
+                      <textarea disabled="true" rows="3" type="text" [(ngModel)]="generateSignatureForm.output" class="form-control" name="output"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

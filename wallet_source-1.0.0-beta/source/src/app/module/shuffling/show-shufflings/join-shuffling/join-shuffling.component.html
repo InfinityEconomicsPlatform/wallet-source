@@ -1,0 +1,152 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Join Shuffle Details</h4>
+        <h5 class="back-button" (click)="goBack()">
+          <i class="fa fa-chevron-left"></i> Back
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="card-body">
+          <div class="card-block mr-3 ml-3">
+            <aw-wizard [navBarLayout]="'large-filled-symbols'">
+              <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                
+                <div class="row">
+                  <div class="col-md-12">
+                      <p class="alert alert-warning">
+                        After creating or joining a shuffling you must keep your node online and your shuffler running. Make sure your balance is able to cover the 12 XIN shuffling fees until the shuffling completes. If you don\'t and miss your turn you will be charged 1.000 XIN.
+                      </p>
+                  </div>
+                </div>
+                <form class="form" #f="ngForm" novalidate>
+                  <div class="form-body">
+                    <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group m-0">
+                              <label>Shuffling
+                                <i class="fa fa-question-circle-o"
+                                  triggers="mouseenter:mouseleave"
+                                  placement="right"
+                                  container="body"
+                                  ngbPopover="The shuffle ID">
+                                </i>
+                              </label>
+                              <div>
+                                  <h6> {{joinShuffleForm.shuffling}} </h6>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group m-0">
+                              <label>Holding Type
+                                <i class="fa fa-question-circle-o"
+                                  triggers="mouseenter:mouseleave"
+                                  placement="right"
+                                  container="body"
+                                  ngbPopover="The holding type. Token, Asset or Currency">
+                                </i>
+                              </label>
+                              <div>
+                                  <h6> {{joinShuffleForm.holding | holdingType}} </h6>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group m-0">
+                              <label>Amount
+                                <i class="fa fa-question-circle-o"
+                                  triggers="mouseenter:mouseleave"
+                                  placement="right"
+                                  container="body"
+                                  ngbPopover="The shuffling amount">
+                                </i>
+                              </label>
+                              <div>
+                                  <h6> {{joinShuffleForm.amount | amountTqt}} </h6>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group m-0">
+                              <label>Shuffling full hash
+                                <i class="fa fa-question-circle-o"
+                                  triggers="mouseenter:mouseleave"
+                                  placement="right"
+                                  container="body"
+                                  ngbPopover="The shuffle full hash">
+                                </i>
+                              </label>
+                              <div>
+                                  <h6> {{joinShuffleForm.shufflingFullHash}} </h6>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-actions">
+                    <button type="button" [disabled]="f.invalid" class="btn btn-primary mr-1 mb-3 float-right" (click)="joinShuffle()" awNextStep>
+                      <i class="fa fa-chevron-right"></i> Next
+                    </button>
+                  </div>
+                </form>
+              </aw-wizard-step>
+              <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="ucsb"> Holding Type
+                    </div>
+                    <h4> {{joinShuffleForm.holding | holdingType}} </h4>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="ucsb"> Amount
+                    </div>
+                    <h4> {{joinShuffleForm.amount | amountTqt}} </h4>
+                  </div>
+
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="ucsb"> Service Fee
+                    </div>
+                    <h4> {{ tx_fee | amountTkn }}
+                      <small> XIN</small>
+                    </h4>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="ucsb"> Valid
+                    </div>
+                    <h4 [innerHTML]="validBytes | txIsValid"> </h4>
+                  </div>
+                </div>
+                <hr>
+                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}" class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                  <i class="fa fa-key"></i> Signed Transaction
+                </button>
+                <hr *ngIf="unsignedTx">
+                <div class="form-group" *ngIf="unsignedTx">
+                  <div class="position-relative">
+                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control" name="key"></textarea>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes)" class="btn btn-primary float-right">
+                    <i class="fa fa-check"></i> Finish
+                  </button>
+                  <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
+                    <i class="fa fa-chevron-left"></i> Previous
+                  </button>
+                </div>
+              </aw-wizard-step>
+            </aw-wizard>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

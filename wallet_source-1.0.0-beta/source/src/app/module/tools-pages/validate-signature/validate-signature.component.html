@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            
+            <div class="card-block main-card-block pb-0">
+                    <div class="border-bt">
+                        <h2 class="main-title">Validate Signature</h2>
+                        <app-breadcrumb></app-breadcrumb>
+                    </div>                    
+        </div>
+            <div class="card-body">
+                <div class="card-block mr-3 ml-3">
+                    <form #f="ngForm" class="form inner-form" name="validateSignatureForm" novalidate>
+                        <div class="form-body">
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <div class="form-group mb-0">
+                                        <label>Signature Hash
+                                            <i class="fa fa-question-circle-o" container="body" placement="right"
+                                               triggers="mouseenter:mouseleave"
+                                               ngbPopover="The signature hash based on the token."></i>
+                                        </label>
+                                        <div class="position-relative">
+                                            <textarea rows="3" type="text"
+                                                      [(ngModel)]="validateSignatureForm.token" class="form-control"
+                                                      name="token"
+                                                      #token="ngModel" required></textarea>
+                                        </div>
+                                        <div *ngIf="token?.invalid && (token?.dirty || token?.touched)"
+                                             class="input-error">
+                                            <div *ngIf="token?.errors.required">
+                                                Token is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Signature Input
+                                            <i class="fa fa-question-circle-o" container="body" placement="right"
+                                               triggers="mouseenter:mouseleave"
+                                               ngbPopover="The Signature hash token input"></i>
+                                        </label>
+                                        <div class="input-group mb-0">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                     <h6 [innerHTML]="valid | txIsValid"
+                                                         style="margin-bottom: 0px"></h6>
+                                                 </span>
+                                            </div>
+                                            <input type="text" [(ngModel)]="validateSignatureForm.message"
+                                                   name="meassage"
+                                                   #message="ngModel"
+                                                   class="form-control" required>
+                                            <div>
+                                                <button class="btn btn-gradient mr-3">
+                                                    {{account}}
+                                                </button>
+                                                <button class="btn btn-border"
+                                                        (click)="validateToken()">
+                                                    Validate
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<section>
+	<div class="row">
+		<div class="col-12 mt-3 mb-1">
+			<div class="card">
+				<div class="card-block main-card-block">
+					<div class="border-bt">
+						<h2 class="main-title">Overview</h2>
+						<app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
+					</div>
+					<div class="ml-3 mr-3">
+						<ul class="nav nav-dots nav-fill nav-auto mt-4" (click)="onTabChange();">
+							<li class="nav-item">
+								<a class="nav-link green-link" routerLinkActive="active" [routerLink]="['online']">Tools Online</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link orange-link" routerLinkActive="active" [routerLink]="['development']">In  Development</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link blue-link" routerLinkActive="active" [routerLink]="['concept']">In Concept Stage</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" routerLinkActive="active" [routerLink]="['poc']">Proof of concept</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link all" routerLinkActive="active" [routerLink]="['all']">All</a>
+							</li>
+						</ul>
+
+						<router-outlet></router-outlet>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

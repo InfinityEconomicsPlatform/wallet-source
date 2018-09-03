@@ -1,0 +1,178 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">Edit Alias Details</h2>
+                    <app-breadcrumb></app-breadcrumb>
+                    <h3 class="back-button" (click)="goBack()">
+                        <i class="fa fa-chevron-left"></i> Back
+                    </h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
+                    <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                        <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                            <form class="form" #editAliasForm="ngForm" novalidate>
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group m-0">
+                                                <label>ALIAS
+                                                    <i class="fa fa-question-circle-o"
+                                                       aria-hidden="true"
+                                                       triggers="mouseenter:mouseleave"
+                                                       placement="right"
+                                                       container="body"
+                                                       ngbPopover="The alias to edit">
+                                                    </i>
+                                                </label>
+                                                <div>
+                                                    <h6> {{aliase.name}} </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group m-0">
+                                                <label>URI
+                                                    <i class="fa fa-question-circle-o"
+                                                       aria-hidden="true"
+                                                       triggers="mouseenter:mouseleave"
+                                                       placement="right"
+                                                       container="body"
+                                                       ngbPopover="The current resource your aliase is pointing to">
+                                                    </i>
+                                                </label>
+                                                <div>
+                                                    <h6> {{aliase.oldURL}} </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group m-0">
+                                                <label>PREFIX
+                                                    <i class="fa fa-question-circle-o"
+                                                       aria-hidden="true"
+                                                       triggers="mouseenter:mouseleave"
+                                                       placement="right"
+                                                       container="body"
+                                                       ngbPopover="Aliase prefix you like to connect your alias with">
+                                                    </i>
+                                                </label>
+
+                                                <select name="type" value="release" class="form-control"
+                                                        [(ngModel)]="aliase.prefix"
+                                                        (change)="changePlaceholder(aliase.prefix)"
+                                                        required>
+                                                    <option value='acct:'>Account</option>
+                                                    <option value='url:'>URL</option>
+                                                    <option value='btc:'>BTC</option>
+                                                    <option value=''>Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="form-group m-0">
+                                                <label>URI
+                                                    <i class="fa fa-question-circle-o"
+                                                       aria-hidden="true"
+                                                       triggers="mouseenter:mouseleave"
+                                                       placement="right"
+                                                       container="body"
+                                                       ngbPopover="The resource or target you like to connect your alias with, can be your account, a website or event a BTC address. For URL ensure your uri start with http://">
+                                                    </i>
+                                                </label>
+                                                <div class="input-group m-0">
+                                                    <input type="text" class="form-control"
+                                                           name="aliaseURI"
+                                                           #aliaseURI="ngModel"
+                                                           [(ngModel)]="aliase.uri"
+                                                           placeholder="{{uriPlaceholder}}" required>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">
+                                                          @XIN
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="aliaseURI?.invalid && (aliaseURI?.dirty || aliaseURI?.touched)"
+                                                     class="input-error">
+                                                    <div *ngIf="aliaseURI?.errors.required">
+                                                        URI is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <button type="button"
+                                            [disabled]="editAliasForm.invalid"
+                                            (click)="editAlias()"
+                                            class="btn btn-primary mr-1 mb-0 float-right" awNextStep>
+                                        <i class="fa fa-chevron-right"></i> Next
+                                    </button>
+                                </div>
+                            </form>
+                        </aw-wizard-step>
+                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="ucsb"> Name
+                                    </div>
+                                    <h4>{{aliase.name}}</h4>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="ucsb"> Uri
+                                    </div>
+                                    <h4>{{aliase.uri}} </h4>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="ucsb"> Valid
+                                    </div>
+                                    <h4 [innerHTML]="validBytes | txIsValid"></h4>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="ucsb"> Service Fee
+                                    </div>
+                                    <h4>{{tx_fee | amountTkn}}
+                                        <small>XIN</small>
+                                    </h4>
+                                </div>
+                            </div>
+                            <hr>
+                            <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
+                                    class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                                <i class="fa fa-key"></i> Signed Transaction
+                            </button>
+                            <hr *ngIf="unsignedTx">
+                            <div class="form-group" *ngIf="unsignedTx">
+                                <div class="position-relative">
+                                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
+                                              class="form-control" name="key"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" [disabled]="!validBytes" class="btn btn-primary float-right"
+                                        (click)="broadcastTransaction(transactionBytes)">
+                                    <i class="fa fa-check"></i> Finish
+                                </button>
+                                <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
+                                    <i class="fa fa-chevron-left"></i> Previous
+                                </button>
+                            </div>
+                        </aw-wizard-step>
+                    </aw-wizard>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<section>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-block main-card-block">
+          <div class="border-bt">
+            <h2 class="main-title">Search Currencies</h2>
+            <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
+          </div>
+        
+        <div class="card-body mt-4">
+          <div class="card-block">
+            <form class="form">
+              <div class="form-body">
+                <div class="form-group">
+                  <div class="form-group">
+                  <h3>Search for Account Info
+                    <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave" placement="right" container="body" ngbPopover="Enter word(s) to search for accounts with info and description."></i>
+                  </h3>
+                  <div class="position-relative mt-4">
+                    <input type="text" class="form-control input-search pb-2" placeholder="Enter search words" name="form-control-with-icon" [(ngModel)]="searchQuery" (input)="onSearchChange($event.target.value)">
+                    <div class="form-control-position btn-search">
+                      <i class="ft-search info mr-2"></i>Search
+                    </div>
+                  </div>
+                </div>
+
+                 
+                </div>
+              </div>
+            </form>
+            <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [rowHeight]="'auto'" [footerHeight]="50">
+              <ngx-datatable-column prop="code" name="Ticker">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  {{value}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="accountRS" name="Issuer">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <a class="hyperlink" (click)="openAccountDetails(value)">{{value}}</a>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="currency" name="Actions">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <div class="btn-group-raised">
+                <a class="btn btn-sm btn-grey btn-icon" (click)="openCurrencyDetails(row.code)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="Details">
+                    <i class="fa fa-info-circle"></i>
+                  </a>
+                  <a class="btn btn-sm btn-grey btn-icon" (click)="openTradeDesk(value, row.decimals)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="TradeDesk">
+                    <i class="fa fa-bar-chart"></i>
+                  </a>
+                </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>

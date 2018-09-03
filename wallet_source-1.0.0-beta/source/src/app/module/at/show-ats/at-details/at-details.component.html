@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+        <div class="card-block main-card-block">
+        <div class="border-bt">
+          <h2 class="main-title">AT Details</h2>
+          <app-breadcrumb></app-breadcrumb> 
+          <h3 class="back-button" (click)="goBack()">
+          <i class="fa fa-chevron-left"></i> Back
+        </h3>
+        </div>
+     
+      <div class="card-body" *ngIf="atDetails">
+        <div class="card-block mr-3 ml-3 form-bordered mt-4">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ucsb"> Name
+              </div>
+              <h4> {{atDetails.name}} </h4>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Description
+              </div>
+              <h4> {{atDetails.description}} </h4>
+            </div>
+          </div>
+         
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ucsb"> Issuer
+              </div>
+              <h4>
+                <a class="hyperlink" (click)="goToAccountDetails(atDetails.creatorRS)">{{atDetails.creatorRS}}</a>
+             </h4>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> AT ID
+              </div>
+              <h4>{{atDetails.at}} </h4>
+            </div>
+            <div class="col-md-4">
+              <div class="ucsb"> AT Balance
+              </div>
+              <h4> {{atDetails.balanceTQT|amountTqt}}  <small> XIN </small> </h4>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ucsb"> Creation Block
+              </div>
+              <h4> {{atDetails.creationBlock}} </h4>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Next Block
+              </div>
+              <h4> {{atDetails.nextBlock}} </h4>
+            </div>
+            <div class="col-md-4">
+              <div class="ucsb"> Prev. Balance
+              </div>
+              <h4> {{atDetails.prevBalanceTQT|amountTqt}}  <small> XIN </small> </h4>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ucsb"> Finished
+              </div>
+              <h4 [innerHtml]="atDetails.finished|txIsValid"></h4>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Frozen
+              </div>
+              <h4 [innerHtml]="atDetails.frozen|txIsValid"></h4>
+            </div>
+            <div class="col-md-4">
+              <div class="ucsb"> Running
+              </div>
+              <h4 [innerHtml]="atDetails.running|txIsValid"></h4>
+            </div>
+          </div>
+   
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ucsb"> Stopped
+              </div>
+              <h4 [innerHtml]="atDetails.stopped|txIsValid"></h4>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Dead
+              </div>
+              <h4 [innerHtml]="atDetails.dead|txIsValid"></h4>
+            </div>
+            <div class="col-md-4">
+              <div class="ucsb"> Version
+              </div>
+              <h4 [innerHtml]="atDetails.atVersion"></h4>
+            </div>
+          </div>
+        </div>
+        <div class="card-block mr-3 ml-3">
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <ngb-tabset type="tabs" class="nav-auto">
+                <ngb-tab>
+                  <ng-template ngbTabTitle>
+                    <i class="fa fa-code"></i> Machine Code</ng-template>
+                  <ng-template ngbTabContent>
+                    <h4> {{atDetails.machineCode}} </h4>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                  <ng-template ngbTabTitle>
+                    <i class="fa fa-code"></i> Machine Data</ng-template>
+                  <ng-template ngbTabContent>
+                    <p> {{atDetails.machineData}} </p>
+                  </ng-template>
+                </ngb-tab>
+              </ngb-tabset>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

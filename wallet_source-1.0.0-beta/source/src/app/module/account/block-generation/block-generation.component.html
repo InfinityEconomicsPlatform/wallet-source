@@ -1,0 +1,75 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-block main-card-block">
+				<div class="border-bt">
+					<h2 class="main-title">Block Generation</h2>
+					<app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
+					<div class="row">
+						<div class="col-md-12">
+							<p class="alert alert-info readonly-note">
+								To generate blocks your passphrase is used to sign blocks. For security reasons block
+								generation is only available on your local node or a manual node (preferably your own
+								trusted node and set in options - connection mode).
+							</p>
+						</div>
+					</div>
+					<div class="row mt-4 form-bordered">
+						<div class="col-md-6">
+							<div class="ucsb">
+								Local Node Available?
+								<span class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="To generate blocks your passphrase is used to sign blocks. For security reasons block generation is only available on your local node.">
+                                </span>
+							</div>
+							<h4>
+								<strong>
+									<div [innerHtml]="hasLocal|isEnabled" style="margin-top:0px;"></div>
+								</strong>
+							</h4>
+						</div>
+						<div class="col-md-6 form-bordered">
+							<div class="ucsb"> Block Generation Status
+								<span class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The block generation status on your local node."></span>
+							</div>
+							<h4><strong>
+								<div [innerHtml]="generationStatus"></div>
+							</strong>
+							</h4>
+						</div>
+					</div>
+
+					<form class="form inner-form" [name]="blockGenerationForm">
+						<div class="form-body">
+							<div class="form-group">
+								<label>Secret phrase &nbsp;
+									<i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Ensure you are running a local node before enter your passphrase to prevent security risks. You can switch over anytime to a local node by choosing LOCAL_HOST for connection mode in options."></i>
+								</label>
+								<div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+									<div class="col-md-9 col-lg-9">
+										<input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control" required [(ngModel)]="blockGenerationForm.secretPhrase" name="secretPhrase" placeholder="Type in your secret phrase"></div>
+									<div class="col-md-3 col-lg-3">
+										<div class="icon-dingle-group">
+											<button class="btn btn-primary" (click)="runBlockGeneration(0)" [disabled]="hasLocal===false || !blockGenerationForm.$valid">
+												<i class="fa fa-plug" placement="top" triggers="mouseenter:mouseleave" container="body" ngbPopover="Show block generation status."></i>
+											</button>
+											<button class="btn btn-primary" (click)="runBlockGeneration(2)" [disabled]="hasLocal===false || !blockGenerationForm.$valid">
+												<i class="fa fa-stop" placement="top" triggers="mouseenter:mouseleave" container="body" ngbPopover="Stop block generation."></i>
+											</button>
+											<button class="btn btn-primary" (click)="runBlockGeneration(1)" [disabled]="hasLocal===false || !blockGenerationForm.$valid">
+												<i class="fa fa-play" placement="top" triggers="mouseenter:mouseleave" container="body" ngbPopover="Start block generation."></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

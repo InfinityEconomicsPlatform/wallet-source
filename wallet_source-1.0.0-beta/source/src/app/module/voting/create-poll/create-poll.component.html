@@ -1,0 +1,354 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+             <div class="card-block main-card-block">
+                  <div class="border-bt">
+                    <h2 class="main-title">Create Poll</h2>
+                    <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
+                  </div>
+            </div>
+            <div class="card-body create-poll mt-4">
+                <div class="card-block ml-3 mr-3">
+                    <aw-wizard [navBarLayout]="'large-filled-symbols'">
+
+                        <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }"
+                                        [canExit]="!createPollForm.invalid">
+                            <form class="form inner-form mt-4" #createPollForm="ngForm" novalidate>
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Voting Model
+                                                    <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                       container="body" placement="right"
+                                                       ngbPopover="Choose the voting model by account, each account has one vote. Balance, each account is weighted by it's balance. Asset is weighted by account asset balance and currency by account currency balance. You can also limit the voters by adding a minimum XIN balance needed to vote."></i>
+                                                </label>
+                                                <div class="position-relative">
+                                                    <select [(ngModel)]="votingModel" id="votingModel"
+                                                            name="votingModel" class="form-control" #model="ngModel"
+                                                            required>
+                                                        <option *ngFor="let option of votingOptions"
+                                                                value="{{ option.value }}">{{ option.label }}
+                                                        </option>
+                                                    </select>
+                                                    <div *ngIf="model?.invalid && (model?.dirty || model?.touched)"
+                                                         class="input-error">
+                                                        Choose a voting model
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group" *ngIf=" votingModel==1 ">
+                                                <label for="addon-amount">Minimum voter balance
+                                                    <i class="fa fa-question-circle-o ml-1 icon-yellow" triggers="mouseenter:mouseleave"
+                                                       container="body" placement="top"
+                                                       ngbPopover="Enter the minimum account balance needed to vote on this poll."></i>
+                                                </label>
+                                                <div>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom">
+                                                        <div class="col-md-11">  
+                                                       <input type="number" id="addon-amount" class="pl-0 mb-0 pt-0 pb-0 form-control form-control"
+                                                               placeholder="Minimum balance" name="amount"
+                                                               #amount="ngModel" [(ngModel)]="minimumBalance" required>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="row input-single-group">
+                                                                    <div class="col-md-12">
+                                                                        <span class="input-group-text">XIN</span>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div *ngIf="amount?.invalid && (amount?.dirty || amount?.touched)"
+                                                         class="input-error">
+                                                        Enter minimum balance
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" *ngIf=" votingModel==2 ">
+                                                <label for="asset">Asset ID
+                                                    <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                       container="body" placement="top"
+                                                       ngbPopover="Enter the asset ID (numeric)"></i>
+                                                </label>
+                                                <div>
+                                                    <input type="text" id="asset" class="form-control"
+                                                           placeholder="Asset ID" name="asset" #asset="ngModel"
+                                                           [(ngModel)]="assetId" (input)="getAsset(assetId)" required>
+                                                    <div *ngIf="(asset?.invalid && (asset?.dirty || asset?.touched)) || assetError != ''"
+                                                         class="input-error">
+                                                        {{ assetError != ''? assetError : "Enter the asset ID (numeric)"
+                                                        }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" *ngIf=" votingModel==3 ">
+                                                <label for="currency">Currency Ticker
+                                                    <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                       container="body" placement="top"
+                                                       ngbPopover="Enter the currency ticker (text)"></i>
+                                                </label>
+                                                <div>
+                                                    <input type="text" id="currency" class="form-control"
+                                                           placeholder="Currency Code/Ticker" name="currencyCode"
+                                                           #currencyCode="ngModel" [(ngModel)]="currency"
+                                                           (input)="getCurrency(currency)" required>
+                                                    <div *ngIf="(currencyCode?.invalid && (currencyCode?.dirty || currencyCode?.touched)) || currencyError !=''"
+                                                         class="input-error">
+                                                        {{ currencyError != ''? currencyError : "Enter the currency
+                                                        ticker" }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name"> Name
+                                            <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                               container="body" placement="right"
+                                               ngbPopover="Poll names can have max. 100 chars"></i>
+                                        </label>
+                                        <div>
+                                            <input type="text" [(ngModel)]="name" id="name" class="form-control"
+                                                   name="pollName" #pollName="ngModel" placeholder="Name"
+                                                   maxlength="100" required>
+                                            <div *ngIf="pollName?.invalid && (pollName?.dirty || pollName?.touched)"
+                                                 class="input-error">
+                                                <div *ngIf="pollName?.errors.required">
+                                                    Poll name is required (max. 100 chars)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="poll_description"> Description
+                                            <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                               container="body" placement="right"
+                                               ngbPopover="Poll descriptions with max. 1,000 characters"></i>
+                                        </label>
+                                        <div class="position-relative">
+                                            <textarea id="poll_description" class="form-control"
+                                                      [(ngModel)]="description" rows="5" name="pollDescription"
+                                                      #pollDescription="ngModel" placeholder="Poll description"
+                                                      maxlength="1000" required></textarea>
+                                            <div *ngIf="pollDescription?.invalid && (pollDescription?.dirty || pollDescription?.touched)"
+                                                 class="input-error">
+                                                Poll description required (max. 1000 chars)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="left">
+                                    <button type="button"
+                                            [disabled]="createPollForm.invalid || currencyError || assetError"
+                                            class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
+                                        <i class="fa fa-chevron-right"></i> Next
+                                    </button>
+                                </div>
+                            </form>
+                        </aw-wizard-step>
+
+
+                        <aw-wizard-step stepTitle="Options" [navigationSymbol]="{ symbol: '2' }"
+                                        [canExit]="!createPollForm2.invalid"
+                                        (stepEnter)="getBlockChainStatus(); validateStepTwo();">
+                            <form class="form inner-form mt-4" #createPollForm2="ngForm" novalidate>
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group m-0">
+                                                <label>Minimum options
+                                                    <i class="fa fa-question-circle-o" placement="right"
+                                                       triggers="mouseenter:mouseleave" container="body"
+                                                       ngbPopover="The minimum number of option a voter can choose. Set this to 1."></i>
+                                                </label>
+                                                <div>
+                                                    <input type="number" id="minOptions" class="form-control"
+                                                           placeholder="Minimum Number Options" name="minOptions"
+                                                           #minOptions="ngModel" [(ngModel)]="minNumberOfOptions"
+                                                           min="1" max="10" (ngModelChange)="validateStepTwo()"
+                                                           required minValue="1">
+                                                    <div *ngIf="minOptions?.invalid && (minOptions?.dirty || minOptions?.touched)"
+                                                         class="input-error">
+                                                        <div *ngIf="minOptions?.errors.required">
+                                                            Enter minimum number of option a voter can choose.
+                                                        </div>
+                                                        <div *ngIf="minOptions?.errors.minValue && !minOptions?.errors.required">
+                                                            Minimum Number Options must be greater than 0
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group m-0">
+                                                <label>Maximum options
+                                                    <i class="fa fa-question-circle-o" placement="right"
+                                                       triggers="mouseenter:mouseleave" container="body"
+                                                       ngbPopover="The maximum number of option a voter can choose from. For yes/no question this value has to set to 1."></i>
+                                                </label>
+                                                <div>
+                                                    <input type="number" id="maxOptions" class="form-control"
+                                                           placeholder="Maximum Number Options" name="maxOptions"
+                                                           #maxOptions="ngModel" [(ngModel)]="maxNumberOfOptions"
+                                                           min="1" max="10" (ngModelChange)="validateStepTwo()"
+                                                           required minValue="1">
+                                                    <div *ngIf="maxOptions?.invalid && (maxOptions?.dirty || maxOptions?.touched)"
+                                                         class="input-error">
+                                                        <div *ngIf="maxOptions?.errors.required">
+                                                            Enter maximum number of option a voter can choose.
+                                                        </div>
+                                                        <div *ngIf="maxOptions?.errors.minValue && !maxOptions?.errors.required">
+                                                            Maximum Number Options must be greater than 0
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="form-group">
+                                        <label>Duration in Blocks &nbsp;
+                                            <i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right"
+                                               triggers="mouseenter:mouseleave" container="body"
+                                               ngbPopover="The duration for this poll. 1.440 Blocks are equal one day. Range from min. 1.440 to max. 20.000 Blocks"></i>
+                                        </label>
+                                        <div>
+                                            <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-0">
+                                                <div class="col-md-9">      
+                                                    <input type="number" id="finishHeight" class="form-control pl-0"
+                                                       placeholder="1440" name="duration" #duration="ngModel"
+                                                       [(ngModel)]="finishHeight"
+                                                       (ngModelChange)="validateStepTwo()"
+                                                       required minValue="1440" maxValue="20000">
+                                                </div>
+                                                <div class="col-md-3">   
+                                                    <div class="row input-single-group pull-right">
+                                                        <button class="btn btn-primary" (click)="min()">
+                                                            <i class="fa fa-fast-backward"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary" (click)="decrement()">
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary" (click)="increment()">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary" (click)="max()">
+                                                            <i class="fa fa-fast-forward"></i>
+                                                        </button>
+                                                    </div> 
+                                                </div>
+                                              
+                                                
+                                            </div>
+                                        </div>
+                                        <div *ngIf="duration?.invalid && (duration?.dirty || duration?.touched)"
+                                             class="input-error">
+                                            <div *ngIf="duration?.errors.required">
+                                                Height of block is required
+                                            </div>
+                                            <div *ngIf="duration?.errors.minValue && !duration?.errors.required">
+                                                Height of block should be greater than 1440 or less than 20000
+                                            </div>
+                                            <div *ngIf="duration?.errors.maxValue && !duration?.errors.required">
+                                                Height of block should be greater than 1440 or less than 20000
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-raised btn-success mb-0"
+                                            (click)="addNewOption()">
+                                        <i class="fa fa-plus"></i> Add options for this Poll
+                                    </button>
+                                    <hr *ngIf="pollOptions.length != 0">
+                                    <div class="row" *ngIf="pollOptions.length != 0">
+                                        <div class="col-md-6" *ngFor="let option of pollOptions; let i = index;">
+                                            <div class="form-group">
+                                                <input type="text" id="{{ 'options'+ i }}" class="form-control"
+                                                       name="{{ 'options'+ i }}" placeholder="Enter option text here"
+                                                       [(ngModel)]="option.value" (ngModelChange)="validateStepTwo()"
+                                                       required>
+                                                <div *ngIf="createPollForm2.form.controls['options' + i]?.invalid && (createPollForm2.form.controls['options' + i]?.dirty || createPollForm2.form.controls['options' + i]?.touched)"
+                                                     class="input-error">
+                                                    Please enter the option
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-gradient mr-1 mb-0 float-right"
+                                            [disabled]="createPollForm2.invalid"
+                                            *ngIf="isSecondStepValid" (click)="createPoll()" awNextStep>
+                                        <i class="fa fa-chevron-right"></i> Next
+                                    </button>
+                                    <button type="button" class="btn btn-gradient mr-1 mb-0 float-right"
+                                            [disabled]="createPollForm2.invalid"
+                                            *ngIf="!isSecondStepValid" (click)="createPoll()">
+                                        <i class="fa fa-chevron-right"></i> Next
+                                    </button>
+                                    <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                        <i class="fa fa-chevron-left"></i> Previous
+                                    </button>
+                                </div>
+                            </form>
+                        </aw-wizard-step>
+                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '3' }" class="form-bordered mt-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Name</div>
+                                    <h4> {{ name }} </h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Description</div>
+                                    <h4> {{ description }} </h4>
+                                </div>
+                            </div>
+                          
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Valid</div>
+                                    <h4 [innerHTML]=" validBytes | txIsValid "></h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Service Fee</div>
+                                    <h4>{{ tx_fee | amountTkn }}
+                                        <small> XIN</small>
+                                    </h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Voting Model</div>
+                                    <h4>{{ votingModel | votingModel }}</h4>
+                                </div>
+                            </div>
+                           
+                            <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
+                                    class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                                <i class="fa fa-key"></i> Signed Transaction
+                            </button>
+                            
+                            <div class="form-group" *ngIf="unsignedTx">
+                                <div class="position-relative">
+                                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
+                                              class="form-control" name="key"></textarea>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
+                                        (click)="broadcastTransaction(transactionBytes)">
+                                    <i class="fa fa-check"></i> Finish
+                                </button>
+                                <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                    <i class="fa fa-chevron-left"></i> Previous
+                                </button>
+                            </div>
+                        </aw-wizard-step>
+                    </aw-wizard>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  

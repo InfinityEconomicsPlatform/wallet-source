@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Start Shuffle Details</h4>
+        <h5 class="back-button" (click)="goBack()">
+          <i class="fa fa-chevron-left"></i> Back
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="card-block ml-3 mr-3">
+          <div class="row">
+            <div class="col-md-12">
+                <p class="alert alert-info">
+                  Your passphrase is needed to start the shuffle on the connected node. Due to security reason this is only allowed on a local node or the dedicated SSL node provided by the foundation. The most secure way is to run your own local node for shuffling. To proceed please enter the recipient public key where to send token/assets or currencies. The recipient account has to be an unused, new account. You can generate a new account from login. Write down the passphrase!
+                </p>
+            </div>
+          </div>
+          <form class="form" #f="ngForm" novalidate>
+            <div class="form-body">
+              <div class="form-group">
+                <label>Recipient publickey &nbsp;
+                  <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The recipient public key. Just create a new account and copy the key into this form field."></i>
+                </label>
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="startShuffleForm.recipientPublickey" name="recipientPublickey" #recipientPublickey="ngModel" required placeholder="Public Key">
+                </div>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" [disabled]="f.invalid" class="btn btn-primary mr-1 mb-3 float-right" (click)="startShuffle()">
+                <i class="fa fa-play"></i> Start
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

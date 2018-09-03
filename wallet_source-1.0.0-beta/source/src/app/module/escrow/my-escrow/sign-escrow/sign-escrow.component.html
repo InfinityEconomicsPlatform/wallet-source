@@ -1,0 +1,125 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Sign Escrow Details</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block ml-3 mr-3">
+                    <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                        <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                            <form class="form">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-0">
+                                                <label>ESCROW ID
+                                                    <i class="fa fa-question-circle-o"
+                                                       aria-hidden="true"
+                                                       triggers="mouseenter:mouseleave"
+                                                       placement="right"
+                                                       container="body"
+                                                       ngbPopover="The escrow ID for sign for">
+                                                    </i>
+                                                </label>
+                                                <h6 class="mb-0">{{escrow.escrowId}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group m-0">
+                                                <label>DECISION MODEL
+                                                    <i class="fa fa-question-circle-o"
+                                                       aria-hidden="true"
+                                                       triggers="mouseenter:mouseleave"
+                                                       placement="right"
+                                                       container="body"
+                                                       ngbPopover="The signing decision for this escrow"></i>
+                                                </label>
+                                                <select name="type" class="form-control"
+                                                        [(ngModel)]="escrow.decision">
+                                                    <option value="">Select</option>
+                                                    <option value="release">Release</option>
+                                                    <option value="refund">Refund</option>
+                                                    <option value="split">Split</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-actions left">
+                                                <button type="button" class="btn btn-primary mr-1 mb-0 float-right"
+                                                        [disabled]="!escrow.decision"
+                                                        (click)="escrowSign()"
+                                                        awNextStep>
+                                                    <i class="fa fa-chevron-right"></i> Next
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </aw-wizard-step>
+
+                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="ucsb">Escrow Id
+                                    </div>
+                                    <h4>{{escrow.escrowId}}</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="ucsb">Decision Model
+                                    </div>
+                                    <h4> {{escrow.decision}} </h4>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="ucsb"> Valid
+                                    </div>
+                                    <h4 [innerHTML]="validBytes | txIsValid"></h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="ucsb"> Service Fee
+                                    </div>
+                                    <h4> {{tx_fee | amountTkn}}
+                                        <small>  XIN </small>
+                                    </h4>
+                                </div>
+                            </div>
+                            <hr/>
+                            <button type="button"
+                                    [ngClass]="{'btn-success': !hasPrivateMessage, 'btn-danger': hasPrivateMessage}"
+                                    class="btn btn-raised mb-0"
+                                    (click)="hasPrivateMessage=!hasPrivateMessage">
+                                <i class="fa fa-key"></i> Signed Transaction
+                            </button>
+                            <hr *ngIf="hasPrivateMessage">
+                            <div class="form-group" *ngIf="hasPrivateMessage">
+                                <div class="position-relative">
+                                    <textarea disabled="true" rows="3" type="text" class="form-control" name="key">{{transactionBytes}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-primary float-right"
+                                        [disabled]="!validBytes"
+                                        (click)="broadcastTransaction(transactionBytes)">
+                                    <i class="fa fa-check"></i> Finish
+                                </button>
+                                <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
+                                    <i class="fa fa-chevron-left"></i> Previous
+                                </button>
+                            </div>
+                        </aw-wizard-step>
+                    </aw-wizard>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

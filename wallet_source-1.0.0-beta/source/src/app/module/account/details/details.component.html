@@ -1,0 +1,359 @@
+<div class="row" (autoRefresh)="getAccountDetails()">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-block main-card-block">
+				<div class="border-bt">
+					<h2 class="main-title">Account details</h2>
+					<app-breadcrumb></app-breadcrumb>
+				</div>
+				<div class="card-body">
+					<div class="card-block mr-2 ml-2 mt-4 form-bordered">
+						<div class="row">
+							<div class="col-md-9">
+								<div class="ucsb">
+									Account Address
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is your unique account ID."></i>
+								</div>
+								<h4> {{account.accountRS}} </h4>
+							</div>
+							<div class="col-md-3">
+								<div class="ucsb">
+									Account Type
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Standard or Multisignature account type."></i>
+								</div>
+								<h4 class="border-0">
+									<span  *ngIf="multisig === 'standard'">Standard</span>
+									<span  *ngIf="multisig === 'controlled'">Controlled</span>
+								</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="ucsb">
+									Confirmed Balance
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is your confirmed account balance."></i>
+								</div>
+								<h4> {{account.balanceTQT | amountTqt }}
+									<small> XIN</small>
+								</h4>
+							</div>
+							<div class="col-md-3">
+								<div class="ucsb">
+									Unconfirmed Balance
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This balance includes amounts on pending orders. For instance buy/sell orders."></i>
+								</div>
+								<h4> {{account.unconfirmedBalanceTQT | amountTqt}}
+									<small> XIN</small>
+								</h4>
+							</div>
+							<div class="col-md-3">
+								<div class="ucsb">
+									Effective Balance
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This balance is used for block generation calculation and shows only amounts with +1'440 confirmations. This is the balance used also for balance leasing."></i>
+								</div>
+								<h4> {{account.effectiveBalance | amountTkn}}
+									<small> XIN</small>
+								</h4>
+							</div>
+							<div class="col-md-3">
+								<div class="ucsb">
+									Earned Fees Balance
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This balance shows your accumulated block fee reward on generated blocks by this account."></i>
+								</div>
+								<h4> {{account.forgedBalanceTQT | amountTqt }}
+									<small> XIN</small>
+								</h4>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3">
+								<div class="ucsb">
+									Balance Assets
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Assets balance based on the last trade for each asset this accounts holds."></i>
+								</div>
+								<h4>
+									{{accountAssetXmcValue | numericalString}}
+									<small> XIN</small>
+								</h4>
+							</div>
+							<div class="col-md-3">
+								<div class="ucsb">
+									Balance Currencies
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Currencies balance based on the last trade for each currency this accounts holds."></i>
+								</div>
+								<h4>
+									{{accountCurrencyXmcValue | numericalString}}
+									<small> XIN</small>
+								</h4>
+							</div>
+							<div class="col-md-3">
+								<div class="ucsb">
+									Balance Total
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The total balance including assets and currencies fior this acocunt."></i>
+								</div>
+								<h4>
+									{{((account.balanceTQT | quantToAmount) + accountCurrencyXmcValue + accountAssetXmcValue ) | numericalString}}
+									<small> XIN</small>
+								</h4>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3">
+								<div class="ucsb">
+									Fiat Balance Account
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
+								</div>
+								<h4>
+									<app-fiat [amountTqt]="account.balanceTQT" [amount]="undefined"></app-fiat>
+									<small> USD</small>
+								</h4>
+							</div>
+							<div class="col-md-3">
+								<div class="ucsb">
+									Fiat Balance Assets
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
+								</div>
+								<h4>
+									<app-fiat [amountTqt]="undefined" [amount]="accountAssetXmcValue"></app-fiat>
+									<small> USD</small>
+								</h4>
+							</div>
+							<div class="col-md-3">
+								<div class="ucsb">
+									Fiat Balance Currencies
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
+								</div>
+								<h4>
+									<app-fiat [amountTqt]="undefined" [amount]="accountCurrencyXmcValue"></app-fiat>
+									<small> USD</small>
+								</h4>
+							</div>
+							<div class="col-md-3">
+								<div class="ucsb">
+									Fiat Balance Total
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
+								</div>
+								<h4>
+									<app-fiat [amountTqt]="undefined"
+									          [amount]="(account.balanceTQT | quantToAmount) + accountCurrencyXmcValue + accountAssetXmcValue"></app-fiat>
+									<small> USD</small>
+								</h4>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="ucsb">
+									Account Name
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The public account name for this account."></i>
+								</div>
+								<h4>
+									<div class="dont-break-out">{{account.name | notSet}}</div>
+								</h4>
+							</div>
+							<div class="col-md-6">
+								<div class="ucsb" placement="right">
+									Account Description
+									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The public account description for this account."></i>
+								</div>
+								<h4>
+									<div class="dont-break-out">{{account.description | notSet}}</div>
+								</h4>
+							</div>
+						</div>
+
+					</div>
+					<div class="card-block mr-3 ml-3 nav-gradient">
+						<div class="row">
+							<div class="col-md-12 col-lg-12">
+								<ul class="nav nav-pills">
+									<li class="nav-item">
+										<a class="nav-link active" (click)="openPublicKey = !openPublicKey">Public Key</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" [ngClass]="{'disabled': !leasesDetected}" (click)="openBL = !openBL">Balance Lease</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" [ngClass]="{'disabled': !controlDetected}" (click)="openCM = !openCM">Control Model</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active">
+										<div class="form-group mt-2" *ngIf="openPublicKey">
+											<div class="position-relative">
+												<input disabled="true" type="text" value="{{account.publicKey | noOutbound }}" class="form-control readonly-note">
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane active">
+										<table class="table mt-2" *ngIf="openBL">
+											<thead>
+											<tr>
+												<th>Account</th>
+												<th>Height From</th>
+												<th>Height To</th>
+												<th>Duration</th>
+											</tr>
+											</thead>
+											<tr>
+												<td>
+													<div compile="account.currentLesseeRS | searchTerm"></div>
+												</td>
+												<td>{{ account.currentLeasingHeightFrom }}</td>
+												<td>{{ account.currentLeasingHeightTo }}</td>
+												<td>{{ account.currentLeasingHeightTo - account.currentLeasingHeightFrom }}</td>
+											</tr>
+											<tr>
+												<td>
+													<div compile="account.nextLesseeRS | searchTerm"></div>
+												</td>
+												<td>{{ account.nextLeasingHeightFrom || 0 }}</td>
+												<td>{{ account.nextLeasingHeightTo || 0 }}</td>
+												<td>{{ account.nextLeasingHeightTo - account.nextLeasingHeightFrom }}</td>
+											</tr>
+										</table>
+									</div>
+									<div class="tab-pane active">
+										<table class="table mt-2" *ngIf="openCM">
+											<thead>
+											<tr>
+												<th> Key</th>
+												<th> Value</th>
+											</tr>
+											</thead>
+											<tr>
+												<td> Model</td>
+												<td> {{ controlVotingModel | controlModel}}</td>
+											</tr>
+											<tr>
+												<td> Quorum</td>
+												<td> {{ controlQuorum }}</td>
+											</tr>
+											<tr>
+												<td> Max. Fees</td>
+												<td> {{ maxFees }}</td>
+											</tr>
+											<tr>
+												<td> Min. Approval Balance</td>
+												<td> {{ minBalance }}</td>
+											</tr>
+											<tr>
+												<td> Accounts</td>
+												<td> {{ WhitelistAccountRS }}</td>
+											</tr>
+											<tr>
+												<td> Whitelisted</td>
+												<td>
+													<p [innerHTML]="whitelistedRS"></p>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row" *isExpertView="true">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-block main-card-block">
+				<div class="border-bt">
+					<h2 class="main-title">Set Account Info</h2>
+				</div>
+				<div class="card-header"></div>
+				<div class="card-body">
+					<div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
+						<aw-wizard [navBarLayout]="'large-filled-symbols'">
+							<aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+								<form class="form">
+									<div class="form-body">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group m-0">
+													<label>Account Name
+														<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Account name max. 100 characters."></i>
+													</label>
+													<div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+														<input type="text" name="name" [(ngModel)]="setAccountParams.name" (ngModelChange)="onChangeAccountInfo($event)" class="pl-0 mb-0 pt-0 pb-0 form-control" placeholder="Account name or leave blank to delete account info.">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group m-0">
+													<label>Account Description
+														<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Account description with max. 1'000 characters"></i>
+													</label>
+													<div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+														<input type="text" name="description" [(ngModel)]="setAccountParams.description" (ngModelChange)="onChangeAccountInfo($event)" class="pl-0 mb-0 pt-0 pb-0 form-control" placeholder="Account description or leave blank to delete account info." />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mt-4"></div>
+										<button type="button" class="btn btn-gradient mr-1 mb-0 float-right" (click)="createSetAccountInfoTransaction();" awNextStep>
+											<i class="fa fa-chevron-right"></i> Next
+										</button>
+									</div>
+								</form>
+							</aw-wizard-step>
+							<aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="ucsb"> Account Name
+										</div>
+										<h4> {{setAccountParams.name || " " }} </h4>
+									</div>
+
+									<div class="col-md-6">
+										<div class="ucsb"> Account Description
+										</div>
+										<h4> {{setAccountParams.description}} </h4>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6">
+										<div class="ucsb"> Valid
+										</div>
+										<h4 [innerHTML]="validBytes | txIsValid"></h4>
+									</div>
+									<div class="col-md-6">
+										<div class="ucsb"> Service Fee
+										</div>
+										<h4> {{tx_fee | amountTkn }}
+											<small>XIN</small>
+										</h4>
+									</div>
+								</div>
+								
+								<button type="button" [ngClass]="{'btn-success': !signedTx, 'btn-danger': signedTx}" class="btn btn-raised mr-1 mb-0" (click)="signedTx = !signedTx">
+									<i class="fa fa-envelope-o"></i> Signed Transaction
+								</button>
+								<hr *ngIf="signedTx">
+								<div class="form-group" *ngIf="signedTx">
+									<div class="position-relative">
+										<textarea rows="5" name="transactionBytes" class="form-control" disabled="true" [ngModel]="transactionBytes"></textarea>
+									</div>
+								</div>
+
+								<button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes)" class="btn btn-gradient float-right">
+									<i class="fa fa-check"></i> Finish
+								</button>
+								<button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+									<i class="fa fa-chevron-left"></i> Previous
+								</button>
+							</aw-wizard-step>
+						</aw-wizard>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

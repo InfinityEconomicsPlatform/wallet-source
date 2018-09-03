@@ -1,0 +1,55 @@
+<section>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-block main-card-block">
+          <div class="border-bt">
+            <h2 class="main-title">Search Assets</h2>
+            <app-breadcrumb></app-breadcrumb>
+          </div>
+          <div class="card-body mt-4">
+            <div class="card-block mr-3 ml-3">
+              <form class="form">
+                <div class="form-body">
+                  <div class="form-group">
+                    <div class="position-relative has-icon-left">
+                      <input type="text" class="form-control" name="form-control-with-icon"
+                             [(ngModel)]="searchQuery"
+                             (input)="onSearchChange($event.target.value)">
+                      <div class="form-control-position">
+                        <i class="ft-search info"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <ngx-datatable class="material" [rows]="assets" [columnMode]="'force'" [rowHeight]="'auto'" [footerHeight]="50">
+                <ngx-datatable-column prop="name" name="Name">
+                  <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                    {{value}}
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="accountRS" name="Issuer">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    <a class="hyperlink" (click)="goToAccountDetails(value)">{{value}}</a>
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="asset" name="Actions">
+                  <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+
+                    <a class="btn btn-outline-danger" (click)="goToAssetDetails(row.asset)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="Details">
+                      <i class="fa fa-info-circle"></i>
+                    </a>
+                    <a class="btn btn-outline-danger" (click)="goToTradeDesk(row.asset)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="TradeDesk">
+                      <i class="fa fa-bar-chart"></i>
+                    </a>
+                  </ng-template>
+                </ngx-datatable-column>
+              </ngx-datatable>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
