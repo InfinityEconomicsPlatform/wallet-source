@@ -31,7 +31,7 @@ export class NodeService {
     getPeerNode(i) {
         let peerNodes = this.sessionService.getFromSession(NodeConfig.SESSION_PEER_NODES );
         if (!peerNodes) {
-            return this.peerService.getPeers().subscribe(function (response) {
+            return this.peerService.getPeers().subscribe( (response) => {
                 if (this.sessionService) {
                     this.sessionService.saveToSession(NodeConfig.SESSION_PEER_NODES, response);
                 }

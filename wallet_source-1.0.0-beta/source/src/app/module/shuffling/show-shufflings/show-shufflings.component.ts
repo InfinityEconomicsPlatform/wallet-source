@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import {Subject} from 'rxjs/Subject';
 @Component({
     selector: 'app-show-shufflings',
     templateUrl: './show-shufflings.component.html',
@@ -7,13 +8,12 @@ import { Router } from "@angular/router";
   })
   export class ShowShufflingsComponent implements OnInit {
 
-    constructor(private router: Router) {
+    routeChange = new Subject();
+    constructor(private router: Router){
     }
-
-    ngOnInit() {
+    ngOnInit(){
     }
-
-    navigateTo(route){
-      this.router.navigate([route]);
+    onTabChange() {
+        this.routeChange.next();
     }
 }
