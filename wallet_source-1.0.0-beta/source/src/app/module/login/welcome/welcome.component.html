@@ -27,7 +27,8 @@
 
 							<div class="form-group text-left sign_in_inputs">
 								<label><img src="/assets/images/lock.png" alt="">Passphrase</label>
-								<input type="password" name="passPhrase" [(ngModel)]="model.passPhrase" #passPhrase="ngModel" class="form-control p_input" required placeholder="{{ 'login.passphrase_placeholder' | translate}}">
+								<input type="password" name="passPhrase" [(ngModel)]="model.passPhrase" #passPhrase="ngModel" class="form-control p_input" required
+									   placeholder="{{ 'login.passphrase_placeholder' | translate | germanUmlautTransform}}">
 								<div *ngIf="passPhrase?.invalid && (passPhrase?.dirty || passPhrase?.touched)" class="input-error">
 									<div *ngIf="passPhrase?.invalid">
 										{{ 'login.error_passphrase_required' | translate}}

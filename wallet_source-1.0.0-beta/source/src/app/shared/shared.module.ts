@@ -92,6 +92,7 @@ import { LedgerHoldingPipe } from '../pipes/ledger-holding.pipe';
 import {LedgerTxTypesPipe} from '../pipes/ledger-tx-types.pipe';
 import {CharactersPipe} from '../pipes/characters.pipe';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import {GermanUmlautTransformPipe} from '../pipes/german-umlaut-transform.pipe';
 
 @NgModule({
     exports: [
@@ -165,7 +166,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
         ProxiesPipe,
         StoragePipe,
         CurrencyModelPipe,
-        BreadcrumbComponent
+        BreadcrumbComponent,
+        GermanUmlautTransformPipe
     ],
     imports: [
         RouterModule,
@@ -253,7 +255,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
         ProxiesPipe,
         StoragePipe,
         CurrencyModelPipe,
-        BreadcrumbComponent
+        BreadcrumbComponent,
+        GermanUmlautTransformPipe
     ],
     providers: [
         QuantToAmountPipe,

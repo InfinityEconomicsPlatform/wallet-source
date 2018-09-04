@@ -13,6 +13,7 @@ import {SignupComponent} from './signup/signup.component';
 import {SignupDisclaimerComponent} from './signup/signup-disclaimer/signup-disclaimer.component';
 import {SignupConfirmComponent} from './signup/signup-confirm/signup-confirm.component';
 import {SignupPassphraseComponent} from './signup/signup-passphrase/signup-passphrase.component';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import {SignupPassphraseComponent} from './signup/signup-passphrase/signup-passp
         NgbModule,
         MatchHeightModule,
         FormsModule,
-        TranslateModule
+        TranslateModule,
+        SharedModule
     ],
     exports: [],
     declarations: [
