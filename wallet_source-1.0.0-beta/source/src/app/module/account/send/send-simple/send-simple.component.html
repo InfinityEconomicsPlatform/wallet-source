@@ -19,10 +19,10 @@
                                             <i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The recipient account to send token to."></i>
                                         </label>
                                         <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">  
-                                            <div class="col-7 col-lg-9 pl-0 ">                                          
+                                            <div class="col-7 col-lg-8 pl-0 ">                                          
                                             <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="sendForm.recipientRS" name="recipientRS" #recipientRS="ngModel" required placeholder="XIN - _____ - _____ - _____ - _____">
                                             </div>
-                                            <div class="col-5 col-lg-3 pr-1">
+                                             <div class="col-5 col-lg-4 pr-1 pl-0">
                                                <div class="btn-icon-group text-right">
                                                     
                                                         <span  *isAppEnabled="'Aliases'" class="btn btn-primary btn-seperator" (click)="searchAliases()" triggers="mouseenter:mouseleave" placement="top" container="body" ngbPopover="Enter an alias connected to an account to get the account Id.">
@@ -53,7 +53,7 @@
                                             <div class="col-10 pl-0">                                          
                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="sendForm.amount" name="amount" #amount="ngModel" required minValue="1">
                                             </div>
-                                            <div class="col-2 text-right">
+                                            <div class="col-2 text-right pl-0">
                                                             <span class="input-group-text">XIN</span>
                                                         
                                             </div>
@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-1">
                             <button type="button" [ngClass]="{'btn-success': !hasPrivateMessage, 'btn-danger': hasPrivateMessage}" class="btn btn-raised mr-1 mb-0 mr-3" (click)="setMessage()">
                                 <i class="fa fa-plus"></i> {{ hasPrivateMessage ? 'Remove' : 'Add' }} Private Message
                             </button>

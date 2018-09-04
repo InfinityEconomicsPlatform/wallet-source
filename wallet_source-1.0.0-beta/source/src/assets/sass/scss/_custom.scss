@@ -1260,3 +1260,36 @@ height: calc(100% - 80px);
 { background-color: #fff !important;
   transition: background-color 5000s ease-in-out 0s;
 }
+@media(min-width: 992px) and (max-width: 1024px){
+  .btn{
+  padding-left: 0.55rem !important;
+  padding-right: 0.55rem !important;
+  }
+}
+@media(min-width: 768px) and (max-width: 1220px){
+  .nav-tabs .nav-link {
+    padding: 0 50px;
+    }
+    .input-group-text{
+    font-size: 12px;
+    }
+}
+@media(max-width: 767px){
+  .text-sm-center {
+    text-align: center !important;
+    }
+   .input-group-text{
+    font-size: 12px;
+    }
+    .ucsb, form label{
+    font-size: 14px !important;
+    } 
+    .filter-group {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+  }
+  .pager li{
+      margin-bottom: 5px !important;
+  }
+}

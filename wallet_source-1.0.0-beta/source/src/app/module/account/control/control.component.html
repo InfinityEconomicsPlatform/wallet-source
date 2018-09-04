@@ -21,10 +21,10 @@
                     <div class="col-md-6 mt-3" *ngFor="let account of setAccountControlForm.approveAccounts; trackBy:indexTracker; index as i">
                       <div class="form-group mb-0">
                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                        <div class="col-md-11">        
+                        <div class="col-10 col-lg-11">        
                           <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control" placeholder="XIN - _____ - _____ - _____ - _____" name="account-{{i}}" [(ngModel)]="setAccountControlForm.approveAccounts[i].value" #accountRs="ngModel" required>
                         </div>
-                          <div class="col-md-1">
+                          <div class="col-2 col-lg-1">
                             <span class="btn btn-grey" triggers="mouseenter:mouseleave" placement="top" (click)="loadBookmarkView(i)" container="body"
                               ngbPopover="Open your bookmarks to insert an account id">
                               <i class="fa fa-address-card"></i>
@@ -54,7 +54,7 @@
                             required minValue="2" maxValue="9">
                           </div>
 
-                         <div class="col-1"> 
+                         <div class="col-1 pl-0"> 
                             <span class="input-group-text">
                               <i class="fa fa-users"></i>
                             </span>
