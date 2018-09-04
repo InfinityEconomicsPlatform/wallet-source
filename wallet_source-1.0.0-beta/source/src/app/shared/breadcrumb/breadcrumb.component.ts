@@ -116,7 +116,23 @@ export class BreadcrumbComponent implements OnInit {
         'create-campaign': 'Create Campaign',
         'currency-details': 'Currency Details',
         'reserve-founders': 'Reserve Founders',
-        'reserve-units': 'Reserve Units'
+        'reserve-units': 'Reserve Units',
+        'account-details': 'Account Details',
+        'subscriptions': 'Subscriptions',
+        'my-subscriptions': 'My Subscriptions',
+        'create-subscription': 'Create Subscription',
+        'cancel-subscription': 'Cancel Subscription',
+        'escrow': 'Escrow',
+        'my-escrow': 'My Escrow',
+        'create-escrow': 'Create Escrow',
+        'sign-escrow': 'Sign Escrow',
+        'escrow-status': 'Escrow Status',
+        'shuffling': 'Shuffling',
+        'show-shufflings': 'Show Shufflings',
+        'create-shuffling': 'Create Shuffling',
+        'shuffling-details': 'Shuffling Details',
+        'start-shuffling': 'Start Shuffling',
+        'stop-shuffling': 'Stop Shuffling'
     };
     @Input()
     routeChange: Subject<any>;

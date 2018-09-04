@@ -50,6 +50,9 @@ export class SignEscrowComponent implements OnInit {
             }
         });
     }
+    goBack() {
+        this._location.back();
+    }
 
     escrowSign() {
 
