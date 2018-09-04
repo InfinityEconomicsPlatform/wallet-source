@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as tableData from '../../../shared/data/smart-data-table';
-import { LocalDataSource } from 'ng2-smart-table';
 import {AccountService} from '../account.service';
 import {CommonService} from '../../../services/common.service';
 import {Router} from '@angular/router';

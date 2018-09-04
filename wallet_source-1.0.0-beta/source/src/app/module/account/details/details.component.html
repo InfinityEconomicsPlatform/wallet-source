@@ -12,14 +12,14 @@
 							<div class="col-md-9">
 								<div class="ucsb">
 									Account Address
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is your unique account ID."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is your unique account ID."></i>
 								</div>
 								<h4> {{account.accountRS}} </h4>
 							</div>
 							<div class="col-md-3">
 								<div class="ucsb">
 									Account Type
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Standard or Multisignature account type."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Standard or Multisignature account type."></i>
 								</div>
 								<h4 class="border-0">
 									<span  *ngIf="multisig === 'standard'">Standard</span>
@@ -31,7 +31,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Confirmed Balance
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is your confirmed account balance."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is your confirmed account balance."></i>
 								</div>
 								<h4> {{account.balanceTQT | amountTqt }}
 									<small> XIN</small>
@@ -40,7 +40,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Unconfirmed Balance
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This balance includes amounts on pending orders. For instance buy/sell orders."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This balance includes amounts on pending orders. For instance buy/sell orders."></i>
 								</div>
 								<h4> {{account.unconfirmedBalanceTQT | amountTqt}}
 									<small> XIN</small>
@@ -49,7 +49,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Effective Balance
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This balance is used for block generation calculation and shows only amounts with +1'440 confirmations. This is the balance used also for balance leasing."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This balance is used for block generation calculation and shows only amounts with +1'440 confirmations. This is the balance used also for balance leasing."></i>
 								</div>
 								<h4> {{account.effectiveBalance | amountTkn}}
 									<small> XIN</small>
@@ -58,7 +58,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Earned Fees Balance
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This balance shows your accumulated block fee reward on generated blocks by this account."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This balance shows your accumulated block fee reward on generated blocks by this account."></i>
 								</div>
 								<h4> {{account.forgedBalanceTQT | amountTqt }}
 									<small> XIN</small>
@@ -70,7 +70,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Balance Assets
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Assets balance based on the last trade for each asset this accounts holds."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Assets balance based on the last trade for each asset this accounts holds."></i>
 								</div>
 								<h4>
 									{{accountAssetXmcValue | numericalString}}
@@ -80,7 +80,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Balance Currencies
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Currencies balance based on the last trade for each currency this accounts holds."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Currencies balance based on the last trade for each currency this accounts holds."></i>
 								</div>
 								<h4>
 									{{accountCurrencyXmcValue | numericalString}}
@@ -90,7 +90,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Balance Total
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The total balance including assets and currencies fior this acocunt."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The total balance including assets and currencies fior this acocunt."></i>
 								</div>
 								<h4>
 									{{((account.balanceTQT | quantToAmount) + accountCurrencyXmcValue + accountAssetXmcValue ) | numericalString}}
@@ -103,7 +103,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Fiat Balance Account
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
 								</div>
 								<h4>
 									<app-fiat [amountTqt]="account.balanceTQT" [amount]="undefined"></app-fiat>
@@ -113,7 +113,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Fiat Balance Assets
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
 								</div>
 								<h4>
 									<app-fiat [amountTqt]="undefined" [amount]="accountAssetXmcValue"></app-fiat>
@@ -123,7 +123,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Fiat Balance Currencies
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
 								</div>
 								<h4>
 									<app-fiat [amountTqt]="undefined" [amount]="accountCurrencyXmcValue"></app-fiat>
@@ -133,7 +133,7 @@
 							<div class="col-md-3">
 								<div class="ucsb">
 									Fiat Balance Total
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Fiat money equivalent, based on last completed trade on XIN exchange."></i>
 								</div>
 								<h4>
 									<app-fiat [amountTqt]="undefined"
@@ -147,7 +147,7 @@
 							<div class="col-md-6">
 								<div class="ucsb">
 									Account Name
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The public account name for this account."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The public account name for this account."></i>
 								</div>
 								<h4>
 									<div class="dont-break-out">{{account.name | notSet}}</div>
@@ -156,7 +156,7 @@
 							<div class="col-md-6">
 								<div class="ucsb" placement="right">
 									Account Description
-									<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The public account description for this account."></i>
+									<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The public account description for this account."></i>
 								</div>
 								<h4>
 									<div class="dont-break-out">{{account.description | notSet}}</div>
@@ -278,7 +278,7 @@
 											<div class="col-md-6">
 												<div class="form-group m-0">
 													<label>Account Name
-														<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Account name max. 100 characters."></i>
+														<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Account name max. 100 characters."></i>
 													</label>
 													<div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
 														<input type="text" name="name" [(ngModel)]="setAccountParams.name" (ngModelChange)="onChangeAccountInfo($event)" class="pl-0 mb-0 pt-0 pb-0 form-control" placeholder="Account name or leave blank to delete account info.">
@@ -288,7 +288,7 @@
 											<div class="col-md-6">
 												<div class="form-group m-0">
 													<label>Account Description
-														<i class="fa fa-question-circle-o ml-1 icon-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Account description with max. 1'000 characters"></i>
+														<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Account description with max. 1'000 characters"></i>
 													</label>
 													<div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
 														<input type="text" name="description" [(ngModel)]="setAccountParams.description" (ngModelChange)="onChangeAccountInfo($event)" class="pl-0 mb-0 pt-0 pb-0 form-control" placeholder="Account description or leave blank to delete account info." />

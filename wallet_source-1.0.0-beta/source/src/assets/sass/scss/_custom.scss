@@ -1,3 +1,4 @@
+@import "../fonts/icomoon/style";
 .sign_in_inputs .form-control, .inner-form .form-control {
     display: block;
     width: 100%;
@@ -608,7 +609,7 @@ color: #fff !important;
 .pager li a i{
     line-height: 35px;
 }
-.icon-yellow, .inner-form .fa-question-circle-o{
+.info-yellow, .inner-form .fa-question-circle-o{
   color: #f49928;
   margin-left: 5px;
 }
