@@ -28,6 +28,10 @@
         box-shadow: none;
     }
 }
+.sign_in_inputs .form-control:disabled, .inner-form .form-control:disabled {
+    background: #e6e6e6;
+    border-color: #e6e6e6;
+}
 #login .sign_in_inputs .form-control{
   border-left: 0px !important;
   border-right: 0px !important;

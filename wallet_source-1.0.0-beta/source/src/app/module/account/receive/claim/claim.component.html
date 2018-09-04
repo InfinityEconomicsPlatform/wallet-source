@@ -14,13 +14,16 @@
                    ngbPopover="To claim a secret transaction you have to enter the transaction full hash.">
                 </i>
               </label>
-              <div class="input-group sign_in_inputs  form-border-bottom">
-                <input type="text"
-                       class="form-control pl-0 col-md-9 col-lg-10  mb-0"
-                       [(ngModel)]="claimSeceretForm.fullHash"
-                       name="transaction_hash"
-                       placeholder="Type in the hash">
-                <div class="input-group-append col-md-3 col-lg-2">
+              <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                        <div class="col-9 col-lg-10 pl-0">
+                               <input type="text"
+                                 class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                 [(ngModel)]="claimSeceretForm.fullHash"
+                                 name="transaction_hash"
+                                 placeholder="Type in the hash">
+                                                </div>  
+                                                <div class="col-3 col-lg-2 pr-1">
+                
                   <span class="input-group-text btn-inline">HASH</span>
                 </div>
               </div>
@@ -34,15 +37,18 @@
                    ngbPopover="Enter the secret from sender to claim your transaction before the transaction expires.">
                 </i>
               </label>
-              <div class="input-group sign_in_inputs  form-border-bottom">
-                <input type="text"
-                       class="form-control pl-0 col-md-9 col-lg-10  mb-0"
+               <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                        <div class="col-9 col-lg-10 pl-0">
+                               
+                                  <input type="text"
+                       class="pl-0 mb-0 pt-0 pb-0 form-control"
                        [(ngModel)]="claimSeceretForm.secretText"
                        placeholder="Enter secret text"
                        name="secret_text">
-                <div class="input-group-append col-md-3 col-lg-2"
-                     (click)="confirmControlledTransaction(claimSeceretForm.fullHash, claimSeceretForm.secretText)">
-                                                                      <span class="input-group-text btn-inline"><i
+                                                </div>  
+                                                <div class="btn-icon-group text-right col-3 col-lg-2 pr-1" (click)="confirmControlledTransaction(claimSeceretForm.fullHash, claimSeceretForm.secretText)">
+               
+                                                                      <span class="btn btn-primary"><i
                                                                               class="fa fa-user-secret"></i></span>
                 </div>
               </div>

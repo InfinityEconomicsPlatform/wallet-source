@@ -1,21 +1,23 @@
 <div class="row" *ngIf="!openBookMarks">
     <div class="col-sm-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Send Currency Details</h4>
-                <h5 class="back-button" (click)="goBack()">
+           <div class="card-block main-card-block">
+        <div class="border-bt">
+          <h2 class="main-title">Send Currency Details</h2>
+          <h3 class="back-button" (click)="goBack()">
                     <i class="fa fa-chevron-left"></i> Back
-                </h5>
-            </div>
-            <div class="card-body">
-                <div class="card-block ml-3 mr-3">
+                </h3>
+          <app-breadcrumb></app-breadcrumb>
+        </div>
+            <div class="card-body mt-4">
+                <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
                     <aw-wizard [navBarLayout]="'large-filled-symbols'">
                         <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
-                            <form class="form" #f="ngForm" novalidate>
+                            <form class="form inner-form" #f="ngForm" novalidate>
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group m-0">
+                                            <div class="form-group">
                                                 <label>Currency Id
                                                     <i class="fa fa-question-circle-o"
                                                        aria-hidden="true"
@@ -40,7 +42,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group m-0">
+                                            <div class="form-group">
                                                 <label>Units
                                                     <i class="fa fa-question-circle-o"
                                                        aria-hidden="true"
@@ -50,13 +52,15 @@
                                                        ngbPopover="The number of units to send.">
                                                     </i>
                                                 </label>
-                                                <div class="input-group m-0">
-                                                    <input type="number" class="form-control" name="units"
+                                               <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                                                <div class="col-9 col-lg-10 pl-0">
+                                                    <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" name="units"
                                                            #units="ngModel"
                                                            [(ngModel)]="f.units" required>
-                                                    <div class="input-group-append">
-                                                        <span class="btn btn-primary"
-                                                              container="body">
+                                                </div>                                                  
+                                                   
+                                                   <div class="col-3 col-lg-2 pr-1">
+                                                         <span class="input-group-text">
                                                           UNITS
                                                         </span>
                                                     </div>
@@ -64,10 +68,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr>
+                                  
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group m-0">
+                                            <div class="form-group">
                                                 <label>Recipient
                                                     <i class="fa fa-question-circle-o"
                                                        aria-hidden="true"
@@ -77,29 +81,32 @@
                                                        ngbPopover="The recipient to send currencies">
                                                     </i>
                                                 </label>
-                                                <div class="input-group m-0">
-                                                    <div class="input-group-prepend">
-                                                        <span class="btn btn-primary"
+                                                 <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                                                <div class="col-7 col-lg-9 pl-0">
+                                                   <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control" name="recipientRS"
+                                                           #recipientRS="ngModel"
+                                                           placeholder="Recipient address"
+                                                           [(ngModel)]="f.recipientRS" required>
+                                                </div>
+                                                   <div class="col-5 col-lg-3 pr-1">
+                                                        
+                                                         <div class="btn-icon-group text-right">
+                                                          <span class="btn btn-primary"
                                                               triggers="mouseenter:mouseleave"
                                                               placement="top"
                                                               container="body"
                                                               ngbPopover="Alias Account search">
-                                                            <i class="fa fa-share-alt"></i>
+                                                              <i class="fa fa-share-alt"></i>
                                                         </span>
-                                                    </div>
-                                                    <input type="text" class="form-control" name="recipientRS"
-                                                           #recipientRS="ngModel"
-                                                           placeholder="Recipient address"
-                                                           [(ngModel)]="f.recipientRS" required>
-                                                    <div class="input-group-append">
                                                         <span class="btn btn-primary"
                                                               triggers="mouseenter:mouseleave"
                                                               placement="top"
                                                               (click)="loadBookmarkView()"
                                                               container="body"
                                                               ngbPopover="Open bookmarks">
-                                                          <i class="fa fa-address-card"></i>
+                                                              <i class="fa fa-bookmark"></i>
                                                         </span>
+                                                      </div>
                                                     </div>
                                                 </div>
                                                 <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
@@ -112,16 +119,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-actions left">
+                                <div class="mt-4 left">
                                     <button type="button"
                                             [disabled]="f.invalid"
-                                            class="btn btn-primary mr-1 mb-0 float-right" awNextStep>
+                                            class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
                                         <i class="fa fa-chevron-right"></i> Next
                                     </button>
                                 </div>
                             </form>
                         </aw-wizard-step>
-                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
+                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="ucsb">Currency Id
@@ -134,39 +141,39 @@
                                     <h4>{{f.units}}</h4>
                                 </div>
                             </div>
-                            <hr/>
-                            <div class="row">
+                      
+                            <!-- <div class="row">
                                 <div class="col-md-6">
                                     <div class="ucsb"> Valid
                                     </div>
-                                    <!--<h4 [innerHTML]="validBytes | txIsValid"></h4>-->
+                                    <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="ucsb"> Service Fee
                                     </div>
-                                    <!-- <h4>{{tx_fee | amountTkn}}
+                                     <h4>{{tx_fee | amountTkn}}
                                          <small>XIN</small>
-                                     </h4>-->
+                                     </h4>
                                 </div>
-                            </div>
-                            <hr>
+                            </div> -->
+                    
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                     class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
                                 <i class="fa fa-key"></i> Signed Transaction
                             </button>
-                            <hr *ngIf="unsignedTx">
-                            <div class="form-group" *ngIf="unsignedTx">
-                                <div class="position-relative">
+                           <!--  <hr *ngIf="unsignedTx"> -->
+                            <div class="form-group mt-3" *ngIf="unsignedTx">
+                                <div class="position-relative sign_in_inputs">
                                      <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
-                                               class="form-control" name="key"></textarea>
+                                               class="form-control pl-0" name="key"></textarea>
                                 </div>
                             </div>
-                            <div class="form-actions">
-                                <button type="button" [disabled]="!validBytes" class="btn btn-primary float-right"
+                            <div class="mt-4">
+                                <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
                                         (click)="broadcastTransaction(transactionBytes)">
                                     <i class="fa fa-check"></i> Finish
                                 </button>
-                                <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
+                                <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
                                     <i class="fa fa-chevron-left"></i> Previous
                                 </button>
                             </div>
@@ -176,6 +183,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <!--
 <div class="row" *ngIf="openBookMarks">
