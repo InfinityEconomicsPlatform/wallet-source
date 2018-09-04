@@ -19,7 +19,7 @@
 							<div class="row-fluid">
 								<h5 *ngIf="router.url === '/sign-up/step-1'">{{ steps[0].title | translate | uppercase }}</h5>
 								<h5 *ngIf="router.url === '/sign-up/step-2'">{{ steps[1].title | translate | uppercase }}</h5>
-								<h5 *ngIf="router.url === '/sign-up/step-3'">{{ steps[2].title | translate | uppercase }}</h5>
+								<h5 *ngIf="router.url === '/sign-up/step-3'">{{ steps[2].title | translate | uppercase | germanUmlautTransform}}</h5>
                                 <app-signup-disclaimer *ngIf="router.url === '/sign-up/step-1'"></app-signup-disclaimer>
                                 <app-signup-passphrase *ngIf="router.url === '/sign-up/step-2'"></app-signup-passphrase>
                                 <app-signup-confirm *ngIf="router.url === '/sign-up/step-3'"></app-signup-confirm>
