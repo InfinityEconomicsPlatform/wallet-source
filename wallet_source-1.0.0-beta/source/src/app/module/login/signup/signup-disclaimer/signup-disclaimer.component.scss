@@ -10,3 +10,9 @@
 	 	overflow-y: scroll;	
 	 	    margin: 0 11%;
 }
+
+@media(max-width: 767px){
+ .card-border{    
+     margin: 0 5%;
+  }
+ }
