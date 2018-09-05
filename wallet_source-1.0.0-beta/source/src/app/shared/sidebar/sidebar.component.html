@@ -23,7 +23,7 @@
 		<ul class="navigation">
 			<li class="wallet-switch" routerLinkActive="active">
 				<a [routerLink]="['/dashboard']">
-					<i class="fa fa-credit-card"></i>
+					<i class="icon-Dashboard"></i>
 					<span class="menu-title">
 						<strong>{{balanceTQT | amountTqt }} XIN</strong>
 					</span>
@@ -31,7 +31,7 @@
 			</li>
 			<li class="wallet-switch">
 				<a href="javascript:void(0)" (click)="triggerClick()">
-					<i class="fa fa-eye"></i>
+					<i class="icon-wallet"></i>
 					<span class="menu-title">{{isExpertWallet ? 'Expert Wallet' : 'Basic Wallet'}}</span>
 				</a>
 				<ui-switch (change)="switchWallet()" [(ngModel)]="isExpertWallet" size="small"></ui-switch>
@@ -41,7 +41,7 @@
 				<ng-container *isAppEnabled="menuItem.appName">
 					<ng-container *isExtensionEnabledView="menuItem.isExtensionView">
 						<li id="{{ 'first_' + first }}" *isExpertView="menuItem.isExpertView" [ngClass]="{'has-sub':menuItem.class == 'has-sub','open' : idArray.indexOf('first_'+first) !== -1}"
-						 [routerLinkActive]="menuItem.submenu.length != 0 ? '' : 'active'" [routerLinkActiveOptions]="{exact: true}">
+						 [routerLinkActive]="menuItem.submenu.length != 0 ? '' : 'active'" [routerLinkActiveOptions]="{exact: false}">
 							<a [routerLink]="menuItem.class === '' ? [menuItem.path] : null" *ngIf="!menuItem.isExternalLink; else externalLinkBlock">
 								<i [ngClass]="[menuItem.icon]"></i>
 								<span class="menu-title">{{menuItem.title | translate }}</span>

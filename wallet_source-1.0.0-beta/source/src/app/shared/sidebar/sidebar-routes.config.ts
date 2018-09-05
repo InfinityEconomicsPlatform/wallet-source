@@ -8,7 +8,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '',
         title: 'Account',
-        icon: 'fa fa-user',
+        icon: 'icon-Account',
         class: 'has-sub',
         badge: '',
         badgeClass: 'badge badge-pill badge-danger float-right mr-1 mt-1',
@@ -152,7 +152,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/messages',
         title: 'Messages',
-        icon: 'fa fa-envelope',
+        icon: 'icon-messages',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -183,7 +183,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/assets',
         title: 'Assets',
-        icon: 'fa fa-bar-chart',
+        icon: 'icon-assets',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -266,7 +266,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/currencies',
         title: 'Currencies',
-        icon: 'fa fa-random',
+        icon: 'icon-currencies',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -349,7 +349,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/aliases',
         title: 'Aliases',
-        icon: 'fa fa-share-alt',
+        icon: 'icon-Aliases',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -402,7 +402,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/voting',
         title: 'Voting',
-        icon: 'fa fa-signal',
+        icon: 'icon-Voting',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -435,7 +435,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/at',
         title: 'AT',
-        icon: 'fa fa-gears',
+        icon: 'icon-AT',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -475,7 +475,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/crowdfunding',
         title: 'Crowdfunding',
-        icon: 'fa fa-users',
+        icon: 'icon-Crowdfunding',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -507,7 +507,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/subscriptions',
         title: 'Subscriptions',
-        icon: 'fa fa-clock-o',
+        icon: 'icon-Subscription',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -539,7 +539,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/escrow',
         title: 'Escrow',
-        icon: 'fa fa-handshake-o',
+        icon: 'icon-Escrow',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -571,7 +571,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/shuffling',
         title: 'Shuffling',
-        icon: 'fa fa-user-secret',
+        icon: 'icon-Shuffling',
         class: 'has-sub',
         badge: '',
         badgeClass: '',
@@ -603,7 +603,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/wallet-settings/options',
         title: 'Options',
-        icon: 'fa fa-tasks',
+        icon: 'icon-options',
         class: '',
         badge: '',
         badgeClass: '',
@@ -613,7 +613,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/tools',
         title: 'Tools',
-        icon: 'fa fa-bars',
+        icon: 'icon-Extensions',
         class: '',
         badge: '',
         badgeClass: '',
@@ -677,7 +677,7 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/wallet-settings/swapps',
         title: 'SWApps',
-        icon: 'fa fa-rocket',
+        icon: 'icon-SWApps',
         class: '',
         badge: '',
         badgeClass: '',

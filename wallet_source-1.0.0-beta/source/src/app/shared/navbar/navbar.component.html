@@ -15,21 +15,21 @@
                     <li *isExpertView="true">
                         <a class="btn btn-default btn-md navbar-btn pull-left nav-item nav-link position-relative" triggers="mouseenter:mouseleave"
                             container="body" placement="bottom" ngbPopover="Pending Approvals to sign" (click)="acconutControl()">
-                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <i class="icon-pending_approvals_to_sign" aria-hidden="true"></i>
                             <span class="badge-success notification-badge">{{approvals}} </span>
                         </a>
                     </li>
                     <li *isAppEnabled="'Escrow'">
                         <a class="btn btn-default btn-md navbar-btn pull-left nav-item nav-link position-relative" triggers="mouseenter:mouseleave"
                             container="body" placement="bottom" ngbPopover="Pending escrow to sign" (click)="myEscrow()">
-                            <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                            <i class="icon-pending_escrow_to_sign" aria-hidden="true"></i>
                             <span class="notification-badge badge-success"> {{escrows}} </span>
                         </a>
                     </li>
                     <li *isAppEnabled="'Subscriptions'">
                         <a class="btn btn-default btn-md navbar-btn pull-left nav-item nav-link position-relative" triggers="mouseenter:mouseleave"
                             container="body" placement="bottom" ngbPopover="Active subscriptions" (click)="mySubscription()">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            <i class="icon-active_subscriptions" aria-hidden="true"></i>
                             <span class="badge-success notification-badge"> {{subscriptions}} </span>
                         </a>
                     </li>
@@ -43,37 +43,37 @@
                     <li>
                         <a class=" btn btn-default btn-md btn-circle navbar-btn pull-left nav-item nav-link position-relative" href="http://forum.infinity-economics.org"
                             triggers="mouseenter:mouseleave" container="body" placement="bottom" ngbPopover="Forum" target="_blank">
-                            <i class="fa fa-comment-o font-medium-1 warning"></i>
+                            <i class="icon-forum"></i>
                         </a>
                     </li>
                     <!--<li>-->
                         <!--<a class="btn btn-default btn-md btn-circle navbar-btn pull-left nav-item nav-link position-relative" triggers="mouseenter:mouseleave"-->
                             <!--container="body" placement="bottom" ngbPopover="Send Token" (click)="sendToken()">-->
-                            <!--<i class="fa fa-eur font-medium-1"></i>-->
+                            <!--<i class="fa fa-eur"></i>-->
                         <!--</a>-->
                     <!--</li>-->
                     <li>
                         <a class="btn btn-default btn-md btn-circle navbar-btn pull-left nav-item nav-link position-relative" triggers="mouseenter:mouseleave"
                             container="body" placement="bottom" ngbPopover="Send Message" (click)="sendMessage()">
-                            <i class="fa fa-envelope-o font-medium-1"></i>
+                            <i class="icon-send_message"></i>
                         </a>
                     </li>
                     <li *isAppEnabled="'Assets'">
                         <a class="btn btn-default btn-md btn-circle navbar-btn pull-left nav-item nav-link position-relative" triggers="mouseenter:mouseleave"
                             container="body" placement="bottom" ngbPopover="Send Assets" (click)="sendAssets()">
-                            <i class="fa fa-bar-chart font-medium-1"></i>
+                            <i class="icon-send_assets"></i>
                         </a>
                     </li>
                     <li *isAppEnabled="'Currencies'">
                         <a class="btn btn-default btn-md btn-circle navbar-btn pull-left nav-item nav-link position-relative" triggers="mouseenter:mouseleave"
                             container="body" placement="bottom" ngbPopover="Send Currency" (click)="sendCurrency()">
-                            <i class="fa fa-random font-medium-1"></i>
+                            <i class="icon-send_currency"></i>
                         </a>
                     </li>
                     <li *isExpertView="true">
                         <a class="btn btn-default btn-md btn-circle navbar-btn pull-left nav-item nav-link position-relative" triggers="mouseenter:mouseleave"
                             container="body" placement="bottom" ngbPopover="Bookmarks" (click)="openBookMarks()">
-                            <i class="fa fa-user-circle font-medium-1"></i>
+                            <i class="icon-bookmark"></i>
                         </a>
                     </li>
                     <!--<li class="nav-item" *ngIf="connectionMode !== 'TESTNET' && connectionMode !== 'DEVTESTNET'">-->
@@ -94,42 +94,42 @@
                     <!--</li>-->
                     <li ngbDropdown placement="bottom-right">
                         <a class="btn btn-default btn-md navbar-btn pull-left nav-item nav-link position-relative" ngbDropdownToggle>
-                            <i class="fa fa-ellipsis-v font-medium-1"></i>
+                            <i class="icon-menu"></i>
                             <p class="d-none">Tools</p>
                         </a>
                         <div ngbDropdownMenu>
                             <a class="dropdown-item lang" [routerLink]="['/tool/transaction-types']">
-                                <i class="fa fa-info-circle"></i> &nbsp;Transaction Types
+                                <i class="icon-transaction_types"></i> &nbsp;Transaction Types
                             </a>
                             <a class="dropdown-item lang border-bottom" [routerLink]="['/tool/service-fees']">
-                                <i class="fa fa-usd"></i> &nbsp;Service Fees
+                                <i class="icon-service_fees"></i> &nbsp;Service Fees
                             </a>
                             <a class="dropdown-item lang" [routerLink]="['/tool/generate-signature']">
-                                <i class="fa fa-user-secret"></i> &nbsp;Generate Signature
+                                <i class="icon-generate_signature"></i> &nbsp;Generate Signature
                             </a>
                             <a class="dropdown-item lang border-bottom" [routerLink]="['/tool/validate-signature']">
-                                <i class="fa fa-check"></i> &nbsp;Validate Signature
+                                <i class="icon-validate_signature"></i> &nbsp;Validate Signature
                             </a>
                             <a class="dropdown-item lang" [routerLink]="['/tool/parse-transaction']">
-                                <i class="fa fa-tasks"></i> &nbsp;Parse Transaction
+                                <i class="icon-parse_transaction"></i> &nbsp;Parse Transaction
                             </a>
                             <a class="dropdown-item lang border-bottom" [routerLink]="['/tool/broadcast-transaction']">
-                                <i class="fa fa-wifi"></i> &nbsp;Broadcast Transaction
+                                <i class="icon-broadcast_transaction"></i> &nbsp;Broadcast Transaction
                             </a>
                             <a class="dropdown-item lang" [routerLink]="['/tool/calculate-hash']">
-                                <i class="fa fa-hashtag"></i> &nbsp;Calculate Hash
+                                <i class="icon-calculate_hash"></i> &nbsp;Calculate Hash
                             </a>
                             <a class="dropdown-item lang border-bottom" [routerLink]="['/tool/chain-statistics']">
-                                <i class="fa fa-line-chart"></i> &nbsp;Chain Statistics
+                                <i class="icon-chain_statistics"></i> &nbsp;Chain Statistics
                             </a>
                             <a class="dropdown-item lang" [routerLink]="['/tool/user-guide']">
-                                <i class="fa fa-user"></i> &nbsp;User Guide
+                                <i class="icon-user_guide"></i> &nbsp;User Guide
                             </a>
                         </div>
                     </li>
                     <li>
                         <a class="btn btn-default btn-md btn-circle navbar-btn pull-left nav-item nav-link position-relative" (click)="logout()">
-                            <i class="fa fa-power-off font-medium-1"></i>
+                            <i class="icon-logout"></i>
                             <p class="d-none">Logout</p>
                         </a>
                     </li>
