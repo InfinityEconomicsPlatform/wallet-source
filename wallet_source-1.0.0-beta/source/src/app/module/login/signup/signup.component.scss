@@ -42,3 +42,8 @@
 .right-arrrow{
 	    margin-left: 10px;
 }
+@media(max-width: 767px){
+  #signup .card .card-header{
+  padding-top: 35px !important;
+  }
+ }

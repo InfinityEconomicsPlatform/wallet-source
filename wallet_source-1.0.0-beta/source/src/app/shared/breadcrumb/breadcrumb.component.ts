@@ -132,7 +132,10 @@ export class BreadcrumbComponent implements OnInit {
         'create-shuffling': 'Create Shuffling',
         'shuffling-details': 'Shuffling Details',
         'start-shuffling': 'Start Shuffling',
-        'stop-shuffling': 'Stop Shuffling'
+        'stop-shuffling': 'Stop Shuffling',
+        'publish-exchange-offer': 'Publish Exchange Offer',
+        'publish-exchange-buy-offer': 'Publish Exchange Buy Offer',
+        'publish-exchange-sell-offer': 'Publish Exchange Sell Offer'
     };
     @Input()
     routeChange: Subject<any>;
