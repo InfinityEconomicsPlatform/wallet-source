@@ -173,10 +173,10 @@
 										<a class="nav-link active" (click)="openPublicKey = !openPublicKey">Public Key</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" [ngClass]="{'disabled': !leasesDetected}" (click)="openBL = !openBL">Balance Lease</a>
+										<a class="nav-link" [ngClass]="{'disabled': !leasesDetected}" (click)="(leasesDetected) ? openBL = !openBL : null">Balance Lease</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" [ngClass]="{'disabled': !controlDetected}" (click)="openCM = !openCM">Control Model</a>
+										<a class="nav-link" [ngClass]="{'disabled': !controlDetected}" (click)="(controlDetected) ? openCM = !openCM : null">Control Model</a>
 									</li>
 								</ul>
 								<div class="tab-content">
