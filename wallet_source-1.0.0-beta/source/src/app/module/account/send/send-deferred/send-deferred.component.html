@@ -4,7 +4,7 @@
 <div class="card-body">
 	<div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
 		<aw-wizard [navBarLayout]="'large-filled-symbols'">
-			<aw-wizard-step stepTitle="{{'account.send-xin.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
+			<aw-wizard-step stepTitle="{{'account.send-xin.details-step'| translate}}" [navigationSymbol]="{ symbol: '&#xe93a;', fontFamily: 'icomoon' }">
 				<form class="form inner-form" #f="ngForm" novalidate>
 					<div class="form-body">
 						<div class="row mt-4">
@@ -160,7 +160,7 @@
 					</div>
 				</form>
 			</aw-wizard-step>
-			<aw-wizard-step stepTitle="{{'account.send-xin.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+			<aw-wizard-step stepTitle="{{'account.send-xin.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '&#xe939;', fontFamily: 'icomoon' }" class="form-bordered mt-4">
 				<div class="row">
 					<div class="col-md-4">
 						<div class="ucsb"> {{'account.send-xin.recipient-account-lable'| translate}}

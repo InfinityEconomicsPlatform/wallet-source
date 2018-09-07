@@ -32,18 +32,18 @@ export class CompletedTransactionsComponent implements OnInit {
     accountRs = '';
 
     filters = [
-        {name: 'Payment', appName: '', icon: 'fa-usd', popoverText: 'Payment', isEnabled: false},
-        {name: 'Assets', appName: 'Assets', icon: 'fa-bar-chart', popoverText: 'Asset', isEnabled: false},
-        {name: 'Currencies', appName: 'Currencies', icon: 'fa-random', popoverText: 'Currency', isEnabled: false},
-        {name: 'Messages', appName: '', icon: 'fa-envelope-o', popoverText: 'Messages', isEnabled: false},
-        {name: 'Voting', appName: 'Voting', icon: 'fa-signal', popoverText: 'Voting', isEnabled: false},
-        {name: 'MultiSig', appName: '', icon: 'fa-user', popoverText: 'MultiSig', isEnabled: false},
-        {name: 'Aliases', appName: 'Aliases', icon: 'fa-share-alt', popoverText: 'Alias', isEnabled: false},
-        {name: 'Account', appName: '', icon: 'fa-credit-card', popoverText: 'Account', isEnabled: false},
-        {name: 'Escrow', appName: 'Escrow', icon: 'fa-handshake-o', popoverText: 'Escrow', isEnabled: false},
-        {name: 'Subscriptions', appName: 'Subscriptions', icon: 'fa-clock-o', popoverText: 'Subscription', isEnabled: false},
-        {name: 'Shuffling', appName: 'Shuffling', icon: 'fa-user-secret', popoverText: 'Shuffles', isEnabled: false},
-        {name: 'AT', appName: 'AT', icon: 'fa-cogs', popoverText: 'AT', isEnabled: false}
+        {name: 'Payment', appName: '', icon: 'icon-payment', popoverText: 'Payment', isEnabled: false},
+        {name: 'Assets', appName: 'Assets', icon: 'icon-asset', popoverText: 'Asset', isEnabled: false},
+        {name: 'Currencies', appName: 'Currencies', icon: 'icon-currency', popoverText: 'Currency', isEnabled: false},
+        {name: 'Messages', appName: '', icon: 'icon-messages1', popoverText: 'Messages', isEnabled: false},
+        {name: 'Voting', appName: 'Voting', icon: 'icon-voting', popoverText: 'Voting', isEnabled: false},
+        {name: 'MultiSig', appName: '', icon: 'icon-multisig', popoverText: 'MultiSig', isEnabled: false},
+        {name: 'Aliases', appName: 'Aliases', icon: 'icon-alias', popoverText: 'Alias', isEnabled: false},
+        {name: 'Account', appName: '', icon: 'icon-account', popoverText: 'Account', isEnabled: false},
+        {name: 'Escrow', appName: 'Escrow', icon: 'icon-escrow', popoverText: 'Escrow', isEnabled: false},
+        {name: 'Subscriptions', appName: 'Subscriptions', icon: 'icon-subscription', popoverText: 'Subscription', isEnabled: false},
+        {name: 'Shuffling', appName: 'Shuffling', icon: 'icon-shuffles', popoverText: 'Shuffles', isEnabled: false},
+        {name: 'AT', appName: 'AT', icon: 'icon-AT1', popoverText: 'AT', isEnabled: false}
     ];
 
     applyFilter(filter) {

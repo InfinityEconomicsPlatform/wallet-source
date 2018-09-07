@@ -18,13 +18,11 @@
                             <div class="row">
                         <div class="col-md-4 coin">
                             <div class=" coin-box shadow-bottom">
-                                
-                                        <div class="float-left mr-2"><img src="assets/images/logo-modal.png"></div>
-                                        <div class="text-left"><p class="valuation-xin"> {{balanceTQT | amountTqt }} <small>XIN</small></p>
-                                        <p class="valuation-usd"> <app-fiat [amountTqt]="balanceTQT" [amount]="undefined"></app-fiat> <small>USD</small></p>
-                                        </div>
-                               
-                                        <p class="account-address mt-5">{{accountRs}}</p>
+                                <div class="float-left mr-2"><img src="assets/images/logo-modal.png"></div>
+                                <div class="text-left"><p class="valuation-xin"> {{balanceTQT | amountTqt }} <small>XIN</small></p>
+                                    <p class="valuation-usd"> <app-fiat [amountTqt]="balanceTQT" [amount]="undefined"></app-fiat> <small>USD</small></p>
+                                </div>
+                                <p class="account-address mt-5">{{accountRs}}</p>
                             </div>
                         </div>
                         <div class="col-md-8 coin card-right">
@@ -35,7 +33,7 @@
                                             <div class="">
                                                 <div class="media-box">
                                                     <div class="text-left">
-                                                        <i class="card-icon ft ft-arrow-up-right"></i>
+                                                        <i class="card-icon icon-send"></i>
                                                     </div>
                                                     <div class="media-body text-left">
                                                         <span class="card-title">{{'dashboard.send-btn' | translate}}</span>
@@ -51,7 +49,7 @@
                                             <div class="">
                                                  <div class="media-box">
                                                     <div class="text-left">
-                                                        <i class="card-icon ft ft-arrow-down-left"></i>
+                                                        <i class="card-icon icon-receive"></i>
                                                     </div>
                                                     <div class="media-body text-left">
                                                         <span class="card-title">{{'dashboard.receive-btn' | translate}}</span>
@@ -67,7 +65,7 @@
                                             <div class="">
                                                 <div class="media-box">
                                                     <div class="text-left">
-                                                        <i class="card-icon ft ft-credit-card"></i>
+                                                        <i class="card-icon icon-account_info"></i>
                                                     </div>
                                                     <div class="media-body text-left">
                                                         <span class="card-title">{{'dashboard.account-info-btn'| translate}}</span>
@@ -83,7 +81,7 @@
                                             <div class="">
                                                  <div class="media-box">
                                                    <div class="text-left">
-                                                        <i class="card-icon ft ft-book"></i>
+                                                        <i class="card-icon icon-transactions"></i>
                                                     </div>
                                                     <div class="media-body text-left">
                                                         <span class="card-title">{{'dashboard.transactions-btn'| translate}}</span>
@@ -103,7 +101,7 @@
                             <div class="card">
                                 <div class="card-header pl-0 pr-0">
                                     <div class="media">
-                                        <h4 class="card-title mb-0"><i class="fa fa-chart-area"></i>{{'dashboard.market-txt'| translate}}</h4>
+                                        <h4 class="card-title mb-0">{{'dashboard.market-txt'| translate}}</h4>
                                     </div>
                                 </div>
                                 <div class="card-body pl-0 pr-0">

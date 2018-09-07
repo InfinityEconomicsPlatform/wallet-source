@@ -27,191 +27,215 @@ $icomoon-font-family: icomoon !default;
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-copy:before {
+    content: "\e928";
+    color: #f3931b;
+}
+.icon-account:before {
+    content: "\e929";
+}
+.icon-alias:before {
+    content: "\e92a";
+}
+.icon-asset:before {
+    content: "\e92b";
+}
+.icon-AT1:before {
+    content: "\e92c";
+}
+.icon-currency:before {
+    content: "\e92d";
+}
+.icon-escrow:before {
+    content: "\e92e";
+}
+.icon-messages1:before {
+    content: "\e921";
+}
+.icon-multisig:before {
+    content: "\e930";
+}
+.icon-payment:before {
+    content: "\e931";
+}
+.icon-reload:before {
+    content: "\e932";
+}
+.icon-remove_filter:before {
+    content: "\e933";
+}
+.icon-shuffles:before {
+    content: "\e934";
+}
+.icon-subscription:before {
+    content: "\e935";
+}
+.icon-voting:before {
+    content: "\e936";
+}
+.icon-icon1:before {
+    content: "\e937";
+    color: #909090;
+}
+.icon-icon2:before {
+    content: "\e938";
+    color: #909090;
+}
+.icon-confirm:before {
+    content: "\e939";
+}
+.icon-details:before {
+    content: "\e93a";
+}
+.icon-next_arrow:before {
+    content: "\e93b";
+}
 .icon-broadcast_transaction:before {
     content: "\e900";
     color: #e63043;
 }
-
 .icon-calculate_hash:before {
     content: "\e901";
     color: #e63043;
 }
-
 .icon-chain_statistics:before {
     content: "\e902";
     color: #e63043;
 }
-
 .icon-generate_signature:before {
     content: "\e903";
     color: #e63043;
 }
-
 .icon-parse_transaction:before {
     content: "\e904";
     color: #e63043;
 }
-
 .icon-service_fees:before {
     content: "\e905";
     color: #e63043;
 }
-
 .icon-transaction_types:before {
     content: "\e906";
     color: #e63043;
 }
-
 .icon-user_guide:before {
     content: "\e907";
     color: #e63043;
 }
-
 .icon-validate_signature:before {
     content: "\e908";
     color: #e63043;
 }
-
 .icon-active_subscriptions:before {
     content: "\e909";
 }
-
 .icon-bookmark:before {
     content: "\e90a";
 }
-
 .icon-forum:before {
     content: "\e90b";
 }
-
 .icon-logout:before {
     content: "\e90c";
 }
-
 .icon-menu:before {
     content: "\e90d";
 }
-
 .icon-pending_approvals_to_sign:before {
     content: "\e90e";
 }
-
 .icon-pending_escrow_to_sign:before {
     content: "\e90f";
 }
-
 .icon-send_assets:before {
     content: "\e910";
 }
-
 .icon-send_currency:before {
     content: "\e911";
 }
-
 .icon-send_message:before {
     content: "\e912";
 }
-
 .icon-account_info:before {
     content: "\e913";
     color: #fff;
 }
-
 .icon-menu1:before {
     content: "\e914";
     color: #fff;
 }
-
 .icon-receive:before {
     content: "\e915";
     color: #fff;
 }
-
 .icon-send:before {
     content: "\e916";
     color: #fff;
 }
-
 .icon-transactions:before {
     content: "\e917";
     color: #fff;
 }
-
 .icon-Account:before {
     content: "\e918";
     color: #e63043;
 }
-
 .icon-Aliases:before {
     content: "\e919";
     color: #e63043;
 }
-
 .icon-assets:before {
     content: "\e91a";
     color: #e63043;
 }
-
 .icon-AT:before {
     content: "\e91b";
     color: #e63043;
 }
-
 .icon-Crowdfunding:before {
     content: "\e91c";
     color: #e63043;
 }
-
 .icon-currencies:before {
     content: "\e91d";
     color: #e63043;
 }
-
 .icon-Dashboard:before {
     content: "\e91e";
     color: #e63043;
 }
-
 .icon-Escrow:before {
     content: "\e91f";
     color: #e63043;
 }
-
 .icon-Extensions:before {
     content: "\e920";
     color: #e63043;
 }
-
 .icon-messages:before {
     content: "\e921";
     color: #e63044;
 }
-
 .icon-options:before {
     content: "\e922";
     color: #e63043;
 }
-
 .icon-Shuffling:before {
     content: "\e923";
     color: #e63043;
 }
-
 .icon-Subscription:before {
     content: "\e924";
     color: #e63043;
 }
-
 .icon-SWApps:before {
     content: "\e925";
     color: #e63043;
 }
-
 .icon-Voting:before {
     content: "\e926";
     color: #e63043;
 }
-
 .icon-wallet:before {
     content: "\e927";
     color: #e63043;

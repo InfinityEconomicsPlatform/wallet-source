@@ -8,9 +8,9 @@ export class TxDirectionPipe implements PipeTransform {
   transform(value: any, args?: any): any {
 
     if (value === args) {
-        return ' <i class="fa fa-chevron-circle-up success" aria-hidden="true" style="color:red;"></i> ';
+        return ' <i class="ft ft-log-in success" aria-hidden="true" style="color:red;"></i> ';
     } else {
-        return '<i class="fa fa-chevron-circle-down danger" aria-hidden="true" style="color:green;"></i>';
+        return '<i class="ft ft-log-out danger" aria-hidden="true" style="color:green;"></i>';
     }
   }
 
