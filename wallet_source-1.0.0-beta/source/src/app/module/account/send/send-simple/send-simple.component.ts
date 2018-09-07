@@ -9,6 +9,7 @@ import {AliasesService} from '../../../aliases/aliases.service';
 import {OptionService} from '../../../../services/option.service';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
 import {ActivatedRoute, Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-send-simple',
@@ -41,6 +42,7 @@ export class SendSimpleComponent implements OnInit {
     tx_amount: any;
     tx_total: any;
     openBookMarks: boolean = false;
+    selectedLanguage: string;
 
     constructor(public sessionStorageService: SessionStorageService,
                 public accountService: AccountService,
@@ -50,9 +52,12 @@ export class SendSimpleComponent implements OnInit {
                 public activatedRoute: ActivatedRoute,
                 public aliasesService: AliasesService,
                 public currenciesService: CurrenciesService,
-                public optionService: OptionService) {
+                public optionService: OptionService,
+                public translate: TranslateService) {
         this.hasPrivateMessage = false;
         this.hasReceiverPublicKey = false;
+        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
+        this.translate.use(this.selectedLanguage);
     }
 
     ngOnInit() {

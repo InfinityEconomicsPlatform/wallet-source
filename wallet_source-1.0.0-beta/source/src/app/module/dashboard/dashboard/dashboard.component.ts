@@ -6,6 +6,7 @@ import { AppConstants } from '../../../config/constants';
 import { RootScope } from '../../../config/root-scope';
 import { AmChartsService, AmChart } from "@amcharts/amcharts3-angular";
 import {Observable} from 'rxjs/Observable';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,13 +18,17 @@ export class DashboardComponent implements OnInit {
     accountRs: string;
     accountValuation: number;
     balanceTQT: any;
+    selectedLanguage: string;
 
     constructor(private router: Router,
                 private dashboardService: DashboardService,
+                public translate: TranslateService,
                 private sessionStorageService: SessionStorageService,
                 private amChartsService: AmChartsService) {
         this.accountValuation = 0.00;
         this.accountRs = "";
+        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
+        this.translate.use(this.selectedLanguage);
     }
 
     private chart: AmChart;
