@@ -173,10 +173,11 @@
 										<a class="nav-link active" (click)="openPublicKey = !openPublicKey">{{'account.public-key-btn'| translate}}</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" [ngClass]="{'disabled': !leasesDetected}" (click)="openBL = !openBL">{{'account.balance-lease-btn'| translate}}</a>
+
+										<a class="nav-link" [ngClass]="{'disabled': !leasesDetected}" (click)="(leasesDetected) ? openBL = !openBL : null">{{'account.balance-lease-btn'| translate}}</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" [ngClass]="{'disabled': !controlDetected}" (click)="openCM = !openCM">{{'account.control-mode-btn'| translate}}</a>
+										<a class="nav-link" [ngClass]="{'disabled': !controlDetected}" (click)="(controlDetected) ? openCM = !openCM : null">{{'account.control-mode-btn'| translate}}</a>
 									</li>
 								</ul>
 								<div class="tab-content">

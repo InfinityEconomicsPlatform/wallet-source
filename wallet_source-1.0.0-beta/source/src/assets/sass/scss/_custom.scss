@@ -32,6 +32,7 @@
 .sign_in_inputs .form-control:disabled, .inner-form .form-control:disabled {
     background: #e6e6e6;
     border-color: #e6e6e6;
+    border-radius: 0 !important;
 }
 #login .sign_in_inputs .form-control{
   border-left: 0px !important;
@@ -823,8 +824,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e72d45', end
     h5:after {
         content: '-';
         position: absolute;
-        right: 0;
-        top: 15px;
+        right: 30px;
+        top: 25px;
         color: #acacac;
         font-size: 22px;
         }
@@ -1266,6 +1267,9 @@ height: calc(100% - 80px);
   padding-left: 0.55rem !important;
   padding-right: 0.55rem !important;
   }
+  .ngx-datatable .datatable-header{
+  word-break: break-all !important;
+  }
 }
 @media(min-width: 768px) and (max-width: 1220px){
   .nav-tabs .nav-link {
@@ -1292,5 +1296,9 @@ height: calc(100% - 80px);
   }
   .pager li{
       margin-bottom: 5px !important;
+  }
+  .btn-search{
+  position: relative !important;
+    border-radius: 20px;
   }
 }

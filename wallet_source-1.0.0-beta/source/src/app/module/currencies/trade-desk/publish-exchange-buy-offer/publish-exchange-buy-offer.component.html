@@ -15,44 +15,46 @@
           <div class="card-block mr-3 ml-3">
             <aw-wizard [navBarLayout]="'large-filled-symbols'">
               <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
-                <form #f="ngForm" class="form" novalidate>
+                <form #f="ngForm" class="form inner-form form-bordered" novalidate>
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="form-group m-0">
+                      <div>
                         <label>Ticker
                           <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave" placement="right" container="body" ngbPopover="Unique ticker code.">
                           </i>
                         </label>
-                        <div>
-                          <h6> {{publishExchangeOfferForm.ticker}} </h6>
-                        </div>
+                      
+                          <h4> {{publishExchangeOfferForm.ticker}} </h4>
+                      
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group m-0">
+                      <div>
                         <label>Currency Id
                           <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave" placement="right" container="body" ngbPopover="Currency Id">
                           </i>
                         </label>
-                        <div>
-                          <h6> {{publishExchangeOfferForm.currencyId}} </h6>
-                        </div>
+                      
+                          <h4> {{publishExchangeOfferForm.currencyId}} </h4>
+                      
                       </div>
                     </div>
                   </div>
-                  <hr>
+                 
                   <div class="form-body">
                     <div class="row">
                       <div class="col-md-6">
-                        <div class="form-group">
+                        <div>
                           <label>Rate
                             <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave" container="body" placement="right" ngbPopover="The rate per currency unit at which you are buying.">
                             </i>
                           </label>
-                          <div class="input-group">
-                            <input type="number" minValue="0" required [(ngModel)]="publishExchangeOfferForm.buyRate" name="buyRate" #buyRate="ngModel" class="form-control">
-                            <div class="input-group-append">
-                              <span class="input-group-text">
+                           <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
+                            <div class="col-9 pl-0">
+                            <input type="number" minValue="0" required [(ngModel)]="publishExchangeOfferForm.buyRate" name="buyRate" #buyRate="ngModel" class="pl-0 mb-0 pt-0 pb-0 form-control">
+                          </div>
+                            <div class="col-3">
+                              <span class="input-group-text text-right">
                                 XIN
                               </span>
                             </div>
@@ -68,15 +70,17 @@
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="form-group">
+                        <div>
                           <label>Units
                             <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave" container="body" placement="right" ngbPopover="Number of currency units you want to buy.">
                             </i>
                           </label>
-                          <div class="input-group">
-                            <input type="number" minValue="0" required [(ngModel)]="publishExchangeOfferForm.initialBuySupply" name="initialBuySupply" #initialBuySupply="ngModel" class="form-control">
-                            <div class="input-group-append">
-                              <span class="input-group-text">
+                          <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
+                            <div class="col-9 pl-0">
+                            <input type="number" minValue="0" required [(ngModel)]="publishExchangeOfferForm.initialBuySupply" name="initialBuySupply" #initialBuySupply="ngModel" class="pl-0 mb-0 pt-0 pb-0 form-control">
+                          </div>
+                            <div class="col-3">
+                              <span class="input-group-text text-right">
                                 UNITS
                               </span>
                             </div>
@@ -99,20 +103,22 @@
                             <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave" container="body" placement="right" ngbPopover="Block height at which this offer expires.">
                             </i>
                           </label>
-                          <div class="input-group m-0">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text">
+                          <div class="input-group pt-0 ml-0 mr-0 sign_in_inputs row form-border-bottom">
+                            <div class="col-2">
+                              <span class="input-group-text text-left">
                                 BLOCK : {{ currentHeight }}
                               </span>
                             </div>
-                            <input type="number" class="form-control" [(ngModel)]="publishExchangeOfferForm.expirationHeight" name="expirationHeight" [minValue]="accountControl.phasingFinishHeight || 10"
+                             <div class="col-4 pl-0">
+                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="publishExchangeOfferForm.expirationHeight" name="expirationHeight" [minValue]="accountControl.phasingFinishHeight || 10"
                               [maxValue]="14400" #expirationHeight="ngModel" required placeholder="1440">
-                            <div class="input-group-append">
-                              <span class="input-group-text">
+                            </div>
+                            <div class="col-2 pl-0">
+                              <span class="input-group-text text-left">
                                 {{ publishExchangeOfferForm.days }} Day(s)
                               </span>
                             </div>
-                            <div class="input-group-append">
+                            <div class="col-4 pr-1 text-right btn-icon-group">
                               <a class="btn btn-primary" (click)="min()">
                                 <i class="fa fa-fast-backward"></i>
                               </a>
@@ -141,8 +147,8 @@
                         </div>
                       </div>
                     </div>
-                    <div class="form-actions left">
-                      <button [disabled]="f.invalid" (click)="publishExchangeOffer()" type="button" class="btn btn-primary mr-1 mb-0 float-right"
+                    <div class="mt-4 left">
+                      <button [disabled]="f.invalid" (click)="publishExchangeOffer()" type="button" class="btn btn-gradient mr-1 mb-0 float-right"
                         awNextStep>
                         <i class="fa fa-chevron-right"></i> Next
                       </button>
@@ -150,7 +156,7 @@
                   </div>
                 </form>
               </aw-wizard-step>
-              <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
+              <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="ucsb"> Ticker
@@ -163,7 +169,7 @@
                       <h4> {{publishExchangeOfferForm.currencyId}} </h4>
                     </div>
                 </div>
-                <hr>
+               
                 <div class="row">
                   <div class="col-md-6">
                     <div class="ucsb"> Buy Rate
@@ -176,7 +182,7 @@
                     <h4> {{publishExchangeOfferForm.initialBuySupply}}  </h4>
                   </div>
                 </div>
-                <hr>
+              
                 <div class="row">
                     <div class="col-md-4">
                         <div class="ucsb"> Expiration Height
@@ -196,22 +202,22 @@
                     </h4>
                   </div>
                 </div>
-                <hr>
+            
                 <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}" class="btn btn-raised mr-1 mb-0"
                   (click)="unsignedTx = !unsignedTx">
                   <i class="fa fa-key"></i> Signed Transaction
                 </button>
-                <hr *ngIf="unsignedTx">
-                <div class="form-group" *ngIf="unsignedTx">
-                  <div class="position-relative">
-                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control" name="key"></textarea>
+               <!--  <hr *ngIf="unsignedTx"> -->
+                <div class="form-group mt-3" *ngIf="unsignedTx">
+                  <div class="position-relative sign_in_inputs">
+                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0" name="key"></textarea>
                   </div>
                 </div>
-                <div class="form-actions">
-                  <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes);" class="btn btn-primary float-right">
+                <div class="mt-4">
+                  <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes);" class="btn btn-gradient float-right">
                     <i class="fa fa-check"></i> Finish
                   </button>
-                  <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
+                  <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
                     <i class="fa fa-chevron-left"></i> Previous
                   </button>
                 </div>

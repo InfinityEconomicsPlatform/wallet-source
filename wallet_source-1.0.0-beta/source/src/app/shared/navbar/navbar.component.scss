@@ -17,23 +17,25 @@
     letter-spacing: 1.2px;
   }
   .dropdown-menu {
-    padding: 15px 25px;
+    padding: 15px 0;
     box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
     -webkit-box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
     border-radius: 10px;
     border: none;
     .dropdown-item {
-      padding: 0 1.5rem;
+      padding: 0 25px;
       font-weight: 500;
       color: #4a5469;
       font-size: 13px;
       line-height: 42px;
       border-bottom: 1px solid #e9dedd;
       letter-spacing: 1.2px;
-      padding: 0;
-      .fa {
+      
+      i {
         color: #e72d45 !important;
         margin-right: 15px;
+        font-size: 15px;
+        margin-right: 10px;
       }
       &:last-child {
         border: none;
