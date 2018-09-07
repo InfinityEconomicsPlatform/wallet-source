@@ -137,7 +137,7 @@
                                 <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="buyFormOnChange()" [(ngModel)]="buyOrderForm.price" name="price" #price="ngModel"
                               minValue="0" required>
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 pr-1 pl-0">
                               <span class="input-group-text text-yellow">XIN</span>
                             </div>
                           </div>
@@ -176,7 +176,7 @@
                             <input type="number" disabled class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="buyOrderForm.totalPrice" name="totalPrice" #totalPrice="ngModel"
                               minValue="0">
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 pr-1 pl-0">
                               <span class="input-group-text text-yellow">XIN</span>
                             </div>
                           </div>
@@ -197,7 +197,7 @@
                 <h3 class="card-title mb-3 mt-3">Offers to Sell {{currencyDetails.code}}</h3>
                 <ngx-datatable [rows]="sellOffersRows" [columnMode]="'standard'" [scrollbarH]="true" [footerHeight]="50" [rowHeight]="'auto'"
                   [externalPaging]="true" [count]="sellOffersPage.totalElements" [offset]="sellOffersPage.pageNumber" [limit]="sellOffersPage.size"
-                  (page)='getSellOffers($event)' (autoRefresh)="getSellOffers()">
+                  (page)='getSellOffers($event)' (autoRefresh)="getSellOffers()" class="pager-small">
                   <ngx-datatable-column prop="rateTQT" name="Price per share">
                     <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                       {{value | rateTqtToPrice:decimals}}
@@ -265,7 +265,7 @@
                             <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="sellFormOnChange()" [(ngModel)]="askOrderForm.price" name="price" #price="ngModel"
                               minValue="0" required>
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 pr-1 pl-0">
                               <span class="input-group-text text-yellow">XIN</span>
                             </div>
                           </div>
@@ -304,7 +304,7 @@
                             <input type="number" disabled class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="askOrderForm.totalPrice" name="totalPrice" #totalPrice="ngModel"
                               minValue="0">
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 pr-1 pl-0">
                               <span class="input-group-text text-yellow">XIN</span>
                             </div>
                           </div>
@@ -325,7 +325,7 @@
                 <h3 class="card-title mb-3  mt-3">Offers to Buy {{currencyDetails.code}}</h3>
                 <ngx-datatable [rows]="buyOffersRows" [columnMode]="'standard'" [scrollbarH]="true" [footerHeight]="50" [rowHeight]="'auto'"
                   [externalPaging]="true" [count]="buyOffersPage.totalElements" [offset]="buyOffersPage.pageNumber" [limit]="buyOffersPage.size"
-                  (page)='getBuyOffers($event)' (autoRefresh)="getBuyOffers()">
+                  (page)='getBuyOffers($event)' (autoRefresh)="getBuyOffers()" class="pager-small">
                   <ngx-datatable-column prop="rateTQT" name="Price per share">
                     <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                       {{value | rateTqtToPrice:decimals}}
