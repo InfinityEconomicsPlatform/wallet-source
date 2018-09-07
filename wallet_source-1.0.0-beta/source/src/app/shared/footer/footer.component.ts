@@ -7,6 +7,7 @@ import { LocalhostService } from '../../services/localhost.service';
 import { BroadcastService } from '../../services/broadcast.service';
 import { AppConstants } from '../../config/constants';
 import { RootScope } from '../../config/root-scope';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'app-footer',
@@ -22,16 +23,20 @@ export class FooterComponent implements OnInit {
     peerState: any = {};
     options: any = {};
     currentModeText: string = '';
+    selectedLanguage: string;
 
     constructor(private nodeService: NodeService,
         private broadcastService: BroadcastService,
         private localhostService: LocalhostService,
-        private sessionStorageService:SessionStorageService,
+        private sessionStorageService: SessionStorageService,
         private transactionService: TransactionService,
-        private optionService: OptionService) {
+        private optionService: OptionService,
+        private translate: TranslateService) {
             this.optionService.optionsChanged$.subscribe(res => {
                 this.ngOnInit();
             });
+        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
+        this.translate.use(this.selectedLanguage);
         }
 
     ngOnInit() {

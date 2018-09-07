@@ -9,6 +9,7 @@ import {CurrenciesService} from '../../currencies/currencies.service';
 import {CryptoService} from "../../../services/crypto.service";
 import * as alertFunctions from "../../../shared/data/sweet-alerts";
 import {FeeService} from "../../../services/fee.service";
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -51,6 +52,7 @@ export class DetailsComponent {
     openPublicKey: boolean = false;
     openBL: boolean = false;
     openCM: boolean = false;
+    selectedLanguage: string;
 
     constructor(public commonsService: CommonService,
                 public accountService: AccountService,
@@ -59,8 +61,11 @@ export class DetailsComponent {
                 public quantToAmountPipe: QuantToAmountPipe,
                 public currenciesService: CurrenciesService,
                 public cryptoService: CryptoService,
+                public translate: TranslateService,
                 public feeService: FeeService) {
         this.getAccountDetails();
+        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
+        this.translate.use(this.selectedLanguage);
     }
 
 

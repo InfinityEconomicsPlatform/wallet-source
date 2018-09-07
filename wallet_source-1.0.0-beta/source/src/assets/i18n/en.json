@@ -29,5 +29,18 @@
     "passphrase_placeholder": "Minimum 35 characters or 15 words",
     "error_passphrase_required": "Passphrase is required.",
     "note": "<span>Note:</span> Every transaction will get signed locally and transmitted to a random node without revealing your wallet passphrase or private keys."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "sub-title": "Dashboard",
+    "send-btn": "Send",
+    "receive-btn": "Receive",
+    "account-info-btn": "Account Info",
+    "transactions-btn": "Transactions",
+    "market-txt": "Market"
+  },
+  "footer":{
+    "content1": "This app is owned by the",
+    "content2": "and managed by the"
   }
 }

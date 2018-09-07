@@ -4,19 +4,19 @@
 </ng-container>
 <ng-template #sendtemp>
     <div class="card-header">
-        <h3 class="card-title">SEND XIN</h3>
+        <h3 class="card-title">{{'account.send-xin.send-xin-title'| translate}}</h3>
     </div>
     <div class="card-body">
         <div class="card-block ml-sm-3 mr-sm-3">
             <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                <aw-wizard-step stepTitle="{{'account.send-xin.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                     <form class="form inner-form" #f="ngForm" novalidate>
                         <div class="form-body">
                             <div class="row mt-4">
                                 <div class="col-md-6">
                                     <div class="form-group m-0">
-                                        <label>Recipient
-                                            <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The recipient account to send token to."></i>
+                                        <label>{{'account.send-xin.recipient-lable'| translate}}
+                                            <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="{{'account.send-xin.recipient-tooltip'| translate}}"></i>
                                         </label>
                                         <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">  
                                             <div class="col-7 col-lg-8 pl-0 ">                                          
@@ -25,12 +25,12 @@
                                              <div class="col-5 col-lg-4 pr-1 pl-0">
                                                <div class="btn-icon-group text-right">
                                                     
-                                                        <span  *isAppEnabled="'Aliases'" class="btn btn-primary btn-seperator" (click)="searchAliases()" triggers="mouseenter:mouseleave" placement="top" container="body" ngbPopover="Enter an alias connected to an account to get the account Id.">
+                                                        <span  *isAppEnabled="'Aliases'" class="btn btn-primary btn-seperator" (click)="searchAliases()" triggers="mouseenter:mouseleave" placement="top" container="body" ngbPopover="{{'account.sent-xin.alias-connect-tooltip'| translate}}">
                                                             <i class="fa fa-share-alt"></i>
                                                         </span>
                                                    
                                                    
-                                                        <span *isExpertView="true" class="btn btn-primary btn-left"  triggers="mouseenter:mouseleave" placement="top" (click)="loadBookmarkView()" container="body" ngbPopover="Open your bookmarks to insert an account id">
+                                                        <span *isExpertView="true" class="btn btn-primary btn-left"  triggers="mouseenter:mouseleave" placement="top" (click)="loadBookmarkView()" container="body" ngbPopover="{{'account.sent-xin.open-bookmark-tooltip'| translate}}">
                                                             <i class="fa fa-bookmark"></i>
                                                         </span>
                                                    
@@ -46,8 +46,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group m-0">
-                                        <label>Amount
-                                            <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The amount you like to send to the recipient account."></i>
+                                        <label>{{'account.send-xin.amount-lable'| translate}}
+                                            <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="{{'account.send-xin.amount-tooltip'| translate}}"></i>
                                         </label>
                                         <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                             <div class="col-10 pl-0">                                          
@@ -72,24 +72,24 @@
                             </div>
                             <div class="mt-1">
                             <button type="button" [ngClass]="{'btn-success': !hasPrivateMessage, 'btn-danger': hasPrivateMessage}" class="btn btn-raised mr-1 mb-0 mr-3" (click)="setMessage()">
-                                <i class="fa fa-plus"></i> {{ hasPrivateMessage ? 'Remove' : 'Add' }} Private Message
+                                <i class="fa fa-plus"></i> {{ hasPrivateMessage ? 'Remove' : 'Add' }} {{'account.send-xin.private-message-btn'| translate}}
                             </button>
                             <button type="button" [ngClass]="{'btn-success': !hasReceiverPublicKey, 'btn-danger': hasReceiverPublicKey}" class="btn btn-raised mb-0" (click)="setPublicKey()">
-                                <i class="fa fa-plus"></i> {{ hasReceiverPublicKey ? 'Remove' : 'Add' }} Recipient Public Key
+                                <i class="fa fa-plus"></i> {{ hasReceiverPublicKey ? 'Remove' : 'Add' }} {{'account.send-xin.public-key-btn'| translate}}
                             </button>
                             </div>
                            <!--  <hr *ngIf="hasPrivateMessage || hasReceiverPublicKey"> -->
                             <div class="form-group mt-3" *ngIf="hasPrivateMessage">
-                                <label>Message (MAX. 160 CHARS)
-                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="For message encryption the recipient public key needs to be known. This is not the case for accounts without any outbound transaction."></i>
+                                <label>{{'account.send-xin.message-field-lable'| translate}}
+                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="{{'account.send-xin.message-field-tooltip'| translate}}"></i>
                                 </label>
                                 <div class="position-relative sign_in_inputs">
                                     <input [(ngModel)]="sendForm.message" rows="5" class="form-control pl-0" name="message">
                                 </div>
                             </div>
                             <div class="form-group" *ngIf="hasReceiverPublicKey">
-                                <label>Recipient Public Key (OPTIONAL)
-                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key."></i>
+                                <label>{{'account.send-xin.public-key-field-lable'| translate}}
+                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="{{'account.send-xin.public-key-field-tooltip'| translate}}"></i>
                                 </label>
                                 <div class="position-relative sign_in_inputs">
                                     <input [(ngModel)]="sendForm.pubkey" type="text" class="form-control pl-0" name="publickey">
@@ -98,23 +98,23 @@
                         </div>
                         <div class="mt-4 fright">
                             <button [disabled]="f.invalid" type="button" class="btn btn-gradient mr-1 mb-0 float-right" (click)="getAndVerifyAccount(sendForm);" awNextStep>
-                                <i class="fa fa-chevron-right"></i> Next
+                                <i class="fa fa-chevron-right"></i> {{'account.send-xin.next-btn'| translate}}
                             </button>
                         </div>
                     </form>
                 </aw-wizard-step>
-                <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                <aw-wizard-step stepTitle="{{'account.send-xin.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="ucsb"> Recipient Account </div>
+                            <div class="ucsb">{{'account.send-xin.recipient-account-lable'| translate}}</div>
                             <h4> {{sendForm.recipientRS}} </h4>
                         </div>
                         <div class="col-md-4">
-                            <div class="ucsb"> Recipient Name </div>
+                            <div class="ucsb">{{'account.send-xin.recipient-name-lable'| translate}}</div>
                             <h4> {{accountDetails.name | notSet}} </h4>
                         </div>
                         <div class="col-md-4">
-                            <div class="ucsb"> Recipient Balance </div>
+                            <div class="ucsb">{{'account.send-xin.recipient-balance-lable'| translate}} </div>
                             <h4> {{accountDetails.balanceTQT | amountTqt}}
                                 <small> XIN</small>
                             </h4>
@@ -122,61 +122,61 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="ucsb"> Token Send </div>
+                            <div class="ucsb">{{'account.send-xin.token-send-lable'| translate}}</div>
                             <h4> {{tx_amount | amountTkn}}
                                 <small> XIN</small>
                             </h4>
                         </div>
                         <div class="col-md-4">
-                            <div class="ucsb"> Service Fee </div>
+                            <div class="ucsb">{{'account.send-xin.service-fee-lable'| translate}}</div>
                             <h4> {{ tx_fee | amountTkn }}
                                 <small> XIN</small>
                             </h4>
                         </div>
                         <div class="col-md-4">
-                            <div class="ucsb"> Token Total </div>
+                            <div class="ucsb">{{'account.send-xin.token-total-lable'| translate}} </div>
                             <h4> {{ tx_total | amountTkn }} </h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="ucsb"> Valid </div>
+                            <div class="ucsb">{{'account.send-xin.valid-lable'| translate}} </div>
                             <h4 [innerHTML]="validBytes | txIsValid"></h4>
                         </div>
                         <div class="col-md-4">
-                            <div class="ucsb"> Message Added </div>
+                            <div class="ucsb">{{'account.send-xin.message-added-lable'| translate}} </div>
                             <h4 [innerHTML]="hasMessageAdded | isEnabled"></h4>
                         </div>
                         <div class="col-md-4">
-                            <div class="ucsb"> Public Key Added </div>
+                            <div class="ucsb">{{'account.send-xin.public-key-added-lable'| translate}}</div>
                             <h4 [innerHTML]="hasPublicKeyAdded | isEnabled"></h4>
                         </div>
                     </div>
                     <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}" class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                        <i class="fa fa-key"></i> Signed Transaction
+                        <i class="fa fa-key"></i>{{'account.send-xin.signed-transaction-lable'| translate}}
                     </button>
                     <button type="button" [ngClass]="{'btn-success': !addMessage, 'btn-danger': addMessage}" class="btn btn-raised mb-0" (click)="addMessage=!addMessage">
-                        <i class="fa fa-key"></i> Encrypted Message
+                        <i class="fa fa-key"></i>{{'account.send-xin.encrypted-message-lable'| translate}}
                     </button>
                    <!--  <hr *ngIf="unsignedTx || addMessage"> -->
                     <div class="form-group" *ngIf="unsignedTx">
-                        <label>Signed Transaction</label>
+                        <label>{{'account.send-xin.signed-transaction-lable'| translate}}</label>
                         <div class="position-relative sign_in_inputs">
                             <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0" name="key"></textarea>
                         </div>
                     </div>
                     <div class="form-group" *ngIf="addMessage">
-                        <label>Encrypted Message</label>
+                        <label>{{'account.send-xin.encrypted-message-lable'| translate}}</label>
                         <div class="position-relative sign_in_inputs">
                             <input disabled="true" rows="5" [(ngModel)]="encrypted" class="form-control pl-0" name="message">
                         </div>
                     </div>
                     <div class="form-actions mt-3 mobile-center">
                         <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes)" class="btn btn-gradient float-right">
-                            <i class="fa fa-check"></i> Finish
+                            <i class="fa fa-check"></i>{{'account.send-xin.finish-btn'| translate}}
                         </button>
                         <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                            <i class="fa fa-chevron-left"></i> Previous
+                            <i class="fa fa-chevron-left"></i>{{'account.send-xin.previous-btn'| translate}}
                         </button>
                     </div>
                 </aw-wizard-step>

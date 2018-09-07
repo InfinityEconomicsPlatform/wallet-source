@@ -29,5 +29,18 @@
     "passphrase_placeholder": "Mindestens 35 Zeichen oder 15 Wörter",
     "error_passphrase_required": "Passphrase ist erforderlich.",
     "note": "<strong>Hinweis</strong>: Jede Transaktion wird lokal signiert und an einen zufälligen Node übertragen, ohne dass Ihre Wallet-Passphrase oder Ihr privater Schlüssel angezeigt wird."
+  },
+  "dashboard": {
+    "title": "INSTRUMENTENTAFEL",
+    "sub-title": "Instrumententafel",
+    "send-btn": "Senden",
+    "receive-btn": "Erhalten",
+    "account-info-btn": "Kontoinformation",
+    "transactions-btn": "Transaktionen",
+    "market-txt": "Markt"
+  },
+  "footer":{
+    "content1": "Diese App gehört dem",
+    "content2": "und verwaltet von der"
   }
 }

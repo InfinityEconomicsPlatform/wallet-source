@@ -11,7 +11,7 @@ export class AppConstants {
     };
     public static baseConfig = {
         'SESSION_STORAGE_NAMESPACE': 'com.client',
-        'FALLBACK_HOST_URL': 'http://185.103.75.217:23457',
+        'FALLBACK_HOST_URL': 'http://208.95.1.177:23457',
         'AUTO_PAGE_REFRESH_INTERVAL': 60000,
         'TOKEN_QUANTS': 100000000,
         'TX_DEADLINE': 60,
