@@ -72,8 +72,23 @@ export class AddressService {
         })
     }
 
-    clear(tableOptions, successCallBack, errorCallBack) {
-
+    clear(tableOptions,index, publicKey, successCallBack, errorCallBack) {
+        this.createTransaction(tableOptions, tx => {
+            let store = tx.objectStore(tableOptions);
+            let req = store.index(index).openCursor();
+            req.onsuccess = (e) => {
+                let cursor;
+                if (cursor = e.target.result) {
+                    if (cursor.value['publicKey'] == publicKey) {
+                        cursor.delete();
+                    }
+                    cursor["continue"]();
+                } else {
+                    successCallBack('success');
+                }
+            };
+            req.onerror = errorCallBack;
+        })
     }
 
     count(tableOptions, successCallBack, errorCallBack) {
@@ -110,8 +125,8 @@ export class AddressService {
         }
     };
 
-    clearContacts = function (successCallback, errorCallback) {
-        this.clear(AppConstants.addressBookConfig.tableAddressBook, successCallback, errorCallback);
+    clearContacts = function (publicKey, successCallback, errorCallback) {
+        this.clear(AppConstants.addressBookConfig.tableAddressBook,'public_key_idx', publicKey, successCallback, errorCallback);
     };
 
     getContactsCount = function (successCallBack, errorCallBack) {

@@ -93,6 +93,7 @@ import {LedgerTxTypesPipe} from '../pipes/ledger-tx-types.pipe';
 import {CharactersPipe} from '../pipes/characters.pipe';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import {GermanUmlautTransformPipe} from '../pipes/german-umlaut-transform.pipe';
+import {AddressService} from '../module/account/address.service';
 
 @NgModule({
     exports: [
@@ -266,7 +267,8 @@ import {GermanUmlautTransformPipe} from '../pipes/german-umlaut-transform.pipe';
         SearchService,
         BlockrService,
         EscrowService,
-        SubscriptionService
+        SubscriptionService,
+        AddressService
     ]
 })
 export class SharedModule {

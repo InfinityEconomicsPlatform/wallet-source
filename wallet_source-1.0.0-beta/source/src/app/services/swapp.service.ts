@@ -1,13 +1,20 @@
 import {Injectable} from '@angular/core';
+import {CommonService} from './common.service';
 
 @Injectable()
 export class SwappService {
 
     swapps: Array<any>;
     watchList: Array<any>;
+    keyForLocalStore: string;
+    constructor(public commonsService: CommonService) {
+       this.loadSWApps();
+    }
 
-    constructor() {
-        const localStored = (localStorage.swapps_array !== undefined) ? JSON.parse(localStorage.swapps_array) : undefined;
+    loadSWApps() {
+        let publicKey = this.commonsService.getAccountDetailsFromSession('publicKey');
+        this.keyForLocalStore = "swapps_array_" + publicKey;
+        const localStored = (localStorage[this.keyForLocalStore] !== undefined) ? JSON.parse(localStorage[this.keyForLocalStore]) : undefined;
         this.swapps = localStored || [
             {
                 name: 'Assets',
@@ -73,12 +80,17 @@ export class SwappService {
         this.watchList = [];
     }
 
+    clearSwapps() {
+        let publicKey = this.commonsService.getAccountDetailsFromSession('publicKey');
+        localStorage.removeItem("swapps_array_" + publicKey);
+    }
+
     getAllSwapps() {
         return this.swapps;
     }
 
     setSwappSetting(swapps) {
-        localStorage.swapps_array = JSON.stringify(this.swapps);
+        localStorage[this.keyForLocalStore] = JSON.stringify(this.swapps);
         this.swapps = swapps;
     }
 

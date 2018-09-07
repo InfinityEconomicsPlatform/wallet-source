@@ -3,7 +3,8 @@ import { Router } from "@angular/router";
 import { TranslateService } from '@ngx-translate/core';
 import { AppConstants } from '../../../config/constants';
 import { SessionStorageService } from '../../../services/session-storage.service';
-import { LoginService } from "../../../services/login.service";
+import { LoginService } from '../../../services/login.service';
+import {SwappService} from '../../../services/swapp.service';
 
 @Component({
     selector: 'app-welcome',
@@ -16,7 +17,11 @@ export class WelcomeComponent implements OnInit {
     languages: Array<Object>;
     selectedLanguage: string;
 
-    constructor(public router: Router, public translate: TranslateService, public sessionStorageService: SessionStorageService, public loginService: LoginService) {
+    constructor(public router: Router,
+                public translate: TranslateService,
+                public sessionStorageService: SessionStorageService,
+                public loginService: LoginService,
+                public swappService: SwappService) {
         this.languages = [
             {name: 'English', code: 'en'},
             {name: 'German', code: 'de'}
@@ -36,6 +41,7 @@ export class WelcomeComponent implements OnInit {
         if (rememberSecret) {
             this.loginService.calculatePrivateKeyFromSecret(this.model.passPhrase, true);
         }
+        this.swappService.loadSWApps();
         this.router.navigateByUrl('/dashboard');
     };
 

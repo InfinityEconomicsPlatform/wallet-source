@@ -10,6 +10,8 @@ import {SubscriptionService} from '../../module/subscriptions/subscription.servi
 import {EscrowService} from '../../module/escrow/escrow.service';
 import {CommonService} from '../../services/common.service';
 import {ExtensionsService} from '../../module/extensions/extensions.service';
+import {AddressService} from '../../module/account/address.service';
+import {SwappService} from '../../services/swapp.service';
 
 @Component({
     selector: 'app-navbar',
@@ -37,7 +39,9 @@ export class NavbarComponent implements OnInit {
                 private commonsService: CommonService,
                 private extensionsService: ExtensionsService,
                 private escrowService: EscrowService,
-                private subscriptionService: SubscriptionService) {
+                private subscriptionService: SubscriptionService,
+                public addressService: AddressService,
+                public swappService: SwappService) {
         const browserLang: string = translate.getBrowserLang();
         translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : 'en');
         
@@ -135,7 +139,14 @@ export class NavbarComponent implements OnInit {
 
     logout() {
         alertFunctions.confirmLogoutButton().then((result) => {
-            if (result.value === true) {
+            if (result.value === 0 || result.value === 1) {
+                if(result.value === 1) {
+                    //clear localstorage
+                    let publicKey = this.commonsService.getAccountDetailsFromSession('publicKey');
+                    this.swappService.clearSwapps();
+                    this.optionService.clearOptions(publicKey,(success)=>{},(error) => {});
+                    this.addressService.clearContacts(publicKey,(success)=>{},(error) => {});
+                }
                 this.authService.logout();
             }
         }, () => {

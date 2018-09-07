@@ -102,8 +102,23 @@ export class OptionService {
         })
     }
 
-    clear(tableOptions, successCallBack, errorCallBack) {
-
+    clear(tableOptions, index, publicKey, successCallBack, errorCallBack) {
+        this.createTransaction(tableOptions, tx => {
+            let store = tx.objectStore(tableOptions);
+            let req = store.index(index).openCursor();
+            req.onsuccess = (e) => {
+                let cursor;
+                if (cursor = e.target.result) {
+                    if (cursor.value['publicKey'] == publicKey) {
+                        cursor.delete();
+                    }
+                    cursor["continue"]();
+                } else {
+                    successCallBack('success');
+                }
+            };
+            req.onerror = errorCallBack;
+        })
     }
 
     count(tableOptions, successCallBack, errorCallBack) {
@@ -128,8 +143,8 @@ export class OptionService {
         }
     };
 
-    clearOptions(successCallback, errorCallback) {
-        this.clear(AppConstants.optionsConfig.tableOptions, successCallback, errorCallback);
+    clearOptions(publicKey, successCallback, errorCallback) {
+        this.clear(AppConstants.optionsConfig.tableOptions,'public_key_idx', publicKey, successCallback, errorCallback);
     };
 
     getContactsCount(successCallBack, errorCallBack) {
@@ -152,7 +167,7 @@ export class OptionService {
     };
 
     clearContacts(successCallback, errorCallback) {
-        this.clear(AppConstants.optionsConfig.tableOptions, successCallback, errorCallback);
+        //this.clear(AppConstants.optionsConfig.tableOptions, successCallback, errorCallback);
     };
 
     getOption(optionName, publicKey?) {

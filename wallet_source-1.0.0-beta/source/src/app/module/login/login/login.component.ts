@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { LoginService } from '../../../services/login.service';
+import {SwappService} from '../../../services/swapp.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,13 @@ import { LoginService } from '../../../services/login.service';
 })
 export class LoginComponent implements OnInit {
   model: Login = new Login();
-  constructor(public router: Router, public loginService: LoginService) { }
+  constructor(public router: Router,
+              public loginService: LoginService,
+              public swappService: SwappService) { }
 
   ngOnInit() {}
 
-  loginToAccount = function () {
+    loginToAccount = function () {
     let rememberSecret = true;//We are making it default now
 
     this.loginService.calculateAccountDetailsFromSecret(this.model.passPhrase, true);
@@ -21,6 +24,7 @@ export class LoginComponent implements OnInit {
     if (rememberSecret) {
       this.loginService.calculatePrivateKeyFromSecret(this.model.passPhrase, true);
     }
+    this.swappService.loadSWApps();
     this.router.navigateByUrl('/dashboard');
   };
 }
