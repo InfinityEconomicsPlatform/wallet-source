@@ -44,13 +44,7 @@ import {ReceiveComponent} from './receive/receive/receive.component';
 import { ControlFundingMonitorComponent } from './funding-monitor/control-funding-monitor/control-funding-monitor.component';
 import { ActiveFundingMonitorComponent } from './funding-monitor/active-funding-monitor/active-funding-monitor.component';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http, './assets/i18n/account/', '.json');
-
-}
 @NgModule({
     imports: [
         CommonModule,
@@ -64,15 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         ArchwizardModule,
         QRCodeModule,
         NgxDatatableModule,
-        HttpClientModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            },
-            isolate: true
-        })
+        HttpClientModule
     ],
     exports: [],
     declarations: [

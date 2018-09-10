@@ -12,6 +12,8 @@ import { AtService } from './at.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule } from '@angular/forms';
 import { WorkbenchComponent } from "./workbench/workbench.component";
+import { CompilerComponent } from './workbench/compiler/compiler.component';
+import { DashboardComponent } from './workbench/dashboard/dashboard.component';
 
 @NgModule({
     imports: [
@@ -28,7 +30,9 @@ import { WorkbenchComponent } from "./workbench/workbench.component";
         ShowAtsComponent,
         AtComponent,
         AtDetailsComponent,
-        WorkbenchComponent
+        WorkbenchComponent,
+        CompilerComponent,
+        DashboardComponent
     ],
     providers: [
         AtService
