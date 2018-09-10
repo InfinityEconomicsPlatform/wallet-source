@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+    displayTab: string = "simple";
 
     constructor(public router: Router) {
 
@@ -17,6 +18,10 @@ export class DashboardComponent implements OnInit {
 
     redirectToCompiler() {
         this.router.navigateByUrl('/at/workbench/compiler');
+    }
+
+    showTab(type) {
+        this.displayTab = type;
     }
 
 }
