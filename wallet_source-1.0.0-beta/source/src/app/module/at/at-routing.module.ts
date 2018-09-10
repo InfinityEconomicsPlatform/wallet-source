@@ -7,6 +7,8 @@ import { AccountDetailComponent } from "../../shared/search/account-detail/accou
 import { AtComponent } from './show-ats/at/at.component';
 import { AtDetailsComponent } from './show-ats/at-details/at-details.component';
 import { WorkbenchComponent } from "./workbench/workbench.component";
+import { CompilerComponent } from './workbench/compiler/compiler.component';
+import { DashboardComponent } from './workbench/dashboard/dashboard.component';
 
 const routes: Routes = [
     {
@@ -16,20 +18,22 @@ const routes: Routes = [
     {
         path: 'show-ats',
         component: ShowAtsComponent,
-        children:[
+        children: [
             {
                 path: '',
                 pathMatch: 'full',
                 redirectTo: 'my'
             },
-            {   path:'my',
+            {
+                path: 'my',
                 component: AtComponent,
                 data: {
                     atType: "MY",
                     title: 'My ATs'
                 }
             },
-            {   path:'all',
+            {
+                path: 'all',
                 component: AtComponent,
                 data: {
                     atType: "ALL",
@@ -38,22 +42,41 @@ const routes: Routes = [
             }
         ]
     },
-    {   
-        path:'show-ats/transaction-details',
-            component: TransactionDetailComponent
+    {
+        path: 'show-ats/transaction-details',
+        component: TransactionDetailComponent
     },
     {
-        path:'show-ats/account-details',
+        path: 'show-ats/account-details',
         component: AccountDetailComponent,
     },
     {
-        path:'show-ats/at-details',
+        path: 'show-ats/at-details',
         component: AtDetailsComponent,
     },
     {
-        path:'workbench',
+        path: 'workbench',
         component: WorkbenchComponent,
-    }
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'dashboard'
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent
+            },
+            {
+                path: 'compiler',
+                component: CompilerComponent
+            }
+        ]
+    },
+    // {
+    //     path: 'workbench/compiler',
+    //     component: CompilerComponent,
+    // }
 ];
 
 @NgModule({

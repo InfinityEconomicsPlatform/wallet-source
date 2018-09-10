@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">AT Compiler</h2>
+                    <app-breadcrumb></app-breadcrumb>
+                </div>
+
+                <div class="card-body">
+                    <div class="card-block mr-2 ml-2 form-bordered">
+                        <div class="row">
+                            <div class="col-12">
+                                <div (click)="redirectToCompiler()">
+                                    <i class="fa fa-cogs"></i> Compiler
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs nav-fill nav-auto">
+                                    <li class="nav-item"><a class="nav-link">Simple AT</a></li>
+                                    <li class="nav-item"><a class="nav-link">Sleep AT</a></li>
+                                    <li class="nav-item"><a class="nav-link">Auction AT</a></li>
+                                    <li class="nav-item"><a class="nav-link">Certificate of Deposit AT</a></li>
+                                    <li class="nav-item"><a class="nav-link">Crowdfunding AT</a></li>
+                                    <li class="nav-item"><a class="nav-link">Dormant Funds AT</a></li>
+                                    <li class="nav-item"><a class="nav-link">Lottery AT</a></li>
+                                    <li class="nav-item"><a class="nav-link">Lottery Repeat AT</a></li>
+                                    <li class="nav-item"><a class="nav-link">Fuscavor Funds AT</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active">
+                                        <pre>
+                                            <code>
+^declare DeveloperWallet
+^declare AmountToReturn
+^declare LastTransaction
+^declare ValidTransaction
+^declare WalletBalance
+
+^comment Init runs once and never again.
+Init:
+^comment setting my address
+SET @DeveloperWallet #6e4e78e8e25f59bd
+^comment Return 20 XIN
+SET @AmountToReturn #0000000077359400
+
+^comment start of 2nd run
+PCS
+Update:
+^comment Grab the last payment to the AT
+FUN A_to_Tx_after_Timestamp $LastTransaction
+^comment Check if the Transaction is valid
+FUN @ValidTransaction check_A_Is_Zero
+^comment if it is not valid, Check if Developers get any money.
+BZR $ValidTransaction :DeveloperFund
+^comment Update Last Transaction
+FUN @LastTransaction get_Timestamp_for_Tx_in_A
+^comment Send 20 XIN back
+FUN B_to_Address_of_Tx_in_A
+FUN send_to_Address_in_B $AmountToReturn
+^comment Check for More Transactions
+JMP :Update
+
+DeveloperFund:
+^comment Get The Current Balance of the wallet.
+FUN @WalletBalance get_Current_Balance
+^comment if the wallet balance is <20, dont send.
+BLE $WalletBalance $AmountToReturn :Finish
+^comment Leave 20 XIN in the Wallet and return the rest.
+SUB @WalletBalance $AmountToReturn
+^comment set B1 to Developer.
+FUN set_B1 $DeveloperWallet
+FUN send_to_Address_in_B $WalletBalance
+
+Finish:
+^comment Finish the AT and set
+FIN
+                                            </code>
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

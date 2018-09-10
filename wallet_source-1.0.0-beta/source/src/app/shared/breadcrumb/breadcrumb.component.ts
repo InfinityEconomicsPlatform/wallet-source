@@ -98,6 +98,8 @@ export class BreadcrumbComponent implements OnInit {
         'cancel-alias-sell': 'Cancel Alias Sell',
         'at': 'AT',
         'workbench': 'Workbench',
+        'compiler': 'AT Compiler',
+        'dashboard': 'Dashboard',
         'create-poll': 'Create Poll',
         'details': 'Details',
         'vote': 'Vote',
@@ -141,7 +143,7 @@ export class BreadcrumbComponent implements OnInit {
     routeChange: Subject<any>;
 
     constructor(public router: Router,
-                public activatedRoute: ActivatedRoute) {
+        public activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
