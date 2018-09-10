@@ -248,9 +248,32 @@ padding-top: 15px;
 @media(max-width: 567px){
   .btn-border, .btn-gradient{
   margin-left: auto !important; margin-right: auto !important;
+  min-width: 150px;
   }
   .main-bg {
     padding: 20px 0;
+  }
+  .btn-gradient {
+    line-height: 30px;
+  }
+  .btn-border {
+    line-height: 25px;
+  }
+  .swal2-modal .swal2-confirm {
+    margin-right: 20px !important;
+  }
+  .input-group .btn{
+  padding: 0.325rem 0.5rem;
+  }
+  .back-button{
+  position: relative !important; left: 0;
+  top: auto !important;
+  }
+}
+
+@media(max-width: 340px){
+  .input-group .btn{
+  padding: 0.325rem 0.3rem;
   }
 }
 
@@ -937,6 +960,13 @@ select.form-control:not([size]):not([multiple]) {
   font-size: 14px !important;
     line-height: 16px !important;
      font-weight: 400 !important;
+     margin-bottom: 20px;
+  }
+  .card .form-bordered h4{
+   margin-bottom: 20px;
+  }
+  .form-border-bottom{
+   margin-bottom: 20px;
   }
   .footer-box h4{
   font-size: 12px !important;
@@ -958,13 +988,16 @@ select.form-control:not([size]):not([multiple]) {
   .card-block {
     padding: 15px !important;
   }
+  .accordion .card-body.collapse{
+  padding: 0 !important;
+  }
   .card .main-card-block {
     padding: 20px 15px !important;
   }
   .card .card-header{
   padding: 15px !important;
   }
-  .btn-success.btn-raised {
+  .btn-success.btn-raised, .btn-danger.btn-raised {
     font-size: 13px !important;
     line-height: 18px !important;
     }
@@ -1302,6 +1335,12 @@ height: calc(100% - 80px);
   .text-sm-center {
     text-align: center !important;
     }
+    .text-sm-left{
+    text-align: left !important;
+    }
+    .btn-sm-top.btn-icon-group{
+    top:0;
+    }
    .input-group-text{
     font-size: 12px;
     }
@@ -1320,4 +1359,27 @@ height: calc(100% - 80px);
   position: relative !important;
     border-radius: 20px;
   }
+  .btn-icon{
+  margin-right: 5px;
+  }
+  .tab-content {
+    padding: 0.5rem;
+    }
+  .swal2-popup{
+  padding-top:20px !important;
+  padding-bottom:20px !important;
+  }
+.swal2-popup .swal2-title {
+    font-size: 16px !important;
+    line-height: 26px;
+    letter-spacing: 1px;
+    text-transform: none !important;
+  }
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+    footer{
+    margin-bottom: 10px;
+    }
+
 }

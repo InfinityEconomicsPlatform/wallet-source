@@ -8,7 +8,7 @@
                         <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
                     </div>
       <div class="card-body mt-4">
-        <div class="card-block ml-3 mr-3">
+        <div class="card-block ml-md-3 mr-md-3">
           <aw-wizard [navBarLayout]="'large-filled-symbols'">
             <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
               <form class="form inner-form" #f1="ngForm" novalidate>
@@ -282,10 +282,10 @@
                   </div>
                 </div>
                 <div class="mt-3">
-                  <button type="button" [disabled]="f2.invalid" class="btn btn-gradient mr-1 mb-0 float-right" (click)="createCampaign()" awNextStep>
+                  <button type="button" [disabled]="f2.invalid" class="btn btn-gradient mr-1  mb-2 float-right" (click)="createCampaign()" awNextStep>
                     <i class="fa fa-chevron-right"></i> Next
                   </button>
-                  <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                  <button type="button" class="btn btn-gradient mr-1  mb-2 float-right" awPreviousStep>
                     <i class="fa fa-chevron-left"></i> Previous
                   </button>
                 </div>

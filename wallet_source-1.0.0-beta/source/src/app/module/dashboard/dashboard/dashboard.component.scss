@@ -149,13 +149,16 @@
     font-size: 20px;
     }
     #chartdiv{
-    height: 250px !important;
+    height: 200px !important;
     }
     .account-address{
     margin-top: 40px !important;
     }
     .card-right  .media-box{
     padding: 25px 15px 15px;
+    }
+    .card-right .card-title{
+    font-size: 13px;
     }
 }
 @media (max-width: 480px){

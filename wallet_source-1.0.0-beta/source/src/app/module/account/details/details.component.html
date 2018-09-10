@@ -165,9 +165,9 @@
 						</div>
 
 					</div>
-					<div class="card-block mr-3 ml-3 nav-gradient">
+					<div class="card-block mr-2 ml-2 mr-md-3 ml-md-3 nav-gradient">
 						<div class="row">
-							<div class="col-md-12 col-lg-12">
+							<div class="col-md-12 col-lg-12 pl-0 pr-0">
 								<ul class="nav nav-pills">
 									<li class="nav-item">
 										<a class="nav-link active" (click)="openPublicKey = !openPublicKey">{{'account.public-key-btn'| translate}}</a>
@@ -277,7 +277,7 @@
 									<div class="form-body">
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group m-0">
+												<div class="form-group">
 													<label>Account Name
 														<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Account name max. 100 characters."></i>
 													</label>
@@ -287,7 +287,7 @@
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="form-group m-0">
+												<div class="form-group">
 													<label>Account Description
 														<i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Account description with max. 1'000 characters"></i>
 													</label>
@@ -297,7 +297,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="mt-4"></div>
+										<div class="mt-2"></div>
 										<button type="button" class="btn btn-gradient mr-1 mb-0 float-right" (click)="createSetAccountInfoTransaction();" awNextStep>
 											Next <i class="icon-next_arrow"></i>
 										</button>

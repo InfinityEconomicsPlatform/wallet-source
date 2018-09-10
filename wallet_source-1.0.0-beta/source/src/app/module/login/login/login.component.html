@@ -24,10 +24,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" [disabled]="f.invalid" class="btn btn-primary btn-block enter-btn mt-4 btn-gradient col-md-8" (click)="loginToAccount()">
+                                <button type="submit" [disabled]="f.invalid" class="btn btn-primary btn-block enter-btn mt-2 mt-md-4 btn-gradient col-md-8" (click)="loginToAccount()">
                                     {{ 'login.login_btn' | translate}}
                                 </button>
-                                <p class="note text-center mt-4 mb-4" [innerHTML]="'login.note' | translate"></p>
+                                <p class="note text-center mt-2 mb-2 mt-md-4 mb-md-4" [innerHTML]="'login.note' | translate"></p>
                                 <p class="sign-up text-center mb-0">{{ 'welcome.no_account' | translate}}?<a href="javascript:void(0)" (click)="signUp()"> {{ 'welcome.redirect_signup_btn' | translate}}</a></p>
                             </form>
                         </div>
