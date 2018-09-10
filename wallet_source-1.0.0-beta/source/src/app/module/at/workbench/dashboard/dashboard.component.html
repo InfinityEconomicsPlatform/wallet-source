@@ -8,26 +8,35 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="card-block mr-2 ml-2 form-bordered">
+                    <div class="card-block mt-4 mr-2 ml-2 form-bordered">
                         <div class="row">
                             <div class="col-12">
-                                <div (click)="redirectToCompiler()">
-                                    <i class="fa fa-cogs"></i> Compiler
+                                <div class="header-border">
+                                    <div (click)="redirectToCompiler()" class="row">
+                                        <div class="col-10">Compiler</div>
+                                        <div class="col-2 text-right"><i class="icon-next_arrow circle-arrow"></i> </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col-12">
+                               <h3 class="text-dark">At Templates</h3>
+                            </div>
+                        </div>
+
+                        <div class="row mt-1">
+                            <div class="col-12 at-tabs">
                                 <ul class="nav nav-tabs nav-fill nav-auto">
-                                    <li class="nav-item"><a class="nav-link">Simple AT</a></li>
-                                    <li class="nav-item"><a class="nav-link">Sleep AT</a></li>
-                                    <li class="nav-item"><a class="nav-link">Auction AT</a></li>
-                                    <li class="nav-item"><a class="nav-link">Certificate of Deposit AT</a></li>
-                                    <li class="nav-item"><a class="nav-link">Crowdfunding AT</a></li>
-                                    <li class="nav-item"><a class="nav-link">Dormant Funds AT</a></li>
-                                    <li class="nav-item"><a class="nav-link">Lottery AT</a></li>
-                                    <li class="nav-item"><a class="nav-link">Lottery Repeat AT</a></li>
-                                    <li class="nav-item"><a class="nav-link">Fuscavor Funds AT</a></li>
+                                    <li class="nav-item"><a class="nav-link active"><i class="icon-SWApps"></i><span>Simple AT</span></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="icon-account_info"></i><span>Sleep AT</span></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="icon-receive"></i><span>Auction AT</span></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="icon-AT"></i><span>Certificate of Deposit AT</span></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="icon-Dashboard"></i><span>Crowdfunding AT</span></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="icon-wallet"></i><span>Dormant Funds AT</span></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="icon-Voting"></i><span>Lottery AT</span></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="icon-Shuffling"></i><span>Lottery Repeat AT</span></a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="icon-Escrow"></i><span>Fuscavor Funds AT</span></a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active">
