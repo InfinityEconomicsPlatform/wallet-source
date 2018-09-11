@@ -8,13 +8,13 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="card-block mt-4 mr-2 ml-2 form-bordered">
+                    <div class="card-block mt-4 mr-md-2 ml-md-2 form-bordered">
                         <div class="row">
                             <div class="col-12">
                                 <div class="header-border">
                                     <div (click)="redirectToCompiler()" class="row">
                                         <div class="col-10">Compiler</div>
-                                        <div class="col-2 text-right"><i class="icon-next_arrow circle-arrow"></i>
+                                        <div class="col-2 text-right pl-0 pr-1"><i class="icon-next_arrow circle-arrow"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -27,52 +27,58 @@
                         </div>
 
                         <div class="row mt-1">
-                            <div class="col-12 at-tabs">
-                                <ul class="nav nav-tabs nav-justified nav-auto">
+                            <div class="col-12 pb-2">
+                                <div class="scroll-wrapper">
+                                    <div class="scroller scroller-left"><i class="icon-next_arrow circle-arrow"></i></div>
+                                    <div class="scroller scroller-right"><i class="icon-next_arrow circle-arrow"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-12 at-tabs tab-wrapper">
+                                <ul class="nav nav-tabs nav-justified nav-auto  at-list">
                                     <li class="nav-item">
-                                        <a class="nav-link" [ngClass]="{'active': displayTab == 'simple'}" (click)="showTab('simple')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'simple'}" (click)="showTab('simple')">
                                             <i class="icon-SWApps"></i><span>Simple AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" [ngClass]="{'active': displayTab == 'sleep'}" (click)="showTab('sleep')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'sleep'}" (click)="showTab('sleep')">
                                             <i class="icon-account_info"></i><span>Sleep AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" [ngClass]="{'active': displayTab == 'auction'}" (click)="showTab('auction')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'auction'}" (click)="showTab('auction')">
                                             <i class="icon-receive"></i><span>Auction AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" [ngClass]="{'active': displayTab == 'cod'}" (click)="showTab('cod')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'cod'}" (click)="showTab('cod')">
                                             <i class="icon-AT"></i><span>Certificate of Deposit AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" [ngClass]="{'active': displayTab == 'crowdfunding'}"
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'crowdfunding'}"
                                             (click)="showTab('crowdfunding')">
                                             <i class="icon-Dashboard"></i><span>Crowdfunding AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" [ngClass]="{'active': displayTab == 'dormant'}" (click)="showTab('dormant')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'dormant'}" (click)="showTab('dormant')">
                                             <i class="icon-wallet"></i><span>Dormant Funds AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" [ngClass]="{'active': displayTab == 'lottery'}" (click)="showTab('lottery')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'lottery'}" (click)="showTab('lottery')">
                                             <i class="icon-Voting"></i><span>Lottery AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" [ngClass]="{'active': displayTab == 'lotteryrepeat'}"
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'lotteryrepeat'}"
                                             (click)="showTab('lotteryrepeat')">
                                             <i class="icon-Shuffling"></i><span>Lottery Repeat AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" [ngClass]="{'active': displayTab == 'fuscavor'}" (click)="showTab('fuscavor')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'fuscavor'}" (click)="showTab('fuscavor')">
                                             <i class="icon-Escrow"></i><span>Fuscavor Funds AT</span>
                                         </a>
                                     </li>
