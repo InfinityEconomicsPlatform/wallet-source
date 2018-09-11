@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+declare var $: any;
+
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
@@ -13,7 +16,95 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
+        $(document).ready(function () {
+            var widthOfList = function () {
+                var itemsWidth = 0;
+                $('.at-list li').each(function () {
+                    var itemWidth = $(this).outerWidth();
+                    itemsWidth += itemWidth;
+                });
+                return itemsWidth;
+            };
 
+            var widthOfHidden = function () {
+                return (($('.tab-wrapper').outerWidth()) - widthOfList() - getLeftPosition());
+            };
+
+            var getLeftPosition = function () {
+                return $('.at-list').position().left;
+            };
+
+            var reAdjust = function () {
+                if (($('.tab-wrapper').outerWidth()) < widthOfList()) {
+                    $('.scroller-right').show();
+                } else {
+                    $('.scroller-right').hide();
+                }
+
+                if (getLeftPosition() < 0) {
+                    $('.scroller-left').show();
+                } else {
+                    $('.item').animate({
+                        left: "-=" + getLeftPosition() + "px"
+                    }, 'slow');
+                    $('.scroller-left').hide();
+                }
+            }
+
+            reAdjust();
+
+            $(window).on('resize', function (e) {
+                reAdjust();
+            });
+
+            $('.scroller-right').click(function () {
+                var left = -150;
+
+                if ((widthOfHidden() - left) > 0) {
+                    left = widthOfHidden();
+                }
+
+                $('.at-list').animate({
+                    left: "+=" + left + "px"
+                }, 'fast', function () {
+                    if (getLeftPosition() >= 0) {
+                        $('.scroller-left').fadeOut('slow');
+                    } else {
+                        $('.scroller-left').fadeIn('slow');
+                    }
+
+                    if (parseInt(widthOfHidden()) >= -0) {
+                        $('.scroller-right').fadeOut('slow');
+                    } else {
+                        $('.scroller-right').fadeIn('slow');
+                    }
+                });
+            });
+
+            $('.scroller-left').click(function () {
+                var left = -150;
+
+                if ((getLeftPosition() - left) > 0) {
+                    left = getLeftPosition();
+                }
+
+                $('.at-list').animate({
+                    left: "-=" + left + "px"
+                }, 'fast', function () {
+                    if (getLeftPosition() >= 0) {
+                        $('.scroller-left').fadeOut('slow');
+                    } else {
+                        $('.scroller-left').fadeIn('slow');
+                    }
+
+                    if (parseInt(widthOfHidden()) >= -0) {
+                        $('.scroller-right').fadeOut('slow');
+                    } else {
+                        $('.scroller-right').fadeIn('slow');
+                    }
+                });
+            });
+        })
     }
 
     redirectToCompiler() {
