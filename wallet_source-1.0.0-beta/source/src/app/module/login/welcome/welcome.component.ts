@@ -26,7 +26,8 @@ export class WelcomeComponent implements OnInit {
             {name: 'English', code: 'en'},
             // {name: 'German', code: 'de'}
         ];
-        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
+        this.selectedLanguage = 'en';
+        //this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
         this.translate.use('en');
     }
 

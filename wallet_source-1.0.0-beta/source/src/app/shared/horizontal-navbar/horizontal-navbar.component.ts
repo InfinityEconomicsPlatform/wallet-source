@@ -11,8 +11,8 @@ export class HorizontalNavbarComponent {
     currentLang = 'en';
     toggleClass = 'ft-maximize';
     constructor(public translate: TranslateService) {
-        const browserLang: string = translate.getBrowserLang();
-        translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : 'en');
+        // const browserLang: string = translate.getBrowserLang();
+        // translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : 'en');
     }
 
     ChangeLanguage(language: string) {

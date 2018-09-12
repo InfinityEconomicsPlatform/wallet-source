@@ -42,8 +42,8 @@ export class NavbarComponent implements OnInit {
                 private subscriptionService: SubscriptionService,
                 public addressService: AddressService,
                 public swappService: SwappService) {
-        const browserLang: string = translate.getBrowserLang();
-        translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : 'en');
+        //const browserLang: string = translate.getBrowserLang();
+        //translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : 'en');
         
         this.optionService.optionsChanged$.subscribe(res => {
             this.ngOnInit();
