@@ -35,8 +35,6 @@ export class FooterComponent implements OnInit {
             this.optionService.optionsChanged$.subscribe(res => {
                 this.ngOnInit();
             });
-        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
-        this.translate.use(this.selectedLanguage);
         }
 
     ngOnInit() {

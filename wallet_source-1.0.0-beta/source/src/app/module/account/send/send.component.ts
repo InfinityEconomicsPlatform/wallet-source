@@ -14,8 +14,6 @@ export class SendComponent implements OnInit {
     selectedLanguage: string;
     constructor(public sessionStorageService: SessionStorageService,
                 public translate: TranslateService) {
-        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
-        this.translate.use(this.selectedLanguage);
     }
 
     ngOnInit() {

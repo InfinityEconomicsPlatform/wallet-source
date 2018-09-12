@@ -27,8 +27,6 @@ export class DashboardComponent implements OnInit {
                 private amChartsService: AmChartsService) {
         this.accountValuation = 0.00;
         this.accountRs = "";
-        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
-        this.translate.use(this.selectedLanguage);
     }
 
     private chart: AmChart;

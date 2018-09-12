@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit {
                         $('.scroller-left').fadeIn('slow');
                     }
 
-                    if (parseInt(widthOfHidden()) >= -0) {
+                    if (parseInt(widthOfHidden().toString(),0) >= -0) {
                         $('.scroller-right').fadeOut('slow');
                     } else {
                         $('.scroller-right').fadeIn('slow');
@@ -97,7 +97,7 @@ export class DashboardComponent implements OnInit {
                         $('.scroller-left').fadeIn('slow');
                     }
 
-                    if (parseInt(widthOfHidden()) >= -0) {
+                    if (parseInt(widthOfHidden().toString(), 0) >= -0) {
                         $('.scroller-right').fadeOut('slow');
                     } else {
                         $('.scroller-right').fadeIn('slow');

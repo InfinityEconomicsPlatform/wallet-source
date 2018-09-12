@@ -14,7 +14,9 @@ export class AppComponent {
     constructor(public toastr: ToastsManager, vRef: ViewContainerRef, public sessionStorageService: SessionStorageService,public translate: TranslateService) {
         this.toastr.setRootViewContainerRef(vRef);
 
-        this.setLanguage();
+        //this.setLanguage();
+        this.translate.setDefaultLang('en');
+        this.translate.use('en');
     }
 
     setLanguage(){

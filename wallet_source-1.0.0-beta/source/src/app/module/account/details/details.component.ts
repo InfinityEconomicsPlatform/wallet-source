@@ -64,8 +64,6 @@ export class DetailsComponent {
                 public translate: TranslateService,
                 public feeService: FeeService) {
         this.getAccountDetails();
-        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
-        this.translate.use(this.selectedLanguage);
     }
 
 

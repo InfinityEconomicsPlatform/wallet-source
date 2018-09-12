@@ -56,8 +56,6 @@ export class SendSimpleComponent implements OnInit {
                 public translate: TranslateService) {
         this.hasPrivateMessage = false;
         this.hasReceiverPublicKey = false;
-        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
-        this.translate.use(this.selectedLanguage);
     }
 
     ngOnInit() {
