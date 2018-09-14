@@ -11,8 +11,8 @@
                     <div class="card-block mt-4 mr-md-2 ml-md-2 form-bordered">
                         <div class="row">
                             <div class="col-12">
-                                <div class="header-border">
-                                    <div (click)="redirectToCompiler()" class="row">
+                                <div class="header-border" (click)="showCompiler = !showCompiler">
+                                    <div class="row">
                                         <div class="col-10">Compiler</div>
                                         <div class="col-2 text-right pl-0 pr-1"><i class="icon-next_arrow circle-arrow"></i>
                                         </div>
@@ -20,6 +20,7 @@
                                 </div>
                             </div>
                         </div>
+                        <app-compiler *ngIf="showCompiler"></app-compiler>
                         <div class="row mt-4">
                             <div class="col-12">
                                 <h3 class="text-dark">At Templates</h3>
@@ -36,22 +37,26 @@
                             <div class="col-12 at-tabs tab-wrapper">
                                 <ul class="nav nav-tabs nav-justified nav-auto  at-list">
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'simple'}" (click)="showTab('simple')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'simple'}"
+                                            (click)="showTab('simple')">
                                             <i class="icon-SWApps"></i><span>Simple AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'sleep'}" (click)="showTab('sleep')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'sleep'}"
+                                            (click)="showTab('sleep')">
                                             <i class="icon-account_info"></i><span>Sleep AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'auction'}" (click)="showTab('auction')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'auction'}"
+                                            (click)="showTab('auction')">
                                             <i class="icon-receive"></i><span>Auction AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'cod'}" (click)="showTab('cod')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'cod'}"
+                                            (click)="showTab('cod')">
                                             <i class="icon-AT"></i><span>Certificate of Deposit AT</span>
                                         </a>
                                     </li>
@@ -62,12 +67,14 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'dormant'}" (click)="showTab('dormant')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'dormant'}"
+                                            (click)="showTab('dormant')">
                                             <i class="icon-wallet"></i><span>Dormant Funds AT</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'lottery'}" (click)="showTab('lottery')">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'lottery'}"
+                                            (click)="showTab('lottery')">
                                             <i class="icon-Voting"></i><span>Lottery AT</span>
                                         </a>
                                     </li>
@@ -78,15 +85,31 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'fuscavor'}" (click)="showTab('fuscavor')">
-                                            <i class="icon-Escrow"></i><span>Fuscavor Funds AT</span>
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'theThrone'}"
+                                            (click)="showTab('theThrone')">
+                                            <i class="icon-Escrow"></i><span>TheThrone AT</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'fuscavor'}"
+                                            (click)="showTab('fuscavor')">
+                                            <i class="icon-Crowdfunding"></i><span>Fuscavor Funds AT</span>
                                         </a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'simple'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(simpleAT, tooltip)"
+                                            ngbTooltip="Copied!!" #tooltip="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
                                         <pre>
-                                            <code>
+                                            <code #simpleAT>
+Simple AT
+------------------------------------------------------------
+Simple AT to test transactions on amounts.
+
+
 ^declare DeveloperWallet
 ^declare AmountToReturn
 ^declare LastTransaction
@@ -129,15 +152,23 @@ FUN set_B1 $DeveloperWallet
 FUN send_to_Address_in_B $WalletBalance
 
 Finish:
-^comment Finish the AT and set
+^comment Finish the AT and set 
 FIN
                                             </code>
                                         </pre>
                                     </div>
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'sleep'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(sleepAT, tooltip1)"
+                                            ngbTooltip="Copied!!" #tooltip1="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
                                         <pre>
-                                            <code>
+                                            <code #sleepAT>
+Sleep
+------------------------------------------------------------
+This is an AT that sleeps and wakes up every 5 blocks to update some values. Just a test that should run until it has no more value.
+
 ^declare SleepTillThisTime
 ^declare Counter
 
@@ -152,9 +183,19 @@ JMP :Update
                                             </code>
                                         </pre>
                                     </div>
+
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'auction'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(auctionAT, tooltip2)"
+                                            ngbTooltip="Copied!!" #tooltip2="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
                                         <pre>
-                                            <code>
+                                            <code #auctionAT>
+Auction
+------------------------------------------------------------
+An auction. Users send their funds to the AT to bid, and the previous bidder's funds will be refunded. The user running the auction may have to send a transaction to the AT to collect their funds.
+
+
 ^declare endingCondition
 ^declare currentBid
 ^declare highBidder
@@ -213,9 +254,19 @@ JMP :endLoop
                                             </code>
                                         </pre>
                                     </div>
+
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'cod'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(codAT, tooltip3)" ngbTooltip="Copied!!"
+                                            #tooltip3="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
                                         <pre>
-                                            <code>
+                                            <code #codAT>
+Certificate of Deposit
+------------------------------------------------------------
+A user creates a CD contract and sends funds to it. Someone else can then send an amount of iterest. If the interest is received, the coins are locked for the duration of the contract, then sent to the contract creator.
+
+
 ^declare amtTotal
 ^declare waitBlocks
 ^declare paymentBlocks
@@ -251,9 +302,19 @@ JMP :failedRefundLoop
                                             </code>
                                         </pre>
                                     </div>
+
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'crowdfunding'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(crowdfundingAT, tooltip4)"
+                                            ngbTooltip="Copied!!" #tooltip4="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
                                         <pre>
-                                            <code>
+                                            <code #crowdfundingAT>
+Crowdfunding
+------------------------------------------------------------
+Crowdfunding AT 
+
+
 FUN @block_height get_Block_Timestamp
 SLP $decision
 FUN @amount get_Current_Balance
@@ -285,9 +346,18 @@ JMP :end_loop
                                             </code>
                                         </pre>
                                     </div>
+
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'dormant'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(dormantAT, tooltip5)"
+                                            ngbTooltip="Copied!!" #tooltip5="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
                                         <pre>
-                                            <code>
+                                            <code #dormantAT>
+Dormant Funds (Pseudocode Example)
+------------------------------------------------------------
+
+
 if @timestamp not zero goto loop
 get last block timestamp and put in @timestamp
 set @am_type_subtype to 0x0000000100000002 (AM)
@@ -325,79 +395,171 @@ finish
                                             </code>
                                         </pre>
                                     </div>
+
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'lottery'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(lotteryAT, tooltip6)"
+                                            ngbTooltip="Copied!!" #tooltip6="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
                                         <pre>
-                                            <code>
-Script Assembly
----------------
+                                            <code #lotteryAT>
+Lottery 
+------------------------------------------------------------
+A single trustless lottery.
 
-if @timestamp not zero goto loop                         1e0000000039
-set @min_amount to 100 (1 unit)                          01090000006400000000000000
-get last block timestamp and put in @timestamp           35140000000000
+---
+v1
+---
 
-:init (0000001a)
-set @payout_time to $timestamp                           020100000000000000
-set @tx_info to (604800 seconds in a week)               0104000000803a090000000000
-add @tx_info to @payout_time                             060100000004000000
+^declare runBlocks
+FUN @timestamp get_Block_Timestamp
+top:
+SET @best #8000000000000000
+SET @bestAdr #0000000000000000
+SLP $runBlocks
+txLoop:
+FUN A_to_Tx_after_Timestamp $timestamp
+FUN @scratch check_A_Is_Zero
+BZR $scratch :payout
+FUN @timestamp get_Timestamp_for_Tx_in_A
+FUN @scratch get_Ticket_Id_for_Tx_in_A
+BLT $scratch $best :txLoop
+SET @best $scratch
+FUN B_to_Address_of_Creator
+FUN @bestAdr get_B1
+JMP :txLoop
+payout:
+FUN set_B1 $bestAdr
+FUN send_All_to_Address_in_B
+JMP :top
 
-:loop (00000039)
-get tx at after @timestamp and store in @txid            3615000200000000000000
-if @txid is zero finish                                  2602000000
+---
+v2
+---
 
-get timestamp for @txid and store in @tx_time            3616000300000002000000
-if @tx_time > @payout_time goto payout                   1f030000000100000072
+^declare TicketPrice
+^declare MinNumPlayers
+^declare WinnerPercent
+^declare GameEndBlocks
+^declare CurrentWinner
+^declare CurrentTime
+^declare DeadAT
+^declare LastTransaction
+^declare ValidTransaction
+^declare NewTickets
+^declare TotalTicketsBoughtPreviously
+^declare TotalTicketsBought
+^declare MyRandomNumber
+^declare EndTime
+^declare ScratchBuffer
+^declare CurrentBalance
 
-get amount for @txid and store in @tx_amount             361b000800000002000000
-if @tx_amount == @min_amount goto continue               2308000000090000000f
-goto refund                                              1af3000000
+^comment If this is the first time running, set some default variables.
+Start:
+^comment 50 XIN per ticket. min fee should = this.
+SET @TicketPrice #000000012a05f200
+SET @MinNumPlayers #0000000000000002
+SET @WinnerPercent #0000000000000050
+SET @GameEndBlocks #0000000500000000
+^comment by default, the creator wins.
+INC @TotalTicketsBoughtPreviously
+FUN B_to_Address_of_Creator
+FUN @CurrentWinner get_B1
 
-:continue (00000078)
-get tx type for @txid and store in @tx_info              361c000400000002000000
-if @tx_info is non-zero goto skip                        1e0400000035
+^comment when the program starts for the next time, it will start from here.
+PCS
+Update:
+FUN @CurrentTime get_Block_Timestamp
 
-get ticket for @txid and store in @tx_info               3617000400000002000000
-if @tx_info zero finish                                  26040000007f
+^comment if Lottery is over, just give me the XIN.
+BNZ $DeadAT :ErrorHandle
 
-if @tx_info < @best_ticket goto skip                     2004000000050000001e
-set @best_ticket to @tx_info                             020500000004000000
-get account for @txid and put in @best_account           3618000600000002000000
+UpdateNewPlayerLoop:
+^comment new way of grabbing transactions
+FUN A_to_Tx_after_Timestamp $LastTransaction
+FUN @ValidTransaction check_A_Is_Zero
+BZR $ValidTransaction :NoMoreTx
+FUN @LastTransaction get_Timestamp_for_Tx_in_A
 
-:skip (000000b8)
-set @timestamp to @tx_time                               020000000003000000
-goto loop                                                1a39000000
+^comment check how much the PlayerPaid and convert to tickets
+FUN @NewTickets get_Amount_for_Tx_in_A
+ADD @NewTickets $TicketPrice
+DIV @NewTickets $TicketPrice
+^comment run internal lottery based on past tickets
+SET @TotalTicketsBought $TotalTicketsBoughtPreviously
+ADD @TotalTicketsBought $NewTickets
+^comment Random Number Generator
+SET @MyRandomNumber $CurrentTime
+^comment based on random number, figure out who won.
+MOD @MyRandomNumber $TotalTicketsBought
+BGE $MyRandomNumber $TotalTicketsBoughtPreviously :ChangeWinner
 
-:payout (000000c6)
-get old balance and store in @balance                    35200007000000
-if @balance is zero goto empty                           1b0700000018
-if @best_ticket is zero goto empty                       1b0500000012
-pay balance to @best_account                             33210006000000
-goto finish_payout                                       1a31010000
+UpdateNewPlayerContinue:
+^comment update the totalnumber of tickets now
+SET @TotalTicketsBoughtPreviously $TotalTicketsBought
+JMP :UpdateNewPlayerLoop
 
-:empty (000000e5)
-set @timestamp to @tx_time                               020000000003000000
-goto init                                                1a1a000000
+ChangeWinner:
+FUN B_to_Address_of_Tx_in_A
+FUN @CurrentWinner get_B1
+JMP :UpdateNewPlayerContinue
 
-:refund (000000f3)
-get account for @tx_id and put in @target_account        3618000a00000002000000
-if @tx_amount < @min_amount goto :refund_less            20080000000900000023
-subtract @min_amount from @tx_amount                     070800000009000000
-send @tx_amount to @target_account                       341f00080000000a000000
-goto continue                                            1a78000000
+NoMoreTx:
+^comment if the end time is not set, Try to set end time
+BZR $EndTime :SetEndTime
 
-:refund less (00000121)
-send @tx_amount to @target_account                       341f00080000000a000000
-goto skip                                                1ab8000000
+EndTimeSetted:
+^comment if endtime is still not set, wait for more players.
+BZR $EndTime :End
+^comment if time is up, end the lottery
+BGT $CurrentTime $EndTime :CloseAuction
+JMP :End
 
-:finish_payout (00000131)
-set @timestamp to @payout_time                           020000000004000000
-clear @best_ticket to zero                               0305000000
-goto init                                                1a1a000000
+SetEndTime:
+^comment do not set endtime if there are not enough players
+BLT $TotalTicketsBought $MinNumPlayers :EndTimeSetted
+^comment set the end time to EndTime.
+SET @ScratchBuffer $GameEndBlocks
+ADD @ScratchBuffer $CurrentTime
+SET @EndTime $ScratchBuffer
+JMP :EndTimeSetted
+
+^comment we select a winner here and kill the AT
+CloseAuction:
+INC @DeadAT
+FUN @CurrentBalance get_Current_Balance
+FUN set_B1 $CurrentWinner
+
+^comment calculate payout - total / 100 * pecent
+SET @ScratchBuffer #0000000000000064
+DIV @CurrentBalance $ScratchBuffer
+MUL @CurrentBalance $WinnerPercent
+FUN send_to_Address_in_B $CurrentBalance
+
+^comment die and give me money.
+ErrorHandle:
+FUN B_to_Address_of_Creator
+FUN send_All_to_Address_in_B
+^comment Missing End here to save XIN
+
+End:
+FIN
                                             </code>
                                         </pre>
                                     </div>
+
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'lotteryrepeat'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(lotteryRepeatAT, tooltip7)"
+                                            ngbTooltip="Copied!!" #tooltip7="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
                                         <pre>
-                                            <code>
+                                            <code #lotteryRepeatAT>
+Lottery Repeat
+------------------------------------------------------------
+A repeated trustless lottery.
+
+
 ^declare TicketPrice
 ^declare MinNumPlayers
 ^declare WinnerPercent
@@ -436,7 +598,6 @@ FUN @CurrentWinner get_B1
 ^comment when the program starts for the next time, it will start from here.
 PCS
 Update:
-
 
 UpdateNewPlayerLoop:
 ^comment new way of grabbing transactions
@@ -515,9 +676,92 @@ FIN
                                             </code>
                                         </pre>
                                     </div>
-                                    <div class="tab-pane" [ngClass]="{'active': displayTab == 'fuscavor'}">
+
+                                    <div class="tab-pane" [ngClass]="{'active': displayTab == 'theThrone'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(theThroneAT, tooltip8)"
+                                            ngbTooltip="Copied!!" #tooltip8="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
                                         <pre>
-                                            <code>
+                                            <code #theThroneAT>
+TheThrone AT
+------------------------------------------------------------
+
+
+^declare CurrentKing
+^declare TransactionID
+^declare LastTransaction
+^declare ValidTransaction
+^declare MyRandomNumber
+^declare Chance
+^declare PayOutPrice
+^declare MinLeft
+^declare CurrentBalance
+
+^comment If this is the first time running, set some default variables.
+Start:
+SET @PayOutPrice #00000001dcd65000
+SET @MinLeft #000000001dcd6500
+SET @Chance #0000000000000002
+FUN B_to_Address_of_Creator
+FUN @CurrentKing get_B1
+
+^comment when the program starts for the next time, it will start from here.
+PCS
+Update:
+
+UpdateNewPlayerLoop:
+^comment new way of grabbing transactions
+FUN A_to_Tx_after_Timestamp $LastTransaction
+^comment can save 1 xin here.
+FUN @ValidTransaction check_A_Is_Zero
+BZR $ValidTransaction :NoMoreTx
+FUN @TransactionID get_A1
+FUN @LastTransaction get_Timestamp_for_Tx_in_A
+
+^comment Random Number Generator
+SET @MyRandomNumber $TransactionID
+^comment based on random number, figure out who won.
+MOD @MyRandomNumber $Chance
+^comment only works at 50%
+BZR $MyRandomNumber :ChangeWinner
+
+UpdateNewPlayerContinue:
+^comment pay current king here.
+FUN set_B1 $CurrentKing
+FUN send_to_Address_in_B $PayOutPrice
+JMP :UpdateNewPlayerLoop
+
+ChangeWinner:
+FUN B_to_Address_of_Tx_in_A
+FUN @CurrentKing get_B1
+JMP :UpdateNewPlayerContinue
+
+^comment Transactions has been processed finished.
+NoMoreTx:
+FUN @CurrentBalance get_Current_Balance
+BLE $CurrentBalance $MinLeft :End
+SUB @CurrentBalance $MinLeft
+FUN B_to_Address_of_Creator
+FUN send_to_Address_in_B $CurrentBalance
+
+End:
+FIN
+                                            </code>
+                                        </pre>
+                                    </div>
+
+                                    <div class="tab-pane" [ngClass]="{'active': displayTab == 'fuscavor'}">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(fuscavorAT, tooltip9)"
+                                            ngbTooltip="Copied!!" #tooltip9="ngbTooltip" triggers="manual">
+                                            <i class="icon-copy"></i>
+                                        </a>
+                                        <pre>
+                                            <code #fuscavorAT>
+Fuscavor AT
+------------------------------------------------------------
+
+
 ^declare ticket_price
 ^declare countdown_minutes
 ^declare percent_payout
@@ -572,9 +816,7 @@ FUN set_B1 $other_address
 FUN send_to_Address_in_B $temp2
 FUN @end_block get_Block_Timestamp
 FUN @end_block add_Minutes_to_Timestamp $end_block $countdown_minutes
-JMP :process
-
-350003070000003706040700000007000000010000003501030a000000010b0000006400000000000000303304030a0000003525010c000000260c0000003507030a0000001f0a00000007000000403506030c000000200c00000000000000d5320a0335040108000000350003070000003706040700000007000000010000001a2b00000035000409000000020c00000009000000090c0000000b000000020d0000000c000000080d00000002000000322101331601080000003302040d000000020d0000000c000000080d00000003000000322101331601050000003302040d000000020d0000000c000000080d00000004000000322101331601060000003302040d000000350003070000003706040700000007000000010000001a4f000000
+JMP :process                                
                                             </code>
                                         </pre>
                                     </div>
