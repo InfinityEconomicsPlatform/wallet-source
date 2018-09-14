@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {CommonService} from './common.service';
+import { Injectable } from '@angular/core';
+import { CommonService } from './common.service';
 
 @Injectable()
 export class SwappService {
@@ -8,7 +8,7 @@ export class SwappService {
     watchList: Array<any>;
     keyForLocalStore: string;
     constructor(public commonsService: CommonService) {
-       this.loadSWApps();
+        this.loadSWApps();
     }
 
     loadSWApps() {
@@ -48,7 +48,7 @@ export class SwappService {
             },
             {
                 name: 'Crowdfunding',
-                icon: 'icon-Extensions',
+                icon: 'icon-Crowdfunding',
                 desc: 'Crowdfunding is the practice of funding a project or venture by raising monetary contributions from a large number of people. ',
                 isEnabled: false
             },
@@ -95,7 +95,7 @@ export class SwappService {
     }
 
     pushToWatch(appName, _this) {
-        this.watchList.push({_this, appName})
+        this.watchList.push({ _this, appName })
     }
 
     applyChanges() {
