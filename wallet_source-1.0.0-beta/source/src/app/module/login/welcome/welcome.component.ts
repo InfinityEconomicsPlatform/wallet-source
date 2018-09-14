@@ -24,11 +24,10 @@ export class WelcomeComponent implements OnInit {
                 public swappService: SwappService) {
         this.languages = [
             {name: 'English', code: 'en'},
-            // {name: 'German', code: 'de'}
+            {name: 'German', code: 'de'}
         ];
-        this.selectedLanguage = 'en';
-        //this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
-        this.translate.use('en');
+        this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
+        this.translate.use(this.selectedLanguage);
     }
 
     ngOnInit() {
@@ -47,8 +46,8 @@ export class WelcomeComponent implements OnInit {
     };
 
     changeLanguage() {
-        // this.sessionStorageService.saveToSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY, this.selectedLanguage);
-        // this.translate.use(this.selectedLanguage);
+        this.sessionStorageService.saveToSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY, this.selectedLanguage);
+        this.translate.use(this.selectedLanguage);
     }
 
     signUp() {
