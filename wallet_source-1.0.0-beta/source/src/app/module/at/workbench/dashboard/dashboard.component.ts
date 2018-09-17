@@ -10,6 +10,7 @@ declare var $: any;
 })
 export class DashboardComponent implements OnInit {
     displayTab: string = "simple";
+    showCompiler: boolean = false;
 
     constructor(public router: Router) {
 
@@ -58,7 +59,7 @@ export class DashboardComponent implements OnInit {
             });
 
             $('.scroller-right').click(function () {
-                var left = -150;
+                var left = -200;
 
                 if ((widthOfHidden() - left) > 0) {
                     left = widthOfHidden();
@@ -73,7 +74,7 @@ export class DashboardComponent implements OnInit {
                         $('.scroller-left').fadeIn('slow');
                     }
 
-                    if (parseInt(widthOfHidden().toString(),0) >= -0) {
+                    if (parseInt(widthOfHidden().toString(), 0) >= -0) {
                         $('.scroller-right').fadeOut('slow');
                     } else {
                         $('.scroller-right').fadeIn('slow');
@@ -82,7 +83,7 @@ export class DashboardComponent implements OnInit {
             });
 
             $('.scroller-left').click(function () {
-                var left = -150;
+                var left = -200;
 
                 if ((getLeftPosition() - left) > 0) {
                     left = getLeftPosition();
@@ -113,6 +114,24 @@ export class DashboardComponent implements OnInit {
 
     showTab(type) {
         this.displayTab = type;
+    }
+
+    copyText(element, tooltip) {
+        let selBox = document.createElement('textarea');
+        selBox.style.position = 'fixed';
+        selBox.style.left = '0';
+        selBox.style.top = '0';
+        selBox.style.opacity = '0';
+        selBox.value = element.innerText.trim();
+        document.body.appendChild(selBox);
+        selBox.focus();
+        selBox.select();
+        tooltip.open();
+        document.execCommand('copy');
+        document.body.removeChild(selBox);
+        setTimeout(() => {
+            tooltip.close();
+        }, 5000);
     }
 
 }
