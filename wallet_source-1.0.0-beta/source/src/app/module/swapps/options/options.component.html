@@ -43,8 +43,7 @@
 												</label>
 												<div class="position-relative">
 													<input type="text" class="form-control" placeholder="Connect to Node" name="connectToNode" [(ngModel)]="optionsForm.USER_NODE_URL"
-													 id="connectToNode" [disabled]="optionsForm.CONNECTION_MODE != 'MANUAL'" #userNodeUrl="ngModel" appNodeUrlValidatorDirective
-													 required>
+													 id="connectToNode" [disabled]="optionsForm.CONNECTION_MODE != 'MANUAL'" #userNodeUrl="ngModel" required>
 												</div>
 												<div *ngIf="userNodeUrl?.invalid && (userNodeUrl?.dirty || userNodeUrl?.touched)" class="input-error">
 													<div *ngIf="userNodeUrl?.invalid">
