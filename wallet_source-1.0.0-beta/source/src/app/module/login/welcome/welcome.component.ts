@@ -1,10 +1,10 @@
-import { Component , OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from "@angular/router";
 import { TranslateService } from '@ngx-translate/core';
 import { AppConstants } from '../../../config/constants';
 import { SessionStorageService } from '../../../services/session-storage.service';
 import { LoginService } from '../../../services/login.service';
-import {SwappService} from '../../../services/swapp.service';
+import { SwappService } from '../../../services/swapp.service';
 
 @Component({
     selector: 'app-welcome',
@@ -18,13 +18,13 @@ export class WelcomeComponent implements OnInit {
     selectedLanguage: string;
 
     constructor(public router: Router,
-                public translate: TranslateService,
-                public sessionStorageService: SessionStorageService,
-                public loginService: LoginService,
-                public swappService: SwappService) {
+        public translate: TranslateService,
+        public sessionStorageService: SessionStorageService,
+        public loginService: LoginService,
+        public swappService: SwappService) {
         this.languages = [
-            {name: 'English', code: 'en'},
-            {name: 'German', code: 'de'}
+            { name: 'English', code: 'en' },
+            { name: 'German', code: 'de' }
         ];
         this.selectedLanguage = this.sessionStorageService.getFromSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY);
         this.translate.use(this.selectedLanguage);
@@ -45,7 +45,7 @@ export class WelcomeComponent implements OnInit {
         this.router.navigateByUrl('/dashboard');
     };
 
-    changeLanguage() {
+    changeLanguage(event: any) {
         this.sessionStorageService.saveToSession(AppConstants.languageConfig.SESSION_SELECTED_LANGUAGE_KEY, this.selectedLanguage);
         this.translate.use(this.selectedLanguage);
     }
@@ -57,7 +57,7 @@ export class WelcomeComponent implements OnInit {
 }
 
 class Login {
-    constructor(public passPhrase:string = '') {
+    constructor(public passPhrase: string = '') {
 
     }
 }

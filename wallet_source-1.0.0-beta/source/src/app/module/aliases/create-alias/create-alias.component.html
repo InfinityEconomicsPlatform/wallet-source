@@ -2,11 +2,11 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-block main-card-block">
-                    <div class="border-bt">
-                        <h2 class="main-title">Create Alias</h2>
-                        <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
-                    </div>
-                    
+                <div class="border-bt">
+                    <h2 class="main-title">Create Alias</h2>
+                    <app-breadcrumb></app-breadcrumb>
+                </div>
+
             </div>
             <div class="card-body">
                 <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
@@ -18,22 +18,15 @@
                                         <div class="col-md-12">
                                             <div class="form-group m-0">
                                                 <label>Alias Name
-                                                    <i class="fa fa-question-circle-o"
-                                                       placement="right"
-                                                       triggers="mouseenter:mouseleave"
-                                                       container="body"
-                                                       ngbPopover="Alias with max. 100 characters. Aliases are CASE-INSENSITIVE.">
+                                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                        container="body" ngbPopover="Alias with max. 100 characters. Aliases are CASE-INSENSITIVE.">
                                                     </i>
                                                 </label>
                                                 <div class="input-group">
-                                                    <input type="text" name="name"
-                                                           #name="ngModel"
-                                                           [(ngModel)]="alias.aliasName"
-                                                           class="form-control"
-                                                           placeholder="Alias Name" required>
+                                                    <input type="text" name="name" #name="ngModel" [(ngModel)]="alias.aliasName"
+                                                        class="form-control" placeholder="Alias Name" required>
                                                 </div>
-                                                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
-                                                     class="input-error">
+                                                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="input-error">
                                                     <div *ngIf="name?.errors.required">
                                                         Name is required
                                                     </div>
@@ -45,17 +38,12 @@
                                         <div class="col-sm-6">
                                             <div class="form-group m-0">
                                                 <label>Prefix
-                                                    <i class="fa fa-question-circle-o"
-                                                       placement="right"
-                                                       triggers="mouseenter:mouseleave"
-                                                       container="body"
-                                                       ngbPopover="Alias prefix to connect your alias with.">
+                                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                        container="body" ngbPopover="Alias prefix to connect your alias with.">
                                                     </i>
                                                 </label>
-                                                <select name="type" value="release" class="form-control"
-                                                        [(ngModel)]="alias.prefix"
-                                                        (change)="changePlaceholder(alias.prefix)"
-                                                        required>
+                                                <select name="type" value="release" class="form-control" [(ngModel)]="alias.prefix"
+                                                    (change)="changePlaceholder(alias.prefix)" required>
                                                     <option *ngFor='let prefix of prefixes' [value]="prefix.value">
                                                         {{prefix.name}}
                                                     </option>
@@ -69,28 +57,23 @@
                                         <div class="col-sm-6">
                                             <div class="form-group m-0">
                                                 <label>URL
-                                                    <i class="fa fa-question-circle-o"
-                                                       placement="right"
-                                                       triggers="mouseenter:mouseleave"
-                                                       container="body"
-                                                       ngbPopover="The resource or target you like to connect your alias with. Can be your account, a website or even a BTC address. For URL ensure your uri starts with http://">
+                                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                        container="body" ngbPopover="The resource or target you like to connect your alias with. Can be your account, a website or even a BTC address. For URL ensure your uri starts with http://">
                                                     </i>
                                                 </label>
                                                 <div class="input-group m-0 row sign_in_inputs form-border-bottom">
-                                                       <div class="col-9 pl-0">
-                                                            <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
-                                                           name="aliaseURI"
-                                                           #aliaseURI="ngModel"
-                                                           [(ngModel)]="alias.aliasURI"
-                                                           placeholder="{{uriPlaceholder}}" required>
-                                                        </div>
-                                                        <div class="col-3 text-right pl-0">
-                                                                <span class="input-group-text text-right">@XIN</span>
-                                                        </div>
+                                                    <div class="col-9 pl-0">
+                                                        <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            name="aliaseURI" #aliaseURI="ngModel" [(ngModel)]="alias.aliasURI"
+                                                            placeholder="{{uriPlaceholder}}" required>
+                                                    </div>
+                                                    <div class="col-3 text-right pl-0">
+                                                        <span class="input-group-text text-right">@XIN</span>
+                                                    </div>
                                                 </div>
-                                                
+
                                                 <div *ngIf="aliaseURI?.invalid && (aliaseURI?.dirty || aliaseURI?.touched)"
-                                                     class="input-error">
+                                                    class="input-error">
                                                     <div *ngIf="aliaseURI?.errors.required">
                                                         URI is required
                                                     </div>
@@ -98,11 +81,9 @@
                                             </div>
                                         </div>
                                     </div>
-                               
-                                    <button type="button"
-                                            [disabled]="createAliasesForm.invalid"
-                                            (click)="setAlias()"
-                                            class="btn btn-primary mr-1 mt-4 mb-0 float-right btn-gradient" awNextStep>
+
+                                    <button type="button" [disabled]="createAliasesForm.invalid" (click)="setAlias()"
+                                        class="btn btn-primary mr-1 mt-4 mb-0 float-right btn-gradient" awNextStep>
                                         <i class="fa fa-chevron-right"></i> Next
                                     </button>
                                 </div>
@@ -137,18 +118,18 @@
                                 </div>
                             </div>
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
-                                    class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                                class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
                                 <i class="fa fa-key"></i> Signed Transaction
                             </button>
                             <div class="form-group mt-3" *ngIf="unsignedTx">
                                 <div class="position-relative sign_in_inputs">
-                                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
-                                              class="form-control pl-0" name="key"></textarea>
+                                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0"
+                                        name="key"></textarea>
                                 </div>
                             </div>
                             <div class="mt-4">
                                 <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
-                                        (click)="broadcastTransaction(transactionBytes)">
+                                    (click)="broadcastTransaction(transactionBytes)">
                                     <i class="fa fa-check"></i> Finish
                                 </button>
                                 <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>

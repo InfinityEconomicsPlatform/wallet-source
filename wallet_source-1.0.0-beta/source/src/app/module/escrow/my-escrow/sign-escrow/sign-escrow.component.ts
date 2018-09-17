@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {EscrowService} from '../../escrow.service';
-import {Location} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EscrowService } from '../../escrow.service';
+import { Location } from '@angular/common';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
-import {AppConstants} from '../../../../config/constants';
-import {SessionStorageService} from '../../../../services/session-storage.service';
-import {AmountToQuantPipe} from '../../../../pipes/amount-to-quant.pipe';
-import {CryptoService} from '../../../../services/crypto.service';
-import {AccountService} from '../../../account/account.service';
-import {CommonService} from '../../../../services/common.service';
+import { AppConstants } from '../../../../config/constants';
+import { SessionStorageService } from '../../../../services/session-storage.service';
+import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
+import { CryptoService } from '../../../../services/crypto.service';
+import { AccountService } from '../../../account/account.service';
+import { CommonService } from '../../../../services/common.service';
 
 
 @Component({
@@ -18,8 +18,8 @@ import {CommonService} from '../../../../services/common.service';
 })
 export class SignEscrowComponent implements OnInit {
     tx_fee: any;
-    tx_amount:any;
-    tx_total:any;
+    tx_amount: any;
+    tx_total: any;
     accountDetails: any;
     transactionBytes: any;
 
@@ -29,15 +29,17 @@ export class SignEscrowComponent implements OnInit {
         'decision': ''
     };
 
+    hasPrivateMessage: boolean;
+
     constructor(private router: Router,
-                private route: ActivatedRoute,
-                private escrowService: EscrowService,
-                private _location: Location,
-                private sessionStorageService: SessionStorageService,
-                public amountToQuant: AmountToQuantPipe,
-                private cryptoService: CryptoService,
-                public accountService: AccountService,
-                private commonService: CommonService) {
+        private route: ActivatedRoute,
+        private escrowService: EscrowService,
+        private _location: Location,
+        private sessionStorageService: SessionStorageService,
+        public amountToQuant: AmountToQuantPipe,
+        private cryptoService: CryptoService,
+        public accountService: AccountService,
+        private commonService: CommonService) {
     }
 
     ngOnInit() {
@@ -72,7 +74,7 @@ export class SignEscrowComponent implements OnInit {
                         'This account never had an outbound transaction. Make sure this account is the right one. In doubt, ask the account holder for his public key and add it on the former page to this transaction.',
                         'OK',
                         'info').then((isConfirm: any) => {
-                    });
+                        });
                 }
 
                 this.escrowService.escrowSign(
@@ -97,7 +99,7 @@ export class SignEscrowComponent implements OnInit {
                                 AppConstants.getNoConnectionMessage,
                                 'OK',
                                 'error').then((isConfirm: any) => {
-                            });
+                                });
                         }
                     })
 
@@ -107,7 +109,7 @@ export class SignEscrowComponent implements OnInit {
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
 
             } else {
@@ -115,7 +117,7 @@ export class SignEscrowComponent implements OnInit {
                     AppConstants.getNoConnectionMessage,
                     'OK',
                     'error').then((isConfirm: any) => {
-                });
+                    });
             }
         }, (error) => {
             alertFunctions.InfoAlertBox('Error',
@@ -123,7 +125,7 @@ export class SignEscrowComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     }
 
@@ -135,14 +137,14 @@ export class SignEscrowComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/escrow/my-escrow']);
-                    });
+                            this.router.navigate(['/escrow/my-escrow']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 }
             }, (error) => {
 
@@ -151,7 +153,7 @@ export class SignEscrowComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 

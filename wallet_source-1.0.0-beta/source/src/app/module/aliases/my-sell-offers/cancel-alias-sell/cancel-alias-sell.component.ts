@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {AmountToQuantPipe} from '../../../../pipes/amount-to-quant.pipe';
-import {SessionStorageService} from '../../../../services/session-storage.service';
-import {CommonService} from '../../../../services/common.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CryptoService} from '../../../../services/crypto.service';
-import {Location} from '@angular/common';
-import {AliasesService} from '../../aliases.service';
-import {AppConstants} from '../../../../config/constants';
+import { Component, OnInit } from '@angular/core';
+import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
+import { SessionStorageService } from '../../../../services/session-storage.service';
+import { CommonService } from '../../../../services/common.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CryptoService } from '../../../../services/crypto.service';
+import { Location } from '@angular/common';
+import { AliasesService } from '../../aliases.service';
+import { AppConstants } from '../../../../config/constants';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
 
 @Component({
@@ -29,14 +29,16 @@ export class CancelAliasSellComponent implements OnInit {
         recipientRS: ''
     };
 
+    unsignedTx: boolean;
+
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private aliasesService: AliasesService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                private _location: Location) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private aliasesService: AliasesService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        private _location: Location) {
     }
 
     ngOnInit() {
@@ -80,14 +82,14 @@ export class CancelAliasSellComponent implements OnInit {
                             AppConstants.getNoConnectionMessage,
                             'OK',
                             'error').then((isConfirm: any) => {
-                        });
+                            });
                     }
                 }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
             })
     }
@@ -100,15 +102,15 @@ export class CancelAliasSellComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/aliases/my-sell-offers']);
-                    });
+                            this.router.navigate(['/aliases/my-sell-offers']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                        this.router.navigate(['/aliases/my-sell-offers']);
-                    });
+                            this.router.navigate(['/aliases/my-sell-offers']);
+                        });
                 }
             }, (error) => {
 
@@ -117,7 +119,7 @@ export class CancelAliasSellComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 

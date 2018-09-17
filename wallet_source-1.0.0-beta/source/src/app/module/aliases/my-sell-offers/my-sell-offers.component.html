@@ -5,68 +5,57 @@
                 <div class="card-block main-card-block pb-0">
                     <div class="border-bt">
                         <h2 class="main-title">Aliases</h2>
-                        <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
+                        <app-breadcrumb></app-breadcrumb>
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-12">
-                               <div class="text-right">
-                                  <div class="btn-group btn-group-justified btn-group-raised">
-                                      <a href="javascript:void(0)" class="btn btn-sm btn-grey"  ngbTooltip="Search" trigger="mouseenter:mouseleave"><i class="fa fa-refresh"></i></a>
-                                  </div>
-                              </div>
-                            
+                            <div class="text-right">
+                                <div class="btn-group btn-group-justified btn-group-raised">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-grey" ngbTooltip="Search"
+                                        trigger="mouseenter:mouseleave"><i class="fa fa-refresh"></i></a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="card-body">
                     <div class="card-block mr-3 ml-3">
-                        <ngx-datatable
-                                [rows]="rows"
-                                [columnMode]="'standard'"
-                                [scrollbarH]="true"
-                                [footerHeight]="50"
-                                [rowHeight]="'auto'"
-                                [externalPaging]="true"
-                                [count]="page.totalElements"
-                                [offset]="page.pageNumber"
-                                [limit]="page.size"
-                                (page)='setPage($event)'
-                                (autoRefresh)="reload()">
-                            <ngx-datatable-column headerClass="width-25-per" cellClass="width-25-per" name="Name"
-                                                  prop="aliasName">
+                        <ngx-datatable [rows]="rows" [columnMode]="'standard'" [scrollbarH]="true" [footerHeight]="50"
+                            [rowHeight]="'auto'" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
+                            [limit]="page.size" (page)='setPage($event)' (autoRefresh)="reload()">
+                            <ngx-datatable-column headerClass="width-25-per" cellClass="width-25-per" name="Name" prop="aliasName">
                                 <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                     {{value}}
                                 </ng-template>
                             </ngx-datatable-column>
                             <ngx-datatable-column headerClass="width-30-per" cellClass="width-30-per" name="Recipient"
-                                                  prop="recipientRS">
+                                prop="recipientRS">
                                 <ng-template let-value="value" ngx-datatable-cell-template>
                                     <a class="hyperlink" (click)="accountDetail(value)">{{value}}</a>
                                 </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column headerClass="width-25-per" cellClass="width-25-per" name="Price"
-                                                  prop="priceTQT">
+                            <ngx-datatable-column headerClass="width-25-per" cellClass="width-25-per" name="Price" prop="priceTQT">
                                 <ng-template let-value="value" ngx-datatable-cell-template>
                                     {{value | amountTqt}}
                                 </ng-template>
                             </ngx-datatable-column>
                             <ngx-datatable-column headerClass="width-15-per" cellClass="width-15-per" name="Actions"
-                                                  prop="aliasId">
+                                prop="aliasId">
                                 <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                     <div class="btn-group-raised">
                                         <a class="btn btn-sm btn-grey btn-icon" (click)="transactionDetail(row);"
-                                       triggers="mouseenter:mouseleave" container="body" placement="top"
-                                       ngbPopover="Details">
-                                        <i class="fa fa-list-ul"></i>
-                                    </a>
-                                   <a class="btn btn-sm btn-grey btn-icon"
-                                       (click)="cancelAlias(row.aliasId,row.aliasName,row.priceTQT);"
-                                       triggers="mouseenter:mouseleave" container="body" placement="top"
-                                       ngbPopover="Delete">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
+                                            triggers="mouseenter:mouseleave" container="body" placement="top"
+                                            ngbPopover="Details">
+                                            <i class="fa fa-list-ul"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-grey btn-icon" (click)="cancelAlias(row.aliasId,row.aliasName,row.priceTQT);"
+                                            triggers="mouseenter:mouseleave" container="body" placement="top"
+                                            ngbPopover="Delete">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
                                 </ng-template>
                             </ngx-datatable-column>
                         </ngx-datatable>

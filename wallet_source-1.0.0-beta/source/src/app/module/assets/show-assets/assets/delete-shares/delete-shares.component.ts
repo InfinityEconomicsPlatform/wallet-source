@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {ShareToQuantityPipe} from '../../../../../pipes/share-to-quantity.pipe';
-import {CryptoService} from '../../../../../services/crypto.service';
-import {AppConstants} from '../../../../../config/constants';
-import {AliasesService} from '../../../../aliases/aliases.service';
-import {SessionStorageService} from '../../../../../services/session-storage.service';
-import {Location} from '@angular/common';
-import {AssetsService} from '../../../assets.service';
+import { ShareToQuantityPipe } from '../../../../../pipes/share-to-quantity.pipe';
+import { CryptoService } from '../../../../../services/crypto.service';
+import { AppConstants } from '../../../../../config/constants';
+import { AliasesService } from '../../../../aliases/aliases.service';
+import { SessionStorageService } from '../../../../../services/session-storage.service';
+import { Location } from '@angular/common';
+import { AssetsService } from '../../../assets.service';
 import * as alertFunctions from '../../../../../shared/data/sweet-alerts';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CommonService} from '../../../../../services/common.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../../../../../services/common.service';
 
 @Component({
-  selector: 'app-delete-shares',
-  templateUrl: './delete-shares.component.html',
-  styleUrls: ['./delete-shares.component.scss']
+    selector: 'app-delete-shares',
+    templateUrl: './delete-shares.component.html',
+    styleUrls: ['./delete-shares.component.scss']
 })
 export class DeleteSharesComponent implements OnInit {
     transactionBytes: any;
@@ -27,17 +27,18 @@ export class DeleteSharesComponent implements OnInit {
         'name': '',
         'quantity': 0,
         'decimals': ''
-    }
+    };
+    unsignedTx: boolean;
 
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private assetsService: AssetsService,
-                private aliasesService: AliasesService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                public shareToQuantityPipe: ShareToQuantityPipe,
-                private _location: Location) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private assetsService: AssetsService,
+        private aliasesService: AliasesService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        public shareToQuantityPipe: ShareToQuantityPipe,
+        private _location: Location) {
     }
 
     ngOnInit() {
@@ -80,14 +81,14 @@ export class DeleteSharesComponent implements OnInit {
                             'Sorry, an error occured! Reason: ' + success.errorDescription + ' ' + AppConstants.getNoConnectionMessage,
                             'OK',
                             'error').then((isConfirm: any) => {
-                        });
+                            });
                     }
                 }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
             })
     }
@@ -100,15 +101,15 @@ export class DeleteSharesComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/assets/show-assets']);
-                    });
+                            this.router.navigate(['/assets/show-assets']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                        this.router.navigate(['/assets/show-assets']);
-                    });
+                            this.router.navigate(['/assets/show-assets']);
+                        });
                 }
             }, (error) => {
 
@@ -117,7 +118,7 @@ export class DeleteSharesComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 

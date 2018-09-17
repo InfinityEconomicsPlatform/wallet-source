@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from '../../account.service';
-import {CryptoService} from '../../../../services/crypto.service';
-import {AliasesService} from '../../../aliases/aliases.service';
-import {OptionService} from '../../../../services/option.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {SessionStorageService} from '../../../../services/session-storage.service';
+import { AccountService } from '../../account.service';
+import { CryptoService } from '../../../../services/crypto.service';
+import { AliasesService } from '../../../aliases/aliases.service';
+import { OptionService } from '../../../../services/option.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SessionStorageService } from '../../../../services/session-storage.service';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
-import {AmountToQuantPipe} from '../../../../pipes/amount-to-quant.pipe';
-import {CurrenciesService} from '../../../currencies/currencies.service';
-import {AppConstants} from '../../../../config/constants';
+import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
+import { CurrenciesService } from '../../../currencies/currencies.service';
+import { AppConstants } from '../../../../config/constants';
 
 @Component({
-  selector: 'app-send-reference',
-  templateUrl: './send-reference.component.html',
-  styleUrls: ['./send-reference.component.scss']
+    selector: 'app-send-reference',
+    templateUrl: './send-reference.component.html',
+    styleUrls: ['./send-reference.component.scss']
 })
 export class SendReferenceComponent implements OnInit {
 
@@ -28,7 +28,8 @@ export class SendReferenceComponent implements OnInit {
         fee: 0,
         secret: '',
         message: '',
-        pubkey: ''
+        pubkey: '',
+        fullHash: ''
     };
     deferredHeight = 1440;
     days = 1;
@@ -44,15 +45,18 @@ export class SendReferenceComponent implements OnInit {
     openBookMarks: boolean = false;
     transactionBytes: any;
 
+    unsignedTx: boolean;
+    addMessage: boolean;
+
     constructor(public sessionStorageService: SessionStorageService,
-                public accountService: AccountService,
-                public cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                public router: Router,
-                public activatedRoute: ActivatedRoute,
-                public aliasesService: AliasesService,
-                public currenciesService: CurrenciesService,
-                public optionService: OptionService) {
+        public accountService: AccountService,
+        public cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        public router: Router,
+        public activatedRoute: ActivatedRoute,
+        public aliasesService: AliasesService,
+        public currenciesService: CurrenciesService,
+        public optionService: OptionService) {
         this.hasPrivateMessage = false;
         this.hasReceiverPublicKey = false;
         this.getBlockChainStatus();
@@ -86,7 +90,7 @@ export class SendReferenceComponent implements OnInit {
     }
 
     loadBookmarkView() {
-        this.router.navigate(['/account/send/bookmark-list-only'], {queryParams : {fromView: 'reference'}});
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'reference' } });
         //this.openBookMarks = true;
     }
 
@@ -183,7 +187,7 @@ export class SendReferenceComponent implements OnInit {
                         'OK',
                         'error').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
             });
         }, function (error) {
@@ -192,7 +196,7 @@ export class SendReferenceComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 
@@ -259,7 +263,7 @@ export class SendReferenceComponent implements OnInit {
                         'OK',
                         'error').then(() => {
 
-                    });
+                        });
                     return;
                 }
 
@@ -269,10 +273,10 @@ export class SendReferenceComponent implements OnInit {
                         'OK',
                         'info').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
 
-                let encrypted: any = {data: '', nonce: ''};
+                let encrypted: any = { data: '', nonce: '' };
                 if (hasMessageAdded) {
                     if (!recipientPublicKey) {
                         recipientPublicKey = pubkey;
@@ -289,7 +293,7 @@ export class SendReferenceComponent implements OnInit {
                     'recipient': recipientRS,
                     'amountTQT': amount,
                     'feeTQT': fee,
-                    'deadline': this.optionService.getOption('DEADLINE',''), // $rootScope.options.DEADLINE,
+                    'deadline': this.optionService.getOption('DEADLINE', ''), // $rootScope.options.DEADLINE,
                     'broadcast': false,
                     'recipientPublicKey': recipientPublicKey,
                     'messageToEncryptIsText': 'true',
@@ -324,7 +328,7 @@ export class SendReferenceComponent implements OnInit {
                     'OK',
                     'error').then(() => {
 
-                });
+                    });
             }
         }, function (error) {
             alertFunctions.InfoAlertBox('Error',
@@ -332,7 +336,7 @@ export class SendReferenceComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 
@@ -344,8 +348,8 @@ export class SendReferenceComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                    this.router.navigate(['/account/transactions/pending']);
-                });
+                        this.router.navigate(['/account/transactions/pending']);
+                    });
 
             } else {
                 alertFunctions.InfoAlertBox('Error',
@@ -353,7 +357,7 @@ export class SendReferenceComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
         }, function (error) {
@@ -362,7 +366,7 @@ export class SendReferenceComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 }

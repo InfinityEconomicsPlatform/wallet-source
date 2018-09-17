@@ -1,150 +1,128 @@
 <div class="row" *ngIf="!openBookMarks">
     <div class="col-sm-12">
         <div class="card">
-           <div class="card-block main-card-block">
-              <div class="border-bt">
-                <h2 class="main-title">Send Asset Details</h2>
-                <h3 class="back-button" (click)="goBack()">
-                          <i class="fa fa-chevron-left"></i> Back
-                      </h3>
-                <app-breadcrumb></app-breadcrumb>
-          </div>
-            <div class="card-body mt-4">
-                <div class="card-block ml-md-3 mr-md-3">
-                    <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                        <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
-                            <form class="form inner-form" #f="ngForm" novalidate>
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-0 mr-0">
-                                                <label>Asset Id
-                                                    <i class="fa fa-question-circle-o"
-                                                       aria-hidden="true"
-                                                       triggers="mouseenter:mouseleave"
-                                                       placement="right"
-                                                       container="body"
-                                                       ngbPopover="The asset id for send">
-                                                    </i>
-                                                </label>
-                                                <div>
-                                                    <input type="text" class="form-control" name="assetId"
-                                                           #assetId="ngModel"
-                                                           placeholder="Asset Id"
-                                                           [(ngModel)]="f.assetId" required>
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">Send Asset Details</h2>
+                    <h3 class="back-button" (click)="goBack()">
+                        <i class="fa fa-chevron-left"></i> Back
+                    </h3>
+                    <app-breadcrumb></app-breadcrumb>
+                </div>
+                <div class="card-body mt-4">
+                    <div class="card-block ml-md-3 mr-md-3">
+                        <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                                <form class="form inner-form" #f="ngForm" novalidate>
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group ml-0 mr-0">
+                                                    <label>Asset Id
+                                                        <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
+                                                            placement="right" container="body" ngbPopover="The asset id for send">
+                                                        </i>
+                                                    </label>
+                                                    <div>
+                                                        <input type="text" class="form-control" name="assetId" #assetId="ngModel"
+                                                            placeholder="Asset Id" [(ngModel)]="f.assetId" required>
+                                                    </div>
+                                                    <div *ngIf="assetId?.invalid && (assetId?.dirty || assetId?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="assetId?.errors.required">
+                                                            Asset id is required
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div *ngIf="assetId?.invalid && (assetId?.dirty || assetId?.touched)"
-                                                     class="input-error">
-                                                    <div *ngIf="assetId?.errors.required">
-                                                        Asset id is required
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group ml-0 mr-0">
+                                                    <label>Shares
+                                                        <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
+                                                            placement="right" container="body" ngbPopover="The number of shares to send.">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-8 col-lg-10 pl-0">
+
+                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                name="shares" #shares="ngModel" [(ngModel)]="f.shares"
+                                                                required>
+                                                        </div>
+
+                                                        <div class="col-4 col-lg-2 pr-1 pl-0">
+                                                            <span class="input-group-text">
+                                                                QUANTITY
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-0 mr-0">
-                                                <label>Shares
-                                                    <i class="fa fa-question-circle-o"
-                                                       aria-hidden="true"
-                                                       triggers="mouseenter:mouseleave"
-                                                       placement="right"
-                                                       container="body"
-                                                       ngbPopover="The number of shares to send.">
-                                                    </i>
-                                                </label>
-                                                 <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
-                                                <div class="col-8 col-lg-10 pl-0">
-                                                 
-                                                           <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" name="shares"
-                                                           #shares="ngModel"
-                                                           [(ngModel)]="f.shares" required>
-                                                </div>                                                  
-                                                   
-                                                   <div class="col-4 col-lg-2 pr-1 pl-0">
-                                                    <span class="input-group-text">
-                                                          QUANTITY
-                                                        </span>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group ml-0 mr-0">
+                                                    <label>Recipient
+                                                        <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
+                                                            placement="right" container="body" ngbPopover="The recipient to send assets">
+                                                        </i>
+                                                    </label>
+
+                                                    <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-7 col-lg-9 pl-0">
+                                                            <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                name="recipientRS" #recipientRS="ngModel" placeholder="Recipient address"
+                                                                [(ngModel)]="f.recipientRS" required>
+                                                        </div>
+                                                        <div class="col-5 col-lg-3 pr-1">
+                                                            <div class="btn-icon-group text-right">
+                                                                <span class="btn btn-primary" triggers="mouseenter:mouseleave"
+                                                                    placement="top" container="body" ngbPopover="Enter an alias connected to an account to get the account Id.">
+                                                                    <i class="fa fa-share-alt"></i>
+                                                                </span>
+                                                                <span class="btn btn-primary" triggers="mouseenter:mouseleave"
+                                                                    placement="top" (click)="loadBookmarkView()"
+                                                                    container="body" ngbPopover="Open bookmarks">
+                                                                    <i class="fa fa-address-card"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-0 mr-0">
-                                                <label>Recipient
-                                                    <i class="fa fa-question-circle-o"
-                                                       aria-hidden="true"
-                                                       triggers="mouseenter:mouseleave"
-                                                       placement="right"
-                                                       container="body"
-                                                       ngbPopover="The recipient to send assets">
-                                                    </i>
-                                                </label>
-                                                
-                                                 <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
-                                                <div class="col-7 col-lg-9 pl-0">                                                 
-                                                             <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control" name="recipientRS"
-                                                           #recipientRS="ngModel"
-                                                           placeholder="Recipient address"
-                                                           [(ngModel)]="f.recipientRS" required>
-                                                </div>
-                                                 <div class="col-5 col-lg-3 pr-1">
-                                                    <div class="btn-icon-group text-right">
-                                                        <span class="btn btn-primary"
-                                                              triggers="mouseenter:mouseleave"
-                                                              placement="top"
-                                                              container="body"
-                                                              ngbPopover="Enter an alias connected to an account to get the account Id.">
-                                                            <i class="fa fa-share-alt"></i>
-                                                        </span>
-                                                         <span class="btn btn-primary"
-                                                              triggers="mouseenter:mouseleave"
-                                                              placement="top"
-                                                              (click)="loadBookmarkView()"
-                                                              container="body"
-                                                              ngbPopover="Open bookmarks">
-                                                          <i class="fa fa-address-card"></i>
-                                                        </span>
-                                                    </div>
-                                                 </div>
-                                                    
-                                                </div>
-                                                <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
-                                                     class="input-error">
-                                                    <div *ngIf="recipientRS?.errors.required">
-                                                        Recipient is required
+                                                    <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="recipientRS?.errors.required">
+                                                            Recipient is required
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                               <div class="mt-4 left">
-                                    <button type="button"
-                                            [disabled]="f.invalid"
-                                            class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
-                                        Next <i class="fa fa-chevron-right"></i> 
-                                    </button>
-                                </div>
-                            </form>
-                        </aw-wizard-step>
-                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="ucsb">Asset Id
+                                    <div class="mt-4 left">
+                                        <button type="button" [disabled]="f.invalid" class="btn btn-gradient mr-1 mb-0 float-right"
+                                            awNextStep>
+                                            Next <i class="fa fa-chevron-right"></i>
+                                        </button>
                                     </div>
-                                    <h4>{{f.assetId}}</h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="ucsb">Shares
+                                </form>
+                            </aw-wizard-step>
+                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="ucsb">Asset Id
+                                        </div>
+                                        <h4>{{f.assetId}}</h4>
                                     </div>
-                                    <h4>{{f.shares}}</h4>
+                                    <div class="col-md-6">
+                                        <div class="ucsb">Shares
+                                        </div>
+                                        <h4>{{f.shares}}</h4>
+                                    </div>
                                 </div>
-                            </div>
-                      
-                            <!-- <div class="row">
+
+                                <!-- <div class="row">
                                 <div class="col-md-6">
                                     <div class="ucsb"> Valid
                                     </div>
@@ -158,34 +136,34 @@
                                      </h4>
                                 </div>
                             </div> -->
-                         
-                            <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
+
+                                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                     class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> Signed Transaction
-                            </button>
-                           <!--  <hr *ngIf="unsignedTx"> -->
-                            <div class="form-group mt-3" *ngIf="unsignedTx">
-                                <div class="position-relative sign_in_inputs">
-                                     <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
-                                               class="form-control pl-0" name="key"></textarea>
+                                    <i class="fa fa-key"></i> Signed Transaction
+                                </button>
+                                <!--  <hr *ngIf="unsignedTx"> -->
+                                <div class="form-group mt-3" *ngIf="unsignedTx">
+                                    <div class="position-relative sign_in_inputs">
+                                        <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
+                                            class="form-control pl-0" name="key"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                         <div class="mt-4">
-                                <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
+                                <div class="mt-4">
+                                    <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
                                         (click)="broadcastTransaction(transactionBytes)">
-                                    <i class="fa fa-check"></i> Finish
-                                </button>
-                                <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                    <i class="fa fa-chevron-left"></i> Previous
-                                </button>
-                            </div>
-                        </aw-wizard-step>
-                    </aw-wizard>
+                                        <i class="fa fa-check"></i> Finish
+                                    </button>
+                                    <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                        <i class="fa fa-chevron-left"></i> Previous
+                                    </button>
+                                </div>
+                            </aw-wizard-step>
+                        </aw-wizard>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <!--
 <div class="row" *ngIf="openBookMarks">

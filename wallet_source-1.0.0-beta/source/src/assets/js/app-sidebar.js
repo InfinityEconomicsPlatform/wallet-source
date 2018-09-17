@@ -8,35 +8,35 @@
 
  =========================================================
 */
- $(document).ready( function(){
+$(document).ready(function () {
 
 
     var $sidebar = $('.app-sidebar'),
-    $sidebar_content = $('.sidebar-content'),
-    $sidebar_img = $sidebar.data('image'),
-    $sidebar_img_container = $('.sidebar-background'),
-    $wrapper = $('.wrapper');
+        $sidebar_content = $('.sidebar-content'),
+        $sidebar_img = $sidebar.data('image'),
+        $sidebar_img_container = $('.sidebar-background'),
+        $wrapper = $('.wrapper');
 
     $sidebar_content.perfectScrollbar();
 
-    if( $sidebar_img_container.length !== 0 && $sidebar_img !== undefined ){
-        $sidebar_img_container.css('background-image','url("' + $sidebar_img + '")');
+    if ($sidebar_img_container.length !== 0 && $sidebar_img !== undefined) {
+        $sidebar_img_container.css('background-image', 'url("' + $sidebar_img + '")');
     }
 
-    if(!$wrapper.hasClass('nav-collapsed')){
+    if (!$wrapper.hasClass('nav-collapsed')) {
         $sidebar_content.find('li.active').parents('li').addClass('open');
     }
 
 
-    $sidebar_content.on('click', '.navigation li a',function(){
+    $sidebar_content.on('click', '.navigation li a', function () {
         var $this = $(this),
-        listItem = $this.parent('li');
+            listItem = $this.parent('li');
 
-        if(listItem.hasClass('has-sub') && listItem.hasClass('open')){
+        if (listItem.hasClass('has-sub') && listItem.hasClass('open')) {
             collapse(listItem);
         }
-        else{
-            if(listItem.hasClass('has-sub')){
+        else {
+            if (listItem.hasClass('has-sub')) {
                 expand(listItem);
             }
 
@@ -56,7 +56,7 @@
     function collapse($listItem, callback) {
         var $subList = $listItem.children('ul');
 
-        $subList.show().slideUp(200, function() {
+        $subList.show().slideUp(200, function () {
             $(this).css('display', '');
 
             $(this).find('> li').removeClass('is-shown');
@@ -76,7 +76,7 @@
 
         $listItem.addClass('open');
 
-        $subList.hide().slideDown(200, function() {
+        $subList.hide().slideDown(200, function () {
             $(this).css('display', '');
 
             if (callback) {
@@ -86,28 +86,28 @@
 
 
 
-        setTimeout(function() {
+        setTimeout(function () {
             $children.addClass('is-shown');
             $children.removeClass('is-hidden');
         }, 0);
     }
 
-    $('.logo-text').on('click',function(){
+    $('.logo-text').on('click', function () {
 
         var listItem = $sidebar_content.find('li.open.has-sub'),
-        activeItem = $sidebar_content.find('li.active');
+            activeItem = $sidebar_content.find('li.active');
 
-        if(listItem.hasClass('has-sub') && listItem.hasClass('open')){
+        if (listItem.hasClass('has-sub') && listItem.hasClass('open')) {
             collapse(listItem);
             listItem.removeClass('open');
-            if(activeItem.closest('li.has-sub')){
+            if (activeItem.closest('li.has-sub')) {
                 openItem = activeItem.closest('li.has-sub');
                 expand(openItem);
                 openItem.addClass('open');
             }
         }
-        else{
-            if(activeItem.closest('li.has-sub')){
+        else {
+            if (activeItem.closest('li.has-sub')) {
                 openItem = activeItem.closest('li.has-sub');
                 expand(openItem);
                 openItem.addClass('open');
@@ -116,53 +116,53 @@
     });
 
 
-    $('.nav-toggle').on('click',function(){
+    $('.nav-toggle').on('click', function () {
         var $this = $(this),
-        toggle_icon= $this.find('.toggle-icon'),
-        toggle = toggle_icon.attr('data-toggle');
+            toggle_icon = $this.find('.toggle-icon'),
+            toggle = toggle_icon.attr('data-toggle');
         compact_menu_checkbox = $('.cz-compact-menu');
 
-        if(toggle === 'expanded'){
+        if (toggle === 'expanded') {
             $wrapper.addClass('nav-collapsed');
 
             $('.nav-toggle').find('.toggle-icon').removeClass('ft-toggle-right').addClass('ft-toggle-left');
             toggle_icon.attr('data-toggle', 'collapsed');
-            if(compact_menu_checkbox.length > 0){
-                compact_menu_checkbox.prop('checked',true);
+            if (compact_menu_checkbox.length > 0) {
+                compact_menu_checkbox.prop('checked', true);
             }
         }
-        else{
+        else {
             $wrapper.removeClass('nav-collapsed menu-collapsed');
 
             $('.nav-toggle').find('.toggle-icon').removeClass('ft-toggle-left').addClass('ft-toggle-right');
             toggle_icon.attr('data-toggle', 'expanded');
-            if(compact_menu_checkbox.length > 0){
-                compact_menu_checkbox.prop('checked',false);
+            if (compact_menu_checkbox.length > 0) {
+                compact_menu_checkbox.prop('checked', false);
             }
         }
     });
 
-    $sidebar.on('mouseenter', function() {
-        if($wrapper.hasClass('nav-collapsed')){
+    $sidebar.on('mouseenter', function () {
+        if ($wrapper.hasClass('nav-collapsed')) {
             $wrapper.removeClass('menu-collapsed');
             var $listItem = $('.navigation li.nav-collapsed-open'),
-            $subList = $listItem.children('ul');
+                $subList = $listItem.children('ul');
 
-            $subList.hide().slideDown(300, function() {
+            $subList.hide().slideDown(300, function () {
                 $(this).css('display', '');
             });
 
             $sidebar_content.find('li.active').parents('li').addClass('open');
             $listItem.addClass('open').removeClass('nav-collapsed-open');
         }
-    }).on('mouseleave', function(event) {
-        if($wrapper.hasClass('nav-collapsed')){
+    }).on('mouseleave', function (event) {
+        if ($wrapper.hasClass('nav-collapsed')) {
             $wrapper.addClass('menu-collapsed');
             var $listItem = $('.navigation li.open'),
-            $subList = $listItem.children('ul');
+                $subList = $listItem.children('ul');
             $listItem.addClass('nav-collapsed-open');
 
-            $subList.show().slideUp(300, function() {
+            $subList.show().slideUp(300, function () {
                 $(this).css('display', '');
             });
 
@@ -174,33 +174,33 @@
         $sidebar.addClass('hide-sidebar');
         $wrapper.removeClass('nav-collapsed menu-collapsed');
     }
-    $( window ).resize(function() {
+    $(window).resize(function () {
         if ($(window).width() < 992) {
             $sidebar.addClass('hide-sidebar');
             $wrapper.removeClass('nav-collapsed menu-collapsed');
         }
-        if ($(window).width() > 992) {
+        if ($(window).width() > 991) {
             $sidebar.removeClass('hide-sidebar');
-            if( $('.toggle-icon').attr('data-toggle') === 'collapsed' &&  $wrapper.not('.nav-collapsed menu-collapsed')){
+            if ($('.toggle-icon').attr('data-toggle') === 'collapsed' && $wrapper.not('.nav-collapsed menu-collapsed')) {
                 $wrapper.addClass('nav-collapsed menu-collapsed');
             }
         }
     });
 
-    $(document).on('click', '.navigation li:not(.has-sub)', function(){
-        if( $(window).width() < 992 ){
+    $(document).on('click', '.navigation li:not(.has-sub)', function () {
+        if ($(window).width() < 992) {
             $sidebar.addClass('hide-sidebar');
         }
     });
 
-    $(document).on('click', '.logo-text', function(){
-        if( $(window).width() < 992 ){
+    $(document).on('click', '.logo-text', function () {
+        if ($(window).width() < 992) {
             $sidebar.addClass('hide-sidebar');
         }
     });
 
 
-    $('.navbar-toggle-1').on('click',function(e){
+    $('.navbar-toggle-1').on('click', function (e) {
         e.stopPropagation();
         $sidebar.toggleClass('hide-sidebar');
     });
@@ -213,7 +213,7 @@
         }
     });
 
-    $('#sidebarClose').on('click', function(){
+    $('#sidebarClose').on('click', function () {
         $sidebar.addClass('hide-sidebar');
     });
 

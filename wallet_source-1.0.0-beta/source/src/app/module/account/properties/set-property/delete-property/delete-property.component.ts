@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {SessionStorageService} from '../../../../../services/session-storage.service';
-import {Location} from '@angular/common';
-import {AliasesService} from '../../../../aliases/aliases.service';
-import {AssetsService} from '../../../../assets/assets.service';
-import {CryptoService} from '../../../../../services/crypto.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CommonService} from '../../../../../services/common.service';
-import {AccountService} from '../../../account.service';
-import {AppConstants} from '../../../../../config/constants';
+import { SessionStorageService } from '../../../../../services/session-storage.service';
+import { Location } from '@angular/common';
+import { AliasesService } from '../../../../aliases/aliases.service';
+import { AssetsService } from '../../../../assets/assets.service';
+import { CryptoService } from '../../../../../services/crypto.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../../../../../services/common.service';
+import { AccountService } from '../../../account.service';
+import { AppConstants } from '../../../../../config/constants';
 import * as alertFunctions from '../../../../../shared/data/sweet-alerts';
 
 @Component({
-  selector: 'app-delete-property',
-  templateUrl: './delete-property.component.html',
-  styleUrls: ['./delete-property.component.scss']
+    selector: 'app-delete-property',
+    templateUrl: './delete-property.component.html',
+    styleUrls: ['./delete-property.component.scss']
 })
 export class DeletePropertyComponent implements OnInit {
 
@@ -25,90 +25,92 @@ export class DeletePropertyComponent implements OnInit {
 
     deletePropertyForm: any = {};
 
-  constructor(private commonService: CommonService,
-              private route: ActivatedRoute,
-              private accountService: AccountService,
-              private router: Router,
-              private sessionStorageService: SessionStorageService,
-              private cryptoService: CryptoService,
-              private _location: Location) { }
+    unsignedTx: boolean;
 
-  ngOnInit() {
-      this.route.queryParams.subscribe((params: any) => {
-          if (!params.id) {
-              this._location.back();
-          } else {
-              this.deletePropertyForm.account = params.id;
-              this.deletePropertyForm.property = params.property;
-              this.deletePropertyForm.mode = params.mode;
-              this.deleteProperty();
-          }
-      })
-  }
-  deleteProperty(){
-      let form = this.deletePropertyForm;
-      let local = this.accountService.getAccountDetailsFromSession('accountRs');
-      let account = form.account;
-      let property = form.property;
-      let mode = parseInt(form.mode);
-      let setter = '';
+    constructor(private commonService: CommonService,
+        private route: ActivatedRoute,
+        private accountService: AccountService,
+        private router: Router,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        private _location: Location) { }
 
-      if (mode === 1) {
+    ngOnInit() {
+        this.route.queryParams.subscribe((params: any) => {
+            if (!params.id) {
+                this._location.back();
+            } else {
+                this.deletePropertyForm.account = params.id;
+                this.deletePropertyForm.property = params.property;
+                this.deletePropertyForm.mode = params.mode;
+                this.deleteProperty();
+            }
+        })
+    }
+    deleteProperty() {
+        let form = this.deletePropertyForm;
+        let local = this.accountService.getAccountDetailsFromSession('accountRs');
+        let account = form.account;
+        let property = form.property;
+        let mode = parseInt(form.mode);
+        let setter = '';
 
-          if (account === local) {
-              setter = local;
-              account = local;
-          } else {
-              setter = account;
-              account = local;
-          }
+        if (mode === 1) {
 
-      } else if (mode === 2) {
-          setter = local;
-          account = account;
-      }
+            if (account === local) {
+                setter = local;
+                account = local;
+            } else {
+                setter = account;
+                account = local;
+            }
 
-      let fee = 1;
-      let secret = form.secretPhrase;
+        } else if (mode === 2) {
+            setter = local;
+            account = account;
+        }
 
-      let accountPublicKey = this.accountService.getAccountDetailsFromSession('publicKey');
-      let secretPhraseHex;
-      if (secret) {
-          secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
-      } else {
-          secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
-      }
-      this.accountService.deleteAccountProperty(account, property, setter, accountPublicKey, fee)
-              .subscribe((success: any) => {
+        let fee = 1;
+        let secret = form.secretPhrase;
 
-                  if (!success.errorCode) {
-                      let unsignedBytes = success.unsignedTransactionBytes;
-                      let signatureHex = this.cryptoService.signatureHex(unsignedBytes, secretPhraseHex);
-                      this.transactionBytes = this.cryptoService.signTransactionHex(unsignedBytes, signatureHex);
-                      this.validBytes = true;
+        let accountPublicKey = this.accountService.getAccountDetailsFromSession('publicKey');
+        let secretPhraseHex;
+        if (secret) {
+            secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
+        } else {
+            secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
+        }
+        this.accountService.deleteAccountProperty(account, property, setter, accountPublicKey, fee)
+            .subscribe((success: any) => {
 
-                      this.tx_fee = success.transactionJSON.feeTQT / 100000000;
-                      this.tx_amount = success.transactionJSON.amountTQT / 100000000;
-                      this.tx_total = this.tx_fee + this.tx_amount;
+                if (!success.errorCode) {
+                    let unsignedBytes = success.unsignedTransactionBytes;
+                    let signatureHex = this.cryptoService.signatureHex(unsignedBytes, secretPhraseHex);
+                    this.transactionBytes = this.cryptoService.signTransactionHex(unsignedBytes, signatureHex);
+                    this.validBytes = true;
 
-                  } else {
-                      alertFunctions.InfoAlertBox('Error',
-                          'Sorry, an error occured! Reason: ' + success.errorDescription,
-                          'OK',
-                          'error').then((isConfirm: any) => {
+                    this.tx_fee = success.transactionJSON.feeTQT / 100000000;
+                    this.tx_amount = success.transactionJSON.amountTQT / 100000000;
+                    this.tx_total = this.tx_fee + this.tx_amount;
 
-                      });
-                  }
-              },  (error) => {
-                  alertFunctions.InfoAlertBox('Error',
-                      AppConstants.getNoConnectionMessage,
-                      'OK',
-                      'error').then((isConfirm: any) => {
+                } else {
+                    alertFunctions.InfoAlertBox('Error',
+                        'Sorry, an error occured! Reason: ' + success.errorDescription,
+                        'OK',
+                        'error').then((isConfirm: any) => {
 
-                  });
-              });
-  }
-    broadcastTransaction = function (transactionBytes) {
+                        });
+                }
+            }, (error) => {
+                alertFunctions.InfoAlertBox('Error',
+                    AppConstants.getNoConnectionMessage,
+                    'OK',
+                    'error').then((isConfirm: any) => {
+
+                    });
+            });
+    }
+    broadcastTransaction = function(transactionBytes) {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
@@ -116,7 +118,7 @@ export class DeletePropertyComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                });
+                    });
 
             } else {
                 alertFunctions.InfoAlertBox('Error',
@@ -124,16 +126,16 @@ export class DeletePropertyComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
-        },  (error) => {
+        }, (error) => {
             alertFunctions.InfoAlertBox('Error',
                 AppConstants.getNoConnectionMessage,
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
     goBack() {

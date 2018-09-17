@@ -35,6 +35,7 @@ export class CreateCampaignComponent implements OnInit {
     tx_total: any;
     transactionBytes: any;
     minReservePerUnitTotal: any;
+    unsignedTx: boolean;
 
     constructor(private route: ActivatedRoute,
         private router: Router,

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {AmountToQuantPipe} from '../../../../pipes/amount-to-quant.pipe';
+import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
-import {CryptoService} from '../../../../services/crypto.service';
-import {AppConstants} from '../../../../config/constants';
-import {SessionStorageService} from '../../../../services/session-storage.service';
-import {CurrenciesService} from '../../../currencies/currencies.service';
-import {AliasesService} from '../../../aliases/aliases.service';
-import {OptionService} from '../../../../services/option.service';
-import {AccountService} from '../../account.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import { CryptoService } from '../../../../services/crypto.service';
+import { AppConstants } from '../../../../config/constants';
+import { SessionStorageService } from '../../../../services/session-storage.service';
+import { CurrenciesService } from '../../../currencies/currencies.service';
+import { AliasesService } from '../../../aliases/aliases.service';
+import { OptionService } from '../../../../services/option.service';
+import { AccountService } from '../../account.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-send-secret',
-  templateUrl: './send-secret.component.html',
-  styleUrls: ['./send-secret.component.scss']
+    selector: 'app-send-secret',
+    templateUrl: './send-secret.component.html',
+    styleUrls: ['./send-secret.component.scss']
 })
 export class SendSecretComponent implements OnInit {
 
@@ -45,15 +45,18 @@ export class SendSecretComponent implements OnInit {
     openBookMarks: boolean = false;
     transactionBytes: any;
 
+    unsignedTx: boolean;
+    addMessage: boolean;
+
     constructor(public sessionStorageService: SessionStorageService,
-                public accountService: AccountService,
-                public cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                public router: Router,
-                public activatedRoute: ActivatedRoute,
-                public aliasesService: AliasesService,
-                public currenciesService: CurrenciesService,
-                public optionService: OptionService) {
+        public accountService: AccountService,
+        public cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        public router: Router,
+        public activatedRoute: ActivatedRoute,
+        public aliasesService: AliasesService,
+        public currenciesService: CurrenciesService,
+        public optionService: OptionService) {
         this.hasPrivateMessage = false;
         this.hasReceiverPublicKey = false;
         this.getBlockChainStatus();
@@ -87,7 +90,7 @@ export class SendSecretComponent implements OnInit {
     }
 
     loadBookmarkView() {
-        this.router.navigate(['/account/send/bookmark-list-only'], {queryParams : {fromView: 'secret'}});
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'secret' } });
         //this.openBookMarks = true;
     }
 
@@ -184,7 +187,7 @@ export class SendSecretComponent implements OnInit {
                         'OK',
                         'error').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
             });
         }, function (error) {
@@ -193,7 +196,7 @@ export class SendSecretComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 
@@ -260,7 +263,7 @@ export class SendSecretComponent implements OnInit {
                         'OK',
                         'error').then(() => {
 
-                    });
+                        });
                     return;
                 }
 
@@ -270,10 +273,10 @@ export class SendSecretComponent implements OnInit {
                         'OK',
                         'info').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
 
-                let encrypted: any = {data: '', nonce: ''};
+                let encrypted: any = { data: '', nonce: '' };
                 if (hasMessageAdded) {
                     if (!recipientPublicKey) {
                         recipientPublicKey = pubkey;
@@ -290,7 +293,7 @@ export class SendSecretComponent implements OnInit {
                     'recipient': recipientRS,
                     'amountTQT': amount,
                     'feeTQT': fee,
-                    'deadline': this.optionService.getOption('DEADLINE',''), // $rootScope.options.DEADLINE,
+                    'deadline': this.optionService.getOption('DEADLINE', ''), // $rootScope.options.DEADLINE,
                     'broadcast': false,
                     'recipientPublicKey': recipientPublicKey,
 
@@ -325,7 +328,7 @@ export class SendSecretComponent implements OnInit {
                     'OK',
                     'error').then(() => {
 
-                });
+                    });
             }
         }, function (error) {
             alertFunctions.InfoAlertBox('Error',
@@ -333,7 +336,7 @@ export class SendSecretComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 
@@ -345,8 +348,8 @@ export class SendSecretComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                    this.router.navigate(['/account/transactions/pending']);
-                });
+                        this.router.navigate(['/account/transactions/pending']);
+                    });
 
             } else {
                 alertFunctions.InfoAlertBox('Error',
@@ -354,7 +357,7 @@ export class SendSecretComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
         }, function (error) {
@@ -363,7 +366,7 @@ export class SendSecretComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 }

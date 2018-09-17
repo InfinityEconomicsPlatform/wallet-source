@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {ShufflingService} from '../shuffling.service';
+import { Component, OnInit } from '@angular/core';
+import { ShufflingService } from '../shuffling.service';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
-import {CurrenciesService} from '../../currencies/currencies.service';
-import {AssetsService} from '../../assets/assets.service';
-import {AccountService} from '../../account/account.service';
-import {AppConstants} from '../../../config/constants';
-import {SessionStorageService} from '../../../services/session-storage.service';
-import {CryptoService} from '../../../services/crypto.service';
-import {AmountToQuantPipe} from '../../../pipes/amount-to-quant.pipe';
-import {ShareToQuantityPipe} from '../../../pipes/share-to-quantity.pipe';
-import {Router} from '@angular/router';
+import { CurrenciesService } from '../../currencies/currencies.service';
+import { AssetsService } from '../../assets/assets.service';
+import { AccountService } from '../../account/account.service';
+import { AppConstants } from '../../../config/constants';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { CryptoService } from '../../../services/crypto.service';
+import { AmountToQuantPipe } from '../../../pipes/amount-to-quant.pipe';
+import { ShareToQuantityPipe } from '../../../pipes/share-to-quantity.pipe';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-create-shuffling',
@@ -26,9 +26,9 @@ export class CreateShufflingComponent implements OnInit {
     finishHeight = 1440;
     isLocalhostOrTestnet: boolean = false;
     holdingOptions = [
-        {label: 'XIN', value: '0'},
-        {label: 'Asset', value: '1'},
-        {label: 'Currency', value: '2'}
+        { label: 'XIN', value: '0' },
+        { label: 'Asset', value: '1' },
+        { label: 'Currency', value: '2' }
     ];
     transactionBytes: any;
     tx_fee: any;
@@ -37,16 +37,17 @@ export class CreateShufflingComponent implements OnInit {
     validBytes: any;
     currencyError: string = '';
     assetError: string = '';
+    unsignedTx: boolean;
 
     constructor(private shufflingService: ShufflingService,
-                private currenciesService: CurrenciesService,
-                private assetsService: AssetsService,
-                private accountService: AccountService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                private amountToQuantPipe: AmountToQuantPipe,
-                private shareToQuantityPipe: ShareToQuantityPipe,
-                private router: Router) {
+        private currenciesService: CurrenciesService,
+        private assetsService: AssetsService,
+        private accountService: AccountService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        private amountToQuantPipe: AmountToQuantPipe,
+        private shareToQuantityPipe: ShareToQuantityPipe,
+        private router: Router) {
         this.createShuffleForm.holdingType = this.holdingOptions[0].value;
     }
 
@@ -58,7 +59,7 @@ export class CreateShufflingComponent implements OnInit {
                 'Localhost (127.0.0.1) is not available. For security reasons localhost is mandatory to create a shuffle.',
                 'OK',
                 'error').then((isConfirm: any) => {
-            });
+                });
         }
     }
 
@@ -191,7 +192,7 @@ export class CreateShufflingComponent implements OnInit {
                                 'OK',
                                 'error').then((isConfirm: any) => {
 
-                            });
+                                });
                         }
                     }, (error) => {
                         alertFunctions.InfoAlertBox('Error',
@@ -199,7 +200,7 @@ export class CreateShufflingComponent implements OnInit {
                             'OK',
                             'error').then((isConfirm: any) => {
 
-                        });
+                            });
                     });
                 })
         } else {
@@ -208,7 +209,7 @@ export class CreateShufflingComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         }
     };
 
@@ -220,8 +221,8 @@ export class CreateShufflingComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                    this.router.navigate(['/shuffling/show-shufflings/my']);
-                });
+                        this.router.navigate(['/shuffling/show-shufflings/my']);
+                    });
 
             } else {
                 alertFunctions.InfoAlertBox('Error',
@@ -229,7 +230,7 @@ export class CreateShufflingComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
         }, (error) => {
@@ -238,7 +239,7 @@ export class CreateShufflingComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     }
 

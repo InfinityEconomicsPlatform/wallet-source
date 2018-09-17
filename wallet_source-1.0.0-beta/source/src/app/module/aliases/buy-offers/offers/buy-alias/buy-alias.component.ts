@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {AmountToQuantPipe} from '../../../../../pipes/amount-to-quant.pipe';
-import {AliasesService} from '../../../aliases.service';
-import {Location} from '@angular/common';
-import {CryptoService} from '../../../../../services/crypto.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CommonService} from '../../../../../services/common.service';
-import {SessionStorageService} from '../../../../../services/session-storage.service';
-import {AppConstants} from '../../../../../config/constants';
+import { Component, OnInit } from '@angular/core';
+import { AmountToQuantPipe } from '../../../../../pipes/amount-to-quant.pipe';
+import { AliasesService } from '../../../aliases.service';
+import { Location } from '@angular/common';
+import { CryptoService } from '../../../../../services/crypto.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../../../../../services/common.service';
+import { SessionStorageService } from '../../../../../services/session-storage.service';
+import { AppConstants } from '../../../../../config/constants';
 import * as alertFunctions from '../../../../../shared/data/sweet-alerts';
 
 @Component({
@@ -27,15 +27,16 @@ export class BuyAliasComponent implements OnInit {
         name: '',
         priceTQT: 0
     };
+    unsignedTx: boolean;
 
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private aliasesService: AliasesService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                private _location: Location) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private aliasesService: AliasesService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        private _location: Location) {
     }
 
     ngOnInit() {
@@ -77,14 +78,14 @@ export class BuyAliasComponent implements OnInit {
                             AppConstants.getNoConnectionMessage,
                             'OK',
                             'error').then((isConfirm: any) => {
-                        });
+                            });
                     }
                 }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
             })
     }
@@ -97,15 +98,15 @@ export class BuyAliasComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/aliases/show-alias']);
-                    });
+                            this.router.navigate(['/aliases/show-alias']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                        this.router.navigate(['/aliases/buy-offers']);
-                    });
+                            this.router.navigate(['/aliases/buy-offers']);
+                        });
                 }
             }, (error) => {
 
@@ -114,7 +115,7 @@ export class BuyAliasComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 

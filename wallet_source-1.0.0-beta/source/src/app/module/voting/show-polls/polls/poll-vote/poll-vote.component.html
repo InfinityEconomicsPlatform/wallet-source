@@ -3,138 +3,129 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-block main-card-block">
-          <div class="border-bt">
-            <h2 class="main-title">Cast Vote</h2>
-            <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
-            <h3 class="back-button" (click)="goBack()">
-                        <i class="fa fa-chevron-left"></i> Back
-                    </h3>
-          </div>
-               
-                <div class="card-body poll-vote mt-4">
-                    <div class="card-block mr-3 ml-3">
-                        <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }"
-                                            [canExit]="isStepOneFormValid" class="form-bordered mt-4">
-                                <form class="form inner-form" #transferAliasForm="ngForm" novalidate>
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group m-0">
-                                                    <label>Name
-                                                        <i class="fa fa-question-circle-o"
-                                                           aria-hidden="true"
-                                                           triggers="mouseenter:mouseleave"
-                                                           placement="right"
-                                                           container="body"
-                                                           ngbPopover="The poll name">
-                                                        </i>
-                                                    </label>
-                                                    <div>
-                                                        <h4> {{poll.name}} </h4>
+                    <div class="border-bt">
+                        <h2 class="main-title">Cast Vote</h2>
+                        <app-breadcrumb></app-breadcrumb>
+                        <h3 class="back-button" (click)="goBack()">
+                            <i class="fa fa-chevron-left"></i> Back
+                        </h3>
+                    </div>
+
+                    <div class="card-body poll-vote mt-4">
+                        <div class="card-block mr-3 ml-3">
+                            <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                                <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }" [canExit]="isStepOneFormValid"
+                                    class="form-bordered mt-4">
+                                    <form class="form inner-form" #transferAliasForm="ngForm" novalidate>
+                                        <div class="form-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group m-0">
+                                                        <label>Name
+                                                            <i class="fa fa-question-circle-o" aria-hidden="true"
+                                                                triggers="mouseenter:mouseleave" placement="right"
+                                                                container="body" ngbPopover="The poll name">
+                                                            </i>
+                                                        </label>
+                                                        <div>
+                                                            <h4> {{poll.name}} </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group m-0">
+                                                        <label>Description
+                                                            <i class="fa fa-question-circle-o" aria-hidden="true"
+                                                                triggers="mouseenter:mouseleave" placement="right"
+                                                                container="body" ngbPopover="The poll description">
+                                                            </i>
+                                                        </label>
+                                                        <div>
+                                                            <h4> {{ poll.description }} </h4>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group m-0">
-                                                    <label>Description
-                                                        <i class="fa fa-question-circle-o"
-                                                           aria-hidden="true"
-                                                           triggers="mouseenter:mouseleave"
-                                                           placement="right"
-                                                           container="body"
-                                                           ngbPopover="The poll description">
-                                                        </i>
-                                                    </label>
-                                                    <div>
-                                                        <h4> {{ poll.description }} </h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                      
-                                        <div class="row  mt-4">
-                                            <div class="col-md-6">
-                                                <div class="form-group m-0">
-                                                    <label>Available options to choose ( Max. {{ poll.maxNumberOfOptions
-                                                        }} Option )
-                                                        <i class="fa fa-question-circle-o"
-                                                           aria-hidden="true"
-                                                           triggers="mouseenter:mouseleave"
-                                                           placement="right"
-                                                           container="body"
-                                                           ngbPopover="You can choose up to {{ poll.maxNumberOfOptions
+
+                                            <div class="row  mt-4">
+                                                <div class="col-md-6">
+                                                    <div class="form-group m-0">
+                                                        <label>Available options to choose ( Max. {{
+                                                            poll.maxNumberOfOptions
+                                                            }} Option )
+                                                            <i class="fa fa-question-circle-o" aria-hidden="true"
+                                                                triggers="mouseenter:mouseleave" placement="right"
+                                                                container="body" ngbPopover="You can choose up to {{ poll.maxNumberOfOptions
                                                         }} option(s) for this poll">
-                                                        </i>
-                                                    </label>
-                                                    <div *ngFor="let option of options" class="col-md-6">
-                                                        <div class="custom-control form-list custom-checkbox">
-                                                            <input type="checkbox" id="{{ option.index }}"
-                                                                   class="custom-control-input"
-                                                                   (change)="handleOptions(option.index)">
-                                                            <label class="custom-control-label"
-                                                                   for="{{ option.index }}">{{ option.name
-                                                                }}</label>
+                                                            </i>
+                                                        </label>
+                                                        <div *ngFor="let option of options" class="col-md-6">
+                                                            <div class="custom-control form-list custom-checkbox">
+                                                                <input type="checkbox" id="{{ option.index }}" class="custom-control-input"
+                                                                    (change)="handleOptions(option.index)">
+                                                                <label class="custom-control-label" for="{{ option.index }}">{{
+                                                                    option.name
+                                                                    }}</label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="left">
-                                        <button type="button" class="btn btn-gradient mr-1 mb-0 float-right"
+                                        <div class="left">
+                                            <button type="button" class="btn btn-gradient mr-1 mb-0 float-right"
                                                 (click)="nextStep()" awNextStep>
-                                            <i class="fa fa-chevron-right"></i> Next
+                                                <i class="fa fa-chevron-right"></i> Next
+                                            </button>
+                                        </div>
+                                    </form>
+                                </aw-wizard-step>
+                                <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="ucsb"> Name</div>
+                                            <h4> {{ poll.name }} </h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="ucsb"> Valid</div>
+                                            <h4 [innerHTML]="validBytes | txIsValid"></h4>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="ucsb"> Service Fee</div>
+                                            <h4> {{ tx_fee | amountTkn }}
+                                                <small> XIN</small>
+                                            </h4>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" [ngClass]="{'btn-success': !signedTx, 'btn-danger': signedTx}"
+                                        class="btn btn-raised mr-1 mb-0" (click)="signedTx = !signedTx">
+                                        <i class="fa fa-key"></i> Signed Transaction
+                                    </button>
+
+                                    <div class="form-group" *ngIf="signedTx">
+                                        <div class="position-relative sign_in_inputs">
+                                            <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
+                                                class="form-control pl-0" name="key"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
+                                            (click)="broadcastTransaction(transactionBytes)">
+                                            <i class="fa fa-check"></i> Finish
+                                        </button>
+                                        <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                            <i class="fa fa-chevron-left"></i> Previous
                                         </button>
                                     </div>
-                                </form>
-                            </aw-wizard-step>
-                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="ucsb"> Name</div>
-                                        <h4> {{ poll.name }} </h4>
-                                    </div>
-                                </div>
-                               
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="ucsb"> Valid</div>
-                                        <h4 [innerHTML]="validBytes | txIsValid"></h4>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="ucsb"> Service Fee</div>
-                                        <h4> {{ tx_fee | amountTkn }}
-                                            <small> XIN</small>
-                                        </h4>
-                                    </div>
-                                </div>
-                              
-                                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
-                                        class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                    <i class="fa fa-key"></i> Signed Transaction
-                                </button>
-                           
-                                <div class="form-group" *ngIf="unsignedTx">
-                                    <div class="position-relative sign_in_inputs">
-                                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
-                                              class="form-control pl-0" name="key"></textarea>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
-                                            (click)="broadcastTransaction(transactionBytes)">
-                                        <i class="fa fa-check"></i> Finish
-                                    </button>
-                                    <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                        <i class="fa fa-chevron-left"></i> Previous
-                                    </button>
-                                </div>
-                            </aw-wizard-step>
-                        </aw-wizard>
+                                </aw-wizard-step>
+                            </aw-wizard>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

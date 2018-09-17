@@ -9,7 +9,7 @@ import { NewsCenterService } from "../news-center.service";
 })
 export class ReadNewsComponent implements OnInit, OnDestroy {
     private subscription: any;
-    private news: any;
+    public news: any;
 
     constructor(private _location: Location, public newsCenterService: NewsCenterService) {
 

@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import {Subject} from 'rxjs/Subject';
+import { Subject } from 'rxjs/Subject';
 @Component({
-  selector: 'app-show-campaigns',
-  templateUrl: './show-campaigns.component.html',
-  styleUrls: ['./show-campaigns.component.scss']
+    selector: 'app-show-campaigns',
+    templateUrl: './show-campaigns.component.html',
+    styleUrls: ['./show-campaigns.component.scss']
 })
 export class ShowCampaignsComponent implements OnInit {
-
     routeChange = new Subject();
-    constructor(private router: Router){
+    constructor(private router: Router) {
     }
-    ngOnInit(){
+    ngOnInit() {
     }
     onTabChange() {
         this.routeChange.next();
+    }
+
+    navigateTo(url) {
+        this.router.navigateByUrl(url);
     }
 }

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CryptoService} from '../../../../../services/crypto.service';
-import {SessionStorageService} from '../../../../../services/session-storage.service';
-import {AmountToQuantPipe} from '../../../../../pipes/amount-to-quant.pipe';
-import {CommonService} from '../../../../../services/common.service';
-import {Location} from '@angular/common';
-import {AssetsService} from '../../../assets.service';
-import {AppConstants} from '../../../../../config/constants';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CryptoService } from '../../../../../services/crypto.service';
+import { SessionStorageService } from '../../../../../services/session-storage.service';
+import { AmountToQuantPipe } from '../../../../../pipes/amount-to-quant.pipe';
+import { CommonService } from '../../../../../services/common.service';
+import { Location } from '@angular/common';
+import { AssetsService } from '../../../assets.service';
+import { AppConstants } from '../../../../../config/constants';
 import * as alertFunctions from '../../../../../shared/data/sweet-alerts';
-import {DataStoreService} from '../../../../../services/data-store.service';
+import { DataStoreService } from '../../../../../services/data-store.service';
 
 @Component({
-  selector: 'app-cancel-order',
-  templateUrl: './cancel-order.component.html',
-  styleUrls: ['./cancel-order.component.scss']
+    selector: 'app-cancel-order',
+    templateUrl: './cancel-order.component.html',
+    styleUrls: ['./cancel-order.component.scss']
 })
 export class CancelOrderComponent implements OnInit {
 
@@ -25,42 +25,44 @@ export class CancelOrderComponent implements OnInit {
     tx_amount: any;
     tx_total: any;
     cancelOrderForm: any = {
-      'order':'',
-        'name':'',
-        'asset':'',
-        'priceTQT':'',
-        'quantityQNT':'',
-        'fee':'',
-        'type':'',
-        'decimals':''
+        'order': '',
+        'name': '',
+        'asset': '',
+        'priceTQT': '',
+        'quantityQNT': '',
+        'fee': '',
+        'type': '',
+        'decimals': ''
     };
 
+    unsignedTx: boolean;
+
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private assetsService: AssetsService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                private _location: Location) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private assetsService: AssetsService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        private _location: Location) {
     }
 
     ngOnInit() {
 
         this.offer = DataStoreService.get('offer-details');
-        if ( !this.offer ) {
+        if (!this.offer) {
             this._location.back();
         } else {
             this.cancelOrderForm = {
-                    'order': this.offer.order,
-                    'name': this.offer.name,
-                    'asset': this.offer.asset,
-                    'priceTQT': this.offer.priceTQT,
-                    'quantityQNT': this.offer.quantityQNT,
-                    'type': this.offer.type,
-                    'decimals': this.offer.decimals
-                }
-                this.cancelOrder();
+                'order': this.offer.order,
+                'name': this.offer.name,
+                'asset': this.offer.asset,
+                'priceTQT': this.offer.priceTQT,
+                'quantityQNT': this.offer.quantityQNT,
+                'type': this.offer.type,
+                'decimals': this.offer.decimals
+            }
+            this.cancelOrder();
         }
     }
     cancelOrder() {
@@ -90,14 +92,14 @@ export class CancelOrderComponent implements OnInit {
                             AppConstants.getNoConnectionMessage,
                             'OK',
                             'error').then((isConfirm: any) => {
-                        });
+                            });
                     }
                 }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         '' + AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
             })
     }
@@ -110,15 +112,15 @@ export class CancelOrderComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['assets/my-open-orders/buy']);
-                    });
+                            this.router.navigate(['assets/my-open-orders/buy']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                        this.router.navigate(['assets/my-open-orders/buy']);
-                    });
+                            this.router.navigate(['assets/my-open-orders/buy']);
+                        });
                 }
             }, (error) => {
 
@@ -127,7 +129,7 @@ export class CancelOrderComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 

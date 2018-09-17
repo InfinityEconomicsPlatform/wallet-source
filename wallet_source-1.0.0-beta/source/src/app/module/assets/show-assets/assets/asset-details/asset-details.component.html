@@ -1,83 +1,84 @@
 <div class="row">
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-block main-card-block">
-        <div class="border-bt">
-          <h2 class="main-title">Asset Details</h2>
-          <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
-          <h3 class="back-button" (click)="goBack()">
-            <i class="fa fa-chevron-left"></i> Back
-          </h3>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">Asset Details</h2>
+                    <app-breadcrumb></app-breadcrumb>
+                    <h3 class="back-button" (click)="goBack()">
+                        <i class="fa fa-chevron-left"></i> Back
+                    </h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-block mr-3 ml-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ucsb"> Name
+                            </div>
+                            <h4> {{assetDetails.name}} </h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ucsb"> Description
+                            </div>
+                            <h4> {{assetDetails.description}} </h4>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ucsb"> Issuer
+                            </div>
+                            <h4>{{assetDetails.accountRS}}</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ucsb"> Asset Id
+                            </div>
+                            <h4>{{assetDetails.asset}}</h4>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ucsb"> Initial Supply
+                            </div>
+                            <h4> {{assetDetails.initialQuantityQNT |
+                                quantityToShare:assetDetails.decimals|numericalString}}</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ucsb"> Current Supply
+                            </div>
+                            <h4> {{assetDetails.quantityQNT | quantityToShare:assetDetails.decimals|numericalString}}</h4>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ucsb"> Decimals
+                            </div>
+                            <h4> {{assetDetails.decimals}} </h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ucsb"> Shareholders
+                            </div>
+                            <h4> {{assetDetails.numberOfAccounts}} </h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ucsb"> Trades
+                            </div>
+                            <h4> {{assetDetails.numberOfTrades}} </h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ucsb"> Transfers
+                            </div>
+                            <h4> {{assetDetails.numberOfTransfers}} </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body">
-        <div class="card-block mr-3 ml-3">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="ucsb"> Name
-              </div>
-              <h4> {{assetDetails.name}} </h4>
-            </div>
-            <div class="col-md-6">
-              <div class="ucsb"> Description
-              </div>
-              <h4> {{assetDetails.description}} </h4>
-            </div>
-          </div>
-          <hr/>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="ucsb"> Issuer
-              </div>
-              <h4>{{assetDetails.accountRS}}</h4>
-            </div>
-            <div class="col-md-6">
-              <div class="ucsb"> Asset Id
-              </div>
-              <h4>{{assetDetails.asset}}</h4>
-            </div>
-          </div>
-          <hr/>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="ucsb"> Initial Supply
-              </div>
-              <h4> {{assetDetails.initialQuantityQNT | quantityToShare:assetDetails.decimals|numericalString}}</h4>
-            </div>
-            <div class="col-md-6">
-              <div class="ucsb"> Current Supply
-              </div>
-              <h4> {{assetDetails.quantityQNT | quantityToShare:assetDetails.decimals|numericalString}}</h4>
-            </div>
-          </div>
-          <hr/>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="ucsb"> Decimals
-              </div>
-              <h4> {{assetDetails.decimals}} </h4>
-            </div>
-            <div class="col-md-6">
-              <div class="ucsb"> Shareholders
-              </div>
-              <h4> {{assetDetails.numberOfAccounts}} </h4>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="ucsb"> Trades
-              </div>
-              <h4> {{assetDetails.numberOfTrades}} </h4>
-            </div>
-            <div class="col-md-6">
-              <div class="ucsb"> Transfers
-              </div>
-              <h4> {{assetDetails.numberOfTransfers}} </h4>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>

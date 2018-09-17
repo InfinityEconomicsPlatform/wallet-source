@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import {Subject} from 'rxjs/Subject';
+import { Subject } from 'rxjs/Subject';
 @Component({
-  selector: 'app-show-ats',
-  templateUrl: './show-ats.component.html',
-  styleUrls: ['./show-ats.component.scss']
+    selector: 'app-show-ats',
+    templateUrl: './show-ats.component.html',
+    styleUrls: ['./show-ats.component.scss']
 })
 export class ShowAtsComponent implements OnInit {
-
     routeChange = new Subject();
-    constructor(private router: Router){
+    constructor(private router: Router) {
     }
-    ngOnInit(){
+
+    ngOnInit() {
     }
+
     onTabChange() {
         this.routeChange.next();
+    }
+
+    navigateTo(url) {
+        this.router.navigateByUrl(url);
     }
 }

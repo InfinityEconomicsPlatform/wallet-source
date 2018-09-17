@@ -10,238 +10,240 @@ import { OptionService } from '../../../services/option.service';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-issue-currency',
-  templateUrl: './issue-currency.component.html',
-  styleUrls: ['./issue-currency.component.scss']
+    selector: 'app-issue-currency',
+    templateUrl: './issue-currency.component.html',
+    styleUrls: ['./issue-currency.component.scss']
 })
 export class IssueCurrencyComponent implements OnInit {
 
-  currencyId: any;
-  issueCurrencyForm: any = {};
-  issueCurrencyForm2: any = {
-    decimals:0,
-    minAmount:0,
-    reserveSupply:0,
-    types:[]
-  };
-  currencyTypes = [1, 2, 4, 8, 32];
+    currencyId: any;
+    issueCurrencyForm: any = {};
+    issueCurrencyForm2: any = {
+        decimals: 0,
+        minAmount: 0,
+        reserveSupply: 0,
+        types: []
+    };
+    currencyTypes = [1, 2, 4, 8, 32];
 
-  accountId = '';
-  accountRs = '';
+    accountId = '';
+    accountRs = '';
 
-  reservable: boolean = false;
-  currentHeight: any;
+    reservable: boolean = false;
+    currentHeight: any;
 
-  transactionBytes: any;
-  tx_fee: any;
-  tx_amount: any;
-  tx_total: any;
-  validBytes: any;
+    transactionBytes: any;
+    tx_fee: any;
+    tx_amount: any;
+    tx_total: any;
+    validBytes: any;
 
-  constructor(public currenciesService: CurrenciesService,
-    public route: ActivatedRoute,
-    public router: Router,
-    public accountService: AccountService,
-    public sessionStorageService: SessionStorageService,
-    public cryptoService: CryptoService,
-    public _location: Location) {
-  }
+    unsignedTx: boolean;
 
-  ngOnInit() {
-    this.currencyTypes.forEach((e) =>{
-      this.issueCurrencyForm2.types[e] = false;
-    })
-  }
-
-  onInitialSupplyChange() {
-    if (this.issueCurrencyForm2) {
-      this.issueCurrencyForm2.maxSupply = this.issueCurrencyForm2.initialSupply;
+    constructor(public currenciesService: CurrenciesService,
+        public route: ActivatedRoute,
+        public router: Router,
+        public accountService: AccountService,
+        public sessionStorageService: SessionStorageService,
+        public cryptoService: CryptoService,
+        public _location: Location) {
     }
-  }
 
-  onTypesChange(currencyTypes) {
+    ngOnInit() {
+        this.currencyTypes.forEach((e) => {
+            this.issueCurrencyForm2.types[e] = false;
+        })
+    }
 
-    if (currencyTypes) {
-      if (currencyTypes[1]) {
-        //Exchangeable
-      }
-      if (currencyTypes[2]) {
-        //controllable
-      }
-
-      if (currencyTypes[4]) {
-        //reservable
-        this.reservable = true;
-        currencyTypes[8] = true;
-
-      } else {
-        currencyTypes[8] = false;
-        this.reservable = false;
-      }
-      if (currencyTypes[8]) {
-        this.reservable = true;
-
-        if (!currencyTypes[4]) {
-          currencyTypes[4] = true;
+    onInitialSupplyChange() {
+        if (this.issueCurrencyForm2) {
+            this.issueCurrencyForm2.maxSupply = this.issueCurrencyForm2.initialSupply;
         }
-
-        this.issueCurrencyForm2.initialSupply = 0;
-      }
     }
-  }
 
-  getBlockChainStatus() {
-    this.currenciesService.getBlockChainStatus().subscribe((success) => {
-      this.currentHeight = success.numberOfBlocks;
-      this.issueCurrencyForm2.activHeight = this.currentHeight;
-    });
-  };
+    onTypesChange(currencyTypes) {
 
-  removeElementFromArray(array, elem) {
-    if (array) {
-      var length = array.length;
-      for (var i = 0; i < length; i++) {
-        array[i].selected = false;
-      }
-    }
-  }
+        if (currencyTypes) {
+            if (currencyTypes[1]) {
+                //Exchangeable
+            }
+            if (currencyTypes[2]) {
+                //controllable
+            }
 
-  hasElement(array, value) {
-    if (array) {
-      var length = array.length;
-      for (var i = 0; i < length; i++) {
-        return array[i].selected;
-      }
-    }
-    return false;
-  }
+            if (currencyTypes[4]) {
+                //reservable
+                this.reservable = true;
+                currencyTypes[8] = true;
 
-  sumArray(json) {
-    var sum = 0;
-    if (json) {
-      for (var key in json) {
-        if (json.hasOwnProperty(key) && json[key]) {
-          sum = sum + parseInt(key);
+            } else {
+                currencyTypes[8] = false;
+                this.reservable = false;
+            }
+            if (currencyTypes[8]) {
+                this.reservable = true;
+
+                if (!currencyTypes[4]) {
+                    currencyTypes[4] = true;
+                }
+
+                this.issueCurrencyForm2.initialSupply = 0;
+            }
         }
-      }
-
     }
-    return sum;
-  }
 
-  validateAndMoveNextStep() {
-    var issueCurrencyForm2 = this.issueCurrencyForm2;
-    var typesArray = issueCurrencyForm2.types;
-    var type = this.sumArray(issueCurrencyForm2.types);
-    if (!(type > 0)) {
-      alertFunctions.InfoAlertBox('Error',
-        'Form error. Atleast one currency type must be selected',
-        'OK',
-        'error').then((isConfirm: any) => {
-
+    getBlockChainStatus() {
+        this.currenciesService.getBlockChainStatus().subscribe((success) => {
+            this.currentHeight = success.numberOfBlocks;
+            this.issueCurrencyForm2.activHeight = this.currentHeight;
         });
-      return;
-    }
-    // $scope.$nextStep();
-  }
+    };
 
-  issueCurrency() {
-    var issueCurrencyForm = this.issueCurrencyForm;
-    var issueCurrencyForm2 = this.issueCurrencyForm2;
-    var name = issueCurrencyForm.name;
-    var code = issueCurrencyForm.code.toUpperCase();
-    var description = issueCurrencyForm.description;
-    var decimals = parseInt(issueCurrencyForm2.decimals);
-    var initialSupply = parseInt(issueCurrencyForm2.initialSupply) * Math.pow(10, decimals);
-    var maxSupply = parseInt(issueCurrencyForm2.maxSupply) * Math.pow(10, decimals);
-    var type = this.sumArray(issueCurrencyForm2.types);
-
-    var activHeight = 0;
-    var minAmount: any = '';
-    var reserveSupply: any = '';
-
-    if (type & (1 << 2)) {
-      activHeight = parseInt(issueCurrencyForm2.activHeight);
-      minAmount = parseInt(issueCurrencyForm2.minAmount) * 100000000;
-      reserveSupply = parseInt(issueCurrencyForm2.reserveSupply) * Math.pow(10, decimals);
+    removeElementFromArray(array, elem) {
+        if (array) {
+            var length = array.length;
+            for (var i = 0; i < length; i++) {
+                array[i].selected = false;
+            }
+        }
     }
 
-    var fee = 1;
-
-    var publicKey = this.accountService.getAccountDetailsFromSession('publicKey');
-    var secret = this.issueCurrencyForm.secretPhrase;
-    var secretPhraseHex;
-
-    if (secret) {
-      secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
-    } else {
-      secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
+    hasElement(array, value) {
+        if (array) {
+            var length = array.length;
+            for (var i = 0; i < length; i++) {
+                return array[i].selected;
+            }
+        }
+        return false;
     }
 
-    this.currenciesService.issueCurrency(publicKey, name, code, description, type,
-      initialSupply, maxSupply,
-      decimals, fee, minAmount, activHeight, reserveSupply)
-      .subscribe((success_) => {
-        success_.subscribe((success) => {
-          if (!success.errorCode) {
-            var unsignedBytes = success.unsignedTransactionBytes;
-            var signatureHex = this.cryptoService.signatureHex(unsignedBytes, secretPhraseHex);
+    sumArray(json) {
+        var sum = 0;
+        if (json) {
+            for (var key in json) {
+                if (json.hasOwnProperty(key) && json[key]) {
+                    sum = sum + parseInt(key);
+                }
+            }
 
-            this.transactionBytes = this.cryptoService.signTransactionHex(unsignedBytes, signatureHex);
-            this.tx_fee = success.transactionJSON.feeTQT / 100000000;
-            this.tx_amount = success.transactionJSON.amountTQT / 100000000;
-            this.tx_total = this.tx_fee + this.tx_amount;
-            this.validBytes = true;
+        }
+        return sum;
+    }
 
-          } else {
+    validateAndMoveNextStep() {
+        var issueCurrencyForm2 = this.issueCurrencyForm2;
+        var typesArray = issueCurrencyForm2.types;
+        var type = this.sumArray(issueCurrencyForm2.types);
+        if (!(type > 0)) {
             alertFunctions.InfoAlertBox('Error',
-              'Sorry, an error occured! Reason: ' + success.errorDescription,
-              'OK',
-              'error').then((isConfirm: any) => {
+                'Form error. Atleast one currency type must be selected',
+                'OK',
+                'error').then((isConfirm: any) => {
 
-              });
-          }
-        }, function (error) {
-          alertFunctions.InfoAlertBox('Error',
-            AppConstants.getNoConnectionMessage,
-            'OK',
-            'error').then((isConfirm: any) => {
+                });
+            return;
+        }
+        // $scope.$nextStep();
+    }
 
+    issueCurrency() {
+        var issueCurrencyForm = this.issueCurrencyForm;
+        var issueCurrencyForm2 = this.issueCurrencyForm2;
+        var name = issueCurrencyForm.name;
+        var code = issueCurrencyForm.code.toUpperCase();
+        var description = issueCurrencyForm.description;
+        var decimals = parseInt(issueCurrencyForm2.decimals);
+        var initialSupply = parseInt(issueCurrencyForm2.initialSupply) * Math.pow(10, decimals);
+        var maxSupply = parseInt(issueCurrencyForm2.maxSupply) * Math.pow(10, decimals);
+        var type = this.sumArray(issueCurrencyForm2.types);
+
+        var activHeight = 0;
+        var minAmount: any = '';
+        var reserveSupply: any = '';
+
+        if (type & (1 << 2)) {
+            activHeight = parseInt(issueCurrencyForm2.activHeight);
+            minAmount = parseInt(issueCurrencyForm2.minAmount) * 100000000;
+            reserveSupply = parseInt(issueCurrencyForm2.reserveSupply) * Math.pow(10, decimals);
+        }
+
+        var fee = 1;
+
+        var publicKey = this.accountService.getAccountDetailsFromSession('publicKey');
+        var secret = this.issueCurrencyForm.secretPhrase;
+        var secretPhraseHex;
+
+        if (secret) {
+            secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
+        } else {
+            secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
+        }
+
+        this.currenciesService.issueCurrency(publicKey, name, code, description, type,
+            initialSupply, maxSupply,
+            decimals, fee, minAmount, activHeight, reserveSupply)
+            .subscribe((success_) => {
+                success_.subscribe((success) => {
+                    if (!success.errorCode) {
+                        var unsignedBytes = success.unsignedTransactionBytes;
+                        var signatureHex = this.cryptoService.signatureHex(unsignedBytes, secretPhraseHex);
+
+                        this.transactionBytes = this.cryptoService.signTransactionHex(unsignedBytes, signatureHex);
+                        this.tx_fee = success.transactionJSON.feeTQT / 100000000;
+                        this.tx_amount = success.transactionJSON.amountTQT / 100000000;
+                        this.tx_total = this.tx_fee + this.tx_amount;
+                        this.validBytes = true;
+
+                    } else {
+                        alertFunctions.InfoAlertBox('Error',
+                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                            'OK',
+                            'error').then((isConfirm: any) => {
+
+                            });
+                    }
+                }, function (error) {
+                    alertFunctions.InfoAlertBox('Error',
+                        AppConstants.getNoConnectionMessage,
+                        'OK',
+                        'error').then((isConfirm: any) => {
+
+                        });
+                });
             });
+
+    }
+
+    broadcastTransaction(transactionBytes) {
+        this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
+
+            if (!success.errorCode) {
+                alertFunctions.InfoAlertBox('Success',
+                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'OK',
+                    'success').then((isConfirm: any) => {
+                        this.route.params.subscribe(params => {
+                            this.router.navigate(['currencies/show-currencies/my']);
+                        });
+                    });
+
+            } else {
+                alertFunctions.InfoAlertBox('Error',
+                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                    'OK',
+                    'error').then((isConfirm: any) => {
+
+                    });
+            }
+
+        }, (error) => {
+            alertFunctions.InfoAlertBox('Error',
+                AppConstants.getNoConnectionMessage,
+                'OK',
+                'error').then((isConfirm: any) => {
+
+                });
         });
-      });
-
-  }
-
-  broadcastTransaction(transactionBytes) {
-    this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
-
-      if (!success.errorCode) {
-        alertFunctions.InfoAlertBox('Success',
-          'Transaction succesfull broadcasted with Id : ' + success.transaction,
-          'OK',
-          'success').then((isConfirm: any) => {
-            this.route.params.subscribe(params => {
-              this.router.navigate(['currencies/show-currencies/my']);
-            });
-          });
-
-      } else {
-        alertFunctions.InfoAlertBox('Error',
-          'Unable to broadcast transaction. Reason: ' + success.errorDescription,
-          'OK',
-          'error').then((isConfirm: any) => {
-
-          });
-      }
-
-    }, (error) => {
-      alertFunctions.InfoAlertBox('Error',
-        AppConstants.getNoConnectionMessage,
-        'OK',
-        'error').then((isConfirm: any) => {
-
-        });
-    });
-  }
+    }
 }

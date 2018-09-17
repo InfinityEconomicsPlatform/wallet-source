@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CommonService} from '../../../../services/common.service';
-import {AmountToQuantPipe} from '../../../../pipes/amount-to-quant.pipe';
-import {SessionStorageService} from '../../../../services/session-storage.service';
-import {Location} from '@angular/common';
-import {AliasesService} from '../../aliases.service';
-import {CryptoService} from '../../../../services/crypto.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../../../../services/common.service';
+import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
+import { SessionStorageService } from '../../../../services/session-storage.service';
+import { Location } from '@angular/common';
+import { AliasesService } from '../../aliases.service';
+import { CryptoService } from '../../../../services/crypto.service';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
-import {AppConstants} from '../../../../config/constants';
+import { AppConstants } from '../../../../config/constants';
 
 @Component({
     selector: 'app-delete-alias',
@@ -28,14 +28,16 @@ export class DeleteAliasComponent implements OnInit {
         uri: ''
     };
 
+    unsignedTx: boolean;
+
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private aliasesService: AliasesService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                private _location: Location) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private aliasesService: AliasesService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        private _location: Location) {
     }
 
     ngOnInit() {
@@ -76,14 +78,14 @@ export class DeleteAliasComponent implements OnInit {
                             AppConstants.getNoConnectionMessage,
                             'OK',
                             'error').then((isConfirm: any) => {
-                        });
+                            });
                     }
                 }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
             })
     }
@@ -97,15 +99,15 @@ export class DeleteAliasComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/aliases/show-alias']);
-                    });
+                            this.router.navigate(['/aliases/show-alias']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                        this.router.navigate(['/aliases/show-alias']);
-                    });
+                            this.router.navigate(['/aliases/show-alias']);
+                        });
                 }
 
 
@@ -116,7 +118,7 @@ export class DeleteAliasComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 

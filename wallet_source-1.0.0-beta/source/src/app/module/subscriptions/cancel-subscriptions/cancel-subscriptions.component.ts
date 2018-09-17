@@ -1,68 +1,70 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {Location} from "@angular/common";
-import {ActivatedRoute, Router} from '@angular/router';
-import {CommonService} from '../../../services/common.service';
-import {SubscriptionService} from '../subscription.service';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Location } from "@angular/common";
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../../../services/common.service';
+import { SubscriptionService } from '../subscription.service';
 import { SessionStorageService } from '../../../services/session-storage.service';
-import {AppConstants} from '../../../config/constants';
+import { AppConstants } from '../../../config/constants';
 import { CryptoService } from '../../../services/crypto.service';
-import {ToastsManager} from 'ng2-toastr';
+import { ToastsManager } from 'ng2-toastr';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
 
 @Component({
-  selector: 'app-cancel-subscriptions',
-  templateUrl: './cancel-subscriptions.component.html',
-  styleUrls: ['./cancel-subscriptions.component.scss']
+    selector: 'app-cancel-subscriptions',
+    templateUrl: './cancel-subscriptions.component.html',
+    styleUrls: ['./cancel-subscriptions.component.scss']
 })
 export class CancelSubscriptionsComponent implements OnInit {
 
-  cancelOrderPromise: any;
-  setCancelSubscriptionPromise: any;
-  data: any;
+    cancelOrderPromise: any;
+    setCancelSubscriptionPromise: any;
+    data: any;
 
-  transactionBytes: any;
+    transactionBytes: any;
 
-  validBytes: any;
-  tx_fee: any;
-  tx_amount: any;
-  tx_total: any;
+    validBytes: any;
+    tx_fee: any;
+    tx_amount: any;
+    tx_total: any;
+    unsignedTx: boolean;
 
-  constructor(
-              private commonService: CommonService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private _location: Location,
-              private subscriptionService: SubscriptionService,
-              private sessionStorageService: SessionStorageService,
-              private cryptoService: CryptoService,
-              public toastr: ToastsManager,
-              vcr: ViewContainerRef) {  this.toastr.setRootViewContainerRef(vcr);
-  }
+    constructor(
+        private commonService: CommonService,
+        private route: ActivatedRoute,
+        private router: Router,
+        private _location: Location,
+        private subscriptionService: SubscriptionService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        public toastr: ToastsManager,
+        vcr: ViewContainerRef) {
+            this.toastr.setRootViewContainerRef(vcr);
+    }
 
-  ngOnInit() {
-      this.route.queryParams.subscribe((params: any) => {
-          if(!params.id){
-              this._location.back();
-          }else{
-              this.data = {
-                  'id': params.id,
-                  'account': params.accountID
-              }
-              this.cancelSubscription();
-          }
-      });
+    ngOnInit() {
+        this.route.queryParams.subscribe((params: any) => {
+            if (!params.id) {
+                this._location.back();
+            } else {
+                this.data = {
+                    'id': params.id,
+                    'account': params.accountID
+                }
+                this.cancelSubscription();
+            }
+        });
 
-  }
-  goBack() {
-      this._location.back();
-  }
-  hasPrivateKeyInSession() {
+    }
+    goBack() {
+        this._location.back();
+    }
+    hasPrivateKeyInSession() {
         if (this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY)) {
             return true;
         }
         return false;
-  };
-  cancelSubscription() {
+    };
+    cancelSubscription() {
         const publicKey = this.commonService.getAccountDetailsFromSession('publicKey');
         const subscription = this.data.id;
         const fee = 1;
@@ -84,15 +86,15 @@ export class CancelSubscriptionsComponent implements OnInit {
                         alertFunctions.InfoAlertBox('Sorry, an error occured! Reason: ' + success.errorDescription,
                             AppConstants.getNoConnectionMessage,
                             'OK',
-                            'error').then((isConfirm:any) => {
-                        });
+                            'error').then((isConfirm: any) => {
+                            });
                     }
-                }, function (error) {
+                }, function(error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
-                        'error').then((isConfirm:any) => {
-                    });
+                        'error').then((isConfirm: any) => {
+                        });
                 });
             })
     };
@@ -103,15 +105,15 @@ export class CancelSubscriptionsComponent implements OnInit {
                     alertFunctions.InfoAlertBox('Success',
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
-                        'success').then((isConfirm:any) => {
-                        this.router.navigate(['/subscriptions/my-subscriptions']);
-                    });
+                        'success').then((isConfirm: any) => {
+                            this.router.navigate(['/subscriptions/my-subscriptions']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
-                        'error').then((isConfirm:any) => {
-                    });
+                        'error').then((isConfirm: any) => {
+                        });
                 }
 
 
@@ -119,9 +121,9 @@ export class CancelSubscriptionsComponent implements OnInit {
                 alertFunctions.InfoAlertBox('Error',
                     AppConstants.getNoConnectionMessage,
                     'OK',
-                    'error').then((isConfirm:any) => {
+                    'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 }

@@ -1,62 +1,62 @@
 <section>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-          <div class="card-block main-card-block">
-          <div class="border-bt">
-            <h2 class="main-title">Account Lessors</h2>
-            <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
-            <div class="pull-right filter-group">
-            <div class="btn-group btn-group-justified btn-group-raised mt-2">
-              <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-grey" (click)="getAccountLessors()"
-                 ngbTooltip="Reload" trigger="mouseenter:mouseleave"><i class="fa fa-refresh"></i></a>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block main-card-block">
+                    <div class="border-bt">
+                        <h2 class="main-title">Account Lessors</h2>
+                        <app-breadcrumb></app-breadcrumb>
+                        <div class="pull-right filter-group">
+                            <div class="btn-group btn-group-justified btn-group-raised mt-2">
+                                <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-grey" (click)="getAccountLessors()"
+                                    ngbTooltip="Reload" trigger="mouseenter:mouseleave"><i class="fa fa-refresh"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body mt-4">
+                    <div class="card-block mr-3 ml-3">
+                        <ngx-datatable class="material" [rows]="accountLeases" [columnMode]="'force'" [rowHeight]="'auto'"
+                            [footerHeight]="50" (autoRefresh)="getAccountLessors()">
+                            <ngx-datatable-column prop="lessorRS" name="Account">
+                                <ng-template let-value="value" ngx-datatable-cell-template>
+                                    <a class="hyperlink" (click)="goToAccountDetails(value)">{{value}}</a>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column prop="effectiveBalance" name="Balance XIN">
+                                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                    {{value | amountTkn}}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column prop="currentHeightFrom" name="Height From">
+                                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                    {{value}}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column prop="currentHeightTo" name="Height To">
+                                <ng-template let-value="value" ngx-datatable-cell-template>
+                                    {{value}}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column prop="currentHeightTo" name="Blocks Left">
+                                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                    {{row.currentHeightFrom ? value - currentHeight : '' }}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column prop="currentHeightTo" name="Days Left">
+                                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                    {{value | lessorsDaysLeft: row.currentHeightFrom : currentHeight}}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column prop="currentHeightTo" name="Percentage">
+                                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                    {{value | lessorsPercentage: row.currentHeightFrom : currentHeight}}
+                                </ng-template>
+                            </ngx-datatable-column>
+                        </ngx-datatable>
+                    </div>
+                </div>
             </div>
-          </div>
-          </div>        
-      </div>
-        <div class="card-body mt-4">
-          <div class="card-block mr-3 ml-3">
-            <ngx-datatable class="material" [rows]="accountLeases" [columnMode]="'force'" [rowHeight]="'auto'"
-                           [footerHeight]="50" (autoRefresh)="getAccountLessors()">
-              <ngx-datatable-column prop="lessorRS" name="Account">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <a class="hyperlink" (click)="goToAccountDetails(value)">{{value}}</a>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="effectiveBalance" name="Balance XIN">
-                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                  {{value | amountTkn}}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="currentHeightFrom" name="Height From">
-                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                  {{value}}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="currentHeightTo" name="Height To">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  {{value}}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="currentHeightTo" name="Blocks Left">
-                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                  {{row.currentHeightFrom ? value - currentHeight : '' }}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="currentHeightTo" name="Days Left">
-                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                  {{value | lessorsDaysLeft: row.currentHeightFrom : currentHeight}}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="currentHeightTo" name="Percentage">
-                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                  {{value | lessorsPercentage: row.currentHeightFrom : currentHeight}}
-                </ng-template>
-              </ngx-datatable-column>
-            </ngx-datatable>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>

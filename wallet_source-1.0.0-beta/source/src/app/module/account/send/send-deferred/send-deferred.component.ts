@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from '../../account.service';
-import {CryptoService} from '../../../../services/crypto.service';
-import {AliasesService} from '../../../aliases/aliases.service';
-import {OptionService} from '../../../../services/option.service';
-import {SessionStorageService} from '../../../../services/session-storage.service';
+import { AccountService } from '../../account.service';
+import { CryptoService } from '../../../../services/crypto.service';
+import { AliasesService } from '../../../aliases/aliases.service';
+import { OptionService } from '../../../../services/option.service';
+import { SessionStorageService } from '../../../../services/session-storage.service';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
-import {AmountToQuantPipe} from '../../../../pipes/amount-to-quant.pipe';
-import {CurrenciesService} from '../../../currencies/currencies.service';
-import {AppConstants} from '../../../../config/constants';
-import {ActivatedRoute, Router} from '@angular/router';
+import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
+import { CurrenciesService } from '../../../currencies/currencies.service';
+import { AppConstants } from '../../../../config/constants';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-send-deferred',
-  templateUrl: './send-deferred.component.html',
-  styleUrls: ['./send-deferred.component.scss']
+    selector: 'app-send-deferred',
+    templateUrl: './send-deferred.component.html',
+    styleUrls: ['./send-deferred.component.scss']
 })
 export class SendDeferredComponent implements OnInit {
     t: any;
@@ -30,6 +30,9 @@ export class SendDeferredComponent implements OnInit {
     tx_total: any;
     openBookMarks: boolean = false;
 
+    unsignedTx: boolean;
+    addMessage: boolean;
+
     // deferred form properties
     sendDeferredForm = {
         currentHeight: 0,
@@ -45,14 +48,14 @@ export class SendDeferredComponent implements OnInit {
     days = 1;
     transactionBytes: any;
     constructor(public sessionStorageService: SessionStorageService,
-                public accountService: AccountService,
-                public cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                public router: Router,
-                public activatedRoute: ActivatedRoute,
-                public aliasesService: AliasesService,
-                public currenciesService: CurrenciesService,
-                public optionService: OptionService) {
+        public accountService: AccountService,
+        public cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        public router: Router,
+        public activatedRoute: ActivatedRoute,
+        public aliasesService: AliasesService,
+        public currenciesService: CurrenciesService,
+        public optionService: OptionService) {
         this.hasPrivateMessage = false;
         this.hasReceiverPublicKey = false;
         this.getBlockChainStatus();
@@ -86,7 +89,7 @@ export class SendDeferredComponent implements OnInit {
     }
 
     loadBookmarkView() {
-        this.router.navigate(['/account/send/bookmark-list-only'], {queryParams : {fromView: 'deferred'}});
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'deferred' } });
         //this.openBookMarks = true;
     }
 
@@ -122,8 +125,8 @@ export class SendDeferredComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                    this.router.navigate(['/account/transactions/pending']);
-                });
+                        this.router.navigate(['/account/transactions/pending']);
+                    });
 
             } else {
                 alertFunctions.InfoAlertBox('Error',
@@ -131,7 +134,7 @@ export class SendDeferredComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
         }, function (error) {
@@ -140,7 +143,7 @@ export class SendDeferredComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 
@@ -213,7 +216,7 @@ export class SendDeferredComponent implements OnInit {
                         'OK',
                         'error').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
             });
         }, function (error) {
@@ -222,7 +225,7 @@ export class SendDeferredComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 
@@ -288,7 +291,7 @@ export class SendDeferredComponent implements OnInit {
                         'OK',
                         'error').then(() => {
 
-                    });
+                        });
                     return;
                 }
 
@@ -298,10 +301,10 @@ export class SendDeferredComponent implements OnInit {
                         'OK',
                         'info').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
 
-                let encrypted: any = {data: '', nonce: ''};
+                let encrypted: any = { data: '', nonce: '' };
                 if (hasMessageAdded) {
                     if (!recipientPublicKey) {
                         recipientPublicKey = pubkey;
@@ -318,7 +321,7 @@ export class SendDeferredComponent implements OnInit {
                     'recipient': recipientRS,
                     'amountTQT': amount,
                     'feeTQT': fee,
-                    'deadline': this.optionService.getOption('DEADLINE',''), // $rootScope.options.DEADLINE,
+                    'deadline': this.optionService.getOption('DEADLINE', ''), // $rootScope.options.DEADLINE,
                     'broadcast': false,
                     'recipientPublicKey': recipientPublicKey,
 
@@ -354,7 +357,7 @@ export class SendDeferredComponent implements OnInit {
                     'OK',
                     'error').then(() => {
 
-                });
+                    });
             }
         }, function (error) {
             alertFunctions.InfoAlertBox('Error',
@@ -362,7 +365,7 @@ export class SendDeferredComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 

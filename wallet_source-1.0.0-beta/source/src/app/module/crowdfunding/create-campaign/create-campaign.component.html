@@ -1,398 +1,398 @@
 <div class="row">
-  <div class="col-sm-12">
-    <div class="card">
-      
-    <div class="card-block main-card-block">
-                    <div class="border-bt">
-                        <h2 class="main-title">Create Campaign</h2>
-                        <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
-                    </div>
-      <div class="card-body mt-4">
-        <div class="card-block ml-md-3 mr-md-3">
-          <aw-wizard [navBarLayout]="'large-filled-symbols'">
-            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
-              <form class="form inner-form" #f1="ngForm" novalidate>
-                <div class="form-body">
-                  <div class="row mt-4">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Name
-                          <i class="fa fa-question-circle-o" 
-                            triggers="mouseenter:mouseleave" 
-                            container="body"
-                            placement="right" 
-                            ngbPopover="The campaign name is unique. Should be between 3-10 characters and longer than the campaign code. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.">
-                          </i>
-                        </label>
-                        <div class="m-0">
-                          <input type="text" class="form-control" [(ngModel)]="campaignForm.name" name="name" #name="ngModel" minlength="3" maxlength="10"
-                            required>
-                          <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="input-error">
-                            <div *ngIf="name?.errors.required">
-                              Name is required
-                            </div>
-                            <div *ngIf="name?.errors.minlength">
-                              Name must contain at least the 3 characters
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Code
-                          <i class="fa fa-question-circle-o"
-                            triggers="mouseenter:mouseleave"
-                            container="body"
-                            placement="right"
-                            ngbPopover="The campaign code is unique. Its composed of 3-6 upper case letters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.">
-                          </i>
-                        </label>
-                        <div class="m-0">
-                          <input type="text" class="form-control" [(ngModel)]="campaignForm.code" name="code" #code="ngModel" minlength="3" maxlength="6"
-                            required>
-                          <div *ngIf="code?.invalid && (code?.dirty || code?.touched)" class="input-error">
-                            <div *ngIf="code?.errors.required">
-                              Code is required
-                            </div>
-                            <div *ngIf="code?.errors.minlength">
-                              Code must contain at least 3 characters
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-               
-                  <div class="form-group">
-                    <label>Description
-                      <i class="fa fa-question-circle-o" 
-                        triggers="mouseenter:mouseleave"
-                        container="body"
-                        placement="right"
-                        ngbPopover="Campaign description with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.">
-                      </i>
-                    </label>
-                    <div class="position-relative">
-                      <textarea rows="5" class="form-control" [(ngModel)]="campaignForm.desc" name="desc" #desc="ngModel" required></textarea>
-                      <div *ngIf="desc?.invalid && (desc?.dirty || desc?.touched)" class="input-error">
-                        <div *ngIf="desc?.errors.required">
-                          Description is required
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+    <div class="col-sm-12">
+        <div class="card">
+
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">Create Campaign</h2>
+                    <app-breadcrumb></app-breadcrumb>
                 </div>
-                <div class="mt-4 left">
-                  <button type="button" [disabled]="f1.invalid" (click)="getBlockChainStatus()" class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
-                    <i class="fa fa-chevron-right"></i> Next
-                  </button>
-                </div>
-              </form>
-            </aw-wizard-step>
-            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '2' }">
-              <form class="form inner-form" #f2="ngForm" novalidate>
-                <div class="form-body">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Initial Supply
-                          <i class="fa fa-question-circle-o" 
-                            triggers="mouseenter:mouseleave" 
-                            container="body"
-                            placement="right"
-                            ngbPopover="The initial campaign supply. These units remains to campaign issuer.">
-                          </i>
-                        </label>
-                         <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                          <div class="col-9 pl-0">
-                          <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="campaignForm.initialSupply" name="initialSupply" #initialSupply="ngModel"
-                            [minValue]="0" required>
-                          </div>
-                         <div class="col-3 text-right pl-0">
-                            <div class="input-single-group">
-                                 <span class="input-group-text text-right">
-                                                    UNITS
-                                 </span>
-                                  </div>
-                            </div>
-                        </div>
-                        <div *ngIf="initialSupply?.invalid && (initialSupply?.dirty || initialSupply?.touched)" class="input-error">
-                          <div *ngIf="initialSupply?.errors.required">
-                            Initial Supply is required
-                          </div>
-                          <div *ngIf="initialSupply?.errors.minValue && !initialSupply?.errors.required">
-                            Initial Supply must be greater than equal to 0
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Reserve Supply
-                          <i class="fa fa-question-circle-o"
-                            triggers="mouseenter:mouseleave"
-                            container="body"
-                            placement="right"
-                            ngbPopover="The reserve campaign supply. Subsctracted by initial supply those units are distributed among founders.">
-                          </i>
-                        </label>
-                         <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                        <div class="col-9 pl-0">
-                                 <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="changeMinAmount()" [(ngModel)]="campaignForm.reserveSupply" name="reserveSupply"
-                            #reserveSupply="ngModel" [minValue]="1" required>
-                          </div>
-                          <div class="col-3 text-right pl-0">
-                                              <div class="input-single-group">
-                                                  <span class="input-group-text text-right">
-                                                    UNITS
-                                                  </span>
-                                              </div>
-                                             </div>
-                        </div>
-                        <div *ngIf="reserveSupply?.invalid && (reserveSupply?.dirty || reserveSupply?.touched)" class="input-error">
-                          <div *ngIf="reserveSupply?.errors.required">
-                            Reserve Supply is required
-                          </div>
-                          <div *ngIf="reserveSupply?.errors.minValue && !reserveSupply?.errors.required">
-                            Reserve Supply must be greater than 0
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Min. Amount per Unit
-                          <i class="fa fa-question-circle-o" 
-                            triggers="mouseenter:mouseleave"
-                            container="body"
-                            placement="right"
-                            ngbPopover="The amount of XIN to raise for EACH unit of reserve supply. Total amount to raise is this amount multiplied by reserve supply.">
-                          </i>
-                        </label>
-                         <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                       <div class="col-10 pl-0">
-                                <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="changeMinAmount()" [(ngModel)]="campaignForm.minReservePerUnitTQT" name="minReservePerUnitTQT"
-                            #minReservePerUnitTQT="ngModel" [minValue]="1" required>
-                          </div>
-                         <div class="col-2 text-right pl-0">
-                                              <div class="input-single-group">
-                                                  <span class="input-group-text text-right">
-                                                    XIN
-                                                  </span>
-                                              </div>
-                                             </div>
-                          
-                        </div>
-                        <div *ngIf="minReservePerUnitTQT?.invalid && (minReservePerUnitTQT?.dirty || minReservePerUnitTQT?.touched)" class="input-error">
-                          <div *ngIf="minReservePerUnitTQT?.errors.required">
-                            Min. Amount per Unit is required
-                          </div>
-                          <div *ngIf="minReservePerUnitTQT?.errors.minValue && !minReservePerUnitTQT?.errors.required">
-                            Min. Amount per Unit must be greater than 0
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                 
-                  <div class="row mt-3">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Total Amount to Raise
-                          <i class="fa fa-question-circle-o  ml-1 info-yellow"
-                            triggers="mouseenter:mouseleave"
-                            container="body"
-                            placement="right"
-                            ngbPopover="The amount of XIN to raise in total for your campaign.">
-                          </i>
-                        </label>
-                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                                              <div class="col-9 pl-0">  
-                                              <input type="number" [attr.disabled]="true" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="campaignForm.totalAmount" name="totalAmount">
+                <div class="card-body mt-4">
+                    <div class="card-block ml-md-3 mr-md-3">
+                        <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                                <form class="form inner-form" #f1="ngForm" novalidate>
+                                    <div class="form-body">
+                                        <div class="row mt-4">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Name
+                                                        <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                            container="body" placement="right" ngbPopover="The campaign name is unique. Should be between 3-10 characters and longer than the campaign code. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.">
+                                                        </i>
+                                                    </label>
+                                                    <div class="m-0">
+                                                        <input type="text" class="form-control" [(ngModel)]="campaignForm.name"
+                                                            name="name" #name="ngModel" minlength="3" maxlength="10"
+                                                            required>
+                                                        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+                                                            class="input-error">
+                                                            <div *ngIf="name?.errors.required">
+                                                                Name is required
+                                                            </div>
+                                                            <div *ngIf="name?.errors.minlength">
+                                                                Name must contain at least the 3 characters
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-3">
-                                              <div class="input-single-group">
-                                                  <span class="input-group-text text-right">
-                                                    XIN
-                                                  </span>
-                                              </div>
-                                             </div>
-                          
-                        </div>
-                      </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Code
+                                                        <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                            container="body" placement="right" ngbPopover="The campaign code is unique. Its composed of 3-6 upper case letters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.">
+                                                        </i>
+                                                    </label>
+                                                    <div class="m-0">
+                                                        <input type="text" class="form-control" [(ngModel)]="campaignForm.code"
+                                                            name="code" #code="ngModel" minlength="3" maxlength="6"
+                                                            required>
+                                                        <div *ngIf="code?.invalid && (code?.dirty || code?.touched)"
+                                                            class="input-error">
+                                                            <div *ngIf="code?.errors.required">
+                                                                Code is required
+                                                            </div>
+                                                            <div *ngIf="code?.errors.minlength">
+                                                                Code must contain at least 3 characters
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Description
+                                                <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                    container="body" placement="right" ngbPopover="Campaign description with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.">
+                                                </i>
+                                            </label>
+                                            <div class="position-relative">
+                                                <textarea rows="5" class="form-control" [(ngModel)]="campaignForm.desc"
+                                                    name="desc" #desc="ngModel" required></textarea>
+                                                <div *ngIf="desc?.invalid && (desc?.dirty || desc?.touched)" class="input-error">
+                                                    <div *ngIf="desc?.errors.required">
+                                                        Description is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 left">
+                                        <button type="button" [disabled]="f1.invalid" (click)="getBlockChainStatus()"
+                                            class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
+                                            <i class="fa fa-chevron-right"></i> Next
+                                        </button>
+                                    </div>
+                                </form>
+                            </aw-wizard-step>
+                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '2' }">
+                                <form class="form inner-form" #f2="ngForm" novalidate>
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Initial Supply
+                                                        <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                            container="body" placement="right" ngbPopover="The initial campaign supply. These units remains to campaign issuer.">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-9 pl-0">
+                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                [(ngModel)]="campaignForm.initialSupply" name="initialSupply"
+                                                                #initialSupply="ngModel" [minValue]="0" required>
+                                                        </div>
+                                                        <div class="col-3 text-right pl-0">
+                                                            <div class="input-single-group">
+                                                                <span class="input-group-text text-right">
+                                                                    UNITS
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="initialSupply?.invalid && (initialSupply?.dirty || initialSupply?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="initialSupply?.errors.required">
+                                                            Initial Supply is required
+                                                        </div>
+                                                        <div *ngIf="initialSupply?.errors.minValue && !initialSupply?.errors.required">
+                                                            Initial Supply must be greater than equal to 0
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Reserve Supply
+                                                        <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                            container="body" placement="right" ngbPopover="The reserve campaign supply. Subsctracted by initial supply those units are distributed among founders.">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-9 pl-0">
+                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                (input)="changeMinAmount()" [(ngModel)]="campaignForm.reserveSupply"
+                                                                name="reserveSupply" #reserveSupply="ngModel"
+                                                                [minValue]="1" required>
+                                                        </div>
+                                                        <div class="col-3 text-right pl-0">
+                                                            <div class="input-single-group">
+                                                                <span class="input-group-text text-right">
+                                                                    UNITS
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="reserveSupply?.invalid && (reserveSupply?.dirty || reserveSupply?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="reserveSupply?.errors.required">
+                                                            Reserve Supply is required
+                                                        </div>
+                                                        <div *ngIf="reserveSupply?.errors.minValue && !reserveSupply?.errors.required">
+                                                            Reserve Supply must be greater than 0
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Min. Amount per Unit
+                                                        <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                            container="body" placement="right" ngbPopover="The amount of XIN to raise for EACH unit of reserve supply. Total amount to raise is this amount multiplied by reserve supply.">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-10 pl-0">
+                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                (input)="changeMinAmount()" [(ngModel)]="campaignForm.minReservePerUnitTQT"
+                                                                name="minReservePerUnitTQT" #minReservePerUnitTQT="ngModel"
+                                                                [minValue]="1" required>
+                                                        </div>
+                                                        <div class="col-2 text-right pl-0">
+                                                            <div class="input-single-group">
+                                                                <span class="input-group-text text-right">
+                                                                    XIN
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div *ngIf="minReservePerUnitTQT?.invalid && (minReservePerUnitTQT?.dirty || minReservePerUnitTQT?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="minReservePerUnitTQT?.errors.required">
+                                                            Min. Amount per Unit is required
+                                                        </div>
+                                                        <div *ngIf="minReservePerUnitTQT?.errors.minValue && !minReservePerUnitTQT?.errors.required">
+                                                            Min. Amount per Unit must be greater than 0
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Total Amount to Raise
+                                                        <i class="fa fa-question-circle-o  ml-1 info-yellow" triggers="mouseenter:mouseleave"
+                                                            container="body" placement="right" ngbPopover="The amount of XIN to raise in total for your campaign.">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-9 pl-0">
+                                                            <input type="number" [attr.disabled]="true" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                [(ngModel)]="campaignForm.totalAmount" name="totalAmount">
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="input-single-group">
+                                                                <span class="input-group-text text-right">
+                                                                    XIN
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label>Issuance Height
+                                                        <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                            container="body" ngbPopover="Your campaign ends after this number of blocks">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-3 col-md-2">
+                                                            <span class="input-group-text">
+                                                                BLOCK : {{ campaignForm.currentHeight }}
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-4 col-md-3 pr-0">
+                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                [(ngModel)]="campaignForm.issuanceHeight" name="issuanceHeight"
+                                                                [minValue]="1440" [maxValue]="43200" #issuanceHeight="ngModel"
+                                                                required placeholder="1440">
+                                                        </div>
+                                                        <div class="col-2 pr-0">
+                                                            <span class="input-group-text">
+                                                                {{ campaignForm.days }} Day(s)
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-12 col-md-5 pr-1 pl-0 text-right">
+                                                            <div class="btn-icon-group text-right text-sm-center">
+                                                                <a class="btn btn-primary" (click)="min()">
+                                                                    <i class="fa fa-fast-backward"></i>
+                                                                </a>
+                                                                <a class="btn btn-primary" (click)="decrement()">
+                                                                    <i class="fa fa-minus"></i>
+                                                                </a>
+                                                                <a class="btn btn-primary" (click)="increment()">
+                                                                    <i class="fa fa-plus"></i>
+                                                                </a>
+                                                                <a class="btn btn-primary" (click)="max()">
+                                                                    <i class="fa fa-fast-forward"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div *ngIf="issuanceHeight?.invalid && (issuanceHeight?.dirty || issuanceHeight?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="issuanceHeight?.errors.required">
+                                                            Issuance Height is required
+                                                        </div>
+                                                        <div *ngIf="issuanceHeight?.errors.minValue && !issuanceHeight?.errors.required">
+                                                            Issuance Height must be greater than equal to 1440
+                                                        </div>
+                                                        <div *ngIf="issuanceHeight?.errors.maxValue && !issuanceHeight?.errors.required">
+                                                            Issuance Height must be less than equal to 43200
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button type="button" [disabled]="f2.invalid" class="btn btn-gradient mr-1  mb-2 float-right"
+                                            (click)="createCampaign()" awNextStep>
+                                            <i class="fa fa-chevron-right"></i> Next
+                                        </button>
+                                        <button type="button" class="btn btn-gradient mr-1  mb-2 float-right"
+                                            awPreviousStep>
+                                            <i class="fa fa-chevron-left"></i> Previous
+                                        </button>
+                                    </div>
+                                </form>
+                            </aw-wizard-step>
+                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '3' }" class="form-bordered mt-4">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Name
+                                        </div>
+                                        <h4> {{campaignForm.name}} </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Code
+                                        </div>
+                                        <h4> {{campaignForm.code}} </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Description
+                                        </div>
+                                        <h4> {{campaignForm.desc}} </h4>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Reserve Supply
+                                        </div>
+                                        <h4> {{campaignForm.reserveSupply}}
+                                            <small> UNITS </small>
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Max. Supply
+                                        </div>
+                                        <h4> {{campaignForm.maxSupply}}
+                                            <small> UNITS </small>
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Initial Supply
+                                        </div>
+                                        <h4> {{campaignForm.initialSupply}} </h4>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Issuance Height
+                                        </div>
+                                        <h4> + {{campaignForm.issuanceHeight}}
+                                            <small> BLOCKS </small>
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Min. Reserve / UNIT
+                                        </div>
+                                        <h4> {{campaignForm.minReservePerUnitTQT}}
+                                            <small> XIN </small>
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Total Amount Raised
+                                        </div>
+                                        <h4 *ngIf="minReservePerUnitTotal"> {{minReservePerUnitTotal | numberString:
+                                            campaignForm.decimals }}
+                                            <small> XIN </small>
+                                        </h4>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Valid
+                                        </div>
+                                        <h4 [innerHTML]="validBytes | txIsValid"> </h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb"> Service Fee
+                                        </div>
+                                        <h4> {{ tx_fee | amountTkn }}
+                                            <small> XIN</small>
+                                        </h4>
+                                    </div>
+                                </div>
+
+                                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
+                                    class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                                    <i class="fa fa-key"></i> Signed Transaction
+                                </button>
+
+                                <div class="form-group" *ngIf="unsignedTx">
+                                    <div class="position-relative sign_in_inputs">
+                                        <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
+                                            class="form-control pl-0" name="key"></textarea>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
+                                        (click)="broadcastTransaction(transactionBytes)">
+                                        <i class="fa fa-check"></i> Finish
+                                    </button>
+                                    <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                        <i class="fa fa-chevron-left"></i> Previous
+                                    </button>
+                                </div>
+                            </aw-wizard-step>
+                        </aw-wizard>
                     </div>
-                    <div class="col-md-8">
-                      <div class="form-group">
-                        <label>Issuance Height
-                          <i class="fa fa-question-circle-o"
-                            placement="right"
-                            triggers="mouseenter:mouseleave"
-                            container="body"
-                            ngbPopover="Your campaign ends after this number of blocks">
-                          </i>
-                        </label>
-                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">  
-                           <div class="col-3 col-md-2"> 
-                           <span class="input-group-text">
-                              BLOCK : {{ campaignForm.currentHeight }}
-                            </span>  
-                           </div>
-                           <div class="col-4 col-md-3 pr-0">   
-                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="campaignForm.issuanceHeight" name="issuanceHeight" [minValue]="1440" [maxValue]="43200"
-                          #issuanceHeight="ngModel" required placeholder="1440">
-                           </div>
-                           <div class="col-2 pr-0">  
-                           <span class="input-group-text">
-                              {{ campaignForm.days }} Day(s)
-                            </span> 
-                           </div>
-                           <div class="col-12 col-md-5 pr-1 pl-0 text-right"> 
-                               <div class="btn-icon-group text-right text-sm-center">
-                                      <a class="btn btn-primary" (click)="min()">
-                                        <i class="fa fa-fast-backward"></i>
-                                      </a>
-                                      <a class="btn btn-primary" (click)="decrement()">
-                                        <i class="fa fa-minus"></i>
-                                      </a>
-                                      <a class="btn btn-primary" (click)="increment()">
-                                        <i class="fa fa-plus"></i>
-                                      </a>
-                                      <a class="btn btn-primary" (click)="max()">
-                                        <i class="fa fa-fast-forward"></i>
-                                      </a>
-                              </div>  
-                           </div>
-                          
-                          
-                        </div>
-                        <div *ngIf="issuanceHeight?.invalid && (issuanceHeight?.dirty || issuanceHeight?.touched)" class="input-error">
-                          <div *ngIf="issuanceHeight?.errors.required">
-                            Issuance Height is required
-                          </div>
-                          <div *ngIf="issuanceHeight?.errors.minValue && !issuanceHeight?.errors.required">
-                            Issuance Height must be greater than equal to 1440
-                          </div>
-                          <div *ngIf="issuanceHeight?.errors.maxValue && !issuanceHeight?.errors.required">
-                            Issuance Height must be less than equal to 43200
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-                <div class="mt-3">
-                  <button type="button" [disabled]="f2.invalid" class="btn btn-gradient mr-1  mb-2 float-right" (click)="createCampaign()" awNextStep>
-                    <i class="fa fa-chevron-right"></i> Next
-                  </button>
-                  <button type="button" class="btn btn-gradient mr-1  mb-2 float-right" awPreviousStep>
-                    <i class="fa fa-chevron-left"></i> Previous
-                  </button>
-                </div>
-              </form>
-            </aw-wizard-step>
-            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '3' }" class="form-bordered mt-4">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="ucsb"> Name
-                  </div>
-                  <h4> {{campaignForm.name}} </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Code
-                  </div>
-                  <h4> {{campaignForm.code}} </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Description
-                  </div>
-                  <h4> {{campaignForm.desc}} </h4>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="ucsb"> Reserve Supply
-                  </div>
-                  <h4> {{campaignForm.reserveSupply}}
-                    <small> UNITS </small>
-                  </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Max. Supply
-                  </div>
-                  <h4> {{campaignForm.maxSupply}}
-                    <small> UNITS </small>
-                  </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Initial Supply
-                  </div>
-                  <h4> {{campaignForm.initialSupply}} </h4>
-                </div>
-              </div>
-          
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="ucsb"> Issuance Height
-                  </div>
-                  <h4> + {{campaignForm.issuanceHeight}}
-                    <small> BLOCKS </small>
-                  </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Min. Reserve / UNIT
-                  </div>
-                  <h4> {{campaignForm.minReservePerUnitTQT}}
-                    <small> XIN </small>
-                  </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Total Amount Raised
-                  </div>
-                  <h4 *ngIf="minReservePerUnitTotal"> {{minReservePerUnitTotal | numberString: campaignForm.decimals }}
-                    <small> XIN </small>
-                  </h4>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="ucsb"> Valid
-                  </div>
-                  <h4 [innerHTML]="validBytes | txIsValid"> </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Service Fee
-                  </div>
-                  <h4> {{ tx_fee | amountTkn }}
-                    <small> XIN</small>
-                  </h4>
-                </div>
-              </div>
-            
-              <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}" class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                <i class="fa fa-key"></i> Signed Transaction
-              </button>
-     
-              <div class="form-group" *ngIf="unsignedTx">
-                <div class="position-relative sign_in_inputs">
-                  <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0" name="key"></textarea>
-                </div>
-              </div>
-              <div class="mt-4">
-                <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right" (click)="broadcastTransaction(transactionBytes)">
-                  <i class="fa fa-check"></i> Finish
-                </button>
-                <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                  <i class="fa fa-chevron-left"></i> Previous
-                </button>
-              </div>
-            </aw-wizard-step>
-          </aw-wizard>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
 </div>

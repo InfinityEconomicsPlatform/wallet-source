@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {CryptoService} from '../../../../../services/crypto.service';
-import {AppConstants} from '../../../../../config/constants';
-import {AliasesService} from '../../../../aliases/aliases.service';
-import {SessionStorageService} from '../../../../../services/session-storage.service';
-import {Location} from '@angular/common';
-import {AssetsService} from '../../../assets.service';
+import { CryptoService } from '../../../../../services/crypto.service';
+import { AppConstants } from '../../../../../config/constants';
+import { AliasesService } from '../../../../aliases/aliases.service';
+import { SessionStorageService } from '../../../../../services/session-storage.service';
+import { Location } from '@angular/common';
+import { AssetsService } from '../../../assets.service';
 import * as alertFunctions from '../../../../../shared/data/sweet-alerts';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CommonService} from '../../../../../services/common.service';
-import {CurrenciesService} from '../../../../currencies/currencies.service';
-import {AmountToQuantPipe} from '../../../../../pipes/amount-to-quant.pipe';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../../../../../services/common.service';
+import { CurrenciesService } from '../../../../currencies/currencies.service';
+import { AmountToQuantPipe } from '../../../../../pipes/amount-to-quant.pipe';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
-  selector: 'app-dividend-payment',
-  templateUrl: './dividend-payment.component.html',
-  styleUrls: ['./dividend-payment.component.scss']
+    selector: 'app-dividend-payment',
+    templateUrl: './dividend-payment.component.html',
+    styleUrls: ['./dividend-payment.component.scss']
 })
 export class DividendPaymentComponent implements OnInit {
+    routeChange = new Subject();
     transactionBytes: any;
 
     validBytes: any;
@@ -29,18 +31,19 @@ export class DividendPaymentComponent implements OnInit {
         'amountPerQuant': '',
         'height': 0,
         'decimals': ''
-    }
+    };
+    unsignedTx: boolean;
 
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private assetsService: AssetsService,
-                private aliasesService: AliasesService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                private currenciesService: CurrenciesService,
-                private amountToQuantPipe: AmountToQuantPipe,
-                private _location: Location) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private assetsService: AssetsService,
+        private aliasesService: AliasesService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        private currenciesService: CurrenciesService,
+        private amountToQuantPipe: AmountToQuantPipe,
+        private _location: Location) {
     }
 
     ngOnInit() {
@@ -64,19 +67,24 @@ export class DividendPaymentComponent implements OnInit {
             }
         })
     }
+
+    onTabChange() {
+        this.routeChange.next();
+    }
+    
     dividendPayment() {
         const amountPerQuant = this.amountToQuantPipe.transform(this.dividendPaymentForm.amountPerQuant);
-       /* amountPerQuant = parseInt(amountPerQuant / Math.pow(10, parseInt(this.dividendPaymentForm.decimals, 10)), 10);
-
-        if (amountPerQuant < 1) {
-
-            alertFunctions.InfoAlertBox('Error',
-                'Sorry, an error occured! Reason: ' + 'Amount per share less than asset decimals: (' +
-                this.dividendPaymentForm.decimals + '). Dividend would be (0) per smallest asset unit.',
-                'OK',
-                'error').then((isConfirm: any) => {
-            });
-        }*/
+        /* amountPerQuant = parseInt(amountPerQuant / Math.pow(10, parseInt(this.dividendPaymentForm.decimals, 10)), 10);
+ 
+         if (amountPerQuant < 1) {
+ 
+             alertFunctions.InfoAlertBox('Error',
+                 'Sorry, an error occured! Reason: ' + 'Amount per share less than asset decimals: (' +
+                 this.dividendPaymentForm.decimals + '). Dividend would be (0) per smallest asset unit.',
+                 'OK',
+                 'error').then((isConfirm: any) => {
+             });
+         }*/
         const publicKey = this.commonService.getAccountDetailsFromSession('publicKey');
         const assetId = this.dividendPaymentForm.assetId;
         const height = this.dividendPaymentForm.height;
@@ -100,14 +108,14 @@ export class DividendPaymentComponent implements OnInit {
                             AppConstants.getNoConnectionMessage,
                             'OK',
                             'error').then((isConfirm: any) => {
-                        });
+                            });
                     }
                 }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
             })
     }
@@ -120,15 +128,15 @@ export class DividendPaymentComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/assets/show-assets']);
-                    });
+                            this.router.navigate(['/assets/show-assets']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                        this.router.navigate(['/assets/show-assets']);
-                    });
+                            this.router.navigate(['/assets/show-assets']);
+                        });
                 }
             }, (error) => {
 
@@ -137,7 +145,7 @@ export class DividendPaymentComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 

@@ -7,50 +7,51 @@ import * as alertFunctions from "../../../shared/data/sweet-alerts";
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-search-currencies',
-  templateUrl: './search-currencies.component.html',
-  styleUrls: ['./search-currencies.component.scss']
+    selector: 'app-search-currencies',
+    templateUrl: './search-currencies.component.html',
+    styleUrls: ['./search-currencies.component.scss']
 })
 export class SearchCurrenciesComponent {
 
-  rows = new Array<any>();
+    rows = new Array<any>();
+    searchQuery: any;
 
-  constructor(private currenciesService: CurrenciesService,
-              private route: ActivatedRoute,
-              private router: Router) {
-  }
-
-  onSearchChange(query) {
-    if (query != '') {
-
-      var nameSearch = this.currenciesService.searchCurrencies(query);
-      var idSearch = this.currenciesService.getCurrencyById(query);
-
-      Observable.forkJoin(nameSearch, idSearch)
-        .subscribe((successNext: any) => {
-          let [result1, result2] = successNext;
-
-          if (result2.currency) {
-            result1.currencies = result1.currencies || [];
-            result1.currencies.push(result2);
-          }
-          this.rows = result1.currencies;
-
-        }, (error) => {
-          console.log(error);
-        });
+    constructor(private currenciesService: CurrenciesService,
+        private route: ActivatedRoute,
+        private router: Router) {
     }
-  }
 
-  openAccountDetails(accountID) {
-    this.router.navigate(['/currencies/search-currencies/account-details'], { queryParams: { id: accountID } });
-  }
+    onSearchChange(query) {
+        if (query != '') {
 
-  openCurrencyDetails(code){
-    this.router.navigate(['/currencies/search-currencies/currency-details'], { queryParams: { id:code }});
-  }
+            var nameSearch = this.currenciesService.searchCurrencies(query);
+            var idSearch = this.currenciesService.getCurrencyById(query);
 
-  openTradeDesk(code){
-    this.router.navigate(['/currencies/trade', code]);
-  }
+            Observable.forkJoin(nameSearch, idSearch)
+                .subscribe((successNext: any) => {
+                    let [result1, result2] = successNext;
+
+                    if (result2.currency) {
+                        result1.currencies = result1.currencies || [];
+                        result1.currencies.push(result2);
+                    }
+                    this.rows = result1.currencies;
+
+                }, (error) => {
+                    console.log(error);
+                });
+        }
+    }
+
+    openAccountDetails(accountID) {
+        this.router.navigate(['/currencies/search-currencies/account-details'], { queryParams: { id: accountID } });
+    }
+
+    openCurrencyDetails(code) {
+        this.router.navigate(['/currencies/search-currencies/currency-details'], { queryParams: { id: code } });
+    }
+
+    openTradeDesk(code) {
+        this.router.navigate(['/currencies/trade', code]);
+    }
 }

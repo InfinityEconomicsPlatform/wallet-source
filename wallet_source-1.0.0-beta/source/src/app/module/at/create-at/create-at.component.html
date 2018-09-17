@@ -1,335 +1,362 @@
 <div class="row">
-  <div class="col-sm-12">
-    <div class="card">
-       <div class="card-block main-card-block">
-                    <div class="border-bt">
-                        <h2 class="main-title">Create AT</h2>
-                        <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
-                    </div>
-
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">Create AT</h2>
+                    <app-breadcrumb></app-breadcrumb>
                 </div>
-      <div class="card-body">
-        <div class="card-block ml-3 mr-3">
-          <aw-wizard [navBarLayout]="'large-filled-symbols'">
-            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
-              <form class="form inner-form mt-4" #f1="ngForm" novalidate>
-                <div class="form-body">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Name
-                          <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="The AT name. Min. 3 max. 30 chars. AT names are unique!">
-                          </i>
-                        </label>
-                        <input type="text" class="form-control" [(ngModel)]="createAtForm.name" name="name" #name="ngModel" minlength="3" maxlength="30"
-                          required>
-                        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="input-error">
-                          <div *ngIf="name?.errors.required">
-                            Name is required
-                          </div>
-                          <div *ngIf="name?.errors.minlength && !name?.errors.required">
-                            Name must be greater than equal to 3 chars
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Minimum activation amount
-                          <i class="fa fa-question-circle-o  ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This defines the minimum transaction amount this specific AT will be able to see. All transactions below that amount are blind to the AT and will be ignored.">
-                          </i>
-                        </label>
-                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-0">
-                                           <div class="col-10 pl-0">
-                                           <input type="number" class="l-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="createAtForm.minActivationAmount" name="minActivationAmount" #minActivationAmount="ngModel"
-                            minValue="0" maxValue="100" required>
-                                            </div>
-                                           <div class="col-2 text-right pl-0">
-                                                <div class="row input-single-group">
-                                                        <div class="col-md-12">
-                                                            <span class="input-group-text text-right">XIN</span>
-                                                        </div>
+
+            </div>
+            <div class="card-body">
+                <div class="card-block ml-3 mr-3">
+                    <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                        <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                            <form class="form inner-form mt-4" #f1="ngForm" novalidate>
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Name
+                                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                        container="body" ngbPopover="The AT name. Min. 3 max. 30 chars. AT names are unique!">
+                                                    </i>
+                                                </label>
+                                                <input type="text" class="form-control" [(ngModel)]="createAtForm.name"
+                                                    name="name" #name="ngModel" minlength="3" maxlength="30" required>
+                                                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="input-error">
+                                                    <div *ngIf="name?.errors.required">
+                                                        Name is required
+                                                    </div>
+                                                    <div *ngIf="name?.errors.minlength && !name?.errors.required">
+                                                        Name must be greater than equal to 3 chars
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Minimum activation amount
+                                                    <i class="fa fa-question-circle-o  ml-1 info-yellow" placement="right"
+                                                        triggers="mouseenter:mouseleave" container="body" ngbPopover="This defines the minimum transaction amount this specific AT will be able to see. All transactions below that amount are blind to the AT and will be ignored.">
+                                                    </i>
+                                                </label>
+                                                <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-0">
+                                                    <div class="col-10 pl-0">
+                                                        <input type="number" class="l-0 mb-0 pt-0 pb-0 form-control"
+                                                            [(ngModel)]="createAtForm.minActivationAmount" name="minActivationAmount"
+                                                            #minActivationAmount="ngModel" minValue="0" maxValue="100"
+                                                            required>
+                                                    </div>
+                                                    <div class="col-2 text-right pl-0">
+                                                        <div class="row input-single-group">
+                                                            <div class="col-md-12">
+                                                                <span class="input-group-text text-right">XIN</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                       </div>
+                                                </div>
 
-                        <div *ngIf="minActivationAmount?.invalid && (minActivationAmount?.dirty || minActivationAmount?.touched)" class="input-error">
-                          <div *ngIf="minActivationAmount?.errors.required">
-                            Minimum activation amount is required
-                          </div>
-                          <div *ngIf="minActivationAmount?.errors.minValue && !minActivationAmount?.errors.required">
-                            Minimum activation amount must be greater than equal to 0
-                          </div>
-                          <div *ngIf="minActivationAmount?.errors.maxValue && !minActivationAmount?.errors.required">
-                            Minimum activation amount must be less than equal to 100
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                                                <div *ngIf="minActivationAmount?.invalid && (minActivationAmount?.dirty || minActivationAmount?.touched)"
+                                                    class="input-error">
+                                                    <div *ngIf="minActivationAmount?.errors.required">
+                                                        Minimum activation amount is required
+                                                    </div>
+                                                    <div *ngIf="minActivationAmount?.errors.minValue && !minActivationAmount?.errors.required">
+                                                        Minimum activation amount must be greater than equal to 0
+                                                    </div>
+                                                    <div *ngIf="minActivationAmount?.errors.maxValue && !minActivationAmount?.errors.required">
+                                                        Minimum activation amount must be less than equal to 100
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label>Description
-                          <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="A description about your AT. Max. 1.000 chars.">
-                          </i>
-                        </label>
-                        <div class="position-relative sign_in_inputs">
-                          <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.description" name="description" #description="ngModel"
-                            maxlength="1000" required></textarea>
-                        </div>
-                        <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="input-error">
-                          <div *ngIf="description?.errors.required">
-                            Description is required
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mt-4 left">
-                        <button type="button" [disabled]="f1.invalid" class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
-                          <i class="fa fa-chevron-right"></i> Next
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </aw-wizard-step>
-            <aw-wizard-step stepTitle="Options" [navigationSymbol]="{ symbol: '2' }">
-              <form class="form inner-form mt-4" #f2="ngForm" novalidate>
-                <div class="form-body">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group m-0">
-                        <label>CODE
-                          <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is where you place your AT code.">
-                          </i>
-                        </label>
-                        <div class="position-relative sign_in_inputs">
-                          <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.code" name="code" #code="ngModel" minlength="10" maxlength="1000"
-                            required></textarea>
-                          <div *ngIf="code?.invalid && (code?.dirty || code?.touched)" class="input-error">
-                            <div *ngIf="code?.errors.required">
-                              Code is required
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Description
+                                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                        container="body" ngbPopover="A description about your AT. Max. 1.000 chars.">
+                                                    </i>
+                                                </label>
+                                                <div class="position-relative sign_in_inputs">
+                                                    <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.description"
+                                                        name="description" #description="ngModel" maxlength="1000"
+                                                        required></textarea>
+                                                </div>
+                                                <div *ngIf="description?.invalid && (description?.dirty || description?.touched)"
+                                                    class="input-error">
+                                                    <div *ngIf="description?.errors.required">
+                                                        Description is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4 left">
+                                                <button type="button" [disabled]="f1.invalid" class="btn btn-gradient mr-1 mb-0 float-right"
+                                                    awNextStep>
+                                                    <i class="fa fa-chevron-right"></i> Next
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </aw-wizard-step>
+                        <aw-wizard-step stepTitle="Options" [navigationSymbol]="{ symbol: '2' }">
+                            <form class="form inner-form mt-4" #f2="ngForm" novalidate>
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group m-0">
+                                                <label>CODE
+                                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                        container="body" ngbPopover="This is where you place your AT code.">
+                                                    </i>
+                                                </label>
+                                                <div class="position-relative sign_in_inputs">
+                                                    <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.code"
+                                                        name="code" #code="ngModel" minlength="10" maxlength="1000"
+                                                        required></textarea>
+                                                    <div *ngIf="code?.invalid && (code?.dirty || code?.touched)" class="input-error">
+                                                        <div *ngIf="code?.errors.required">
+                                                            Code is required
+                                                        </div>
+                                                        <div *ngIf="code?.errors.minlength && !code?.errors.required">
+                                                            Code must be greater than equal to 10 chars
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" [ngClass]="{'btn-success': !hasMachineData, 'btn-danger': hasMachineData}"
+                                        class="btn btn-raised mb-0" (click)="hasMachineData=!hasMachineData" placement="top"
+                                        triggers="mouseenter:mouseleave" container="body" ngbPopover="This is the data space of the AT, or the -harddisk- for simplicity.">
+                                        <i class="fa fa-code"></i> Machine Data
+                                    </button>
+                                    <button type="button" [ngClass]="{'btn-success': !hasCreationBytes, 'btn-danger': hasCreationBytes}"
+                                        class="btn btn-raised mb-0 ml-1" (click)="hasCreationBytes=!hasCreationBytes">
+                                        <i class="fa fa-code"></i> Creation Bytes
+                                    </button>
+
+                                    <div class="form-group mt-3" *ngIf="hasMachineData">
+                                        <div class="position-relative sign_in_inputs">
+                                            <label>Machine Data</label>
+                                            <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.data"
+                                                name="data" #data="ngModel" maxlength="1000"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" *ngIf="hasCreationBytes">
+                                        <div class="position-relative sign_in_inputs">
+                                            <label>Creation Bytes</label>
+                                            <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.bytes"
+                                                name="bytes" #bytes="ngModel" maxlength="1000"></textarea>
+                                        </div>
+                                    </div>
+                                    <!-- <hr *ngIf="hasCreationBytes || hasMachineData"> -->
+                                    <div class="row mt-4">
+                                        <div class="col-sm-4">
+                                            <div class="form-group m-0">
+                                                <label>Data
+                                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                        container="body" ngbPopover="This is the size of the memory to allocate for your AT. The memory in AT is working on chunks of 256 bytes which we call pages. If you don’t define any data in the Data field above, because you don’t have any initial values to define, but you still need to allocate memory, this is where you do it. For instance, if you want to add 1024 bytes of memory for the AT then you need to set the Data Pages field to 4. Each page is 256 bytes.">
+                                                    </i>
+                                                </label>
+                                                <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                    <div class="col-8 pl-0">
+                                                        <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            [(ngModel)]="createAtForm.dpages" name="dpages" #dpages="ngModel"
+                                                            minValue="0" maxValue="10" required>
+                                                    </div>
+                                                    <div class="col-4 text-right pl-0">
+                                                        <span class="input-group-text text-right">PAGES</span>
+                                                    </div>
+                                                </div>
+
+                                                <div *ngIf="dpages?.invalid && (dpages?.dirty || dpages?.touched)"
+                                                    class="input-error">
+                                                    <div *ngIf="dpages?.errors.required">
+                                                        Data(No. of pages) is required
+                                                    </div>
+                                                    <div *ngIf="dpages?.errors.minValue && !dpages?.errors.required">
+                                                        Data(No. of pages) must be greater than equal to 0
+                                                    </div>
+                                                    <div *ngIf="dpages?.errors.maxValue && !dpages?.errors.required">
+                                                        Data(No. of pages) must be less than equal to 10
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group m-0">
+                                                <label>Call stack
+                                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                        container="body" ngbPopover="Call stack memory. This will only be used in specific situations, if your code is using PUSH/POP commands, for example. It’s extra memory to allocate to the AT.">
+                                                    </i>
+                                                </label>
+                                                <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                    <div class="col-8 pl-0">
+                                                        <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            [(ngModel)]="createAtForm.cspages" name="cspages" #cspages="ngModel"
+                                                            minValue="0" maxValue="10" required>
+                                                    </div>
+                                                    <div class="col-4 text-right pl-0">
+                                                        <span class="input-group-text text-right">PAGES</span>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="cspages?.invalid && (cspages?.dirty || cspages?.touched)"
+                                                    class="input-error">
+                                                    <div *ngIf="cspages?.errors.required">
+                                                        Call stack(No. of pages) is required
+                                                    </div>
+                                                    <div *ngIf="cspages?.errors.minValue && !cspages?.errors.required">
+                                                        Call stack(No. of pages) must be greater than equal to 0
+                                                    </div>
+                                                    <div *ngIf="cspages?.errors.maxValue && !cspages?.errors.required">
+                                                        Call stack(No. of pages) must be less than equal to 10
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group m-0">
+                                                <label>User stack
+                                                    <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                        container="body" ngbPopover="User stack memory. This will only be used in specific situations, if your code is using PUSH/POP commands, for example. It’s extra memory to allocate to the AT.">
+                                                    </i>
+                                                </label>
+                                                <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                    <div class="col-8 pl-0">
+                                                        <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            [(ngModel)]="createAtForm.uspages" name="uspages" #uspages="ngModel"
+                                                            minValue="0" maxValue="10" required>
+                                                    </div>
+                                                    <div class="col-4 text-right pl-0">
+                                                        <span class="input-group-text text-right">PAGES</span>
+                                                    </div>
+                                                    <div *ngIf="uspages?.invalid && (uspages?.dirty || uspages?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="uspages?.errors.required">
+                                                            User stack(No. of pages) is required
+                                                        </div>
+                                                        <div *ngIf="uspages?.errors.minValue && !uspages?.errors.required">
+                                                            User stack(No. of pages) must be greater than equal to 0
+                                                        </div>
+                                                        <div *ngIf="uspages?.errors.maxValue && !uspages?.errors.required">
+                                                            User stack(No. of pages) must be less than equal to 10
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <button type="button" [disabled]="f2.invalid" class="btn btn-gradient mr-3 mb-0 float-right"
+                                            (click)="createAT()" awNextStep>
+                                            <i class="fa fa-chevron-right"></i> Next
+                                        </button>
+                                        <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                            <i class="fa fa-chevron-left"></i> Previous
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </aw-wizard-step>
+                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '3' }" class="form-bordered mt-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Name
+                                    </div>
+                                    <h4> {{createAtForm.name}} </h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Description
+                                    </div>
+                                    <h4> {{createAtForm.description}} </h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Activation Amount
+                                    </div>
+                                    <h4> {{createAtForm.minActivationAmount|amountTkn}}
+                                        <small> XIN </small>
+                                    </h4>
+                                </div>
                             </div>
-                            <div *ngIf="code?.errors.minlength && !code?.errors.required">
-                              Code must be greater than equal to 10 chars
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Service Fee
+                                    </div>
+                                    <h4> {{ tx_fee | amountTkn }}
+                                        <small>XIN</small>
+                                    </h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Valid
+                                    </div>
+                                    <h4 [innerHTML]="validBytes | txIsValid"> </h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Data
+                                    </div>
+                                    <h4> {{ createAtForm.dpages}}
+                                        <small> PAGE(S) </small>
+                                    </h4>
+                                </div>
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <button type="button" [ngClass]="{'btn-success': !hasMachineData, 'btn-danger': hasMachineData}" class="btn btn-raised mb-0" (click)="hasMachineData=!hasMachineData"
-                    placement="top" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is the data space of the AT, or the -harddisk- for simplicity.">
-                    <i class="fa fa-code"></i> Machine Data
-                  </button>
-                  <button type="button" [ngClass]="{'btn-success': !hasCreationBytes, 'btn-danger': hasCreationBytes}" class="btn btn-raised mb-0 ml-1"
-                    (click)="hasCreationBytes=!hasCreationBytes">
-                    <i class="fa fa-code"></i> Creation Bytes
-                  </button>
-
-                  <div class="form-group mt-3" *ngIf="hasMachineData">
-                    <div class="position-relative sign_in_inputs">
-                      <label>Machine Data</label>
-                      <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.data" name="data" #data="ngModel" maxlength="1000"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group" *ngIf="hasCreationBytes">
-                    <div class="position-relative sign_in_inputs">
-                      <label>Creation Bytes</label>
-                      <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.bytes" name="bytes" #bytes="ngModel" maxlength="1000"></textarea>
-                    </div>
-                  </div>
-                  <!-- <hr *ngIf="hasCreationBytes || hasMachineData"> -->
-                  <div class="row mt-4">
-                    <div class="col-sm-4">
-                      <div class="form-group m-0">
-                        <label>Data
-                          <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="This is the size of the memory to allocate for your AT. The memory in AT is working on chunks of 256 bytes which we call pages. If you don’t define any data in the Data field above, because you don’t have any initial values to define, but you still need to allocate memory, this is where you do it. For instance, if you want to add 1024 bytes of memory for the AT then you need to set the Data Pages field to 4. Each page is 256 bytes.">
-                          </i>
-                        </label>
-                       <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                          <div class="col-8 pl-0">    
-                          <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="createAtForm.dpages" name="dpages" #dpages="ngModel" minValue="0"
-                            maxValue="10" required>
-                          </div>
-                        <div class="col-4 text-right pl-0">
-                            <span class="input-group-text text-right">PAGES</span>
-                          </div>
-                        </div>
-
-                        <div *ngIf="dpages?.invalid && (dpages?.dirty || dpages?.touched)" class="input-error">
-                          <div *ngIf="dpages?.errors.required">
-                            Data(No. of pages) is required
-                          </div>
-                          <div *ngIf="dpages?.errors.minValue && !dpages?.errors.required">
-                            Data(No. of pages) must be greater than equal to 0
-                          </div>
-                          <div *ngIf="dpages?.errors.maxValue && !dpages?.errors.required">
-                            Data(No. of pages) must be less than equal to 10
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group m-0">
-                        <label>Call stack
-                          <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="Call stack memory. This will only be used in specific situations, if your code is using PUSH/POP commands, for example. It’s extra memory to allocate to the AT.">
-                          </i>
-                        </label>
-                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                          <div class="col-8 pl-0">      
-                          <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="createAtForm.cspages" name="cspages" #cspages="ngModel" minValue="0"
-                            maxValue="10" required>
-                          </div>
-                          <div class="col-4 text-right pl-0">
-                            <span class="input-group-text text-right">PAGES</span>
-                          </div>
-                        </div>
-                        <div *ngIf="cspages?.invalid && (cspages?.dirty || cspages?.touched)" class="input-error">
-                          <div *ngIf="cspages?.errors.required">
-                            Call stack(No. of pages) is required
-                          </div>
-                          <div *ngIf="cspages?.errors.minValue && !cspages?.errors.required">
-                            Call stack(No. of pages) must be greater than equal to 0
-                          </div>
-                          <div *ngIf="cspages?.errors.maxValue && !cspages?.errors.required">
-                            Call stack(No. of pages) must be less than equal to 10
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group m-0">
-                        <label>User stack
-                          <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body" ngbPopover="User stack memory. This will only be used in specific situations, if your code is using PUSH/POP commands, for example. It’s extra memory to allocate to the AT.">
-                          </i>
-                        </label>
-                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
-                          <div class="col-8 pl-0">     
-                          <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" [(ngModel)]="createAtForm.uspages" name="uspages" #uspages="ngModel" minValue="0"
-                            maxValue="10" required>
-                          </div>
-                          <div class="col-4 text-right pl-0">
-                            <span class="input-group-text text-right">PAGES</span>
-                          </div>
-                          <div *ngIf="uspages?.invalid && (uspages?.dirty || uspages?.touched)" class="input-error">
-                            <div *ngIf="uspages?.errors.required">
-                              User stack(No. of pages) is required
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="ucsb"> User Stack
+                                    </div>
+                                    <h4> {{ createAtForm.uspages}}
+                                        <small> PAGE(S) </small>
+                                    </h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Call Stack
+                                    </div>
+                                    <h4> {{ createAtForm.cspages}}
+                                        <small> PAGE(S) </small>
+                                    </h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="ucsb"> Code Size
+                                    </div>
+                                    <h4> {{ createAtForm.code.length}}
+                                        <small> Bytes </small>
+                                    </h4>
+                                </div>
                             </div>
-                            <div *ngIf="uspages?.errors.minValue && !uspages?.errors.required">
-                              User stack(No. of pages) must be greater than equal to 0
+
+                            <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
+                                class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                                <i class="fa fa-key"></i> Signed Transaction
+                            </button>
+                            <hr *ngIf="unsignedTx">
+                            <div class="form-group" *ngIf="unsignedTx">
+                                <div class="position-relative sign_in_inputs">
+                                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0"
+                                        name="key"></textarea>
+                                </div>
                             </div>
-                            <div *ngIf="uspages?.errors.maxValue && !uspages?.errors.required">
-                              User stack(No. of pages) must be less than equal to 10
+                            <div class="mt-4">
+                                <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes)"
+                                    class="btn btn-gradient float-right">
+                                    <i class="fa fa-check"></i> Finish
+                                </button>
+                                <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                    <i class="fa fa-chevron-left"></i> Previous
+                                </button>
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mt-4">
-                    <button type="button" [disabled]="f2.invalid" class="btn btn-gradient mr-3 mb-0 float-right" (click)="createAT()" awNextStep>
-                      <i class="fa fa-chevron-right"></i> Next
-                    </button>
-                    <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                      <i class="fa fa-chevron-left"></i> Previous
-                    </button>
-                  </div>
+                        </aw-wizard-step>
+                    </aw-wizard>
                 </div>
-              </form>
-            </aw-wizard-step>
-            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '3' }" class="form-bordered mt-4">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="ucsb"> Name
-                  </div>
-                  <h4> {{createAtForm.name}} </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Description
-                  </div>
-                  <h4> {{createAtForm.description}} </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Activation Amount
-                  </div>
-                  <h4> {{createAtForm.minActivationAmount|amountTkn}}
-                    <small> XIN </small>
-                  </h4>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="ucsb"> Service Fee
-                  </div>
-                  <h4> {{ tx_fee | amountTkn }}
-                    <small>XIN</small>
-                  </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Valid
-                  </div>
-                  <h4 [innerHTML]="validBytes | txIsValid"> </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Data
-                  </div>
-                  <h4> {{ createAtForm.dpages}}
-                    <small> PAGE(S) </small>
-                  </h4>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="ucsb"> User Stack
-                  </div>
-                  <h4> {{ createAtForm.uspages}}
-                    <small> PAGE(S) </small>
-                  </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Call Stack
-                  </div>
-                  <h4> {{ createAtForm.cspages}}
-                    <small> PAGE(S) </small>
-                  </h4>
-                </div>
-                <div class="col-md-4">
-                  <div class="ucsb"> Code Size
-                  </div>
-                  <h4> {{ createAtForm.code.length}}
-                    <small> Bytes </small>
-                  </h4>
-                </div>
-              </div>
-
-              <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}" class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                <i class="fa fa-key"></i> Signed Transaction
-              </button>
-              <hr *ngIf="unsignedTx">
-              <div class="form-group" *ngIf="unsignedTx">
-                <div class="position-relative sign_in_inputs">
-                  <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0" name="key"></textarea>
-                </div>
-              </div>
-              <div class="mt-4">
-                <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes)" class="btn btn-gradient float-right">
-                  <i class="fa fa-check"></i> Finish
-                </button>
-                <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                  <i class="fa fa-chevron-left"></i> Previous
-                </button>
-              </div>
-            </aw-wizard-step>
-          </aw-wizard>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {AppConstants} from '../../../config/constants';
+import { Component, OnInit } from '@angular/core';
+import { AppConstants } from '../../../config/constants';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
-import {CommonService} from '../../../services/common.service';
-import {SessionStorageService} from '../../../services/session-storage.service';
-import {Location} from '@angular/common';
-import {AmountToQuantPipe} from '../../../pipes/amount-to-quant.pipe';
-import {AliasesService} from '../aliases.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CryptoService} from '../../../services/crypto.service';
+import { CommonService } from '../../../services/common.service';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { Location } from '@angular/common';
+import { AmountToQuantPipe } from '../../../pipes/amount-to-quant.pipe';
+import { AliasesService } from '../aliases.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CryptoService } from '../../../services/crypto.service';
 
 @Component({
     selector: 'app-create-alias',
@@ -28,21 +28,23 @@ export class CreateAliasComponent implements OnInit {
     }
     uriPlaceholder: any;
     prefixes = [
-        {name: 'Account', value: 'acct:', placeholder: 'XIN______-____-______'},
-        {name: 'URL', value: 'url:', placeholder: 'http://'},
-        {name: 'BTC', value: 'btc:', placeholder: ''},
-        {name: 'Other', value: '', placeholder: ''}
+        { name: 'Account', value: 'acct:', placeholder: 'XIN______-____-______' },
+        { name: 'URL', value: 'url:', placeholder: 'http://' },
+        { name: 'BTC', value: 'btc:', placeholder: '' },
+        { name: 'Other', value: '', placeholder: '' }
 
     ];
 
+    unsignedTx: boolean;
+
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private aliasesService: AliasesService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                private _location: Location) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private aliasesService: AliasesService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        private _location: Location) {
     }
 
     ngOnInit() {
@@ -98,14 +100,14 @@ export class CreateAliasComponent implements OnInit {
                             AppConstants.getNoConnectionMessage,
                             'OK',
                             'error').then((isConfirm: any) => {
-                        });
+                            });
                     }
                 }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
             })
     }
@@ -119,15 +121,15 @@ export class CreateAliasComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/aliases/show-alias']);
-                    });
+                            this.router.navigate(['/aliases/show-alias']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                        this.router.navigate(['/aliases/create-alias']);
-                    });
+                            this.router.navigate(['/aliases/create-alias']);
+                        });
                 }
 
 
@@ -138,7 +140,7 @@ export class CreateAliasComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 }

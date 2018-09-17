@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {CommonService} from '../../../services/common.service';
-import {SessionStorageService} from '../../../services/session-storage.service';
-import {Location} from '@angular/common';
-import {AssetsService} from '../assets.service';
+import { CommonService } from '../../../services/common.service';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { Location } from '@angular/common';
+import { AssetsService } from '../assets.service';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ShareToQuantityPipe} from '../../../pipes/share-to-quantity.pipe';
-import {AppConstants} from '../../../config/constants';
-import {CryptoService} from '../../../services/crypto.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ShareToQuantityPipe } from '../../../pipes/share-to-quantity.pipe';
+import { AppConstants } from '../../../config/constants';
+import { CryptoService } from '../../../services/crypto.service';
 
 @Component({
-  selector: 'app-issue-asset',
-  templateUrl: './issue-asset.component.html',
-  styleUrls: ['./issue-asset.component.scss']
+    selector: 'app-issue-asset',
+    templateUrl: './issue-asset.component.html',
+    styleUrls: ['./issue-asset.component.scss']
 })
 export class IssueAssetComponent implements OnInit {
 
@@ -27,16 +27,17 @@ export class IssueAssetComponent implements OnInit {
         'shares': '',
         'decimals': '',
         'secretPhrase': ''
-    }
+    };
+    unsignedTx: boolean;
 
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private assetsService: AssetsService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                public shareToQuantityPipe: ShareToQuantityPipe,
-                private _location: Location) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private assetsService: AssetsService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        public shareToQuantityPipe: ShareToQuantityPipe,
+        private _location: Location) {
     }
 
     ngOnInit() {
@@ -47,7 +48,7 @@ export class IssueAssetComponent implements OnInit {
         var description = issueAssetForm.description;
         var shares = issueAssetForm.shares;
         var decimals = issueAssetForm.decimals;
-        var quantity =  parseInt(shares) * (Math.pow(10, parseInt(decimals)));
+        var quantity = parseInt(shares) * (Math.pow(10, parseInt(decimals)));
         const publicKey = this.commonService.getAccountDetailsFromSession('publicKey');
         const fee = 1;
 
@@ -65,7 +66,7 @@ export class IssueAssetComponent implements OnInit {
                 'Note: ' + 'Singleton Assets are temporarily disabled. Please see forum for more informations.',
                 'OK',
                 'info').then((isConfirm: any) => {
-            });
+                });
             return;
         }
 
@@ -86,14 +87,14 @@ export class IssueAssetComponent implements OnInit {
                             'Sorry, an error occured! Reason: ' + success.errorDescription + ' ' + AppConstants.getNoConnectionMessage,
                             'OK',
                             'error').then((isConfirm: any) => {
-                        });
+                            });
                     }
                 }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
             })
     }
@@ -106,14 +107,14 @@ export class IssueAssetComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/assets/show-assets']);
-                    });
+                            this.router.navigate(['/assets/show-assets']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 }
             }, (error) => {
 
@@ -122,7 +123,7 @@ export class IssueAssetComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             });
     };
 

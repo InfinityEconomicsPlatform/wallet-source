@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
-import {VotingService} from '../../../voting.service';
-import {CommonService} from '../../../../../services/common.service';
-import {CryptoService} from '../../../../../services/crypto.service';
-import {SessionStorageService} from '../../../../../services/session-storage.service';
-import {AppConstants} from '../../../../../config/constants';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { VotingService } from '../../../voting.service';
+import { CommonService } from '../../../../../services/common.service';
+import { CryptoService } from '../../../../../services/crypto.service';
+import { SessionStorageService } from '../../../../../services/session-storage.service';
+import { AppConstants } from '../../../../../config/constants';
 import * as AlertFunctions from '../../../../../shared/data/sweet-alerts';
 
 @Component({
@@ -148,7 +148,7 @@ export class PollVoteComponent implements OnInit {
         });
     }
 
-    broadcastTransaction() {
+    broadcastTransaction(transactionBytes) {
         this.commonService.broadcastTransaction(this.transactionBytes).subscribe((success: any) => {
             if (!success.errorCode) {
                 AlertFunctions.InfoAlertBox(
