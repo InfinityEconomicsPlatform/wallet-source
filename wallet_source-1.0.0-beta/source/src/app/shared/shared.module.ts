@@ -257,7 +257,8 @@ import {AddressService} from '../module/account/address.service';
         StoragePipe,
         CurrencyModelPipe,
         BreadcrumbComponent,
-        GermanUmlautTransformPipe
+        GermanUmlautTransformPipe,
+        AmountToQuantPipe
     ],
     providers: [
         QuantToAmountPipe,
