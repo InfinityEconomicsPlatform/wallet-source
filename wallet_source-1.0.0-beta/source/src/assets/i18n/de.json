@@ -118,5 +118,47 @@
       "next-btn": "Next",
       "finish-btn": "Finish"
     }
+  },
+  "common":{
+    "all": "All",
+    "my": "My",
+    "remove-filter-popover": "Remove Filter",
+    "filter-toggle-az-popover": "Toggle A-Z",
+    "filter-sort-name-popover": "Sort Name",
+    "filter-sort-supply-popover": "Sort Supply",
+    "filter-sort-height-popover": "Sort Height",
+    "filter-sort-decimals-popover": "Sort Decimals",
+    "reload-filter-popover": "Reload",
+    "details-table-action": "Details"
+  },
+  "table-header":{
+    "name": "Name",
+    "quantity": "Quantity",
+    "holding": "Holding",
+    "issuer": "Issuer",
+    "currentsupply": "Current Supply",
+    "shareholders": "Shareholders",
+    "trades": "Trades",
+    "transfers": "Transfers",
+    "actions": "Actions"
+  },
+  "assets": {
+    "show":{
+      "title":"SHOW ASSETS",
+      "asset-tool": "Asset Tools",
+      "expected-asset-transfers-lable": "Expected Asset <br>Transfers",
+      "expected-order-cancellation-lable": "Expected Order <br>Cancellation",
+      "expected-asset-deletes-lable": "Expected Asset <br>Deletes",
+      "expected-bid-orders-lable": "Expected Bid/Ask <br>Orders",
+      "get-order-trades": "Get Order <br>Trades",
+      "all-table-title": "All Assets",
+      "my-table-title": "My Assets",
+      "tradeDesk-table-action": "TradeDesk",
+      "transfer-assets-table-action": "Transfer Assets",
+      "dividend-payments-table-action": "Dividend Payments",
+      "delete-shares-table-action": "Delete Shares",
+      "delete-asset-table-action": "Delete Asset",
+      "dividends-history-table-action": "Dividends History"
+    }
   }
 }

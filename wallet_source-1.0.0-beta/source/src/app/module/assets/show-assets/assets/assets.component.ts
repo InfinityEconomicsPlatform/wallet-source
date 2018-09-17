@@ -32,11 +32,11 @@ export class AssetsComponent implements OnInit {
     }
 
     filters = [
-        { name: 'Toggle A-Z', icon: 'fa fa-sort', popoverText: 'Toggle A-Z', isEnabled: false },
-        { name: 'Sort Name', icon: 'fa fa-navicon', popoverText: 'Sort Name', isEnabled: false },
-        { name: 'Sort Supply', icon: 'fa fa-plus-circle', popoverText: 'Sort Supply', isEnabled: false },
-        { name: 'Sort Height', icon: 'fa fa-clock-o', popoverText: 'Sort Height', isEnabled: false },
-        { name: 'Sort Decimals', icon: 'fa fa-adjust', popoverText: 'Sort Decimals', isEnabled: false },
+        { name: 'Toggle A-Z', icon: 'fa fa-sort', popoverText: 'filter-toggle-az-popover', isEnabled: false },
+        { name: 'Sort Name', icon: 'fa fa-navicon', popoverText: 'filter-sort-name-popover', isEnabled: false },
+        { name: 'Sort Supply', icon: 'fa fa-plus-circle', popoverText: 'filter-sort-supply-popover', isEnabled: false },
+        { name: 'Sort Height', icon: 'fa fa-clock-o', popoverText: 'filter-sort-height-popover', isEnabled: false },
+        { name: 'Sort Decimals', icon: 'fa fa-adjust', popoverText: 'filter-sort-decimals-popover', isEnabled: false },
     ];
     removeFilter() {
 

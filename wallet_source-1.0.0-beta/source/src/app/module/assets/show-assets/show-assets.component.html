@@ -4,16 +4,16 @@
       <div class="card">
         <div class="card-block main-card-block">
                     <div class="border-bt">
-                        <h2 class="main-title">SHOW ASSETs</h2>
+                        <h2 class="main-title">{{'assets.show.title' | translate}}</h2>
                         <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
                     </div>
                     
        <ul class="nav nav-tabs nav-fill nav-auto mt-4" (click)="onTabChange();">
            <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" [routerLink]="['all']">All</a>
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['all']">{{'common.all' | translate}}</a>
            </li>
            <li class="nav-item">
-               <a class="nav-link" routerLinkActive="active" [routerLink]="['my']">My</a>
+               <a class="nav-link" routerLinkActive="active" [routerLink]="['my']">{{'common.my' | translate}}</a>
            </li>
         </ul>
         <div class="tab-content">
