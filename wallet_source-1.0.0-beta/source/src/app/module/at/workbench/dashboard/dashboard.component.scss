@@ -35,7 +35,11 @@
 	code{
 	color: #a9a9a9; font-weight: 300;
 	font-family: "Montserrat", sans-serif;
-	}
+    }
+    .btn-disabled-icon {
+        position: absolute;
+        right: 40px;
+    }
 }
 }
 .header-border{
