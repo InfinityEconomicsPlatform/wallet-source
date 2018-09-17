@@ -4,14 +4,16 @@
       <div class="card">
         <div class="card-block main-card-block">
           <div class="border-bt">
-            <h2 class="main-title">My Trades</h2>
+            <h2 class="main-title">{{'assets.my-trades.title' | translate}}</h2>
             <app-breadcrumb></app-breadcrumb>
           </div>
           <div class="card-header">
             <div class="pull-right filter-group">
               <div class="btn-group btn-group-justified btn-group-raised">
-                <a href="javascript:void(0)" class="btn btn-sm btn-grey" (click)="reload()"
-                   ngbTooltip="Reload" trigger="mouseenter:mouseleave"><i class="fa fa-refresh"></i></a>
+                <a href="javascript:void(0)" class="btn btn-sm btn-grey btn-icon" (click)="reload()" triggers="mouseenter:mouseleave" container="body"
+                  placement="top" [ngbPopover]="'common.reload-filter-popover' | translate">
+                  <i class="fa fa-refresh"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -21,52 +23,52 @@
                              [footerHeight]="50" [externalPaging]="true"
                              [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size"
                              (page)='setPage($event)' (autoRefresh)="reload()">
-                <ngx-datatable-column prop="name" name="Name">
+                <ngx-datatable-column prop="name" [name]="'table-header.name' | translate">
                   <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                     <a class="hyperlink" (click)="goToAssetDetails(row.asset)">{{value}}</a>
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column prop="timestamp" name="Date">
+                <ngx-datatable-column prop="timestamp" [name]="'table-header.date' | translate">
                   <ng-template let-value="value" ngx-datatable-cell-template>
                     {{value | timestamp}}
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column prop="tradeType" name="Type">
+                <ngx-datatable-column prop="tradeType" [name]="'table-header.type' | translate">
                   <ng-template let-value="value" ngx-datatable-cell-template>
                     <div [innerHtml]="value | buySell"></div>
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column prop="buyerRS" name="Buyer">
+                <ngx-datatable-column prop="buyerRS" [name]="'table-header.buyer' | translate">
                   <ng-template let-value="value" ngx-datatable-cell-template>
                     <a class="hyperlink" (click)="goToAccountDetails(value)">{{value}}</a>
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column prop="sellerRS" name="Seller">
+                <ngx-datatable-column prop="sellerRS" [name]="'table-header.seller' | translate">
                   <ng-template let-value="value" ngx-datatable-cell-template>
                     <a class="hyperlink" (click)="goToAccountDetails(value)">{{value}}</a>
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column prop="priceTQT" name="Price">
+                <ngx-datatable-column prop="priceTQT" [name]="'table-header.price' | translate">
                   <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                     {{value | priceTqt:row.decimals}}
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column prop="quantityQNT" name="Quantity">
+                <ngx-datatable-column prop="quantityQNT" [name]="'table-header.quantity' | translate">
                   <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                     {{value | supply:row.decimals}}
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column prop="asset" name="Action">
+                <ngx-datatable-column prop="asset" [name]="'table-header.actions' | translate">
                   <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                    <a class="btn btn-outline-danger" *ngIf="row.tradeType === 'buy'" (click)="goToTransactionDetails(row.bidOrder)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="Details">
+                    <a class="btn btn-outline-danger" *ngIf="row.tradeType === 'buy'" (click)="goToTransactionDetails(row.bidOrder)" triggers="mouseenter:mouseleave" container="body" placement="top" [ngbPopover]="'common.details-table-action' | translate">
                       <i class="fa fa-list-ul"></i>
                     </a>
-                    <a class="btn btn-outline-danger" *ngIf="row.tradeType === 'sell'" (click)="goToTransactionDetails(row.askOrder)" triggers="mouseenter:mouseleave" container="body" placement="top" ngbPopover="Details">
+                    <a class="btn btn-outline-danger" *ngIf="row.tradeType === 'sell'" (click)="goToTransactionDetails(row.askOrder)" triggers="mouseenter:mouseleave" container="body" placement="top" [ngbPopover]="'common.details-table-action' | translate">
                       <i class="fa fa-list-ul"></i>
                     </a>
                     <a class="btn btn-outline-danger" (click)="goToTradeDesk(value);"
                        triggers="mouseenter:mouseleave" container="body" placement="top"
-                       ngbPopover="TradeDesk">
+                       [ngbPopover]="'common.tradeDesk-table-action' | translate">
                       <i class="fa fa-bar-chart"></i>
                     </a>
                   </ng-template>

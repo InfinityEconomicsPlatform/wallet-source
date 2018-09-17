@@ -129,7 +129,8 @@
     "filter-sort-height-popover": "Sort Height",
     "filter-sort-decimals-popover": "Sort Decimals",
     "reload-filter-popover": "Reload",
-    "details-table-action": "Details"
+    "details-table-action": "Details",
+    "tradeDesk-table-action": "TradeDesk"
   },
   "table-header":{
     "name": "Name",
@@ -140,7 +141,13 @@
     "shareholders": "Shareholders",
     "trades": "Trades",
     "transfers": "Transfers",
-    "actions": "Actions"
+    "actions": "Actions",
+    "asset": "Asset",
+    "price": "Price",
+    "type": "Date",
+    "date": "Type",
+    "buyer": "Buyer",
+    "seller": "Seller"
   },
   "assets": {
     "show":{
@@ -153,12 +160,20 @@
       "get-order-trades": "Get Order <br>Trades",
       "all-table-title": "All Assets",
       "my-table-title": "My Assets",
-      "tradeDesk-table-action": "TradeDesk",
       "transfer-assets-table-action": "Transfer Assets",
       "dividend-payments-table-action": "Dividend Payments",
       "delete-shares-table-action": "Delete Shares",
       "delete-asset-table-action": "Delete Asset",
       "dividends-history-table-action": "Dividends History"
+    },
+    "my-open-orders": {
+      "title": "My Open Orders",
+      "buy-title": "Buy Offers",
+      "sell-title": "Sell Offers",
+      "cancel-table-action": "Cancel"
+    },
+    "my-trades": {
+      "title":"My Trades"
     }
   }
 }
