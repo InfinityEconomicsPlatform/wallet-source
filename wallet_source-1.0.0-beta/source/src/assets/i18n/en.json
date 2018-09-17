@@ -169,6 +169,22 @@
         "quorum-lable":"Quorum",
         "pending-approval-request-title":"Pending Approval Request",
         "approve-request-popover":"Approve Request"
+    },
+    "balance-lease": {
+        "balance-lease-title": "Balance Leasing",
+        "recipient-lable": "BALANCE LEASE RECIPIENT",
+        "block-duration-lable": "BLOCK DURATION FOR THIS LEASE",
+        "public-key-field-lable": "RECIPIENT PUBLIC KEY ANNOUNCEMENT (OPTIONAL)",
+        "message-field-lable": "Message (MAX. 160 CHARS)",
+        "message-field-popover": "For message encryption the recipient public key has to be known.",
+        "public-key-field-popover": "Additional security for brand new accounts without any outbound transaction.",
+        "block-duration-popover": "1.440 Blocks are equal one day. Range from min. 1'440 to max. 65'535 Blocks",
+        "recipient-popover": "This account will receive your balance mining power for block duration specified right side.",
+        "duration-lease-lable": "Duration Lease",
+        "recipient-required-msg":"Recipient address is required.",
+        "duration-required-msg":"Duration is required.",
+        "duration-greater-or-equal-msg":"Duration must be greater than equal to 1440.",
+        "duration-less-or-equal-msg":"Duration must be less than equal to 65535"
     }
   },
   "common":{
@@ -195,6 +211,7 @@
     "previous-btn": "Previous",
     "next-btn": "Next",
     "finish-btn": "Finish",
+    "encrypted-message-btn":"Encrypted Message",
     "public-key-btn": "Recipient Public Key",
     "open-bookmark-tooltip": "Open your bookmarks to insert an account id",
     "alias-connect-tooltip": "Enter an alias connected to an account to get the account Id.",

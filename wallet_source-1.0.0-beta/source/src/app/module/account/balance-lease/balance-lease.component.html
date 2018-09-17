@@ -3,23 +3,23 @@
     <div class="card">
         <div class="card-block main-card-block">
           <div class="border-bt">
-            <h2 class="main-title">Balance Leasing</h2>
+            <h2 class="main-title">{{'account.balance-lease.balance-lease-title'| translate}}</h2>
             <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
           </div>        
       </div>
       <div class="card-body">
         <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
           <aw-wizard [navBarLayout]="'large-filled-symbols'">
-            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+            <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
               <form class="form inner-form" #f="ngForm" novalidate>
                 <div class="form-body">
                   <div class="row mb-2 mb-md-4 mt-4">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>BALANCE LEASE RECIPIENT
+                        <label>{{'account.balance-lease.recipient-lable'| translate}}
                           <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right"
                              triggers="mouseenter:mouseleave" container="body"
-                             ngbPopover="This account will receive your balance mining power for block duration specified right side.">
+                             ngbPopover="{{'account.balance-lease.recipient-popover'| translate}}">
                           </i>
                         </label>
                        <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1"> 
@@ -34,7 +34,7 @@
                                     <span  *isAppEnabled="'Aliases'" class="btn btn-primary mlmr-auto" (click)="searchAliases()"
                                           triggers="mouseenter:mouseleave"
                                           placement="top" container="body"
-                                          ngbPopover="Alias account to search">
+                                          ngbPopover="{{'common.alias-connect-tooltip'| translate}}">
                                           <i class="fa fa-share-alt"></i>
                                     </span>
                                 
@@ -43,7 +43,7 @@
                                     <span *isExpertView="true" class="btn btn-primary btn-left" triggers="mouseenter:mouseleave"
                                           placement="top"
                                           (click)="loadBookmarkView()" container="body"
-                                          ngbPopover="Open your bookmarks to insert an account id">
+                                          ngbPopover="{{'common.open-bookmark-tooltip'| translate}}">
                                       <i class="fa fa-bookmark"></i>
                                     </span>
                                 
@@ -54,17 +54,17 @@
                         <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
                              class="input-error">
                           <div *ngIf="recipientRS?.errors.required">
-                            Recipient address is required
+                            {{'account.balance-lease.recipient-required-msg'| translate}}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>BLOCK DURATION FOR THIS LEASE
+                        <label>{{'account.balance-lease.block-duration-lable'| translate}}
                           <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right"
                              triggers="mouseenter:mouseleave" container="body"
-                             ngbPopover="1.440 Blocks are equal one day. Range from min. 1'440 to max. 65'535 Blocks">
+                             ngbPopover="{{'account.balance-lease.block-duration-popover'| translate}}">
                           </i>
                         </label>
                         <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
@@ -92,13 +92,13 @@
                         </div>
                         <div *ngIf="period?.invalid && (period?.dirty || period?.touched)" class="input-error">
                           <div *ngIf="period?.errors.required">
-                            Duration is required
+                            {{'account.balance-lease.duration-required-msg'| translate}}
                           </div>
                           <div *ngIf="period?.errors.minValue && !period?.errors.required">
-                            Duration must be greater than equal to 1440
+                            {{'account.balance-lease.duration-greater-or-equal-msg'| translate}}
                           </div>
                           <div *ngIf="period?.errors.maxValue && !period?.errors.required">
-                            Duration must be less than equal to 65535
+                            {{'account.balance-lease.duration-less-or-equal-msg'| translate}}
                           </div>
                         </div>
                       </div>
@@ -106,19 +106,19 @@
                   </div>
                   <button type="button" [ngClass]="{'btn-success': !hasPrivateMessage, 'btn-danger': hasPrivateMessage}" class="btn btn-raised mr-1 mb-0"
                           (click)="hasPrivateMessage=!hasPrivateMessage">
-                    <i class="fa fa-envelope-o"></i> {{ hasPrivateMessage ? 'Remove' : 'Add' }} Encrypted Message
+                    <i class="fa fa-envelope-o"></i> {{ hasPrivateMessage ? 'Remove' : 'Add' }} {{'common.encrypted-message-btn'| translate}}
                   </button>
                   <button type="button" [ngClass]="{'btn-success': !hasReceiverPublicKey, 'btn-danger': hasReceiverPublicKey}" class="btn btn-raised mb-0"
                           (click)="hasReceiverPublicKey=!hasReceiverPublicKey">
-                    <i class="fa fa-unlock-alt"></i> {{ hasReceiverPublicKey ? 'Remove' : 'Add' }} recipient public key
+                    <i class="fa fa-unlock-alt"></i> {{ hasReceiverPublicKey ? 'Remove' : 'Add' }} {{'common.public-key-btn'| translate}}
                   </button>
                   <!--<hr *ngIf="hasPrivateMessage || hasReceiverPublicKey">-->
 
                   <div class="form-group mt-3" *ngIf="hasReceiverPublicKey">
-                    <label >RECIPIENT PUBLIC KEY ANNOUNCEMENT (OPTIONAL)
+                    <label >{{'account.balance-lease.public-key-field-lable'| translate}}
                       <i class="fa fa-question-circle-o" placement="right"
                          triggers="mouseenter:mouseleave" container="body"
-                         ngbPopover="Additional security for brand new accounts without any outbound transaction.">
+                         ngbPopover="{{'account.balance-lease.public-key-field-popover'| translate}}">
                       </i>
                     </label>
                     <div class="position-relative sign_in_inputs">
@@ -128,10 +128,10 @@
                   </div>
 
                   <div class="form-group mt-3" *ngIf="hasPrivateMessage">
-                    <label>Message (MAX. 160 CHARS)
+                    <label>{{'account.balance-lease.message-field-lable'| translate}}
                       <i class="fa fa-question-circle-o" placement="right"
                          triggers="mouseenter:mouseleave" container="body"
-                         ngbPopover="For message encryption the recipient public key has to be known.">
+                         ngbPopover="{{'account.balance-lease.message-field-popover'| translate}}">
                       </i>
                     </label>
                     <div class="position-relative sign_in_inputs">
@@ -140,20 +140,20 @@
                   </div>
                 
                   <button type="button" [disabled]="f.invalid" class="btn btn-gradient mr-1 mb-0 float-right" (click)="getAndVerifyAccount()" awNextStep>
-                    <i class="fa fa-chevron-right"></i> Next
+                    <i class="fa fa-chevron-right"></i>{{'common.next-btn'| translate}}
                   </button>
                 </div>
               </form>
             </aw-wizard-step>
-            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="ucsb"> Recipient Account
+                  <div class="ucsb"> {{'common.recipient-account-lable'| translate}}
                   </div>
                   <h4> {{balanceLeaseForm.recipientRS}} </h4>
                 </div>
                 <div class="col-md-6">
-                  <div class="ucsb"> Recipient Name
+                  <div class="ucsb"> {{'common.recipient-name-lable'| translate}}
                   </div>
                   <h4> {{accountDetails.name | notSet}} </h4>
                 </div>
@@ -161,13 +161,13 @@
              
               <div class="row">
                 <div class="col-md-6">
-                  <div class="ucsb"> Recipient Balance
+                  <div class="ucsb"> {{'common.recipient-balance-lable'| translate}}
                   </div>
                   <h4> {{accountDetails.balanceTQT | amountTqt}}
                     <small> XIN</small> </h4>
                 </div>
                 <div class="col-md-6">
-                  <div class="ucsb"> Duration Lease
+                  <div class="ucsb"> {{'account.balance-lease.duration-lease-lable'| translate}}
                   </div>
                   <h4> {{balanceLeaseForm.period | notSet}}
                     <small> Blocks </small>
@@ -177,12 +177,12 @@
        
               <div class="row">
                 <div class="col-md-6">
-                  <div class="ucsb"> Valid
+                  <div class="ucsb"> {{'common.valid-lable'| translate}}
                   </div>
                   <h4 [innerHTML]="validBytes | txIsValid"></h4>
                 </div>
                 <div class="col-md-6">
-                  <div class="ucsb"> Service Fee
+                  <div class="ucsb"> {{'common.service-fee-lable'| translate}}
                   </div>
                   <h4> {{ tx_fee | amountTkn }}
                     <small> XIN</small>
@@ -193,22 +193,22 @@
               <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                       class="btn btn-raised mr-1 mb-0"
                       (click)="unsignedTx = !unsignedTx">
-                <i class="fa fa-key"></i> Signed Transaction
+                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
               </button>
               <button type="button" [ngClass]="{'btn-success': !addMessage, 'btn-danger': addMessage}"
                       class="btn btn-raised mb-0" (click)="addMessage=!addMessage">
-                <i class="fa fa-key"></i> Encrypted Message
+                <i class="fa fa-key"></i> {{'common.encrypted-message-lable'| translate}}
               </button>
               <!-- <hr *ngIf="unsignedTx || addMessage"> -->
               <div class="form-group mt-3" *ngIf="unsignedTx">
-                <label>Signed Transaction</label>
+                <label>{{'common.signed-transaction-lable'| translate}}</label>
                <div class="position-relative sign_in_inputs">
                             <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
                                       class="form-control pl-0" name="key"></textarea>
                 </div>
               </div>
               <div class="form-group" *ngIf="addMessage">
-                <label>Encrypted Message</label>
+                <label>{{'common.encrypted-message-lable'| translate}}</label>
                 <div class="position-relative sign_in_inputs">
                   <input disabled="true" rows="5" [(ngModel)]="encrypted" class="form-control pl-0" name="message">
                 </div>
@@ -216,10 +216,10 @@
               <div class="form-actions mt-4">
                 <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes)"
                         class="btn btn-gradient float-right">
-                  <i class="fa fa-check"></i> Finish
+                  <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
                 </button>
                 <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                  <i class="fa fa-chevron-left"></i> Previous
+                  <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
                 </button>
               </div>
             </aw-wizard-step>
