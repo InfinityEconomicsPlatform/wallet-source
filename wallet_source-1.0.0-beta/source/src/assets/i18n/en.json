@@ -1,28 +1,28 @@
 {
-  "welcome": {
-    "title": "Welcome to Infinity Economics",
-    "redirect_login_btn": "My Account",
-    "redirect_signup_btn": "Sign Up",
-    "no_account": "Don't have an Account"
-  },
-  "signup": {
-    "disclaimer": {
-      "title": "Accept Disclaimer",
-      "text": "These steps involves the creation of a new account. The procedure consists of complex cryptographic operations that use a <strong> PASSPHRASE </strong> (a series of 15 random words) to create your <strong> UNIQUE ACCOUNT ADDRESS </strong>. This <strong> PASSPHRASE </strong> is extremely important and must be kept in safe place, since it's <strong> THE ONLY WAY </strong> to access your account. If you lose it you lose access to your account and your funds! The Foundation holds no responsibility for lost funds resulting from misplaced passphrases. The account passphrase and other vital information must be immediately saved and written down for your own safety. Make sure that you select the entire passphrase length before keeping it and check again your account address by logging in and compare the account address with the account address generated from this PASSPHRASE here before making your first transfer. Please proceed only if you understand and accept this disclaimer."
+    "welcome": {
+        "title": "Welcome to Infinity Economics",
+        "redirect_login_btn": "My Account",
+        "redirect_signup_btn": "Sign Up",
+        "no_account": "Don't have an Account"
     },
-    "passphrase": {
-      "title": "Generate Passphrase",
-      "generate_new_btn":"Generate new",
-      "note": "Make sure that you keep the passphrase safe. If you lose your passphrase later on, your account can't be restored and all your funds will be lost. <strong> Write down </strong> your passphrase in the next step you will be asked to re-type it for confirmation."
+    "signup": {
+        "disclaimer": {
+            "title": "Accept Disclaimer",
+            "text": "These steps involves the creation of a new account. The procedure consists of complex cryptographic operations that use a <strong> PASSPHRASE </strong> (a series of 15 random words) to create your <strong> UNIQUE ACCOUNT ADDRESS </strong>. This <strong> PASSPHRASE </strong> is extremely important and must be kept in safe place, since it's <strong> THE ONLY WAY </strong> to access your account. If you lose it you lose access to your account and your funds! The Foundation holds no responsibility for lost funds resulting from misplaced passphrases. The account passphrase and other vital information must be immediately saved and written down for your own safety. Make sure that you select the entire passphrase length before keeping it and check again your account address by logging in and compare the account address with the account address generated from this PASSPHRASE here before making your first transfer. Please proceed only if you understand and accept this disclaimer."
+        },
+        "passphrase": {
+            "title": "Generate Passphrase",
+            "generate_new_btn": "Generate new",
+            "note": "Make sure that you keep the passphrase safe. If you lose your passphrase later on, your account can't be restored and all your funds will be lost. <strong> Write down </strong> your passphrase in the next step you will be asked to re-type it for confirmation."
+        },
+        "confirm": {
+            "title": "Confirm PassPhrase and Sign In",
+            "passphrase_placeholder": "Minimum 35 characters or 15 words",
+            "error_passphrase_required": "Passphrase is required.",
+            "confirm_and_login_btn": "LOGIN",
+            "note": "Make sure that you keep the passphrase safe. If you lose your passphrase later on, your account can't be restored and all your funds will be lost. <strong> On your first sign in compare the account address shown in account details with the one you have written down during this new account creation and verify they match. </strong>"
+        }
     },
-    "confirm": {
-      "title": "Confirm PassPhrase and Sign In",
-      "passphrase_placeholder": "Minimum 35 characters or 15 words",
-      "error_passphrase_required": "Passphrase is required.",
-      "confirm_and_login_btn":"LOGIN",
-      "note": "Make sure that you keep the passphrase safe. If you lose your passphrase later on, your account can't be restored and all your funds will be lost. <strong> On your first sign in compare the account address shown in account details with the one you have written down during this new account creation and verify they match. </strong>"
-    }
-  },
   "login": {
     "title": "Please enter your Passphrase",
     "login_btn": "Sign In",
@@ -83,6 +83,10 @@
       "deferred-title":"SEND DEFERRED XIN",
       "reference-title":"SEND REFERENCE XIN",
       "secret-title":"SEND SECRET XIN",
+      "simple-tab": "Simple",
+      "deferred-tab": "Deferred",
+      "reference-tab": "Reference",
+      "secret-tab": "Secret",
       "details-step":"Details",
       "confirm-step":"Confirm",
       "recipient-lable": "Recipient",
@@ -117,6 +121,42 @@
       "previous-btn": "Previous",
       "next-btn": "Next",
       "finish-btn": "Finish"
+    },
+    "receive-xin": {
+        "receive-xin-title": "Receive XIN",
+        "claim-title": "Claim Secret Transaction",
+        "receive-xin-tab": "Receive XIN",
+        "claim-tab": "Claim",
+        "xin-wallet-address-lable": "XIN Wallet Address",
+        "only-send-xin-text": "Only send XIN to this address",
+        "other-digital-lable": "Sending any other digital asset,including Bitcoin Cash and USDT, will result in permanent loss.",
+        "transaction-full-hash-lable": "Transaction Full Hash",
+        "transaction-full-hash-tooltip": "To claim a secret transaction you have to enter the transaction full hash.",
+        "revealed-secret-lable": "Revealed Secret Text",
+        "revealed-secret-tooltip": "Enter the secret from sender to claim your transaction before the transaction expires.",
+        "print-btn": "PRINT",
+        "email-btn": "EMAIL"
+    },
+    "transactions": {
+        "transactions-title": "Transactions",
+        "completed-tab": "Completed",
+        "pending-tab": "Pending",
+        "completed-transactions-title": "Completed Transactions",
+        "pending-transactions-title": "Pending Transaction",
+        "remove-filter-tooltip": "Remove Filter",
+        "payment-tooltip": "Payment",
+        "asset-tooltip": "Asset",
+        "currency-tooltip": "Currency",
+        "Messages-tooltip": "Messages",
+        "voting-tooltip": "Voting",
+        "multisig-tooltip": "MultiSig",
+        "alias-tooltip": "Alias",
+        "account-tooltip": "Account",
+        "escrow-tooltip": "Escrow",
+        "subscription-tooltip": "Subscription",
+        "shuffles-tooltip": "Shuffles",
+        "at-tooltip": "AT",
+        "reload-tooltip": "Reload"
     }
   },
   "common":{
@@ -130,7 +170,36 @@
     "filter-sort-decimals-popover": "Sort Decimals",
     "reload-filter-popover": "Reload",
     "details-table-action": "Details",
-    "tradeDesk-table-action": "TradeDesk"
+    "tradeDesk-table-action": "TradeDesk",
+    "back-btn": "Back",
+    "recipient-lable": "Recipient",
+    "amount-lable": "Amount",
+    "service-fee-lable": "Service Fee",
+    "token-send-lable": "Token Send",
+    "token-total-lable": "Token Total",
+    "valid-lable": "Valid",
+    "details-step": "Details",
+    "confirm-step": "Confirm",
+    "previous-btn": "Previous",
+    "next-btn": "Next",
+    "finish-btn": "Finish",
+    "public-key-btn": "Recipient Public Key",
+    "open-bookmark-tooltip": "Open your bookmarks to insert an account id",
+    "alias-connect-tooltip": "Enter an alias connected to an account to get the account Id.",
+    "recipient-account-lable": "Recipient Account",
+    "recipient-name-lable": "Recipient Name",
+    "recipient-balance-lable": "Recipient Balance",
+    "recipient-required-smg":"Recipient address is required.",
+    "amount-required-smg":"Amount is required.",
+    "amount-greater-smg":"Amount must be greater than 0.",
+    "public-key-lable": "Public Key",
+    "message-added-lable": "Message Added",
+    "public-key-added-lable": "Public Key Added",
+    "signed-transaction-lable": "Signed Transaction",
+    "encrypted-message-lable": "Encrypted Message",
+    "attachment-lable":"Attachment",
+    "reload-filter-tooltip":"Reload",
+    "remove-filter-tooltip":"Remove Filter"
   },
   "table-header":{
     "name": "Name",
@@ -175,5 +244,5 @@
     "my-trades": {
       "title":"My Trades"
     }
-  }
+}
 }
