@@ -1,5 +1,5 @@
 <div class="card-header">
-  <h3 class="card-title">Claim Secret Transaction</h3>
+  <h3 class="card-title">{{'account.receive-xin.claim-title'| translate}}</h3>
 </div>
 <div class="card-body">
   <div class="card-block ml-md-3 mr-md-3">
@@ -8,10 +8,10 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label>Transaction Full Hash
+              <label>{{'account.receive-xin.transaction-full-hash-lable'| translate}}
                 <i class="fa fa-question-circle-o" placement="right"
                    triggers="mouseenter:mouseleave" container="body"
-                   ngbPopover="To claim a secret transaction you have to enter the transaction full hash.">
+                   ngbPopover="{{'account.receive-xin.transaction-full-hash-tooltip'| translate}}">
                 </i>
               </label>
               <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
@@ -31,10 +31,10 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label>Revealed Secret Text
+              <label>{{'account.receive-xin.revealed-secret-lable'| translate}}
                 <i class="fa fa-question-circle-o" placement="right"
                    triggers="mouseenter:mouseleave" container="body"
-                   ngbPopover="Enter the secret from sender to claim your transaction before the transaction expires.">
+                   ngbPopover="{{'account.receive-xin.revealed-secret-tooltip'| translate}}">
                 </i>
               </label>
                <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
@@ -61,7 +61,7 @@
                     [ngClass]="{'btn-success': !addMessage, 'btn-danger': addMessage}"
                     class="btn btn-raised mb-0"
                     (click)="signedTx=!signedTx">
-              <i class="fa fa-key"></i> Signed Transaction
+              <i class="fa fa-key"></i>{{'common.signed-transaction-lable'| translate}}
             </button>
             <hr *ngIf="signedTx">
             <div class="form-group" *ngIf="signedTx">
@@ -74,7 +74,7 @@
               <button type="button" [disabled]="!validBytes"
                       (click)="broadcastTransaction(transactionBytes)"
                       class="btn btn-primary float-right">
-                <i class="fa fa-check"></i> Finish
+                <i class="fa fa-check"></i>{{'common.finish-btn'| translate}}
               </button>
             </div>
           </div>
