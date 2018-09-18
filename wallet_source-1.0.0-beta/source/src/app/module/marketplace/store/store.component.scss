@@ -1,0 +1,19 @@
+.media-box {
+    padding: 30px;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 0px 7px 20px #ddd;
+    &:hover{
+        background: #e72d45;
+        background: -moz-linear-gradient(left, #e72d45 0%, #f3931b 75%);
+        background: -webkit-linear-gradient(left, #e72d45 0%,#f3931b 75%);
+        background: linear-gradient(to right, #e72d45 0%,#f3931b 75%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e72d45', endColorstr='#f3931b',GradientType=1 );
+        .card-icon {
+            color: #fff;
+        }
+        .card-title {
+            color: #fff !important;
+        }
+    }
+}

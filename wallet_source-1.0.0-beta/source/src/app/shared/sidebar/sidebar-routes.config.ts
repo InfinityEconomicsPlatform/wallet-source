@@ -1,4 +1,4 @@
-import {RouteInfo} from './sidebar.metadata';
+import { RouteInfo } from './sidebar.metadata';
 
 //Sidebar menu Routes and data
 export const ROUTES: RouteInfo[] = [
@@ -24,7 +24,7 @@ export const ROUTES: RouteInfo[] = [
                 isExternalLink: false,
                 submenu: []
             },
-            {path: '/account/send', title: 'Send XIN', icon: '', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []},
+            { path: '/account/send', title: 'Send XIN', icon: '', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
             {
                 path: '/account/receive-tab',
                 title: 'Receive XIN',
@@ -673,6 +673,16 @@ export const ROUTES: RouteInfo[] = [
         ],
         isSwapp: true,
         appName: 'Tools'
+    },
+    {
+        path: '/marketplace',
+        title: 'Marketplace',
+        icon: 'icon-SWApps',
+        class: '',
+        badge: '',
+        badgeClass: '',
+        isExternalLink: false,
+        submenu: []
     },
     {
         path: '/wallet-settings/swapps',
