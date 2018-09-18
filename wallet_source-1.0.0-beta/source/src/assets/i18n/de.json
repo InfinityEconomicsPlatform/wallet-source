@@ -232,6 +232,36 @@
         "show-status-popover": "Show block generation status.",
         "stop-popover": "Stop block generation.",
         "start-popover": "Start block generation."
+    },
+    "funding-monitor": {
+        "funding-monitor-title": "Funding Monitor",
+        "control-tab": "Control Funding Monitor",
+        "active-tab": "Active Monitors",
+        "active-tab-title": "Active Monitors",
+        "control-tab-title": "Start New Funding Monitor",
+        "control-tab-note": "To start the funding monitor your passphrase is used to sign transactions. For security reasons the funding monitor is only available on your local node or a manual node (preferably your own trusted node and set in options/connection mode).",
+        "account-property-lable": "Account Property",
+        "account-property-popover": "The name of the account property.",
+        "amount-popover": "The amount (token/shares/currency) to fund the recipient account with.",
+        "threshold-lable": "Threshold",
+        "threshold-popover": "The threshold which triggers the funding.",
+        "interval-lable": "Interval",
+        "interval-popover": "The number of blocks to wait after before funding the recipient (min. 10).",
+        "holding-type-lable": "Holding Type",
+        "holding-type-popover": "Holding types are token, assets or currencies.",
+        "asset-id-lable": "Asset ID",
+        "asset-id-popover": "Enter the asset ID (numeric)",
+        "currency-ticker-lable": "Currency Ticker",
+        "currency-ticker-popover": "Enter the currency ticker (text)",
+        "admin-password-lable": "Admin Password",
+        "admin-password-popover": "The admin password entered in your node.",
+        "secret-phrase-lable": "Secret Phrase",
+        "secret-phrase-popover": "Ensure you are running a local node before enter your passphrase to prevent security risks. You can switch over anytime to a local node by choosing LOCAL_HOST for connection mode in options.",
+        "start-btn":"Start",
+        "stop-monitor-popover":"Stop Monitor"
+    },
+    "ledger-view": {
+        "account-ledger-title": "Account Ledger"
     }
   },
   "common":{
@@ -312,7 +342,16 @@
     "setter":"Setter",
     "key":"Key",
     "value":"Value",
-    "action":"Action"
+    "action":"Action",
+    "threshold":"Threshold",
+    "property":"Property",
+    "id":"ID",
+    "transaction":"Transaction",
+    "event":"Event",
+    "holding-type":"Holding Type",
+    "transaction-type":"Transaction Type",
+    "change":"Change",
+    "balance":"Balance"
   },
   "assets": {
     "show":{
