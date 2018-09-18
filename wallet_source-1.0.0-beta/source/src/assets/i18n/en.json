@@ -378,7 +378,12 @@
             "inital-sell-supply-label": "Inital Sell Supply",
             "inital-sell-supply-popover": "Number of currency units you want to sell.",
             "inital-sell-supply-required": "Inital Sell Supply is required",
-            "inital-sell-supply-greater": "Inital Sell Supply must be greater than equal to 0"
+            "inital-sell-supply-greater": "Inital Sell Supply must be greater than equal to 0",
+            "expiration-height-label": "Expiration Height",
+            "expiration-height-popover": "Block height at which this offer expires.",
+            "expiration-height-required": "Expiration Height is required",
+            "expiration-height-greater": "Expiration Height must be greater than equal to",
+            "expiration-height-less": "Expiration Height must be less than equal to 14400"
         },
         "trade-desk": {
             "title": "Trade Desk",
