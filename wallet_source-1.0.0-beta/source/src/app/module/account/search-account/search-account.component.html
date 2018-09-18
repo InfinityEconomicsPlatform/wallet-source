@@ -4,7 +4,7 @@
 			<div class="card">
 				<div class="card-block main-card-block">
 					<div class="border-bt">
-						<h2 class="main-title">Search Account</h2>
+						<h2 class="main-title">{{'account.search-account.search-account-title'| translate}} </h2>
 						<app-breadcrumb></app-breadcrumb>
 					</div>
 				<div class="card-body mt-4">
@@ -12,30 +12,30 @@
 						<form class="form inner-form" #f="ngForm" novalidate>
 							<div class="form-body">
 								<div class="form-group">
-									<h3>Search for Account Info
-										<i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave" placement="right" container="body" ngbPopover="Enter word(s) to search for accounts with info and description."></i>
+									<h3>{{'account.search-account.search-for-account-lable'| translate}}
+										<i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave" placement="right" container="body" ngbPopover="{{'account.search-account.search-for-account-popover'| translate}}"></i>
 									</h3>
 									<div class="position-relative mt-4">
 										<input type="text" class="form-control input-search pb-2" name="form-control-with-icon" [(ngModel)]="searchAccountForm.query" placeholder="Enter search words" (input)="onSearchChange($event.target.value)" required>
 										<div class="form-control-position btn-search">
-											<i class="ft-search info mr-2"></i>Search
+											<i class="ft-search info mr-2"></i>{{'account.search-account.search-btn'| translate}}
 										</div>
 									</div>
 								</div>
 							</div>
 						</form>
 						<ngx-datatable class="material" [rows]="accounts" [columnMode]="'force'" [rowHeight]="'auto'" [footerHeight]="50">
-							<ngx-datatable-column prop="name" name="Name">
+							<ngx-datatable-column prop="name" [name]="'table-header.name'| translate">
 								<ng-template let-value="value" ngx-datatable-cell-template>
 									{{value}}
 								</ng-template>
 							</ngx-datatable-column>
-							<ngx-datatable-column prop="accountRS" name="Account">
+							<ngx-datatable-column prop="accountRS" [name]="'table-header.account'| translate">
 								<ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
 									<a class="hyperlink" (click)="goToAccountDetails(value)">{{value}}</a>
 								</ng-template>
 							</ngx-datatable-column>
-							<ngx-datatable-column prop="accountRS" name="Action">
+							<ngx-datatable-column prop="accountRS" [name]="'table-header.actions'| translate">
 								<ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
 									<div class="btn-group-raised">
 									<button class="btn btn-grey btn-icon btn-sm" (click)="openAddressBook(value, row.name)">

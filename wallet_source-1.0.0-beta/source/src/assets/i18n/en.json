@@ -185,6 +185,57 @@
         "duration-required-msg":"Duration is required.",
         "duration-greater-or-equal-msg":"Duration must be greater than equal to 1440.",
         "duration-less-or-equal-msg":"Duration must be less than equal to 65535"
+    },
+    "search-account": {
+        "search-account-title": "Search Account",
+        "search-for-account-lable": "Search for Account Info",
+        "search-for-account-popover": "Enter word(s) to search for accounts with info and description.",
+        "search-btn": "Search"
+    },
+    "my-bookmarks": {
+        "my-bookmark-title": "My Bookmarks",
+        "my-bookmark-sub-title": "Add New Bookmark",
+        "account-name-lable": "Account Name",
+        "account-tag-lable": "Account Tag",
+        "add-btn": "Add",
+        "bookmark-list-lable": "Bookmark List",
+        "select-popover":"Select",
+        "delete-popover":"Delete"
+    },
+    "lessors": {
+        "account-lessors-title": "Account Lessors"
+    },
+    "properties": {
+        "properties-title": "Properties",
+        "set-property-tab": "Set Property",
+        "my-properties-tab": "My Properties",
+        "external-properties-tab": "External Properties",
+        "Set Account Property": "Set Account Property",
+        "My Account Properties": "My Account Properties",
+        "External Account Properties": "External Account Properties",
+        "recipient-lable-popover": "The recipient account for this property.",
+        "won-property-popover": "Set property on your own account",
+        "property-key-lable": "Property Key",
+        "property-key-popover": "The Property Key",
+        "property-key-required-msg":"Property Key is required",
+        "property-value-lable": "Property Value",
+        "property-value-popover": "The Property Value",
+        "property-value-required-msg":"Property Value is required",
+        "account-lable": "Account",
+        "delete-property-popover":"Delete property"
+    },
+    "block-generation": {
+        "block-generation-title": "Block Generation",
+        "block-generation-note": "To generate blocks your passphrase is used to sign blocks. For security reasons block generation is only available on your local node or a manual node (preferably your own trusted node and set in options - connection mode).",
+        "local-node-available-lable": "Local Node Available?",
+        "status-lable": "Block Generation Status",
+        "secret-phrase-lable": "Secret phrase",
+        "local-node-available-popover": "To generate blocks your passphrase is used to sign blocks. For security reasons block generation is only available on your local node.",
+        "status-popover": "The block generation status on your local node.",
+        "secret-phrase-popover": "Ensure you are running a local node before enter your passphrase to prevent security risks. You can switch over anytime to a local node by choosing LOCAL_HOST for connection mode in options.",
+        "show-status-popover": "Show block generation status.",
+        "stop-popover": "Stop block generation.",
+        "start-popover": "Start block generation."
     }
   },
   "common":{
@@ -253,7 +304,19 @@
     "msg":"MSG",
     "recipient":"Recipient",
     "message":"Message",
-    "height":"Height"
+    "height":"Height",
+    "account":"Account",
+    "tag":"Tag",
+    "balance-xin":"Balance XIN",
+    "height-from":"Height From",
+    "height-to":"Height To",
+    "blocks-left":"Blocks Left",
+    "days-left":"Days Left",
+    "percentage":"Percentage",
+    "setter":"Setter",
+    "key":"Key",
+    "value":"Value",
+    "action":"Action"
 
   },
   "assets": {
