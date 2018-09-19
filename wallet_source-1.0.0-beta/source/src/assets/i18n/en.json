@@ -2004,5 +2004,14 @@
         "marketplace": "Marketplace",
         "tag": "Tag",
         "purchase": "Purchase"
+    },
+    "marketplace": {
+        "store": {
+            "title": "Marketplace",
+            "products_available": "Products Available",
+            "purchased_products": "Purchased products",
+            "total_purchases": "Total Purchases",
+            "total_tags": "Total Tags"
+        }
     }
 }
