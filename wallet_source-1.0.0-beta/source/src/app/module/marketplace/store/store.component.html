@@ -235,6 +235,61 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <ngx-datatable class="material" [rows]="recentListings" [columnMode]="'force'"
+                                    [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
+                                    [offset]="page.pageNumber" [limit]="page.size">
+                                    <ngx-datatable-column prop="name" name="Listing Date">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="votingModel" name="Product">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="options" name="Price">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="finished" name="Seller">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                </ngx-datatable>
+                            </div>
+                            <div class="col-md-6">
+                                <ngx-datatable class="material" [rows]="recentListings" [columnMode]="'force'"
+                                    [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
+                                    [offset]="page.pageNumber" [limit]="page.size">
+                                    <ngx-datatable-column prop="name" name="Purchase Date">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="votingModel" name="Product">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="options" name="Price">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="finished" name="Buyer">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                </ngx-datatable>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
