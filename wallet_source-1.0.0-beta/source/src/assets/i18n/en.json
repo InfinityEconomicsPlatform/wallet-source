@@ -277,7 +277,15 @@
             "message-label": "Message",
             "message-label-popover": "Encrypted messages with max. 160 characters unless prunable which is max. 42Kb.",
             "recipient-public-key-label": "Recipient Public Key Announcement (Optional)",
-            "recipient-public-key-label-popover": "Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key."
+            "recipient-public-key-label-popover": "Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key.",
+            "public-key-label": "Public Key"
+        },
+        "show-messages": {
+            "title": "Messages",
+            "open-message-popover": "Open Message",
+            "reply-popover": "Reply",
+            "Messages only": "Messages only",
+            "With Payment": "With Payment"
         }
     },
     "common": {
@@ -367,7 +375,10 @@
         "holding-type": "Holding Type",
         "transaction-type": "Transaction Type",
         "change": "Change",
-        "balance": "Balance"
+        "balance": "Balance",
+        "send": "Send",
+        "phased": "Phased",
+        "prunable": "Prunable"
     },
     "assets": {
         "show": {

@@ -160,47 +160,47 @@
                                             <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="ucsb"> Public Key
+                                            <div class="ucsb"> {{'messages.send-message.public-key-label'| translate}}
                                             </div>
                                             <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="ucsb"> Message
+                                            <div class="ucsb"> {{'messages.send-message.message-label'| translate}}
                                             </div>
                                             <h4>{{sendMessageForm.message}}</h4>
                                         </div>
                                     </div>
                                     <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                         class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                        <i class="fa fa-key"></i> Signed Transaction
+                                        <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
                                     </button>
                                     <button type="button" [ngClass]="{'btn-success': !aMessage, 'btn-danger': aMessage}"
                                         class="btn btn-raised mb-0" (click)="aMessage = !aMessage">
-                                        <i class="fa fa-lock"></i> Encrypted Message
+                                        <i class="fa fa-lock"></i> {{'common.encrypted-message-lable'| translate}}
                                     </button>
                                     <button type="button" [ngClass]="{'btn-success': !aprunableAttachmentJSON, 'btn-danger': aprunableAttachmentJSON}"
                                         class="btn btn-raised mb-0" (click)="aprunableAttachmentJSON = !aprunableAttachmentJSON">
-                                        <i class="fa fa-lock"></i> Attachment
+                                        <i class="fa fa-lock"></i> {{'common.attachment-lable'| translate}}
                                     </button>
                                     <!--     <hr *ngIf="unsignedTx || aMessage || aprunableAttachmentJSON"> -->
                                     <div class="form-group" *ngIf="unsignedTx">
-                                        <label>Signed Transaction</label>
+                                        <label>{{'common.signed-transaction-lable'| translate}}</label>
                                         <div class="position-relative sign_in_inputs">
                                             <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
                                                 class="form-control pl-0" name="key"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group" *ngIf="aMessage">
-                                        <label>Encrypted Message</label>
+                                        <label>{{'common.encrypted-message-lable'| translate}}</label>
                                         <div class="position-relative sign_in_inputs">
                                             <textarea disabled="true" rows="3" [(ngModel)]="encrypted" class="form-control pl-0"
                                                 name="message"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group" *ngIf="aprunableAttachmentJSON">
-                                        <label>Attachment</label>
+                                        <label>{{'common.encrypted-message-lable'| translate}}</label>
                                         <div class="position-relative sign_in_inputs">
                                             <textarea disabled="true" rows="3" [(ngModel)]="prunableAttachmentString"
                                                 class="form-control pl-0" name="message"></textarea>
@@ -209,10 +209,10 @@
                                     <div class="mt-4">
                                         <button type="button" [disabled]="!validBytes" (click)="broadcastMessage(transactionBytes, prunableAttachmentJSON);"
                                             class="btn btn-gradient float-right">
-                                            <i class="fa fa-check"></i> Finish
+                                            <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
                                         </button>
                                         <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                            <i class="fa fa-chevron-left"></i> Previous
+                                            <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
                                         </button>
                                     </div>
                                 </aw-wizard-step>
