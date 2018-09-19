@@ -268,6 +268,18 @@
         "account-ledger-title": "Account Ledger"
     }
   },
+  "messages":{
+    "send-message": {
+        "title": "Send Message",
+        "recipient-lable-popover": "The account you like to send an encrypted message to.",
+        "type-lable": "Type",
+        "type-lable-popover": "ON chain or OFF chain. Non-prunable with max. 160 chars or prunable messages with max. 42Kb. Prunable messages are deleted after two weeks.",
+        "message-lable": "Message",
+        "message-lable-popover": "Encrypted messages with max. 160 characters unless prunable which is max. 42Kb.",
+        "recipient-public-key-lable": "Recipient Public Key Announcement (Optional)",
+        "recipient-public-key-lable-popover": "Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key."
+    }
+  },
   "common":{
     "all": "All",
     "my": "My",

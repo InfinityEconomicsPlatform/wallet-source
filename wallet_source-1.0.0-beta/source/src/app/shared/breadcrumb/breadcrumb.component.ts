@@ -20,6 +20,7 @@ export class BreadcrumbComponent implements OnInit {
         'secret': 'Secret',
         'detail': 'Details',
         'wallet-settings': 'Wallet Settings',
+        'options': 'Options',
         'swapps': 'SWApps',
         'receive': 'Receive XIN',
         'transactions': 'Transactions',

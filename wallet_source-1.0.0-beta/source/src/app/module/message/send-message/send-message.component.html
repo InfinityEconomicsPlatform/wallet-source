@@ -3,10 +3,10 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Send Message</h2>
+                    <h2 class="main-title">{{'messages.send-message.title'| translate}}</h2>
                     <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
                     <h3 class="back-button" (click)="goBack()">
-                        <i class="fa fa-chevron-left"></i> Back
+                        <i class="fa fa-chevron-left"></i> {{'common.back-btn'| translate}}
                     </h3>
                 </div>
            
@@ -14,16 +14,16 @@
                 <div class="card-body">
                     <div class="card-block mr-md-3 ml-md-3">
                         <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                            <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                                 <form #f="ngForm" class="form" name="sendMessageForm" novalidate>
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Recipient
+                                                    <label>{{'common.recipient-lable'| translate}}
                                                         <i class="fa fa-question-circle-o ml-1 info-yellow" container="body"
                                                            placement="right" triggers="mouseenter:mouseleave"
-                                                           ngbPopover="The account you like to send an encrypted message to.">
+                                                           ngbPopover="{{'messages.send-message.recipient-lable-popover'| translate}}">
                                                         </i>
 
                                                     </label>
@@ -45,12 +45,12 @@
                                                                           triggers="mouseenter:mouseleave"
                                                                           placement="top"
                                                                           container="body"
-                                                                          ngbPopover="Enter an alias connected to an account to get the account Id.">
+                                                                          ngbPopover="{{'common.alias-connect-tooltip'| translate}}">
                                                                         <i class="fa fa-share-alt"></i>
                                                                     </span>
                                                          
                                                              
-                                                                    <span *isExpertView="true" class="btn btn-primary btn-left"  triggers="mouseenter:mouseleave" placement="top" (click)="loadBookmarkView()" container="body" ngbPopover="Open your bookmarks to insert an account id">
+                                                                    <span *isExpertView="true" class="btn btn-primary btn-left"  triggers="mouseenter:mouseleave" placement="top" (click)="loadBookmarkView()" container="body" ngbPopover="{{'common.open-bookmark-tooltip'| translate}}">
                                                                         <i class="fa fa-bookmark"></i>
                                                                     </span>
                                                          
@@ -62,14 +62,14 @@
                                                     <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
                                                          class="input-error">
                                                         <div *ngIf="recipientRS?.errors.required">
-                                                            Recipient address is required
+                                                            {{'common.recipient-required-smg'| translate}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Type
+                                                    <label>{{'messages.send-message.type-lable'| translate}}
                                                         <i class="fa fa-question-circle-o ml-1 info-yellow" container="body"
                                                            placement="right" triggers="mouseenter:mouseleave"
                                                            ngbPopover="ON chain or OFF chain. Non-prunable with max. 160 chars or prunable messages with max. 42Kb. Prunable messages are deleted after two weeks.">
