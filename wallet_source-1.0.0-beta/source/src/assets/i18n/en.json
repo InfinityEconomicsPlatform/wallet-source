@@ -271,7 +271,6 @@
     "messages": {
         "send-message": {
             "title": "Send Message",
-<<<<<<< Updated upstream
             "recipient-label-popover": "The account you like to send an encrypted message to.",
             "type-label": "Type",
             "type-label-popover": "ON chain or OFF chain. Non-prunable with max. 160 chars or prunable messages with max. 42Kb. Prunable messages are deleted after two weeks.",
@@ -279,15 +278,6 @@
             "message-label-popover": "Encrypted messages with max. 160 characters unless prunable which is max. 42Kb.",
             "recipient-public-key-label": "Recipient Public Key Announcement (Optional)",
             "recipient-public-key-label-popover": "Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key."
-=======
-            "recipient-lable-popover": "The account you like to send an encrypted message to.",
-            "type-lable": "Type",
-            "type-lable-popover": "ON chain or OFF chain. Non-prunable with max. 160 chars or prunable messages with max. 42Kb. Prunable messages are deleted after two weeks.",
-            "message-lable": "Message",
-            "message-lable-popover": "Encrypted messages with max. 160 characters unless prunable which is max. 42Kb.",
-            "recipient-public-key-lable": "Recipient Public Key Announcement (Optional)",
-            "recipient-public-key-lable-popover": "Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key."
->>>>>>> Stashed changes
         }
     },
     "common": {
