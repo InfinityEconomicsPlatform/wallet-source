@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-breadcrumb',
@@ -144,7 +145,12 @@ export class BreadcrumbComponent implements OnInit {
     routeChange: Subject<any>;
 
     constructor(public router: Router,
-        public activatedRoute: ActivatedRoute) {
+        public activatedRoute: ActivatedRoute,
+        public translate: TranslateService) {
+
+        this.translate.get('breadcrumbs').subscribe((data) => {
+            this.stateLabel = data.value;
+        });
     }
 
     ngOnInit() {
