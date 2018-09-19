@@ -149,7 +149,7 @@ export class BreadcrumbComponent implements OnInit {
         public translate: TranslateService) {
 
         this.translate.get('breadcrumbs').subscribe((data) => {
-            this.stateLabel = data.value;
+            this.stateLabel = data;
         });
     }
 
