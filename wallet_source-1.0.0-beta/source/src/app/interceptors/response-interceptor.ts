@@ -32,7 +32,7 @@ export class ResponseInterceptor implements HttpInterceptor {
                         var endPoints = _this.sessionStorageService.getFromSession(AppConstants.baseConfig.SESSION_PEER_ENDPOINTS) || _this.peerService.getPeerEndPoints();
                         var index = endPoints.indexOf(url);
                         if (endPoints[index + 1]) {
-                            let newReq = req.clone({url:endPoints[index + 1]});
+                            let newReq = req.clone({ url: endPoints[index + 1] });
                             return _this.http.request(newReq).subscribe(function (success) {
                                 return sanitizeJson(success);
                             }, function (error) {
@@ -45,20 +45,23 @@ export class ResponseInterceptor implements HttpInterceptor {
                     return sanitizeJson(response);
                 }
 
-                function sanitizeJson(response){
+                function sanitizeJson(response) {
                     let newRes = response.clone();
                     newRes = newRes.clone({ body: _this.commonService.sanitizeJson(response.body) });
                     return response;
                 }
             }).catch(response => {
-                if (response instanceof HttpErrorResponse) {console.error(response);
-                    var url = response.url;
-                    if (url.indexOf('/api/nodes') !== -1 && response.status === -1) {
+                if (response instanceof HttpErrorResponse) {
+                    var url = req.url;
+                    if (url.indexOf('/api/nodes') !== -1 && (response.status === -1 || response.status === 0)) {
                         //This means peer call. See if there is a better identification.
                         var endPoints = _this.sessionStorageService.getFromSession(AppConstants.baseConfig.SESSION_PEER_ENDPOINTS) || _this.peerService.getPeerEndPoints();
                         var index = endPoints.indexOf(url);
+                        if (index === -1) {
+                            index = endPoints.indexOf(url.replace(/\/$/, ""));
+                        }
                         if (endPoints[index + 1]) {
-                            let newReq = req.clone({url:endPoints[index + 1]});
+                            let newReq = req.clone({ url: endPoints[index + 1] });
                             return _this.http.request(newReq);
                         } else {
                             return Observable.of(response);
@@ -77,10 +80,10 @@ export class ResponseInterceptor implements HttpInterceptor {
                         _this.peerService.getPeers().subscribe(function (success) {
                             _this.optionsConfigurationService.loadOptions();
                             let url = this.nodeService.getNodeUrl('AUTO', false) + '/api';
-                
-                            let newReq = req.clone({url});
+
+                            let newReq = req.clone({ url });
                             return _this.http.request(newReq);
-                
+
                         }, function (error) {
                             return Observable.of(response);
                         });
