@@ -23,7 +23,7 @@
                                                         <label>{{'common.recipient-lable'| translate}}
                                                             <i class="fa fa-question-circle-o ml-1 info-yellow"
                                                                 container="body" placement="right" triggers="mouseenter:mouseleave"
-                                                                ngbPopover="{{'messages.send-message.recipient-lable-popover'| translate}}">
+                                                                ngbPopover="{{'messages.send-message.recipient-label-popover'| translate}}">
                                                             </i>
 
                                                         </label>
@@ -68,10 +68,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>{{'messages.send-message.type-lable'| translate}}
+                                                        <label>{{'messages.send-message.type-label'| translate}}
                                                             <i class="fa fa-question-circle-o ml-1 info-yellow"
                                                                 container="body" placement="right" triggers="mouseenter:mouseleave"
-                                                                ngbPopover="{{'messages.send-message.type-popover'| translate}}">
+                                                                ngbPopover="{{'messages.send-message.type-label-popover'| translate}}">
                                                             </i>
 
                                                         </label>
@@ -86,9 +86,9 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>{{'messages.send-message.message-lable'| translate}}
+                                                <label>{{'messages.send-message.message-label'| translate}}
                                                     <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
-                                                        container="body" ngbPopover="{{'messages.send-message.message-lable-popover'| translate}}">
+                                                        container="body" ngbPopover="{{'messages.send-message.message-label-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div class="position-relative sign_in_inputs">
@@ -104,10 +104,10 @@
                                             <div class="form-group mt-3" *ngIf="hasReceiverPublicKey">
                                                 <div class="ucsb" placement="left" trigger="'mouseenter:mouseleave'"
                                                     ngbPopover="Additional security for brand new accounts without any outbound transaction.">
-                                                    <label>{{'messages.send-message.recipient-public-key-lable'|
+                                                    <label>{{'messages.send-message.recipient-public-key-label'|
                                                         translate}}
                                                         <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
-                                                            container="body" ngbPopover="{{'messages.send-message.recipient-public-key-lable-popover'| translate}}">
+                                                            container="body" ngbPopover="{{'messages.send-message.recipient-public-key-label-popover'| translate}}">
                                                         </i>
                                                     </label>
                                                 </div>
@@ -129,17 +129,17 @@
                                     class="form-bordered mt-4">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.recipient-account-lable'| translate}
+                                            <div class="ucsb"> {{'common.recipient-account-lable'| translate}}
                                             </div>
                                             <h4> {{sendMessageForm.recipientRS}} </h4>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.recipient-name-lable'| translate}
+                                            <div class="ucsb"> {{'common.recipient-name-lable'| translate}}
                                             </div>
                                             <h4> {{accountDetails.name | notSet}} </h4>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.recipient-balance-lable'| translate}
+                                            <div class="ucsb"> {{'common.recipient-balance-lable'| translate}}
                                             </div>
                                             <h4> {{accountDetails.balanceTQT| amountTqt}}
                                                 <small> XIN</small>
@@ -148,14 +148,14 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.service-fee-lable'| translate}
+                                            <div class="ucsb"> {{'common.service-fee-lable'| translate}}
                                             </div>
                                             <h4> {{ tx_fee | amountTkn }}
                                                 <small> XIN</small>
                                             </h4>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.valid-lable'| translate}
+                                            <div class="ucsb"> {{'common.valid-lable'| translate}}
                                             </div>
                                             <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                         </div>
