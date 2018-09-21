@@ -3,10 +3,10 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Delete Asset Details</h2>
+                    <h2 class="main-title">{{'assets.show.delete-asset-details-title' | translate}}</h2>
                     <app-breadcrumb></app-breadcrumb>
                     <h3 class="back-button" (click)="goBack()">
-                        <i class="fa fa-chevron-left"></i> Back
+                        <i class="fa fa-chevron-left"></i> {{'common.back-btn' | translate}}
                     </h3>
                 </div>
             </div>
@@ -19,9 +19,9 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>Asset Id
+                                                <label> {{'assets.trade-desk.asset-id' | translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The unique asset id">
+                                                        placement="right" container="body" [ngbPopover]="'assets.show.asset-id-popover' | translate">
                                                     </i>
                                                 </label>
                                                 <div>
@@ -31,9 +31,9 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>Asset
+                                                <label> {{ 'assets.trade-desk.sell-asset.asset-title' | translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The asset name/ticker">
+                                                        placement="right" container="body" [ngbPopover]="'assets.show.asset-name-popover' | translate">
                                                     </i>
                                                 </label>
                                                 <div>
@@ -46,7 +46,7 @@
                                 <div class="form-actions left">
                                     <button type="button" (click)="deleteAssetFull()" [disabled]="f.invalid" class="btn btn-primary mr-1 mb-0 float-right"
                                         awNextStep>
-                                        <i class="fa fa-chevron-right"></i> Next
+                                        <i class="fa fa-chevron-right"></i> {{'common.next-btn' | translate}}
                                     </button>
                                 </div>
                             </form>
@@ -54,12 +54,12 @@
                         <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Asset Id
+                                    <div class="ucsb"> {{'assets.trade-desk.asset-id' | translate}}
                                     </div>
                                     <h4>{{deleteAssetFullForm.assetId}}</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb">Asset
+                                    <div class="ucsb"> {{ 'assets.trade-desk.sell-asset.asset-title' | translate}}
                                     </div>
                                     <h4>{{deleteAssetFullForm.name}}</h4>
                                 </div>
@@ -67,24 +67,24 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Valid
+                                    <div class="ucsb"> {{'common.valid-lable' | translate}}
                                     </div>
                                     <h4>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                     </h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Service Fee
+                                    <div class="ucsb"> {{'common.service-fee-lable' | translate}}
                                     </div>
                                     <h4>{{tx_fee | amountTkn}}
-                                        <small>XIN</small>
+                                        <small>{{'common.xin-unit-text'| translate}}</small>
                                     </h4>
                                 </div>
                             </div>
                             <hr>
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                 class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> Signed Transaction
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable' | translate}}
                             </button>
                             <hr *ngIf="unsignedTx">
                             <div class="form-group" *ngIf="unsignedTx">
@@ -96,10 +96,10 @@
                             <div class="form-actions">
                                 <button type="button" [disabled]="!validBytes" class="btn btn-primary float-right"
                                     (click)="broadcastTransaction(transactionBytes)">
-                                    <i class="fa fa-check"></i> Finish
+                                    <i class="fa fa-check"></i> {{'common.finish-btn' | translate}}
                                 </button>
                                 <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
-                                    <i class="fa fa-chevron-left"></i> Previous
+                                    <i class="fa fa-chevron-left"></i> {{'common.previous-btn' | translate}}
                                 </button>
                             </div>
                         </aw-wizard-step>

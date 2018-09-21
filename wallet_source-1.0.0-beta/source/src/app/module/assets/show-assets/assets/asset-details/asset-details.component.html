@@ -3,10 +3,10 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Asset Details</h2>
+                    <h2 class="main-title">{{'assets.trade-desk.asset-detail-title' | translate}}</h2>
                     <app-breadcrumb></app-breadcrumb>
                     <h3 class="back-button" (click)="goBack()">
-                        <i class="fa fa-chevron-left"></i> Back
+                        <i class="fa fa-chevron-left"></i> {{'common.back-btn' | translate}}
                     </h3>
                 </div>
             </div>
@@ -14,12 +14,12 @@
                 <div class="card-block mr-3 ml-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="ucsb"> Name
+                            <div class="ucsb"> {{'assets.issue-asset.asset-name-label' | translate}}
                             </div>
                             <h4> {{assetDetails.name}} </h4>
                         </div>
                         <div class="col-md-6">
-                            <div class="ucsb"> Description
+                            <div class="ucsb"> {{'assets.issue-asset.asset-description-label' | translate}}
                             </div>
                             <h4> {{assetDetails.description}} </h4>
                         </div>
@@ -27,12 +27,12 @@
                     <hr />
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="ucsb"> Issuer
+                            <div class="ucsb"> {{'assets.trade-desk.issuer' | translate}}
                             </div>
                             <h4>{{assetDetails.accountRS}}</h4>
                         </div>
                         <div class="col-md-6">
-                            <div class="ucsb"> Asset Id
+                            <div class="ucsb"> {{'assets.trade-desk.asset-id' | translate}}
                             </div>
                             <h4>{{assetDetails.asset}}</h4>
                         </div>
@@ -40,13 +40,13 @@
                     <hr />
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="ucsb"> Initial Supply
+                            <div class="ucsb"> {{'assets.show.initial-supply' | translate}}
                             </div>
                             <h4> {{assetDetails.initialQuantityQNT |
                                 quantityToShare:assetDetails.decimals|numericalString}}</h4>
                         </div>
                         <div class="col-md-6">
-                            <div class="ucsb"> Current Supply
+                            <div class="ucsb"> {{'assets.show.current-supply' | translate}}
                             </div>
                             <h4> {{assetDetails.quantityQNT | quantityToShare:assetDetails.decimals|numericalString}}</h4>
                         </div>
@@ -54,12 +54,12 @@
                     <hr />
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="ucsb"> Decimals
+                            <div class="ucsb"> {{'assets.trade-desk.decimals' | translate}}Decimals
                             </div>
                             <h4> {{assetDetails.decimals}} </h4>
                         </div>
                         <div class="col-md-6">
-                            <div class="ucsb"> Shareholders
+                            <div class="ucsb"> {{'assets.trade-desk.shareholders' | translate}}
                             </div>
                             <h4> {{assetDetails.numberOfAccounts}} </h4>
                         </div>
@@ -67,12 +67,12 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="ucsb"> Trades
+                            <div class="ucsb"> {{'assets.trade-desk.trades' | translate}}
                             </div>
                             <h4> {{assetDetails.numberOfTrades}} </h4>
                         </div>
                         <div class="col-md-6">
-                            <div class="ucsb"> Transfers
+                            <div class="ucsb"> {{'assets.trade-desk.transfers' | translate}}
                             </div>
                             <h4> {{assetDetails.numberOfTransfers}} </h4>
                         </div>
