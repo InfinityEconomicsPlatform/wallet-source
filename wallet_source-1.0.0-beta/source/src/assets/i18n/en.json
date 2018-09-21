@@ -320,6 +320,27 @@
         "delete-currency": {
             "title": "Delete Currency Details",
             "currency-delete-note": "Currencies can be deleted only if all units are in issuer possession."
+        },
+        "currency-details": {
+            "title": "Currency Details",
+            "creation-block-height-label": "Creation Block Height",
+            "issuance-block-height-label": "Issuance Block Height",
+            "decimals-label": "Decimals",
+            "max-supply-label": "Max. Supply",
+            "reserve-supply-label": "Reserve Supply",
+            "current-supply-label": "Current Supply",
+            "current-reserve-u/t-label": "Current Reserve U/T",
+            "min-reserve-u/t-label": "Min. Reserve U/T",
+            "total-exchanges-label": "Total Exchanges",
+            "total-transfers-label": "Total Transfers",
+            "properties-label": "Properties"
+        },
+        "currency-types": {
+            "EXCHANGEABLE": "EXCHANGEABLE",
+            "CONTROLLABLE": "CONTROLLABLE",
+            "RESERVABLE": "RESERVABLE",
+            "CLAIMABLE": "CLAIMABLE",
+            "NON SHUFFLEABLE": "NON SHUFFLEABLE"
         }
     },
     "common": {
@@ -366,7 +387,13 @@
         "remove-filter-tooltip": "Remove Filter",
         "no-data-available-text": "No Data Available",
         "xin-unit-text": "XIN",
-        "total-text": "Total"
+        "total-text": "Total",
+        "name-label": "Name",
+        "description-label": "Description",
+        "issuer-label": "Issuer",
+        "ticker-label": "Ticker",
+        "currency-id-label": "Currency Id",
+        "initial-supply-label": "Initial Supply"
     },
     "table-header": {
         "name": "Name",
