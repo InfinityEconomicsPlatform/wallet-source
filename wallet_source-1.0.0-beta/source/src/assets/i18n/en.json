@@ -286,6 +286,40 @@
             "reply-popover": "Reply",
             "Messages only": "Messages only",
             "With Payment": "With Payment"
+        },
+        "read-message": {
+            "title": "Read Message Details",
+            "date-label": "Date",
+            "type-label": "Type",
+            "sender-label": "Sender",
+            "recipient-label": "Recipient",
+            "message-label": "Message"
+        }
+    },
+    "currencies": {
+        "show-currencies": {
+            "title": "Currencies",
+            "my-currencies-tab": "My Currencies",
+            "all-currencies-tab": "All Currencies",
+            "exchange-table-action": "Exchange",
+            "transfer-table-action": "Transfer",
+            "delete-table-action": "Delete"
+        },
+        "transfer-currency": {
+            "title": "Transfer Currency Details",
+            "ticker-label": "Ticker",
+            "currency-id-label": "Currency Id",
+            "units-label": "Units",
+            "ticker-popover": "Unique ticker code.",
+            "currency-id-popover": "Currency Id",
+            "recipient-popover": "The recipient for this currency transfer.",
+            "units-popover": "Number of units for this transfer.",
+            "units-required-msg": "Units is required",
+            "units-greater-msg": "Units must be greater than equal to 0"
+        },
+        "delete-currency": {
+            "title": "Delete Currency Details",
+            "currency-delete-note": "Currencies can be deleted only if all units are in issuer possession."
         }
     },
     "common": {
@@ -378,7 +412,11 @@
         "balance": "Balance",
         "send": "Send",
         "phased": "Phased",
-        "prunable": "Prunable"
+        "prunable": "Prunable",
+        "ticker": "Ticker",
+        "units": "Units",
+        "supply": "Supply",
+        "exchanges": "Exchanges"
     },
     "assets": {
         "show": {
