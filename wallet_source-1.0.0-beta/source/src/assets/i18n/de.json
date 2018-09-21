@@ -329,7 +329,10 @@
         "encrypted-message-lable": "Encrypted Message",
         "attachment-lable": "Attachment",
         "reload-filter-tooltip": "Reload",
-        "remove-filter-tooltip": "Remove Filter"
+        "remove-filter-tooltip": "Remove Filter",
+        "no-data-available-text": "No Data Available",
+        "xin-unit-text": "XIN",
+        "total-text": "Total"
     },
     "table-header": {
         "name": "Name",
@@ -378,7 +381,9 @@
         "balance": "Balance",
         "send": "Send",
         "phased": "Phased",
-        "prunable": "Prunable"
+        "prunable": "Prunable",
+        "price-per-share": "Price Per Share",
+        "sum": "Sum"
     },
     "assets": {
         "show": {
@@ -395,7 +400,12 @@
             "dividend-payments-table-action": "Dividend Payments",
             "delete-shares-table-action": "Delete Shares",
             "delete-asset-table-action": "Delete Asset",
-            "dividends-history-table-action": "Dividends History"
+            "dividends-history-table-action": "Dividends History",
+            "initial-supply": "Initial Supply",
+            "current-supply": "Current Supply",
+            "delete-asset-details-title": "Delete Asset Details",
+            "asset-id-popover": "The unique asset id",
+            "asset-name-popover": "The asset name/ticker"
         },
         "my-open-orders": {
             "title": "My Open Orders",
@@ -405,6 +415,70 @@
         },
         "my-trades": {
             "title": "My Trades"
+        },
+        "my-transfers": {
+            "title": "My Transfers"
+        },
+        "last-trades": {
+            "title": "Last Trades"
+        },
+        "issue-asset": {
+            "title": "Issue Asset",
+            "asset-name-label": "Name",
+            "asset-name-popover": "The asset name is UNIQUE. Should be between 3 and 16 characters long. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
+            "asset-name-placeholder": "Asset Name",
+            "asset-name-required-validation-message": "Name is required",
+            "asset-description-label": "Description",
+            "asset-description-popover": "Asset descriptions with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
+            "asset-description-placeholder": "Asset Description",
+            "asset-description-required-validation-message": "Description is required",
+            "asset-quantity-label": "Quantity",
+            "asset-quantity-popover": "The number of shares for this asset.",
+            "asset-quantity-required-validation-message": "Quantity is required",
+            "asset-quantity-value-validation-message": "Quantity must be greater than 0",
+            "asset-quantity-unit": "QNT",
+            "asset-decimals-label": "Decimals",
+            "asset-decimals-popover": "The maximum allowed number of digits after the asset quantity decimal point.",
+            "asset-decimals-placeholder": "Asset Description",
+            "asset-decimals-required-validation-message": "Decimal is required",
+            "asset-decimals-value-validation-message": "Decimals must be greater than 0",
+            "asset-decimals-unit": "Decimals",
+            "asset-shares-label": "Shares"
+        },
+        "search-assets": {
+            "title": "Search Assets",
+            "search-label": "Search for Assets Info",
+            "search-button-label": "Search",
+            "search-placeholder": "Enter search words",
+            "search-popover": "Enter word(s) to search for assets with info and description."
+        },
+        "trade-desk": {
+            "title": "Trade Desk",
+            "asset-detail-title": "Asset Details",
+            "name": "Name",
+            "issuer": "Issuer",
+            "asset-id": "Asset Id",
+            "last-price": "Last Price",
+            "trades": "Trades",
+            "transfers": "Transfers",
+            "shareholders": "Shareholders",
+            "decimals": "Decimals",
+            "supply": "Supply",
+            "detail-link": "Details",
+            "asset-chart-title": "Asset Chart",
+            "buy-title": "Buy",
+            "price-label": "Price",
+            "price-required-validation-text": "Price is required",
+            "price-value-validation-text": "Price must be greater than equal to 0",
+            "buy-btn": "Buy",
+            "sell-orders-title": "Sell Orders",
+            "buy-orders-title": "Buy Orders",
+            "sell-title": "Sell",
+            "sell-btn": "Sell",
+            "sell-asset": {
+                "place-order-confirmation-title": "Place Order Confirmation",
+                "asset-title": "Asset"
+            }
         }
     },
     "breadcrumbs": {

@@ -1,213 +1,208 @@
 <div class="row">
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-block main-card-block">
-        <div class="border-bt">
-          <h2 class="main-title">Issue Asset</h2>
-          <app-breadcrumb></app-breadcrumb>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">{{'assets.issue-asset.title' | translate}}</h2>
+                    <app-breadcrumb></app-breadcrumb>
+                </div>
+                <div class="card-body">
+                    <div class="card-block ml-md-3 mr-md-3">
+                        <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                                <form class="form inner-form" #f="ngForm" novalidate>
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group m-0">
+                                                    <label>{{'assets.issue-asset.asset-name-label' | translate}}
+                                                        <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
+                                                            placement="right" container="body" [ngbPopover]="'assets.issue-asset.asset-name-popover' | translate">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group m-0">
+                                                        <input type="text" class="form-control" name="name" #name="ngModel"
+                                                            [(ngModel)]="issueAssetForm.name" placeholder="{{'assets.issue-asset.asset-name-placeholder' | translate}}"
+                                                            required>
+                                                    </div>
+                                                    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="input-error">
+                                                        <div *ngIf="name?.errors.required">
+                                                            {{'assets.issue-asset.asset-name-required-validation-message'
+                                                            | translate}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group m-0">
+                                                    <label>{{'assets.issue-asset.asset-description-label' | translate}}
+                                                        <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
+                                                            placement="right" container="body" [ngbPopover]="'assets.issue-asset.asset-description-popover' | translate">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group m-0">
+                                                        <textarea rows="4" class="form-control" name="description"
+                                                            #description="ngModel" [(ngModel)]="issueAssetForm.description"
+                                                            placeholder="{{'assets.issue-asset.asset-description-placeholder' | translate}}"
+                                                            required></textarea>
+                                                    </div>
+                                                    <div *ngIf="description?.invalid && (description?.dirty || description?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="description?.errors.required">
+                                                            {{'assets.issue-asset.asset-description-required-validation-message'
+                                                            | translate }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group m-0">
+                                                    <label>{{'assets.issue-asset.asset-quantity-label' | translate}}
+                                                        <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
+                                                            placement="right" container="body" [ngbPopover]="'assets.issue-asset.asset-quantity-popover' | translate">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-10 pl-0">
+                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                name="shares" #shares="ngModel" [(ngModel)]="issueAssetForm.shares"
+                                                                placeholder="" required minValue="1">
+                                                        </div>
+                                                        <div class="col-2 text-right pl-0">
+                                                            <span class="input-group-text text-right">{{'assets.issue-asset.asset-quantity-unit'
+                                                                | translate}}</span>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div *ngIf="shares?.invalid && (shares?.dirty || shares?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="shares?.errors.required">
+                                                            {{'assets.issue-asset.asset-quantity-required-validation-message'
+                                                            | translate}}
+                                                        </div>
+                                                        <div *ngIf="shares?.errors.minValue && !shares?.errors.required">
+                                                            {{'assets.issue-asset.asset-quantity-value-validation-message'
+                                                            | translate}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group m-0">
+                                                    <label>{{'assets.issue-asset.asset-decimals-label' | translate}}
+                                                        <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
+                                                            placement="right" container="body" [ngbPopover]="'assets.issue-asset.asset-decimals-popover' | translate">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-8 pl-0">
+                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                name="decimals" #decimals="ngModel" [(ngModel)]="issueAssetForm.decimals"
+                                                                placeholder="" required minValue="1">
+                                                        </div>
+                                                        <div class="col-4 text-right pl-0">
+                                                            <span class="input-group-text text-right">{{'assets.issue-asset.asset-decimals-unit'
+                                                                | translate}}</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div *ngIf="decimals?.invalid && (decimals?.dirty || decimals?.touched)"
+                                                        class="input-error">
+                                                        <div *ngIf="decimals?.errors.required">
+                                                            {{'assets.issue-asset.asset-decimals-required-validation-message'
+                                                            | translate}}
+                                                        </div>
+                                                        <div *ngIf="decimals?.errors.minValue && !decimals?.errors.required">
+                                                            {{'assets.issue-asset.asset-decimals-value-validation-message'
+                                                            | translate}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button type="button" [disabled]="f.invalid" class="btn btn-gradient mr-1 mb-0 mt-4 float-right"
+                                            (click)="issueAsset()" awNextStep>
+                                            {{'common.next-btn'| translate}} <i class="fa fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </aw-wizard-step>
+                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="ucsb"> {{'assets.issue-asset.asset-name-label' | translate}}
+                                        </div>
+                                        <h4> {{issueAssetForm.name}} </h4>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="ucsb"> {{'assets.issue-asset.asset-description-label' | translate}}
+                                        </div>
+                                        <h4> {{issueAssetForm.description}} </h4>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="ucsb"> {{'assets.issue-asset.asset-shares-label' | translate}}
+                                        </div>
+                                        <h4> {{issueAssetForm.shares | numberString:issueAssetForm.decimals}} </h4>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="ucsb"> {{'assets.issue-asset.asset-decimals-label' | translate}}
+                                        </div>
+                                        <h4> {{issueAssetForm.decimals}} </h4>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                        </div>
+                                        <h4 [innerHTML]="validBytes | txIsValid"></h4>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                        </div>
+                                        <h4>{{tx_fee | amountTkn}}
+                                            <small>XIN</small>
+                                        </h4>
+                                    </div>
+                                </div>
+
+                                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
+                                    class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                </button>
+                                <!--   <hr *ngIf="unsignedTx"> -->
+                                <div class="form-group mt-4" *ngIf="unsignedTx">
+                                    <div class="position-relative sign_in_inputs">
+                                        <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
+                                            class="form-control pl-0" name="key"></textarea>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
+                                        (click)="broadcastTransaction(transactionBytes)">
+                                        <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
+                                    </button>
+                                    <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                        <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
+                                    </button>
+                                </div>
+                            </aw-wizard-step>
+                        </aw-wizard>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <div class="card-block ml-md-3 mr-md-3">
-            <aw-wizard [navBarLayout]="'large-filled-symbols'">
-              <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
-                <form class="form inner-form" #f="ngForm" novalidate>
-                  <div class="form-body">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group m-0">
-                          <label>Name
-                            <i class="fa fa-question-circle-o"
-                               aria-hidden="true"
-                               triggers="mouseenter:mouseleave"
-                               placement="right"
-                               container="body"
-                               ngbPopover="The asset name is UNIQUE. Should be between 3 and 16 characters long. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.">
-                            </i>
-                          </label>
-                          <div class="input-group m-0">
-                            <input type="text"  class="form-control" name="name" #name="ngModel"
-                                   [(ngModel)]="issueAssetForm.name" placeholder="Asset Name" required>
-                          </div>
-                          <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
-                               class="input-error">
-                            <div *ngIf="name?.errors.required">
-                              Name is required
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group m-0">
-                          <label>Description
-                            <i class="fa fa-question-circle-o"
-                               aria-hidden="true"
-                               triggers="mouseenter:mouseleave"
-                               placement="right"
-                               container="body"
-                               ngbPopover="Asset descriptions with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.">
-                            </i>
-                          </label>
-                          <div class="input-group m-0">
-                          <textarea rows="4" class="form-control" name="description" #description="ngModel"
-                                    [(ngModel)]="issueAssetForm.description" placeholder="Asset DESCRIPTION" required></textarea>
-                          </div>
-                          <div *ngIf="description?.invalid && (description?.dirty || description?.touched)"
-                               class="input-error">
-                            <div *ngIf="description?.errors.required">
-                              Description is required
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group m-0">
-                          <label>Quantity
-                            <i class="fa fa-question-circle-o"
-                               aria-hidden="true"
-                               triggers="mouseenter:mouseleave"
-                               placement="right"
-                               container="body"
-                               ngbPopover="The number of shares for this asset.">
-                            </i>
-                          </label>
-                           <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1"> 
-                           <div class="col-10 pl-0">   
-                               <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" name="shares" #shares="ngModel"
-                                   [(ngModel)]="issueAssetForm.shares" placeholder="" required minValue="1">
-                            </div>
-                            <div class="col-2 text-right pl-0">
-                              <span class="input-group-text text-right">QNT</span>
-                            </div>
-                           
-                            
-                          </div>
-                          <div *ngIf="shares?.invalid && (shares?.dirty || shares?.touched)"
-                               class="input-error">
-                            <div *ngIf="shares?.errors.required">
-                              Quantity is required
-                            </div>
-                            <div *ngIf="shares?.errors.minValue && !shares?.errors.required">
-                              Quantity must be greater than 0
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group m-0">
-                          <label>Decimals
-                            <i class="fa fa-question-circle-o"
-                               aria-hidden="true"
-                               triggers="mouseenter:mouseleave"
-                               placement="right"
-                               container="body"
-                               ngbPopover="The maximum allowed number of digits after the asset quantity decimal point.">
-                            </i>
-                          </label>
-                          <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1"> 
-                            <div class="col-8 pl-0">   
-                                    <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control" name="decimals" #decimals="ngModel"
-                                   [(ngModel)]="issueAssetForm.decimals" placeholder="" required minValue="1">
-                            </div>
-                            <div class="col-4 text-right pl-0"> 
-                              <span class="input-group-text text-right">DECIMALS</span>
-                            </div>                           
-                          
-                          </div>
-                          <div *ngIf="decimals?.invalid && (decimals?.dirty || decimals?.touched)"
-                               class="input-error">
-                            <div *ngIf="decimals?.errors.required">
-                              Decimals is required
-                            </div>
-                            <div *ngIf="decimals?.errors.minValue && !decimals?.errors.required">
-                              Decimals must be greater than 0
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                
-                    <button type="button" [disabled]="f.invalid"
-                            class="btn btn-gradient mr-1 mb-0 mt-4 float-right"
-                            (click)="issueAsset()" awNextStep>
-                      Next <i class="fa fa-chevron-right"></i> 
-                    </button>
-                  </div>
-                </form>
-              </aw-wizard-step>
-              <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="ucsb"> Name
-                    </div>
-                    <h4> {{issueAssetForm.name}} </h4>
-                  </div>
-
-                  <div class="col-sm-6">
-                    <div class="ucsb"> Description
-                    </div>
-                    <h4 > {{issueAssetForm.description}} </h4>
-                  </div>
-                </div>
-             
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="ucsb"> Shares
-                    </div>
-                    <h4> {{issueAssetForm.shares | numberString:issueAssetForm.decimals}} </h4>
-                  </div>
-
-                  <div class="col-sm-6">
-                    <div class="ucsb"> Decimals
-                    </div>
-                    <h4> {{issueAssetForm.decimals}} </h4>
-                  </div>
-                </div>
-             
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="ucsb"> Valid
-                    </div>
-                      <h4 [innerHTML]="validBytes | txIsValid"></h4>
-                   
-                  </div>
-
-                  <div class="col-md-6">
-                    <div class="ucsb"> Service Fee
-                    </div>
-                    <h4>{{tx_fee | amountTkn}}
-                      <small>XIN</small>
-                    </h4>
-                  </div>
-                </div>
-            
-                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
-                        class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                  <i class="fa fa-key"></i> Signed Transaction
-                </button>
-              <!--   <hr *ngIf="unsignedTx"> -->
-                <div class="form-group mt-4" *ngIf="unsignedTx">
-                  <div class="position-relative sign_in_inputs">
-                                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
-                                              class="form-control pl-0" name="key"></textarea>
-                  </div>
-                </div>
-                <div class="mt-4">
-                  <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
-                          (click)="broadcastTransaction(transactionBytes)">
-                    <i class="fa fa-check"></i> Finish
-                  </button>
-                  <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                    <i class="fa fa-chevron-left"></i> Previous
-                  </button>
-                </div>
-              </aw-wizard-step>
-            </aw-wizard>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
