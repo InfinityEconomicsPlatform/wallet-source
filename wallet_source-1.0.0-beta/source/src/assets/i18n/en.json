@@ -2207,7 +2207,7 @@
             "order-date": "Order Date",
             "no-orders": "No Data Available",
             "complete": "Completed",
-            "pending": "Pending"
+            "pending": "Pending "
         }
     }
 }
