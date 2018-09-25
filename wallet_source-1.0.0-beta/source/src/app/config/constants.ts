@@ -30,7 +30,7 @@ export class AppConstants {
         'USER_NODE_URL': 'http://localhost:23457',
         'USE_LOCAL_NODE': 0,
         'AUTO_UPDATE': 1,
-        'CONNECTION_MODE': 'AUTO', //'HTTPS', // 'DEVTESTNET' TESTNET', // AUTO
+        'CONNECTION_MODE': 'LOCAL_HOST', //'HTTPS', // 'DEVTESTNET' TESTNET', // AUTO
         'VERSION': '1.0.0' + 'Beta',
         'RANDOMIZE_NODES': 1,
         'TESTNET': 1,
@@ -210,4 +210,9 @@ export class AppConstants {
         'peerEndPoint': 'api/nodes',
         'endPoint': 'api'
     };
+
+    public static marketPlaceconfig = {
+        'apiUrl': 'http://127.0.0.1:23457',
+        'endPoint': 'api'
+    }
 }

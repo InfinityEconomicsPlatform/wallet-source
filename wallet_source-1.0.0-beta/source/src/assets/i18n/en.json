@@ -2012,6 +2012,12 @@
             "purchased_products": "Purchased products",
             "total_purchases": "Total Purchases",
             "total_tags": "Total Tags"
+        },
+        "tag": {
+            "title": "Tag"
+        },
+        "purchase": {
+            "title": "Marketplace Purchase"
         }
     }
 }

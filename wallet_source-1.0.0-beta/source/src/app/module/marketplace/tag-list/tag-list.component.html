@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">{{ 'marketplace.tag.title' | translate }} - {{ 'Domain' }}</h2>
+                    <app-breadcrumb></app-breadcrumb>
+                </div>
+                <div class="card-body">
+                    <div class="card-block mt-2 form-bordered">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ngx-datatable class="material" [rows]="tagListings" [columnMode]="'force'" [rowHeight]="'auto'"
+                                    [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
+                                    [limit]="page.size">
+                                    <ngx-datatable-column prop="name" name="Purchase Date">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="votingModel" name="Product">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="options" name="Price">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="finished" name="Buyer">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            {{value}}
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                </ngx-datatable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
