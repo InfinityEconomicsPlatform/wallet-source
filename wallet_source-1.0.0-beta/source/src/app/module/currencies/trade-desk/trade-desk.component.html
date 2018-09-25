@@ -3,32 +3,32 @@
         <div class="card">
             <div class="card-block main-card-block pb-0">
                 <div class="border-bt">
-                    <h2 class="main-title">Trade Desk</h2>
+                    <h2 class="main-title">{{'currencies.trade-desk.title'| translate}}</h2>
                     <app-breadcrumb></app-breadcrumb>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Currency Details</h3>
+                                <h3 class="card-title">{{'currencies.trade-desk.currency-details-title'| translate}}</h3>
                             </div>
                             <div class="card-body form-bordered">
                                 <div class="card-block pb-0">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Name
+                                            <div class="ucsb"> {{'common.name-label'| translate}}
                                             </div>
                                             <h4> {{currencyDetails.name}} </h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Issuer
+                                            <div class="ucsb"> {{'common.issuer-label'| translate}}
                                             </div>
                                             <h4>
                                                 <a class="hyperlink" (click)="openAccountDetails(currencyDetails.accountRS)">{{currencyDetails.accountRS}}</a>
                                             </h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Currency Id
+                                            <div class="ucsb"> {{'common.currency-id-label'| translate}}
                                             </div>
                                             <h4>
                                                 <a class="hyperlink" (click)="goToDetails(currencyDetails.currency)">{{currencyDetails.currency}}</a>
@@ -36,44 +36,44 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Last Price
+                                            <div class="ucsb"> {{'currencies.trade-desk.last-price-label'| translate}}
                                             </div>
                                             <h4>
                                                 {{lastTrade.rateTQT|shareToQuantity:currencyDetails.decimals|quantToAmount|numericalString}}
-                                                <small> XIN</small>
+                                                <small> {{'common.xin-text'| translate}}</small>
                                             </h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Exchanges
+                                            <div class="ucsb"> {{'currencies.trade-desk.exchanges-label'| translate}}
                                             </div>
                                             <h4> {{currencyDetails.numberOfExchanges}} </h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Transfers
+                                            <div class="ucsb"> {{'currencies.trade-desk.transfers-label'| translate}}
                                             </div>
                                             <h4> {{currencyDetails.numberOfTransfers}} </h4>
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Supply
+                                            <div class="ucsb"> {{'currencies.trade-desk.supply-label'| translate}}
                                             </div>
                                             <h4>
                                                 {{currencyDetails.currentSupply|quantityToShare:currencyDetails.decimals|numericalString}}
-                                                <small> UNITS </small>
+                                                <small> {{'common.units-text'| translate}}</small>
                                             </h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Ticker </div>
+                                            <div class="ucsb"> {{'common.ticker-label'| translate}} </div>
                                             <h3 class="mt-2">
                                                 <div> {{currencyDetails.code}} </div>
                                             </h3>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Details
+                                            <div class="ucsb"> {{'currencies.trade-desk.details-label'| translate}}
                                             </div>
                                             <h4>
                                                 <a class="hyperlink" (click)="openCurrencyDetails(currencyDetails.code)">
-                                                    Details </a>
+                                                    {{'currencies.trade-desk.details-label'| translate}} </a>
                                             </h4>
                                         </div>
                                     </div>
@@ -84,14 +84,14 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Currency Chart</h3>
+                                <h3 class="card-title">{{'currencies.trade-desk.currency-chart-title'| translate}} </h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-block">
                                     <div id="currencyChartDiv" [hidden]="!lastTrade.rateTQT" [style.width.%]="100"
                                         [style.height.px]="300"></div>
                                     <div [hidden]="lastTrade.rateTQT">
-                                        <p class="text-center">No Data Available</p>
+                                        <p class="text-center">{{'common.no-data-available-text'| translate}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -112,10 +112,12 @@
                                         <div class="card-block">
                                             <div class="form-actions  mt-3">
                                                 <button type="button" class="btn btn-raised mb-0 btn-success" (click)="openPublishExchangeOffer(currencyDetails.currency,currencyDetails.decimals,currencyDetails.code,currencyDetails.name)">
-                                                    <i class="fa fa-plus"></i> Create Exchange Offer
+                                                    <i class="fa fa-plus"></i>
+                                                    {{'currencies.trade-desk.create-exchange-offer-btn'| translate}}
                                                 </button>
                                                 <button type="button" class="btn btn-raised mb-0 btn-success" (click)="openPublishExchangeBuyOffer(currencyDetails.currency,currencyDetails.decimals,currencyDetails.code,currencyDetails.name)">
-                                                    <i class="fa fa-plus"></i> Create Buy Only
+                                                    <i class="fa fa-plus"></i>
+                                                    {{'currencies.trade-desk.create-buy-only-btn'| translate}}
                                                 </button>
                                                 <div class="form-actions box-header  mt-3 box-header-green">
                                                     <span class="btn-group-raised">
@@ -135,7 +137,7 @@
                                                     <div class="row">
                                                         <div class="col-sm-6">
                                                             <div class="form-group m-0">
-                                                                <label>Price</label>
+                                                                <label>{{'common.price-label'| translate}}</label>
                                                                 <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
                                                                     <div class="col-9 pl-0">
                                                                         <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
@@ -150,17 +152,17 @@
                                                                 <div *ngIf="price?.invalid && (price?.dirty || price?.touched)"
                                                                     class="input-error">
                                                                     <div *ngIf="price?.errors.required">
-                                                                        Price is required
+                                                                        {{'common.price-required'| translate}}
                                                                     </div>
                                                                     <div *ngIf="price?.errors.minValue && !price?.errors.required">
-                                                                        Price must be greater than equal to 0
+                                                                        {{'common.price-greater'| translate}}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group m-0">
-                                                                <label>Quantity</label>
+                                                                <label>{{'common.quantity-label'| translate}}</label>
                                                                 <div class="input-group m-0">
                                                                     <input type="number" class="form-control" (input)="buyFormOnChange()"
                                                                         [(ngModel)]="buyOrderForm.quantity" name="quantity"
@@ -169,17 +171,17 @@
                                                                 <div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)"
                                                                     class="input-error">
                                                                     <div *ngIf="quantity?.errors.required">
-                                                                        Quantity is required
+                                                                        {{'common.quantity-required'| translate}}
                                                                     </div>
                                                                     <div *ngIf="quantity?.errors.minValue && !quantity?.errors.required">
-                                                                        Quantity must be greater than equal to 0
+                                                                        {{'common.quantity-greater'| translate}}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group m-0">
-                                                                <label>Total</label>
+                                                                <label>{{'common.total-label'| translate}}</label>
                                                                 <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
                                                                     <div class="col-9 pl-0">
                                                                         <input type="number" disabled class="pl-0 mb-0 pt-0 pb-0 form-control"
@@ -197,7 +199,7 @@
                                                             <button type="button" [disabled]="f1.invalid && !enableBuy"
                                                                 class="btn btn-raised mt-4 btn-gradient btn-green btn-create"
                                                                 (click)="placeOrderClick(buyOrderForm,'bid')">
-                                                                Buy
+                                                                {{'common.buy-btn'| translate}}
                                                             </button>
                                                         </div>
 
@@ -206,31 +208,32 @@
 
                                                 </div>
                                             </form>
-                                            <h3 class="card-title mb-3 mt-3">Offers to Sell {{currencyDetails.code}}</h3>
+                                            <h3 class="card-title mb-3 mt-3">{{'currencies.trade-desk.offers-to-sell-title'|
+                                                translate}} {{currencyDetails.code}}</h3>
                                             <ngx-datatable [rows]="sellOffersRows" [columnMode]="'standard'"
                                                 [scrollbarH]="true" [footerHeight]="50" [rowHeight]="'auto'"
                                                 [externalPaging]="true" [count]="sellOffersPage.totalElements" [offset]="sellOffersPage.pageNumber"
                                                 [limit]="sellOffersPage.size" (page)='getSellOffers($event)'
                                                 (autoRefresh)="getSellOffers()" class="pager-small">
-                                                <ngx-datatable-column prop="rateTQT" name="Price per share">
+                                                <ngx-datatable-column prop="rateTQT" [name]="'table-header.price-per-share'| translate">
                                                     <ng-template let-value="value" let-row="row"
                                                         ngx-datatable-cell-template>
                                                         {{value | rateTqtToPrice:decimals}}
                                                     </ng-template>
                                                 </ngx-datatable-column>
-                                                <ngx-datatable-column prop="supply" name="Quantity">
+                                                <ngx-datatable-column prop="supply" [name]="'table-header.quantity'| translate">
                                                     <ng-template let-value="value" let-row="row"
                                                         ngx-datatable-cell-template>
                                                         {{value | quantityToShare:decimals | numericalString}}
                                                     </ng-template>
                                                 </ngx-datatable-column>
-                                                <ngx-datatable-column prop="rateTQT" name="Sum">
+                                                <ngx-datatable-column prop="rateTQT" [name]="'table-header.sum'| translate">
                                                     <ng-template let-value="value" let-row="row"
                                                         ngx-datatable-cell-template>
                                                         {{value | rateTqtToSum:row}}
                                                     </ng-template>
                                                 </ngx-datatable-column>
-                                                <ngx-datatable-column prop="rateTQT" name="Actions">
+                                                <ngx-datatable-column prop="rateTQT" [name]="'table-header.actions'| translate">
                                                     <ng-template let-value="value" let-row="row"
                                                         ngx-datatable-cell-template>
                                                         <a class="btn btn-outline-danger">
@@ -241,10 +244,8 @@
                                             </ngx-datatable>
                                             <hr>
                                             <p *ngIf="!hasSellOffers()" class="mt-4 info">
-                                                <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; No open
-                                                sell offers. You cannot buy this currency now, but you could publish an
-                                                exchange offer
-                                                instead, and wait for others to fill it.
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp;
+                                                {{'currencies.trade-desk.sell-note'| translate}}
                                             </p>
                                         </div>
                                     </div>
@@ -258,10 +259,12 @@
                                         <div class="card-block">
                                             <div class="form-actions mt-3">
                                                 <button type="button" class="btn btn-raised mb-0 btn-success" (click)="openPublishExchangeOffer(currencyDetails.currency,currencyDetails.decimals,currencyDetails.code,currencyDetails.name)">
-                                                    <i class="fa fa-plus"></i> Create Exchange Offer
+                                                    <i class="fa fa-plus"></i>
+                                                    {{'currencies.trade-desk.create-exchange-offer-btn'| translate}}
                                                 </button>
                                                 <button type="button" class="btn btn-raised mb-0 btn-success" (click)="openPublishExchangeSellOffer(currencyDetails.currency,currencyDetails.decimals,currencyDetails.code,currencyDetails.name)">
-                                                    <i class="fa fa-plus"></i> Create Sell Only
+                                                    <i class="fa fa-plus"></i>
+                                                    {{'currencies.trade-desk.create-sell-only-btn'| translate}}
                                                 </button>
                                                 <div class="form-actions box-header  mt-3 box-header-red">
                                                     <span class="btn-group-raised">
@@ -282,7 +285,7 @@
                                                     <div class="row">
                                                         <div class="col-sm-6">
                                                             <div class="form-group m-0">
-                                                                <label>Price</label>
+                                                                <label>{{'common.price-label'| translate}}</label>
                                                                 <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
                                                                     <div class="col-9">
                                                                         <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
@@ -297,17 +300,17 @@
                                                                 <div *ngIf="price?.invalid && (price?.dirty || price?.touched)"
                                                                     class="input-error">
                                                                     <div *ngIf="price?.errors.required">
-                                                                        Price is required
+                                                                        {{'common.price-required'| translate}}
                                                                     </div>
                                                                     <div *ngIf="price?.errors.minValue && !price?.errors.required">
-                                                                        Price must be greater than equal to 0
+                                                                        {{'common.price-greater'| translate}}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group m-0">
-                                                                <label>Quantity</label>
+                                                                <label>{{'common.quantity-label'| translate}}</label>
                                                                 <div class="input-group m-0">
                                                                     <input type="number" class="form-control" (input)="sellFormOnChange()"
                                                                         [(ngModel)]="askOrderForm.quantity" name="quantity"
@@ -316,17 +319,17 @@
                                                                 <div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)"
                                                                     class="input-error">
                                                                     <div *ngIf="quantity?.errors.required">
-                                                                        Quantity is required
+                                                                        {{'common.quantity-required'| translate}}
                                                                     </div>
                                                                     <div *ngIf="quantity?.errors.minValue && !quantity?.errors.required">
-                                                                        Quantity must be greater than equal to 0
+                                                                        {{'common.quantity-greater'| translate}}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group m-0">
-                                                                <label>Total</label>
+                                                                <label>{{'common.total-label'| translate}}</label>
                                                                 <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
                                                                     <div class="col-9 pl-0">
                                                                         <input type="number" disabled class="pl-0 mb-0 pt-0 pb-0 form-control"
@@ -344,7 +347,7 @@
                                                             <button type="button" [disabled]="f2.invalid && !enableSell"
                                                                 class="btn btn-raised mt-4 btn-gradient btn-red btn-create"
                                                                 (click)="placeOrderClick(askOrderForm,'ask')">
-                                                                Sell
+                                                                {{'common.sell-btn'| translate}}
                                                             </button>
                                                         </div>
 
@@ -359,25 +362,25 @@
                                                 [externalPaging]="true" [count]="buyOffersPage.totalElements" [offset]="buyOffersPage.pageNumber"
                                                 [limit]="buyOffersPage.size" (page)='getBuyOffers($event)'
                                                 (autoRefresh)="getBuyOffers()" class="pager-small">
-                                                <ngx-datatable-column prop="rateTQT" name="Price per share">
+                                                <ngx-datatable-column prop="rateTQT" [name]="'table-header.price-per-share'| translate">
                                                     <ng-template let-value="value" let-row="row"
                                                         ngx-datatable-cell-template>
                                                         {{value | rateTqtToPrice:decimals}}
                                                     </ng-template>
                                                 </ngx-datatable-column>
-                                                <ngx-datatable-column prop="supply" name="Quantity">
+                                                <ngx-datatable-column prop="supply" [name]="'table-header.quantity'| translate">
                                                     <ng-template let-value="value" let-row="row"
                                                         ngx-datatable-cell-template>
                                                         {{value | quantityToShare:decimals | numericalString}}
                                                     </ng-template>
                                                 </ngx-datatable-column>
-                                                <ngx-datatable-column prop="rateTQT" name="Sum">
+                                                <ngx-datatable-column prop="rateTQT" [name]="'table-header.sum'| translate">
                                                     <ng-template let-value="value" let-row="row"
                                                         ngx-datatable-cell-template>
                                                         {{value | rateTqtToSum:row}}
                                                     </ng-template>
                                                 </ngx-datatable-column>
-                                                <ngx-datatable-column prop="rateTQT" name="Actions">
+                                                <ngx-datatable-column prop="rateTQT" [name]="'table-header.actions'| translate">
                                                     <ng-template let-value="value" let-row="row"
                                                         ngx-datatable-cell-template>
                                                         <a class="btn btn-outline-danger">
@@ -388,9 +391,8 @@
                                             </ngx-datatable>
                                             <hr>
                                             <p *ngIf="!hasBuyOffers()" class="mt-4 info">
-                                                <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; No open buy
-                                                offers. You cannot sell this currency now, but you could publish an
-                                                exchange offer instead, and wait for others to fill it.
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp;
+                                                {{'currencies.trade-desk.buy-note'| translate}}
                                             </p>
                                         </div>
                                     </div>
@@ -405,7 +407,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Last Exchanges</h3>
+                                <h3 class="card-title">{{'currencies.trade-desk.last-exchanges-title'| translate}}</h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-block">
@@ -413,49 +415,49 @@
                                         [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [count]="exchangesPage.totalElements"
                                         [offset]="exchangesPage.pageNumber" [limit]="exchangesPage.size" (page)='getDeskExchanges($event)'
                                         (autoRefresh)="getDeskExchanges()">
-                                        <ngx-datatable-column prop="timestamp" name="Date" headerClass="width-10-per"
-                                            cellClass="width-10-per">
+                                        <ngx-datatable-column prop="timestamp" [name]="'table-header.date'| translate"
+                                            headerClass="width-10-per" cellClass="width-10-per">
                                             <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                                 {{value | timestamp}}
                                             </ng-template>
                                         </ngx-datatable-column>
-                                        <ngx-datatable-column prop="units" name="Quantity" headerClass="width-10-per"
-                                            cellClass="width-10-per">
+                                        <ngx-datatable-column prop="units" [name]="'table-header.quantity'| translate"
+                                            headerClass="width-10-per" cellClass="width-10-per">
                                             <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                                 {{value | unitsToQuantity:row.decimals}}
                                             </ng-template>
                                         </ngx-datatable-column>
-                                        <ngx-datatable-column prop="rateTQT" name="Price" headerClass="width-10-per"
-                                            cellClass="width-10-per">
+                                        <ngx-datatable-column prop="rateTQT" [name]="'table-header.price'| translate"
+                                            headerClass="width-10-per" cellClass="width-10-per">
                                             <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                                 {{value | rateTqtToPrice:row.decimals}}
                                             </ng-template>
                                         </ngx-datatable-column>
-                                        <ngx-datatable-column prop="rateTQT" name="Sum" headerClass="width-10-per"
-                                            cellClass="width-10-per">
+                                        <ngx-datatable-column prop="rateTQT" [name]="'table-header.sum'| translate"
+                                            headerClass="width-10-per" cellClass="width-10-per">
                                             <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                                 {{value | rateTqtToSum:row}}
                                             </ng-template>
                                         </ngx-datatable-column>
-                                        <ngx-datatable-column prop="buyerRS" name="Buyer" headerClass="width-25-per"
-                                            cellClass="width-25-per">
+                                        <ngx-datatable-column prop="buyerRS" [name]="'table-header.buyer'| translate"
+                                            headerClass="width-25-per" cellClass="width-25-per">
                                             <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                                 <a class="hyperlink" (click)="openAccountDetails(value)">{{value}}</a>
                                             </ng-template>
                                         </ngx-datatable-column>
-                                        <ngx-datatable-column prop="sellerRS" name="Seller" headerClass="width-25-per"
-                                            cellClass="width-25-per">
+                                        <ngx-datatable-column prop="sellerRS" [name]="'table-header.seller'| translate"
+                                            headerClass="width-25-per" cellClass="width-25-per">
                                             <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                                 <a class="hyperlink" (click)="openAccountDetails(value)">{{value}}</a>
                                             </ng-template>
                                         </ngx-datatable-column>
-                                        <ngx-datatable-column prop="transaction" name="Actions" headerClass="width-10-per"
-                                            cellClass="width-10-per">
+                                        <ngx-datatable-column prop="transaction" [name]="'table-header.actions'| translate"
+                                            headerClass="width-10-per" cellClass="width-10-per">
                                             <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                                 <div class="btn-group-raised">
                                                     <a class="btn btn-sm btn-grey btn-icon" (click)="goToDetails(value)"
                                                         triggers="mouseenter:mouseleave" container="body" placement="top"
-                                                        ngbPopover="Details">
+                                                        ngbPopover="{{'common.details-table-action'| translate}}">
                                                         <i class="fa fa-list-ul"></i>
                                                     </a>
                                                 </div>
