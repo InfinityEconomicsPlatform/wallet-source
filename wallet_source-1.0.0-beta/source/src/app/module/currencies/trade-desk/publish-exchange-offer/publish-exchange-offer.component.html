@@ -251,10 +251,9 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div>
-                                                    <label>{{'currencies.exchange-offer.expiration-height-label'|
-                                                        translate}}
+                                                    <label>{{'common.expiration-height-label'| translate}}
                                                         <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                            container="body" placement="right" ngbPopover="{{'currencies.exchange-offer.expiration-height-popover'| translate}}">
+                                                            container="body" placement="right" ngbPopover="{{'common.expiration-height-popover'| translate}}">
                                                         </i>
                                                     </label>
                                                     <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
@@ -294,17 +293,14 @@
                                                     <div *ngIf="expirationHeight?.invalid && (expirationHeight?.dirty || expirationHeight?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="expirationHeight?.errors.required">
-                                                            {{'currencies.exchange-offer.expiration-height-required'|
-                                                            translate}}
+                                                            {{'common.expiration-height-required'| translate}}
                                                         </div>
                                                         <div *ngIf="expirationHeight?.errors.minValue && !expirationHeight?.errors.required">
-                                                            {{'currencies.exchange-offer.expiration-height-greater'|
-                                                            translate}} {{
+                                                            {{'common.expiration-height-greater'| translate}} {{
                                                             accountControl.phasingFinishHeight || 10 }}
                                                         </div>
                                                         <div *ngIf="expirationHeight?.errors.maxValue && !expirationHeight?.errors.required">
-                                                            {{'currencies.exchange-offer.expiration-height-less'|
-                                                            translate}}
+                                                            {{'common.expiration-height-less'| translate}}
                                                         </div>
                                                     </div>
                                                 </div>
