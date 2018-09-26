@@ -420,6 +420,61 @@
       "units-required": "Units is required",
       "units-greater": "Units must be greater than equal to 0",
       "sell-rate-label": "Sell Rate"
+    },
+    "my-open-offers": {
+      "title": "Open Offers",
+      "buy-tab": "Buy",
+      "sell-tab": "Sell",
+      "open-buy-offers-title": "Open Buy Offers",
+      "open-sell-offers-title": "Open Sell Offers"
+    },
+    "my-exchanges": {
+      "title": "My Exchanges",
+      "offer-details-popover": "Offer Details"
+    },
+    "my-transfers": {
+      "title": "My Transfers"
+    },
+    "last-exchanges": {
+      "title": "Last Exchanges",
+      "offer-details-popover": "Offer Details"
+    },
+    "issue-currency": {
+      "title": "Issue Currency",
+      "name-popover": "The currency name is unique. Should be between 3-10 characters and longer than the currency code. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
+      "name-required": "Name is required",
+      "name-at-least": "Name must contain at least the 3 characters",
+      "code-label": "Code",
+      "code-popover": "The currency code is unique. Its composed of 3-6 upper case letters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
+      "code-required": "Code is required",
+      "code-at-least": "Code must contain at least 3 characters",
+      "description-popover": "Currency description with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
+      "description-required": "Description is required",
+      "currency-type-label": "Currency Type",
+      "currency-type-popover": "Exchangable, can be exchanged with XIN. Controllable; transfers only from, to issuer. Exchange offers allowed only from issuer.",
+      "currency-decimals-label": "Currency Decimals",
+      "currency-decimals-popover": "The maximum allowed number of digits after the asset quantity decimal point.",
+      "currency-decimals-required": "Currency Decimals is required",
+      "currency-decimals-greater": "Currency Decimals must be greater than equal to 0",
+      "currency-decimals-less": "Currency Decimals must be less than equal to 4",
+      "initial-supply-popover": "The initial currency supply. Multiplied by number of decimals gives the smalles currency unit to trade or transfer.",
+      "initial-supply-required": "Initial Supply is required",
+      "initial-supply-greater": "Initial Supply must be greater than equal to 1",
+      "total-supply-label": "Total Supply",
+      "total-supply-popover": "Total currency supply used for reservable/claimable currencies like crowdfunding token. For all other currency type total supply has to be equal to initial supply.",
+      "min-amount-per-unit-label": "Min Amount Per Unit",
+      "min-amount-per-unit-popover": "Min Amount Per Unit.",
+      "reserve-supply-label": "Reserve Supply",
+      "reserve-supply-popover": "Reserve Supply",
+      "activation-height-label": "Activation Height",
+      "activation-height-popover": "Activation Height.",
+      "decimals-label": "Decimals",
+      "max-supply-label": "Max Supply"
+    },
+    "search-currencies": {
+      "title": "Search Currencies",
+      "search-account-info-label": "Search for Account Info",
+      "search-account-info-popover": "Enter word(s) to search for accounts with info and description."
     }
   },
   "common": {
@@ -434,6 +489,7 @@
     "reload-filter-popover": "Reload",
     "details-table-action": "Details",
     "tradeDesk-table-action": "TradeDesk",
+    "cancel-table-action": "Cancel",
     "back-btn": "Back",
     "recipient-lable": "Recipient",
     "amount-lable": "Amount",
@@ -446,6 +502,7 @@
     "previous-btn": "Previous",
     "next-btn": "Next",
     "finish-btn": "Finish",
+    "search-btn": "Search",
     "encrypted-message-btn": "Encrypted Message",
     "public-key-btn": "Recipient Public Key",
     "open-bookmark-tooltip": "Open your bookmarks to insert an account id",
@@ -476,6 +533,7 @@
     "xin-text": "XIN",
     "units-text": "UNITS",
     "block-text": "BLOCK",
+    "digits-text": "DIGITS",
     "message-label": "Message",
     "sender-label": "Sender",
     "price-label": "Price",
@@ -509,6 +567,12 @@
     "signature-hash-tab": "Signature Hash",
     "signature-tab": "Signature",
     "attachment-tab": "Attachment"
+  },
+  "account-details": {
+    "title": "Account Details",
+    "address-label": "Address",
+    "balance-label": "Balance",
+    "qr-code-label": "QR Code"
   },
   "table-header": {
     "name": "Name",
@@ -563,7 +627,8 @@
     "supply": "Supply",
     "exchanges": "Exchanges",
     "price-per-share": "Price Per Share",
-    "sum": "Sum"
+    "sum": "Sum",
+    "limit": "Limit"
   },
   "assets": {
     "show": {

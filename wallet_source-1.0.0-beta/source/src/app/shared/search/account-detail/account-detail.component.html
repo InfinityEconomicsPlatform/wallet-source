@@ -3,10 +3,10 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Account Details</h2>
+                    <h2 class="main-title">{{'account-details.title'| translate}}</h2>
                     <app-breadcrumb></app-breadcrumb>
                     <h3 class="back-button" (click)="goBack()">
-                        <i class="fa fa-chevron-left"></i> Back
+                        <i class="fa fa-chevron-left"></i> {{'common.back-btn'| translate}}
                     </h3>
                 </div>
             </div>
@@ -14,51 +14,54 @@
                 <div class="card-block mr-3 ml-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="ucsb"> Address
+                            <div class="ucsb"> {{'account-details.address-label'| translate}}
                             </div>
                             <h4> {{account.accountRS}} </h4>
                         </div>
 
                         <div class="col-md-6">
-                            <div class="ucsb"> Balance
+                            <div class="ucsb"> {{'account-details.balance-label'| translate}}
                             </div>
                             <h4> {{account.balanceTQT | amountTqt}}
                                 <small> XIN</small>
                             </h4>
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="ucsb"> Name
+                            <div class="ucsb"> {{'common.name-label'| translate}}
                             </div>
                             <h4> {{account.name | notSet }} </h4>
                         </div>
                         <div class="col-md-6">
                             <div class="ucsb">
-                                Description
+                                {{'common.description-label'| translate}}
                             </div>
                             <h4> {{account.description | notSet }} </h4>
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
                     <div class="row">
                         <div class="col-md-12 col-lg-12">
                             <ngb-tabset type="pills">
                                 <ngb-tab>
                                     <ng-template ngbTabTitle>
-                                        <i class="fa fa-key"></i> Public Key </ng-template>
+                                        <i class="fa fa-key"></i> {{'common.public-key-lable'| translate}}
+                                    </ng-template>
                                     <ng-template ngbTabContent>
                                         <div class="form-group">
                                             <div class="position-relative">
-                                                <input disabled="true" type="text" value="{{account.publicKey | noOutbound }}" class="form-control">
+                                                <input disabled="true" type="text" value="{{account.publicKey | noOutbound }}"
+                                                    class="form-control">
                                             </div>
                                         </div>
                                     </ng-template>
                                 </ngb-tab>
                                 <ngb-tab>
                                     <ng-template ngbTabTitle>
-                                        <i class="fa fa-hashtag"></i> QR Code </ng-template>
+                                        <i class="fa fa-hashtag"></i> {{'account-details.qr-code-label'| translate}}
+                                    </ng-template>
                                     <ng-template ngbTabContent>
                                         <div class="form-group">
                                             <div class="position-relative">
