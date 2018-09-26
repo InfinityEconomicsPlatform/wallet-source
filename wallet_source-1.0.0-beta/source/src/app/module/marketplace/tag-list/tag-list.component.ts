@@ -52,5 +52,4 @@ export class TagListComponent implements OnInit {
         DataStoreService.set('marketplace_product', product);
         this.router.navigateByUrl('/marketplace/product-details');
     }
-
 }
