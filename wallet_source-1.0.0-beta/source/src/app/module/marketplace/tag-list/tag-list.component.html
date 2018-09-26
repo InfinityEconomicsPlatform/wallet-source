@@ -13,24 +13,32 @@
                                 <ngx-datatable class="material" [rows]="tagListings" [columnMode]="'force'" [rowHeight]="'auto'"
                                     [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
                                     [limit]="page.size">
-                                    <ngx-datatable-column prop="name" name="Purchase Date">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                    <ngx-datatable-column prop="url" name="Product Details">
+                                        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                            <h3><a class="hyperlink">{{row.transactionJSON.attachment.name}}</a></h3>
+                                            <p>{{row.transactionJSON.attachment.description}}</p>
                                         </ng-template>
                                     </ngx-datatable-column>
-                                    <ngx-datatable-column prop="votingModel" name="Product">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                    <ngx-datatable-column prop="votingModel" name="Price">
+                                        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                            <span>{{row.transactionJSON.attachment.priceTQT | amountTqt}}</span>
                                         </ng-template>
                                     </ngx-datatable-column>
-                                    <ngx-datatable-column prop="options" name="Price">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                    <ngx-datatable-column prop="options" name="Quantity">
+                                        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                            {{row.transactionJSON.attachment.quantity}}
                                         </ng-template>
                                     </ngx-datatable-column>
-                                    <ngx-datatable-column prop="finished" name="Buyer">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                    <ngx-datatable-column prop="finished" name="Tags">
+                                        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                            <span class="badge badge-info m-1" *ngFor="let tag of row.transactionJSON.attachment.tags.split(',')">{{tag}}</span>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="finished" name="Seller Details">
+                                        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                            <h3>Seller: <a class="hyperlink">{{row.transactionJSON.senderRS}}</a></h3>
+                                            <h3>Product ID: <a class="hyperlink">{{row.transactionJSON.ecBlockId}}</a></h3>
+                                            <h3>Listing Date: <span>{{row.transactionJSON.timestamp | timestamp}}</span></h3>
                                         </ng-template>
                                     </ngx-datatable-column>
                                 </ngx-datatable>
