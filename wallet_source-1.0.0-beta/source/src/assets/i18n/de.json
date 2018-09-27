@@ -475,6 +475,12 @@
             "title": "Search Currencies",
             "search-account-info-label": "Search for Account Info",
             "search-account-info-popover": "Enter word(s) to search for accounts with info and description."
+        },
+        "send-currency": {
+            "title": "Send Currency Details",
+            "currency-id-popover": "The currency id to send",
+            "currency-id-required": "Currency id is required",
+            "units-popover": "The number of units to send."
         }
     },
     "common": {
