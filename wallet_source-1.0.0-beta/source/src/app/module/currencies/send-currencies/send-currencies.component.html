@@ -12,7 +12,7 @@
                 <div class="card-body mt-4">
                     <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
                         <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                            <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                                 <form class="form inner-form" #f="ngForm" novalidate>
                                     <div class="form-body">
                                         <div class="row">
@@ -64,9 +64,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Recipient
+                                                    <label>{{'common.recipient-lable'| translate}}
                                                         <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                            placement="right" container="body" ngbPopover="The recipient to send currencies">
+                                                            placement="right" container="body" ngbPopover="{{'currencies.send-currency.recipient-popover'| translate}}">
                                                         </i>
                                                     </label>
                                                     <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
@@ -79,12 +79,12 @@
 
                                                             <div class="btn-icon-group text-right">
                                                                 <span class="btn btn-primary" triggers="mouseenter:mouseleave"
-                                                                    placement="top" container="body" ngbPopover="Alias Account search">
+                                                                    placement="top" container="body" ngbPopover="{{'common.alias-connect-tooltip'| translate}}">
                                                                     <i class="fa fa-share-alt"></i>
                                                                 </span>
                                                                 <span class="btn btn-primary" triggers="mouseenter:mouseleave"
                                                                     placement="top" (click)="loadBookmarkView()"
-                                                                    container="body" ngbPopover="Open bookmarks">
+                                                                    container="body" ngbPopover="{{'common.open-bookmark-tooltip'| translate}}">
                                                                     <i class="fa fa-bookmark"></i>
                                                                 </span>
                                                             </div>
@@ -93,7 +93,8 @@
                                                     <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="recipientRS?.errors.required">
-                                                            Recipient is required
+                                                            {{'currencies.send-currency.recipient-required'|
+                                                            translate}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,20 +104,21 @@
                                     <div class="mt-4 left">
                                         <button type="button" [disabled]="f.invalid" class="btn btn-gradient mr-1 mb-0 float-right"
                                             awNextStep>
-                                            <i class="fa fa-chevron-right"></i> Next
+                                            <i class="fa fa-chevron-right"></i> {{'common.next-btn'| translate}}
                                         </button>
                                     </div>
                                 </form>
                             </aw-wizard-step>
-                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }"
+                                class="form-bordered mt-4">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="ucsb">Currency Id
+                                        <div class="ucsb">{{'common.currency-id-label'| translate}}
                                         </div>
                                         <h4>{{f.currencyId}}</h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="ucsb">Units
+                                        <div class="ucsb">{{'common.units-label'| translate}}
                                         </div>
                                         <h4>{{f.units}}</h4>
                                     </div>
@@ -139,7 +141,7 @@
 
                                 <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                     class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                    <i class="fa fa-key"></i> Signed Transaction
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
                                 </button>
                                 <!--  <hr *ngIf="unsignedTx"> -->
                                 <div class="form-group mt-3" *ngIf="unsignedTx">
@@ -151,10 +153,10 @@
                                 <div class="mt-4">
                                     <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
                                         (click)="broadcastTransaction(transactionBytes)">
-                                        <i class="fa fa-check"></i> Finish
+                                        <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
                                     </button>
                                     <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                        <i class="fa fa-chevron-left"></i> Previous
+                                        <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
                                     </button>
                                 </div>
                             </aw-wizard-step>

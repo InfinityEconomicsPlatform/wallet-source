@@ -480,7 +480,12 @@
             "title": "Send Currency Details",
             "currency-id-popover": "The currency id to send",
             "currency-id-required": "Currency id is required",
-            "units-popover": "The number of units to send."
+            "units-popover": "The number of units to send.",
+            "recipient-popover": "The recipient to send currencies",
+            "recipient-required": "Recipient is required"
+        },
+        "cancel-offer": {
+            "title": "Cancel Offer Confirmation"
         }
     },
     "common": {
