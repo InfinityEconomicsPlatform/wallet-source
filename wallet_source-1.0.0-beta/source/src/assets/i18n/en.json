@@ -2014,7 +2014,15 @@
             "total_tags": "Total Tags"
         },
         "tag": {
-            "title": "Tag"
+            "title": "Tag",
+            "product_details": "Product Details",
+            "price": "Price",
+            "quantity": "Quantity",
+            "tags": "Tags",
+            "seller_details": "Seller Details",
+            "seller": "Seller",
+            "id": "Product ID",
+            "listing_date": "Listing Date"
         },
         "purchase": {
             "title": "Marketplace Purchase"
