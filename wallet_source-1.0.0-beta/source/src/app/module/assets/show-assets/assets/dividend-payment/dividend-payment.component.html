@@ -3,25 +3,25 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Dividend Payment Details</h2>
+                    <h2 class="main-title">{{'assets.dividend-payment.title'| translate}}</h2>
                     <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
                     <h3 class="back-button" (click)="goBack()">
-                        <i class="fa fa-chevron-left"></i> Back
+                        <i class="fa fa-chevron-left"></i> {{'common.back-btn'| translate}}
                     </h3>
                 </div>
             </div>
             <div class="card-body">
                 <div class="card-block ml-3 mr-3">
                     <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                        <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                        <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                             <form class="form" #f="ngForm" novalidate>
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>Asset Id
+                                                <label>{{'common.asset-id-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The unique asset id">
+                                                        placement="right" container="body" ngbPopover="{{'common.asset-id-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div>
@@ -31,9 +31,9 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>Asset
+                                                <label>{{'common.asset-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The asset name/ticker">
+                                                        placement="right" container="body" ngbPopover="{{'common.asset-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div>
@@ -46,9 +46,9 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>Amount per Share
+                                                <label>{{'assets.dividend-payment.amount-per-share-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The dividend in XIN for EACH share. If you have a total to pay, divide it by the number of total shares.">
+                                                        placement="right" container="body" ngbPopover="{{'assets.dividend-payment.amount-per-share-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div class="input-group m-0">
@@ -62,32 +62,33 @@
                                                 <div *ngIf="amountPerQuant?.invalid && (amountPerQuant?.dirty || amountPerQuant?.touched)"
                                                     class="input-error">
                                                     <div *ngIf="amountPerQuant?.errors.required">
-                                                        Amount is required
+                                                        {{'common.amount-required-smg'| translate}}
                                                     </div>
                                                     <div *ngIf="amountPerQuant?.errors.minValue && !amountPerQuant?.errors.required">
-                                                        Amount must be greater than 0
+                                                        {{'common.amount-greater-smg'| translate}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>Height
+                                                <label>{{'assets.dividend-payment.height-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The blockchain height at which asset holders shares will be counted (must be less than 1440 blocks in the past).">
+                                                        placement="right" container="body" ngbPopover="{{'assets.dividend-payment.height-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div class="input-group m-0">
                                                     <input type="number" class="form-control" name="height" #height="ngModel"
                                                         [(ngModel)]="dividendPaymentForm.height" required>
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text">@BLOCK</span>
+                                                        <span class="input-group-text">@{{'common.block-text'|
+                                                            translate}}</span>
                                                     </div>
                                                 </div>
                                                 <div *ngIf="height?.invalid && (height?.dirty || height?.touched)"
                                                     class="input-error">
                                                     <div *ngIf="height?.errors.required">
-                                                        Height is required
+                                                        {{'assets.dividend-payment.height-required'| translate}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,20 +98,20 @@
                                 <div class="form-actions left">
                                     <button type="button" (click)="dividendPayment()" [disabled]="f.invalid" class="btn btn-primary mr-1 mb-0 float-right"
                                         awNextStep>
-                                        <i class="fa fa-chevron-right"></i> Next
+                                        <i class="fa fa-chevron-right"></i> {{'common.next-btn'| translate}}
                                     </button>
                                 </div>
                             </form>
                         </aw-wizard-step>
-                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
+                        <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Asset Id
+                                    <div class="ucsb"> {{'common.asset-id-label'| translate}}
                                     </div>
                                     <h4>{{dividendPaymentForm.assetId}}</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb">Asset
+                                    <div class="ucsb">{{'common.asset-label'| translate}}
                                     </div>
                                     <h4>{{dividendPaymentForm.name}}</h4>
                                 </div>
@@ -118,13 +119,13 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Amount
+                                    <div class="ucsb"> {{'common.amount-lable'| translate}}
                                     </div>
                                     <h4>{{dividendPaymentForm.amountPerQuant}}
                                         <small>XIN</small></h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb">Height
+                                    <div class="ucsb">{{'assets.dividend-payment.height-label'| translate}}
                                     </div>
                                     <h4>{{dividendPaymentForm.height}}</h4>
                                 </div>
@@ -132,14 +133,14 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Valid
+                                    <div class="ucsb"> {{'common.valid-lable'| translate}}
                                     </div>
                                     <h4>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                     </h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Service Fee
+                                    <div class="ucsb"> {{'common.service-fee-lable'| translate}}
                                     </div>
                                     <h4>{{tx_fee | amountTkn}}
                                         <small>XIN</small>
@@ -149,7 +150,7 @@
                             <hr>
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                 class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> Signed Transaction
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
                             </button>
                             <hr *ngIf="unsignedTx">
                             <div class="form-group" *ngIf="unsignedTx">
@@ -161,10 +162,10 @@
                             <div class="form-actions">
                                 <button type="button" [disabled]="!validBytes" class="btn btn-primary float-right"
                                     (click)="broadcastTransaction(transactionBytes)">
-                                    <i class="fa fa-check"></i> Finish
+                                    <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
                                 </button>
                                 <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
-                                    <i class="fa fa-chevron-left"></i> Previous
+                                    <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
                                 </button>
                             </div>
                         </aw-wizard-step>

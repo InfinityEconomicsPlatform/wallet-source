@@ -514,6 +514,7 @@
         "next-btn": "Next",
         "finish-btn": "Finish",
         "search-btn": "Search",
+        "refresh-btn": "Refresh",
         "encrypted-message-btn": "Encrypted Message",
         "public-key-btn": "Recipient Public Key",
         "open-bookmark-tooltip": "Open your bookmarks to insert an account id",
@@ -545,6 +546,7 @@
         "units-text": "UNITS",
         "block-text": "BLOCK",
         "digits-text": "DIGITS",
+        "quantity-text": "QUANTITY",
         "message-label": "Message",
         "sender-label": "Sender",
         "price-label": "Price",
@@ -562,7 +564,11 @@
         "expiration-height-popover": "Block height at which this offer expires.",
         "expiration-height-required": "Expiration Height is required",
         "expiration-height-greater": "Expiration Height must be greater than equal to",
-        "expiration-height-less": "Expiration Height must be less than equal to 14400"
+        "expiration-height-less": "Expiration Height must be less than equal to 14400",
+        "asset-id-label": "Asset Id",
+        "asset-id-popover": "The unique asset id",
+        "asset-label": "Asset",
+        "asset-popover": "The asset name/ticker"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -707,6 +713,52 @@
             "search-button-label": "Search",
             "search-placeholder": "Enter search words",
             "search-popover": "Enter word(s) to search for assets with info and description."
+        },
+        "delete-shares": {
+            "title": "Delete Shares Details",
+            "number-shares-delete-label": "Number Shares to Delete",
+            "number-shares-delete-popover": "The number of shares to be deleted.",
+            "quantity-text": "QUANTITY",
+            "quantity-required": "Quantity is required",
+            "quantity-greater": "Quantity must be greater than 0",
+            "quantity-label": "Quantity"
+        },
+        "dividend-payment": {
+            "title": "Dividend Payment Details",
+            "amount-per-share-label": "Amount per Share",
+            "amount-per-share-popover": "The dividend in XIN for EACH share. If you have a total to pay, divide it by the number of total shares.",
+            "height-label": "Height",
+            "height-popover": "The blockchain height at which asset holders shares will be counted (must be less than 1440 blocks in the past).",
+            "height-required": "Height is required"
+        },
+        "dividend-history": {
+            "title": "Asset Dividend Payments"
+        },
+        "expected-asset-delete": {
+            "title": "Expected Asset Deletes"
+        },
+        "expected-asset-transfers": {
+            "title": "Expected Asset Transfers"
+        },
+        "expected-order-cancellation": {
+            "title": "Expected Order Cancellation"
+        },
+        "expected-order-details": {
+            "title": "Expected Order Details",
+            "asset-id-popover": "get expected orders for this asset id.",
+            "ask-orders-tab": "Ask Orders",
+            "bid-orders-tab": "Bid Orders"
+        },
+        "order-trade-details": {
+            "title": "Order Trade Details",
+            "order-id-placeholder": "Enter order Id"
+        },
+        "transfer-asset": {
+            "title": "Transfer Asset Details",
+            "recipient-popover": "The recipient account you like to transfer asset shares",
+            "recipient-required": "Recipient is required",
+            "shares-label": "Shares",
+            "shares-popover": "The number of shares you like to transfer. Fractions are calculated by decimals for this assets."
         },
         "trade-desk": {
             "title": "Trade Desk",

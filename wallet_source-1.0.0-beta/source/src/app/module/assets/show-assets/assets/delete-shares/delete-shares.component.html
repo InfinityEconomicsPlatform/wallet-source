@@ -3,10 +3,10 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Delete Shares Details</h2>
+                    <h2 class="main-title">{{'assets.delete-shares.title'| translate}} </h2>
                     <app-breadcrumb></app-breadcrumb>
                     <h3 class="back-button" (click)="goBack()">
-                        <i class="fa fa-chevron-left"></i> Back
+                        <i class="fa fa-chevron-left"></i> {{'common.back-btn'| translate}}
                     </h3>
                 </div>
             </div>
@@ -19,9 +19,9 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>Asset Id
+                                                <label>{{'common.asset-id-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The unique asset id">
+                                                        placement="right" container="body" ngbPopover="{{'common.asset-id-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div>
@@ -31,9 +31,9 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>Asset
+                                                <label>{{'common.asset-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The asset name/ticker">
+                                                        placement="right" container="body" ngbPopover="{{'common.asset-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div>
@@ -46,25 +46,26 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>Number Shares to Delete
+                                                <label>{{'assets.delete-shares.number-shares-delete-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The number of shares to be deleted.">
+                                                        placement="right" container="body" ngbPopover="{{'assets.delete-shares.number-shares-delete-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div class="input-group m-0">
                                                     <input type="number" class="form-control" name="quantity" #quantity="ngModel"
                                                         [(ngModel)]="deleteAssetForm.quantity" required minValue="1">
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text">QUANTITY</span>
+                                                        <span class="input-group-text">{{'assets.delete-shares.quantity-text'|
+                                                            translate}} </span>
                                                     </div>
                                                 </div>
                                                 <div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)"
                                                     class="input-error">
                                                     <div *ngIf="quantity?.errors.required">
-                                                        Quantity is required
+                                                        {{'assets.delete-shares.quantity-required'| translate}}
                                                     </div>
                                                     <div *ngIf="quantity?.errors.minValue && !quantity?.errors.required">
-                                                        Quantity must be greater than 0
+                                                        {{'assets.delete-shares.quantity-greater'| translate}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,7 +77,7 @@
                                 <div class="form-actions left">
                                     <button type="button" (click)="deleteAssetShares()" [disabled]="f.invalid" class="btn btn-primary mr-1 mb-0 float-right"
                                         awNextStep>
-                                        <i class="fa fa-chevron-right"></i> Next
+                                        <i class="fa fa-chevron-right"></i> {{'common.next-btn'| translate}}
                                     </button>
                                 </div>
                             </form>
@@ -84,12 +85,12 @@
                         <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Asset Id
+                                    <div class="ucsb"> {{'assets.delete-shares.asset-id-label'| translate}}
                                     </div>
                                     <h4>{{deleteAssetForm.assetId}}</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb">Asset
+                                    <div class="ucsb">{{'assets.delete-shares.asset-label'| translate}}
                                     </div>
                                     <h4>{{deleteAssetForm.name}}</h4>
                                 </div>
@@ -97,7 +98,7 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Quantity
+                                    <div class="ucsb"> {{'assets.delete-shares.quantity-label'| translate}}
                                     </div>
                                     <h4>{{deleteAssetForm.quantity}}
                                     </h4>
@@ -108,14 +109,14 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Valid
+                                    <div class="ucsb"> {{'common.valid-lable'| translate}}
                                     </div>
                                     <h4>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                     </h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Service Fee
+                                    <div class="ucsb"> {{'common.service-fee-lable'| translate}}
                                     </div>
                                     <h4>{{tx_fee | amountTkn}}
                                         <small>XIN</small>
@@ -125,7 +126,7 @@
                             <hr>
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                 class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> Signed Transaction
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
                             </button>
                             <hr *ngIf="unsignedTx">
                             <div class="form-group" *ngIf="unsignedTx">
@@ -137,10 +138,10 @@
                             <div class="form-actions">
                                 <button type="button" [disabled]="!validBytes" class="btn btn-primary float-right"
                                     (click)="broadcastTransaction(transactionBytes)">
-                                    <i class="fa fa-check"></i> Finish
+                                    <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
                                 </button>
                                 <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
-                                    <i class="fa fa-chevron-left"></i> Previous
+                                    <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
                                 </button>
                             </div>
                         </aw-wizard-step>
