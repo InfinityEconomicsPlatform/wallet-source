@@ -15,7 +15,7 @@
                                     [limit]="page.size">
                                     <ngx-datatable-column prop="url" name="{{ 'marketplace.tag.product_details' | translate }}">
                                         <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                                            <h3><a class="hyperlink">{{row.transactionJSON.attachment.name}}</a></h3>
+                                            <div><strong><a class="hyperlink">{{row.transactionJSON.attachment.name}}</a></strong></div>
                                             <span>{{row.transactionJSON.attachment.description}}</span>
                                         </ng-template>
                                     </ngx-datatable-column>
@@ -36,10 +36,10 @@
                                     </ngx-datatable-column>
                                     <ngx-datatable-column prop="finished" name="{{ 'marketplace.tag.seller_details' | translate }}">
                                         <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                                            <h3>{{ 'marketplace.tag.seller' | translate }}: <a class="hyperlink">{{row.transactionJSON.senderRS}}</a></h3>
-                                            <h3>{{ 'marketplace.tag.id' | translate }}: <a class="hyperlink">{{row.transactionJSON.ecBlockId}}</a></h3>
-                                            <h3>{{ 'marketplace.tag.listing_date' | translate }}: <span>{{row.transactionJSON.timestamp
-                                                    | timestamp}}</span></h3>
+                                            <div>{{ 'marketplace.tag.seller' | translate }}: <a class="hyperlink">{{row.transactionJSON.senderRS}}</a></div>
+                                            <div>{{ 'marketplace.tag.id' | translate }}: <a class="hyperlink">{{row.transactionJSON.ecBlockId}}</a></div>
+                                            <div>{{ 'marketplace.tag.listing_date' | translate }}: <span>{{row.transactionJSON.timestamp
+                                                    | timestamp}}</span></div>
                                         </ng-template>
                                     </ngx-datatable-column>
                                 </ngx-datatable>

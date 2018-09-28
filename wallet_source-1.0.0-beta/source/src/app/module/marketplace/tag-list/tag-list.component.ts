@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Page } from '../../../config/page';
+import { MarketplaceService } from '../marketplace.service';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { AppConstants } from '../../../config/constants';
+import { CryptoService } from '../../../services/crypto.service';
 
 @Component({
     selector: 'app-tag-list',
@@ -10,8 +14,13 @@ import { Page } from '../../../config/page';
 export class TagListComponent implements OnInit {
     tagListings: any[] = [];
     page = new Page();
+    secretPhraseHex = '';
+    secretPhrase = '';
 
-    constructor(public router: Router) {
+    constructor(public router: Router,
+        private marketplaceService: MarketplaceService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService) {
         this.tagListings.push(
             {
                 "signatureHash": "565bc0a6140ae1331cd5db009fbd9da164d8802330939ef40204a9bc343b3149",
@@ -54,6 +63,13 @@ export class TagListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
+        this.secretPhrase = this.cryptoService.secretPhraseFromPrivateKey(this.secretPhraseHex);
+
+        this.marketplaceService.getListing(this.secretPhrase, "Test Product", "Testing the DGS.tags=test, product, tag, extra", 3, 100000000, 100000000)
+            .subscribe((success: any) => {
+                console.log(success);
+            })
     }
 
 }
