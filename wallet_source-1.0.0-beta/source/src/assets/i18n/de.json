@@ -497,10 +497,13 @@
         "filter-sort-supply-popover": "Sort Supply",
         "filter-sort-height-popover": "Sort Height",
         "filter-sort-decimals-popover": "Sort Decimals",
+        "filter-sort-date-popover": "Sort Date",
+        "filter-sort-price-popover": "Sort Price",
         "reload-filter-popover": "Reload",
         "details-table-action": "Details",
         "tradeDesk-table-action": "TradeDesk",
         "cancel-table-action": "Cancel",
+        "delete-table-action": "Delete",
         "back-btn": "Back",
         "recipient-lable": "Recipient",
         "amount-lable": "Amount",
@@ -568,7 +571,12 @@
         "asset-id-label": "Asset Id",
         "asset-id-popover": "The unique asset id",
         "asset-label": "Asset",
-        "asset-popover": "The asset name/ticker"
+        "asset-popover": "The asset name/ticker",
+        "alias-name-label": "Alias Name",
+        "uri-label": "Uri",
+        "alias-label": "Alias",
+        "alias-price-label": "Alias price",
+        "url-label": "URL"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -788,6 +796,46 @@
                 "asset-title": "Asset"
             }
         }
+    },
+    "aliases": {
+        "create-alias": {
+            "title": "Create Alias",
+            "alias-name-popover": "Alias with max. 100 characters. Aliases are CASE-INSENSITIVE.",
+            "alias-name-placeholder": "Alias Name",
+            "name-required": "Name is required",
+            "prefix-label": "Prefix",
+            "prefix-popover": "Alias prefix to connect your alias with.",
+            "prefixs": {
+                "Account": "Account",
+                "URL": "URL",
+                "BTC": "BTC",
+                "Other": "Other"
+            },
+            "url-popover": "The resource or target you like to connect your alias with. Can be your account, a website or even a BTC address. For URL ensure your uri starts with http://",
+            "url-required": "URI is required"
+        },
+        "buy-offers": {
+            "title": "BUY OFFERS",
+            "private-tab": "Private",
+            "public-tab": "Public",
+            "tab-title": "Buy Offers",
+            "buy-table-action": "Buy"
+        },
+        "buy-alias": {
+            "title": "Buy Alias Details",
+            "alias-popover": "The alias to buy",
+            "alias-price-popover": "The price for this alias"
+        },
+        "my-sell-offers": {
+            "title": "Aliases"
+        },
+        "cancel-alias-sell": {
+            "title": "Cancel Alias Sell Details",
+            "alias-popover": "The alias to cancel",
+            "sales-price-label": "Sales Price",
+            "sales-price-popover": "The current sale price for this alias"
+        }
+
     },
     "breadcrumbs": {
         "account": "Account",
