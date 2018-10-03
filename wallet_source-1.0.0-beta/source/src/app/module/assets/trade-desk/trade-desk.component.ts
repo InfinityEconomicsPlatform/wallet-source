@@ -6,6 +6,7 @@ import { AmChart , AmChartsService} from '@amcharts/amcharts3-angular';
 import { Page } from '../../../config/page';
 import { CommonService } from '../../../services/common.service';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
 import { QuantToAmountPipe } from '../../../pipes/quant-to-amount.pipe';
 import { ShareToQuantityPipe } from '../../../pipes/share-to-quantity.pipe';
 import { QuantityToSharePipe } from '../../../pipes/quantity-to-share.pipe';
