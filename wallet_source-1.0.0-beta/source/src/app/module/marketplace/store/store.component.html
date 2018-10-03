@@ -7,14 +7,14 @@
                     <app-breadcrumb></app-breadcrumb>
                 </div>
                 <div class="card-body">
-                    <div class="card-block mt-2 form-bordered">
+                    <div class="card-block mt-2">
                         <div class="row">
                             <div class="card col-md-3 col-lg-3 col-sm-6">
                                 <div class="card-body">
                                     <div class="">
                                         <div class="media-box">
                                             <div class="text-left">
-                                                <h1 class="card-icon">0</h1>
+                                                <h1 class="card-icon">{{ count.purchased_products }}</h1>
                                             </div>
                                             <div class="media-body text-left">
                                                 <span class="card-title">{{'marketplace.store.purchased_products' |
@@ -29,7 +29,7 @@
                                     <div class="">
                                         <div class="media-box">
                                             <div class="text-left">
-                                                <h1 class="card-icon">1154</h1>
+                                                <h1 class="card-icon">{{ count.products_available }}</h1>
                                             </div>
                                             <div class="media-body text-left">
                                                 <span class="card-title">{{'marketplace.store.products_available' |
@@ -44,7 +44,7 @@
                                     <div class="">
                                         <div class="media-box">
                                             <div class="text-left">
-                                                <h1 class="card-icon">114</h1>
+                                                <h1 class="card-icon">{{ count.total_purchases }}</h1>
                                             </div>
                                             <div class="media-body text-left">
                                                 <span class="card-title">{{'marketplace.store.total_purchases' |
@@ -59,7 +59,7 @@
                                     <div class="">
                                         <div class="media-box">
                                             <div class="text-left">
-                                                <h1 class="card-icon">1234</h1>
+                                                <h1 class="card-icon">{{ count.total_tags }}</h1>
                                             </div>
                                             <div class="media-body text-left">
                                                 <span class="card-title">{{'marketplace.store.total_tags' | translate}}</span>
@@ -71,58 +71,51 @@
                         </div>
 
                         <div class="row mt-4">
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
+                            <div class="col-md-6">
+                                <h3 class="text-center">{{ 'marketplace.store.seller_account_search' | translate }}</h3>
+                                <form class="form inner-form" novalidate>
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group m-0">
+                                                    <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            required placeholder="XIN - _____ - _____ - _____ - _____">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
+                            <div class="col-md-6">
+                                <h3 class="text-center">{{ 'marketplace.store.product_search' | translate }}</h3>
+                                <form class="form inner-form" novalidate>
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group m-0">
+                                                    <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            required placeholder="{{ 'marketplace.store.title_description' | translate }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a class="hyperlink" (click)="openTag()"> domain [ 152 ] </a>
+                        </div>
+
+                        <div class="row mt-4" *ngIf="tags.length > 0">
+                            <div class="col-md-2 text-center" *ngFor="let tag of tags">
+                                <a class="hyperlink" (click)="openTag(tag)"> {{ tag }} </a>
                             </div>
                         </div>
 
                         <div class="row mt-4">
                             <div class="col-md-6">
+                                <h3>{{ 'marketplace.store.recent_listing' | translate }}</h3>
                                 <ngx-datatable class="material" [rows]="recentListings" [columnMode]="'force'"
                                     [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
                                     [offset]="page.pageNumber" [limit]="page.size">
@@ -149,6 +142,7 @@
                                 </ngx-datatable>
                             </div>
                             <div class="col-md-6">
+                                <h3>{{ 'marketplace.store.recent_purchases' | translate }}</h3>
                                 <ngx-datatable class="material" [rows]="recentListings" [columnMode]="'force'"
                                     [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
                                     [offset]="page.pageNumber" [limit]="page.size">

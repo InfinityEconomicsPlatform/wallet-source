@@ -677,12 +677,45 @@ export const ROUTES: RouteInfo[] = [
     {
         path: '/marketplace',
         title: 'Marketplace',
-        icon: 'icon-SWApps',
-        class: '',
+        icon: 'icon-Ordinary_Payments',
+        class: 'has-sub',
         badge: '',
         badgeClass: '',
         isExternalLink: false,
-        submenu: []
+        submenu: [
+            {
+                path: '/marketplace/store',
+                title: 'Store',
+                icon: '',
+                class: '',
+                badge: '',
+                badgeClass: '',
+                isExternalLink: false,
+                submenu: []
+            },
+            {
+                path: '/marketplace/purchased',
+                title: 'Purchased',
+                icon: '',
+                class: '',
+                badge: '',
+                badgeClass: '',
+                isExternalLink: false,
+                submenu: []
+            },
+            {
+                path: '/marketplace/list-product',
+                title: 'My Products',
+                icon: '',
+                class: '',
+                badge: '',
+                badgeClass: '',
+                isExternalLink: false,
+                submenu: []
+            }
+        ],
+        isSwapp: true,
+        appName: 'Marketplace'
     },
     {
         path: '/wallet-settings/swapps',

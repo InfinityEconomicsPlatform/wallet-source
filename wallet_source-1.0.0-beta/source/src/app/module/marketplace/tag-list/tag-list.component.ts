@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Page } from '../../../config/page';
 import { MarketplaceService } from '../marketplace.service';
 import { SessionStorageService } from '../../../services/session-storage.service';
-import { AppConstants } from '../../../config/constants';
 import { CryptoService } from '../../../services/crypto.service';
 
 @Component({
@@ -23,53 +22,47 @@ export class TagListComponent implements OnInit {
         private cryptoService: CryptoService) {
         this.tagListings.push(
             {
-                "signatureHash": "565bc0a6140ae1331cd5db009fbd9da164d8802330939ef40204a9bc343b3149",
-                "unsignedTransactionBytes": "031092aedf013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143b...",
+                "signatureHash": "82109ce415fcf8f022e261602a936dedb35bcea520fe8e3cbe8b7edc8be44161",
                 "transactionJSON": {
-                    "senderPublicKey": "57fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143b473beec228f79ff93c",
-                    "signature": "465ed3dfef9a02fc97fc18a6f83bb9f07c285aef41ff78c957d59cda2972ba...",
-                    "feeTQT": "100000000",
+                    "senderPublicKey": "1e5af8b86f1737365aeec67051edcce44355bb9beebf3476f1aca08e0c395c65",
+                    "signature": "d505327a21c3013b8e831ce7393d4726af2325b24e9d3f24ff6c7e611ef01d0076006600b738c7e085834f5f6dd1ef6c50279281a16c5e8828350d29b2523901",
                     "type": 3,
-                    "fullHash": "a98a63204cd1f2a3304cee79776854f290f0472883c576056fec16a23efa90df",
+                    "fullHash": "23e28063cea5e5071704fa40f25140c54267519cb2401dddb06c3971b69f002a",
                     "version": 1,
-                    "ecBlockId": "4480409615309425420",
-                    "signatureHash": "565bc0a6140ae1331cd5db009fbd9da164d8802330939ef40204a9bc343b3149",
-                    "attachment": {
-                        "priceTQT": "100000000",
-                        "quantity": 3,
-                        "name": "Test Product",
-                        "description": "Testing the DGS.",
-                        "version.DigitalGoodsListing": 1,
-                        "tags": "test, product, tag, extra"
-                    },
-                    "senderRS": "NXT-L6FM-89WK-VK8P-FCRBB",
-                    "subtype": 0,
+                    "phased": false,
+                    "ecBlockId": "5443954284430465804",
+                    "signatureHash": "82109ce415fcf8f022e261602a936dedb35bcea520fe8e3cbe8b7edc8be44161",
                     "amountTQT": "0",
-                    "sender": "15323192282528158131",
-                    "ecBlockHeight": 291240,
+                    "attachment": {
+                        "quantity": 3,
+                        "priceTQT": "100000000",
+                        "name": "Test Product",
+                        "description": "Testing the DGS.tags=test, product, tag, extra",
+                        "version.DigitalGoodsListing": 1,
+                        "tags": ""
+                    },
+                    "senderRS": "XIN-G33X-3483-W7KB-9X4YU",
+                    "subtype": 0,
+                    "sender": "9041078543237710909",
+                    "ecBlockHeight": 924350,
                     "deadline": 60,
-                    "transaction": "11813734897437346473",
-                    "timestamp": 31436434,
+                    "feeTQT": "400000000",
+                    "transaction": "569043233783472675",
+                    "timestamp": 54355578,
                     "height": 2147483647
                 },
+                "unsignedTransactionBytes": "03107a663d033c001e5af8b86f1737365aeec67051edcce44355bb9beebf3476f1aca08e0c395c6551668adcf83c14e300000000000000000084d7170000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000be1a0e000c9bf11094cf8c4b010c00546573742050726f647563742e0054657374696e6720746865204447532e746167733d746573742c2070726f647563742c207461672c20657874726100000300000000e1f50500000000",
                 "broadcasted": true,
-                "requestProcessingTime": 8958,
-                "transactionBytes": "031092aedf013c0057fb6f3a958e320bb49c4e81b4c2cf28b9f25d086c143b473b...",
-                "fullHash": "a98a63204cd1f2a3304cee79776854f290f0472883c576056fec16a23efa90df",
-                "transaction": "11813734897437346473"
+                "requestProcessingTime": 8,
+                "transactionBytes": "03107a663d033c001e5af8b86f1737365aeec67051edcce44355bb9beebf3476f1aca08e0c395c6551668adcf83c14e300000000000000000084d717000000000000000000000000000000000000000000000000000000000000000000000000d505327a21c3013b8e831ce7393d4726af2325b24e9d3f24ff6c7e611ef01d0076006600b738c7e085834f5f6dd1ef6c50279281a16c5e8828350d29b252390100000000be1a0e000c9bf11094cf8c4b010c00546573742050726f647563742e0054657374696e6720746865204447532e746167733d746573742c2070726f647563742c207461672c20657874726100000300000000e1f50500000000",
+                "fullHash": "23e28063cea5e5071704fa40f25140c54267519cb2401dddb06c3971b69f002a",
+                "transaction": "569043233783472675"
             }
         )
 
     }
 
     ngOnInit() {
-        this.secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
-        this.secretPhrase = this.cryptoService.secretPhraseFromPrivateKey(this.secretPhraseHex);
-
-        this.marketplaceService.getListing(this.secretPhrase, "Test Product", "Testing the DGS.tags=test, product, tag, extra", 3, 100000000, 100000000)
-            .subscribe((success: any) => {
-                console.log(success);
-            })
     }
 
 }

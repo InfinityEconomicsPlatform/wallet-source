@@ -8,6 +8,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { MarketplaceService } from './marketplace.service';
 import { TagListComponent } from './tag-list/tag-list.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { ListingComponent } from './listing/listing.component';
+import { PurchasedComponent } from './purchased/purchased.component';
 
 @NgModule({
     imports: [
@@ -19,7 +21,9 @@ import { PurchaseComponent } from './purchase/purchase.component';
     declarations: [
         StoreComponent,
         TagListComponent,
-        PurchaseComponent
+        PurchaseComponent,
+        ListingComponent,
+        PurchasedComponent
     ],
     providers: [
         MarketplaceService

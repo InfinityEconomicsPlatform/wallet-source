@@ -2002,8 +2002,11 @@
         "chain-statistics": "Chain Statistics",
         "user-guide": "User Guide",
         "marketplace": "Marketplace",
+        "store": "Store",
         "tag": "Tag",
-        "purchase": "Purchase"
+        "purchase": "Purchase",
+        "list-product": "List Product For Sale",
+        "purchased": "Purchased Products"
     },
     "marketplace": {
         "store": {
@@ -2011,7 +2014,13 @@
             "products_available": "Products Available",
             "purchased_products": "Purchased products",
             "total_purchases": "Total Purchases",
-            "total_tags": "Total Tags"
+            "total_tags": "Total Tags",
+            "no_tags_available": "No Tags Available",
+            "recent_listing": "Recent Listings",
+            "recent_purchases": "Recent Purchases",
+            "seller_account_search": "Enter The Seller's Account Address",
+            "product_search": "Search For A Product",
+            "title_description": "Title, Description or Tag"
         },
         "tag": {
             "title": "Tag",
@@ -2026,6 +2035,12 @@
         },
         "purchase": {
             "title": "Marketplace Purchase"
+        },
+        "listing": {
+            "title": "List Product For Sale"
+        },
+        "purchased": {
+            "title": "Purchased Products"
         }
     }
 }

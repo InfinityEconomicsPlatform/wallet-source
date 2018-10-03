@@ -62,6 +62,12 @@ export class SwappService {
                 isEnabled: false
             },
             {
+                name: 'Marketplace',
+                icon: 'icon-Ordinary_Payments',
+                desc: 'Marketplace feature allows listing items for sale and makes sales on blockchain',
+                isEnabled: false
+            },
+            {
                 name: 'Tools',
                 icon: 'icon-Extensions',
                 isEnabled: false
