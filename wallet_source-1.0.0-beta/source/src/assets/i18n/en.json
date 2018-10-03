@@ -497,12 +497,16 @@
         "filter-sort-supply-popover": "Sort Supply",
         "filter-sort-height-popover": "Sort Height",
         "filter-sort-decimals-popover": "Sort Decimals",
+        "filter-active-polls-popover": "Active Polls",
         "filter-sort-date-popover": "Sort Date",
         "filter-sort-price-popover": "Sort Price",
         "reload-filter-popover": "Reload",
         "details-table-action": "Details",
         "tradeDesk-table-action": "TradeDesk",
         "cancel-table-action": "Cancel",
+        "result-table-action": "Results",
+        "vote-table-action": "Vote",
+        "voters-table-action": "Voters",
         "delete-table-action": "Delete",
         "edit-table-action": "Edit",
         "back-btn": "Back",
@@ -656,7 +660,11 @@
         "sum": "Sum",
         "limit": "Limit",
         "order": "Order",
-        "uri": "URI"
+        "uri": "URI",
+        "model": "Model",
+        "options": "Options",
+        "finished": "Finished",
+        "days": "Days"
     },
     "assets": {
         "show": {
@@ -800,6 +808,42 @@
             }
         }
     },
+    "voting": {
+        "show-polls": {
+            "title": "Show Polls",
+            "create-btn": "Create",
+            "my": {
+                "title": "My Polls"
+            },
+            "all": {
+                "title": "ALL Polls"
+            }
+        },
+        "create-poll": {
+            "title": "Create Poll",
+            "voting-model-label": "Voting Model",
+            "voting-model-popover": "Choose the voting model by account, each account has one vote. Balance, each account is weighted by it's balance. Asset is weighted by account asset balance and currency by account currency balance. You can also limit the voters by adding a minimum XIN balance needed to vote.",
+            "voting-model-required-validation-error": "Choose a voting model",
+            "voting-options": {
+                "Account": "Account",
+                "Balance": "Balance",
+                "Asset": "Asset",
+                "Currency": "Currency"
+            },
+            "minimum-voter-balance-label": "Minimum voter balance",
+            "minimum-voter-balance-popover": "Enter the minimum account balance needed to vote on this poll.",
+            "minimum-voter-balance-placeholder": "Minimum balance",
+            "minimum-voter-balance-required-validation-error": "Enter minimum balance",
+            "asset-id-label": "Asset ID",
+            "asset-id-popover": "Enter the asset ID (numeric)",
+            "asset-id-placeholder": "Asset ID",
+            "asset-id-validation-error": "Enter the asset ID (numeric)",
+            "currency-ticker-label": "Currency Ticker",
+            "currency-ticker-popover": "Enter the currency ticker (text)",
+            "currency-ticker-placeholder": "Currency Code/Ticker",
+            "currency-ticker-validation-error": "Enter the currency ticker"
+        }
+    },
     "aliases": {
         "create-alias": {
             "title": "Create Alias",
@@ -876,7 +920,6 @@
             "alias-popover": "The alias to delete",
             "uri-popover": "The current resource your aliase is pointing to"
         }
-
     },
     "breadcrumbs": {
         "account": "Account",

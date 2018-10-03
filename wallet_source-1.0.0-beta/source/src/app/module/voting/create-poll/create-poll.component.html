@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Create Poll</h2>
+                    <h2 class="main-title">{{'voting.create-poll.title' | translate}}</h2>
                     <app-breadcrumb></app-breadcrumb>
                 </div>
             </div>
@@ -17,41 +17,46 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Voting Model
+                                                <label>{{ 'voting.create-poll.voting-model-label' | translate}}
                                                     <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                        container="body" placement="right" ngbPopover="Choose the voting model by account, each account has one vote. Balance, each account is weighted by it's balance. Asset is weighted by account asset balance and currency by account currency balance. You can also limit the voters by adding a minimum XIN balance needed to vote."></i>
+                                                        container="body" placement="right" [ngbPopover]="'voting.create-poll.voting-model-popover' | translate"></i>
                                                 </label>
                                                 <div class="position-relative">
                                                     <select [(ngModel)]="votingModel" id="votingModel" name="votingModel"
                                                         class="form-control" #model="ngModel" required>
                                                         <option *ngFor="let option of votingOptions" value="{{ option.value }}">{{
-                                                            option.label }}
+                                                            'voting.create-poll.voting-options.'+option.label |
+                                                            translate }}
                                                         </option>
                                                     </select>
                                                     <div *ngIf="model?.invalid && (model?.dirty || model?.touched)"
                                                         class="input-error">
-                                                        Choose a voting model
+                                                        {{ 'voting.create-poll.voting-model-required-validation-error'
+                                                        | translate}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group" *ngIf=" votingModel==1 ">
-                                                <label for="addon-amount">Minimum voter balance
+                                                <label for="addon-amount">{{'voting.create-poll.minimum-voter-balance-label'
+                                                    | translate}}
                                                     <i class="fa fa-question-circle-o ml-1 info-yellow" triggers="mouseenter:mouseleave"
-                                                        container="body" placement="top" ngbPopover="Enter the minimum account balance needed to vote on this poll."></i>
+                                                        container="body" placement="top" [ngbPopover]="'voting.create-poll.minimum-voter-balance-popover' | translate"></i>
                                                 </label>
                                                 <div>
                                                     <div class="input-group m-0 sign_in_inputs row form-border-bottom">
                                                         <div class="col-10 pl-0">
                                                             <input type="number" id="addon-amount" class="pl-0 mb-0 pt-0 pb-0 form-control form-control"
-                                                                placeholder="Minimum balance" name="amount" #amount="ngModel"
-                                                                [(ngModel)]="minimumBalance" required>
+                                                                placeholder="{{'voting.create-poll.minimum-voter-balance-placeholder' | translate}}"
+                                                                name="amount" #amount="ngModel" [(ngModel)]="minimumBalance"
+                                                                required>
                                                         </div>
                                                         <div class="col-2 text-right pl-0">
                                                             <div class="row input-single-group">
                                                                 <div class="col-md-12">
-                                                                    <span class="input-group-text text-right">XIN</span>
+                                                                    <span class="input-group-text text-right">{{'common.xin-unit-text'
+                                                                        | translate}}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -59,40 +64,43 @@
                                                     </div>
                                                     <div *ngIf="amount?.invalid && (amount?.dirty || amount?.touched)"
                                                         class="input-error">
-                                                        Enter minimum balance
+                                                        {{'voting.create-poll.minimum-voter-balance-required-validation-error'
+                                                        | translate}}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group" *ngIf=" votingModel==2 ">
-                                                <label for="asset">Asset ID
+                                                <label for="asset">{{'voting.create-poll.asset-id-label' | translate}}
                                                     <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                        container="body" placement="top" ngbPopover="Enter the asset ID (numeric)"></i>
+                                                        container="body" placement="top" [ngbPopover]="'voting.create-poll.asset-id-popover' | translate"></i>
                                                 </label>
                                                 <div>
-                                                    <input type="text" id="asset" class="form-control" placeholder="Asset ID"
+                                                    <input type="text" id="asset" class="form-control" placeholder="{{'voting.create-poll.asset-id-placeholder' | translate}}"
                                                         name="asset" #asset="ngModel" [(ngModel)]="assetId" (input)="getAsset(assetId)"
                                                         required>
                                                     <div *ngIf="(asset?.invalid && (asset?.dirty || asset?.touched)) || assetError != ''"
                                                         class="input-error">
-                                                        {{ assetError != ''? assetError : "Enter the asset ID
-                                                        (numeric)"
+                                                        {{ assetError != ''? assetError :
+                                                        'voting.create-poll.asset-id-validation-error' | translate}}
                                                         }}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group" *ngIf=" votingModel==3 ">
-                                                <label for="currency">Currency Ticker
+                                                <label for="currency">{{'voting.create-poll.currency-ticker-label' |
+                                                    translate}}
                                                     <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                        container="body" placement="top" ngbPopover="Enter the currency ticker (text)"></i>
+                                                        container="body" placement="top" [ngbPopover]="'voting.create-poll.currency-ticker-popover' | translate"></i>
                                                 </label>
                                                 <div>
-                                                    <input type="text" id="currency" class="form-control" placeholder="Currency Code/Ticker"
+                                                    <input type="text" id="currency" class="form-control" placeholder="{{'voting.create-poll.currency-ticker-placeholder' | translate}}"
                                                         name="currencyCode" #currencyCode="ngModel" [(ngModel)]="currency"
                                                         (input)="getCurrency(currency)" required>
                                                     <div *ngIf="(currencyCode?.invalid && (currencyCode?.dirty || currencyCode?.touched)) || currencyError !=''"
                                                         class="input-error">
-                                                        {{ currencyError != ''? currencyError : "Enter the currency
-                                                        ticker" }}
+                                                        {{ currencyError != ''? currencyError :
+                                                        'voting.create-poll.currency-ticker-validation-error' |
+                                                        translate }}
                                                     </div>
                                                 </div>
                                             </div>
