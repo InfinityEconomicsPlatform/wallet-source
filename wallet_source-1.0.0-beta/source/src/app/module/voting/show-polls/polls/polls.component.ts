@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
-import {VotingService} from '../../voting.service';
-import {SessionStorageService} from '../../../../services/session-storage.service';
-import {AppConstants} from '../../../../config/constants';
-import {Observable} from 'rxjs/Observable';
-import {Page} from '../../../../config/page';
-import {AccountService} from '../../../account/account.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { VotingService } from '../../voting.service';
+import { SessionStorageService } from '../../../../services/session-storage.service';
+import { AppConstants } from '../../../../config/constants';
+import { Observable } from 'rxjs/Observable';
+import { Page } from '../../../../config/page';
+import { AccountService } from '../../../account/account.service';
 
 @Component({
     selector: 'app-polls',
@@ -23,10 +23,10 @@ export class PollsComponent implements OnInit {
     accountRs: any;
 
     constructor(public router: Router,
-                public votingService: VotingService,
-                public sessionStorageService: SessionStorageService,
-                public route: ActivatedRoute,
-                public accountService: AccountService) {
+        public votingService: VotingService,
+        public sessionStorageService: SessionStorageService,
+        public route: ActivatedRoute,
+        public accountService: AccountService) {
         this.page.pageNumber = 0;
         this.page.size = 10;
     }
@@ -38,11 +38,11 @@ export class PollsComponent implements OnInit {
             obj.isEnabled = false;
         });
 
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
 
     filters = [
-        {name: 'Active Polls', icon: 'fa-hourglass-2', popoverText: 'Active Polls', isEnabled: false},
+        { name: 'Active Polls', icon: 'fa-hourglass-2', popoverText: 'filter-active-polls-popover', isEnabled: false },
     ];
 
     applyFilter(filter) {
@@ -59,7 +59,7 @@ export class PollsComponent implements OnInit {
             obj.isEnabled = (obj.name == filter.name) ? true : false;
         });
 
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
 
     ngOnInit() {
@@ -68,7 +68,7 @@ export class PollsComponent implements OnInit {
             this.accountId = this.accountService.getAccountDetailsFromSession('accountId');
             this.accountRs = this.accountService.getAccountDetailsFromSession('accountRs');
 
-            this.setPage({offset: 0});
+            this.setPage({ offset: 0 });
         });
     }
 
@@ -86,7 +86,7 @@ export class PollsComponent implements OnInit {
             days = 0;
         }
 
-        return days.toLocaleString('en-US', {maximumFractionDigits: 2, minimumFractionDigits: 2});
+        return days.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
     }
 
     setPage(pageInfo) {
@@ -127,7 +127,7 @@ export class PollsComponent implements OnInit {
     }
 
     reload() {
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
 
     onCustom(event) {
