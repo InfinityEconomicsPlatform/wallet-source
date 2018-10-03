@@ -504,6 +504,7 @@
         "tradeDesk-table-action": "TradeDesk",
         "cancel-table-action": "Cancel",
         "delete-table-action": "Delete",
+        "edit-table-action": "Edit",
         "back-btn": "Back",
         "recipient-lable": "Recipient",
         "amount-lable": "Amount",
@@ -573,7 +574,7 @@
         "asset-label": "Asset",
         "asset-popover": "The asset name/ticker",
         "alias-name-label": "Alias Name",
-        "uri-label": "Uri",
+        "uri-label": "URI",
         "alias-label": "Alias",
         "alias-price-label": "Alias price",
         "url-label": "URL"
@@ -653,7 +654,9 @@
         "exchanges": "Exchanges",
         "price-per-share": "Price Per Share",
         "sum": "Sum",
-        "limit": "Limit"
+        "limit": "Limit",
+        "order": "Order",
+        "uri": "URI"
     },
     "assets": {
         "show": {
@@ -834,6 +837,44 @@
             "alias-popover": "The alias to cancel",
             "sales-price-label": "Sales Price",
             "sales-price-popover": "The current sale price for this alias"
+        },
+        "show-aliases": {
+            "title": "Aliases",
+            "sell-table-action": "Sell",
+            "transfer-table-action": "Transfer"
+        },
+        "edit-alias": {
+            "title": "Edit Alias Details",
+            "alias-popover": "The alias to edit",
+            "current-uri-popover": "The current resource your aliase is pointing to",
+            "prefix-label": "Prefix",
+            "prefix-popover": "Aliase prefix you like to connect your alias with",
+            "new-uri-popover": "The resource or target you like to connect your alias with, can be your account, a website or event a BTC address. For URL ensure your uri start with http://",
+            "uri-required": "URI is required"
+        },
+        "transfer-alias": {
+            "title": "Transfer Alias Details",
+            "name-popover": "The alias to transfer",
+            "uri-popover": "The current resource this alias is pointing to",
+            "recipient-account-popover": "The recipient account for this alias transfer",
+            "recipient-required": "Recipient is required"
+        },
+        "sell-alias": {
+            "title": "Sell Alias Details",
+            "alias-popover": "The alias to sell",
+            "uri-popover": "The current resource your aliase is pointing to",
+            "recipient-private-sell-label": "RECIPIENT FOR A PRIVATE SELL",
+            "recipient-private-sell-popover": "You can sell your alias to public or to a specific account. Enter a recipient account for a private sell or leave free for a public sell",
+            "recipient-placeholder": "Recipient for private or empty for public sell.",
+            "price-popover": "The price you want sell this alias",
+            "price-placeholder": "Price for this alias",
+            "price-required": "Price is required",
+            "price-greater": "Price must be greater than 0"
+        },
+        "delete-alias": {
+            "title": "Delete Alias Details",
+            "alias-popover": "The alias to delete",
+            "uri-popover": "The current resource your aliase is pointing to"
         }
 
     },
