@@ -47,10 +47,10 @@ export class OffersComponent implements OnInit {
     }
 
     filters = [
-        {name: 'Toggle A-Z', icon: 'fa-sort', popoverText: 'Toggle A-Z', isEnabled: false},
-        {name: 'Sort Name', icon: 'fa-navicon', popoverText: 'Sort Name', isEnabled: false},
-        {name: 'Sort Price', icon: 'fa-usd', popoverText: 'Sort Price', isEnabled: false},
-        {name: 'Sort Date', icon: 'fa-clock-o', popoverText: 'Sort Date', isEnabled: false},
+        {name: 'Toggle A-Z', icon: 'fa-sort', popoverText: 'filter-toggle-az-popover', isEnabled: false},
+        {name: 'Sort Name', icon: 'fa-navicon', popoverText: 'filter-sort-name-popover', isEnabled: false},
+        {name: 'Sort Price', icon: 'fa-usd', popoverText: 'filter-sort-price-popover', isEnabled: false},
+        {name: 'Sort Date', icon: 'fa-clock-o', popoverText: 'filter-sort-date-popover', isEnabled: false},
     ];
 
     applyFilter(filter) {
