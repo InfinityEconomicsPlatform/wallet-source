@@ -8,62 +8,67 @@ import { isArray } from 'util';
 @Injectable()
 export class HttpProviderService {
 
-  constructor(private http: HttpClient) {
+    constructor(private http: HttpClient) {
 
-  }
-
-  get(baseUrl: string, endpointUrl: string, queryParams?: object) {
-    let params = new HttpParams();
-
-    for (var key in queryParams) {
-      if(typeof(queryParams[key]) != "undefined" && queryParams[key] != null){
-        params = params.append(key, queryParams[key]);
-      }
     }
 
-    return this.http.get(baseUrl + '/' + endpointUrl, { params })
-      .pipe(
-        tap(response => this.log('get: ' + endpointUrl)),
-      // catchError(this.handleError('error', []))
-      );
-
-  }
-
-  post(baseUrl: string, endpointUrl: string, queryParams: object) {
-      let params = new HttpParams();
-      for (let key in queryParams) {
-        if(typeof(queryParams[key]) != "undefined" && queryParams[key] != null){
-          if(isArray(queryParams[key])){
-            queryParams[key].forEach(element => {
-              params = params.append(key, element);
-            });
-          }else{
-            params = params.append(key, queryParams[key]);
-          }
+    get(baseUrl: string, endpointUrl: string, queryParams?: object) {
+        let params = new HttpParams();
+        for (var key in queryParams) {
+            if (typeof (queryParams[key]) != "undefined" && queryParams[key] != null) {
+                if (isArray(queryParams[key])) {
+                    queryParams[key].forEach(element => {
+                        params = params.append(key, element);
+                    });
+                } else {
+                    params = params.append(key, queryParams[key]);
+                }
+            }
         }
-      }
 
-    return this.http.post(baseUrl + '/' + endpointUrl, params)
-      .pipe(
-        tap(response => this.log('post: ' + endpointUrl)),
-      // catchError(this.handleError('error', []))
-      );
-  }
+        return this.http.get(baseUrl + '/' + endpointUrl, { params })
+            .pipe(
+                tap(response => this.log('get: ' + endpointUrl)),
+                // catchError(this.handleError('error', []))
+            );
 
-  handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+    }
 
-      console.error(error);
-      // Let the app keep running by returning an empty result.
+    post(baseUrl: string, endpointUrl: string, queryParams: object) {
+        let params = new HttpParams();
+        for (let key in queryParams) {
+            if (typeof (queryParams[key]) != "undefined" && queryParams[key] != null) {
+                if (isArray(queryParams[key])) {
+                    queryParams[key].forEach(element => {
+                        params = params.append(key, element);
+                    });
+                } else {
+                    params = params.append(key, queryParams[key]);
+                }
+            }
+        }
 
-      if (error.status == 404) {
-        return Observable.of<any>({ error: "not found" });
-      }
-      return of(result as T);
-    };
-  }
+        return this.http.post(baseUrl + '/' + endpointUrl, params)
+            .pipe(
+                tap(response => this.log('post: ' + endpointUrl)),
+                // catchError(this.handleError('error', []))
+            );
+    }
 
-  log(message: string) {
-    // console.log(message);
-  }
+    handleError<T>(operation = 'operation', result?: T) {
+        return (error: any): Observable<T> => {
+
+            console.error(error);
+            // Let the app keep running by returning an empty result.
+
+            if (error.status == 404) {
+                return Observable.of<any>({ error: "not found" });
+            }
+            return of(result as T);
+        };
+    }
+
+    log(message: string) {
+        // console.log(message);
+    }
 }
