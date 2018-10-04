@@ -4,16 +4,18 @@
             <div class="card">
                 <div class="card-block main-card-block">
                     <div class="border-bt">
-                        <h2 class="main-title">Show ATs</h2>
+                        <h2 class="main-title">{{'at.show-ats.title'| translate}}</h2>
                         <app-breadcrumb [routeChange]="routeChange"></app-breadcrumb>
                     </div>
 
                     <ul class="nav nav-tabs nav-fill nav-auto mt-4" (click)="onTabChange();">
                         <li class="nav-item">
-                            <a class="nav-link" routerLinkActive="active" [routerLink]="['my']">My</a>
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['my']">{{'common.my'|
+                                translate}} </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLinkActive="active" [routerLink]="['all']">All</a>
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['all']">{{'common.all'|
+                                translate}}</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -29,7 +31,7 @@
                         <div class="card ml-1 mr-1 ml-md-3 mr-md-3 mt-0" (click)="navigateTo('/at/create-at')">
                             <div class="card-body">
                                 <div class="btn btn-gradient btn-create">
-                                    <span>Create <i class="ft ft-plus font-medium-5"></i></span>
+                                    <span>{{'at.show-ats.create-btn'| translate}} <i class="ft ft-plus font-medium-5"></i></span>
                                 </div>
                             </div>
                         </div>

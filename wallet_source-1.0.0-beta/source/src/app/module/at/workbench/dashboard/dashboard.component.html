@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">AT Compiler</h2>
+                    <h2 class="main-title">{{'at.at-workbench.title'| translate}} </h2>
                     <app-breadcrumb></app-breadcrumb>
                 </div>
 
@@ -13,7 +13,7 @@
                             <div class="col-12">
                                 <div class="header-border" (click)="showCompiler = !showCompiler">
                                     <div class="row">
-                                        <div class="col-10">Compiler</div>
+                                        <div class="col-10">{{'at.at-workbench.compiler'| translate}} </div>
                                         <div class="col-2 text-right pl-0 pr-1"><i class="icon-next_arrow circle-arrow"></i>
                                         </div>
                                     </div>
@@ -23,7 +23,7 @@
                         <app-compiler *ngIf="showCompiler"></app-compiler>
                         <div class="row mt-4">
                             <div class="col-12">
-                                <h3 class="text-dark">At Templates</h3>
+                                <h3 class="text-dark">{{'at.at-workbench.at-templates-title'| translate}} </h3>
                             </div>
                         </div>
 
@@ -39,68 +39,79 @@
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'simple'}"
                                             (click)="showTab('simple')">
-                                            <i class="icon-SWApps"></i><span>Simple AT</span>
+                                            <i class="icon-SWApps"></i><span>{{'at.at-workbench.simple-at-tab'|
+                                                translate}} </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'sleep'}"
                                             (click)="showTab('sleep')">
-                                            <i class="icon-account_info"></i><span>Sleep AT</span>
+                                            <i class="icon-account_info"></i><span>{{'at.at-workbench.sleep-at-tab'|
+                                                translate}} </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'auction'}"
                                             (click)="showTab('auction')">
-                                            <i class="icon-receive"></i><span>Auction AT</span>
+                                            <i class="icon-receive"></i><span>{{'at.at-workbench.auction-at-tab'|
+                                                translate}} </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'cod'}"
                                             (click)="showTab('cod')">
-                                            <i class="icon-AT"></i><span>Certificate of Deposit AT</span>
+                                            <i class="icon-AT"></i><span>{{'at.at-workbench.certificate-at-tab'|
+                                                translate}} </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'crowdfunding'}"
                                             (click)="showTab('crowdfunding')">
-                                            <i class="icon-Dashboard"></i><span>Crowdfunding AT</span>
+                                            <i class="icon-Dashboard"></i><span>{{'at.at-workbench.crowdfunding-at-tab'|
+                                                translate}} </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'dormant'}"
                                             (click)="showTab('dormant')">
-                                            <i class="icon-wallet"></i><span>Dormant Funds AT</span>
+                                            <i class="icon-wallet"></i><span>{{'at.at-workbench.dormant-funds-at-tab'|
+                                                translate}}</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'lottery'}"
                                             (click)="showTab('lottery')">
-                                            <i class="icon-Voting"></i><span>Lottery AT</span>
+                                            <i class="icon-Voting"></i><span> {{'at.at-workbench.lottery-at-tab'|
+                                                translate}} </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'lotteryrepeat'}"
                                             (click)="showTab('lotteryrepeat')">
-                                            <i class="icon-Shuffling"></i><span>Lottery Repeat AT</span>
+                                            <i class="icon-Shuffling"></i><span>
+                                                {{'at.at-workbench.lottery-repeat-at-tab'| translate}} </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'theThrone'}"
                                             (click)="showTab('theThrone')">
-                                            <i class="icon-Escrow"></i><span>TheThrone AT</span>
+                                            <i class="icon-Escrow"></i><span> {{'at.at-workbench.throne-at-tab'|
+                                                translate}} </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" [ngClass]="{'active': displayTab == 'fuscavor'}"
                                             (click)="showTab('fuscavor')">
-                                            <i class="icon-Crowdfunding"></i><span>Fuscavor Funds AT</span>
+                                            <i class="icon-Crowdfunding"></i><span>{{'at.at-workbench.fuscavor-funds-at-tab'|
+                                                translate}}</span>
                                         </a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'simple'}">
                                         <a class="btn btn-disabled-icon" (click)="copyText(simpleAT, tooltip)"
-                                            ngbTooltip="Copied!!" #tooltip="ngbTooltip" triggers="manual">
+                                            ngbPopover="{{'at.at-workbench.copied-popover'| translate}}" #tooltip="ngbPopover"
+                                            triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
@@ -160,7 +171,8 @@ FIN
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'sleep'}">
                                         <a class="btn btn-disabled-icon" (click)="copyText(sleepAT, tooltip1)"
-                                            ngbTooltip="Copied!!" #tooltip1="ngbTooltip" triggers="manual">
+                                            ngbPopover="{{'at.at-workbench.copied-popover'| translate}}" #tooltip1="ngbPopover"
+                                            triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
@@ -186,7 +198,8 @@ JMP :Update
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'auction'}">
                                         <a class="btn btn-disabled-icon" (click)="copyText(auctionAT, tooltip2)"
-                                            ngbTooltip="Copied!!" #tooltip2="ngbTooltip" triggers="manual">
+                                            ngbPopover="{{'at.at-workbench.copied-popover'| translate}}" #tooltip2="ngbPopover"
+                                            triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
@@ -256,8 +269,8 @@ JMP :endLoop
                                     </div>
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'cod'}">
-                                        <a class="btn btn-disabled-icon" (click)="copyText(codAT, tooltip3)" ngbTooltip="Copied!!"
-                                            #tooltip3="ngbTooltip" triggers="manual">
+                                        <a class="btn btn-disabled-icon" (click)="copyText(codAT, tooltip3)" ngbPopover="{{'at.at-workbench.copied-popover'| translate}}"
+                                            #tooltip3="ngbPopover" triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
@@ -305,7 +318,8 @@ JMP :failedRefundLoop
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'crowdfunding'}">
                                         <a class="btn btn-disabled-icon" (click)="copyText(crowdfundingAT, tooltip4)"
-                                            ngbTooltip="Copied!!" #tooltip4="ngbTooltip" triggers="manual">
+                                            ngbPopover="{{'at.at-workbench.copied-popover'| translate}}" #tooltip4="ngbPopover"
+                                            triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
@@ -349,7 +363,8 @@ JMP :end_loop
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'dormant'}">
                                         <a class="btn btn-disabled-icon" (click)="copyText(dormantAT, tooltip5)"
-                                            ngbTooltip="Copied!!" #tooltip5="ngbTooltip" triggers="manual">
+                                            ngbPopover="{{'at.at-workbench.copied-popover'| translate}}" #tooltip5="ngbPopover"
+                                            triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
@@ -398,7 +413,8 @@ finish
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'lottery'}">
                                         <a class="btn btn-disabled-icon" (click)="copyText(lotteryAT, tooltip6)"
-                                            ngbTooltip="Copied!!" #tooltip6="ngbTooltip" triggers="manual">
+                                            ngbPopover="{{'at.at-workbench.copied-popover'| translate}}" #tooltip6="ngbPopover"
+                                            triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
@@ -550,7 +566,8 @@ FIN
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'lotteryrepeat'}">
                                         <a class="btn btn-disabled-icon" (click)="copyText(lotteryRepeatAT, tooltip7)"
-                                            ngbTooltip="Copied!!" #tooltip7="ngbTooltip" triggers="manual">
+                                            ngbPopover="{{'at.at-workbench.copied-popover'| translate}}" #tooltip7="ngbPopover"
+                                            triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
@@ -679,7 +696,8 @@ FIN
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'theThrone'}">
                                         <a class="btn btn-disabled-icon" (click)="copyText(theThroneAT, tooltip8)"
-                                            ngbTooltip="Copied!!" #tooltip8="ngbTooltip" triggers="manual">
+                                            ngbPopover="{{'at.at-workbench.copied-popover'| translate}}" #tooltip8="ngbPopover"
+                                            triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
@@ -753,7 +771,8 @@ FIN
 
                                     <div class="tab-pane" [ngClass]="{'active': displayTab == 'fuscavor'}">
                                         <a class="btn btn-disabled-icon" (click)="copyText(fuscavorAT, tooltip9)"
-                                            ngbTooltip="Copied!!" #tooltip9="ngbTooltip" triggers="manual">
+                                            ngbPopover="{{'at.at-workbench.copied-popover'| translate}}" #tooltip9="ngbPopover"
+                                            triggers="manual">
                                             <i class="icon-copy"></i>
                                         </a>
                                         <pre>
