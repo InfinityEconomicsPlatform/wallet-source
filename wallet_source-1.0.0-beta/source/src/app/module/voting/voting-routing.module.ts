@@ -13,20 +13,22 @@ const routes: Routes = [
     {
         path: 'show-polls',
         component: ShowPollsComponent,
-        children:[
+        children: [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'my'
+                redirectTo: 'all'
             },
-            {   path:'my',
+            {
+                path: 'my',
                 component: PollsComponent,
                 data: {
                     pollType: "MY",
                     title: 'My Polls'
                 }
             },
-            {   path:'all',
+            {
+                path: 'all',
                 component: PollsComponent,
                 data: {
                     pollType: "ALL",
@@ -36,23 +38,23 @@ const routes: Routes = [
         ]
     },
     {
-        path:'show-polls/details',
+        path: 'show-polls/details',
         component: PollDetailsComponent
     },
     {
-        path:'show-polls/result',
+        path: 'show-polls/result',
         component: PollResultComponent
     },
     {
-        path:'show-polls/vote',
+        path: 'show-polls/vote',
         component: PollVoteComponent
     },
     {
-        path:'show-polls/voters',
+        path: 'show-polls/voters',
         component: PollVotersComponent
     },
     {
-        path:'show-polls/voters/transaction-details',
+        path: 'show-polls/voters/transaction-details',
         component: TransactionDetailComponent
     },
     {
