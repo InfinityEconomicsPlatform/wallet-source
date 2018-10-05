@@ -4,10 +4,10 @@
             <div class="card">
                 <div class="card-block main-card-block">
                     <div class="border-bt">
-                        <h2 class="main-title">Founders List</h2>
+                        <h2 class="main-title">{{'crowdfunding.reserve-founders.title'| translate}} </h2>
                         <app-breadcrumb></app-breadcrumb>
                         <h3 class="back-button" (click)="goBack()">
-                            <i class="fa fa-chevron-left"></i> Back
+                            <i class="fa fa-chevron-left"></i> {{'common.back-btn'| translate}}
                         </h3>
                     </div>
                 </div>
@@ -16,17 +16,17 @@
                         <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [rowHeight]="'auto'"
                             [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
                             [limit]="page.size" (page)='setPage($event)' (autoRefresh)="reload()">
-                            <ngx-datatable-column prop="currency" name="Details">
+                            <ngx-datatable-column prop="currency" [name]="'table-header.details'| translate">
                                 <ng-template let-value="value" ngx-datatable-cell-template>
                                     <a (click)="goToDetails(value)" class="hyperlink"><u> {{value}} </u></a>
                                 </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column prop="accountRS" name="Account">
+                            <ngx-datatable-column prop="accountRS" [name]="'table-header.account'| translate">
                                 <ng-template let-value="value" ngx-datatable-cell-template>
                                     <a (click)="accountDetail(value)" class="hyperlink"><u> {{value}} </u></a>
                                 </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column prop="amountPerUnitTQT" name="Amount per Unit">
+                            <ngx-datatable-column prop="amountPerUnitTQT" [name]="'table-header.amount-per-unit'| translate">
                                 <ng-template let-value="value" ngx-datatable-cell-template>
                                     {{value | amountTqt}}
                                 </ng-template>

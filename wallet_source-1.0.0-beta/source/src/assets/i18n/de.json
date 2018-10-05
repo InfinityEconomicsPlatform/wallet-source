@@ -520,6 +520,7 @@
         "finish-btn": "Finish",
         "search-btn": "Search",
         "refresh-btn": "Refresh",
+        "create-btn": "Create",
         "encrypted-message-btn": "Encrypted Message",
         "public-key-btn": "Recipient Public Key",
         "open-bookmark-tooltip": "Open your bookmarks to insert an account id",
@@ -550,8 +551,10 @@
         "xin-text": "XIN",
         "units-text": "UNITS",
         "block-text": "BLOCK",
+        "blocks-text": "BLOCKS",
         "digits-text": "DIGITS",
         "quantity-text": "QUANTITY",
+        "days-text": "Day(s)",
         "message-label": "Message",
         "sender-label": "Sender",
         "price-label": "Price",
@@ -666,7 +669,13 @@
         "frozen": "Frozen",
         "running": "Running",
         "stopped": "Stopped",
-        "dead": "Dead"
+        "dead": "Dead",
+        "blocks": "Blocks",
+        "status": "Status",
+        "raised": "Raised",
+        "goal": "Goal",
+        "details": "Details",
+        "amount-per-unit": "Amount per Unit"
     },
     "assets": {
         "show": {
@@ -973,6 +982,68 @@
             "enter-code-placeholder": "Enter Code",
             "generate-btn": "Generate",
             "output-label": "Output"
+        }
+    },
+    "crowdfunding": {
+        "create-campaign": {
+            "title": "Create Campaign",
+            "name-popover": "The campaign name is unique. Should be between 3-10 characters and longer than the campaign code. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
+            "name-required": "Name is required",
+            "name-at-least": "Name must contain at least the 3 characters",
+            "code-label": "Code",
+            "code-popover": "The campaign code is unique. Its composed of 3-6 upper case letters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
+            "code-required": "Code is required",
+            "code-at-least": "Code must contain at least 3 characters",
+            "description-popover": "Campaign description with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
+            "description-required": "Description is required",
+            "initial-supply-label": "Initial Supply",
+            "initial-supply-popover": "The initial campaign supply. These units remains to campaign issuer.",
+            "initial-supply-required": "Initial Supply is required",
+            "initial-supply-greater": "Initial Supply must be greater than equal to 0",
+            "reserve-supply-label": "Reserve Supply",
+            "reserve-supply-popover": "The reserve campaign supply. Subsctracted by initial supply those units are distributed among founders.",
+            "reserve-supply-required": "Reserve Supply is required",
+            "reserve-supply-greater": "Reserve Supply must be greater than 0",
+            "min-amount-per-unit-label": "Min. Amount per Unit",
+            "min-amount-popover": "The amount of XIN to raise for EACH unit of reserve supply. Total amount to raise is this amount multiplied by reserve supply.",
+            "min-amount-required": "Min. Amount per Unit is required",
+            "min-amount-greater": "Min. Amount per Unit must be greater than 0",
+            "total-amount-raise-label": "Total Amount to Raise",
+            "total-amount-raise-popover": "The amount of XIN to raise in total for your campaign.",
+            "issuance-height-label": "Issuance Height",
+            "issuance-height-popover": "Your campaign ends after this number of blocks",
+            "issuance-height-required": "Issuance Height is required",
+            "issuance-height-greater": "Issuance Height must be greater than equal to 1440",
+            "issuance-height-less": " Issuance Height must be less than equal to 43200",
+            "max-supply-label": "Max. Supply",
+            "min-reserve-label": "Min. Reserve / UNIT",
+            "total-amount-raised-label": "Total Amount Raised"
+        },
+        "show-campaigns": {
+            "title": "Show Campaigns",
+            "campaigns-tab-title": "Campaigns",
+            "reserve-founders-table-action": "Reserve Founders",
+            "reserve-units-table-action": "Reserve Units"
+        },
+        "reserve-founders": {
+            "title": "Founders List"
+        },
+        "reserve-campaign": {
+            "title": "Reserve Campaign Details",
+            "campaign-id-label": "Campaign ID",
+            "campaign-id-popover": "The campaign ID",
+            "campaign-code-label": "Campaign Code",
+            "campaign-code-popover": "The campaign code",
+            "campaign-specification-label": "Campaign Specification",
+            "campaign-specification-popover": "The reserve supply in units, the minimum reserve per unit and the unit decimals",
+            "campaign-goal-label": "Campaign Goal",
+            "campaign-goal-popover": "The total amount of XIN to raise for this campaign",
+            "total-amount-to-reserve-label": "Total amount to reserve",
+            "total-amount-to-reserve-popover": "The total amount of XIN you want to reserve",
+            "amount-per-unit-label": "Amount per Unit",
+            "amount-per-unit-popover": "The amount per unit based on former total amount to reserve",
+            "currency-label": "Currency",
+            "total-amount-label": "Total Amount"
         }
     },
     "breadcrumbs": {
