@@ -24,7 +24,7 @@
                                                     <div class="m-0">
                                                         <input type="text" class="form-control" [(ngModel)]="campaignForm.name"
                                                             name="name" #name="ngModel" minlength="3" maxlength="10"
-                                                            required>
+                                                            placeholder="{{'common.name-label'| translate}}" required>
                                                         <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
                                                             class="input-error">
                                                             <div *ngIf="name?.errors.required">
@@ -49,6 +49,7 @@
                                                     <div class="m-0">
                                                         <input type="text" class="form-control" [(ngModel)]="campaignForm.code"
                                                             name="code" #code="ngModel" minlength="3" maxlength="6"
+                                                            placeholder="{{'crowdfunding.create-campaign.code-label'| translate}}"
                                                             required>
                                                         <div *ngIf="code?.invalid && (code?.dirty || code?.touched)"
                                                             class="input-error">
@@ -74,7 +75,8 @@
                                             </label>
                                             <div class="position-relative">
                                                 <textarea rows="5" class="form-control" [(ngModel)]="campaignForm.desc"
-                                                    name="desc" #desc="ngModel" required></textarea>
+                                                    name="desc" placeholder="{{'common.description-label'| translate}}"
+                                                    #desc="ngModel" required></textarea>
                                                 <div *ngIf="desc?.invalid && (desc?.dirty || desc?.touched)" class="input-error">
                                                     <div *ngIf="desc?.errors.required">
                                                         {{'crowdfunding.create-campaign.description-required'|
@@ -242,7 +244,8 @@
                                                     <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <div class="col-3 col-md-2">
                                                             <span class="input-group-text">
-                                                                {{'common.block-text'| translate}} : {{ campaignForm.currentHeight }}
+                                                                {{'common.block-text'| translate}} : {{
+                                                                campaignForm.currentHeight }}
                                                             </span>
                                                         </div>
                                                         <div class="col-4 col-md-3 pr-0">
@@ -253,7 +256,8 @@
                                                         </div>
                                                         <div class="col-2 pr-0">
                                                             <span class="input-group-text">
-                                                                {{ campaignForm.days }} {{'common.days-text'| translate}}
+                                                                {{ campaignForm.days }} {{'common.days-text'|
+                                                                translate}}
                                                             </span>
                                                         </div>
                                                         <div class="col-12 col-md-5 pr-1 pl-0 text-right">
@@ -278,13 +282,16 @@
                                                     <div *ngIf="issuanceHeight?.invalid && (issuanceHeight?.dirty || issuanceHeight?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="issuanceHeight?.errors.required">
-                                                            {{'crowdfunding.create-campaign.issuance-height-required'| translate}}
+                                                            {{'crowdfunding.create-campaign.issuance-height-required'|
+                                                            translate}}
                                                         </div>
                                                         <div *ngIf="issuanceHeight?.errors.minValue && !issuanceHeight?.errors.required">
-                                                            {{'crowdfunding.create-campaign.issuance-height-greater'| translate}}
+                                                            {{'crowdfunding.create-campaign.issuance-height-greater'|
+                                                            translate}}
                                                         </div>
                                                         <div *ngIf="issuanceHeight?.errors.maxValue && !issuanceHeight?.errors.required">
-                                                            {{'crowdfunding.create-campaign.issuance-height-less'| translate}}
+                                                            {{'crowdfunding.create-campaign.issuance-height-less'|
+                                                            translate}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -303,7 +310,8 @@
                                     </div>
                                 </form>
                             </aw-wizard-step>
-                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}} " [navigationSymbol]="{ symbol: '3' }" class="form-bordered mt-4">
+                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}} " [navigationSymbol]="{ symbol: '3' }"
+                                class="form-bordered mt-4">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="ucsb"> {{'common.name-label'| translate}}
@@ -324,21 +332,24 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'crowdfunding.create-campaign.reserve-supply-label'| translate}}
+                                        <div class="ucsb"> {{'crowdfunding.create-campaign.reserve-supply-label'|
+                                            translate}}
                                         </div>
                                         <h4> {{campaignForm.reserveSupply}}
                                             <small> {{'common.units-text'| translate}} </small>
                                         </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'crowdfunding.create-campaign.max-supply-label'| translate}}
+                                        <div class="ucsb"> {{'crowdfunding.create-campaign.max-supply-label'|
+                                            translate}}
                                         </div>
                                         <h4> {{campaignForm.maxSupply}}
                                             <small> {{'common.units-text'| translate}} </small>
                                         </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'crowdfunding.create-campaign.initial-supply-label'| translate}}
+                                        <div class="ucsb"> {{'crowdfunding.create-campaign.initial-supply-label'|
+                                            translate}}
                                         </div>
                                         <h4> {{campaignForm.initialSupply}} </h4>
                                     </div>
@@ -346,21 +357,24 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'crowdfunding.create-campaign.issuance-height-label'| translate}}
+                                        <div class="ucsb"> {{'crowdfunding.create-campaign.issuance-height-label'|
+                                            translate}}
                                         </div>
                                         <h4> + {{campaignForm.issuanceHeight}}
                                             <small> {{'common.blocks-text'| translate}} </small>
                                         </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'crowdfunding.create-campaign.min-reserve-label'| translate}}
+                                        <div class="ucsb"> {{'crowdfunding.create-campaign.min-reserve-label'|
+                                            translate}}
                                         </div>
                                         <h4> {{campaignForm.minReservePerUnitTQT}}
                                             <small> {{'common.xin-unit-text'| translate}} </small>
                                         </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'crowdfunding.create-campaign.total-amount-raised-label'| translate}}
+                                        <div class="ucsb"> {{'crowdfunding.create-campaign.total-amount-raised-label'|
+                                            translate}}
                                         </div>
                                         <h4 *ngIf="minReservePerUnitTotal"> {{minReservePerUnitTotal | numberString:
                                             campaignForm.decimals }}

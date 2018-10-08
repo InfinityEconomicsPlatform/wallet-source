@@ -555,6 +555,7 @@
         "digits-text": "DIGITS",
         "quantity-text": "QUANTITY",
         "days-text": "Day(s)",
+        "days": "Days",
         "message-label": "Message",
         "sender-label": "Sender",
         "price-label": "Price",
@@ -675,7 +676,9 @@
         "raised": "Raised",
         "goal": "Goal",
         "details": "Details",
-        "amount-per-unit": "Amount per Unit"
+        "amount-per-unit": "Amount per Unit",
+        "interval": "Interval (D)",
+        "next-payment": "Next Payment"
     },
     "assets": {
         "show": {
@@ -1044,6 +1047,35 @@
             "amount-per-unit-popover": "The amount per unit based on former total amount to reserve",
             "currency-label": "Currency",
             "total-amount-label": "Total Amount"
+        }
+    },
+    "subscriptions": {
+        "create-subscription": {
+            "title": "Create Subscription",
+            "recipient-popover": "The recipient account to send token to",
+            "recipient-required": "Recipient is required",
+            "amount-popover": "The amount you like to send to the recipient account.",
+            "amount-required": "Amount is required",
+            "amount-greater": "Amount must be greater than equal to 0",
+            "interval-days": "Interval in Days",
+            "interval-days-popover": "The subscription interval. 1H min, 365D max.",
+            "interval-days-required": "Interval in days is required",
+            "interval-days-greater": "Interval in days must be greater than equal to 0.0417",
+            "interval-days-less": "Interval in days is must be less than equal to 365",
+            "amount-or-interval-label": "Amount / Interval"
+        },
+        "my-subscriptions": {
+            "title": "My Subscriptions",
+            "cancel-subscription-table-action": "Cancel Subscription"
+        },
+        "cancel-subscription": {
+            "title": "Cancel Subscription Confirmation",
+            "subscription-id-label": "Subscription ID"
+        }
+    },
+    "escrow": {
+        "create-escrow": {
+            "title": "Create Escrow"
         }
     },
     "breadcrumbs": {
