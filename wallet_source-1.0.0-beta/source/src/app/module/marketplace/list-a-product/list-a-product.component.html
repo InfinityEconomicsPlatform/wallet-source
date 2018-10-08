@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">{{ 'marketplace.list-a-product.title' | translate }}</h2>
+                    <app-breadcrumb></app-breadcrumb>
+                </div>
+                <div class="card-body">
+                    <div class="card-block mt-2">
+                        <form class="form inner-form mt-4">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label>{{ 'marketplace.list-a-product.name' | translate }}</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="name" class="form-control" placeholder="{{ 'marketplace.list-a-product.name_placeholder' | translate }}"
+                                            name="name" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ 'marketplace.list-a-product.description' | translate }}</label>
+                                    <div class="position-relative">
+                                        <textarea id="description" class="form-control" placeholder="{{ 'marketplace.list-a-product.description_placeholder' | translate }}"
+                                            name="description" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        {{ 'marketplace.list-a-product.tags' | translate }}
+                                        <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave" container="body"
+                                            placement="right" [ngbPopover]="'marketplace.list-a-product.tag_popover' | translate"></i>
+                                    </label>
+                                    <div class="position-relative">
+                                        <input type="text" id="tags" class="form-control" placeholder="{{ 'marketplace.list-a-product.tags_placeholder' | translate}}"
+                                            name="tags" required />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group m-0">
+                                            <label>{{ 'marketplace.list-a-product.price' | translate }}</label>
+                                            <div class="input-group m-0">
+                                                <div class="col-10 pl-0">
+                                                    <input type="number" id="price" class="form-control" placeholder="{{ 'marketplace.list-a-product.price_placeholder' | translate }}"
+                                                        name="price" required>
+                                                </div>
+                                                <div class="col-2 pl-0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">XIN</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group m-0">
+                                            <label>{{ 'marketplace.list-a-product.quantity' | translate }}</label>
+                                            <div class="input-group m-0">
+                                                <input type="number" id="quantity" class="form-control" placeholder="{{ 'marketplace.list-a-product.quantity_placeholder' | translate }}"
+                                                    name="quantity" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group m-0">
+                                            <label>{{ 'marketplace.list-a-product.fee' | translate }}</label>
+                                            <div class="input-group m-0">
+                                                <div class="col-10 pl-0">
+                                                    <input type="number" id="fee" class="form-control" placeholder="{{ 'marketplace.list-a-product.fee_placeholder' | translate }}"
+                                                        name="fee" required>
+                                                </div>
+                                                <div class="col-2 pl-0">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">XIN</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ 'marketplace.list-a-product.passphrase' | translate }}</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="passphrase" class="form-control" placeholder="{{ 'marketplace.list-a-product.passphrase_placeholder' | translate }}"
+                                            name="passphrase" required />
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <button type="button" class="btn btn-raised btn-danger mr-1 mb-0 mr-3">
+                                        Advanced
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

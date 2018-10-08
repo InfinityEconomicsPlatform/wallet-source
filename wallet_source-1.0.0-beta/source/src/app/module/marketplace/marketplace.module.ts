@@ -10,6 +10,7 @@ import { TagListComponent } from './tag-list/tag-list.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ListingComponent } from './listing/listing.component';
 import { PurchasedComponent } from './purchased/purchased.component';
+import { ListAProductComponent } from './list-a-product/list-a-product.component';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { PurchasedComponent } from './purchased/purchased.component';
         TagListComponent,
         PurchaseComponent,
         ListingComponent,
-        PurchasedComponent
+        PurchasedComponent,
+        ListAProductComponent
     ],
     providers: [
         MarketplaceService

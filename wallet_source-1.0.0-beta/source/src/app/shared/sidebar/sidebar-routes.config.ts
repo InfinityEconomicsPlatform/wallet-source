@@ -704,8 +704,18 @@ export const ROUTES: RouteInfo[] = [
                 submenu: []
             },
             {
-                path: '/marketplace/list-product',
+                path: '/marketplace/product-listed',
                 title: 'My Products',
+                icon: '',
+                class: '',
+                badge: '',
+                badgeClass: '',
+                isExternalLink: false,
+                submenu: []
+            },
+            {
+                path: '/marketplace/list-a-product',
+                title: 'List A Product',
                 icon: '',
                 class: '',
                 badge: '',

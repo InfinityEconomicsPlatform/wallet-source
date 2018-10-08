@@ -5,6 +5,7 @@ import { TagListComponent } from './tag-list/tag-list.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ListingComponent } from './listing/listing.component';
 import { PurchasedComponent } from './purchased/purchased.component';
+import { ListAProductComponent } from './list-a-product/list-a-product.component';
 
 const routes: Routes = [
     {
@@ -21,7 +22,11 @@ const routes: Routes = [
         component: TagListComponent
     },
     {
-        path: 'list-product',
+        path: 'list-a-product',
+        component: ListAProductComponent
+    },
+    {
+        path: 'product-listed',
         component: ListingComponent
     },
     {

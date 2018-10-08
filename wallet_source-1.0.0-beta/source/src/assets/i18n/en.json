@@ -2006,7 +2006,8 @@
         "tag": "Tag",
         "purchase": "Purchase",
         "list-product": "List Product For Sale",
-        "purchased": "Purchased Products"
+        "purchased": "Purchased Products",
+        "list-a-product": "List A Product"
     },
     "marketplace": {
         "store": {
@@ -2037,7 +2038,29 @@
             "title": "Marketplace Purchase"
         },
         "listing": {
-            "title": "List Product For Sale"
+            "title": "Products For Sale",
+            "product_list_name": "Name",
+            "product_list_quantity": "Quantity",
+            "product_list_price": "Price",
+            "product_list_actions": "Actions"
+        },
+        "list-a-product": {
+            "title": "List a Product",
+            "name": "Name",
+            "name_placeholder": "Item Name",
+            "description": "Description",
+            "description_placeholder": "Enter the product description",
+            "tags": "Tags",
+            "tags_placeholder": "Tags (Categories)",
+            "tag_popover": "Choose upto 3 tags, separate them with comma's",
+            "price": "Price",
+            "price_placeholder": "Price",
+            "quantity": "Quantity",
+            "quantity_placeholder": "Quantity",
+            "fee": "Fee",
+            "fee_placeholder": "Minimum Fee",
+            "passphrase": "Passphrase",
+            "passphrase_placeholder": "Passphrase"
         },
         "purchased": {
             "title": "Purchased Products"
