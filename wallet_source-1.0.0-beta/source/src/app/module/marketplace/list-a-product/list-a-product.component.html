@@ -95,6 +95,56 @@
                                     </div>
                                 </div>
 
+                                <div *ngIf="isAdvancedSettings">
+                                    <ul class="nav nav-tabs nav-fill nav-auto mt-4">
+                                        <li class="nav-item">
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'no-approval'}">
+                                                <i class="icon-icon2"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'deffered'}">
+                                                <i class="icon-Shuffling"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'fixed-accounts'}">
+                                                <i class="icon-Crowdfunding"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'amount'}">
+                                                <i class="icon-Ordinary_Payments"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'assets'}">
+                                                <i class="icon-Voting"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'currencies'}">
+                                                <i class="icon-currencies"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'hash'}">
+                                                <i class="icon-chain_statistics"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'secret-hash'}">
+                                                <i class="icon-calculate_hash"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane" [ngClass]="{'active': tabSelected == 'no-approval'}">
+
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="mt-4">
                                     <button type="button" class="btn btn-gradient mr-1 float-right" (click)="putProductForSale(product)">
                                         {{ 'marketplace.list-a-product.putForSale' | translate }}
