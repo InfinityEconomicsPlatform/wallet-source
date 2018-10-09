@@ -2063,7 +2063,8 @@
             "passphrase_placeholder": "Passphrase",
             "advanced": "Advanced",
             "basic": "Basic",
-            "putForSale": "Put For Sale"
+            "putForSale": "Put For Sale",
+            "process_without_approval": "Process without approval."
         },
         "purchased": {
             "title": "Purchased Products"
