@@ -107,33 +107,34 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="name"> Name
+                                        <label for="name"> {{ 'common.name-label' | translate}}
                                             <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                container="body" placement="right" ngbPopover="Poll names can have max. 100 chars"></i>
+                                                container="body" placement="right" [ngbPopover]="'voting.create-poll.name-popover' | translate"></i>
                                         </label>
                                         <div>
                                             <input type="text" [(ngModel)]="name" id="name" class="form-control" name="pollName"
-                                                #pollName="ngModel" placeholder="Name" maxlength="100" required>
+                                                #pollName="ngModel" placeholder="{{ 'common.name-label' | translate}}"
+                                                maxlength="100" required>
                                             <div *ngIf="pollName?.invalid && (pollName?.dirty || pollName?.touched)"
                                                 class="input-error">
                                                 <div *ngIf="pollName?.errors.required">
-                                                    Poll name is required (max. 100 chars)
+                                                    {{ 'voting.create-poll.name-required-validation' | translate}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="poll_description"> Description
+                                        <label for="poll_description"> {{ 'common.description-label' | translate}}
                                             <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                container="body" placement="right" ngbPopover="Poll descriptions with max. 1,000 characters"></i>
+                                                container="body" placement="right" [ngbPopover]="'voting.create-poll.description-popover' | translate"></i>
                                         </label>
                                         <div class="position-relative">
                                             <textarea id="poll_description" class="form-control" [(ngModel)]="description"
-                                                rows="5" name="pollDescription" #pollDescription="ngModel" placeholder="Poll description"
+                                                rows="5" name="pollDescription" #pollDescription="ngModel" placeholder="{{ 'common.description-label' | translate}}"
                                                 maxlength="1000" required></textarea>
                                             <div *ngIf="pollDescription?.invalid && (pollDescription?.dirty || pollDescription?.touched)"
                                                 class="input-error">
-                                                Poll description required (max. 1000 chars)
+                                                {{ 'voting.description-popover' | translate}}
                                             </div>
                                         </div>
                                     </div>
@@ -141,7 +142,7 @@
                                 <div class="left">
                                     <button type="button" [disabled]="createPollForm.invalid || currencyError || assetError"
                                         class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
-                                        <i class="fa fa-chevron-right"></i> Next
+                                        <i class="fa fa-chevron-right"></i> {{ 'common.next-btn' | translate}}
                                     </button>
                                 </div>
                             </form>
@@ -155,22 +156,25 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Minimum options
+                                                <label>{{ 'voting.create-poll.minimum-options' | translate}}
                                                     <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
-                                                        container="body" ngbPopover="The minimum number of option a voter can choose. Set this to 1."></i>
+                                                        container="body" [ngbPopover]="'voting.create-poll.minimum-options-popover' | translate"></i>
                                                 </label>
                                                 <div>
                                                     <input type="number" id="minOptions" class="form-control"
-                                                        placeholder="Minimum Number Options" name="minOptions"
-                                                        #minOptions="ngModel" [(ngModel)]="minNumberOfOptions" min="1"
-                                                        max="10" (ngModelChange)="validateStepTwo()" required minValue="1">
+                                                        placeholder="{{ 'voting.create-poll.minimum-options-placeholder' | translate }}"
+                                                        name="minOptions" #minOptions="ngModel" [(ngModel)]="minNumberOfOptions"
+                                                        min="1" max="10" (ngModelChange)="validateStepTwo()" required
+                                                        minValue="1">
                                                     <div *ngIf="minOptions?.invalid && (minOptions?.dirty || minOptions?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="minOptions?.errors.required">
-                                                            Enter minimum number of option a voter can choose.
+                                                            {{ 'voting.create-poll.minimum-options-require-validation'
+                                                            | translate }}
                                                         </div>
                                                         <div *ngIf="minOptions?.errors.minValue && !minOptions?.errors.required">
-                                                            Minimum Number Options must be greater than 0
+                                                            {{ 'voting.create-poll.minimum-options-value-validation' |
+                                                            translate }}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,22 +182,25 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Maximum options
+                                                <label>{{ 'voting.create-poll.maximum-options' | translate}}
                                                     <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
-                                                        container="body" ngbPopover="The maximum number of option a voter can choose from. For yes/no question this value has to set to 1."></i>
+                                                        container="body" ngbPopover="{{ 'voting.create-poll.maximum-options-popover' | translate}}"></i>
                                                 </label>
                                                 <div>
                                                     <input type="number" id="maxOptions" class="form-control"
-                                                        placeholder="Maximum Number Options" name="maxOptions"
-                                                        #maxOptions="ngModel" [(ngModel)]="maxNumberOfOptions" min="1"
-                                                        max="10" (ngModelChange)="validateStepTwo()" required minValue="1">
+                                                        placeholder="{{ 'voting.create-poll.maximum-options-placeholder' | translate}}"
+                                                        name="maxOptions" #maxOptions="ngModel" [(ngModel)]="maxNumberOfOptions"
+                                                        min="1" max="10" (ngModelChange)="validateStepTwo()" required
+                                                        minValue="1">
                                                     <div *ngIf="maxOptions?.invalid && (maxOptions?.dirty || maxOptions?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="maxOptions?.errors.required">
-                                                            Enter maximum number of option a voter can choose.
+                                                            {{ 'voting.create-poll.maximum-options-require-validation'
+                                                            | translate}}
                                                         </div>
                                                         <div *ngIf="maxOptions?.errors.minValue && !maxOptions?.errors.required">
-                                                            Maximum Number Options must be greater than 0
+                                                            {{ 'voting.create-poll.maximum-options-value-validation' |
+                                                            translate}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -202,9 +209,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Duration in Blocks &nbsp;
+                                        <label>{{ 'voting.create-poll.block-height' | translate}} &nbsp;
                                             <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right"
-                                                triggers="mouseenter:mouseleave" container="body" ngbPopover="The duration for this poll. 1.440 Blocks are equal one day. Range from min. 1.440 to max. 20.000 Blocks"></i>
+                                                triggers="mouseenter:mouseleave" container="body" ngbPopover="{{ 'voting.create-poll.block-height-popover' | translate}}"></i>
                                         </label>
                                         <div>
                                             <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-0">
@@ -236,30 +243,33 @@
                                         </div>
                                         <div *ngIf="duration?.invalid && (duration?.dirty || duration?.touched)" class="input-error">
                                             <div *ngIf="duration?.errors.required">
-                                                Height of block is required
+                                                {{ 'voting.create-poll.block-height-require-validation' | translate}}
                                             </div>
                                             <div *ngIf="duration?.errors.minValue && !duration?.errors.required">
-                                                Height of block should be greater than 1440 or less than 20000
+                                                {{ 'voting.create-poll.block-height-value-validation' | translate}}
                                             </div>
                                             <div *ngIf="duration?.errors.maxValue && !duration?.errors.required">
-                                                Height of block should be greater than 1440 or less than 20000
+                                                {{ 'voting.create-poll.block-height-value-validation' | translate}}
                                             </div>
                                         </div>
                                     </div>
 
                                     <button type="button" class="btn btn-raised btn-success mb-0" (click)="addNewOption()">
-                                        <i class="fa fa-plus"></i> Add options for this Poll
+                                        <i class="fa fa-plus"></i> {{ 'voting.create-poll.add-options-poll' |
+                                        translate}}
                                     </button>
                                     <!-- <hr *ngIf="pollOptions.length != 0"> -->
                                     <div class="mt-3 row" *ngIf="pollOptions.length != 0">
                                         <div class="col-md-6" *ngFor="let option of pollOptions; let i = index;">
                                             <div class="form-group">
                                                 <input type="text" id="{{ 'options'+ i }}" class="form-control" name="{{ 'options'+ i }}"
-                                                    placeholder="Enter option text here" [(ngModel)]="option.value"
-                                                    (ngModelChange)="validateStepTwo()" required>
+                                                    placeholder="{{ 'voting.create-poll.add-options-placeholder' | translate}}"
+                                                    [(ngModel)]="option.value" (ngModelChange)="validateStepTwo()"
+                                                    required>
                                                 <div *ngIf="createPollForm2.form.controls['options' + i]?.invalid && (createPollForm2.form.controls['options' + i]?.dirty || createPollForm2.form.controls['options' + i]?.touched)"
                                                     class="input-error">
-                                                    Please enter the option
+                                                    {{ 'voting.create-poll.add-options-require-validation' |
+                                                    translate}}
                                                 </div>
                                             </div>
                                         </div>
@@ -269,14 +279,14 @@
                                     <button type="button" class="btn btn-gradient mr-1 mb-2 mb-md-0 float-right"
                                         [disabled]="createPollForm2.invalid" *ngIf="isSecondStepValid" (click)="createPoll()"
                                         awNextStep>
-                                        <i class="fa fa-chevron-right"></i> Next
+                                        <i class="fa fa-chevron-right"></i> {{'common.next-btn' | translate}}
                                     </button>
                                     <button type="button" class="btn btn-gradient mr-1 mb-2 mb-md-0 float-right"
                                         [disabled]="createPollForm2.invalid" *ngIf="!isSecondStepValid" (click)="createPoll()">
-                                        <i class="fa fa-chevron-right"></i> Next
+                                        <i class="fa fa-chevron-right"></i> {{'common.next-btn' | translate}}
                                     </button>
                                     <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                        <i class="fa fa-chevron-left"></i> Previous
+                                        <i class="fa fa-chevron-left"></i> {{'common.previous-btn' | translate}}
                                     </button>
                                 </div>
                             </form>
@@ -284,35 +294,35 @@
                         <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '3' }" class="form-bordered mt-4">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="ucsb"> Name</div>
+                                    <div class="ucsb"> {{ 'common.name-label' | translate}}</div>
                                     <h4> {{ name }} </h4>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="ucsb"> Description</div>
+                                    <div class="ucsb"> {{ 'common.description-label' | translate}}</div>
                                     <h4> {{ description }} </h4>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="ucsb"> Valid</div>
+                                    <div class="ucsb"> {{ 'common.valid-lable' | translate}}</div>
                                     <h4 [innerHTML]=" validBytes | txIsValid "></h4>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="ucsb"> Service Fee</div>
+                                    <div class="ucsb"> {{ 'common.service-fee-lable' | translate}}</div>
                                     <h4>{{ tx_fee | amountTkn }}
                                         <small> XIN</small>
                                     </h4>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="ucsb"> Voting Model</div>
+                                    <div class="ucsb"> {{ 'voting.create-poll.voting-model-label' | translate}}</div>
                                     <h4>{{ votingModel | votingModel }}</h4>
                                 </div>
                             </div>
 
                             <button type="button" [ngClass]="{'btn-success': !signedTx, 'btn-danger': signedTx}" class="btn btn-raised mr-1 mb-0"
                                 (click)="signedTx = !signedTx">
-                                <i class="fa fa-key"></i> Signed Transaction
+                                <i class="fa fa-key"></i> {{ 'common.signed-transaction-lable' | translate}}
                             </button>
 
                             <div class="form-group" *ngIf="signedTx">
@@ -324,10 +334,10 @@
                             <div class="mt-4">
                                 <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
                                     (click)="broadcastTransaction(transactionBytes)">
-                                    <i class="fa fa-check"></i> Finish
+                                    <i class="fa fa-check"></i> {{'common.finish-btn' | translate}}
                                 </button>
                                 <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                    <i class="fa fa-chevron-left"></i> Previous
+                                    <i class="fa fa-chevron-left"></i> {{'common.previous-btn' | translate}}
                                 </button>
                             </div>
                         </aw-wizard-step>
