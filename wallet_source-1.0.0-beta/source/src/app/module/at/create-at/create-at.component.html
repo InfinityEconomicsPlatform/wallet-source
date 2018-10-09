@@ -23,7 +23,8 @@
                                                     </i>
                                                 </label>
                                                 <input type="text" class="form-control" [(ngModel)]="createAtForm.name"
-                                                    name="name" #name="ngModel" minlength="3" maxlength="30" required>
+                                                    name="name" #name="ngModel" minlength="3" maxlength="30"
+                                                    placeholder="{{'common.name-label'| translate}}" required>
                                                 <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="input-error">
                                                     <div *ngIf="name?.errors.required">
                                                         {{'at.create-at.at-name-required'| translate}}
@@ -87,6 +88,7 @@
                                                 <div class="position-relative sign_in_inputs">
                                                     <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.description"
                                                         name="description" #description="ngModel" maxlength="1000"
+                                                        placeholder="{{'common.description-label'| translate}}"
                                                         required></textarea>
                                                 </div>
                                                 <div *ngIf="description?.invalid && (description?.dirty || description?.touched)"
@@ -122,10 +124,10 @@
                                                 <div class="position-relative sign_in_inputs">
                                                     <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.code"
                                                         name="code" #code="ngModel" minlength="10" maxlength="1000"
-                                                        required></textarea>
+                                                        placeholder="{{'at.create-at.code-label'| translate}}" required></textarea>
                                                     <div *ngIf="code?.invalid && (code?.dirty || code?.touched)" class="input-error">
                                                         <div *ngIf="code?.errors.required">
-                                                            Code is required
+                                                            {{'at.create-at.code-required'| translate}}
                                                         </div>
                                                         <div *ngIf="code?.errors.minlength && !code?.errors.required">
                                                             {{'at.create-at.code-greater'| translate}}

@@ -1,205 +1,204 @@
 <div class="row" *ngIf="reserveUnitsForm">
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-block main-card-block">
-        <div class="border-bt">
-          <h2 class="main-title">Reserve Campaign Details</h2>
-          <app-breadcrumb></app-breadcrumb>
-          <h3 class="back-button" (click)="goBack()">
-            <i class="fa fa-chevron-left"></i> Back
-          </h3>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-block main-card-block">
+                <div class="border-bt">
+                    <h2 class="main-title">{{'crowdfunding.reserve-campaign.title'| translate}} </h2>
+                    <app-breadcrumb></app-breadcrumb>
+                    <h3 class="back-button" (click)="goBack()">
+                        <i class="fa fa-chevron-left"></i> {{'common.back-btn'| translate}}
+                    </h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-body">
+                    <div class="card-block mr-3 ml-3">
+                        <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                            <aw-wizard-step stepTitle="{{'common.details-step'| translate}} " [navigationSymbol]="{ symbol: '1' }">
+                                <form #f="ngForm" class="form" name="reserveUnitsForm" novalidate>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group m-0">
+                                                <label>{{'crowdfunding.reserve-campaign.campaign-id-label'| translate}}
+                                                    <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                        placement="right" container="body" ngbPopover="{{'crowdfunding.reserve-campaign.campaign-id-popover'| translate}}">
+                                                    </i>
+                                                </label>
+                                                <div>
+                                                    <h6> {{reserveUnitsForm.id}} </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group m-0">
+                                                <label>{{'crowdfunding.reserve-campaign.campaign-code-label'|
+                                                    translate}}
+                                                    <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                        placement="right" container="body" ngbPopover="{{'crowdfunding.reserve-campaign.campaign-code-popover'| translate}}">
+                                                    </i>
+                                                </label>
+                                                <div>
+                                                    <h6> {{reserveUnitsForm.code}} </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group m-0">
+                                                <label>{{'crowdfunding.reserve-campaign.campaign-specification-label'|
+                                                    translate}}
+                                                    <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                        placement="right" container="body" ngbPopover=" {{'crowdfunding.reserve-campaign.campaign-specification-popover'| translate}} ">
+                                                    </i>
+                                                </label>
+                                                <div>
+                                                    <h6> {{ reserveUnitsForm.reserveSupply }} / {{
+                                                        reserveUnitsForm.minReservePerUnitTQT | amountTqt }} / {{
+                                                        reserveUnitsForm.decimals }} </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group m-0">
+                                                <label>{{'crowdfunding.reserve-campaign.campaign-goal-label'|
+                                                    translate}}
+                                                    <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                        placement="right" container="body" ngbPopover="{{'crowdfunding.reserve-campaign.campaign-goal-popover'| translate}}">
+                                                    </i>
+                                                </label>
+                                                <div>
+                                                    <h6> {{reserveUnitsForm.reserveSupply *
+                                                        reserveUnitsForm.minReservePerUnitTQT | amountTqt}} XIN </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>{{'crowdfunding.reserve-campaign.total-amount-to-reserve-label'|
+                                                        translate}}
+                                                        <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
+                                                            container="body" placement="right" ngbPopover="{{'crowdfunding.reserve-campaign.total-amount-to-reserve-popover'| translate}}">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <input type="number" (input)="onAmountChange($event.target.value)"
+                                                            min="1" required [(ngModel)]="reserveUnitsForm.amountTotal"
+                                                            name="amountTotal" class="form-control">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">
+                                                                {{'common.xin-unit-text'| translate}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>{{'crowdfunding.reserve-campaign.amount-per-unit-label'|
+                                                        translate}}
+                                                        <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
+                                                            container="body" ngbPopover=" {{'crowdfunding.reserve-campaign.amount-per-unit-popover'| translate}} ">
+                                                        </i>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <input type="number" [attr.disabled]="true" [(ngModel)]="reserveUnitsForm.amountUnit"
+                                                            name="amountUnit" class="form-control">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">
+                                                                {{'common.xin-unit-text'| translate}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions left">
+                                        <button [disabled]="f.invalid" (click)="getAndVerifyAccount(reserveUnitsForm)"
+                                            type="button" class="btn btn-primary mr-1 mb-0 float-right" awNextStep>
+                                            <i class="fa fa-chevron-right"></i> {{'common.next-btn'| translate}}
+                                        </button>
+                                    </div>
+                                </form>
+                            </aw-wizard-step>
+                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="ucsb"> {{'common.currency-id-label'| translate}}
+                                        </div>
+                                        <h4> {{reserveUnitsForm.id}} </h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="ucsb"> {{'crowdfunding.reserve-campaign.currency-label'|
+                                            translate}}
+                                        </div>
+                                        <h4> {{reserveUnitsForm.code}} </h4>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="ucsb"> {{'crowdfunding.reserve-campaign.total-amount-label'|
+                                            translate}}
+                                        </div>
+                                        <h4> {{reserveUnitsForm.amountTotal | numericalString}}
+                                            <small> {{'common.xin-unit-text'| translate}}</small>
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="ucsb"> {{'crowdfunding.reserve-campaign.amount-per-unit-label'|
+                                            translate}}
+                                        </div>
+                                        <h4> {{reserveUnitsForm.amountUnit }} </h4>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                        </div>
+                                        <h4 [innerHTML]="validBytes | txIsValid"> </h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="ucsb"> {{'common.service-fee-lable'|translate}}
+                                        </div>
+                                        <h4> {{ tx_fee | amountTkn }}
+                                            <small> {{'common.xin-unit-text'| translate}}</small>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <hr>
+                                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
+                                    class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                </button>
+                                <hr *ngIf="unsignedTx">
+                                <div class="form-group" *ngIf="unsignedTx">
+                                    <div class="position-relative">
+                                        <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
+                                            class="form-control" name="key"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes);"
+                                        class="btn btn-primary float-right">
+                                        <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
+                                    </button>
+                                    <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
+                                        <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
+                                    </button>
+                                </div>
+                            </aw-wizard-step>
+                        </aw-wizard>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body">
-        <div class="card-body">
-          <div class="card-block mr-3 ml-3">
-            <aw-wizard [navBarLayout]="'large-filled-symbols'">
-              <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
-                <form #f="ngForm" class="form" name="reserveUnitsForm" novalidate>
-                  <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group m-0">
-                            <label>Campaign ID
-                              <i class="fa fa-question-circle-o"
-                                triggers="mouseenter:mouseleave"
-                                placement="right"
-                                container="body"
-                                ngbPopover="The campaign ID">
-                              </i>
-                            </label>
-                            <div>
-                                <h6> {{reserveUnitsForm.id}} </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group m-0">
-                            <label>Campaign Code
-                              <i class="fa fa-question-circle-o"
-                                triggers="mouseenter:mouseleave"
-                                placement="right"
-                                container="body"
-                                ngbPopover="The campaign code">
-                              </i>
-                            </label>
-                            <div>
-                                <h6> {{reserveUnitsForm.code}} </h6>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group m-0">
-                            <label>Campaign Specification
-                              <i class="fa fa-question-circle-o"
-                                triggers="mouseenter:mouseleave"
-                                placement="right"
-                                container="body"
-                                ngbPopover="The reserve supply in units, the minimum reserve per unit and the unit decimals">
-                              </i>
-                            </label>
-                            <div>
-                                <h6> {{ reserveUnitsForm.reserveSupply }} / {{ reserveUnitsForm.minReservePerUnitTQT | amountTqt }} / {{ reserveUnitsForm.decimals }} </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group m-0">
-                            <label>Campaign Goal
-                              <i class="fa fa-question-circle-o"
-                                triggers="mouseenter:mouseleave"
-                                placement="right"
-                                container="body"
-                                ngbPopover="The total amount of XIN to raise for this campaign">
-                              </i>
-                            </label>
-                            <div>
-                                <h6> {{reserveUnitsForm.reserveSupply * reserveUnitsForm.minReservePerUnitTQT | amountTqt}} XIN </h6>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                  <hr/>
-                  <div class="form-body">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Total amount to reserve
-                            <i class="fa fa-question-circle-o"
-                              triggers="mouseenter:mouseleave"
-                              container="body"
-                              placement="right"
-                              ngbPopover="The total amount of XIN you want to reserve">
-                            </i>
-                          </label>
-                          <div class="input-group">
-                            <input type="number" (input)="onAmountChange($event.target.value)" min="1" required [(ngModel)]="reserveUnitsForm.amountTotal" name="amountTotal" class="form-control">
-                            <div class="input-group-append">
-                              <span class="input-group-text">
-                                XIN
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Amount per Unit
-                            <i class="fa fa-question-circle-o"
-                              placement="right"
-                              triggers="mouseenter:mouseleave"
-                              container="body"
-                              ngbPopover="The amount per unit based on former total amount to reserve">
-                            </i>
-                          </label>
-                          <div class="input-group">
-                            <input type="number" [attr.disabled]="true" [(ngModel)]="reserveUnitsForm.amountUnit" name="amountUnit" class="form-control">
-                            <div class="input-group-append">
-                              <span class="input-group-text">
-                                XIN
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-actions left">
-                    <button [disabled]="f.invalid" (click)="getAndVerifyAccount(reserveUnitsForm)" type="button" class="btn btn-primary mr-1 mb-0 float-right"
-                      awNextStep>
-                      <i class="fa fa-chevron-right"></i> Next
-                    </button>
-                  </div>
-                </form>
-              </aw-wizard-step>
-              <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="ucsb"> Currency ID
-                    </div>
-                    <h4> {{reserveUnitsForm.id}} </h4>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="ucsb"> Currency
-                    </div>
-                    <h4> {{reserveUnitsForm.code}} </h4>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="ucsb"> Total Amount
-                    </div>
-                    <h4> {{reserveUnitsForm.amountTotal | numericalString}}
-                        <small> XIN</small>
-                      </h4>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="ucsb"> Amount Per Unit
-                    </div>
-                    <h4> {{reserveUnitsForm.amountUnit }} </h4>
-                  </div>
-                </div>
-                <hr/>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="ucsb"> Valid
-                    </div>
-                    <h4 [innerHTML]="validBytes | txIsValid"> </h4>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="ucsb"> Service Fee
-                    </div>
-                    <h4> {{ tx_fee | amountTkn }} 
-                      <small> XIN</small>
-                    </h4>
-                  </div>
-                </div>
-                <hr>
-                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}" class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                  <i class="fa fa-key"></i> Signed Transaction
-                </button>
-                <hr *ngIf="unsignedTx">
-                <div class="form-group" *ngIf="unsignedTx">
-                  <div class="position-relative">
-                    <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control" name="key"></textarea>
-                  </div>
-                </div>
-                <div class="form-actions">
-                  <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes);" class="btn btn-primary float-right">
-                    <i class="fa fa-check"></i> Finish
-                  </button>
-                  <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
-                    <i class="fa fa-chevron-left"></i> Previous
-                  </button>
-                </div>
-              </aw-wizard-step>
-            </aw-wizard>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>

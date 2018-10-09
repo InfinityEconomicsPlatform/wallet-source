@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-block main-card-block pb-0">
                 <div class="border-bt">
-                    <h2 class="main-title">Create Subscription</h2>
+                    <h2 class="main-title">{{'subscriptions.create-subscription.title'| translate}} </h2>
                     <app-breadcrumb></app-breadcrumb>
                     <div class="pull-right filter-group">
                         <div class="btn-group btn-group-justified btn-group-raised" (click)="reload()">
@@ -14,15 +14,15 @@
                 <div class="card-body mt-4">
                     <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
                         <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                            <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                                 <form class="form inner-form" #f="ngForm" novalidate>
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Recipient
+                                                    <label>{{'common.recipient-lable'| translate}}
                                                         <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                            placement="right" container="body" ngbPopover="The recipient account to send token to">
+                                                            placement="right" container="body" ngbPopover="{{'subscriptions.create-subscription.recipient-popover'| translate}}">
                                                         </i>
                                                     </label>
                                                     <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
@@ -34,47 +34,39 @@
                                                         </div>
                                                         <div class="col-5 col-lg-4 pr-1 pl-0">
                                                             <div class="btn-icon-group text-right">
-
-
                                                                 <span *isAppEnabled="'Aliases'" class="btn btn-primary"
                                                                     (click)="searchAliases()" triggers="mouseenter:mouseleave"
-                                                                    placement="top" container="body" ngbPopover="Enter an alias connected to an account to get the account Id.">
+                                                                    placement="top" container="body" ngbPopover=" {{'common.alias-connect-tooltip'| translate}} ">
                                                                     <i class="fa fa-share-alt"></i>
                                                                 </span>
-
                                                                 <span *isExpertView="true" class="btn btn-primary btn-left"
                                                                     triggers="mouseenter:mouseleave" placement="top"
                                                                     (click)="loadBookmarkView()" container="body"
-                                                                    ngbPopover="Open your bookmarks to insert an account id">
+                                                                    ngbPopover=" {{'common.open-bookmark-tooltip'| translate}} ">
                                                                     <i class="fa fa-bookmark"></i>
                                                                 </span>
-
-
-
-
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                     <div *ngIf="recipient?.invalid && (recipient?.dirty || recipient?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="recipient?.errors.required">
-                                                            Recipient is required
+                                                            {{'subscriptions.create-subscription.recipient-required'|
+                                                            translate}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Amount
+                                                    <label>{{'common.amount-lable'| translate}}
                                                         <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                            placement="right" container="body" ngbPopover="The amount you like to send to the recipient account.">
+                                                            placement="right" container="body" ngbPopover="{{'subscriptions.create-subscription.amount-popover'| translate}}">
                                                         </i>
                                                     </label>
                                                     <div class="input-group  ml-0 mr-0  sign_in_inputs row form-border-bottom pb-1">
                                                         <div class="col-10 pl-0">
-                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            <input type="number" placeholder="0" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                                 aria-label="Amount to be send" name="amount" #amount="ngModel"
                                                                 [(ngModel)]="subscriptionForm.amount" [minValue]="0"
                                                                 required>
@@ -82,7 +74,8 @@
                                                         <div class="col-2 text-right pl-0">
                                                             <div class="row input-single-group">
                                                                 <div class="col-md-12">
-                                                                    <span class="input-group-text">XIN</span>
+                                                                    <span class="input-group-text">{{'common.xin-unit-text'|
+                                                                        translate}} </span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -91,10 +84,12 @@
                                                     <div *ngIf="amount?.invalid && (amount?.dirty || amount?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="amount?.errors.required">
-                                                            Amount is required
+                                                            {{'subscriptions.create-subscription.amount-required'|
+                                                            translate}}
                                                         </div>
                                                         <div *ngIf="amount?.errors.minValue && !amount?.errors.required">
-                                                            Interval in days must be greater than equal to 0
+                                                            {{'subscriptions.create-subscription.amount-greater'|
+                                                            translate}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -104,14 +99,15 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group m-0">
-                                                    <label>Interval in Days
+                                                    <label>{{'subscriptions.create-subscription.interval-days'|
+                                                        translate}}
                                                         <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                            placement="right" container="body" ngbPopover="The subscription interval. 1H min, 365D max.">
+                                                            placement="right" container="body" ngbPopover="{{'subscriptions.create-subscription.interval-days-popover'| translate}}">
                                                         </i>
                                                     </label>
                                                     <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <div class="col-10 pl-0">
-                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            <input type="number" placeholder="0" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                                 aria-label="" name="interval" #interval="ngModel"
                                                                 [minValue]="0.0417" [maxValue]="365" [(ngModel)]="subscriptionForm.interval"
                                                                 required>
@@ -119,7 +115,8 @@
                                                         <div class="col-2 text-right pl-0">
                                                             <div class="row input-single-group">
                                                                 <div class="col-md-12">
-                                                                    <span class="input-group-text">Days</span>
+                                                                    <span class="input-group-text">{{'common.days'|
+                                                                        translate}} </span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -128,13 +125,16 @@
                                                     <div *ngIf="interval?.invalid && (interval?.dirty || interval?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="interval?.errors.required">
-                                                            Interval in days is required
+                                                            {{'subscriptions.create-subscription.interval-days-required'|
+                                                            translate}}
                                                         </div>
                                                         <div *ngIf="interval?.errors.minValue && !interval?.errors.required">
-                                                            Interval in days must be greater than equal to 0.0417
+                                                            {{'subscriptions.create-subscription.interval-days-greater'|
+                                                            translate}}
                                                         </div>
                                                         <div *ngIf="interval?.errors.maxValue && !interval?.errors.required">
-                                                            Interval in days is must be less than equal to 365
+                                                            {{'subscriptions.create-subscription.interval-days-less'|
+                                                            translate}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -144,47 +144,49 @@
                                     <div class="mt-4 left">
                                         <button type="button" (click)="createSubscription()" [disabled]="f.invalid"
                                             class="btn btn-gradient mr-1 mb-0 float-right" awNextStep>
-                                            <i class="fa fa-chevron-right"></i> Next
+                                            <i class="fa fa-chevron-right"></i> {{'common.next-btn'| translate}}
                                         </button>
                                     </div>
                                 </form>
                             </aw-wizard-step>
-                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }"
+                                class="form-bordered mt-4">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="ucsb"> Recipient Account
+                                        <div class="ucsb"> {{'common.recipient-account-lable'| translate}}
                                         </div>
                                         <h4> {{subscriptionForm.recipientRS}} </h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="ucsb"> Amount / Interval
+                                        <div class="ucsb">
+                                            {{'subscriptions.create-subscription.amount-or-interval-label'| translate}}
                                         </div>
                                         <h4> {{subscriptionForm.amount}}
-                                            <small>XIN</small>
+                                            <small>{{'common.xin-unit-text'| translate}} </small>
                                             | {{subscriptionForm.interval}}
-                                            <small>Days</small>
+                                            <small>{{'common.days'| translate}} </small>
                                         </h4>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="ucsb"> Valid
+                                        <div class="ucsb"> {{'common.valid-lable'| translate}}
                                         </div>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="ucsb"> Service Fee
+                                        <div class="ucsb"> {{'common.service-fee-lable'| translate}}
                                         </div>
                                         <h4> {{tx_fee | amountTkn}}
-                                            <small> XIN</small>
+                                            <small> {{'common.xin-unit-text'| translate}}</small>
                                         </h4>
                                     </div>
                                 </div>
 
                                 <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                     class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                    <i class="fa fa-key"></i> Signed Transaction
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
                                 </button>
                                 <!--  <hr *ngIf="unsignedTx"> -->
                                 <div class="form-group" *ngIf="unsignedTx">
@@ -196,10 +198,10 @@
                                 <div class="mt-4">
                                     <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
                                         (click)="broadcastTransaction(transactionBytes)">
-                                        <i class="fa fa-check"></i> Finish
+                                        <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
                                     </button>
                                     <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                        <i class="fa fa-chevron-left"></i> Previous
+                                        <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
                                     </button>
                                 </div>
                             </aw-wizard-step>
