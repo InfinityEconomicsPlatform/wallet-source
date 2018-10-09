@@ -2060,7 +2060,10 @@
             "fee": "Fee",
             "fee_placeholder": "Minimum Fee",
             "passphrase": "Passphrase",
-            "passphrase_placeholder": "Passphrase"
+            "passphrase_placeholder": "Passphrase",
+            "advanced": "Advanced",
+            "basic": "Basic",
+            "putForSale": "Put For Sale"
         },
         "purchased": {
             "title": "Purchased Products"
