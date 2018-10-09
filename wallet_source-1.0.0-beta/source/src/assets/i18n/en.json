@@ -95,6 +95,7 @@
             "number-blocks-tooltip": "Your transaction will be executed without further approvement after this number of blocks",
             "reference-full-hash-lable": "Referenced full HASH",
             "reference-full-hash-tooltip": "Your transaction will be executed if this transaction hash is included into the blockchain",
+            "reference-full-hash-placeholder": "type in the HASH",
             "secret-hash-lable": "Secret Hash",
             "secret-hash-tooltip": "Your transaction will be executed if this secret hash is included into the blockchain",
             "recipient-tooltip": "The recipient account to send token to.",
@@ -132,8 +133,10 @@
             "other-digital-lable": "Sending any other digital asset,including Bitcoin Cash and USDT, will result in permanent loss.",
             "transaction-full-hash-lable": "Transaction Full Hash",
             "transaction-full-hash-tooltip": "To claim a secret transaction you have to enter the transaction full hash.",
+            "transaction-full-hash-placeholder": "Type in the hash",
             "revealed-secret-lable": "Revealed Secret Text",
             "revealed-secret-tooltip": "Enter the secret from sender to claim your transaction before the transaction expires.",
+            "revealed-secret-placeholder": "Enter secret text",
             "print-btn": "PRINT",
             "email-btn": "EMAIL"
         },
@@ -173,9 +176,12 @@
         "balance-lease": {
             "balance-lease-title": "Balance Leasing",
             "recipient-lable": "BALANCE LEASE RECIPIENT",
+            "recipient-placeholder": "Recipient address",
             "block-duration-lable": "BLOCK DURATION FOR THIS LEASE",
             "public-key-field-lable": "RECIPIENT PUBLIC KEY ANNOUNCEMENT (OPTIONAL)",
+            "public-key-field-placeholder": "Recipient Publick Key announcement",
             "message-field-lable": "Message (MAX. 160 CHARS)",
+            "message-field-placeholder": "Message",
             "message-field-popover": "For message encryption the recipient public key has to be known.",
             "public-key-field-popover": "Additional security for brand new accounts without any outbound transaction.",
             "block-duration-popover": "1.440 Blocks are equal one day. Range from min. 1'440 to max. 65'535 Blocks",
@@ -190,13 +196,16 @@
             "search-account-title": "Search Account",
             "search-for-account-lable": "Search for Account Info",
             "search-for-account-popover": "Enter word(s) to search for accounts with info and description.",
-            "search-btn": "Search"
+            "search-btn": "Search",
+            "search-for-account-placeholder": "Enter search words"
         },
         "my-bookmarks": {
             "my-bookmark-title": "My Bookmarks",
             "my-bookmark-sub-title": "Add New Bookmark",
             "account-name-lable": "Account Name",
+            "account-name-placeholder": "Enter New Account",
             "account-tag-lable": "Account Tag",
+            "account-tag-placeholder": "Enter account tag",
             "add-btn": "Add",
             "bookmark-list-lable": "Bookmark List",
             "select-popover": "Select",
@@ -217,9 +226,11 @@
             "won-property-popover": "Set property on your own account",
             "property-key-lable": "Property Key",
             "property-key-popover": "The Property Key",
+            "property-key-placeholder": "Account property key",
             "property-key-required-msg": "Property Key is required",
             "property-value-lable": "Property Value",
             "property-value-popover": "The Property Value",
+            "property-value-placeholder": "Account property value",
             "property-value-required-msg": "Property Value is required",
             "account-lable": "Account",
             "delete-property-popover": "Delete property"
@@ -230,6 +241,7 @@
             "local-node-available-lable": "Local Node Available?",
             "status-lable": "Block Generation Status",
             "secret-phrase-lable": "Secret phrase",
+            "secret-phrase-placeholder": "Type in your secret phrase",
             "local-node-available-popover": "To generate blocks your passphrase is used to sign blocks. For security reasons block generation is only available on your local node.",
             "status-popover": "The block generation status on your local node.",
             "secret-phrase-popover": "Ensure you are running a local node before enter your passphrase to prevent security risks. You can switch over anytime to a local node by choosing LOCAL_HOST for connection mode in options.",
@@ -253,8 +265,6 @@
             "interval-popover": "The number of blocks to wait after before funding the recipient (min. 10).",
             "holding-type-lable": "Holding Type",
             "holding-type-popover": "Holding types are token, assets or currencies.",
-            "asset-id-lable": "Asset ID",
-            "asset-id-popover": "Enter the asset ID (numeric)",
             "currency-ticker-lable": "Currency Ticker",
             "currency-ticker-popover": "Enter the currency ticker (text)",
             "admin-password-lable": "Admin Password",
@@ -532,6 +542,7 @@
         "recipient-name-lable": "Recipient Name",
         "recipient-balance-lable": "Recipient Balance",
         "recipient-required-smg": "Recipient address is required.",
+        "recipient-placeholder": "Recipient address",
         "amount-required-smg": "Amount is required.",
         "amount-greater-smg": "Amount must be greater than 0.",
         "public-key-lable": "Public Key",
@@ -577,12 +588,15 @@
         "asset-id-label": "Asset Id",
         "asset-id-popover": "The unique asset id",
         "asset-label": "Asset",
+        "asset-placeholder": "Enter asset id",
         "asset-popover": "The asset name/ticker",
         "alias-name-label": "Alias Name",
         "uri-label": "URI",
         "alias-label": "Alias",
         "alias-price-label": "Alias price",
-        "url-label": "URL"
+        "url-label": "URL",
+        "xin-account-key-placeholder": "XIN - _____ - _____ - _____ - _____",
+        "search-palceholder": "Enter search words"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -891,7 +905,8 @@
         "show-aliases": {
             "title": "Aliases",
             "sell-table-action": "Sell",
-            "transfer-table-action": "Transfer"
+            "transfer-table-action": "Transfer",
+            "search-alias": "Search Alias"
         },
         "edit-alias": {
             "title": "Edit Alias Details",

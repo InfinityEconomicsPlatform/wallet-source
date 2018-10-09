@@ -60,7 +60,7 @@
                                                         </span>
                                                     </div>
                                                     <input type="text" class="form-control" name="recipientRS"
-                                                        #recipientRS="ngModel" placeholder="XIN - _____ - _____ - _____ - _____"
+                                                        #recipientRS="ngModel" placeholder="{{ 'common.xin-account-key-placeholder' | translate}}"
                                                         [(ngModel)]="transferAliasForm.recipientRS" required>
                                                     <div class="input-group-append" *isExpertView="true">
                                                         <span class="btn btn-primary" triggers="mouseenter:mouseleave"

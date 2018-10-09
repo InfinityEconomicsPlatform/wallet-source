@@ -62,7 +62,7 @@
                                                         </div>
                                                         <input type="text" [(ngModel)]="transferCurrencyForm.recipient"
                                                             name="recipient" class="form-control" #recipient="ngModel"
-                                                            required placeholder="XIN - _____ - _____ - _____ - _____">
+                                                            required placeholder="{{ 'common.xin-account-key-placeholder' | translate}}">
                                                         <div class="input-group-append" *isExpertView="true">
                                                             <span class="btn btn-primary" triggers="mouseenter:mouseleave"
                                                                 placement="top" (click)="loadBookmarkView()" container="body"
@@ -87,8 +87,9 @@
                                                         </i>
                                                     </label>
                                                     <div class="input-group">
-                                                        <input type="number" minValue="0" required [(ngModel)]="transferCurrencyForm.units"
-                                                            name="units" #units="ngModel" class="form-control">
+                                                        <input type="number" placeholder="0" minValue="0" required
+                                                            [(ngModel)]="transferCurrencyForm.units" name="units"
+                                                            #units="ngModel" class="form-control">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">
                                                                 UNITS

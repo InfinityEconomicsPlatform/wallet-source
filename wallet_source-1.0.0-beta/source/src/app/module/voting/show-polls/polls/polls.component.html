@@ -25,8 +25,8 @@
             <div class="form-body">
                 <div class="form-group">
                     <div class="position-relative">
-                        <input type="text" class="form-control input-search pb-2" name="form-control-with-icon"
-                            [(ngModel)]="searchQuery" (input)="onSearchChange($event.target.value)">
+                        <input type="text" placeholder="{{ 'common.search-palceholder' | translate}}" class="form-control input-search pb-2"
+                            name="form-control-with-icon" [(ngModel)]="searchQuery" (input)="onSearchChange($event.target.value)">
                         <div class="form-control-position btn-search">
                             <i class="ft-search info mr-2"></i>{{ 'common.search-btn' | translate}}
                         </div>
@@ -35,9 +35,10 @@
                 </div>
             </div>
         </form>
-        <ngx-datatable class="material" [rows]="polls" [columnMode]="'force'" [rowHeight]="'auto'" [footerHeight]="50"
-            [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size" (page)='setPage($event)'
-            (autoRefresh)="reload()">
+        <ngx-datatable class="
+                            material" [rows]="polls" [columnMode]="'force'" [rowHeight]="'auto'"
+            [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size"
+            (page)='setPage($event)' (autoRefresh)="reload()">
             <ngx-datatable-column prop="name" [name]="'table-header.name' | translate">
                 <ng-template let-value="value" ngx-datatable-cell-template>
                     {{value}}

@@ -60,7 +60,7 @@
                                                         </span>
                                                     </div>
                                                     <input type="text" class="form-control" name="recipientRS"
-                                                        #recipientRS="ngModel" placeholder="Recipient address"
+                                                        #recipientRS="ngModel" placeholder="{{ 'common.recipient-placeholder' | translate}}"
                                                         [(ngModel)]="transferAssetForm.recipientRS" required>
                                                     <div class="input-group-append" *isExpertView="true">
                                                         <span class="btn btn-primary" triggers="mouseenter:mouseleave"
@@ -86,7 +86,8 @@
                                                     </i>
                                                 </label>
                                                 <div class="input-group m-0">
-                                                    <input type="number" class="form-control" name="quantity" #quantity="ngModel"
+                                                    <input type="number" placeholder="{{'assets.transfer-asset.shares-label'| translate}}"
+                                                        class="form-control" name="quantity" #quantity="ngModel"
                                                         [(ngModel)]="transferAssetForm.quantity" required>
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">{{'common.quantity-text'|

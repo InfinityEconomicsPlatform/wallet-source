@@ -52,9 +52,10 @@
                                                     </i>
                                                 </label>
                                                 <div class="input-group m-0">
-                                                    <input type="number" class="form-control" name="amountPerQuant"
-                                                        #amountPerQuant="ngModel" [(ngModel)]="dividendPaymentForm.amountPerQuant"
-                                                        required minValue="1">
+                                                    <input type="number" placeholder="{{'assets.dividend-payment.amount-per-share-label'| translate}}"
+                                                        class="form-control" name="amountPerQuant" #amountPerQuant="ngModel"
+                                                        [(ngModel)]="dividendPaymentForm.amountPerQuant" required
+                                                        minValue="1">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">XIN</span>
                                                     </div>
@@ -78,7 +79,8 @@
                                                     </i>
                                                 </label>
                                                 <div class="input-group m-0">
-                                                    <input type="number" class="form-control" name="height" #height="ngModel"
+                                                    <input type="number" placeholder="{{'assets.dividend-payment.height-label'| translate}}"
+                                                        class="form-control" name="height" #height="ngModel"
                                                         [(ngModel)]="dividendPaymentForm.height" required>
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">@{{'common.block-text'|
