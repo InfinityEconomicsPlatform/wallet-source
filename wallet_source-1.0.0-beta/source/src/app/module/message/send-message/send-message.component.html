@@ -92,7 +92,8 @@
                                                     </i>
                                                 </label>
                                                 <div class="position-relative sign_in_inputs">
-                                                    <textarea rows="3" name="message" [(ngModel)]="sendMessageForm.message"
+                                                    <textarea rows="3" placeholder="{{'messages.send-message.message-label'| translate}}"
+                                                        name="message" [(ngModel)]="sendMessageForm.message"
                                                         (ngModelChange)="onChangeMessageInfo($event)" class="form-control pl-0"></textarea>
                                                 </div>
                                             </div>
@@ -112,8 +113,9 @@
                                                     </label>
                                                 </div>
                                                 <div class="position-relative sign_in_inputs">
-                                                    <input type="text" name="pubkey" class="form-control pl-0"
-                                                        [(ngModel)]="sendMessageForm.pubkey">
+                                                    <input type="text" placeholder="{{'messages.send-message.recipient-public-key-label'|
+                                                    translate}}"
+                                                        name="pubkey" class="form-control pl-0" [(ngModel)]="sendMessageForm.pubkey">
                                                 </div>
                                             </div>
                                         </div>

@@ -24,14 +24,14 @@
                                                 <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                     <div class="col-10 col-lg-11">
                                                         <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
-                                                            placeholder="XIN - _____ - _____ - _____ - _____" name="account-{{i}}"
-                                                            [(ngModel)]="setAccountControlForm.approveAccounts[i].value"
+                                                            placeholder="{{ 'common.xin-account-key-placeholder' | translate}}"
+                                                            name="account-{{i}}" [(ngModel)]="setAccountControlForm.approveAccounts[i].value"
                                                             #accountRs="ngModel" required>
                                                     </div>
                                                     <div class="col-2 col-lg-1">
                                                         <span class="btn btn-grey" triggers="mouseenter:mouseleave"
                                                             placement="top" (click)="loadBookmarkView(i)" container="body"
-                                                            ngbPopover="Open your bookmarks to insert an account id">
+                                                            [ngbPopover]="'common.open-bookmark-tooltip' | translate">
                                                             <i class="fa fa-address-card"></i>
                                                         </span>
                                                     </div>

@@ -111,9 +111,9 @@
                                                         </i>
                                                     </label>
                                                     <div class="input-group m-0">
-                                                        <input type="number" class="form-control" [(ngModel)]="createShuffleForm.participantCount"
-                                                            name="participantCount" #participantCount="ngModel"
-                                                            required minValue="3" maxValue="30">
+                                                        <input type="number" placeholder="0" class="form-control"
+                                                            [(ngModel)]="createShuffleForm.participantCount" name="participantCount"
+                                                            #participantCount="ngModel" required minValue="3" maxValue="30">
                                                     </div>
                                                     <div *ngIf="participantCount?.invalid && (participantCount?.dirty || participantCount?.touched)"
                                                         class="input-error">

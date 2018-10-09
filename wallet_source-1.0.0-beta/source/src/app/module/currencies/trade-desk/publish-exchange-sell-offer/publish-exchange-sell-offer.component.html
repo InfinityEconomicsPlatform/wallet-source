@@ -54,8 +54,9 @@
                                                     </label>
                                                     <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
                                                         <div class="col-9 pl-0">
-                                                            <input type="number" minValue="0" required [(ngModel)]="publishExchangeOfferForm.sellRate"
-                                                                name="sellRate" #sellRate="ngModel" class="pl-0 mb-0 pt-0 pb-0 form-control">
+                                                            <input type="number" placeholder="0" minValue="0" required
+                                                                [(ngModel)]="publishExchangeOfferForm.sellRate" name="sellRate"
+                                                                #sellRate="ngModel" class="pl-0 mb-0 pt-0 pb-0 form-control">
                                                         </div>
                                                         <div class="col-3 text-right">
                                                             <span class="input-group-text">
@@ -85,7 +86,8 @@
                                                     </label>
                                                     <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
                                                         <div class="col-9 pl-0">
-                                                            <input type="number" minValue="0" required [(ngModel)]="publishExchangeOfferForm.initialSellSupply"
+                                                            <input type="number" placeholder="0" minValue="0" required
+                                                                [(ngModel)]="publishExchangeOfferForm.initialSellSupply"
                                                                 name="initialSellSupply" #initialSellSupply="ngModel"
                                                                 class="pl-0 mb-0 pt-0 pb-0 form-control">
                                                         </div>

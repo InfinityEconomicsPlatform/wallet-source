@@ -53,7 +53,8 @@
                                                 </label>
                                                 <div class="input-group m-0">
                                                     <input type="number" class="form-control" name="quantity" #quantity="ngModel"
-                                                        [(ngModel)]="deleteAssetForm.quantity" required minValue="1">
+                                                        [(ngModel)]="deleteAssetForm.quantity" placeholder="{{'assets.delete-shares.number-shares-delete-label'| translate}}"
+                                                        required minValue="1">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">{{'assets.delete-shares.quantity-text'|
                                                             translate}} </span>

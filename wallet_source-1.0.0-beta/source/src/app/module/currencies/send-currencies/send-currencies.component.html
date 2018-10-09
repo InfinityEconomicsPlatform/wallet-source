@@ -26,7 +26,8 @@
                                                     <div>
                                                         <input type="text" class="form-control" name="currencyId"
                                                             #currencyId="ngModel" [(ngModel)]="f.currencyId"
-                                                            placeholder="Currency Id" required>
+                                                            placeholder="{{'common.currency-id-label'| translate}}"
+                                                            required>
                                                     </div>
                                                     <div *ngIf="currencyId?.invalid && (currencyId?.dirty || currencyId?.touched)"
                                                         class="input-error">
@@ -46,7 +47,7 @@
                                                     </label>
                                                     <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <div class="col-9 col-lg-10 pl-0 pr-0">
-                                                            <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            <input type="number" placeholder="0" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                                 name="units" #units="ngModel" [(ngModel)]="f.units"
                                                                 required>
                                                         </div>
@@ -72,7 +73,7 @@
                                                     <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <div class="col-7 col-lg-9 pl-0">
                                                             <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
-                                                                name="recipientRS" #recipientRS="ngModel" placeholder="Recipient address"
+                                                                name="recipientRS" #recipientRS="ngModel" placeholder="{{ 'common.recipient-placeholder' | translate}}"
                                                                 [(ngModel)]="f.recipientRS" required>
                                                         </div>
                                                         <div class="col-5 col-lg-3 pr-1">

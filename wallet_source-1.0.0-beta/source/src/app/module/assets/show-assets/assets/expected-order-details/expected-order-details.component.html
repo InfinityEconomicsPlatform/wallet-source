@@ -23,8 +23,8 @@
                                     </label>
                                     <div class="position-relative has-icon-left">
                                         <input type="text" class="form-control" name="form-control-with-icon"
-                                            [(ngModel)]="expectedOrderForm.asset" placeholder="Enter asset id" (input)="onSearchChange($event.target.value)"
-                                            required>
+                                            [(ngModel)]="expectedOrderForm.asset" placeholder="{{ 'common.asset-placeholder' | translate}}"
+                                            (input)="onSearchChange($event.target.value)" required>
                                         <div class="form-control-position">
                                             <i class="ft-search info"></i>
                                         </div>

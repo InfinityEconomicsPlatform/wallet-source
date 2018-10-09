@@ -228,9 +228,9 @@
                                                     </i>
                                                 </label>
                                                 <div class="ml-0 mr-0">
-                                                    <input type="text" class="form-control" [(ngModel)]="issueCurrencyForm.name"
-                                                        name="name" #name="ngModel" minlength="3" maxlength="10"
-                                                        required>
+                                                    <input type="text" placeholder="{{'common.name-label'| translate}}"
+                                                        class="form-control" [(ngModel)]="issueCurrencyForm.name" name="name"
+                                                        #name="ngModel" minlength="3" maxlength="10" required>
                                                     <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="input-error">
                                                         <div *ngIf="name?.errors.required">
                                                             {{'currencies.issue-currency.name-required'| translate}}
@@ -250,9 +250,9 @@
                                                     </i>
                                                 </label>
                                                 <div class="m-0">
-                                                    <input type="text" class="form-control" [(ngModel)]="issueCurrencyForm.code"
-                                                        name="code" #code="ngModel" minlength="3" maxlength="6"
-                                                        required>
+                                                    <input type="text" placeholder="{{'currencies.issue-currency.code-label'| translate}}"
+                                                        class="form-control" [(ngModel)]="issueCurrencyForm.code" name="code"
+                                                        #code="ngModel" minlength="3" maxlength="6" required>
                                                     <div *ngIf="code?.invalid && (code?.dirty || code?.touched)" class="input-error">
                                                         <div *ngIf="code?.errors.required">
                                                             {{'currencies.issue-currency.code-required'| translate}}
@@ -273,8 +273,9 @@
                                             </i>
                                         </label>
                                         <div class="position-relative">
-                                            <textarea rows="5" class="form-control" [(ngModel)]="issueCurrencyForm.description"
-                                                name="description" #description="ngModel" required></textarea>
+                                            <textarea rows="5" placeholder="{{'common.description-label'| translate}}"
+                                                class="form-control" [(ngModel)]="issueCurrencyForm.description" name="description"
+                                                #description="ngModel" required></textarea>
                                             <div *ngIf="description?.invalid && (description?.dirty || description?.touched)"
                                                 class="input-error">
                                                 <div *ngIf="description?.errors.required">
@@ -360,7 +361,7 @@
                                                 <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                     <div class="col-10 col-md-11 pl-0">
 
-                                                        <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                        <input type="number" placeholder="0" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                             (input)="onInitialSupplyChange()" [(ngModel)]="issueCurrencyForm2.initialSupply"
                                                             name="initialSupply" #initialSupply="ngModel" [minValue]="1"
                                                             required>
