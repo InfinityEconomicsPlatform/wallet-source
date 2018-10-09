@@ -3,25 +3,25 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Sign Escrow Details</h2>
+                    <h2 class="main-title">{{'escrow.sign-escrow.title'| translate}} </h2>
                     <app-breadcrumb></app-breadcrumb>
                     <h3 class="back-button" (click)="goBack()">
-                        <i class="fa fa-chevron-left"></i> Back
+                        <i class="fa fa-chevron-left"></i> {{'common.back-btn'| translate}}
                     </h3>
                 </div>
             </div>
             <div class="card-body">
                 <div class="card-block ml-3 mr-3">
                     <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                        <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                        <aw-wizard-step stepTitle="{{'common.details-step'| translate}} " [navigationSymbol]="{ symbol: '1' }">
                             <form class="form">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group mb-0">
-                                                <label>ESCROW ID
+                                                <label>{{'escrow.sign-escrow.escrow-id-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The escrow ID for sign for">
+                                                        placement="right" container="body" ngbPopover=" {{'escrow.sign-escrow.escrow-id-popover'| translate}} ">
                                                     </i>
                                                 </label>
                                                 <h6 class="mb-0">{{escrow.escrowId}}</h6>
@@ -32,15 +32,16 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="form-group m-0">
-                                                <label>DECISION MODEL
+                                                <label>{{'escrow.create-escrow.decision-model-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="The signing decision for this escrow"></i>
+                                                        placement="right" container="body" ngbPopover="{{'escrow.sign-escrow.decision-model-popover'| translate}}"></i>
                                                 </label>
-                                                <select name="type" class="form-control" [(ngModel)]="escrow.decision">
-                                                    <option value="">Select</option>
-                                                    <option value="release">Release</option>
-                                                    <option value="refund">Refund</option>
-                                                    <option value="split">Split</option>
+                                                <select name="type" value="release" class="form-control" [(ngModel)]="escrow.decision"
+                                                    required>
+                                                    <option *ngFor='let deadline of deadlineActionOptions' [value]="deadline.value">
+                                                        {{'escrow.create-escrow.deadlines.'+ deadline.label |
+                                                        translate}}
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -50,7 +51,8 @@
                                             <div class="form-actions left">
                                                 <button type="button" class="btn btn-primary mr-1 mb-0 float-right"
                                                     [disabled]="!escrow.decision" (click)="escrowSign()" awNextStep>
-                                                    <i class="fa fa-chevron-right"></i> Next
+                                                    <i class="fa fa-chevron-right"></i> {{'common.next-btn'|
+                                                    translate}}
                                                 </button>
                                             </div>
                                         </div>
@@ -59,15 +61,15 @@
                             </form>
                         </aw-wizard-step>
 
-                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
+                        <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb">Escrow Id
+                                    <div class="ucsb">{{'escrow.sign-escrow.escrow-id-label'| translate}}
                                     </div>
                                     <h4>{{escrow.escrowId}}</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb">Decision Model
+                                    <div class="ucsb">{{'escrow.create-escrow.decision-model-label'| translate}}
                                     </div>
                                     <h4> {{escrow.decision}} </h4>
                                 </div>
@@ -75,22 +77,22 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Valid
+                                    <div class="ucsb"> {{'common.valid-lable'| translate}}
                                     </div>
                                     <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb"> Service Fee
+                                    <div class="ucsb"> {{'common.service-fee-lable'| translate}}
                                     </div>
                                     <h4> {{tx_fee | amountTkn}}
-                                        <small> XIN </small>
+                                        <small> {{'common.xin-unit-text'| translate}} </small>
                                     </h4>
                                 </div>
                             </div>
                             <hr />
                             <button type="button" [ngClass]="{'btn-success': !hasPrivateMessage, 'btn-danger': hasPrivateMessage}"
                                 class="btn btn-raised mb-0" (click)="hasPrivateMessage=!hasPrivateMessage">
-                                <i class="fa fa-key"></i> Signed Transaction
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
                             </button>
                             <hr *ngIf="hasPrivateMessage">
                             <div class="form-group" *ngIf="hasPrivateMessage">
@@ -101,10 +103,10 @@
                             <div class="form-actions">
                                 <button type="button" class="btn btn-primary float-right" [disabled]="!validBytes"
                                     (click)="broadcastTransaction(transactionBytes)">
-                                    <i class="fa fa-check"></i> Finish
+                                    <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
                                 </button>
                                 <button type="button" class="btn btn-primary mr-1 float-right" awPreviousStep>
-                                    <i class="fa fa-chevron-left"></i> Previous
+                                    <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
                                 </button>
                             </div>
                         </aw-wizard-step>

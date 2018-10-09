@@ -696,7 +696,12 @@
         "details": "Details",
         "amount-per-unit": "Amount per Unit",
         "interval": "Interval (D)",
-        "next-payment": "Next Payment"
+        "next-payment": "Next Payment",
+        "role": "Role",
+        "expires": "Expires",
+        "deadline": "Deadline",
+        "signer": "Signer",
+        "decision": "Decision"
     },
     "assets": {
         "show": {
@@ -1148,7 +1153,46 @@
     },
     "escrow": {
         "create-escrow": {
-            "title": "Create Escrow"
+            "title": "Create Escrow",
+            "recipient-popover": "The recipient account to send token to",
+            "recipient-required": "Recipient is required",
+            "amount-popover": "The amount you like to send to the recipient account.",
+            "amount-required": "Amount is required",
+            "amount-greater": "Amount must be greater than 0",
+            "days-until-expiration-label": "Days Until Expiration",
+            "days-until-expiration-popover": "Your escrow will expire without approval after this number of days.Min. 1, max. 90",
+            "days-required": "Days is required",
+            "days-greater": "Days must be greater than 0",
+            "decision-model-label": "Decision Model",
+            "decision-model-popover": "Choose decision model after escrow expiration.",
+            "number-signers-label": "Number Signers",
+            "number-signers-popover": "The number of signers.",
+            "signers-required": "Signers is required",
+            "signers-greater": "Signers must be greater than 0",
+            "signers-label": "Signers",
+            "signers-popover": "Signers, min. 2, max. 10, Semicolon(;) separated.",
+            "signers-placeholder": "Signers (semicolon(;) separated)",
+            "amount-or-deadline-label": "Amount / Deadline",
+            "deadlines": {
+                "Select": "Select",
+                "Release": "Release",
+                "Refund": "Refund",
+                "Split": "Split"
+            }
+        },
+        "my-escrow": {
+            "title": "MY ESCROW",
+            "sign-escrow-table-action": "Sign Escrow",
+            "escrow-status-table-action": "Escrow Status"
+        },
+        "sign-escrow": {
+            "title": "Sign Escrow Details",
+            "escrow-id-label": "Escrow Id",
+            "escrow-id-popover": "The escrow ID for sign for",
+            "decision-model-popover": "The signing decision for this escrow"
+        },
+        "escrow-status": {
+            "title": "Escrow Status"
         }
     },
     "breadcrumbs": {
