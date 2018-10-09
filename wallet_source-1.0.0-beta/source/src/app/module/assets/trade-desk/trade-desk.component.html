@@ -118,7 +118,7 @@
                                                                 <input type="number" placeholder="{{'assets.trade-desk.price-label' | translate}}"
                                                                     class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="buyFormOnChange()"
                                                                     [(ngModel)]="buyOrderForm.price" name="price"
-                                                                    #price="ngModel" minValue="0" required>
+                                                                    #price_buy="ngModel" minValue="0" required>
                                                             </div>
                                                             <div class="col-3">
 
@@ -127,13 +127,13 @@
 
                                                             </div>
                                                         </div>
-                                                        <div *ngIf="price?.invalid && (price?.dirty || price?.touched)"
+                                                        <div *ngIf="price_buy?.invalid && (price_buy?.dirty || price_buy?.touched)"
                                                             class="input-error">
-                                                            <div *ngIf="price?.errors.required">
+                                                            <div *ngIf="price_buy?.errors.required">
                                                                 {{'assets.trade-desk.price-required-validation-text' |
                                                                 translate}}
                                                             </div>
-                                                            <div *ngIf="price?.errors.minValue && !price?.errors.required">
+                                                            <div *ngIf="price_buy?.errors.minValue && !price_buy?.errors.required">
                                                                 {{'assets.trade-desk.price-value-validation-text' |
                                                                 translate}}
                                                             </div>
@@ -148,15 +148,15 @@
                                                             <input type="number" placeholder="{{'assets.issue-asset.asset-quantity-label' | translate}}"
                                                                 class="form-control" (input)="buyFormOnChange()"
                                                                 [(ngModel)]="buyOrderForm.quantity" name="quantity"
-                                                                #quantity="ngModel" minValue="0" required>
+                                                                #quantity_buy="ngModel" minValue="0" required>
                                                         </div>
-                                                        <div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)"
+                                                        <div *ngIf="quantity_buy?.invalid && (quantity_buy?.dirty || quantity_buy?.touched)"
                                                             class="input-error">
-                                                            <div *ngIf="quantity?.errors.required">
+                                                            <div *ngIf="quantity_buy?.errors.required">
                                                                 {{'assets.issue-asset.asset-quantity-required-validation-message'
                                                                 | translate}}
                                                             </div>
-                                                            <div *ngIf="quantity?.errors.minValue && !quantity?.errors.required">
+                                                            <div *ngIf="quantity_buy?.errors.minValue && !quantity_buy?.errors.required">
                                                                 {{'assets.issue-asset.asset-quantity-value-validation-message'
                                                                 | translate}}
                                                             </div>
@@ -171,7 +171,7 @@
                                                                 <input type="text" placeholder="{{'common.total-text' | translate}}"
                                                                     disabled class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                                     [(ngModel)]="buyOrderForm.totalPrice" name="totalPrice"
-                                                                    #totalPrice="ngModel">
+                                                                    #totalPrice_buy="ngModel">
                                                             </div>
                                                             <div class="col-3">
 
