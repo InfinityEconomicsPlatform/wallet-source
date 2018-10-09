@@ -95,6 +95,7 @@
             "number-blocks-tooltip": "Your transaction will be executed without further approvement after this number of blocks",
             "reference-full-hash-lable": "Referenced full HASH",
             "reference-full-hash-tooltip": "Your transaction will be executed if this transaction hash is included into the blockchain",
+            "reference-full-hash-placeholder": "type in the HASH",
             "secret-hash-lable": "Secret Hash",
             "secret-hash-tooltip": "Your transaction will be executed if this secret hash is included into the blockchain",
             "recipient-tooltip": "The recipient account to send token to.",
@@ -132,8 +133,10 @@
             "other-digital-lable": "Sending any other digital asset,including Bitcoin Cash and USDT, will result in permanent loss.",
             "transaction-full-hash-lable": "Transaction Full Hash",
             "transaction-full-hash-tooltip": "To claim a secret transaction you have to enter the transaction full hash.",
+            "transaction-full-hash-placeholder": "Type in the hash",
             "revealed-secret-lable": "Revealed Secret Text",
             "revealed-secret-tooltip": "Enter the secret from sender to claim your transaction before the transaction expires.",
+            "revealed-secret-placeholder": "Enter secret text",
             "print-btn": "PRINT",
             "email-btn": "EMAIL"
         },
@@ -173,9 +176,12 @@
         "balance-lease": {
             "balance-lease-title": "Balance Leasing",
             "recipient-lable": "BALANCE LEASE RECIPIENT",
+            "recipient-placeholder": "Recipient address",
             "block-duration-lable": "BLOCK DURATION FOR THIS LEASE",
             "public-key-field-lable": "RECIPIENT PUBLIC KEY ANNOUNCEMENT (OPTIONAL)",
+            "public-key-field-placeholder": "Recipient Publick Key announcement",
             "message-field-lable": "Message (MAX. 160 CHARS)",
+            "message-field-placeholder": "Message",
             "message-field-popover": "For message encryption the recipient public key has to be known.",
             "public-key-field-popover": "Additional security for brand new accounts without any outbound transaction.",
             "block-duration-popover": "1.440 Blocks are equal one day. Range from min. 1'440 to max. 65'535 Blocks",
@@ -190,13 +196,16 @@
             "search-account-title": "Search Account",
             "search-for-account-lable": "Search for Account Info",
             "search-for-account-popover": "Enter word(s) to search for accounts with info and description.",
-            "search-btn": "Search"
+            "search-btn": "Search",
+            "search-for-account-placeholder": "Enter search words"
         },
         "my-bookmarks": {
             "my-bookmark-title": "My Bookmarks",
             "my-bookmark-sub-title": "Add New Bookmark",
             "account-name-lable": "Account Name",
+            "account-name-placeholder": "Enter New Account",
             "account-tag-lable": "Account Tag",
+            "account-tag-placeholder": "Enter account tag",
             "add-btn": "Add",
             "bookmark-list-lable": "Bookmark List",
             "select-popover": "Select",
@@ -217,9 +226,11 @@
             "won-property-popover": "Set property on your own account",
             "property-key-lable": "Property Key",
             "property-key-popover": "The Property Key",
+            "property-key-placeholder": "Account property key",
             "property-key-required-msg": "Property Key is required",
             "property-value-lable": "Property Value",
             "property-value-popover": "The Property Value",
+            "property-value-placeholder": "Account property value",
             "property-value-required-msg": "Property Value is required",
             "account-lable": "Account",
             "delete-property-popover": "Delete property"
@@ -230,6 +241,7 @@
             "local-node-available-lable": "Local Node Available?",
             "status-lable": "Block Generation Status",
             "secret-phrase-lable": "Secret phrase",
+            "secret-phrase-placeholder": "Type in your secret phrase",
             "local-node-available-popover": "To generate blocks your passphrase is used to sign blocks. For security reasons block generation is only available on your local node.",
             "status-popover": "The block generation status on your local node.",
             "secret-phrase-popover": "Ensure you are running a local node before enter your passphrase to prevent security risks. You can switch over anytime to a local node by choosing LOCAL_HOST for connection mode in options.",
@@ -253,8 +265,6 @@
             "interval-popover": "The number of blocks to wait after before funding the recipient (min. 10).",
             "holding-type-lable": "Holding Type",
             "holding-type-popover": "Holding types are token, assets or currencies.",
-            "asset-id-lable": "Asset ID",
-            "asset-id-popover": "Enter the asset ID (numeric)",
             "currency-ticker-lable": "Currency Ticker",
             "currency-ticker-popover": "Enter the currency ticker (text)",
             "admin-password-lable": "Admin Password",
@@ -497,12 +507,16 @@
         "filter-sort-supply-popover": "Sort Supply",
         "filter-sort-height-popover": "Sort Height",
         "filter-sort-decimals-popover": "Sort Decimals",
+        "filter-active-polls-popover": "Active Polls",
         "filter-sort-date-popover": "Sort Date",
         "filter-sort-price-popover": "Sort Price",
         "reload-filter-popover": "Reload",
         "details-table-action": "Details",
         "tradeDesk-table-action": "TradeDesk",
         "cancel-table-action": "Cancel",
+        "result-table-action": "Results",
+        "vote-table-action": "Vote",
+        "voters-table-action": "Voters",
         "delete-table-action": "Delete",
         "edit-table-action": "Edit",
         "back-btn": "Back",
@@ -529,6 +543,7 @@
         "recipient-name-lable": "Recipient Name",
         "recipient-balance-lable": "Recipient Balance",
         "recipient-required-smg": "Recipient address is required.",
+        "recipient-placeholder": "Recipient address",
         "amount-required-smg": "Amount is required.",
         "amount-greater-smg": "Amount must be greater than 0.",
         "public-key-lable": "Public Key",
@@ -577,12 +592,15 @@
         "asset-id-label": "Asset Id",
         "asset-id-popover": "The unique asset id",
         "asset-label": "Asset",
+        "asset-placeholder": "Enter asset id",
         "asset-popover": "The asset name/ticker",
         "alias-name-label": "Alias Name",
         "uri-label": "URI",
         "alias-label": "Alias",
         "alias-price-label": "Alias price",
-        "url-label": "URL"
+        "url-label": "URL",
+        "xin-account-key-placeholder": "XIN - _____ - _____ - _____ - _____",
+        "search-palceholder": "Enter search words"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -827,6 +845,62 @@
             }
         }
     },
+    "voting": {
+        "show-polls": {
+            "title": "Show Polls",
+            "create-btn": "Create",
+            "my": {
+                "title": "My Polls"
+            },
+            "all": {
+                "title": "ALL Polls"
+            }
+        },
+        "create-poll": {
+            "title": "Create Poll",
+            "voting-model-label": "Voting Model",
+            "voting-model-popover": "Choose the voting model by account, each account has one vote. Balance, each account is weighted by it's balance. Asset is weighted by account asset balance and currency by account currency balance. You can also limit the voters by adding a minimum XIN balance needed to vote.",
+            "voting-model-required-validation-error": "Choose a voting model",
+            "voting-options": {
+                "Account": "Account",
+                "Balance": "Balance",
+                "Asset": "Asset",
+                "Currency": "Currency"
+            },
+            "minimum-voter-balance-label": "Minimum voter balance",
+            "minimum-voter-balance-popover": "Enter the minimum account balance needed to vote on this poll.",
+            "minimum-voter-balance-placeholder": "Minimum balance",
+            "minimum-voter-balance-required-validation-error": "Enter minimum balance",
+            "asset-id-label": "Asset ID",
+            "asset-id-popover": "Enter the asset ID (numeric)",
+            "asset-id-placeholder": "Asset ID",
+            "asset-id-validation-error": "Enter the asset ID (numeric)",
+            "currency-ticker-label": "Currency Ticker",
+            "currency-ticker-popover": "Enter the currency ticker (text)",
+            "currency-ticker-placeholder": "Currency Code/Ticker",
+            "currency-ticker-validation-error": "Enter the currency ticker",
+            "name-popover": "Poll names can have max. 100 chars",
+            "name-required-validation": "Poll name is required (max. 100 chars)",
+            "description-popover": "Poll descriptions with max. 1,000 characters",
+            "minimum-options": "Minimum options",
+            "minimum-options-popover": "The minimum number of option a voter can choose. Set this to 1.",
+            "minimum-options-placeholder": "Minimum Number Options",
+            "minimum-options-require-validation": "Enter minimum number of option a voter can choose.",
+            "minimum-options-value-validation": "Minimum Number Options must be greater than 0",
+            "maximum-options": "Maximum options",
+            "maximum-options-popover": "The maximum number of option a voter can choose from. For yes/no question this value has to set to 1.",
+            "maximum-options-placeholder": "Maximum Number Options",
+            "maximum-options-require-validation": "Enter maximum number of option a voter can choose.",
+            "maximum-options-value-validation": "Maximum Number Options must be greater than 0",
+            "block-height": "Duration in Blocks",
+            "block-height-popover": "The duration for this poll. 1.440 Blocks are equal one day. Range from min. 1.440 to max. 20.000 Blocks",
+            "block-height-require-validation": "Height of block is required",
+            "block-height-value-validation": "Height of block should be greater than 1440 or less than 20000",
+            "add-options-poll": "Add options for this Poll",
+            "add-options-placeholder": "Enter option text here",
+            "add-options-require-validation": "Please enter the option"
+        }
+    },
     "aliases": {
         "create-alias": {
             "title": "Create Alias",
@@ -868,7 +942,8 @@
         "show-aliases": {
             "title": "Aliases",
             "sell-table-action": "Sell",
-            "transfer-table-action": "Transfer"
+            "transfer-table-action": "Transfer",
+            "search-alias": "Search Alias"
         },
         "edit-alias": {
             "title": "Edit Alias Details",
@@ -903,7 +978,6 @@
             "alias-popover": "The alias to delete",
             "uri-popover": "The current resource your aliase is pointing to"
         }
-
     },
     "at": {
         "create-at": {
@@ -918,7 +992,7 @@
             "minimum-activation-amount-less": "Minimum activation amount must be less than equal to 100",
             "description-popover": "A description about your AT. Max. 1.000 chars.",
             "description-required": "Description is required",
-            "code-label": "CODE",
+            "code-label": "Code",
             "code-popover": "This is where you place your AT code.",
             "code-required": "Code is required",
             "code-greater": "Code must be greater than equal to 10 chars",
@@ -950,7 +1024,6 @@
         },
         "show-ats": {
             "title": "Show ATs",
-            "create-btn": "Create",
             "transaction-details-table-action": "Transaction Details",
             "at-details-table-action": "AT Details",
             "run-at-table-action": "Run AT"
