@@ -701,7 +701,8 @@
         "expires": "Expires",
         "deadline": "Deadline",
         "signer": "Signer",
-        "decision": "Decision"
+        "decision": "Decision",
+        "voter": "Voter"
     },
     "assets": {
         "show": {
@@ -899,6 +900,28 @@
             "add-options-poll": "Add options for this Poll",
             "add-options-placeholder": "Enter option text here",
             "add-options-require-validation": "Please enter the option"
+        },
+        "poll-detail": {
+            "title": "Poll Details",
+            "poll-id": "Poll Id",
+            "block-height-finished": "Block height finished",
+            "date-created": "Date created",
+            "option-model": "Option Model",
+            "min-balance-model": "Min. Balance Model",
+            "min-balance": "Min. Balance"
+        },
+        "poll-result": {
+            "title": "Poll Result"
+        },
+        "cast-vote": {
+            "title": "Cast Vote",
+            "poll-name-popover": "The poll name",
+            "poll-description-popover": "The poll description",
+            "available-option-label": "Available options to choose ( Max. {{ maxNumberOfOptions }} Option )",
+            "available-option-popover": "You can choose up to {{ maxNumberOfOptions}} option(s) for this poll"
+        },
+        "voting-list": {
+            "title": "Voting List"
         }
     },
     "aliases": {
