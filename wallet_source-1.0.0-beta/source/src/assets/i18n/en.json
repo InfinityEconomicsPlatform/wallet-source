@@ -2064,7 +2064,24 @@
             "advanced": "Advanced",
             "basic": "Basic",
             "putForSale": "Put For Sale",
-            "process_without_approval": "Process without approval."
+            "process_without_approval": "Process without approval.",
+            "process_without_approval_popover": "Transaction doesn't need further approval to become valid.",
+            "deffered_popover": "Transaction execution is deferred, however transaction doesn't need further approval to become valid.",
+            "fixed_accounts_popover": "Transaction has to be approved by a certain number of accounts.",
+            "amount_popover": "Transaction has to be approved by accounts holding a certain total amount of NXT.",
+            "assets_popover": "Transaction has to be approved by asset holders with a certain total stake.",
+            "currencies_popover": "Transaction has to be approved by currency holders with a certain total stake.",
+            "hash_popover": "Transaction is executed only if another transaction having the specified full hash is included in the blockchain.",
+            "secret_hash_popover": "Transaction is approved by revealing a secret message matching the specified hash.",
+            "deadline": "Deadline",
+            "hours": "Hours",
+            "referenced_transaction": "Referenced Transaction Hash",
+            "referenced_transaction_placeholder": "Referenced Transaction Full Hash",
+            "donot_broadcast": "Do Not Broadcast",
+            "donot_sign": "Do Not Sign",
+            "add_note_to_self": "Add Note To Self",
+            "note_to_self": "Note To Self",
+            "encrypted_note": "This note is Encrypted"
         },
         "purchased": {
             "title": "Purchased Products"
