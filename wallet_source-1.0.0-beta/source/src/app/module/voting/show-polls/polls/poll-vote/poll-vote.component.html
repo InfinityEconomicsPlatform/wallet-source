@@ -4,27 +4,27 @@
             <div class="card">
                 <div class="card-block main-card-block">
                     <div class="border-bt">
-                        <h2 class="main-title">Cast Vote</h2>
+                        <h2 class="main-title">{{ 'voting.cast-vote.title' | translate}}</h2>
                         <app-breadcrumb></app-breadcrumb>
                         <h3 class="back-button" (click)="goBack()">
-                            <i class="fa fa-chevron-left"></i> Back
+                            <i class="fa fa-chevron-left"></i> {{ 'common.back-btn' | translate}}
                         </h3>
                     </div>
 
                     <div class="card-body poll-vote mt-4">
                         <div class="card-block mr-3 ml-3">
                             <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                                <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }" [canExit]="isStepOneFormValid"
-                                    class="form-bordered mt-4">
+                                <aw-wizard-step stepTitle="{{ 'common.details-step' | translate}}" [navigationSymbol]="{ symbol: '1' }"
+                                    [canExit]="isStepOneFormValid" class="form-bordered mt-4">
                                     <form class="form inner-form" #transferAliasForm="ngForm" novalidate>
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group m-0">
-                                                        <label>Name
+                                                        <label>{{ 'common.name-label' | translate}}
                                                             <i class="fa fa-question-circle-o" aria-hidden="true"
                                                                 triggers="mouseenter:mouseleave" placement="right"
-                                                                container="body" ngbPopover="The poll name">
+                                                                container="body" [ngbPopover]="'voting.cast-vote.poll-name-popover' | translate">
                                                             </i>
                                                         </label>
                                                         <div>
@@ -34,10 +34,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group m-0">
-                                                        <label>Description
+                                                        <label>{{ 'common.description-label' | translate}}
                                                             <i class="fa fa-question-circle-o" aria-hidden="true"
                                                                 triggers="mouseenter:mouseleave" placement="right"
-                                                                container="body" ngbPopover="The poll description">
+                                                                container="body" [ngbPopover]="'voting.cast-vote.poll-description-popover' | translate">
                                                             </i>
                                                         </label>
                                                         <div>
@@ -50,13 +50,12 @@
                                             <div class="row  mt-4">
                                                 <div class="col-md-6">
                                                     <div class="form-group m-0">
-                                                        <label>Available options to choose ( Max. {{
-                                                            poll.maxNumberOfOptions
-                                                            }} Option )
+                                                        <label>{{ 'voting.cast-vote.available-option-label' |
+                                                            translate:{maxNumberOfOptions: poll.maxNumberOfOptions} }}
                                                             <i class="fa fa-question-circle-o" aria-hidden="true"
                                                                 triggers="mouseenter:mouseleave" placement="right"
-                                                                container="body" ngbPopover="You can choose up to {{ poll.maxNumberOfOptions
-                                                        }} option(s) for this poll">
+                                                                container="body" [ngbPopover]="'voting.cast-vote.available-option-popover' |
+                                                                translate:{maxNumberOfOptions: poll.maxNumberOfOptions}">
                                                             </i>
                                                         </label>
                                                         <div *ngFor="let option of options" class="col-md-6">
@@ -75,26 +74,27 @@
                                         <div class="left">
                                             <button type="button" class="btn btn-gradient mr-1 mb-0 float-right"
                                                 (click)="nextStep()" awNextStep>
-                                                <i class="fa fa-chevron-right"></i> Next
+                                                <i class="fa fa-chevron-right"></i> {{ 'common.next-btn' | translate}}
                                             </button>
                                         </div>
                                     </form>
                                 </aw-wizard-step>
-                                <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                                <aw-wizard-step stepTitle="{{ 'common.confirm-step' | translate}}" [navigationSymbol]="{ symbol: '2' }"
+                                    class="form-bordered mt-4">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Name</div>
+                                            <div class="ucsb"> {{ 'common.name-label' | translate}}</div>
                                             <h4> {{ poll.name }} </h4>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Valid</div>
+                                            <div class="ucsb"> {{ 'common.valid-lable' | translate}}</div>
                                             <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="ucsb"> Service Fee</div>
+                                            <div class="ucsb"> {{ 'common.service-fee-lable' | translate}}</div>
                                             <h4> {{ tx_fee | amountTkn }}
                                                 <small> XIN</small>
                                             </h4>
@@ -103,7 +103,7 @@
 
                                     <button type="button" [ngClass]="{'btn-success': !signedTx, 'btn-danger': signedTx}"
                                         class="btn btn-raised mr-1 mb-0" (click)="signedTx = !signedTx">
-                                        <i class="fa fa-key"></i> Signed Transaction
+                                        <i class="fa fa-key"></i> {{ 'common.signed-transaction-lable' | translate}}
                                     </button>
 
                                     <div class="form-group" *ngIf="signedTx">
@@ -115,10 +115,10 @@
                                     <div class="mt-4">
                                         <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
                                             (click)="broadcastTransaction(transactionBytes)">
-                                            <i class="fa fa-check"></i> Finish
+                                            <i class="fa fa-check"></i> {{ 'common.finish-btn' | translate}}
                                         </button>
                                         <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                            <i class="fa fa-chevron-left"></i> Previous
+                                            <i class="fa fa-chevron-left"></i> {{ 'common.previous-btn' | translate}}
                                         </button>
                                     </div>
                                 </aw-wizard-step>

@@ -705,7 +705,8 @@
         "decision": "Decision",
         "participants": "Participants",
         "stage": "Stage",
-        "assigne": "Assigne"
+        "assigne": "Assigne",
+        "voter": "Voter"
     },
     "assets": {
         "show": {
@@ -882,7 +883,49 @@
             "currency-ticker-label": "Currency Ticker",
             "currency-ticker-popover": "Enter the currency ticker (text)",
             "currency-ticker-placeholder": "Currency Code/Ticker",
-            "currency-ticker-validation-error": "Enter the currency ticker"
+            "currency-ticker-validation-error": "Enter the currency ticker",
+            "name-popover": "Poll names can have max. 100 chars",
+            "name-required-validation": "Poll name is required (max. 100 chars)",
+            "description-popover": "Poll descriptions with max. 1,000 characters",
+            "minimum-options": "Minimum options",
+            "minimum-options-popover": "The minimum number of option a voter can choose. Set this to 1.",
+            "minimum-options-placeholder": "Minimum Number Options",
+            "minimum-options-require-validation": "Enter minimum number of option a voter can choose.",
+            "minimum-options-value-validation": "Minimum Number Options must be greater than 0",
+            "maximum-options": "Maximum options",
+            "maximum-options-popover": "The maximum number of option a voter can choose from. For yes/no question this value has to set to 1.",
+            "maximum-options-placeholder": "Maximum Number Options",
+            "maximum-options-require-validation": "Enter maximum number of option a voter can choose.",
+            "maximum-options-value-validation": "Maximum Number Options must be greater than 0",
+            "block-height": "Duration in Blocks",
+            "block-height-popover": "The duration for this poll. 1.440 Blocks are equal one day. Range from min. 1.440 to max. 20.000 Blocks",
+            "block-height-require-validation": "Height of block is required",
+            "block-height-value-validation": "Height of block should be greater than 1440 or less than 20000",
+            "add-options-poll": "Add options for this Poll",
+            "add-options-placeholder": "Enter option text here",
+            "add-options-require-validation": "Please enter the option"
+        },
+        "poll-detail": {
+            "title": "Poll Details",
+            "poll-id": "Poll Id",
+            "block-height-finished": "Block height finished",
+            "date-created": "Date created",
+            "option-model": "Option Model",
+            "min-balance-model": "Min. Balance Model",
+            "min-balance": "Min. Balance"
+        },
+        "poll-result": {
+            "title": "Poll Result"
+        },
+        "cast-vote": {
+            "title": "Cast Vote",
+            "poll-name-popover": "The poll name",
+            "poll-description-popover": "The poll description",
+            "available-option-label": "Available options to choose ( Max. {{ maxNumberOfOptions }} Option )",
+            "available-option-popover": "You can choose up to {{ maxNumberOfOptions}} option(s) for this poll"
+        },
+        "voting-list": {
+            "title": "Voting List"
         }
     },
     "aliases": {
