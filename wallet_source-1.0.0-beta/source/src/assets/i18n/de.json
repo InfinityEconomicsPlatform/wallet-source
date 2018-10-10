@@ -582,7 +582,8 @@
         "uri-label": "URI",
         "alias-label": "Alias",
         "alias-price-label": "Alias price",
-        "url-label": "URL"
+        "url-label": "URL",
+        "holding-type-label": "Holding Type"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -683,7 +684,10 @@
         "expires": "Expires",
         "deadline": "Deadline",
         "signer": "Signer",
-        "decision": "Decision"
+        "decision": "Decision",
+        "participants": "Participants",
+        "stage": "Stage",
+        "assigne": "Assigne"
     },
     "assets": {
         "show": {
@@ -1120,6 +1124,83 @@
         },
         "escrow-status": {
             "title": "Escrow Status"
+        }
+    },
+    "shuffling": {
+        "create-shuffling": {
+            "title": "Create Shuffling",
+            "note": "To shuffle your passphrase is used to sign transactions. For security reasons shuffling is only available on your local node or a manual node (preferably your own trusted node and set in options connection mode). After creating or joining a shuffling you must keep your node online and your shuffler running. Make sure your balance is able to cover the 12 token shuffling fees until the shuffling completes. If you don't and miss your turn you will be charged 1.000 token.",
+            "holding-type-label": "Holding Type",
+            "holding-type-popover": "Holding types are token, assets or currencies. Currencies can have a non-shuffable tag means you can't shuffle currencies with this tag created.",
+            "holding-type": {
+                "XIN": "XIN",
+                "Asset": "Asset",
+                "Currency": "Currency"
+            },
+            "asset-id-popover": "Enter the asset ID (numeric)",
+            "currency-ticker-label": "Currency Ticker",
+            "currency-ticker-popover": "Enter the currency ticker (text)",
+            "amount-popover": "The amount to shuffle. Min. 1.000 Token.",
+            "amount-greater": "Amount must be greater than equal to 1000",
+            "participant-count-label": "Participant Count",
+            "participant-count-popover": "The minimum number of participants to activate this shuffling. Min. 3 and max. 30.",
+            "participant-count-required": "Participant Count is required",
+            "participant-count-greater": "Participant Count must be greater than 3",
+            "participant-count-less": "Participant Count must be less than equal to 30",
+            "register-block-until-label": "Register in block until",
+            "register-block-until-popover": "The registration duration for this shuffle. 1.440 Blocks are equal one day.",
+            "block-height-required": "Block Height is required",
+            "block-height-greater": "Block Height must be greater than equal to 1440",
+            "block-height-less": "Block Height must be less than equal to 20160"
+        },
+        "show-shufflings": {
+            "title": "SHUFFLINGS",
+            "shufflings-tab": "Shufflings",
+            "clear-node-shufflers-filter-popover": "Clear Node Shufflers",
+            "filters": {
+                "Active Shuffles": "Active Shuffles",
+                "All Shuffles": "All Shuffles"
+            },
+            "shuffling-details-table-action": "Shuffling Details",
+            "join-shuffling-table-action": "Join Shuffling",
+            "start-shuffling-table-action": "Start Shuffling",
+            "stop-shuffling-table-action": "Stop Shuffling"
+        },
+        "shuffling-details": {
+            "title": "Shuffling Details",
+            "shuffling-id-label": "Shuffling Id",
+            "last-assigne-label": "Last Assigne",
+            "block-remaining-label": "Block Remaining",
+            "participant-count-label": "Participant Count",
+            "registrant-count-label": "Registrant Count",
+            "state-label": "State",
+            "stage-hash-tab": "Stage Hash"
+        },
+        "start-shuffling": {
+            "title": "Start Shuffle Details",
+            "note": "Your passphrase is needed to start the shuffle on the connected node. Due to security reason this is only allowed on a local node or the dedicated SSL node provided by the foundation. The most secure way is to run your own local node for shuffling. To proceed please enter the recipient public key where to send token/assets or currencies. The recipient account has to be an unused, new account. You can generate a new account from login. Write down the passphrase!",
+            "recipient-public-key-label": "Recipient Public Key",
+            "recipient-public-key-popover": "The recipient public key. Just create a new account and copy the key into this form field.",
+            "public-key-placeholder": "Public Key",
+            "start-btn": "Start"
+        },
+        "stop-shuffling": {
+            "title": "Stop Shuffle Details",
+            "note": "If you stop your already started shuffle (an already fully joined running shuffle) you will be charged 1.000 XIN.",
+            "shuffle-full-hash-label": "Shuffle full hash",
+            "shuffle-full-hash-popover": "The shuffle full hash",
+            "stop-btn": "Stop"
+        },
+        "join-shuffling": {
+            "title": "Join Shuffle Details",
+            "warning-note": "After creating or joining a shuffling you must keep your node online and your shuffler running.Make sure your balance is able to cover the 12 XIN shuffling fees until the shuffling completes.If you don't and miss your turn you will be charged 1.000 XIN.",
+            "shuffling-label": "Shuffling",
+            "shuffling-popover": "The shuffle ID",
+            "holding-type-popover": "The holding type. Token, Asset or Currency",
+            "amount-popover": "The shuffling amount"
+        },
+        "shuffling-participants": {
+            "title": "Shuffling participants"
         }
     },
     "breadcrumbs": {
