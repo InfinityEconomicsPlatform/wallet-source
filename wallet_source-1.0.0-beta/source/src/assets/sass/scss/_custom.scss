@@ -1405,9 +1405,92 @@ height: calc(100% - 80px);
 
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-
     footer{
     margin-bottom: 10px;
     }
+}
 
+.market-boxes h1{
+  font-size: 26px; line-height: 40px; font-weight: 500;
+}
+.market-boxes .card-title{
+  color: #a4a4a4; font-size: 14px; line-height: 20px;
+}
+.icon-gradient{
+  @include set-gradient-background-color(#e72d45, #f3931b);
+  color: #fff;
+  font-size: 28px;
+}
+.icon-gradient {
+    background-image: linear-gradient(45deg, #e72d45, #f3931b);
+    background-repeat: repeat-x;
+    color: #fff;
+    font-size: 28px;
+    padding: 14px;
+    border-radius: 50px 0px 50px 50px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.media-box:hover .icon-gradient{
+  background: #fff;
+}
+.icon-gradient:before {    
+    color: #fff !important;
+}
+.media-box:hover .icon-gradient:before{
+  color: #e72d45 !important;
+}
+.ngx-datatable.table-light .datatable-header {
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
+.ngx-datatable.table-light .datatable-header .datatable-header-cell .datatable-header-cell-template-wrap {
+    height: inherit;
+    font-size: 13px;
+    text-transform: none;
+    padding: 15px 0;
+    text-align: left;
+}
+.ngx-datatable.table-light .datatable-header {
+    background: transparent;
+}
+.ngx-datatable.table-light .datatable-body-cell, .ngx-datatable .datatable-header-cell {
+      justify-content: start !important;
+}
+.tag-list a{
+  background: #949494;
+    color: #fff !important;
+    text-decoration: none !important;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: uppercase;
+    line-height: 15px;
+}
+.media-box.no-hover:hover{
+  background: #fff !important;
+}
+.search-dropdown option{
+  font-size: 14px;
+}
+.position-left{
+  left: 18px;
+  right: auto; font-size: 14px;
+}
+.search-dropdown select {
+    background-repeat: no-repeat;
+    background-position: right center;
+    -webkit-appearance: none;
+    border: none;
+    left: 10px;
+    background-color: transparent;
+    padding-right: 30px;
+}
+.inner-form .form-control.search-dropdown-input{
+      text-indent: 130px !important; margin-bottom: 0 !important;
 }

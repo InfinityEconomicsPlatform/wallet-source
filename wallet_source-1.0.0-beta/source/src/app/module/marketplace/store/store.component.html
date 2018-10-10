@@ -7,18 +7,47 @@
                     <app-breadcrumb></app-breadcrumb>
                 </div>
                 <div class="card-body">
-                    <div class="card-block mt-2">
+                    <div class="card-block mt-2 market-boxes">
                         <div class="row">
                             <div class="card col-md-3 col-lg-3 col-sm-6">
                                 <div class="card-body">
                                     <div class="">
                                         <div class="media-box">
-                                            <div class="text-left">
-                                                <h1 class="card-icon">{{ count.purchased_products }}</h1>
-                                            </div>
-                                            <div class="media-body text-left">
-                                                <span class="card-title">{{'marketplace.store.purchased_products' |
-                                                    translate}}</span>
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                        <div class="text-left">
+                                                            <h1 class="card-icon">{{ count.purchased_products }}</h1>
+                                                        </div>
+                                                        <div class="media-body text-left">
+                                                            <span class="card-title">{{'marketplace.store.purchased_products' |
+                                                                translate}}</span>
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <i class="icon-purchase icon-gradient"></i>
+                                                </div>   
+                                                </div>                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card col-md-3 col-lg-3 col-sm-6">
+                                <div class="card-body">
+                                    <div class="">
+                                        <div class="media-box">
+                                            <div class="row">
+                                                     <div class="col-md-9">
+                                                    <div class="text-left">
+                                                        <h1 class="card-icon">{{ count.products_available }}</h1>
+                                                    </div>
+                                                    <div class="media-body text-left">
+                                                        <span class="card-title">{{'marketplace.store.products_available' |
+                                                            translate}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <i class="icon-red icon-gradient"></i>
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>
@@ -28,27 +57,19 @@
                                 <div class="card-body">
                                     <div class="">
                                         <div class="media-box">
-                                            <div class="text-left">
-                                                <h1 class="card-icon">{{ count.products_available }}</h1>
+                                            <div class="row">
+                                             <div class="col-md-9">
+                                                    <div class="text-left">
+                                                        <h1 class="card-icon">{{ count.total_purchases }}</h1>
+                                                    </div>
+                                                    <div class="media-body text-left">
+                                                        <span class="card-title">{{'marketplace.store.total_purchases' |
+                                                            translate}}</span>
+                                                    </div>
                                             </div>
-                                            <div class="media-body text-left">
-                                                <span class="card-title">{{'marketplace.store.products_available' |
-                                                    translate}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card col-md-3 col-lg-3 col-sm-6">
-                                <div class="card-body">
-                                    <div class="">
-                                        <div class="media-box">
-                                            <div class="text-left">
-                                                <h1 class="card-icon">{{ count.total_purchases }}</h1>
-                                            </div>
-                                            <div class="media-body text-left">
-                                                <span class="card-title">{{'marketplace.store.total_purchases' |
-                                                    translate}}</span>
+                                                <div class="col-md-3">
+                                                    <i class="icon-checked-double icon-gradient"></i>
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>
@@ -58,6 +79,8 @@
                                 <div class="card-body">
                                     <div class="">
                                         <div class="media-box">
+                                            <div class="row">
+                                             <div class="col-md-9">
                                             <div class="text-left">
                                                 <h1 class="card-icon">{{ count.total_tags }}</h1>
                                             </div>
@@ -65,13 +88,18 @@
                                                 <span class="card-title">{{'marketplace.store.total_tags' | translate}}</span>
                                             </div>
                                         </div>
+                                                <div class="col-md-3">
+                                                    <i class="icon-tags icon-gradient"></i>
+                                                </div> 
+                                                </div> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row mt-4">
-                            <div class="col-md-6">
+                        <div class="row mt-4 media-box no-hover p-4 ml-0 mr-0">
+                            <!-- <div class="col-md-12">
                                 <h3 class="text-center">{{ 'marketplace.store.seller_account_search' | translate }}</h3>
                                 <form class="form inner-form" novalidate>
                                     <div class="form-body">
@@ -87,17 +115,27 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
-                            <div class="col-md-6">
-                                <h3 class="text-center">{{ 'marketplace.store.product_search' | translate }}</h3>
+                            </div> -->
+                            <div class="col-md-12">
+                                <!-- <h3 class="text-center">{{ 'marketplace.store.product_search' | translate }}</h3> -->
                                 <form class="form inner-form" novalidate>
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group m-0">
-                                                    <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
-                                                        <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                    <div class="position-relative">
+                                                        <div class="form-control-position position-left search-dropdown">
+                                                                    <select>
+                                                                        <option>By Account ID</option>
+                                                                        <option>By Account ID</option>
+                                                                    </select>
+                                                            </div>
+
+                                                        <input type="text" class="form-control input-search pb-2 search-dropdown-input"
                                                             required placeholder="{{ 'marketplace.store.title_description' | translate }}">
+                                                            <div class="form-control-position btn-search">
+                                                                    <i class="ft-search info mr-2"></i>Search
+                                                            </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,18 +145,33 @@
                             </div>
                         </div>
 
-                        <div class="row mt-4" *ngIf="tags.length > 0">
-                            <div class="col-md-2 text-center" *ngFor="let tag of tags">
-                                <a class="hyperlink" (click)="openTag(tag)"> {{ tag }} </a>
+                        <div class="row mt-5 mb-5 tag-list" *ngIf="tags.length > 0">
+                            <div class="col-md-12" *ngFor="let tag of tags">
+                                <a (click)="openTag(tag)"> {{ tag }}</a>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5 mb-5 tag-list">
+                            <div class="col-md-12" >
+                                <a (click)="openTag(tag)"> {{ tag }} Text</a>
+                                <a (click)="openTag(tag)"> {{ tag }} Text</a>
+                                <a (click)="openTag(tag)"> {{ tag }} Text</a>
+                                <a (click)="openTag(tag)"> {{ tag }} Text</a>
                             </div>
                         </div>
 
                         <div class="row mt-4">
-                            <div class="col-md-6">
-                                <h3>{{ 'marketplace.store.recent_listing' | translate }}</h3>
-                                <ngx-datatable class="material" [rows]="recentListings" [columnMode]="'force'"
+                            <div class="col-md-12 border-bt pb-4 mb-4">
+                                <h3 class="text-dark text-uppercase">{{ 'marketplace.store.recent_listing' | translate }}</h3>
+                                <ngx-datatable class="material table-light" [rows]="recentListings" [columnMode]="'force'"
                                     [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
                                     [offset]="page.pageNumber" [limit]="page.size">
+                                    <ngx-datatable-column prop="" name="">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            <i class="icon-Account icon-gradient"></i>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
                                     <ngx-datatable-column prop="name" name="Listing Date">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
                                             {{value}}
@@ -141,11 +194,18 @@
                                     </ngx-datatable-column>
                                 </ngx-datatable>
                             </div>
-                            <div class="col-md-6">
-                                <h3>{{ 'marketplace.store.recent_purchases' | translate }}</h3>
-                                <ngx-datatable class="material" [rows]="recentListings" [columnMode]="'force'"
+                            <hr>
+                            <div class="col-md-12">
+                                <h3 class="text-dark text-uppercase">{{ 'marketplace.store.recent_purchases' | translate }}</h3>
+                                <ngx-datatable class="material table-light" [rows]="recentListings" [columnMode]="'force'"
                                     [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
                                     [offset]="page.pageNumber" [limit]="page.size">
+                                    <ngx-datatable-column prop="" name="">
+                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                            <i class="icon-Account icon-gradient"></i>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+
                                     <ngx-datatable-column prop="name" name="Purchase Date">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
                                             {{value}}
