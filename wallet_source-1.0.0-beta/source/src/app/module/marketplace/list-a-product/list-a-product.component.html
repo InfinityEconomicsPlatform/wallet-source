@@ -95,52 +95,128 @@
                                     </div>
                                 </div>
 
-                                <div *ngIf="isAdvancedSettings">
-                                    <ul class="nav nav-tabs nav-fill nav-auto mt-4">
+                                <div *ngIf="isAdvancedSettings" class="form-group">
+                                    <label>{{ 'marketplace.list-a-product.deadline' | translate }} ({{
+                                        'marketplace.list-a-product.hours' | translate }})</label>
+                                    <div class="position-relative">
+                                        <input type="number" id="deadline" class="form-control" placeholder="{{ 'marketplace.list-a-product.deadline' | translate }}"
+                                            name="deadline" required />
+                                    </div>
+                                </div>
+
+                                <div *ngIf="isAdvancedSettings" class="mt-4">
+                                    <ul class="nav nav-tabs nav-fill nav-auto">
                                         <li class="nav-item">
-                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'no-approval'}">
-                                                <i class="icon-icon2"></i>
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'no-approval'}"
+                                                (click)="tabSelected = 'no-approval'">
+                                                <i class="icon-icon2" triggers="mouseenter:mouseleave" container="body"
+                                                    placement="top" [ngbPopover]="'marketplace.list-a-product.process_without_approval_popover' | translate"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'deffered'}">
-                                                <i class="icon-Shuffling"></i>
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'deffered'}"
+                                                (click)="tabSelected = 'deffered'">
+                                                <i class="icon-Shuffling" triggers="mouseenter:mouseleave" container="body"
+                                                    placement="top" [ngbPopover]="'marketplace.list-a-product.deffered_popover' | translate"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'fixed-accounts'}">
-                                                <i class="icon-Crowdfunding"></i>
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'fixed-accounts'}"
+                                                (click)="tabSelected = 'fixed-accounts'">
+                                                <i class="icon-Crowdfunding" triggers="mouseenter:mouseleave" container="body"
+                                                    placement="top" [ngbPopover]="'marketplace.list-a-product.fixed_accounts_popover' | translate"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'amount'}">
-                                                <i class="icon-Ordinary_Payments"></i>
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'amount'}" (click)="tabSelected = 'amount'">
+                                                <i class="icon-Ordinary_Payments" triggers="mouseenter:mouseleave"
+                                                    container="body" placement="top" [ngbPopover]="'marketplace.list-a-product.amount_popover' | translate"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'assets'}">
-                                                <i class="icon-Voting"></i>
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'assets'}" (click)="tabSelected = 'assets'">
+                                                <i class="icon-Voting" triggers="mouseenter:mouseleave" container="body"
+                                                    placement="top" [ngbPopover]="'marketplace.list-a-product.assets_popover' | translate"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'currencies'}">
-                                                <i class="icon-currencies"></i>
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'currencies'}"
+                                                (click)="tabSelected = 'currencies'">
+                                                <i class="icon-currencies" triggers="mouseenter:mouseleave" container="body"
+                                                    placement="top" [ngbPopover]="'marketplace.list-a-product.currencies_popover' | translate"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'hash'}">
-                                                <i class="icon-chain_statistics"></i>
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'hash'}" (click)="tabSelected = 'hash'">
+                                                <i class="icon-chain_statistics" triggers="mouseenter:mouseleave"
+                                                    container="body" placement="top" [ngbPopover]="'marketplace.list-a-product.hash_popover' | translate"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'secret-hash'}">
-                                                <i class="icon-calculate_hash"></i>
+                                            <a class="nav-link" [ngClass]="{'active': tabSelected == 'secret-hash'}"
+                                                (click)="tabSelected = 'secret-hash'">
+                                                <i class="icon-calculate_hash" triggers="mouseenter:mouseleave"
+                                                    container="body" placement="top" [ngbPopover]="'marketplace.list-a-product.secret_hash_popover' | translate"></i>
                                             </a>
                                         </li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane" [ngClass]="{'active': tabSelected == 'no-approval'}">
-                                            {{ 'marketplace.list-a-product.process_without_approval' | translate }}
+                                            <app-process-without-approval></app-process-without-approval>
+                                        </div>
+                                        <div class="tab-pane" [ngClass]="{'active': tabSelected == 'deffered'}">
+                                            <app-deffered-height></app-deffered-height>
+                                        </div>
+                                        <div class="tab-pane" [ngClass]="{'active': tabSelected == 'fixed-accounts'}">
+                                            <app-fixed-accounts></app-fixed-accounts>
+                                        </div>
+                                        <div class="tab-pane" [ngClass]="{'active': tabSelected == 'amount'}">
+                                            <app-amount></app-amount>
+                                        </div>
+                                        <div class="tab-pane" [ngClass]="{'active': tabSelected == 'assets'}">
+                                            <app-assets></app-assets>
+                                        </div>
+                                        <div class="tab-pane" [ngClass]="{'active': tabSelected == 'currencies'}">
+                                            <app-currencies></app-currencies>
+                                        </div>
+                                        <div class="tab-pane" [ngClass]="{'active': tabSelected == 'hash'}">
+                                            <app-transaction-hash></app-transaction-hash>
+                                        </div>
+                                        <div class="tab-pane" [ngClass]="{'active': tabSelected == 'secret-hash'}">
+                                            <app-secret-hash></app-secret-hash>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mt-4">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input type="checkbox" id="broadcast" name="broadcast" required />
+                                                <label for="broadcast">{{ 'marketplace.list-a-product.donot_broadcast'
+                                                    | translate }}</label>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <input type="checkbox" id="sign_transaction" name="sign_transaction"
+                                                    required />
+                                                <label for="sign_transaction">{{
+                                                    'marketplace.list-a-product.donot_sign' | translate }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="checkbox" id="self_note_check" name="self_note" required />
+                                        <label for="self_note_check">{{ 'marketplace.list-a-product.add_note_to_self' |
+                                            translate }}</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{{ 'marketplace.list-a-product.note_to_self' | translate }}</label>
+                                        <div class="position-relative">
+                                            <textarea type="text" id="self_note" class="form-control" style="margin-bottom: 0 !important;"
+                                                name="self_note" required></textarea>
+                                            <span class="small">{{ 'marketplace.list-a-product.encrypted_note' |
+                                                translate }}</span>
                                         </div>
                                     </div>
                                 </div>
