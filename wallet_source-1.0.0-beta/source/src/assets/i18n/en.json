@@ -535,6 +535,7 @@
         "search-btn": "Search",
         "refresh-btn": "Refresh",
         "create-btn": "Create",
+        "show-btn": "Show",
         "encrypted-message-btn": "Encrypted Message",
         "public-key-btn": "Recipient Public Key",
         "open-bookmark-tooltip": "Open your bookmarks to insert an account id",
@@ -1297,6 +1298,139 @@
         },
         "shuffling-participants": {
             "title": "Shuffling participants"
+        }
+    },
+    "tools": {
+        "title": "Overview",
+        "tools-online-tab": "Tools Online",
+        "in-development-tab": "In Development",
+        "in-concept-stage-tab": "In Concept Stage",
+        "proof-of-concept-tab": "Proof of concept",
+        "tools-in-development-title": "Tools In Development",
+        "tools-in-concept-stage-title": "Tools In Concept Stage",
+        "tools-in-proof-of-concept-title": "Tools In Proof Of Concept",
+        "extensions-online": {
+            "Service Monitor": {
+                "title": "Service Monitor",
+                "description": "The service monitor ensure that deployed services are operating, maintained, supported and reachable. The monitor polls all important service structures like foundation nodes, websites, the testnet, API server and public services. This is a free community service."
+            },
+            "Block Explorer": {
+                "title": "Block Explorer",
+                "description": "The block explorer provides UI for block related operations which are written in JavaScript. It is a web-based tool providing a detailed information about XIN blocks, transactions, addresses and many more. This is a free community service."
+            },
+            "Peer Explorer": {
+                "title": "Peer Explorer",
+                "description": "The peer explorer provides UI for Networking Operations which is written in JavaScript. It acts as a gateway to the XIN server infrastructure. The explorer displays all the important nodes active on the network. This is a free community service."
+            }
+
+        },
+        "extensions-in-development": {
+            "Message Center": {
+                "title": "Message Center",
+                "description": "This is your free, private encrypted message center. While blockchain related messages require a service fee, this one doesn't. You can use this message center to share confidential informations but without using the blockchain. This is a free community service."
+            },
+            "OTC Market": {
+                "title": "OTC Market",
+                "description": "A free OTC (Over The Counter) marketplace to buy/sell tokens. This free OTC market works similar to localbitcoins.com, where members can post, organize offers and settle the transaction independently without any registrations or KYC. This is a free community service."
+            },
+            "Market Data": {
+                "title": "Market Data",
+                "description": "Market data provides you with the latest data on cryptocurrencies and provide access to all major exchanges. Market data covers all important cryptocurrencies and is the base for an upcoming commercial version. This is a free community service."
+            }
+        },
+        "extensions-in-concept": {
+            "Digital Goods Store": {
+                "title": "Digital Goods Store",
+                "description": "A community based free and open marketplace to offer digital goods like software, music, movies or other digital services. Users can search in categories and order goods (download) directly within this wallet. This is a free community service.",
+                "status": "Concept Stage",
+                "type": "badge bg-info white"
+            },
+            "Service Marketplace": {
+                "title": "Service Marketplace",
+                "description": "A Services Marketplace where users can launch self-service requests for various services directly from other users. Find talent for all your needs and outsource time consuming tasks to turn their ideas into reality.",
+                "status": "Concept Stage",
+                "type": "badge bg-info white"
+            },
+            "Business Directory": {
+                "title": "Business Directory",
+                "description": "Easily locate the right business for your needs. Similar to Yellow-Pages, this extension can be used for new and existing business announcements. The basic entry is free of charge but an extended entry based on XIN tokens will be added soon.",
+                "status": "Concept Stage",
+                "type": "badge bg-info white"
+            },
+            "Events": {
+                "title": "Events",
+                "description": "Need to announce an important event to the community? Just use this event listing service and add all details needed to make your event successful and known by your planned audience. This is a free community service.",
+                "status": "Concept Stage",
+                "type": "badge bg-info white"
+            },
+            "Secure Contacts": {
+                "title": "Secure Contacts",
+                "description": "A secured and encrypted contact manager. Connect your wallet to your most important contacts, off-chain or even on-chain like accounts, mail, phone or additional information. All data is fully encrypted with your keys and decrypted on the fly within your wallet.",
+                "status": "Concept Stage",
+                "type": "badge bg-info white"
+            },
+            "Distributed Storage": {
+                "title": "Distributed Storage",
+                "description": "Based on the open source IPFS protocol, this service is used to store and retrieve files on the Infinity network. Storage is provided by nodes and increasing by time and number of nodes joining the network.",
+                "status": "Concept Stage",
+                "type": "badge bg-info white"
+            },
+            "Distributed Hosting": {
+                "title": "Distributed Hosting",
+                "description": "Based on open source ZeroNet this service is used to host websites on the Infinity network. Like distributed storage, webspace is provided by nodes and increasing by time and number of nodes joining the network.",
+                "status": "Concept Stage",
+                "type": "badge bg-info white"
+            }
+        },
+        "extensions-in-proof-of-concept": {
+            "Rating Agency": {
+                "title": "Rating Agency",
+                "description": "It is not easy to identify promising assets and other projects on the Infinity platform. This new crypto rating agency will help you to get a better overview to get the most for your ventures in assets, currencies, or even external crypto projects on Infinity and other platforms.",
+                "status": "Proof of Concept",
+                "type": "badge bg-secondary white"
+            },
+            "Digital Notary": {
+                "title": "Digital Notary",
+                "description": "Want to prove something happened at a particular point in time? Infinity Notary service is based on Proof of Existence. By submitting hashes of documents you can prove on a later date that you were privileged to certain information at a point in history. Demonstrating data ownership without revealing your data.",
+                "status": "Proof of Concept",
+                "type": "badge bg-secondary white"
+            },
+            "Social Lending": {
+                "title": "Social Lending",
+                "description": "The peer-to-peer social lending service connects borrowers and lenders, thereby cutting out the traditional banking protocols. Unlike assets, this service is focused on non-profit projects and also called 'crowdlending'. Use this service to announce smaller projects supported by the community.",
+                "status": "Proof of Concept",
+                "type": "badge bg-secondary white"
+            },
+            "Social Trading": {
+                "title": "Social Trading",
+                "description": "Discover the top crypto traders from all over the world, copy their strategy and receive their trades in real time and build your own unique portfolio in just a few clicks. Social trading in combination with automated trading provides you with unique trading opportunities.",
+                "status": "Proof of Concept",
+                "type": "badge bg-secondary white"
+            },
+            "Portfolio Manager": {
+                "title": "Portfolio Manager",
+                "description": "Portfolio Manager helps you make smart and better informed decisions about your investments by keeping you on top of your performance and in touch with the latest news in crypto world. Users can create a real-life portfolio or a watch list of ideas to monitor.",
+                "status": "Proof of Concept",
+                "type": "badge bg-secondary white"
+            },
+            "Automated Trading": {
+                "title": "Automated Trading",
+                "description": "Traders and investors can turn precise entry, exit and money management rules into automated trading systems and free you from the stress and difficulty trying todo it yourself. Based on Market Data this service offers new insights into the current crypto market.",
+                "status": "Proof of Concept",
+                "type": "badge bg-secondary white"
+            },
+            "Reputation System": {
+                "title": "Reputation System",
+                "description": "Digital reputation is rapidly expanding in real-world influence. Reputation systems are essential for peer-to-peer business activities as they allow users to establish a reputation to gain trust with potential clients.",
+                "status": "Proof of Concept",
+                "type": "badge bg-secondary white"
+            },
+            "Multigateway": {
+                "title": "Multigateway",
+                "description": "Multigateway is a service developed on top of the Infinity platform that allows you to move crypto-currencies in and out of the integrated Asset Exchange by a one to one peg between an asset and a cryptocoin.",
+                "status": "Proof of Concept",
+                "type": "badge bg-secondary white"
+            }
         }
     },
     "breadcrumbs": {
