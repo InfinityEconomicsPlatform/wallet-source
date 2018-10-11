@@ -1494,3 +1494,23 @@ height: calc(100% - 80px);
 .inner-form .form-control.search-dropdown-input{
       text-indent: 130px !important; margin-bottom: 0 !important;
 }
+@media(max-width: 767px){
+form .form-control-position.position-left{
+  top: auto;
+    left: auto;
+    right: auto;
+    margin-bottom: 5px;
+    position: relative;
+    }
+.inner-form .form-control.search-dropdown-input {
+    text-indent: 0 !important;
+    margin-bottom: 20px !important;
+    padding-left: 10px !important;
+    padding-right: 0 !important;
+}
+}
+@media(min-width: 768px){
+  .text-medium-right{
+  text-align: right;
+  }
+}
