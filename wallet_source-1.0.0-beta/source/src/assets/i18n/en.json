@@ -601,7 +601,8 @@
         "url-label": "URL",
         "xin-account-key-placeholder": "XIN - _____ - _____ - _____ - _____",
         "search-palceholder": "Enter search words",
-        "holding-type-label": "Holding Type"
+        "holding-type-label": "Holding Type",
+        "save-btn": "Save"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -1297,6 +1298,68 @@
         },
         "shuffling-participants": {
             "title": "Shuffling participants"
+        }
+    },
+    "swapps": {
+        "options": {
+            "title": "Options",
+            "connection-sub-title": "Node And Connections",
+            "connection-mode-label": "Connection Mode",
+            "connection-mode-popover": "Switch over to other nodes or a local node. AUTO mode takes a random node from top ten peer selection. LOCALHOST seeks for a local node and connects if found on MANUAL you can enter a specific node IP, your private VPS for instance and on HTTPS a SSL connection is made to a dedicated https foundation server.",
+            "connection-node-label": "Connect to Node",
+            "connection-node-popover": "Enter the node ip and port - http://yourserverip:23457 - to connect with.",
+            "connection-node-placeholder": "Connect to Node",
+            "connection-node-validation": "Invalid node URL",
+            "connected-url-label": "Connected To",
+            "connected-url-popover": "The node your are connected",
+            "connected-url-placeholder": "Connected To",
+            "random-node-connect-label": "Randomize Node Connects",
+            "random-node-connect-popover": "Randomize nodes to connect with for better privacy and loadbalancing."
+        },
+        "setting": {
+            "title": "SWApps Settings",
+            "swappsList": {
+                "Assets": {
+                    "name": "Assets",
+                    "desc": "The Asset Exchange is IEP's builtin decentralised trading engine. Using the Asset Exchange  you can create, buy and sell assets that represent data beyond simple   coin   transfers   which   opens   up   wideranging   possibilities."
+                },
+                "Currencies": {
+                    "name": "Currencies",
+                    "desc": "The currency entity is the basic building block of the IEP Currencies System. A currency has a unique name and code and uniqueness is guaranteed by the protocol, currencies can be deleted and their code can be reused under certain conditions. The total currency supply is divisible into currency units."
+                },
+                "Aliases": {
+                    "name": "Aliases",
+                    "desc": "Alias System feature essentially allows one piece of text to be substituted for another, so that key-phrases can be used to represent other things."
+                },
+                "Voting": {
+                    "name": "Voting",
+                    "desc": "The IEP Voting System enables any account to create a poll with one question and up to 10 answers. "
+                },
+                "AT": {
+                    "name": "AT",
+                    "desc": "Smart contracts are computer programs that can automatically execute the terms of a contract."
+                },
+                "Crowdfunding": {
+                    "name": "Crowdfunding",
+                    "desc": "Crowdfunding is the practice of funding a project or venture by raising monetary contributions from a large number of people. "
+                },
+                "Subscriptions": {
+                    "name": "Subscriptions",
+                    "desc": "IEP offers decentralized recurring payments that users can initiate and cancel at any time."
+                },
+                "Escrow": {
+                    "name": "Escrow",
+                    "desc": "An escrow service allows safer payment by securely holding a buyer's coins in escrow until the terms of the sale are met and as a result the buyer releases payment to the seller."
+                },
+                "Shuffling": {
+                    "name": "Shuffling",
+                    "desc": "Shuffling is an effective privacy feature and it enables participants to mix their funds quickly and efficiently with other participants funds. "
+                },
+                "Tools": {
+                    "name": "Tools",
+                    "desc": "Enable tools to activate the access to extensions like Market Capitalization, recent news regarding the XIN, and everything related to the XIN environment."
+                }
+            }
         }
     },
     "breadcrumbs": {

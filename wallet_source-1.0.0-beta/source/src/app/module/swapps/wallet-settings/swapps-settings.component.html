@@ -5,7 +5,7 @@
                 <div class="card-block main-card-block">
 
                     <div class="border-bt">
-                        <h2 class="main-title">SWApps Settings</h2>
+                        <h2 class="main-title">{{ 'swapps.setting.title' | translate}}</h2>
                         <app-breadcrumb></app-breadcrumb>
                     </div>
 
@@ -27,11 +27,13 @@
                                                                             (change)="onChange()" [(ngModel)]="app.isEnabled"
                                                                             [ngModelOptions]="{standalone: true}" id="{{app.name}}">
                                                                         <label class="custom-control-label" for="{{app.name}}">
-                                                                            {{app.name}}</label>
+                                                                            {{'swapps.setting.swappsList.'+app.name+'.name'
+                                                                            | translate}}</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="app-container-right">
-                                                                    <span class="description">{{app.desc || app.name}}</span>
+                                                                    <span class="description">{{'swapps.setting.swappsList.'+app.name+'.desc'
+                                                                        | translate}}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
