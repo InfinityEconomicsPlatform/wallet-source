@@ -1,3 +1,25 @@
-<p>
-  deffered-height works!
-</p>
+<div class="form-group">
+    <label>{{ 'marketplace.list-a-product.finished_height'| translate }}
+        <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body"
+            ngbPopover="{{ 'marketplace.list-a-product.finished_height_popover' | translate }}"></i>
+    </label>
+    <div class="input-group row mt-2">
+        <div class="col-12 col-md-2 pr-0">
+            <span class="input-group-text text-sm-left">BLOCK : {{ 1440 }}</span>
+        </div>
+        <div class="col-8 col-md-6 sign_in_inputs">
+            <input type="text" class="pl-0 form-control" placeholder="1440" name="blockheight">
+        </div>
+        <div class="col-4 col-md-1 pl-0 pr-0">
+            <span class="input-group-text"> {{ 1 }} Day(s)</span>
+        </div>
+        <div class="col-md-3 btn-icon-group text-right pr-1  text-sm-left">
+            <a class="btn btn-primary" (click)="decrement()">
+                <i class="fa fa-minus"></i>
+            </a>
+            <a class="btn btn-primary" (click)="increment()">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </div>
+</div>

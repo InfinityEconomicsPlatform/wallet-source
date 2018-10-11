@@ -2081,7 +2081,26 @@
             "donot_sign": "Do Not Sign",
             "add_note_to_self": "Add Note To Self",
             "note_to_self": "Note To Self",
-            "encrypted_note": "This note is Encrypted"
+            "encrypted_note": "This note is Encrypted",
+            "finished_height": "Finished Height",
+            "finished_height_popover": "Transaction will only be executed if approved before the finish height.",
+            "number_of_accounts": "Number Of Accounts",
+            "number_of_accounts_popover": "Necessary vote count or amount reached for the transaction to become valid.",
+            "accounts": "Accounts",
+            "whitelist": "Whitelist",
+            "accounts_popover": "The following accounts will be allowed to approve the transaction (mandatory for approvals by account).",
+            "add_account": "Add Account",
+            "minimum_balance_type": "Min Balance Type",
+            "minimum_balance_type_popover": "Accounts can only approve transaction when holding a minimum balance of a certain type.",
+            "minimum_balance": "Minimum Balance",
+            "minimum_balance_popover": "Min balance to approve transaction.",
+            "asset": "Asset",
+            "asset_popover": "Enter the ID of an asset.",
+            "asset_id": "Asset Id",
+            "currency": "Currency",
+            "currency_popover": "Enter the currency code of a currency.",
+            "code": "Code",
+            "amount": "Amount"
         },
         "purchased": {
             "title": "Purchased Products"
