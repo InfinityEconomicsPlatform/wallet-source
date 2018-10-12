@@ -1500,6 +1500,43 @@
             }
         }
     },
+    "navbar": {
+        "pending-approvals-popover": "Pending Approvals to sign",
+        "pending-escrow-popover": "Pending escrow to sign",
+        "active-subscriptions-popover": "Active subscriptions",
+        "forum-popover": "Forum",
+        "send-message-popover": "Send Message",
+        "send-assets-popover": "Send Assets",
+        "send-currency-popover": "Send Currency",
+        "bookmarks-popover": "Bookmarks",
+        "transaction-types": "Transaction Types",
+        "service-fees": "Service Fees",
+        "generate-signature": "Generate Signature",
+        "validate-signature": "Validate Signature",
+        "parse-transaction": "Parse Transaction",
+        "broadcast-transaction": "Broadcast Transaction",
+        "calculate-hash": "Calculate Hash",
+        "chain-statistics": "Chain Statistics",
+        "user-guide": "User Guide"
+    },
+    "tool-pages": {
+        "transaction-types": {
+            "type-one": "Ordinary Payment",
+            "type-two": "Encrypted Message",
+            "type-three": "Alias Assigment, Alias Sell, Alias Buy, Alias Delete",
+            "type-four": "Poll Creation, Vote Casting",
+            "type-five": "Account Info, Effective Balance Lease, Account Control, Account Property, Account Property delete",
+            "type-six": "Asset Issuance, Asset Transfer, Ask Order Placement, Bid Order Placement, Ask Order Cancellation, Bid Order Cancellation, Dividend Payment, Asset Delete",
+            "type-seven": "Currency Issuance, Reserve Increase, Reserve Claim, Currency Transfer, Publish Exchange Offer, Exchange Buy, Exchange Sell, Currency Deletion",
+            "type-eight": "Shuffling Create, Shuffling Cancel, Shuffling Verify",
+            "type-nine": "Create Subscriptions, Cancel Subscription, Subscription Payment",
+            "type-ten": "Escrow Creation, Escrow Sign, Escrow Results",
+            "type-eleven": "AT (Automated Transactions), Create AT, AT Payment"
+        },
+        "service-fees": {
+
+        }
+    },
     "side-menu": {
         "Account": "Account",
         "Account Details": "Account Details",
