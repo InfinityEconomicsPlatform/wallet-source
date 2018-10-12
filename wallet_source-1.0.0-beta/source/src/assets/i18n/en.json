@@ -2100,7 +2100,9 @@
             "currency": "Currency",
             "currency_popover": "Enter the currency code of a currency.",
             "code": "Code",
-            "amount": "Amount"
+            "amount": "Amount",
+            "asset_quantity": "Asset Quantity",
+            "asset_quantity_popover": "Necessary vote count or amount reached for the transaction to become valid."
         },
         "purchased": {
             "title": "Purchased Products"
