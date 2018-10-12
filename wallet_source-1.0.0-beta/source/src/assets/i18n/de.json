@@ -602,7 +602,9 @@
         "url-label": "URL",
         "holding-type-label": "Holding Type",
         "xin-account-key-placeholder": "XIN - _____ - _____ - _____ - _____",
-        "search-palceholder": "Enter search words"
+        "search-palceholder": "Enter search words",
+        "save-btn": "Save",
+        "signature-input-label": "Signature Input"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -1431,6 +1433,122 @@
                 "status": "Proof of Concept",
                 "type": "badge bg-secondary white"
             }
+        }
+    },
+    "navbar": {
+        "pending-approvals-popover": "Pending Approvals to sign",
+        "pending-escrow-popover": "Pending escrow to sign",
+        "active-subscriptions-popover": "Active subscriptions",
+        "forum-popover": "Forum",
+        "send-message-popover": "Send Message",
+        "send-assets-popover": "Send Assets",
+        "send-currency-popover": "Send Currency",
+        "bookmarks-popover": "Bookmarks",
+        "transaction-types": "Transaction Types",
+        "service-fees": "Service Fees",
+        "generate-signature": "Generate Signature",
+        "validate-signature": "Validate Signature",
+        "parse-transaction": "Parse Transaction",
+        "broadcast-transaction": "Broadcast Transaction",
+        "calculate-hash": "Calculate Hash",
+        "chain-statistics": "Chain Statistics",
+        "user-guide": "User Guide"
+    },
+    "tool-pages": {
+        "transaction-types": {
+            "type-one": "Ordinary Payment",
+            "type-two": "Encrypted Message",
+            "type-three": "Alias Assigment, Alias Sell, Alias Buy, Alias Delete",
+            "type-four": "Poll Creation, Vote Casting",
+            "type-five": "Account Info, Effective Balance Lease, Account Control, Account Property, Account Property delete",
+            "type-six": "Asset Issuance, Asset Transfer, Ask Order Placement, Bid Order Placement, Ask Order Cancellation, Bid Order Cancellation, Dividend Payment, Asset Delete",
+            "type-seven": "Currency Issuance, Reserve Increase, Reserve Claim, Currency Transfer, Publish Exchange Offer, Exchange Buy, Exchange Sell, Currency Deletion",
+            "type-eight": "Shuffling Create, Shuffling Cancel, Shuffling Verify",
+            "type-nine": "Create Subscriptions, Cancel Subscription, Subscription Payment",
+            "type-ten": "Escrow Creation, Escrow Sign, Escrow Results",
+            "type-eleven": "AT (Automated Transactions), Create AT, AT Payment"
+        },
+        "service-fees": {
+            "ordinary-payments": "Ordinary Payments",
+            "additional-services": "Additional Services",
+            "ordinary-payments-desc": "General service transaction fee is 1 <small> XIN </small>. Attached encrypted messages are 2 <small> XIN </small> for the first 32 bytes and 1 <small> XIN </small> for each additional 32 bytes. Encrypted and non-prunable messages have a maximum length of 160 bytes. Public key announcement is free.",
+            "aliases-desc": "2 <small> XIN </small> to set an alias with 2 <small> XIN </small> additional fee for each 32 chars of name plus URI total length, after the first 32 bytes. Aliases are unique and can be any string of latin-character numbers and letters. Aliases have a maximun length of 100 bytes and 1000 bytes for the uri. Buy/sell an alias is 1 <small> XIN </small>.",
+            "messages-desc": "2 <small> XIN </small> for the first 32 bytes of a chain stored encrypted message. 1 <small> XIN </small> for each additional 32 bytes. Maximum message length for encrypted and non-prunable messages is 160 bytes. Upcoming encrypted messenger is free of service fee with up to 1'000 bytes and a maximum of 1'000 last messages per user. Pruned encrypted message (42kb.) is 1 <small> XIN </small>.",
+            "assets-desc": "1'000 <small> XIN </small> for issue an asset and 1 <small> XIN </small> for singleton assets (1 share). Once issued an asset can't re-issued. Minimum name length 3 characters and max. 16. Asset description max. length 1'000 bytes. Asset names are unique and can be any upper/lowercase string of latin-character numbers and letters. Unique asset identifier is the asset ID. Buy/Sell and cancel open orders is 1 <small> XIN </small>. Dividend payment is 10 <small> XIN </small>.",
+            "currencies-desc": "25'000 <small> XIN </small> for 3-letter, 1'000 <small> XIN </small> for 4-letter, 500 <small> XIN </small> for 5-letter and 250 <small> XIN </small> for 6 letter currency issuance. The ticker XIN and some known crypto currency symbols are restricted. Currencies name are unique. Currencies are uppercase latin-character only. Minimum currency name 3 and maximum 16. Minimum currency code is 3 and maximum 6 characters. Maximum currency description length is 1'000 bytes. Buy/Sell and cancel exchanges is 1 <small> XIN </small> and 40 <small> XIN </small> for re-issue any currency. Re-issue is only possible if all units are on issuer account.",
+            "voting-desc": "10 <small> XIN </small> to create a poll including 10 options and total size name and description plus options length not exceeding 320 bytes.2 <small> XIN </small> for each 32 byres after 320 bytes. Voting 1 <small > XIN </small>. Maximum poll name length is 100 bytes, description 1'000 bytes. Maximum poll options are 10 and max.poll duration is 20 '160 blocks (~14 Days).",
+            "crowdfunding-desc": "Same as currencies.",
+            "subscriptions-desc": "1<small> XIN </small> to create a subscription and 1<small> XIN </small> to cancel.",
+            "escrow-desc": "1<small> XIN </small> to create an escrow and 1<small> XIN </small> for each signer.",
+            "shuffling-desc": "1<small> XIN </small> to create a shuffle and 12<small> XIN </small> shuffling fee.",
+            "at-desc": "10<small> XIN </small> to create an AT.",
+            "additional-services-desc": "Set or delete account info is 1<small> XIN </small> including 32 chars, with 2 <small> XIN </small> additional fee for each 32 chars. Balance leasing is 1 <small> XIN </small>. Account control is 1 <small> XIN </small>. Special transactions like deferred or secret transactions are 2 <small> XIN </small>."
+        },
+        "generate-signature": {
+            "signature-input-popover": "The text you like to sign with your key. Can be any text (UTF8). This tool can be used to verify account holder on a specific account and also a building block for additional authentication models.",
+            "signature-input-placeholder": "Type in the text you like to generate a token for.",
+            "generate-btn": "Generate",
+            "signature-output-label": "Signature Output",
+            "signature-output-popover": "The signature hash based on the input."
+        },
+        "validate-signature": {
+            "signature-hash-label": "Signature Hash",
+            "signature-hash-popover": "The signature hash based on the token.",
+            "token-required": "Token is required",
+            "signature-input-popover": "The Signature hash token input",
+            "signature-input-placeholder": "Signature Input",
+            "validate-btn": "Validate"
+        },
+        "parse-transaction": {
+            "transaction-bytes-label": "Transaction Bytes",
+            "transaction-bytes-popover": "Transaction bytes (hex) to parse. Output is shown as JSON",
+            "transaction-json-label": "Transaction Json",
+            "transaction-json-popover": "The parsed transaction bytes in JSON format",
+            "parse-btn": "Parse"
+        },
+        "broadcast-transaction": {
+            "transaction-bytes-popover": "The signed transaction bytes (hex) to broadcast to the network",
+            "broadcasted-label": "Broadcasted",
+            "transaction-id-label": "Transaction Id",
+            "broadcast-btn": "Broadcast"
+        },
+        "calculate-hash": {
+            "text-input-label": "Text Input",
+            "text-input-popover": "Enter a random text and use the hash as transaction secret. By revealing this text, the receiver can claim the transaction.",
+            "text-input-placeholder": "Type in the text you like to generate a hash for",
+            "calculate-btn": "Calculate",
+            "input-required": "Input is required",
+            "sha-output-label": "SHA256 Output",
+            "sha-output-popover": "The SHA256 has for the text input."
+        },
+        "chain-statistics": {
+            "account-leases": "Account Leases",
+            "active-account-leases": "Active Account Leases",
+            "aliases": "Aliases",
+            "asks": "Asks",
+            "bid-orders": "Bid Orders",
+            "blocks": "Blocks",
+            "currency-transfers": "Currency Transfers",
+            "exchanges": "Exchanges",
+            "orders": "Orders",
+            "controlled-accounts": "Controlled Accounts",
+            "trades": "Trades",
+            "transfers": "Transfers",
+            "accounts": "Accounts",
+            "active-peers": "Active Peers",
+            "ask-orders": "Ask Orders",
+            "assets": "Assets",
+            "bids": "Bids",
+            "currencies": "Currencies",
+            "exchange-requests": "Exchange Requests ",
+            "offers": "Offers",
+            "peers": "Peers",
+            "polls": "Polls",
+            "transactions": "Transactions",
+            "votes": "Votes"
+        },
+        "user-guide": {
+            "coming-soon": "Coming Soon"
         }
     },
     "breadcrumbs": {
