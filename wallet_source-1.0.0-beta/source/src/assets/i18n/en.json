@@ -1533,9 +1533,7 @@
             "type-ten": "Escrow Creation, Escrow Sign, Escrow Results",
             "type-eleven": "AT (Automated Transactions), Create AT, AT Payment"
         },
-        "service-fees": {
-
-        }
+        "service-fees": {}
     },
     "side-menu": {
         "Account": "Account",
@@ -1560,7 +1558,6 @@
         "Show Assets": "Show Assets",
         "My Open Orders": "My Open Orders",
         "My Trades": "My Trades",
-        "My Transfers": "My Transfers",
         "Last Trades": "Last Trades",
         "Issue Asset": "Issue Asset",
         "Search Asset": "Search Asset",
