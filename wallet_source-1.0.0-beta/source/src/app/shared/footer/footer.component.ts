@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewEncapsulation } from '@angular/core';
 import { NodeService } from '../../services/node.service';
 import { OptionService } from '../../services/option.service';
 import { TransactionService } from '../../services/transaction.service';
@@ -12,7 +12,8 @@ import {TranslateService} from '@ngx-translate/core';
 @Component({
     selector: 'app-footer',
     templateUrl: './footer.component.html',
-    styleUrls: ['./footer.component.scss']
+    styleUrls: ['./footer.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class FooterComponent implements OnInit {
 
