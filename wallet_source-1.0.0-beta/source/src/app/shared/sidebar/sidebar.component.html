@@ -44,13 +44,13 @@
 						 [routerLinkActive]="menuItem.submenu.length != 0 ? '' : 'active'" [routerLinkActiveOptions]="{exact: false}">
 							<a [routerLink]="menuItem.class === '' ? [menuItem.path] : null" *ngIf="!menuItem.isExternalLink; else externalLinkBlock">
 								<i [ngClass]="[menuItem.icon]"></i>
-								<span class="menu-title">{{menuItem.title | translate }}</span>
+								<span class="menu-title">{{'side-menu.'+menuItem.title | translate }}</span>
 								<span *ngIf="menuItem.badge != '' " [ngClass]="[menuItem.badgeClass]">{{menuItem.badge}}</span>
 							</a>
 							<ng-template #externalLinkBlock>
 								<a [href]="[menuItem.path]" target="_blank">
 									<i [ngClass]="[menuItem.icon]"></i>
-									<span class="menu-title">{{menuItem.title | translate }}</span>
+									<span class="menu-title">{{'side-menu.'+menuItem.title | translate }}</span>
 									<span *ngIf="menuItem.badge != '' " [ngClass]="[menuItem.badgeClass]">{{menuItem.badge}}</span>
 								</a>
 							</ng-template>
@@ -61,13 +61,13 @@
 									<ng-container *isExpertView="menuSubItem.isExpertView">
 										<a [routerLink]="menuSubItem.submenu.length > 0 ? null : [menuSubItem.path]" *ngIf="!menuSubItem.isExternalLink; else externalSubLinkBlock">
 											<i [ngClass]="[menuSubItem.icon]"></i>
-											<span class="menu-title">{{menuSubItem.title | translate }}</span>
+											<span class="menu-title">{{'side-menu.'+menuSubItem.title | translate }}</span>
 											<span *ngIf="menuSubItem.badge != '' " [ngClass]="[menuSubItem.badgeClass]">{{menuSubItem.badge}}</span>
 										</a>
 										<ng-template #externalSubLinkBlock>
 											<a [href]="[menuSubItem.path]">
 												<i [ngClass]="[menuSubItem.icon]"></i>
-												<span class="menu-title">{{menuSubItem.title | translate }}</span>
+												<span class="menu-title">{{'side-menu.'+menuSubItem.title | translate }}</span>
 												<span *ngIf="menuSubItem.badge != '' " [ngClass]="[menuSubItem.badgeClass]">{{menuSubItem.badge}}</span>
 											</a>
 										</ng-template>
@@ -77,13 +77,13 @@
 											 [routerLinkActiveOptions]="{exact: false}" [ngClass]="[menuSubsubItem.class]">
 												<a [routerLink]="[menuSubsubItem.path]" *ngIf="!menuSubsubItem.isExternalLink; else externalSubSubLinkBlock">
 													<i [ngClass]="[menuSubsubItem.icon]"></i>
-													<span class="menu-title">{{menuSubsubItem.title | translate }}</span>
+													<span class="menu-title">{{'side-menu.'+menuSubsubItem.title | translate }}</span>
 													<span *ngIf="menuSubsubItem.badge != '' " [ngClass]="[menuSubsubItem.badgeClass]">{{menuSubsubItem.badge}}</span>
 												</a>
 												<ng-template #externalSubSubLinkBlock>
 													<a [href]="[menuSubsubItem.path]">
 														<i [ngClass]="[menuSubsubItem.icon]"></i>
-														<span class="menu-title">{{menuSubsubItem.title | translate }}</span>
+														<span class="menu-title">{{'side-menu.'+menuSubsubItem.title | translate }}</span>
 														<span *ngIf="menuSubsubItem.badge != '' " [ngClass]="[menuSubsubItem.badgeClass]">{{menuSubsubItem.badge}}</span>
 													</a>
 												</ng-template>
