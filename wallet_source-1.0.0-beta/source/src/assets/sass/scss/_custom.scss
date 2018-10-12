@@ -1494,6 +1494,62 @@ height: calc(100% - 80px);
 .inner-form .form-control.search-dropdown-input{
       text-indent: 130px !important; margin-bottom: 0 !important;
 }
+.tag-info li{list-style-type: none; padding-right: 30px;     display: inline-block;}
+
+.placeholder-icon {
+    font-size: 37px;
+    color: #dbdbdb;
+    border: 1px solid #dbdbdb;
+    background: #f4f4f4;
+    padding: 23px;
+    display: inline-block;
+}
+.tag-details h2 {
+    font-size: 22px;
+    text-transform: none;
+    color: #303030;
+    line-height: 49px;
+}
+.tag-details h2 a{
+    color: #303030 !important;
+    text-decoration: none;  
+}
+.tag-details h4 {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #7a7991!important;
+    line-height: 20px !important;
+}
+.tag-details p{
+    color: #7a7991;
+    font-size: 12px;
+    line-height: 18px;
+}
+.tag-info {
+    padding-left: 0;
+    font-size: 12px;
+    line-height: 24px;
+}
+.tag-info li i{
+  font-size: 20px; margin-right: 10px;    position: relative;
+    top: 5px;
+}
+.tag-info li a{
+  color: #f39646 !important;
+}
+.time{
+      font-size: 12px;
+    color: #333;
+}
+.time i{
+ font-size: 20px; margin-right: 10px;    position: relative;
+    top: 5px;
+}
+.shadow-box{
+  box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+  padding: 30px 25px;
+}
+
 @media(max-width: 767px){
 form .form-control-position.position-left{
   top: auto;

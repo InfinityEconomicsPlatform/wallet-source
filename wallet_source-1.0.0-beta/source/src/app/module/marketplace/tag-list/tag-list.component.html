@@ -6,16 +6,110 @@
                     <h2 class="main-title">{{ 'marketplace.tag.title' | translate }} - {{ 'Domain' }}</h2>
                     <app-breadcrumb></app-breadcrumb>
                 </div>
-                <div class="card-body">
-                    <div class="card-block mt-2 form-bordered">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ngx-datatable class="material" [rows]="tagListings" [columnMode]="'force'" [rowHeight]="'auto'"
+                <div class="card-body mt-4">
+                    <div class="card-block mt-2">
+                        <div class="row  tag-details shadow-box mb-3">
+                            <div class="col-md-2 col-lg-1">
+                                <i class="icon-placeholder placeholder-icon"></i>
+                            </div>
+                            <div class="col-md-10 col-lg-11">
+                                <div class="row">
+                                    <div class="col-md-7 ">
+                                        <h2><a >icocoins.xyz</a></h2>
+                                        <h4>50,000 NXT</h4>
+                                    </div>
+                                    <div class="col-md-5 text-right time">
+                                        <i class="icon-Account"></i> 9/5/2018 18:10:40
+                                    </div>
+                                    <div class="col-md-12">
+                                     <p class="mt-2">icocoinc.xyz is a great domain name for ico and crypto coin directory.short memorable and to the point . has long term resale value too. 
+transfer of ownership immediately on transaction completion</p>
+                                     <ul class="mt-2 tag-info mb-0">
+                                         <li><i class="icon-Account"></i><strong>Quantity: </strong>1</li>
+                                         <li><i class="icon-tags"></i><strong>Tags: </strong><a href="#">Domain</a></li>
+                                         <li><i class="icon-Account"></i><strong>Seller: </strong><<a >NXT-RNNV-MPRH-ZULM-6TACV (Info)</a></li>
+                                         <li><i class="icon-Blockexplorer"></i><strong>Product ID: </strong><a >Product ID: 11691442424766650001</a></li>
+                                     </ul>
+                                    </div>
+
+                                </div>
+                               
+                            </div>
+                               
+                            </div>
+
+
+
+                        <div class="row  tag-details shadow-box mb-3">
+                            <div class="col-md-2 col-lg-1">
+                                <i class="icon-placeholder placeholder-icon"></i>
+                            </div>
+                            <div class="col-md-10 col-lg-11">
+                                <div class="row">
+                                    <div class="col-md-7 ">
+                                        <h2><a >icocoins.xyz</a></h2>
+                                        <h4>50,000 NXT</h4>
+                                    </div>
+                                    <div class="col-md-5 text-right time">
+                                        <i class="icon-Account"></i> 9/5/2018 18:10:40
+                                    </div>
+                                    <div class="col-md-12">
+                                     <p class="mt-2">icocoinc.xyz is a great domain name for ico and crypto coin directory.short memorable and to the point . has long term resale value too. 
+transfer of ownership immediately on transaction completion</p>
+                                     <ul class="mt-2 tag-info mb-0">
+                                         <li><i class="icon-Account"></i><strong>Quantity: </strong>1</li>
+                                         <li><i class="icon-tags"></i><strong>Tags: </strong><a href="#">Domain</a></li>
+                                         <li><i class="icon-Account"></i><strong>Seller: </strong><<a >NXT-RNNV-MPRH-ZULM-6TACV (Info)</a></li>
+                                         <li><i class="icon-Blockexplorer"></i><strong>Product ID: </strong><a >Product ID: 11691442424766650001</a></li>
+                                     </ul>
+                                    </div>
+
+                                </div>
+                               
+                            </div>
+                               
+                            </div>
+
+
+
+                        <div class="row  tag-details shadow-box mb-3">
+                            <div class="col-md-2 col-lg-1">
+                                <i class="icon-placeholder placeholder-icon"></i>
+                            </div>
+                            <div class="col-md-10 col-lg-11">
+                                <div class="row">
+                                    <div class="col-md-7 ">
+                                        <h2><a >icocoins.xyz</a></h2>
+                                        <h4>50,000 NXT</h4>
+                                    </div>
+                                    <div class="col-md-5 text-right time">
+                                        <i class="icon-Account"></i> 9/5/2018 18:10:40
+                                    </div>
+                                    <div class="col-md-12">
+                                     <p class="mt-2">icocoinc.xyz is a great domain name for ico and crypto coin directory.short memorable and to the point . has long term resale value too. 
+transfer of ownership immediately on transaction completion</p>
+                                     <ul class="mt-2 tag-info mb-0">
+                                         <li><i class="icon-Account"></i><strong>Quantity: </strong>1</li>
+                                         <li><i class="icon-tags"></i><strong>Tags: </strong><a href="#">Domain</a></li>
+                                         <li><i class="icon-Account"></i><strong>Seller: </strong><<a >NXT-RNNV-MPRH-ZULM-6TACV (Info)</a></li>
+                                         <li><i class="icon-Blockexplorer"></i><strong>Product ID: </strong><a >Product ID: 11691442424766650001</a></li>
+                                     </ul>
+                                    </div>
+
+                                </div>
+                               
+                            </div>
+                               
+                            </div>
+
+
+
+                                <!-- <ngx-datatable class="material" [rows]="tagListings" [columnMode]="'force'" [rowHeight]="'auto'"
                                     [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
                                     [limit]="page.size">
                                     <ngx-datatable-column prop="url" name="{{ 'marketplace.tag.product_details' | translate }}">
                                         <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                                            <div><strong><a class="hyperlink">{{row.transactionJSON.attachment.name}}</a></strong></div>
+                                            <div><strong><a >{{row.transactionJSON.attachment.name}}</a></strong></div>
                                             <span>{{row.transactionJSON.attachment.description}}</span>
                                         </ng-template>
                                     </ngx-datatable-column>
@@ -36,15 +130,14 @@
                                     </ngx-datatable-column>
                                     <ngx-datatable-column prop="finished" name="{{ 'marketplace.tag.seller_details' | translate }}">
                                         <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                                            <div>{{ 'marketplace.tag.seller' | translate }}: <a class="hyperlink">{{row.transactionJSON.senderRS}}</a></div>
-                                            <div>{{ 'marketplace.tag.id' | translate }}: <a class="hyperlink">{{row.transactionJSON.ecBlockId}}</a></div>
+                                            <div>{{ 'marketplace.tag.seller' | translate }}: <a >{{row.transactionJSON.senderRS}}</a></div>
+                                            <div>{{ 'marketplace.tag.id' | translate }}: <a >{{row.transactionJSON.ecBlockId}}</a></div>
                                             <div>{{ 'marketplace.tag.listing_date' | translate }}: <span>{{row.transactionJSON.timestamp
                                                     | timestamp}}</span></div>
                                         </ng-template>
                                     </ngx-datatable-column>
-                                </ngx-datatable>
-                            </div>
-                        </div>
+                                </ngx-datatable> -->
+                        
                     </div>
                 </div>
             </div>
