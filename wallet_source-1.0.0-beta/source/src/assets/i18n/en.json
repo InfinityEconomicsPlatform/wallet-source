@@ -40,8 +40,13 @@
         "market-txt": "Market"
     },
     "footer": {
-        "content1": "This app is owned by the",
-        "content2": "and managed by the"
+        "project-info": "This app is owned by the <span>Infinity community</span> and managed by the <span>Infinity Foundation</span>.",
+        "project-title": "Infinity SmartWallet",
+        "height-label": "Height",
+        "nodes-label": "Nodes",
+        "synced-label": "Synced",
+        "connected-label": "Connected",
+        "version-label": "Version"
     },
     "account": {
         "account-title": "Account Details",
@@ -1323,7 +1328,6 @@
                 "title": "Peer Explorer",
                 "description": "The peer explorer provides UI for Networking Operations which is written in JavaScript. It acts as a gateway to the XIN server infrastructure. The explorer displays all the important nodes active on the network. This is a free community service."
             }
-
         },
         "extensions-in-development": {
             "Message Center": {
