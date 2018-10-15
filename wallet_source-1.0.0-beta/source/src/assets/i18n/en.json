@@ -606,14 +606,11 @@
         "type-label": "Type",
         "secret-phrase-label": "Secret phrase",
         "currency-ticker-label": "Currency Ticker",
-<<<<<<< HEAD
         "expert-wallet": "Expert Wallet",
-        "basic-wallet": "Basic Wallet"
-=======
+        "basic-wallet": "Basic Wallet",
         "change-price": "Change Price",
         "change-quantity": "Change Quantity",
         "remove-product": "Remove Product"
->>>>>>> WIP: listing of my products
     },
     "transaction-details": {
         "transaction-details-label": "Transaction Details",
