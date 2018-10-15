@@ -643,6 +643,9 @@ color: #fff !important;
 .text-yellow{
    color: #f49928 !important;
 }
+.text-blue{
+   color: #2f87da !important;
+}
 .icon-buttons-group .btn{
   background: #f1f2f3;
   border: 1px solid #e0ecf2;
@@ -1505,10 +1508,11 @@ height: calc(100% - 80px);
     display: inline-block;
 }
 .tag-details h2 {
-    font-size: 22px;
-    text-transform: none;
-    color: #303030;
-    line-height: 49px;
+    font-size: 22px !important;
+    text-transform: none !important;
+    color: #303030 !important;
+    line-height: 24px !important;
+        margin-bottom: 20px !important;
 }
 .tag-details h2 a{
     color: #303030 !important;
@@ -1549,6 +1553,29 @@ height: calc(100% - 80px);
   box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
   padding: 30px 25px;
 }
+.ngx-datatable.table-blank .datatable-header {
+    background: transparent !important;
+    text-transform: none;
+    font-size: 13px !important;
+    letter-spacing: 0;
+    color: #333;
+    padding:0;
+}
+.ngx-datatable.table-blank .datatable-header .datatable-header-inner .datatable-header-cell {
+    padding: 12px 20px;
+}
+.ngx-datatable.table-blank .datatable-body-cell {
+    padding: 20px;
+    justify-content: left;
+        border-right: none !important;
+}
+.ngx-datatable.table-blank .datatable-body-cell-label {
+    font-size: 13px;
+    color: #777;
+}
+.ngx-datatable.table-blank .datatable-body .datatable-body-row{
+      border-left: none !important;
+}
 
 @media(max-width: 767px){
 form .form-control-position.position-left{
@@ -1564,9 +1591,23 @@ form .form-control-position.position-left{
     padding-left: 10px !important;
     padding-right: 0 !important;
 }
+.placeholder-icon{
+  margin-bottom: 10px;
+}
+.tag-info li{
+  display: block;
+}
+.time{
+  text-align: left !important;
+}
 }
 @media(min-width: 768px){
   .text-medium-right{
   text-align: right;
+  }
+}
+@media(min-width: 1440px){
+  .placeholder-icon{
+  font-size: 50px;
   }
 }

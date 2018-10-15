@@ -10,12 +10,12 @@
                     <div class="card-block mt-2 form-bordered">
                         <div class="row">
                             <div class="col-md-12">
-                                <ngx-datatable class="material" [rows]="products_listed" [columnMode]="'force'"
+                                <ngx-datatable class="table-blank material" [rows]="products_listed" [columnMode]="'force'"
                                     [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
                                     [offset]="page.pageNumber" [limit]="page.size">
                                     <ngx-datatable-column prop="name" name="{{ 'marketplace.listing.product_list_name' | translate }}">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                            <span class="text-yellow">{{value}}</span>
                                         </ng-template>
                                     </ngx-datatable-column>
                                     <ngx-datatable-column prop="quantity" name="{{ 'marketplace.listing.product_list_quantity' | translate }}">
@@ -28,16 +28,16 @@
                                             <div [innerHTML]="value | amountTqt"></div>
                                         </ng-template>
                                     </ngx-datatable-column>
-                                    <ngx-datatable-column prop="finished" name="{{ 'marketplace.listing.product_list_actions' | translate }}">
+                                    <ngx-datatable-column headerClass="width-40-per" cellClass="width-40-per" prop="finished" name="{{ 'marketplace.listing.product_list_actions' | translate }}">
                                         <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                             <div class="btn-group btn-group-justified btn-group-raised">
-                                                <a class="btn btn-sm btn-grey btn-icon" triggers="mouseenter:mouseleave"
+                                                <a class="text-blue mr-4" triggers="mouseenter:mouseleave"
                                                     container="body" placement="top" [ngbPopover]="'common.change-price' | translate">
-                                                    <i class="fa fa-sort"></i>
+                                                    <!-- <i class="fa fa-sort"></i> -->Change Price
                                                 </a>
-                                                <a class="btn btn-sm btn-grey btn-icon" triggers="mouseenter:mouseleave"
+                                                <a class="text-blue mr-4" triggers="mouseenter:mouseleave"
                                                     container="body" placement="top" [ngbPopover]="'common.change-quantity' | translate">
-                                                    <i class="fa fa-exchange"></i>
+                                                    <!-- <i class="fa fa-exchange"></i> -->Change Quantity
                                                 </a>
                                                 <a class="btn btn-sm btn-grey btn-icon" triggers="mouseenter:mouseleave"
                                                     container="body" placement="top" [ngbPopover]="'common.remove-product' | translate">
