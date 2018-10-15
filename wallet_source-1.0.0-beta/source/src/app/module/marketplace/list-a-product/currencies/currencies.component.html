@@ -1,3 +1,114 @@
-<p>
-  currencies works!
-</p>
+<div class="form-group">
+    <label>{{ 'marketplace.list-a-product.currency_units' | translate }}
+        <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body"
+            ngbPopover="{{ 'marketplace.list-a-product.currency_units_popover' | translate }}"></i>
+    </label>
+    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+        <div class="col-10 pl-0">
+            <input type="number" id="price" class="pl-0 mb-0 pt-0 pb-0 form-control" placeholder="{{ 'marketplace.list-a-product.asset_quantity' | translate }}"
+                name="price" required>
+        </div>
+        <div class="col-2 text-right pl-0">
+            <span class="input-group-text">Units</span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>{{ 'marketplace.list-a-product.finished_height'| translate }}
+        <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body"
+            ngbPopover="{{ 'marketplace.list-a-product.finished_height_popover' | translate }}"></i>
+    </label>
+    <div class="input-group row">
+        <div class="col-12 col-md-2 pr-0">
+            <span class="input-group-text text-sm-left">BLOCK : {{ 1440 }}</span>
+        </div>
+        <div class="col-8 col-md-6 sign_in_inputs">
+            <input type="text" class="pl-0 form-control" placeholder="1440" name="blockheight">
+        </div>
+        <div class="col-4 col-md-2 pl-0 pr-0">
+            <span class="input-group-text"> {{ 1 }} Day(s)</span>
+        </div>
+        <div class="col-md-2 btn-icon-group text-right pr-1  text-sm-left">
+            <a class="btn btn-primary" (click)="decrement()">
+                <i class="fa fa-minus"></i>
+            </a>
+            <a class="btn btn-primary" (click)="increment()">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>{{ 'marketplace.list-a-product.currency' | translate }}
+        <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body"
+            ngbPopover="{{ 'marketplace.list-a-product.currency_popover' | translate }}"></i>
+    </label>
+    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+        <input type="text" id="price" class="pl-0 mb-0 pt-0 pb-0 form-control" placeholder="{{ 'marketplace.list-a-product.code' | translate }}"
+            name="price" required>
+    </div>
+</div>
+
+<div class="form-group m-0">
+    <label>{{ 'marketplace.list-a-product.accounts' | translate}} ({{ 'marketplace.list-a-product.whitelist' |
+        translate }})
+        <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave"
+            container="body" ngbPopover="{{ 'marketplace.list-a-product.accounts_popover' | translate }}"></i>
+    </label>
+    <div class="input-group ml-0 mr-0 mb-0 sign_in_inputs row form-border-bottom pb-1">
+        <div class="col-7 col-lg-8 pl-0">
+            <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control" name="recipientRS" placeholder="{{ 'common.xin-account-key-placeholder' | translate}}"
+                required>
+        </div>
+        <div class="col-5 col-lg-4 pr-1 pl-0">
+            <div class="btn-icon-group text-right">
+                <span class="btn btn-primary btn-seperator" (click)="removeAccount()">
+                    <i class="fa fa-minus"></i>
+                </span>
+
+                <span class="btn btn-primary btn-left" triggers="mouseenter:mouseleave" placement="top" container="body"
+                    ngbPopover="{{'account.send-xin.open-bookmark-tooltip'| translate}}">
+                    <i class="fa fa-bookmark"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-1">
+    <button type="button" class="btn btn-raised btn-danger mr-1 mb-0 mr-3">
+        <i class="fa fa-plus mr-1"></i>{{ 'marketplace.list-a-product.add_account' | translate }}
+    </button>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="form-group m-0">
+            <label>{{ 'marketplace.list-a-product.minimum_balance_type' | translate }}
+                <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave"
+                    container="body" ngbPopover="{{ 'marketplace.list-a-product.minimum_balance_type_popover' | translate }}"></i>
+            </label>
+        </div>
+        <div class="input-group">
+            <select id="votingModel" class="form-control" required>
+                <option value="min_balance_none">No min balance necessary</option>
+                <option value="min_balance_type_currency">Min balance of currency units required</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group m-0">
+            <label>{{ 'marketplace.list-a-product.currency' | translate }}
+                <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right" triggers="mouseenter:mouseleave"
+                    container="body" ngbPopover="{{ 'marketplace.list-a-product.currency_popover' | translate }}"></i>
+            </label>
+            <div class="input-group">
+                <input type="textarea" id="price" class="form-control" placeholder="{{ 'marketplace.list-a-product.code' | translate }}"
+                    name="price" required>
+            </div>
+        </div>
+    </div>
+</div>
