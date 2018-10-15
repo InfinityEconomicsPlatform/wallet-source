@@ -3,56 +3,57 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Send Asset Details</h2>
+                    <h2 class="main-title">{{'assets.send-asset.title'| translate}} </h2>
                     <h3 class="back-button" (click)="goBack()">
-                        <i class="fa fa-chevron-left"></i> Back
+                        <i class="fa fa-chevron-left"></i> {{'common.back-btn'| translate}}
                     </h3>
                     <app-breadcrumb></app-breadcrumb>
                 </div>
                 <div class="card-body mt-4">
                     <div class="card-block ml-md-3 mr-md-3">
                         <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                            <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                                 <form class="form inner-form" #f="ngForm" novalidate>
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group ml-0 mr-0">
-                                                    <label>Asset Id
+                                                    <label>{{'common.asset-id-label'| translate}}
                                                         <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                            placement="right" container="body" ngbPopover="The asset id for send">
+                                                            placement="right" container="body" ngbPopover="{{'assets.send-asset.asset-id-popover'| translate}} ">
                                                         </i>
                                                     </label>
                                                     <div>
                                                         <input type="text" class="form-control" name="assetId" #assetId="ngModel"
-                                                            placeholder="Asset Id" [(ngModel)]="f.assetId" required>
+                                                            placeholder="{{'common.asset-id-label'| translate}}"
+                                                            [(ngModel)]="f.assetId" required>
                                                     </div>
                                                     <div *ngIf="assetId?.invalid && (assetId?.dirty || assetId?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="assetId?.errors.required">
-                                                            Asset id is required
+                                                            {{'assets.send-asset.asset-id-required'| translate}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group ml-0 mr-0">
-                                                    <label>Shares
+                                                    <label>{{'assets.send-asset.shares-label'| translate}}
                                                         <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                            placement="right" container="body" ngbPopover="The number of shares to send.">
+                                                            placement="right" container="body" ngbPopover="{{'assets.send-asset.shares-popover'| translate}}">
                                                         </i>
                                                     </label>
                                                     <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <div class="col-8 col-lg-10 pl-0">
 
                                                             <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
-                                                                name="shares" placeholder="Shares" #shares="ngModel"
-                                                                [(ngModel)]="f.shares" required>
+                                                                name="shares" placeholder="{{'assets.send-asset.shares-label'| translate}}"
+                                                                #shares="ngModel" [(ngModel)]="f.shares" required>
                                                         </div>
 
                                                         <div class="col-4 col-lg-2 pr-1 pl-0">
                                                             <span class="input-group-text">
-                                                                QUANTITY
+                                                                {{'common.quantity-text'| translate}}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -63,27 +64,27 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group ml-0 mr-0">
-                                                    <label>Recipient
+                                                    <label>{{'common.recipient-lable'| translate}}
                                                         <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
-                                                            placement="right" container="body" ngbPopover="The recipient to send assets">
+                                                            placement="right" container="body" ngbPopover="{{'assets.send-asset.recipient-popover'| translate}}">
                                                         </i>
                                                     </label>
 
                                                     <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <div class="col-7 col-lg-9 pl-0">
                                                             <input type="text" class="pl-0 mb-0 pt-0 pb-0 form-control"
-                                                                name="recipientRS" #recipientRS="ngModel" placeholder="Recipient address"
+                                                                name="recipientRS" #recipientRS="ngModel" placeholder="{{'common.recipient-placeholder'| translate}}"
                                                                 [(ngModel)]="f.recipientRS" required>
                                                         </div>
                                                         <div class="col-5 col-lg-3 pr-1">
                                                             <div class="btn-icon-group text-right">
                                                                 <span class="btn btn-primary" triggers="mouseenter:mouseleave"
-                                                                    placement="top" container="body" ngbPopover="Enter an alias connected to an account to get the account Id.">
+                                                                    placement="top" container="body" ngbPopover="{{'common.alias-connect-tooltip'| translate}}">
                                                                     <i class="fa fa-share-alt"></i>
                                                                 </span>
                                                                 <span class="btn btn-primary" triggers="mouseenter:mouseleave"
                                                                     placement="top" (click)="loadBookmarkView()"
-                                                                    container="body" ngbPopover="Open bookmarks">
+                                                                    container="body" ngbPopover="{{'common.open-bookmark-tooltip'| translate}}">
                                                                     <i class="fa fa-address-card"></i>
                                                                 </span>
                                                             </div>
@@ -93,7 +94,7 @@
                                                     <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="recipientRS?.errors.required">
-                                                            Recipient is required
+                                                            {{'common.recipient-required-smg'| translate}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,20 +104,21 @@
                                     <div class="mt-4 left">
                                         <button type="button" [disabled]="f.invalid" class="btn btn-gradient mr-1 mb-0 float-right"
                                             awNextStep>
-                                            Next <i class="fa fa-chevron-right"></i>
+                                            {{'common.next-btn'| translate}} <i class="fa fa-chevron-right"></i>
                                         </button>
                                     </div>
                                 </form>
                             </aw-wizard-step>
-                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }"
+                                class="form-bordered mt-4">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="ucsb">Asset Id
+                                        <div class="ucsb">{{'common.asset-id-label'| translate}}
                                         </div>
                                         <h4>{{f.assetId}}</h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="ucsb">Shares
+                                        <div class="ucsb">{{'assets.send-asset.shares-label'| translate}}
                                         </div>
                                         <h4>{{f.shares}}</h4>
                                     </div>
@@ -139,7 +141,7 @@
 
                                 <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                     class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                    <i class="fa fa-key"></i> Signed Transaction
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
                                 </button>
                                 <!--  <hr *ngIf="unsignedTx"> -->
                                 <div class="form-group mt-3" *ngIf="unsignedTx">
@@ -151,10 +153,10 @@
                                 <div class="mt-4">
                                     <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
                                         (click)="broadcastTransaction(transactionBytes)">
-                                        <i class="fa fa-check"></i> Finish
+                                        <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
                                     </button>
                                     <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                        <i class="fa fa-chevron-left"></i> Previous
+                                        <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
                                     </button>
                                 </div>
                             </aw-wizard-step>

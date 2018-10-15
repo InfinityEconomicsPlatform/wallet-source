@@ -8,10 +8,13 @@
     "signup": {
         "disclaimer": {
             "title": "Accept Disclaimer",
-            "text": "These steps involves the creation of a new account. The procedure consists of complex cryptographic operations that use a <strong> PASSPHRASE </strong> (a series of 15 random words) to create your <strong> UNIQUE ACCOUNT ADDRESS </strong>. This <strong> PASSPHRASE </strong> is extremely important and must be kept in safe place, since it's <strong> THE ONLY WAY </strong> to access your account. If you lose it you lose access to your account and your funds! The Foundation holds no responsibility for lost funds resulting from misplaced passphrases. The account passphrase and other vital information must be immediately saved and written down for your own safety. Make sure that you select the entire passphrase length before keeping it and check again your account address by logging in and compare the account address with the account address generated from this PASSPHRASE here before making your first transfer. Please proceed only if you understand and accept this disclaimer."
+            "text": "These steps involves the creation of a new account. The procedure consists of complex cryptographic operations that use a <strong> PASSPHRASE </strong> (a series of 15 random words) to create your <strong> UNIQUE ACCOUNT ADDRESS </strong>. This <strong> PASSPHRASE </strong> is extremely important and must be kept in safe place, since it's <strong> THE ONLY WAY </strong> to access your account. If you lose it you lose access to your account and your funds! The Foundation holds no responsibility for lost funds resulting from misplaced passphrases. The account passphrase and other vital information must be immediately saved and written down for your own safety. Make sure that you select the entire passphrase length before keeping it and check again your account address by logging in and compare the account address with the account address generated from this PASSPHRASE here before making your first transfer. Please proceed only if you understand and accept this disclaimer.",
+            "next-step-btn": "NEXT STEP"
         },
         "passphrase": {
             "title": "Generate Passphrase",
+            "passphrase-text": "Passphrase",
+            "account-text": "Account",
             "generate_new_btn": "Generate new",
             "note": "Make sure that you keep the passphrase safe. If you lose your passphrase later on, your account can't be restored and all your funds will be lost. <strong> Write down </strong> your passphrase in the next step you will be asked to re-type it for confirmation."
         },
@@ -604,7 +607,8 @@
         "xin-account-key-placeholder": "XIN - _____ - _____ - _____ - _____",
         "search-palceholder": "Enter search words",
         "save-btn": "Save",
-        "signature-input-label": "Signature Input"
+        "signature-input-label": "Signature Input",
+        "note-text": "Note"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -823,6 +827,14 @@
             "recipient-required": "Recipient is required",
             "shares-label": "Shares",
             "shares-popover": "The number of shares you like to transfer. Fractions are calculated by decimals for this assets."
+        },
+        "send-asset": {
+            "title": "Send Asset Details",
+            "asset-id-popover": "The asset id for send",
+            "asset-id-required": "Asset id is required",
+            "shares-label": "Shares",
+            "shares-popover": "The number of shares to send.",
+            "recipient-popover": "The recipient to send assets"
         },
         "trade-desk": {
             "title": "Trade Desk",
@@ -1549,6 +1561,13 @@
         },
         "user-guide": {
             "coming-soon": "Coming Soon"
+        },
+        "log-out": {
+            "title": "Logout",
+            "text": "Are you sure, you want to logout?",
+            "inputPlaceholder": "Clear Local Storage",
+            "confirmButtonText": "Yes!",
+            "cancelButtonText": "No, cancel!"
         }
     },
     "breadcrumbs": {
