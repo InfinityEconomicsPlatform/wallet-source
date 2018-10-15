@@ -606,8 +606,14 @@
         "type-label": "Type",
         "secret-phrase-label": "Secret phrase",
         "currency-ticker-label": "Currency Ticker",
+<<<<<<< HEAD
         "expert-wallet": "Expert Wallet",
         "basic-wallet": "Basic Wallet"
+=======
+        "change-price": "Change Price",
+        "change-quantity": "Change Quantity",
+        "remove-product": "Remove Product"
+>>>>>>> WIP: listing of my products
     },
     "transaction-details": {
         "transaction-details-label": "Transaction Details",
@@ -2007,7 +2013,8 @@
         "purchase": "Purchase",
         "list-product": "List Product For Sale",
         "purchased": "Purchased Products",
-        "list-a-product": "List A Product"
+        "list-a-product": "List A Product",
+        "product-listed": "Products Listed"
     },
     "marketplace": {
         "store": {
@@ -2038,7 +2045,7 @@
             "title": "Marketplace Purchase"
         },
         "listing": {
-            "title": "Products For Sale",
+            "title": "My Products For Sale",
             "product_list_name": "Name",
             "product_list_quantity": "Quantity",
             "product_list_price": "Price",
