@@ -2103,13 +2103,20 @@
             "minimum_balance_popover": "Min balance to approve transaction.",
             "asset": "Asset",
             "asset_popover": "Enter the ID of an asset.",
-            "asset_id": "Asset Id",
+            "asset_id": "Asset ID",
             "currency": "Currency",
             "currency_popover": "Enter the currency code of a currency.",
             "code": "Code",
             "amount": "Amount",
             "asset_quantity": "Asset Quantity",
-            "asset_quantity_popover": "Necessary vote count or amount reached for the transaction to become valid."
+            "asset_quantity_popover": "Necessary vote count or amount reached for the transaction to become valid.",
+            "currency_units": "Currency Units",
+            "currency_units_popover": "Necessary vote count or amount reached for the transaction to become valid.",
+            "approved_transaction_hash": "Approved By Transaction Hash",
+            "full_transaction_hash": "Full Hash Of Tranasaction",
+            "approved_by_secret_hash": "Approved By Hashed Secret",
+            "hash_of_secret": "Hash of Secret",
+            "hash_algorithm": "Hash Algorithm"
         },
         "purchased": {
             "title": "Purchased Products"

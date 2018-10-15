@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
     styleUrls: ['./list-a-product.component.scss']
 })
 export class ListAProductComponent implements OnInit {
-    isAdvancedSettings: boolean = true;
-    tabSelected: string = 'assets';
+    isAdvancedSettings: boolean = false;
+    tabSelected: string = 'no-approval';
 
-    constructor(public router: Router, private marketplaceService: MarketplaceService) { }
+    constructor(public router: Router, private marketplaceService: MarketplaceService) {
+
+    }
 
     ngOnInit() {
 
