@@ -53,4 +53,5 @@ export class ListingComponent implements OnInit {
         DataStoreService.set('marketplace_product', product);
         this.router.navigateByUrl('/marketplace/remove-product');
     }
+
 }
