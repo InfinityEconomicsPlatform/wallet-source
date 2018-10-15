@@ -43,8 +43,13 @@
         "market-txt": "Market"
     },
     "footer": {
-        "content1": "This app is owned by the",
-        "content2": "and managed by the"
+        "project-info": "This app is owned by the <span>Infinity community</span> and managed by the <span>Infinity Foundation</span>.",
+        "project-title": "Infinity SmartWallet",
+        "height-label": "Height",
+        "nodes-label": "Nodes",
+        "synced-label": "Synced",
+        "connected-label": "Connected",
+        "version-label": "Version"
     },
     "account": {
         "account-title": "Account Details",
@@ -573,6 +578,7 @@
         "blocks-text": "BLOCKS",
         "digits-text": "DIGITS",
         "quantity-text": "QUANTITY",
+        "hash-text": "HASH",
         "days-text": "Day(s)",
         "days": "Days",
         "message-label": "Message",
@@ -603,12 +609,16 @@
         "alias-label": "Alias",
         "alias-price-label": "Alias price",
         "url-label": "URL",
-        "holding-type-label": "Holding Type",
         "xin-account-key-placeholder": "XIN - _____ - _____ - _____ - _____",
         "search-palceholder": "Enter search words",
+        "holding-type-label": "Holding Type",
         "save-btn": "Save",
         "signature-input-label": "Signature Input",
-        "note-text": "Note"
+        "note-text": "Note",
+        "copied-popover": "Copied!!",
+        "change-price": "Change Price",
+        "change-quantity": "Change Quantity",
+        "remove-product": "Remove Product"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -1446,6 +1456,72 @@
             }
         }
     },
+    "swapps": {
+        "options": {
+            "title": "Options",
+            "connection-sub-title": "Node And Connections",
+            "connection-mode-label": "Connection Mode",
+            "connection-mode-popover": "Switch over to other nodes or a local node. AUTO mode takes a random node from top ten peer selection. LOCALHOST seeks for a local node and connects if found on MANUAL you can enter a specific node IP, your private VPS for instance and on HTTPS a SSL connection is made to a dedicated https foundation server.",
+            "connection-node-label": "Connect to Node",
+            "connection-node-popover": "Enter the node ip and port - http://yourserverip:23457 - to connect with.",
+            "connection-node-placeholder": "Connect to Node",
+            "connection-node-validation": "Invalid node URL",
+            "connected-url-label": "Connected To",
+            "connected-url-popover": "The node your are connected",
+            "connected-url-placeholder": "Connected To",
+            "random-node-connect-label": "Randomize Node Connects",
+            "random-node-connect-popover": "Randomize nodes to connect with for better privacy and loadbalancing."
+        },
+        "setting": {
+            "title": "SWApps Settings",
+            "swappsList": {
+                "Assets": {
+                    "name": "Assets",
+                    "desc": "The Asset Exchange is IEP's builtin decentralised trading engine. Using the Asset Exchange  you can create, buy and sell assets that represent data beyond simple   coin   transfers   which   opens   up   wideranging   possibilities."
+                },
+                "Currencies": {
+                    "name": "Currencies",
+                    "desc": "The currency entity is the basic building block of the IEP Currencies System. A currency has a unique name and code and uniqueness is guaranteed by the protocol, currencies can be deleted and their code can be reused under certain conditions. The total currency supply is divisible into currency units."
+                },
+                "Aliases": {
+                    "name": "Aliases",
+                    "desc": "Alias System feature essentially allows one piece of text to be substituted for another, so that key-phrases can be used to represent other things."
+                },
+                "Voting": {
+                    "name": "Voting",
+                    "desc": "The IEP Voting System enables any account to create a poll with one question and up to 10 answers. "
+                },
+                "AT": {
+                    "name": "AT",
+                    "desc": "Smart contracts are computer programs that can automatically execute the terms of a contract."
+                },
+                "Crowdfunding": {
+                    "name": "Crowdfunding",
+                    "desc": "Crowdfunding is the practice of funding a project or venture by raising monetary contributions from a large number of people. "
+                },
+                "Subscriptions": {
+                    "name": "Subscriptions",
+                    "desc": "IEP offers decentralized recurring payments that users can initiate and cancel at any time."
+                },
+                "Escrow": {
+                    "name": "Escrow",
+                    "desc": "An escrow service allows safer payment by securely holding a buyer's coins in escrow until the terms of the sale are met and as a result the buyer releases payment to the seller."
+                },
+                "Shuffling": {
+                    "name": "Shuffling",
+                    "desc": "Shuffling is an effective privacy feature and it enables participants to mix their funds quickly and efficiently with other participants funds. "
+                },
+                "Tools": {
+                    "name": "Tools",
+                    "desc": "Enable tools to activate the access to extensions like Market Capitalization, recent news regarding the XIN, and everything related to the XIN environment."
+                },
+                "Marketplace": {
+                    "name": "Marketplace",
+                    "desc": "Marketplace feature allows listing items for sale and makes sales on blockchain"
+                }
+            }
+        }
+    },
     "navbar": {
         "pending-approvals-popover": "Pending Approvals to sign",
         "pending-escrow-popover": "Pending escrow to sign",
@@ -1568,6 +1644,74 @@
             "confirmButtonText": "Yes!",
             "cancelButtonText": "No, cancel!"
         }
+    },
+    "side-menu": {
+        "Account": "Account",
+        "Account Details": "Account Details",
+        "Send XIN": "Send XIN",
+        "Receive XIN": "Receive XIN",
+        "Transactions": "Transactions",
+        "Advanced": "Advanced",
+        "Control": "Control",
+        "Balance Leasing": "Balance Leasing",
+        "Search Accounts": "Search Accounts",
+        "My Bookmarks": "My Bookmarks",
+        "Lessors": "Lessors",
+        "Properties": "Properties",
+        "Block Generation": "Block Generation",
+        "Funding Monitor": "Funding Monitor",
+        "Ledger View": "Ledger View",
+        "Messages": "Messages",
+        "Show Messages": "Show Messages",
+        "Send Message": "Send Message",
+        "Assets": "Assets",
+        "Show Assets": "Show Assets",
+        "My Open Orders": "My Open Orders",
+        "My Trades": "My Trades",
+        "Last Trades": "Last Trades",
+        "Issue Asset": "Issue Asset",
+        "Search Asset": "Search Asset",
+        "Currencies": "Currencies",
+        "Show Currencies": "Show Currencies",
+        "My Open Offers": "My Open Offers",
+        "My Exchanges": "My Exchanges",
+        "My Transfers": "My Transfers",
+        "Last Exchanges": "Last Exchanges",
+        "Issue Currency": "Issue Currency",
+        "Search Currencies": "Search Currencies",
+        "Aliases": "Aliases",
+        "Show Aliases": "Show Aliases",
+        "My Sell Offers": "My Sell Offers",
+        "Buy Offers": "Buy Offers",
+        "Create Alias": "Create Alias",
+        "Voting": "Voting",
+        "Show Polls": "Show Polls",
+        "Create Poll": "Create Poll",
+        "AT": "AT",
+        "Show ATs": "Show ATs",
+        "Create AT": "Create AT",
+        "AT Workbench": "AT Workbench",
+        "Crowdfunding": "Crowdfunding",
+        "Show Campaigns": "Show Campaigns",
+        "Create Campaign": "Create Campaign",
+        "Subscriptions": "Subscriptions",
+        "My Subscriptions": "My Subscriptions",
+        "Create Subscription": "Create Subscription",
+        "Escrow": "Escrow",
+        "My Escrow": "My Escrow",
+        "Create Escrow": "Create Escrow",
+        "Shuffling": "Shuffling",
+        "Show Shufflings": "Show Shufflings",
+        "Create Shuffling": "Create Shuffling",
+        "Options": "Options",
+        "Tools": "Tools",
+        "SWApps": "SWApps",
+        "Marketplace": "Marketplace",
+        "Store": "Store",
+        "Purchased Products": "Purchased Products",
+        "MY STORE": "MY STORE",
+        "My Products For Sale": "My Products For Sale",
+        "List A Product": "List A Product"
     },
     "breadcrumbs": {
         "account": "Account",
@@ -1698,8 +1842,13 @@
         "publish-exchange-buy-offer": "Publish Exchange Buy Offer",
         "publish-exchange-sell-offer": "Publish Exchange Sell Offer",
         "marketplace": "Marketplace",
+        "store": "Store",
         "tag": "Tag",
-        "purchase": "Purchase"
+        "purchase": "Purchase",
+        "list-product": "List Product For Sale",
+        "purchased": "Purchased Products",
+        "list-a-product": "List A Product",
+        "product-listed": "Products Listed"
     },
     "marketplace": {
         "store": {
@@ -1707,13 +1856,104 @@
             "products_available": "Products Available",
             "purchased_products": "Purchased products",
             "total_purchases": "Total Purchases",
-            "total_tags": "Total Tags"
+            "total_tags": "Total Tags",
+            "no_tags_available": "No Tags Available",
+            "recent_listing": "Recent Listings",
+            "recent_purchases": "Recent Purchases",
+            "seller_account_search": "Enter The Seller's Account Address",
+            "product_search": "Search For A Product",
+            "title_description": "Title, Description or Tag"
         },
         "tag": {
-            "title": "Tag"
+            "title": "Tag",
+            "product_details": "Product Details",
+            "price": "Price",
+            "quantity": "Quantity",
+            "tags": "Tags",
+            "seller_details": "Seller Details",
+            "seller": "Seller",
+            "id": "Product ID",
+            "listing_date": "Listing Date"
         },
         "purchase": {
             "title": "Marketplace Purchase"
+        },
+        "listing": {
+            "title": "My Products For Sale",
+            "product_list_name": "Name",
+            "product_list_quantity": "Quantity",
+            "product_list_price": "Price",
+            "product_list_actions": "Actions"
+        },
+        "list-a-product": {
+            "title": "List a Product",
+            "name": "Name",
+            "name_placeholder": "Item Name",
+            "description": "Description",
+            "description_placeholder": "Enter the product description",
+            "tags": "Tags",
+            "tags_placeholder": "Tags (Categories)",
+            "tag_popover": "Choose upto 3 tags, separate them with comma's",
+            "price": "Price",
+            "price_placeholder": "Price",
+            "quantity": "Quantity",
+            "quantity_placeholder": "Quantity",
+            "fee": "Fee",
+            "fee_placeholder": "Minimum Fee",
+            "passphrase": "Passphrase",
+            "passphrase_placeholder": "Passphrase",
+            "advanced": "Advanced",
+            "basic": "Basic",
+            "putForSale": "Put For Sale",
+            "process_without_approval": "Process without approval.",
+            "process_without_approval_popover": "Transaction doesn't need further approval to become valid.",
+            "deffered_popover": "Transaction execution is deferred, however transaction doesn't need further approval to become valid.",
+            "fixed_accounts_popover": "Transaction has to be approved by a certain number of accounts.",
+            "amount_popover": "Transaction has to be approved by accounts holding a certain total amount of NXT.",
+            "assets_popover": "Transaction has to be approved by asset holders with a certain total stake.",
+            "currencies_popover": "Transaction has to be approved by currency holders with a certain total stake.",
+            "hash_popover": "Transaction is executed only if another transaction having the specified full hash is included in the blockchain.",
+            "secret_hash_popover": "Transaction is approved by revealing a secret message matching the specified hash.",
+            "deadline": "Deadline",
+            "hours": "Hours",
+            "referenced_transaction": "Referenced Transaction Hash",
+            "referenced_transaction_placeholder": "Referenced Transaction Full Hash",
+            "donot_broadcast": "Do Not Broadcast",
+            "donot_sign": "Do Not Sign",
+            "add_note_to_self": "Add Note To Self",
+            "note_to_self": "Note To Self",
+            "encrypted_note": "This note is Encrypted",
+            "finished_height": "Finished Height",
+            "finished_height_popover": "Transaction will only be executed if approved before the finish height.",
+            "number_of_accounts": "Number Of Accounts",
+            "number_of_accounts_popover": "Necessary vote count or amount reached for the transaction to become valid.",
+            "accounts": "Accounts",
+            "whitelist": "Whitelist",
+            "accounts_popover": "The following accounts will be allowed to approve the transaction (mandatory for approvals by account).",
+            "add_account": "Add Account",
+            "minimum_balance_type": "Min Balance Type",
+            "minimum_balance_type_popover": "Accounts can only approve transaction when holding a minimum balance of a certain type.",
+            "minimum_balance": "Minimum Balance",
+            "minimum_balance_popover": "Min balance to approve transaction.",
+            "asset": "Asset",
+            "asset_popover": "Enter the ID of an asset.",
+            "asset_id": "Asset ID",
+            "currency": "Currency",
+            "currency_popover": "Enter the currency code of a currency.",
+            "code": "Code",
+            "amount": "Amount",
+            "asset_quantity": "Asset Quantity",
+            "asset_quantity_popover": "Necessary vote count or amount reached for the transaction to become valid.",
+            "currency_units": "Currency Units",
+            "currency_units_popover": "Necessary vote count or amount reached for the transaction to become valid.",
+            "approved_transaction_hash": "Approved By Transaction Hash",
+            "full_transaction_hash": "Full Hash Of Tranasaction",
+            "approved_by_secret_hash": "Approved By Hashed Secret",
+            "hash_of_secret": "Hash of Secret",
+            "hash_algorithm": "Hash Algorithm"
+        },
+        "purchased": {
+            "title": "Purchased Products"
         }
     }
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes , RouterModule} from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { WalletSettingsComponent } from "./wallet-settings/swapps-settings.component";
 import { OptionsComponent } from "./options/options.component";
 

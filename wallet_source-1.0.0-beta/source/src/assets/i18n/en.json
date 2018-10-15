@@ -1479,6 +1479,10 @@
                 "Tools": {
                     "name": "Tools",
                     "desc": "Enable tools to activate the access to extensions like Market Capitalization, recent news regarding the XIN, and everything related to the XIN environment."
+                },
+                "Marketplace": {
+                    "name": "Marketplace",
+                    "desc": "Marketplace feature allows listing items for sale and makes sales on blockchain"
                 }
             }
         }
