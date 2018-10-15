@@ -43,8 +43,13 @@
         "market-txt": "Market"
     },
     "footer": {
-        "content1": "This app is owned by the",
-        "content2": "and managed by the"
+        "project-info": "This app is owned by the <span>Infinity community</span> and managed by the <span>Infinity Foundation</span>.",
+        "project-title": "Infinity SmartWallet",
+        "height-label": "Height",
+        "nodes-label": "Nodes",
+        "synced-label": "Synced",
+        "connected-label": "Connected",
+        "version-label": "Version"
     },
     "account": {
         "account-title": "Account Details",
@@ -573,6 +578,7 @@
         "blocks-text": "BLOCKS",
         "digits-text": "DIGITS",
         "quantity-text": "QUANTITY",
+        "hash-text": "HASH",
         "days-text": "Day(s)",
         "days": "Days",
         "message-label": "Message",
@@ -608,7 +614,8 @@
         "holding-type-label": "Holding Type",
         "save-btn": "Save",
         "signature-input-label": "Signature Input",
-        "note-text": "Note"
+        "note-text": "Note",
+        "copied-popover": "Copied!!"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
