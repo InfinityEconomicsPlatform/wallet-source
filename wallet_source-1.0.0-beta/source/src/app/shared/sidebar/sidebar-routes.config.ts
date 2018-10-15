@@ -782,5 +782,4 @@ export const ROUTES: RouteInfo[] = [
     // { path: '/news-center', title: 'News Center', icon: 'fa fa-newspaper-o', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/service-monitor', title: 'Service Monitor', icon: 'fa fa-desktop', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/at-workbench', title: 'At Workbench', icon: 'fa fa-gears', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
-
 ];
