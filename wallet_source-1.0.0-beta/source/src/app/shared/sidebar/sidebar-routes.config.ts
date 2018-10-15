@@ -695,7 +695,7 @@ export const ROUTES: RouteInfo[] = [
             },
             {
                 path: '/marketplace/purchased',
-                title: 'Purchased',
+                title: 'Purchased Products',
                 icon: '',
                 class: '',
                 badge: '',
@@ -705,7 +705,7 @@ export const ROUTES: RouteInfo[] = [
             },
             {
                 path: '/marketplace/product-listed',
-                title: 'My Products',
+                title: 'My Products For Sale',
                 icon: '',
                 class: '',
                 badge: '',

@@ -1666,7 +1666,12 @@
         "Create Shuffling": "Create Shuffling",
         "Options": "Options",
         "Tools": "Tools",
-        "SWApps": "SWApps"
+        "SWApps": "SWApps",
+        "Marketplace": "Marketplace",
+        "Store": "Store",
+        "Purchased Products": "Purchased Products",
+        "My Products For Sale": "My Products For Sale",
+        "List A Product": "List A Product"
     },
     "sweet-alert": {
         "info": "Info",
