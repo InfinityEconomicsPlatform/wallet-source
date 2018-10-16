@@ -1,157 +1,202 @@
-import {Component, OnInit} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {AuthService} from '../../shared/auth/auth.service';
-import * as alertFunctions from '../../shared/data/sweet-alerts';
-import {OptionService} from '../../services/option.service';
-import {Router} from '@angular/router';
-import {LoginService} from '../../services/login.service';
-import {AccountService} from '../../module/account/account.service';
-import {SubscriptionService} from '../../module/subscriptions/subscription.service';
-import {EscrowService} from '../../module/escrow/escrow.service';
-import {CommonService} from '../../services/common.service';
-import {ExtensionsService} from '../../module/extensions/extensions.service';
-import {AddressService} from '../../module/account/address.service';
-import {SwappService} from '../../services/swapp.service';
+import { Component, OnInit } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
+import { AuthService } from "../../shared/auth/auth.service";
+import * as alertFunctions from "../../shared/data/sweet-alerts";
+import { OptionService } from "../../services/option.service";
+import { Router } from "@angular/router";
+import { LoginService } from "../../services/login.service";
+import { AccountService } from "../../module/account/account.service";
+import { SubscriptionService } from "../../module/subscriptions/subscription.service";
+import { EscrowService } from "../../module/escrow/escrow.service";
+import { CommonService } from "../../services/common.service";
+import { ExtensionsService } from "../../module/extensions/extensions.service";
+import { AddressService } from "../../module/account/address.service";
+import { SwappService } from "../../services/swapp.service";
+import { text } from "@angular/core/src/render3/instructions";
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.scss']
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.scss"]
 })
-
 export class NavbarComponent implements OnInit {
-    currentLang = 'en';
-    toggleClass = 'ft-maximize';
-    connectionMode: string;
-    approvals: any = 0;
-    escrows: any = 0;
-    subscriptions: any = 0;
-    news_content: any = [];
+  currentLang = "en";
+  toggleClass = "ft-maximize";
+  connectionMode: string;
+  approvals: any = 0;
+  escrows: any = 0;
+  subscriptions: any = 0;
+  news_content: any = [];
 
-    public isExpertWallet: boolean;
+  public isExpertWallet: boolean;
 
-    constructor(public translate: TranslateService,
-                public authService: AuthService,
-                public optionService: OptionService,
-                public router: Router,
-                public loginService: LoginService,
-                private  accountService: AccountService,
-                private commonsService: CommonService,
-                private extensionsService: ExtensionsService,
-                private escrowService: EscrowService,
-                private subscriptionService: SubscriptionService,
-                public addressService: AddressService,
-                public swappService: SwappService) {
-        //const browserLang: string = translate.getBrowserLang();
-        //translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : 'en');
-        
-        this.optionService.optionsChanged$.subscribe(res => {
-            this.ngOnInit();
-        });
-    }
+  constructor(
+    public translate: TranslateService,
+    public authService: AuthService,
+    public optionService: OptionService,
+    public router: Router,
+    public loginService: LoginService,
+    private accountService: AccountService,
+    private commonsService: CommonService,
+    private extensionsService: ExtensionsService,
+    private escrowService: EscrowService,
+    private subscriptionService: SubscriptionService,
+    public addressService: AddressService,
+    public swappService: SwappService
+  ) {
+    //const browserLang: string = translate.getBrowserLang();
+    //translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : 'en');
 
-    ngOnInit() {
-        this.connectionMode = this.optionService.getOption('CONNECTION_MODE', '');
-        this.isExpertWallet = this.loginService.isExpertWallet;
-        this.getBadges();
-        this.getLatestNews();
-    }
+    this.optionService.optionsChanged$.subscribe(res => {
+      this.ngOnInit();
+    });
+  }
 
-    getBadges() {
+  ngOnInit() {
+    this.connectionMode = this.optionService.getOption("CONNECTION_MODE", "");
+    this.isExpertWallet = this.loginService.isExpertWallet;
+    this.getBadges();
+    this.getLatestNews();
+  }
 
-        let accountRs = this.commonsService.getAccountDetailsFromSession('accountRs');
-        this.accountService.getVoterPhasedTransactions(accountRs, '', '').subscribe((success) => {
-            let approvals = success['transactions'];
-            this.approvals = approvals ? approvals.length : 0;
-        }, (error) => {
-            this.approvals = 0;
-        });
+  getBadges() {
+    let accountRs = this.commonsService.getAccountDetailsFromSession(
+      "accountRs"
+    );
+    this.accountService.getVoterPhasedTransactions(accountRs, "", "").subscribe(
+      success => {
+        let approvals = success["transactions"];
+        this.approvals = approvals ? approvals.length : 0;
+      },
+      error => {
+        this.approvals = 0;
+      }
+    );
 
-        this.escrowService.getAccountEscrowTransactions(accountRs, '', '').subscribe((success) => {
-            let escrow = success['escrows'];
-            this.escrows = escrow ? escrow.length : 0;
-        }, (error) => {
-            this.escrows = 0;
-        });
-
-        this.subscriptionService.getAccountSubscriptions(accountRs, '', '').subscribe((success) => {
-            let subscription = success['subscriptions'];
-            this.subscriptions = subscription ? subscription.length : 0;
-        }, function (error) {
-            this.subscriptions = 0;
-        });
-    };
-    getLatestNews(){
-        this.extensionsService.getNews().subscribe((success) => {
-            this.news_content = success;
-        }, (error) => {
-
-        })
-    }
-
-    ChangeLanguage(language: string) {
-        this.translate.use(language);
-    }
-
-    ToggleClass() {
-        if (this.toggleClass === 'ft-maximize') {
-            this.toggleClass = 'ft-minimize';
+    this.escrowService
+      .getAccountEscrowTransactions(accountRs, "", "")
+      .subscribe(
+        success => {
+          let escrow = success["escrows"];
+          this.escrows = escrow ? escrow.length : 0;
+        },
+        error => {
+          this.escrows = 0;
         }
-        else
-            this.toggleClass = 'ft-maximize'
-    }
+      );
 
-    acconutControl() {
-        this.router.navigate(['account/control']);
-    }
+    this.subscriptionService
+      .getAccountSubscriptions(accountRs, "", "")
+      .subscribe(
+        success => {
+          let subscription = success["subscriptions"];
+          this.subscriptions = subscription ? subscription.length : 0;
+        },
+        function(error) {
+          this.subscriptions = 0;
+        }
+      );
+  }
+  getLatestNews() {
+    this.extensionsService.getNews().subscribe(
+      success => {
+        this.news_content = success;
+      },
+      error => {}
+    );
+  }
 
-    myEscrow() {
-        this.router.navigate(['escrow/my-escrow']);
-    }
+  ChangeLanguage(language: string) {
+    this.translate.use(language);
+  }
 
-    mySubscription() {
-        this.router.navigate(['subscriptions/my-subscriptions']);
-    }
+  ToggleClass() {
+    if (this.toggleClass === "ft-maximize") {
+      this.toggleClass = "ft-minimize";
+    } else this.toggleClass = "ft-maximize";
+  }
 
-    newFoundation() {
-        this.router.navigate(['extensions/newsviewer']);
-    }
+  acconutControl() {
+    this.router.navigate(["account/control"]);
+  }
 
-    sendToken() {
-        this.router.navigate(['account/send']);
-    }
+  myEscrow() {
+    this.router.navigate(["escrow/my-escrow"]);
+  }
 
-    sendMessage() {
-        this.router.navigate(['messages/send-message']);
-    }
+  mySubscription() {
+    this.router.navigate(["subscriptions/my-subscriptions"]);
+  }
 
-    sendAssets() {
-        this.router.navigate(['assets/send-assets']);
-    }
+  newFoundation() {
+    this.router.navigate(["extensions/newsviewer"]);
+  }
 
-    sendCurrency() {
-        this.router.navigate(['currencies/send-currencies']);
-    }
+  sendToken() {
+    this.router.navigate(["account/send"]);
+  }
 
-    openBookMarks() {
-        this.router.navigate(['account/bookmark']);
-    }
+  sendMessage() {
+    this.router.navigate(["messages/send-message"]);
+  }
 
-    logout() {
-        alertFunctions.confirmLogoutButton().then((result) => {
-            if (result.value === 0 || result.value === 1) {
-                if(result.value === 1) {
-                    //clear localstorage
-                    let publicKey = this.commonsService.getAccountDetailsFromSession('publicKey');
-                    this.swappService.clearSwapps();
-                    this.optionService.clearOptions(publicKey,(success)=>{},(error) => {});
-                    this.addressService.clearContacts(publicKey,(success)=>{},(error) => {});
-                }
-                this.authService.logout();
+  sendAssets() {
+    this.router.navigate(["assets/send-assets"]);
+  }
+
+  sendCurrency() {
+    this.router.navigate(["currencies/send-currencies"]);
+  }
+
+  openBookMarks() {
+    this.router.navigate(["account/bookmark"]);
+  }
+
+  logout() {
+    let title: string;
+    let text: string;
+    let inputPlaceholder: string;
+    let confirmButtonText: string;
+    let cancelButtonText: string;
+    this.translate.get("tool-pages.log-out").subscribe((res: any) => {
+      title = res.title;
+      text = res.text;
+      inputPlaceholder = res.inputPlaceholder;
+      confirmButtonText = res.confirmButtonText;
+      cancelButtonText = res.cancelButtonText;
+    });
+    alertFunctions
+      .confirmLogoutButton(
+        title,
+        text,
+        inputPlaceholder,
+        confirmButtonText,
+        cancelButtonText
+      )
+      .then(
+        result => {
+          if (result.value === 0 || result.value === 1) {
+            if (result.value === 1) {
+              //clear localstorage
+              let publicKey = this.commonsService.getAccountDetailsFromSession(
+                "publicKey"
+              );
+              this.swappService.clearSwapps();
+              this.optionService.clearOptions(
+                publicKey,
+                success => {},
+                error => {}
+              );
+              this.addressService.clearContacts(
+                publicKey,
+                success => {},
+                error => {}
+              );
             }
-        }, () => {
-
-        })
-    }
-
+            this.authService.logout();
+          }
+        },
+        () => {}
+      );
+  }
 }
