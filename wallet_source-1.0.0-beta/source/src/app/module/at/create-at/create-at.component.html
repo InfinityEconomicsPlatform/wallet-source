@@ -116,7 +116,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group m-0">
-                                                <label>{{'at.create-at.code-label'| translate}}
+                                                <label>{{'common.code-label'| translate}}
                                                     <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                                         container="body" ngbPopover="{{'at.create-at.code-popover'| translate}}">
                                                     </i>
@@ -124,10 +124,10 @@
                                                 <div class="position-relative sign_in_inputs">
                                                     <textarea rows="5" class="form-control pl-0" [(ngModel)]="createAtForm.code"
                                                         name="code" #code="ngModel" minlength="10" maxlength="1000"
-                                                        placeholder="{{'at.create-at.code-label'| translate}}" required></textarea>
+                                                        placeholder="{{'common.code-label'| translate}}" required></textarea>
                                                     <div *ngIf="code?.invalid && (code?.dirty || code?.touched)" class="input-error">
                                                         <div *ngIf="code?.errors.required">
-                                                            {{'at.create-at.code-required'| translate}}
+                                                            {{'common.code-required'| translate}}
                                                         </div>
                                                         <div *ngIf="code?.errors.minlength && !code?.errors.required">
                                                             {{'at.create-at.code-greater'| translate}}

@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>{{'crowdfunding.create-campaign.code-label'| translate}}
+                                                    <label>{{'common.code-label'| translate}}
                                                         <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
                                                             container="body" placement="right" ngbPopover="{{'crowdfunding.create-campaign.code-popover'| translate}}">
                                                         </i>
@@ -49,12 +49,11 @@
                                                     <div class="m-0">
                                                         <input type="text" class="form-control" [(ngModel)]="campaignForm.code"
                                                             name="code" #code="ngModel" minlength="3" maxlength="6"
-                                                            placeholder="{{'crowdfunding.create-campaign.code-label'| translate}}"
-                                                            required>
+                                                            placeholder="{{'common.code-label'| translate}}" required>
                                                         <div *ngIf="code?.invalid && (code?.dirty || code?.touched)"
                                                             class="input-error">
                                                             <div *ngIf="code?.errors.required">
-                                                                {{'crowdfunding.create-campaign.code-required'|
+                                                                {{'common.code-required'|
                                                                 translate}}
                                                             </div>
                                                             <div *ngIf="code?.errors.minlength">
@@ -319,7 +318,7 @@
                                         <h4> {{campaignForm.name}} </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'crowdfunding.create-campaign.code-label'| translate}}
+                                        <div class="ucsb"> {{'common.code-label'| translate}}
                                         </div>
                                         <h4> {{campaignForm.code}} </h4>
                                     </div>

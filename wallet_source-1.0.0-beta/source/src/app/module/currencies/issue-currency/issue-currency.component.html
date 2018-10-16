@@ -244,18 +244,18 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group ml-0 mr-0">
-                                                <label>{{'currencies.issue-currency.code-label'| translate}}
+                                                <label>{{'common.code-label'| translate}}
                                                     <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
                                                         container="body" placement="right" ngbPopover="{{'currencies.issue-currency.code-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div class="m-0">
-                                                    <input type="text" placeholder="{{'currencies.issue-currency.code-label'| translate}}"
+                                                    <input type="text" placeholder="{{'common.code-label'| translate}}"
                                                         class="form-control" [(ngModel)]="issueCurrencyForm.code" name="code"
                                                         #code="ngModel" minlength="3" maxlength="6" required>
                                                     <div *ngIf="code?.invalid && (code?.dirty || code?.touched)" class="input-error">
                                                         <div *ngIf="code?.errors.required">
-                                                            {{'currencies.issue-currency.code-required'| translate}}
+                                                            {{'common.code-required'| translate}}
                                                         </div>
                                                         <div *ngIf="code?.errors.minlength">
                                                             {{'currencies.issue-currency.code-at-least'| translate}}
