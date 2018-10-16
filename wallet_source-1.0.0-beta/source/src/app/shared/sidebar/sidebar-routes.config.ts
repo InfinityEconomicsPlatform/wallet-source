@@ -707,7 +707,7 @@ export const ROUTES: RouteInfo[] = [
                 path: '/marketplace/my-store',
                 title: 'MY STORE',
                 icon: '',
-                class: '',
+                class: 'disabled',
                 badge: '',
                 badgeClass: '',
                 isExternalLink: false,

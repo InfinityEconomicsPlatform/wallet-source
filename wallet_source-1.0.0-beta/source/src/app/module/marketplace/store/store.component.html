@@ -19,9 +19,9 @@
                                                         <h1 class="card-icon">{{ count.purchased_products }}</h1>
                                                     </div>
                                                     <div class="media-body text-left">
-                                                        <span class="card-title">{{'marketplace.store.purchased_products'
-                                                            |
-                                                            translate}}</span>
+                                                        <span class="card-title">
+                                                            {{ 'marketplace.store.purchased_products' | translate }}
+                                                        </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5 text-medium-right">
@@ -42,9 +42,9 @@
                                                         <h1 class="card-icon">{{ count.products_available }}</h1>
                                                     </div>
                                                     <div class="media-body text-left">
-                                                        <span class="card-title">{{'marketplace.store.products_available'
-                                                            |
-                                                            translate}}</span>
+                                                        <span class="card-title">
+                                                            {{ 'marketplace.store.products_available' | translate }}
+                                                        </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5 text-medium-right">
@@ -65,9 +65,9 @@
                                                         <h1 class="card-icon">{{ count.total_purchases }}</h1>
                                                     </div>
                                                     <div class="media-body text-left">
-                                                        <span class="card-title">{{'marketplace.store.total_purchases'
-                                                            |
-                                                            translate}}</span>
+                                                        <span class="card-title">
+                                                            {{ 'marketplace.store.total_purchases' | translate }}
+                                                        </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5 text-medium-right">
@@ -88,8 +88,9 @@
                                                         <h1 class="card-icon">{{ count.total_tags }}</h1>
                                                     </div>
                                                     <div class="media-body text-left">
-                                                        <span class="card-title">{{'marketplace.store.total_tags' |
-                                                            translate}}</span>
+                                                        <span class="card-title">
+                                                            {{ 'marketplace.store.total_tags' | translate }}
+                                                        </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5 text-medium-right">
@@ -120,105 +121,106 @@
                                                         </div>
 
                                                         <input type="text" class="form-control input-search pb-2 search-dropdown-input"
-                                                            required placeholder="{{ 'marketplace.store.title_description' | translate }}">
-                                                        <div class="form-control-position btn-search">
-                                                            <i class="ft-search info mr-2"></i>Search
-                                                        </div>
+                                                            placeholder="{{ 'marketplace.store.title_description' | translate }}"
+                                                            required>
+                                                        <div class="form-control-position btn-search" (click)="search()"></div>>
+                                                        <i class="ft-search info mr-2"></i>Search
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5 mb-5 tag-list" *ngIf="tags.length > 0">
+                        <div class="col-md-12">
+                            <a *ngFor="let tag of tags" (click)="openTag(tag)"> {{ tag.tag }}</a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-12 border-bt pb-4 mb-4">
+                            <h3 class="text-dark text-uppercase">
+                                {{ 'marketplace.store.recent_listing' | translate }}
+                            </h3>
+                            <ngx-datatable class="material table-light" [rows]="recentListings" [columnMode]="'force'"
+                                [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
+                                [offset]="page.pageNumber" [limit]="page.size">
+                                <ngx-datatable-column prop="" name="">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        <i class="icon-placeholder placeholder-icon"></i>
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column prop="timestamp" name="{{ 'marketplace.store.listing_date' | translate }}">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        {{ value | timestamp }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column prop="name" name="{{ 'marketplace.store.product' | translate }}">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        <a class="hyperlink">{{ value }}</a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column prop="priceTQT" name="{{ 'marketplace.store.price' | translate }}">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        {{ value | amountTqt }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column prop="sellerRS" name="{{ 'marketplace.store.seller' | translate }}">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        <a class="hyperlink">{{ value }}</a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                            <div class="text-right mt-4">
+                                <a href="#" class="btn btn-gradient">
+                                    {{ 'marketplace.store.view_more' | translate }}
+                                </a>
                             </div>
                         </div>
+                        <hr>
+                        <div class="col-md-12">
+                            <h3 class="text-dark text-uppercase">
+                                {{ 'marketplace.store.recent_purchases' | translate }}
+                            </h3>
+                            <ngx-datatable class="material table-light" [rows]="recentPurchases" [columnMode]="'force'"
+                                [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
+                                [offset]="page.pageNumber" [limit]="page.size">
+                                <ngx-datatable-column prop="" name="">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        <i class="icon-placeholder placeholder-icon"></i>
+                                    </ng-template>
+                                </ngx-datatable-column>
 
-                        <div class="row mt-5 mb-5 tag-list" *ngIf="tags.length > 0">
-                            <div class="col-md-12" *ngFor="let tag of tags">
-                                <a (click)="openTag(tag)"> {{ tag }}</a>
-                            </div>
-                        </div>
-
-                        <div class="row mt-4 mb-4 mt-md-5 mb-md-5 tag-list">
-                            <div class="col-md-12">
-                                <a (click)="openTag(tag)"> {{ tag }} domains</a>
-                                <a (click)="openTag(tag)"> {{ tag }} xin</a>
-                                <a (click)="openTag(tag)"> {{ tag }} name</a>
-                                <a (click)="openTag(tag)"> {{ tag }} account</a>
-                            </div>
-                        </div>
-
-                        <div class="row mt-4">
-                            <div class="col-md-12 border-bt pb-4 mb-4">
-                                <h3 class="text-dark text-uppercase">{{ 'marketplace.store.recent_listing' | translate
-                                    }}</h3>
-                                <ngx-datatable class="material table-light" [rows]="recentListings" [columnMode]="'force'"
-                                    [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
-                                    [offset]="page.pageNumber" [limit]="page.size">
-                                    <ngx-datatable-column prop="" name="">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            <i class="icon-Account icon-gradient"></i>
-                                        </ng-template>
-                                    </ngx-datatable-column>
-
-                                    <ngx-datatable-column prop="name" name="Listing Date">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
-                                        </ng-template>
-                                    </ngx-datatable-column>
-                                    <ngx-datatable-column prop="votingModel" name="Product">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
-                                        </ng-template>
-                                    </ngx-datatable-column>
-                                    <ngx-datatable-column prop="options" name="Price">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
-                                        </ng-template>
-                                    </ngx-datatable-column>
-                                    <ngx-datatable-column prop="finished" name="Seller">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
-                                        </ng-template>
-                                    </ngx-datatable-column>
-                                </ngx-datatable>
-                                <div class="text-right mt-4"><a href="#" class="btn btn-gradient">View More</a></div>
-                            </div>
-                            <hr>
-                            <div class="col-md-12">
-                                <h3 class="text-dark text-uppercase">{{ 'marketplace.store.recent_purchases' |
-                                    translate }}</h3>
-                                <ngx-datatable class="material table-light" [rows]="recentListings" [columnMode]="'force'"
-                                    [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
-                                    [offset]="page.pageNumber" [limit]="page.size">
-                                    <ngx-datatable-column prop="" name="">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            <i class="icon-Account icon-gradient"></i>
-                                        </ng-template>
-                                    </ngx-datatable-column>
-
-                                    <ngx-datatable-column prop="name" name="Purchase Date">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
-                                        </ng-template>
-                                    </ngx-datatable-column>
-                                    <ngx-datatable-column prop="votingModel" name="Product">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
-                                        </ng-template>
-                                    </ngx-datatable-column>
-                                    <ngx-datatable-column prop="options" name="Price">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
-                                        </ng-template>
-                                    </ngx-datatable-column>
-                                    <ngx-datatable-column prop="finished" name="Buyer">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
-                                        </ng-template>
-                                    </ngx-datatable-column>
-                                </ngx-datatable>
-                                <div class="text-right mt-4"><a href="#" class="btn btn-gradient">View More</a></div>
+                                <ngx-datatable-column prop="timestamp" name="{{ 'marketplace.store.purchase_date' | translate }}">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        {{ value | timestamp }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column prop="name" name="{{ 'marketplace.store.product' | translate }}">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        {{ value }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column prop="priceTQT" name="{{ 'marketplace.store.price' | translate }}">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        {{ value | amountTqt }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column prop="buyerRS" name="{{ 'marketplace.store.buyer' | translate }}">
+                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                        <a class="hyperlink">{{ value }}</a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                            <div class="text-right mt-4">
+                                <a href="#" class="btn btn-gradient">
+                                    {{ 'marketplace.store.view_more' | translate }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -226,4 +228,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

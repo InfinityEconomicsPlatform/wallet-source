@@ -337,6 +337,9 @@ padding-top: 15px;
           background: transparent;
           }
         }
+        &.disabled {
+            background: #f0f0f0;
+        }
       }
     }
     &.open > a{

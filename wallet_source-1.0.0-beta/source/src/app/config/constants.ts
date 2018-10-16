@@ -212,7 +212,7 @@ export class AppConstants {
     };
 
     public static marketPlaceConfig = {
-        'apiUrl': 'http://142.93.129.208:23457',
+        'apiUrl': 'http://142.93.129.169:2345',
         'endPoint': 'api'
     }
 }

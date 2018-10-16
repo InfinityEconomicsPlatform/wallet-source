@@ -14,6 +14,7 @@ import { AccountService } from '../../account/account.service';
 })
 export class StoreComponent implements OnInit {
     recentListings: any[] = [];
+    recentPurchases: any[] = [];
     page = new Page();
     count: any;
     accountId: any;
@@ -34,6 +35,8 @@ export class StoreComponent implements OnInit {
 
     ngOnInit() {
         this.getCounts();
+        this.getRecentListings();
+        this.getRecentPurchases();
     }
 
     getCounts() {
@@ -67,5 +70,21 @@ export class StoreComponent implements OnInit {
 
     openTag() {
         this.router.navigateByUrl('/marketplace/tag');
+    }
+
+    getRecentListings() {
+        this.marketplaceService.recentListings().subscribe((success: any) => {
+            this.recentListings = success.goods;
+        }, (error) => {
+            console.log("Error: recentListings", error);
+        });
+    }
+
+    getRecentPurchases() {
+        this.marketplaceService.recentListings().subscribe((success: any) => {
+            this.recentPurchases = success.purchases;
+        }, (error) => {
+            console.log("Error: recentListings", error);
+        });
     }
 }

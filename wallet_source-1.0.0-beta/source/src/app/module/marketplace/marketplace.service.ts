@@ -241,4 +241,13 @@ export class MarketplaceService {
 
         return this.http.get(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
     }
+
+    recentListings() {
+        let params = {
+            'requestType': 'getDGSGoods',
+            'completed': true
+        };
+
+        return this.http.get(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
+    }
 }

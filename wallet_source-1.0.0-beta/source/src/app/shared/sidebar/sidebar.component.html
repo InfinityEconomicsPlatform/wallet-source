@@ -25,7 +25,7 @@
                 <a [routerLink]="['/dashboard']">
                     <i class="icon-Dashboard"></i>
                     <span class="menu-title">
-                        <strong>{{balanceTQT | amountTqt }} {{'common.xin-unit-text'| translate}}</strong>
+                        <strong>{{ balanceTQT | amountTqt }} {{ 'common.xin-unit-text' | translate }}</strong>
                     </span>
                 </a>
             </li>
@@ -58,7 +58,7 @@
                             </ng-template>
                             <!-- Second level menu -->
                             <ul class="menu-content" *ngIf="menuItem.submenu.length > 0">
-                                <li id="{{ 'second_' + second }}" [ngClass]="{'has-sub':menuSubItem.class == 'has-sub','open' : idArray.indexOf('second_'+second) !== -1}"
+                                <li id="{{ 'second_' + second }}" [ngClass]="{'disabled':menuSubItem.class == 'disabled', 'has-sub':menuSubItem.class == 'has-sub','open' : idArray.indexOf('second_'+second) !== -1}"
                                     *ngFor="let menuSubItem of menuItem.submenu;let second = index" [routerLinkActive]="menuSubItem.submenu.length > 0 ? '' : 'active'">
                                     <ng-container *isExpertView="menuSubItem.isExpertView">
                                         <a [routerLink]="menuSubItem.submenu.length > 0 ? null : [menuSubItem.path]"
