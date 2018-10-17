@@ -90,20 +90,20 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="ucsb"> {{ 'common.valid-lable' | translate}}</div>
+                                            <div class="ucsb"> {{ 'common.valid-label' | translate}}</div>
                                             <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="ucsb"> {{ 'common.service-fee-lable' | translate}}</div>
+                                            <div class="ucsb"> {{ 'common.service-fee-label' | translate}}</div>
                                             <h4> {{ tx_fee | amountTkn }}
-                                                <small> XIN</small>
+                                                <small> {{'common.xin-unit-text'| translate}}</small>
                                             </h4>
                                         </div>
                                     </div>
 
                                     <button type="button" [ngClass]="{'btn-success': !signedTx, 'btn-danger': signedTx}"
                                         class="btn btn-raised mr-1 mb-0" (click)="signedTx = !signedTx">
-                                        <i class="fa fa-key"></i> {{ 'common.signed-transaction-lable' | translate}}
+                                        <i class="fa fa-key"></i> {{ 'common.signed-transaction-label' | translate}}
                                     </button>
 
                                     <div class="form-group" *ngIf="signedTx">

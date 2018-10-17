@@ -57,7 +57,8 @@
                                                         [(ngModel)]="dividendPaymentForm.amountPerQuant" required
                                                         minValue="1">
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text">XIN</span>
+                                                        <span class="input-group-text">{{'common.xin-unit-text'|
+                                                            translate}}</span>
                                                     </div>
                                                 </div>
                                                 <div *ngIf="amountPerQuant?.invalid && (amountPerQuant?.dirty || amountPerQuant?.touched)"
@@ -121,10 +122,10 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.amount-lable'| translate}}
+                                    <div class="ucsb"> {{'common.amount-label'| translate}}
                                     </div>
                                     <h4>{{dividendPaymentForm.amountPerQuant}}
-                                        <small>XIN</small></h4>
+                                        <small>{{'common.xin-unit-text'| translate}}</small></h4>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="ucsb">{{'assets.dividend-payment.height-label'| translate}}
@@ -135,24 +136,24 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                    <div class="ucsb"> {{'common.valid-label'| translate}}
                                     </div>
                                     <h4>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                     </h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                    <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                     </div>
                                     <h4>{{tx_fee | amountTkn}}
-                                        <small>XIN</small>
+                                        <small>{{'common.xin-unit-text'| translate}}</small>
                                     </h4>
                                 </div>
                             </div>
                             <hr>
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                 class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                             </button>
                             <hr *ngIf="unsignedTx">
                             <div class="form-group" *ngIf="unsignedTx">

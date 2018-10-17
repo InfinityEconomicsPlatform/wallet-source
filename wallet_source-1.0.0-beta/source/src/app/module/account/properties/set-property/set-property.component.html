@@ -16,7 +16,7 @@
                 <form class="form inner-form" #f="ngForm" novalidate>
                     <div class="form-body">
                         <div class="form-group">
-                            <label>{{'common.recipient-lable'| translate}}
+                            <label>{{'common.recipient-label'| translate}}
                                 <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
                                     placement="right" container="body" ngbPopover="{{'account.properties.recipient-lable-popover'| translate}}">
                                 </i>
@@ -45,7 +45,7 @@
                             </div>
                             <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)" class="input-error">
                                 <div *ngIf="recipientRS?.errors.required">
-                                    {{'common.recipient-required-smg'| translate}}
+                                    {{'common.recipient-required'| translate}}
                                 </div>
                             </div>
                         </div>
@@ -123,15 +123,15 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="ucsb"> {{'common.valid-lable'| translate}}
+                        <div class="ucsb"> {{'common.valid-label'| translate}}
                         </div>
                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                     </div>
                     <div class="col-md-6">
-                        <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                        <div class="ucsb"> {{'common.service-fee-label'| translate}}
                         </div>
                         <h4> {{ tx_fee | amountTkn }}
-                            <small> XIN</small>
+                            <small> {{'common.xin-unit-text'| translate}}</small>
                         </h4>
                     </div>
                 </div>

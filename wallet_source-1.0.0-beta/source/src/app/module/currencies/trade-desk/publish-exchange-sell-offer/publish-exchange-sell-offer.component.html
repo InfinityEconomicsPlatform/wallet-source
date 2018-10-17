@@ -60,7 +60,7 @@
                                                         </div>
                                                         <div class="col-3 text-right">
                                                             <span class="input-group-text">
-                                                                XIN
+                                                                {{'common.xin-unit-text'| translate}}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -213,22 +213,22 @@
                                         <h4> {{publishExchangeOfferForm.expirationHeight}} </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                        <div class="ucsb"> {{'common.valid-label'| translate}}
                                         </div>
                                         <h4 [innerHTML]="validBytes | txIsValid"> </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                        <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                         </div>
                                         <h4> {{ tx_fee | amountTkn }}
-                                            <small> XIN</small>
+                                            <small> {{'common.xin-unit-text'| translate}}</small>
                                         </h4>
                                     </div>
                                 </div>
 
                                 <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                     class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                    <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                                 </button>
                                 <!--  <hr *ngIf="unsignedTx"> -->
                                 <div class="form-group mt-3" *ngIf="unsignedTx">

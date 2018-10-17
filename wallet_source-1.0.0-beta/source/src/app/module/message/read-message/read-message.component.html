@@ -19,7 +19,7 @@
                             <h4> {{params.timestamp|timestamp}} </h4>
                         </div>
                         <div class="col-md-6">
-                            <div class="ucsb"> {{'messages.read-message.type-label'| translate}}
+                            <div class="ucsb"> {{'common.type-label'| translate}}
                             </div>
                             <h4 [innerHTML]="params.type | transactionType">
                             </h4>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="ucsb">
-                                Recipient
+                                {{'common.recipient-label'| translate}}
                             </div>
                             <h4> {{params.recipientRS}} </h4>
                         </div>

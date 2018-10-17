@@ -65,7 +65,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>{{'common.recipient-lable'| translate}}
+                                                    <label>{{'common.recipient-label'| translate}}
                                                         <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
                                                             placement="right" container="body" ngbPopover="{{'currencies.send-currency.recipient-popover'| translate}}">
                                                         </i>
@@ -94,7 +94,7 @@
                                                     <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="recipientRS?.errors.required">
-                                                            {{'currencies.send-currency.recipient-required'|
+                                                            {{'common.recipient-required'|
                                                             translate}}
                                                         </div>
                                                     </div>
@@ -142,7 +142,7 @@
 
                                 <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                     class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                    <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                                 </button>
                                 <!--  <hr *ngIf="unsignedTx"> -->
                                 <div class="form-group mt-3" *ngIf="unsignedTx">

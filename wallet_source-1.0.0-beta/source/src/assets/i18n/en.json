@@ -95,10 +95,6 @@
             "deferred-tab": "Deferred",
             "reference-tab": "Reference",
             "secret-tab": "Secret",
-            "details-step": "Details",
-            "confirm-step": "Confirm",
-            "recipient-lable": "Recipient",
-            "amount-lable": "Amount",
             "number-blocks-lable": "Number Blocks to Defer Transaction",
             "number-blocks-tooltip": "Your transaction will be executed without further approvement after this number of blocks",
             "reference-full-hash-lable": "Referenced full HASH",
@@ -115,21 +111,7 @@
             "message-field-lable": "Message (MAX. 160 CHARS)",
             "public-key-field-lable": "Recipient Public Key (OPTIONAL)",
             "message-field-tooltip": "For message encryption the recipient public key needs to be known. This is not the case for accounts without any outbound transaction.",
-            "public-key-field-tooltip": "Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key.",
-            "recipient-account-lable": "Recipient Account",
-            "recipient-name-lable": "Recipient Name",
-            "recipient-balance-lable": "Recipient Balance",
-            "token-send-lable": "Token Send",
-            "service-fee-lable": "Service Fee",
-            "token-total-lable": "Token Total",
-            "valid-lable": "Valid",
-            "message-added-lable": "Message Added",
-            "public-key-added-lable": "Public Key Added",
-            "signed-transaction-lable": "Signed Transaction",
-            "encrypted-message-lable": "Encrypted Message",
-            "previous-btn": "Previous",
-            "next-btn": "Next",
-            "finish-btn": "Finish"
+            "public-key-field-tooltip": "Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key."
         },
         "receive-xin": {
             "receive-xin-title": "Receive XIN",
@@ -195,7 +177,6 @@
             "block-duration-popover": "1.440 Blocks are equal one day. Range from min. 1'440 to max. 65'535 Blocks",
             "recipient-popover": "This account will receive your balance mining power for block duration specified right side.",
             "duration-lease-lable": "Duration Lease",
-            "recipient-required-msg": "Recipient address is required.",
             "duration-required-msg": "Duration is required.",
             "duration-greater-or-equal-msg": "Duration must be greater than equal to 1440.",
             "duration-less-or-equal-msg": "Duration must be less than equal to 65535"
@@ -290,7 +271,6 @@
         "send-message": {
             "title": "Send Message",
             "recipient-label-popover": "The account you like to send an encrypted message to.",
-            "type-label": "Type",
             "type-label-popover": "ON chain or OFF chain. Non-prunable with max. 160 chars or prunable messages with max. 42Kb. Prunable messages are deleted after two weeks.",
             "message-label": "Message",
             "message-label-popover": "Encrypted messages with max. 160 characters unless prunable which is max. 42Kb.",
@@ -308,9 +288,7 @@
         "read-message": {
             "title": "Read Message Details",
             "date-label": "Date",
-            "type-label": "Type",
             "sender-label": "Sender",
-            "recipient-label": "Recipient",
             "message-label": "Message"
         }
     },
@@ -325,8 +303,6 @@
         },
         "transfer-currency": {
             "title": "Transfer Currency Details",
-            "ticker-label": "Ticker",
-            "currency-id-label": "Currency Id",
             "units-label": "Units",
             "ticker-popover": "Unique ticker code.",
             "currency-id-popover": "Currency Id",
@@ -408,12 +384,10 @@
             "last-exchanges-title": "Last Exchanges"
         },
         "trade-desk-buy": {
-            "title": "Buy Currency Confirmation",
-            "currency-label": "Currency"
+            "title": "Buy Currency Confirmation"
         },
         "trade-desk-sell": {
-            "title": "Sell Currency Confirmation",
-            "currency-label": "Currency"
+            "title": "Sell Currency Confirmation"
         },
         "currency-buy-offer": {
             "title": "Currency Buy Offer Details",
@@ -465,7 +439,6 @@
             "code-popover": "The currency code is unique. Its composed of 3-6 upper case letters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
             "code-at-least": "Code must contain at least 3 characters",
             "description-popover": "Currency description with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
-            "description-required": "Description is required",
             "currency-type-label": "Currency Type",
             "currency-type-popover": "Exchangable, can be exchanged with XIN. Controllable; transfers only from, to issuer. Exchange offers allowed only from issuer.",
             "currency-decimals-label": "Currency Decimals",
@@ -474,7 +447,6 @@
             "currency-decimals-greater": "Currency Decimals must be greater than equal to 0",
             "currency-decimals-less": "Currency Decimals must be less than equal to 4",
             "initial-supply-popover": "The initial currency supply. Multiplied by number of decimals gives the smalles currency unit to trade or transfer.",
-            "initial-supply-required": "Initial Supply is required",
             "initial-supply-greater": "Initial Supply must be greater than equal to 1",
             "total-supply-label": "Total Supply",
             "total-supply-popover": "Total currency supply used for reservable/claimable currencies like crowdfunding token. For all other currency type total supply has to be equal to initial supply.",
@@ -497,8 +469,7 @@
             "currency-id-popover": "The currency id to send",
             "currency-id-required": "Currency id is required",
             "units-popover": "The number of units to send.",
-            "recipient-popover": "The recipient to send currencies",
-            "recipient-required": "Recipient is required"
+            "recipient-popover": "The recipient to send currencies"
         },
         "cancel-offer": {
             "title": "Cancel Offer Confirmation"
@@ -526,12 +497,12 @@
         "delete-table-action": "Delete",
         "edit-table-action": "Edit",
         "back-btn": "Back",
-        "recipient-lable": "Recipient",
-        "amount-lable": "Amount",
-        "service-fee-lable": "Service Fee",
-        "token-send-lable": "Token Send",
-        "token-total-lable": "Token Total",
-        "valid-lable": "Valid",
+        "recipient-label": "Recipient",
+        "amount-label": "Amount",
+        "service-fee-label": "Service Fee",
+        "token-send-label": "Token Send",
+        "token-total-label": "Token Total",
+        "valid-label": "Valid",
         "details-step": "Details",
         "confirm-step": "Confirm",
         "options-step": "Options",
@@ -546,18 +517,18 @@
         "public-key-btn": "Recipient Public Key",
         "open-bookmark-tooltip": "Open your bookmarks to insert an account id",
         "alias-connect-tooltip": "Enter an alias connected to an account to get the account Id.",
-        "recipient-account-lable": "Recipient Account",
-        "recipient-name-lable": "Recipient Name",
-        "recipient-balance-lable": "Recipient Balance",
-        "recipient-required-smg": "Recipient address is required.",
+        "recipient-account-label": "Recipient Account",
+        "recipient-name-label": "Recipient Name",
+        "recipient-balance-label": "Recipient Balance",
+        "recipient-required": "Recipient address is required.",
         "recipient-placeholder": "Recipient address",
         "amount-required-smg": "Amount is required.",
         "amount-greater-smg": "Amount must be greater than 0.",
         "public-key-lable": "Public Key",
-        "message-added-lable": "Message Added",
-        "public-key-added-lable": "Public Key Added",
-        "signed-transaction-lable": "Signed Transaction",
-        "encrypted-message-lable": "Encrypted Message",
+        "message-added-label": "Message Added",
+        "public-key-added-label": "Public Key Added",
+        "signed-transaction-label": "Signed Transaction",
+        "encrypted-message-label": "Encrypted Message",
         "attachment-lable": "Attachment",
         "reload-filter-tooltip": "Reload",
         "remove-filter-tooltip": "Remove Filter",
@@ -566,11 +537,11 @@
         "total-text": "Total",
         "name-label": "Name",
         "description-label": "Description",
+        "description-required": "Description is required",
         "issuer-label": "Issuer",
         "ticker-label": "Ticker",
         "currency-id-label": "Currency Id",
         "initial-supply-label": "Initial Supply",
-        "xin-text": "XIN",
         "units-text": "UNITS",
         "block-text": "BLOCK",
         "blocks-text": "BLOCKS",
@@ -616,7 +587,9 @@
         "code-required": "Code is required",
         "initial-supply-required": "Initial Supply is required",
         "note-text": "Note",
-        "copied-popover": "Copied!!"
+        "copied-popover": "Copied!!",
+        "currency-label": "Currency",
+        "type-label": "Type"
     },
     "transaction-details": {
         "transaction-id-label": "Transaction ID",
@@ -739,7 +712,6 @@
             "delete-shares-table-action": "Delete Shares",
             "delete-asset-table-action": "Delete Asset",
             "dividends-history-table-action": "Dividends History",
-            "initial-supply": "Initial Supply",
             "current-supply": "Current Supply",
             "delete-asset-details-title": "Delete Asset Details",
             "asset-id-popover": "The unique asset id",
@@ -762,18 +734,13 @@
         },
         "issue-asset": {
             "title": "Issue Asset",
-            "asset-name-label": "Name",
             "asset-name-popover": "The asset name is UNIQUE. Should be between 3 and 16 characters long. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
             "asset-name-placeholder": "Asset Name",
             "asset-name-required-validation-message": "Name is required",
-            "asset-description-label": "Description",
             "asset-description-popover": "Asset descriptions with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
             "asset-description-placeholder": "Asset Description",
-            "asset-description-required-validation-message": "Description is required",
-            "asset-quantity-label": "Quantity",
             "asset-quantity-popover": "The number of shares for this asset.",
-            "asset-quantity-required-validation-message": "Quantity is required",
-            "asset-quantity-value-validation-message": "Quantity must be greater than 0",
+            "quantity-greater": "Quantity must be greater than 0",
             "asset-quantity-unit": "QNT",
             "asset-decimals-label": "Decimals",
             "asset-decimals-popover": "The maximum allowed number of digits after the asset quantity decimal point.",
@@ -794,10 +761,7 @@
             "title": "Delete Shares Details",
             "number-shares-delete-label": "Number Shares to Delete",
             "number-shares-delete-popover": "The number of shares to be deleted.",
-            "quantity-text": "QUANTITY",
-            "quantity-required": "Quantity is required",
-            "quantity-greater": "Quantity must be greater than 0",
-            "quantity-label": "Quantity"
+            "quantity-greater": "Quantity must be greater than 0"
         },
         "dividend-payment": {
             "title": "Dividend Payment Details",
@@ -832,7 +796,6 @@
         "transfer-asset": {
             "title": "Transfer Asset Details",
             "recipient-popover": "The recipient account you like to transfer asset shares",
-            "recipient-required": "Recipient is required",
             "shares-label": "Shares",
             "shares-popover": "The number of shares you like to transfer. Fractions are calculated by decimals for this assets."
         },
@@ -859,9 +822,6 @@
             "detail-link": "Details",
             "asset-chart-title": "Asset Chart",
             "buy-title": "Buy",
-            "price-label": "Price",
-            "price-required-validation-text": "Price is required",
-            "price-value-validation-text": "Price must be greater than equal to 0",
             "buy-btn": "Buy",
             "sell-orders-title": "Sell Orders",
             "buy-orders-title": "Buy Orders",
@@ -1008,8 +968,7 @@
             "title": "Transfer Alias Details",
             "name-popover": "The alias to transfer",
             "uri-popover": "The current resource this alias is pointing to",
-            "recipient-account-popover": "The recipient account for this alias transfer",
-            "recipient-required": "Recipient is required"
+            "recipient-account-popover": "The recipient account for this alias transfer"
         },
         "sell-alias": {
             "title": "Sell Alias Details",
@@ -1020,7 +979,6 @@
             "recipient-placeholder": "Recipient for private or empty for public sell.",
             "price-popover": "The price you want sell this alias",
             "price-placeholder": "Price for this alias",
-            "price-required": "Price is required",
             "price-greater": "Price must be greater than 0"
         },
         "delete-alias": {
@@ -1041,7 +999,6 @@
             "minimum-activation-amount-greater": "Minimum activation amount must be greater than equal to 0",
             "minimum-activation-amount-less": "Minimum activation amount must be less than equal to 100",
             "description-popover": "A description about your AT. Max. 1.000 chars.",
-            "description-required": "Description is required",
             "code-popover": "This is where you place your AT code.",
             "code-greater": "Code must be greater than equal to 10 chars",
             "machine-data-btn": "Machine Data",
@@ -1106,7 +1063,6 @@
             "lottery-repeat-at-tab": "Lottery Repeat AT",
             "throne-at-tab": "TheThrone AT",
             "fuscavor-funds-at-tab": "Fuscavor Funds AT",
-            "copied-popover": "Copied!!",
             "enter-code-placeholder": "Enter Code",
             "generate-btn": "Generate",
             "output-label": "Output"
@@ -1121,10 +1077,7 @@
             "code-popover": "The campaign code is unique. Its composed of 3-6 upper case letters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
             "code-at-least": "Code must contain at least 3 characters",
             "description-popover": "Campaign description with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct.",
-            "description-required": "Description is required",
-            "initial-supply-label": "Initial Supply",
             "initial-supply-popover": "The initial campaign supply. These units remains to campaign issuer.",
-            "initial-supply-required": "Initial Supply is required",
             "initial-supply-greater": "Initial Supply must be greater than equal to 0",
             "reserve-supply-label": "Reserve Supply",
             "reserve-supply-popover": "The reserve campaign supply. Subsctracted by initial supply those units are distributed among founders.",
@@ -1168,7 +1121,6 @@
             "total-amount-to-reserve-popover": "The total amount of XIN you want to reserve",
             "amount-per-unit-label": "Amount per Unit",
             "amount-per-unit-popover": "The amount per unit based on former total amount to reserve",
-            "currency-label": "Currency",
             "total-amount-label": "Total Amount"
         }
     },
@@ -1176,7 +1128,6 @@
         "create-subscription": {
             "title": "Create Subscription",
             "recipient-popover": "The recipient account to send token to",
-            "recipient-required": "Recipient is required",
             "amount-popover": "The amount you like to send to the recipient account.",
             "amount-required": "Amount is required",
             "amount-greater": "Amount must be greater than equal to 0",
@@ -1200,7 +1151,6 @@
         "create-escrow": {
             "title": "Create Escrow",
             "recipient-popover": "The recipient account to send token to",
-            "recipient-required": "Recipient is required",
             "amount-popover": "The amount you like to send to the recipient account.",
             "amount-required": "Amount is required",
             "amount-greater": "Amount must be greater than 0",

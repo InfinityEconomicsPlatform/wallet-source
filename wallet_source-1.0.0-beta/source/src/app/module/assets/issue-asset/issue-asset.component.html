@@ -9,13 +9,13 @@
                 <div class="card-body">
                     <div class="card-block ml-md-3 mr-md-3">
                         <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                            <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                                 <form class="form inner-form" #f="ngForm" novalidate>
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group m-0">
-                                                    <label>{{'assets.issue-asset.asset-name-label' | translate}}
+                                                    <label>{{'common.name-label' | translate}}
                                                         <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
                                                             placement="right" container="body" [ngbPopover]="'assets.issue-asset.asset-name-popover' | translate">
                                                         </i>
@@ -35,7 +35,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group m-0">
-                                                    <label>{{'assets.issue-asset.asset-description-label' | translate}}
+                                                    <label>{{'common.description-label' | translate}}
                                                         <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
                                                             placement="right" container="body" [ngbPopover]="'assets.issue-asset.asset-description-popover' | translate">
                                                         </i>
@@ -49,8 +49,7 @@
                                                     <div *ngIf="description?.invalid && (description?.dirty || description?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="description?.errors.required">
-                                                            {{'assets.issue-asset.asset-description-required-validation-message'
-                                                            | translate }}
+                                                            {{'common.description-required'| translate }}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -60,7 +59,7 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group m-0">
-                                                    <label>{{'assets.issue-asset.asset-quantity-label' | translate}}
+                                                    <label>{{'common.quantity-label' | translate}}
                                                         <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
                                                             placement="right" container="body" [ngbPopover]="'assets.issue-asset.asset-quantity-popover' | translate">
                                                         </i>
@@ -69,7 +68,7 @@
                                                         <div class="col-10 pl-0">
                                                             <input type="number" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                                 name="shares" #shares="ngModel" [(ngModel)]="issueAssetForm.shares"
-                                                                placeholder="{{'assets.issue-asset.asset-quantity-label' | translate}}"
+                                                                placeholder="{{'common.quantity-label' | translate}}"
                                                                 required minValue="1">
                                                         </div>
                                                         <div class="col-2 text-right pl-0">
@@ -82,12 +81,10 @@
                                                     <div *ngIf="shares?.invalid && (shares?.dirty || shares?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="shares?.errors.required">
-                                                            {{'assets.issue-asset.asset-quantity-required-validation-message'
-                                                            | translate}}
+                                                            {{'common.quantity-required'| translate}}
                                                         </div>
                                                         <div *ngIf="shares?.errors.minValue && !shares?.errors.required">
-                                                            {{'assets.issue-asset.asset-quantity-value-validation-message'
-                                                            | translate}}
+                                                            {{'assets.issue-asset.quantity-greater' | translate}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -134,16 +131,17 @@
                                     </div>
                                 </form>
                             </aw-wizard-step>
-                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }"
+                                class="form-bordered mt-4">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="ucsb"> {{'assets.issue-asset.asset-name-label' | translate}}
+                                        <div class="ucsb"> {{'common.name-label'| translate}}
                                         </div>
                                         <h4> {{issueAssetForm.name}} </h4>
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <div class="ucsb"> {{'assets.issue-asset.asset-description-label' | translate}}
+                                        <div class="ucsb"> {{'common.description-label' | translate}}
                                         </div>
                                         <h4> {{issueAssetForm.description}} </h4>
                                     </div>
@@ -165,24 +163,24 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                        <div class="ucsb"> {{'common.valid-label'| translate}}
                                         </div>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
 
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                        <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                         </div>
                                         <h4>{{tx_fee | amountTkn}}
-                                            <small>XIN</small>
+                                            <small>{{'common.xin-unit-text'| translate}}</small>
                                         </h4>
                                     </div>
                                 </div>
 
                                 <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                     class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                    <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                                 </button>
                                 <!--   <hr *ngIf="unsignedTx"> -->
                                 <div class="form-group mt-4" *ngIf="unsignedTx">

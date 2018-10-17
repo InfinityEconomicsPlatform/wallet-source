@@ -46,7 +46,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>{{'common.recipient-lable'| translate}}
+                                                <label>{{'common.recipient-label'| translate}}
                                                     <i class="fa fa-question-circle-o" aria-hidden="true" triggers="mouseenter:mouseleave"
                                                         placement="right" container="body" ngbPopover="{{'assets.transfer-asset.recipient-popover'| translate}}">
                                                     </i>
@@ -73,7 +73,7 @@
                                                 <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
                                                     class="input-error">
                                                     <div *ngIf="recipientRS?.errors.required">
-                                                        {{'assets.transfer-asset.recipient-required'| translate}}
+                                                        {{'common.recipient-required'| translate}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,7 +128,7 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb">{{'common.recipient-lable'| translate}}
+                                    <div class="ucsb">{{'common.recipient-label'| translate}}
                                     </div>
                                     <h4>{{transferAssetForm.recipientRS}}</h4>
                                 </div>
@@ -141,24 +141,24 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                    <div class="ucsb"> {{'common.valid-label'| translate}}
                                     </div>
                                     <h4>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                     </h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                    <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                     </div>
                                     <h4>{{tx_fee | amountTkn}}
-                                        <small>XIN</small>
+                                        <small>{{'common.xin-unit-text'| translate}}</small>
                                     </h4>
                                 </div>
                             </div>
                             <hr>
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                 class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                             </button>
                             <hr *ngIf="unsignedTx">
                             <div class="form-group" *ngIf="unsignedTx">

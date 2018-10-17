@@ -279,7 +279,7 @@
                                             <div *ngIf="description?.invalid && (description?.dirty || description?.touched)"
                                                 class="input-error">
                                                 <div *ngIf="description?.errors.required">
-                                                    {{'currencies.issue-currency.description-required'| translate}}
+                                                    {{'common.description-required'| translate}}
                                                 </div>
                                             </div>
                                         </div>
@@ -377,8 +377,7 @@
                                                 <div *ngIf="initialSupply?.invalid && (initialSupply?.dirty || initialSupply?.touched)"
                                                     class="input-error">
                                                     <div *ngIf="initialSupply?.errors.required">
-                                                        {{'currencies.issue-currency.initial-supply-required'|
-                                                        translate}}
+                                                        {{'common.initial-supply-required'| translate}}
                                                     </div>
                                                     <div *ngIf="initialSupply?.errors.minValue && !initialSupply?.errors.required">
                                                         {{'currencies.issue-currency.initial-supply-greater'|
@@ -426,7 +425,7 @@
                                                     </div>
                                                     <div class="col-2 col-md-1">
                                                         <span class="input-group-text">
-                                                            XIN
+                                                            {{'common.xin-unit-text'| translate}}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -530,22 +529,22 @@
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                    <div class="ucsb"> {{'common.valid-label'| translate}}
                                     </div>
                                     <h4 [innerHTML]="validBytes | txIsValid"> </h4>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                    <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                     </div>
                                     <h4> {{ tx_fee | amountTkn }}
-                                        <small> XIN</small>
+                                        <small> {{'common.xin-unit-text'| translate}}</small>
                                     </h4>
                                 </div>
                             </div>
 
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                 class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                             </button>
                             <!--   <hr *ngIf="unsignedTx"> -->
                             <div class="form-group" *ngIf="unsignedTx">

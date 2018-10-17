@@ -53,7 +53,7 @@
                                                 <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
                                                     class="input-error">
                                                     <div *ngIf="recipientRS?.errors.required">
-                                                        {{'account.balance-lease.recipient-required-msg'| translate}}
+                                                        {{'common.recipient-required'| translate}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,12 +154,12 @@
                             class="form-bordered mt-4">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.recipient-account-lable'| translate}}
+                                    <div class="ucsb"> {{'common.recipient-account-label'| translate}}
                                     </div>
                                     <h4> {{balanceLeaseForm.recipientRS}} </h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.recipient-name-lable'| translate}}
+                                    <div class="ucsb"> {{'common.recipient-name-label'| translate}}
                                     </div>
                                     <h4> {{accountDetails.name | notSet}} </h4>
                                 </div>
@@ -167,10 +167,10 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.recipient-balance-lable'| translate}}
+                                    <div class="ucsb"> {{'common.recipient-balance-label'| translate}}
                                     </div>
                                     <h4> {{accountDetails.balanceTQT | amountTqt}}
-                                        <small> XIN</small> </h4>
+                                        <small> {{'common.xin-unit-text'| translate}}</small> </h4>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="ucsb"> {{'account.balance-lease.duration-lease-lable'| translate}}
@@ -183,37 +183,37 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                    <div class="ucsb"> {{'common.valid-label'| translate}}
                                     </div>
                                     <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                    <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                     </div>
                                     <h4> {{ tx_fee | amountTkn }}
-                                        <small> XIN</small>
+                                        <small> {{'common.xin-unit-text'| translate}}</small>
                                     </h4>
                                 </div>
                             </div>
 
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                 class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                             </button>
                             <button type="button" [ngClass]="{'btn-success': !addMessage, 'btn-danger': addMessage}"
                                 class="btn btn-raised mb-0" (click)="addMessage=!addMessage">
-                                <i class="fa fa-key"></i> {{'common.encrypted-message-lable'| translate}}
+                                <i class="fa fa-key"></i> {{'common.encrypted-message-label'| translate}}
                             </button>
                             <!-- <hr *ngIf="unsignedTx || addMessage"> -->
                             <div class="form-group mt-3" *ngIf="unsignedTx">
-                                <label>{{'common.signed-transaction-lable'| translate}}</label>
+                                <label>{{'common.signed-transaction-label'| translate}}</label>
                                 <div class="position-relative sign_in_inputs">
                                     <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0"
                                         name="key"></textarea>
                                 </div>
                             </div>
                             <div class="form-group" *ngIf="addMessage">
-                                <label>{{'common.encrypted-message-lable'| translate}}</label>
+                                <label>{{'common.encrypted-message-label'| translate}}</label>
                                 <div class="position-relative sign_in_inputs">
                                     <input disabled="true" rows="5" [(ngModel)]="encrypted" class="form-control pl-0"
                                         name="message">
