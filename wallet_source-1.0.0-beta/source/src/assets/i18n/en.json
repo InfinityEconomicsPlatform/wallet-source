@@ -252,7 +252,6 @@
             "threshold-popover": "The threshold which triggers the funding.",
             "interval-lable": "Interval",
             "interval-popover": "The number of blocks to wait after before funding the recipient (min. 10).",
-            "holding-type-lable": "Holding Type",
             "holding-type-popover": "Holding types are token, assets or currencies.",
             "currency-ticker-lable": "Currency Ticker",
             "currency-ticker-popover": "Enter the currency ticker (text)",
@@ -272,7 +271,6 @@
             "title": "Send Message",
             "recipient-label-popover": "The account you like to send an encrypted message to.",
             "type-label-popover": "ON chain or OFF chain. Non-prunable with max. 160 chars or prunable messages with max. 42Kb. Prunable messages are deleted after two weeks.",
-            "message-label": "Message",
             "message-label-popover": "Encrypted messages with max. 160 characters unless prunable which is max. 42Kb.",
             "recipient-public-key-label": "Recipient Public Key Announcement (Optional)",
             "recipient-public-key-label-popover": "Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key."
@@ -287,8 +285,7 @@
         "read-message": {
             "title": "Read Message Details",
             "date-label": "Date",
-            "sender-label": "Sender",
-            "message-label": "Message"
+            "sender-label": "Sender"
         }
     },
     "currencies": {
@@ -1190,7 +1187,6 @@
         "create-shuffling": {
             "title": "Create Shuffling",
             "note": "To shuffle your passphrase is used to sign transactions. For security reasons shuffling is only available on your local node or a manual node (preferably your own trusted node and set in options connection mode). After creating or joining a shuffling you must keep your node online and your shuffler running. Make sure your balance is able to cover the 12 token shuffling fees until the shuffling completes. If you don't and miss your turn you will be charged 1.000 token.",
-            "holding-type-label": "Holding Type",
             "holding-type-popover": "Holding types are token, assets or currencies. Currencies can have a non-shuffable tag means you can't shuffle currencies with this tag created.",
             "holding-type": {
                 "XIN": "XIN",
