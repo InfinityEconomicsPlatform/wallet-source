@@ -83,8 +83,7 @@
                                                     <div *ngIf="amount?.invalid && (amount?.dirty || amount?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="amount?.errors.required">
-                                                            {{'subscriptions.create-subscription.amount-required'|
-                                                            translate}}
+                                                            {{'common.amount-required'| translate}}
                                                         </div>
                                                         <div *ngIf="amount?.errors.minValue && !amount?.errors.required">
                                                             {{'subscriptions.create-subscription.amount-greater'|

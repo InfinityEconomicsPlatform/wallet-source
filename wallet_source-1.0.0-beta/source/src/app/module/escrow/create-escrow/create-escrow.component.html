@@ -75,10 +75,10 @@
                                                     <div *ngIf="amount?.invalid && (amount?.dirty || amount?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="amount?.errors.required">
-                                                            {{'escrow.create-escrow.amount-required'| translate}}
+                                                            {{'common.amount-required'| translate}}
                                                         </div>
                                                         <div *ngIf="amount?.errors.minValue && !amount?.errors.required">
-                                                            {{'escrow.create-escrow.amount-greater'| translate}}
+                                                            {{'common.amount-greater'| translate}}
                                                         </div>
                                                     </div>
                                                 </div>
