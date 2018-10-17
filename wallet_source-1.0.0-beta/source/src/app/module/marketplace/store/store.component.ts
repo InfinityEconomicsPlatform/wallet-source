@@ -19,6 +19,8 @@ export class StoreComponent implements OnInit {
     count: any;
     accountId: any;
     tags: any[] = [];
+    term: string = "";
+    searchType: string = "account_id";
 
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
@@ -66,6 +68,10 @@ export class StoreComponent implements OnInit {
         }, (error) => {
             console.log("Error: getDGSTags ", error);
         });
+    }
+
+    searchByTerm(searchType, searchTerm) {
+        this.router.navigateByUrl('/marketplace/tag');
     }
 
     openTag() {

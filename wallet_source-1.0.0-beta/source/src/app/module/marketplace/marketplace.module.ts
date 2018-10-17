@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { MarketplaceRoutingModule } from './marketplace-routing.module';
 import { StoreComponent } from './store/store.component';
@@ -25,7 +26,8 @@ import { SecretHashComponent } from './list-a-product/secret-hash/secret-hash.co
         CommonModule,
         MarketplaceRoutingModule,
         SharedModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+        FormsModule
     ],
     declarations: [
         StoreComponent,

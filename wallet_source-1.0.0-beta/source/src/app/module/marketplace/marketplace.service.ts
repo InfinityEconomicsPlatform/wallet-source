@@ -233,10 +233,14 @@ export class MarketplaceService {
         return this.http.get(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
     }
 
-    searchDGSGoods(tag) {
+    searchDGSGoods(tag?: any, seller?: any, firstIndex?: number, lastIndex?: number, isStockOnly?: boolean) {
         let params = {
             'requestType': 'searchDGSGoods',
-            'tag': tag
+            'tag': tag,
+            'seller': seller,
+            'firstIndex': firstIndex,
+            'lastIndex': lastIndex,
+            'isStockOnly': isStockOnly
         };
 
         return this.http.get(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
