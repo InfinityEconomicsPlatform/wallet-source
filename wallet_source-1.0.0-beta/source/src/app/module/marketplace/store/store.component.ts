@@ -6,6 +6,7 @@ import { SessionStorageService } from '../../../services/session-storage.service
 import { AppConstants } from '../../../config/constants';
 import { CryptoService } from '../../../services/crypto.service';
 import { AccountService } from '../../account/account.service';
+import { DataStoreService } from 'app/services/data-store.service';
 
 @Component({
     selector: 'app-store',
@@ -71,10 +72,12 @@ export class StoreComponent implements OnInit {
     }
 
     searchByTerm(searchType, searchTerm) {
-        this.router.navigateByUrl('/marketplace/tag');
+        DataStoreService.set('marketplace_search_details', { 'searchType': searchType, 'searchTerm': searchTerm });
+        this.router.navigateByUrl('/marketplace/search');
     }
 
-    openTag() {
+    openTag(tag) {
+        DataStoreService.set('marketplace_tag', tag);
         this.router.navigateByUrl('/marketplace/tag');
     }
 

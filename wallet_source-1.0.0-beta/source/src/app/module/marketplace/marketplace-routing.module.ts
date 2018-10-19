@@ -6,6 +6,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { ListingComponent } from './listing/listing.component';
 import { PurchasedComponent } from './purchased/purchased.component';
 import { ListAProductComponent } from './list-a-product/list-a-product.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
     {
@@ -20,6 +21,10 @@ const routes: Routes = [
     {
         path: 'tag',
         component: TagListComponent
+    },
+    {
+        path: 'search',
+        component: SearchComponent
     },
     {
         path: 'list-a-product',

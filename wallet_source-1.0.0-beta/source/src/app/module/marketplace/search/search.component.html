@@ -3,12 +3,14 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">{{ 'marketplace.tag.title' | translate }} - {{ tag.tag }}</h2>
+                    <h2 class="main-title">
+                        {{ 'marketplace.tag.title' | translate }} - Search '{{ searchData.searchTerm }}'
+                    </h2>
                     <app-breadcrumb></app-breadcrumb>
                 </div>
                 <div class="card-body mt-4">
-                    <div class="card-block mt-2">
-                        <div class="row  tag-details shadow-box mb-3" *ngFor="let good of tagListings">
+                    <div class="card-block mt-2" *ngIf="goods.length > 0">
+                        <div class="row  tag-details shadow-box mb-3" *ngFor="let good of goods">
                             <div class="col-md-2">
                                 <i class="icon-placeholder placeholder-icon"></i>
                             </div>

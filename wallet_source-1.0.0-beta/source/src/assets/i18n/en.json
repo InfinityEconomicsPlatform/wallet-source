@@ -2021,7 +2021,8 @@
         "list-product": "List Product For Sale",
         "purchased": "Purchased Products",
         "list-a-product": "List A Product",
-        "product-listed": "Products Listed"
+        "product-listed": "Products Listed",
+        "search": "Search"
     },
     "marketplace": {
         "store": {
