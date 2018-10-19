@@ -140,9 +140,13 @@
                             </div>
                         </div>
 
-                        <div class="row mt-5 mb-5 tag-list" *ngIf="tags.length > 0">
+                        <div class="row mt-5 mb-3 tag-list" *ngIf="tags.length > 0">
                             <div class="col-md-12">
                                 <a *ngFor="let tag of tags" (click)="openTag(tag)"> {{ tag.tag }}</a>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <ngb-pagination [collectionSize]="50" [boundaryLinks]="false" [directionLinks]="false"
+                                    size="sm"></ngb-pagination>
                             </div>
                         </div>
 
