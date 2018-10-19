@@ -149,24 +149,24 @@
                         </button>
                         <!-- <hr *ngIf="hasPrivateMessage || hasReceiverPublicKey"> -->
                         <div class="form-group mt-4" *ngIf="hasPrivateMessage">
-                            <label>{{'account.send-xin.message-field-lable'| translate}}
+                            <label>{{'account.send-xin.message-field-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'account.send-xin.message-field-tooltip'| translate}}">
                                 </i>
                             </label>
                             <div class="position-relative sign_in_inputs">
-                                <input [(ngModel)]="sendReferencedForm.message" placeholder="{{'account.send-xin.message-field-lable'| translate}}"
+                                <input [(ngModel)]="sendReferencedForm.message" placeholder="{{'account.send-xin.message-field-label'| translate}}"
                                     rows="5" class="form-control pl-0" name="message">
                             </div>
                         </div>
                         <div class="form-group" *ngIf="hasReceiverPublicKey">
-                            <label>{{'account.send-xin.public-key-field-lable'| translate}}
+                            <label>{{'account.send-xin.public-key-field-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'account.send-xin.public-key-field-tooltip'| translate}}">
                                 </i>
                             </label>
                             <div class="position-relative sign_in_inputs">
-                                <input placeholder="{{'account.send-xin.public-key-field-lable'| translate}}"
+                                <input placeholder="{{'account.send-xin.public-key-field-label'| translate}}"
                                     [(ngModel)]="sendReferencedForm.pubkey" type="text" class="form-control pl-0" name="publickey">
                             </div>
                         </div>
