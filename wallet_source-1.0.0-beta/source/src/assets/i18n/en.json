@@ -1696,6 +1696,19 @@
         "Tools": "Tools",
         "SWApps": "SWApps"
     },
+    "sweet-alert": {
+        "info": "Info",
+        "Confirm": "Confirm",
+        "Are you sure, want to stop this monitor?": "Are you sure, want to stop this monitor?",
+        "OK": "OK",
+        "Cancel": "Cancel",
+        "Error": "Error",
+        "network-error": "Sorry, an error occured! Reason: Bad Connection",
+        "Unable to get Active nodes": "Unable to get Active nodes",
+        "Sorry, an error occured! Reason: ": "Sorry, an error occured! Reason: ",
+        "balance-lease-start-block-error-msg": "The balance leasing feature is available starting from block : 3,000. This is about 2 days from genesis block creation date. Please try again as soon this block height is reached.",
+        "balance-lease-visible-key-error-msg": "Sorry, an error occured! Reason: This account has no visible public key because it never had any outbound transaction. Encrypted messages or balance leasing is not available without a public key. Ask the account holder for his public key and add the key on the former page to this transaction"
+    },
     "breadcrumbs": {
         "account": "Account",
         "send": "Send XIN",

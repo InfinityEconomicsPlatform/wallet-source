@@ -10,6 +10,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
+import * as alertFunctions from '../shared/data/sweet-alerts';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
@@ -51,6 +52,7 @@ export class ResponseInterceptor implements HttpInterceptor {
                     return response;
                 }
             }).catch(response => {
+                console.log(response);
                 if (response instanceof HttpErrorResponse) {
                     var url = req.url;
                     if (url.indexOf('/api/nodes') !== -1 && (response.status === -1 || response.status === 0)) {
@@ -89,6 +91,13 @@ export class ResponseInterceptor implements HttpInterceptor {
                         });
                     }
                 }
+
+                alertFunctions.InfoAlertBox('Error',
+                    AppConstants.getNoConnectionMessage,
+                    'OK',
+                    'error').then((isConfirm: any) => {
+
+                    });
 
                 return Observable.of(response);
             });

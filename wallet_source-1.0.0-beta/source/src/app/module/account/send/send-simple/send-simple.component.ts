@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from '../../account.service';
-import {AppConstants} from '../../../../config/constants';
-import {SessionStorageService} from '../../../../services/session-storage.service';
-import {AmountToQuantPipe} from '../../../../pipes/amount-to-quant.pipe';
-import {CurrenciesService} from '../../../currencies/currencies.service';
-import {CryptoService} from '../../../../services/crypto.service';
-import {AliasesService} from '../../../aliases/aliases.service';
-import {OptionService} from '../../../../services/option.service';
+import { AccountService } from '../../account.service';
+import { AppConstants } from '../../../../config/constants';
+import { SessionStorageService } from '../../../../services/session-storage.service';
+import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
+import { CurrenciesService } from '../../../currencies/currencies.service';
+import { CryptoService } from '../../../../services/crypto.service';
+import { AliasesService } from '../../../aliases/aliases.service';
+import { OptionService } from '../../../../services/option.service';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
-import {ActivatedRoute, Router} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-send-simple',
-  templateUrl: './send-simple.component.html',
-  styleUrls: ['./send-simple.component.scss']
+    selector: 'app-send-simple',
+    templateUrl: './send-simple.component.html',
+    styleUrls: ['./send-simple.component.scss']
 })
 export class SendSimpleComponent implements OnInit {
 
@@ -45,15 +45,15 @@ export class SendSimpleComponent implements OnInit {
     selectedLanguage: string;
 
     constructor(public sessionStorageService: SessionStorageService,
-                public accountService: AccountService,
-                public cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                public router: Router,
-                public activatedRoute: ActivatedRoute,
-                public aliasesService: AliasesService,
-                public currenciesService: CurrenciesService,
-                public optionService: OptionService,
-                public translate: TranslateService) {
+        public accountService: AccountService,
+        public cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        public router: Router,
+        public activatedRoute: ActivatedRoute,
+        public aliasesService: AliasesService,
+        public currenciesService: CurrenciesService,
+        public optionService: OptionService,
+        public translate: TranslateService) {
         this.hasPrivateMessage = false;
         this.hasReceiverPublicKey = false;
     }
@@ -86,7 +86,7 @@ export class SendSimpleComponent implements OnInit {
     }
 
     loadBookmarkView() {
-        this.router.navigate(['/account/send/bookmark-list-only'], {queryParams : {fromView: 'sendmessage'}});
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'sendmessage' } });
         //this.openBookMarks = true;
     }
 
@@ -144,7 +144,7 @@ export class SendSimpleComponent implements OnInit {
                         'OK',
                         'error').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
             })
 
@@ -154,7 +154,7 @@ export class SendSimpleComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 
@@ -219,7 +219,7 @@ export class SendSimpleComponent implements OnInit {
                         'OK',
                         'error').then(() => {
 
-                    });
+                        });
                     return;
                 }
 
@@ -229,10 +229,10 @@ export class SendSimpleComponent implements OnInit {
                         'OK',
                         'info').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
 
-                let encrypted: any = {data: '', nonce: ''};
+                let encrypted: any = { data: '', nonce: '' };
                 if (hasMessageAdded) {
                     if (!recipientPublicKey) {
                         recipientPublicKey = pubkey;
@@ -265,7 +265,7 @@ export class SendSimpleComponent implements OnInit {
                     'OK',
                     'error').then(() => {
 
-                });
+                    });
             }
         }, function (error) {
             alertFunctions.InfoAlertBox('Error',
@@ -273,7 +273,7 @@ export class SendSimpleComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 
@@ -285,8 +285,8 @@ export class SendSimpleComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                    this.router.navigate(['/account/transactions/pending']);
-                });
+                        this.router.navigate(['/account/transactions/pending']);
+                    });
 
             } else {
                 alertFunctions.InfoAlertBox('Error',
@@ -294,7 +294,7 @@ export class SendSimpleComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
         }, function (error) {
@@ -303,7 +303,7 @@ export class SendSimpleComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 }

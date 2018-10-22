@@ -53,7 +53,7 @@ export class FullLayoutComponent implements OnInit {
         this.getAccountAssetsAndBalances();
 
         if (!this.sessionStorageService.getFromSession(NodeConfig.SESSION_PEER_NODES)) {
-            this.peerService.getPeers().subscribe( (response) => {
+            this.peerService.getPeers().subscribe((response) => {
                 this.sessionStorageService.saveToSession(NodeConfig.SESSION_PEER_NODES, response);
                 this.optionsConfigurationService.loadOptions();
             }, function (error) {
@@ -67,12 +67,12 @@ export class FullLayoutComponent implements OnInit {
         });
     }
 
-    onOptionsChanged(){
-        
+    onOptionsChanged() {
+
         var publicKey = this.commonService.getAccountDetailsFromSession('publicKey');
-        this.localhostService.getPeerState(this.optionService.getOption('USER_NODE_URL',''))
-            .subscribe( (response) => {
-                var uri = new URL(this.optionService.getOption('USER_NODE_URL',''));
+        this.localhostService.getPeerState(this.optionService.getOption('USER_NODE_URL', ''))
+            .subscribe((response) => {
+                var uri = new URL(this.optionService.getOption('USER_NODE_URL', ''));
                 response._id = uri.hostname;
                 this.sessionStorageService.saveToSession(NodeConfig.SESSION_LOCAL_NODE, response);
                 this.sessionStorageService.saveToSession(NodeConfig.SESSION_HAS_LOCAL, true);
@@ -81,7 +81,7 @@ export class FullLayoutComponent implements OnInit {
                 this.sessionStorageService.saveToSession(NodeConfig.SESSION_HAS_LOCAL, false);
                 this.getAccountAssetsAndBalances();
             });
-        this.peerService.getPeers().subscribe( (response) => {
+        this.peerService.getPeers().subscribe((response) => {
             this.sessionStorageService.saveToSession(NodeConfig.SESSION_PEER_NODES, response);
             // $rootScope.$broadcast('peers-updated');
         });
@@ -91,13 +91,13 @@ export class FullLayoutComponent implements OnInit {
 
         var accountRs = this.getAccountDetails('accountRs');
         this.dashboardService.getAccountAssetsAndBalances(accountRs)
-        .subscribe((response) => {
-            if (response.balanceTQT) {
-                RootScope.set({ balanceTQT: response.balanceTQT, accountRs })
-            }else{
-                RootScope.set({ balanceTQT: 0, accountRs })
-            }
-        });
+            .subscribe((response) => {
+                if (response.balanceTQT) {
+                    RootScope.set({ balanceTQT: response.balanceTQT, accountRs })
+                } else {
+                    RootScope.set({ balanceTQT: 0, accountRs })
+                }
+            });
     };
 
     getAccountDetails(keyName) {

@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {FeeService} from '../../../services/fee.service';
-import {AppConstants} from '../../../config/constants';
-import {SessionStorageService} from '../../../services/session-storage.service';
-import {AccountService} from '../../account/account.service';
-import {AmountToQuantPipe} from '../../../pipes/amount-to-quant.pipe';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CryptoService} from '../../../services/crypto.service';
-import {MessageService} from '../message.service';
+import { Component, OnInit } from '@angular/core';
+import { FeeService } from '../../../services/fee.service';
+import { AppConstants } from '../../../config/constants';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { AccountService } from '../../account/account.service';
+import { AmountToQuantPipe } from '../../../pipes/amount-to-quant.pipe';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CryptoService } from '../../../services/crypto.service';
+import { MessageService } from '../message.service';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
-import {AliasesService} from '../../aliases/aliases.service';
-import {Location} from '@angular/common';
+import { AliasesService } from '../../aliases/aliases.service';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-send-message',
@@ -30,8 +30,8 @@ export class SendMessageComponent implements OnInit {
     };
     openBookMarks: boolean = false;
     isPrunable = [
-        {label: 'On Chain (160 chars.)', value: 'false'},
-        {label: 'Off Chain (24k chars.)', value: 'true'}
+        { label: 'On Chain (160 chars.)', value: 'false' },
+        { label: 'Off Chain (24k chars.)', value: 'true' }
     ];
     accountDetails: any = '';
     encrypted: any;
@@ -46,15 +46,15 @@ export class SendMessageComponent implements OnInit {
     aprunableAttachmentJSON: any;
 
     constructor(public feeService: FeeService,
-                public sessionStorageService: SessionStorageService,
-                public accountService: AccountService,
-                public cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                public messageService: MessageService,
-                public router: Router,
-                public activatedRoute: ActivatedRoute,
-                public aliasesService: AliasesService,
-                private _location: Location) {
+        public sessionStorageService: SessionStorageService,
+        public accountService: AccountService,
+        public cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        public messageService: MessageService,
+        public router: Router,
+        public activatedRoute: ActivatedRoute,
+        public aliasesService: AliasesService,
+        private _location: Location) {
         this.hasReceiverPublicKey = false;
     }
 
@@ -88,7 +88,7 @@ export class SendMessageComponent implements OnInit {
     }
 
     loadBookmarkView() {
-        this.router.navigate(['/account/send/bookmark-list-only'], {queryParams : {fromView: 'sendmessage'}});
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'sendmessage' } });
 
     }
 
@@ -151,15 +151,8 @@ export class SendMessageComponent implements OnInit {
                         'OK',
                         'error').then(() => {
 
-                    });
+                        });
                 }
-            });
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
             });
         });
     };
@@ -221,11 +214,11 @@ export class SendMessageComponent implements OnInit {
                         'OK',
                         'error').then(() => {
 
-                    });
+                        });
                     return;
                 }
 
-                let encrypted = {data: '', nonce: ''};
+                let encrypted = { data: '', nonce: '' };
                 if (hasMessageAdded) {
                     if (!recipientPublicKey) {
                         recipientPublicKey = pubkey;
@@ -258,15 +251,8 @@ export class SendMessageComponent implements OnInit {
                     'OK',
                     'error').then(() => {
 
-                });
+                    });
             }
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-            });
         });
     };
 
@@ -278,24 +264,17 @@ export class SendMessageComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                    this.router.navigate(['/account/transactions/pending']);
-                });
+                        this.router.navigate(['/account/transactions/pending']);
+                    });
             } else {
                 alertFunctions.InfoAlertBox('Error',
                     'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-            });
         });
     };
 

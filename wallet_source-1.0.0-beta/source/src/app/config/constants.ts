@@ -192,21 +192,21 @@ export class AppConstants {
     public static pollConfig = {
         pollEndPoint: 'api'
     };
-    public static getNoConnectionMessage = 'Sorry, an error occured! Reason: Bad Connection';
+    public static getNoConnectionMessage = 'network-error';
 
     public static macapViewerConfig = {
-        'macapUrl':'http://185.103.75.217:8892',
+        'macapUrl': 'http://185.103.75.217:8892',
         'macapEndPoint': 'api/v1/get'
     };
 
     public static newsViewerConfig = {
-        'newsUrl':'http://199.127.137.169:8889',
+        'newsUrl': 'http://199.127.137.169:8889',
         'newsEndPoint': 'api/v1/news'
     };
 
     public static chainViewerConfig = {
         'apiUrl': 'http://199.127.137.169:23457',
-        'peerUrl':'http://199.127.137.169:8888',
+        'peerUrl': 'http://199.127.137.169:8888',
         'peerEndPoint': 'api/nodes',
         'endPoint': 'api'
     };
