@@ -2022,7 +2022,8 @@
         "purchased": "Purchased Products",
         "list-a-product": "List A Product",
         "product-listed": "Products Listed",
-        "search": "Search"
+        "search": "Search",
+        "seller": "Seller"
     },
     "marketplace": {
         "store": {
@@ -2057,7 +2058,8 @@
             "seller_details": "Seller Details",
             "seller": "Seller",
             "id": "Product ID",
-            "listing_date": "Listing Date"
+            "listing_date": "Listing Date",
+            "search": "Search"
         },
         "purchase": {
             "title": "Marketplace Purchase"

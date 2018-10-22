@@ -27,6 +27,10 @@ const routes: Routes = [
         component: SearchComponent
     },
     {
+        path: 'seller',
+        component: SearchComponent
+    },
+    {
         path: 'list-a-product',
         component: ListAProductComponent
     },

@@ -181,7 +181,9 @@
                                     </ngx-datatable-column>
                                     <ngx-datatable-column prop="sellerRS" name="{{ 'marketplace.store.seller' | translate }}">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
-                                            <a class="hyperlink">{{ value }}</a>
+                                            <a class="hyperlink" (click)="searchByTerm('account_id', value)">
+                                                {{ value }}
+                                            </a>
                                         </ng-template>
                                     </ngx-datatable-column>
                                 </ngx-datatable>

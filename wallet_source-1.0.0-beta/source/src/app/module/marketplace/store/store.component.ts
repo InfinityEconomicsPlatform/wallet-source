@@ -73,7 +73,11 @@ export class StoreComponent implements OnInit {
 
     searchByTerm(searchType, searchTerm) {
         DataStoreService.set('marketplace_search_details', { 'searchType': searchType, 'searchTerm': searchTerm });
-        this.router.navigateByUrl('/marketplace/search');
+        if (searchType !== 'account_id') {
+            this.router.navigateByUrl('/marketplace/search');
+        } else {
+            this.router.navigateByUrl('/marketplace/seller');
+        }
     }
 
     openTag(tag) {

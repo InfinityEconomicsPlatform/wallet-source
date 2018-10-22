@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Page } from '../../../config/page';
+import { Location } from '@angular/common';
 import { MarketplaceService } from '../marketplace.service';
 import { DataStoreService } from 'app/services/data-store.service';
 
@@ -14,51 +14,53 @@ export class SearchComponent implements OnInit {
     goods: any[] = [];
 
     constructor(public router: Router,
-        private marketplaceService: MarketplaceService) {
+        private marketplaceService: MarketplaceService,
+        public location: Location) {
 
     }
 
     ngOnInit() {
         this.searchData = DataStoreService.get('marketplace_search_details');
-        switch (this.searchData.searchType) {
-            case 'account_id': {
-                this.marketplaceService.getDGSGoods(this.searchData.searchTerm).subscribe((success: any) => {
-                    this.goods = success.goods;
-                }, (error) => {
-                    console.log(error);
-                });
-                break;
+        if (typeof (this.searchData) !== 'undefined') {
+            switch (this.searchData.searchType) {
+                case 'account_id': {
+                    this.marketplaceService.getDGSGoods(this.searchData.searchTerm).subscribe((success: any) => {
+                        this.goods = success.goods;
+                    }, (error) => {
+                        console.log(error);
+                    });
+                    break;
+                }
+                case 'title': {
+                    this.marketplaceService.searchDGSGoods(this.searchData.searchTerm).subscribe((success: any) => {
+                        this.goods = success.goods;
+                    }, (error) => {
+                        console.log(error);
+                    });
+                    break;
+                }
+                case 'description': {
+                    this.marketplaceService.searchDGSGoods(this.searchData.searchTerm).subscribe((success: any) => {
+                        this.goods = success.goods;
+                    }, (error) => {
+                        console.log(error);
+                    });
+                    break;
+                }
+                case 'tag': {
+                    this.marketplaceService.searchDGSGoods(this.searchData.searchTerm).subscribe((success: any) => {
+                        this.goods = success.goods;
+                    }, (error) => {
+                        console.log(error);
+                    });
+                    break;
+                }
+                default: {
+                    this.location.back();
+                }
             }
-            case 'title': {
-                this.marketplaceService.searchDGSGoods(this.searchData.searchTerm).subscribe((success: any) => {
-                    this.goods = success.goods;
-                }, (error) => {
-                    console.log(error);
-                });
-                break;
-            }
-            case 'description': {
-                this.marketplaceService.searchDGSGoods(this.searchData.searchTerm).subscribe((success: any) => {
-                    this.goods = success.goods;
-                }, (error) => {
-                    console.log(error);
-                });
-                break;
-            }
-            case 'tag': {
-                this.marketplaceService.searchDGSGoods(this.searchData.searchTerm).subscribe((success: any) => {
-                    this.goods = success.goods;
-                }, (error) => {
-                    console.log(error);
-                });
-                break;
-            }
-            default: {
-                this.router.navigateByUrl('/marketplace/store');
-            }
+        } else {
+            this.location.back();
         }
-        console.log(this.searchData);
-
     }
-
 }
