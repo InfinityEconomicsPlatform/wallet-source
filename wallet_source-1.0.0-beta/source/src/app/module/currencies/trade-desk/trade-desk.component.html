@@ -40,7 +40,7 @@
                                             </div>
                                             <h4>
                                                 {{lastTrade.rateTQT|shareToQuantity:currencyDetails.decimals|quantToAmount|numericalString}}
-                                                <small> {{'common.xin-text'| translate}}</small>
+                                                <small> {{'common.xin-unit-text'| translate}}</small>
                                             </h4>
                                         </div>
                                         <div class="col-md-6">
@@ -125,7 +125,8 @@
                                                             (click)="getSellOffers()">
                                                             <i class="fa fa-refresh"></i> </button>
                                                     </span>
-                                                    <span class="pull-right"> <strong> {{balanceTQT | amountTqt}} XIN
+                                                    <span class="pull-right"> <strong> {{balanceTQT | amountTqt}}
+                                                            {{'common.xin-unit-text'| translate}}
                                                         </strong></span>
                                                 </div>
 
@@ -146,7 +147,8 @@
                                                                             required>
                                                                     </div>
                                                                     <div class="col-3 pr-1 pl-0">
-                                                                        <span class="input-group-text text-yellow">XIN</span>
+                                                                        <span class="input-group-text text-yellow">{{'common.xin-unit-text'|
+                                                                            translate}}</span>
                                                                     </div>
                                                                 </div>
                                                                 <div *ngIf="price?.invalid && (price?.dirty || price?.touched)"
@@ -191,7 +193,8 @@
                                                                             #totalPrice="ngModel" minValue="0">
                                                                     </div>
                                                                     <div class="col-3 pr-1 pl-0">
-                                                                        <span class="input-group-text text-yellow">XIN</span>
+                                                                        <span class="input-group-text text-yellow">{{'common.xin-unit-text'|
+                                                                            translate}}</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -296,7 +299,8 @@
                                                                             required>
                                                                     </div>
                                                                     <div class="col-3 pr-1 pl-0">
-                                                                        <span class="input-group-text text-yellow">XIN</span>
+                                                                        <span class="input-group-text text-yellow">{{'common.xin-unit-text'|
+                                                                            translate}}</span>
                                                                     </div>
                                                                 </div>
                                                                 <div *ngIf="price?.invalid && (price?.dirty || price?.touched)"
@@ -341,7 +345,9 @@
                                                                             #totalPrice="ngModel" minValue="0">
                                                                     </div>
                                                                     <div class="col-3 pr-1 pl-0">
-                                                                        <span class="input-group-text text-yellow">XIN</span>
+                                                                        <span class="input-group-text text-yellow">
+                                                                            {{'common.xin-unit-text'| translate}}
+                                                                        </span>
                                                                     </div>
                                                                 </div>
                                                             </div>

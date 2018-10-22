@@ -23,8 +23,7 @@
                                         <div class="row mt-4">
                                             <div class="col-md-6">
                                                 <div class="form-group ml-0 mr-0">
-                                                    <label>{{'shuffling.create-shuffling.holding-type-label'|
-                                                        translate}}
+                                                    <label>{{'common.holding-type-label'| translate}}
                                                         <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                                             container="body" ngbPopover="{{'shuffling.create-shuffling.holding-type-popover'| translate}}">
                                                         </i>
@@ -57,8 +56,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group  ml-0 mr-0" *ngIf="createShuffleForm.holdingType==2">
-                                                    <label>{{'shuffling.create-shuffling.currency-ticker-label'|
-                                                        translate}}
+                                                    <label>{{'common.currency-ticker-label'| translate}}
                                                         <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                                             container="body" ngbPopover="{{'shuffling.create-shuffling.currency-ticker-popover'| translate}}">
                                                         </i>
@@ -78,7 +76,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group  ml-0 mr-0">
-                                                    <label>{{'common.amount-lable'| translate}}
+                                                    <label>{{'common.amount-label'| translate}}
                                                         <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                                             container="body" ngbPopover="{{'shuffling.create-shuffling.amount-popover'| translate}}">
                                                         </i>
@@ -90,7 +88,7 @@
                                                     <div *ngIf="amount?.invalid && (amount?.dirty || amount?.touched)"
                                                         class="input-error">
                                                         <div *ngIf="amount?.errors.required">
-                                                            {{'common.amount-required-smg'| translate}}
+                                                            {{'common.amount-required'| translate}}
                                                         </div>
                                                         <div *ngIf="amount?.errors.minValue && !amount?.errors.required">
                                                             {{'shuffling.create-shuffling.amount-greater'| translate}}
@@ -189,7 +187,7 @@
                                 class="form-bordered mt-4">
                                 <div class="row">
                                     <div class="col-md-4" *ngIf="createShuffleForm.holdingType ==='0'">
-                                        <div class="ucsb"> {{'common.amount-lable'| translate}}
+                                        <div class="ucsb"> {{'common.amount-label'| translate}}
                                         </div>
                                         <h4> {{createShuffleForm.amount}}
                                             <small> {{'common.xin-unit-text'| translate}} </small>
@@ -197,15 +195,14 @@
                                         </h4>
                                     </div>
                                     <div class="col-md-4" *ngIf="createShuffleForm.holdingType ==='1'||createShuffleForm.holdingType ==='2'">
-                                        <div class="ucsb"> {{'common.amount-lable'| translate}}
+                                        <div class="ucsb"> {{'common.amount-label'| translate}}
                                         </div>
                                         <h4> {{createShuffleForm.amount}}
                                             <small> ({{createShuffleForm.code || createShuffleForm.assetId}}) </small>
                                         </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'shuffling.create-shuffling.holding-type-label'|
-                                            translate}}
+                                        <div class="ucsb"> {{'common.holding-type-label'| translate}}
                                         </div>
                                         <h4> {{createShuffleForm.holdingType | holdingType}} </h4>
                                     </div>
@@ -213,14 +210,14 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                        <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                         </div>
                                         <h4> {{ tx_fee | amountTkn }}
                                             <small> {{'common.xin-unit-text'| translate}}</small>
                                         </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                        <div class="ucsb"> {{'common.valid-label'| translate}}
                                         </div>
                                         <h4 [innerHTML]="validBytes | txIsValid"> </h4>
                                     </div>
@@ -228,7 +225,7 @@
 
                                 <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                     class="btn btn-raised mr-1 mb-0 mt-3" (click)="unsignedTx = !unsignedTx">
-                                    <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                                 </button>
                                 <!--  <hr *ngIf="unsignedTx"> -->
                                 <div class="form-group" *ngIf="unsignedTx">

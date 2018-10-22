@@ -56,14 +56,14 @@
                                                         [(ngModel)]="deleteAssetForm.quantity" placeholder="{{'assets.delete-shares.number-shares-delete-label'| translate}}"
                                                         required minValue="1">
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text">{{'assets.delete-shares.quantity-text'|
+                                                        <span class="input-group-text">{{'common.quantity-text'|
                                                             translate}} </span>
                                                     </div>
                                                 </div>
                                                 <div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)"
                                                     class="input-error">
                                                     <div *ngIf="quantity?.errors.required">
-                                                        {{'assets.delete-shares.quantity-required'| translate}}
+                                                        {{'common.quantity-required'| translate}}
                                                     </div>
                                                     <div *ngIf="quantity?.errors.minValue && !quantity?.errors.required">
                                                         {{'assets.delete-shares.quantity-greater'| translate}}
@@ -99,7 +99,7 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'assets.delete-shares.quantity-label'| translate}}
+                                    <div class="ucsb"> {{'common.quantity-label'| translate}}
                                     </div>
                                     <h4>{{deleteAssetForm.quantity}}
                                     </h4>
@@ -110,24 +110,24 @@
                             <hr />
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                    <div class="ucsb"> {{'common.valid-label'| translate}}
                                     </div>
                                     <h4>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                     </h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                    <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                     </div>
                                     <h4>{{tx_fee | amountTkn}}
-                                        <small>XIN</small>
+                                        <small>{{'common.xin-unit-text'| translate}}</small>
                                     </h4>
                                 </div>
                             </div>
                             <hr>
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                 class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                             </button>
                             <hr *ngIf="unsignedTx">
                             <div class="form-group" *ngIf="unsignedTx">

@@ -36,7 +36,7 @@
                                             <div class="ucsb"> {{'assets.trade-desk.last-price' | translate}} </div>
                                             <h4>
                                                 {{lastTrade.priceTQT|shareToQuantity:assetDetails.decimals|quantToAmount|numericalString}}
-                                                <small> XIN</small>
+                                                <small> {{'common.xin-unit-text'| translate}}</small>
                                             </h4>
                                         </div>
                                         <div class="col-md-6">
@@ -104,7 +104,8 @@
                                             <button type="button" class="btn mb-0 btn-icon btn-grey" (click)="getSellOrders()">
                                                 <i class="fa fa-refresh"></i> </button>
                                         </span>
-                                        <span class="pull-right"><strong> {{balanceTQT | amountTqt}} XIN </strong></span>
+                                        <span class="pull-right"><strong> {{balanceTQT | amountTqt}}
+                                                {{'common.xin-unit-text'| translate}} </strong></span>
                                     </div>
 
                                     <form class="form inner-form mt-3" #f1="ngForm" novalidate>
@@ -112,10 +113,10 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group m-0">
-                                                        <label>{{'assets.trade-desk.price-label' | translate}}</label>
+                                                        <label>{{'common.price-label' | translate}}</label>
                                                         <div class="input-group ml-0 mr-0 sign_in_inputs row form-border-bottom">
                                                             <div class="col-9">
-                                                                <input type="number" placeholder="{{'assets.trade-desk.price-label' | translate}}"
+                                                                <input type="number" placeholder="{{'common.price-label' | translate}}"
                                                                     class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="buyFormOnChange()"
                                                                     [(ngModel)]="buyOrderForm.price" name="price"
                                                                     #price_buy="ngModel" minValue="0" required>
@@ -130,22 +131,20 @@
                                                         <div *ngIf="price_buy?.invalid && (price_buy?.dirty || price_buy?.touched)"
                                                             class="input-error">
                                                             <div *ngIf="price_buy?.errors.required">
-                                                                {{'assets.trade-desk.price-required-validation-text' |
-                                                                translate}}
+                                                                {{'common.price-required' | translate}}
                                                             </div>
                                                             <div *ngIf="price_buy?.errors.minValue && !price_buy?.errors.required">
-                                                                {{'assets.trade-desk.price-value-validation-text' |
-                                                                translate}}
+                                                                {{'common.price-greater' | translate}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group m-0">
-                                                        <label>{{'assets.issue-asset.asset-quantity-label' |
+                                                        <label>{{'common.quantity-label' |
                                                             translate}}</label>
                                                         <div class="input-group ml-0 mr-0">
-                                                            <input type="number" placeholder="{{'assets.issue-asset.asset-quantity-label' | translate}}"
+                                                            <input type="number" placeholder="{{'common.quantity-label' | translate}}"
                                                                 class="form-control" (input)="buyFormOnChange()"
                                                                 [(ngModel)]="buyOrderForm.quantity" name="quantity"
                                                                 #quantity_buy="ngModel" minValue="0" required>
@@ -153,12 +152,10 @@
                                                         <div *ngIf="quantity_buy?.invalid && (quantity_buy?.dirty || quantity_buy?.touched)"
                                                             class="input-error">
                                                             <div *ngIf="quantity_buy?.errors.required">
-                                                                {{'assets.issue-asset.asset-quantity-required-validation-message'
-                                                                | translate}}
+                                                                {{'common.quantity-required'| translate}}
                                                             </div>
                                                             <div *ngIf="quantity_buy?.errors.minValue && !quantity_buy?.errors.required">
-                                                                {{'assets.issue-asset.asset-quantity-value-validation-message'
-                                                                | translate}}
+                                                                {{'assets.issue-asset.quantity-greater'| translate}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -255,10 +252,10 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group m-0">
-                                                        <label>{{'assets.trade-desk.price-label' | translate}}</label>
+                                                        <label>{{'common.price-label' | translate}}</label>
                                                         <div class="input-group ml-0 mr-0  sign_in_inputs row form-border-bottom">
                                                             <div class="col-9">
-                                                                <input type="number" placeholder="{{'assets.trade-desk.price-label' | translate}}"
+                                                                <input type="number" placeholder="{{'common.price-label' | translate}}"
                                                                     class="pl-0 mb-0 pt-0 pb-0 form-control" (input)="sellFormOnChange()"
                                                                     [(ngModel)]="askOrderForm.price" name="price"
                                                                     #price="ngModel" minValue="0" required>
@@ -274,22 +271,19 @@
                                                         <div *ngIf="price?.invalid && (price?.dirty || price?.touched)"
                                                             class="input-error">
                                                             <div *ngIf="price?.errors.required">
-                                                                {{'assets.trade-desk.price-required-validation-text' |
-                                                                translate}}
+                                                                {{'common.price-required' | translate}}
                                                             </div>
                                                             <div *ngIf="price?.errors.minValue && !price?.errors.required">
-                                                                {{'assets.trade-desk.price-value-validation-text' |
-                                                                translate}}
+                                                                {{'common.price-greater' | translate}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group m-0">
-                                                        <label>{{'assets.issue-asset.asset-quantity-label' |
-                                                            translate}}</label>
+                                                        <label>{{'common.quantity-label' | translate}}</label>
                                                         <div class="input-group ml-0 mr-0 ">
-                                                            <input type="number" placeholder="{{'assets.issue-asset.asset-quantity-label' | translate}}"
+                                                            <input type="number" placeholder="{{'common.quantity-label' | translate}}"
                                                                 class="form-control" (input)="sellFormOnChange()"
                                                                 [(ngModel)]="askOrderForm.quantity" name="quantity"
                                                                 #quantity="ngModel" minValue="0" required>
@@ -297,12 +291,10 @@
                                                         <div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)"
                                                             class="input-error">
                                                             <div *ngIf="quantity?.errors.required">
-                                                                {{'assets.issue-asset.asset-quantity-required-validation-message'
-                                                                | translate}}
+                                                                {{'common.quantity-required'| translate}}
                                                             </div>
                                                             <div *ngIf="quantity?.errors.minValue && !quantity?.errors.required">
-                                                                {{'assets.issue-asset.asset-quantity-value-validation-message'
-                                                                | translate}}
+                                                                {{'assets.issue-asset.quantity-greater'| translate}}
                                                             </div>
                                                         </div>
                                                     </div>

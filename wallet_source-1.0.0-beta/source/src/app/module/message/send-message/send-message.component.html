@@ -20,7 +20,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>{{'common.recipient-lable'| translate}}
+                                                        <label>{{'common.recipient-label'| translate}}
                                                             <i class="fa fa-question-circle-o ml-1 info-yellow"
                                                                 container="body" placement="right" triggers="mouseenter:mouseleave"
                                                                 ngbPopover="{{'messages.send-message.recipient-label-popover'| translate}}">
@@ -61,14 +61,14 @@
                                                         <div *ngIf="recipientRS?.invalid && (recipientRS?.dirty || recipientRS?.touched)"
                                                             class="input-error">
                                                             <div *ngIf="recipientRS?.errors.required">
-                                                                {{'common.recipient-required-smg'| translate}}
+                                                                {{'common.recipient-required'| translate}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>{{'messages.send-message.type-label'| translate}}
+                                                        <label>{{'common.type-label'| translate}}
                                                             <i class="fa fa-question-circle-o ml-1 info-yellow"
                                                                 container="body" placement="right" triggers="mouseenter:mouseleave"
                                                                 ngbPopover="{{'messages.send-message.type-label-popover'| translate}}">
@@ -86,13 +86,13 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>{{'messages.send-message.message-label'| translate}}
+                                                <label>{{'common.message-label'| translate}}
                                                     <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                                         container="body" ngbPopover="{{'messages.send-message.message-label-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div class="position-relative sign_in_inputs">
-                                                    <textarea rows="3" placeholder="{{'messages.send-message.message-label'| translate}}"
+                                                    <textarea rows="3" placeholder="{{'common.message-label'| translate}}"
                                                         name="message" [(ngModel)]="sendMessageForm.message"
                                                         (ngModelChange)="onChangeMessageInfo($event)" class="form-control pl-0"></textarea>
                                                 </div>
@@ -131,56 +131,56 @@
                                     class="form-bordered mt-4">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.recipient-account-lable'| translate}}
+                                            <div class="ucsb"> {{'common.recipient-account-label'| translate}}
                                             </div>
                                             <h4> {{sendMessageForm.recipientRS}} </h4>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.recipient-name-lable'| translate}}
+                                            <div class="ucsb"> {{'common.recipient-name-label'| translate}}
                                             </div>
                                             <h4> {{accountDetails.name | notSet}} </h4>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.recipient-balance-lable'| translate}}
+                                            <div class="ucsb"> {{'common.recipient-balance-label'| translate}}
                                             </div>
                                             <h4> {{accountDetails.balanceTQT| amountTqt}}
-                                                <small> XIN</small>
+                                                <small> {{'common.xin-unit-text'| translate}}</small>
                                             </h4>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.service-fee-lable'| translate}}
+                                            <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                             </div>
                                             <h4> {{ tx_fee | amountTkn }}
-                                                <small> XIN</small>
+                                                <small> {{'common.xin-unit-text'| translate}}</small>
                                             </h4>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'common.valid-lable'| translate}}
+                                            <div class="ucsb"> {{'common.valid-label'| translate}}
                                             </div>
                                             <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="ucsb"> {{'messages.send-message.public-key-label'| translate}}
+                                            <div class="ucsb"> {{'common.public-key-label'| translate}}
                                             </div>
                                             <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="ucsb"> {{'messages.send-message.message-label'| translate}}
+                                            <div class="ucsb"> {{'common.message-label'| translate}}
                                             </div>
                                             <h4>{{sendMessageForm.message}}</h4>
                                         </div>
                                     </div>
                                     <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                         class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                        <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                        <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                                     </button>
                                     <button type="button" [ngClass]="{'btn-success': !aMessage, 'btn-danger': aMessage}"
                                         class="btn btn-raised mb-0" (click)="aMessage = !aMessage">
-                                        <i class="fa fa-lock"></i> {{'common.encrypted-message-lable'| translate}}
+                                        <i class="fa fa-lock"></i> {{'common.encrypted-message-label'| translate}}
                                     </button>
                                     <button type="button" [ngClass]="{'btn-success': !aprunableAttachmentJSON, 'btn-danger': aprunableAttachmentJSON}"
                                         class="btn btn-raised mb-0" (click)="aprunableAttachmentJSON = !aprunableAttachmentJSON">
@@ -188,21 +188,21 @@
                                     </button>
                                     <!--     <hr *ngIf="unsignedTx || aMessage || aprunableAttachmentJSON"> -->
                                     <div class="form-group" *ngIf="unsignedTx">
-                                        <label>{{'common.signed-transaction-lable'| translate}}</label>
+                                        <label>{{'common.signed-transaction-label'| translate}}</label>
                                         <div class="position-relative sign_in_inputs">
                                             <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes"
                                                 class="form-control pl-0" name="key"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group" *ngIf="aMessage">
-                                        <label>{{'common.encrypted-message-lable'| translate}}</label>
+                                        <label>{{'common.encrypted-message-label'| translate}}</label>
                                         <div class="position-relative sign_in_inputs">
                                             <textarea disabled="true" rows="3" [(ngModel)]="encrypted" class="form-control pl-0"
                                                 name="message"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group" *ngIf="aprunableAttachmentJSON">
-                                        <label>{{'common.encrypted-message-lable'| translate}}</label>
+                                        <label>{{'common.encrypted-message-label'| translate}}</label>
                                         <div class="position-relative sign_in_inputs">
                                             <textarea disabled="true" rows="3" [(ngModel)]="prunableAttachmentString"
                                                 class="form-control pl-0" name="message"></textarea>

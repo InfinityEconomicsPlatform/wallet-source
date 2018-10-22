@@ -15,18 +15,18 @@
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="form-group m-0">
-                            <label>{{'account.funding-monitor.account-property-lable'| translate}}
+                            <label>{{'account.funding-monitor.account-property-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'account.funding-monitor.account-property-popover'| translate}}"></i>
                             </label>
                             <input type="text" class="form-control" name="property" #property="ngModel" [(ngModel)]="fundingMonitorForm.property"
-                                id="property" placeholder="{{'account.funding-monitor.account-property-lable'| translate}}"
+                                id="property" placeholder="{{'account.funding-monitor.account-property-label'| translate}}"
                                 required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group m-0">
-                            <label>{{'common.amount-lable'| translate}}
+                            <label>{{'common.amount-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'account.funding-monitor.amount-popover'| translate}}"></i>
                             </label>
@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group m-0">
-                            <label>{{'account.funding-monitor.threshold-lable'| translate}}
+                            <label>{{'account.funding-monitor.threshold-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'account.funding-monitor.threshold-popover'| translate}}"></i>
                             </label>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group m-0">
-                            <label>{{'account.funding-monitor.interval-lable'| translate}}
+                            <label>{{'account.funding-monitor.interval-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'account.funding-monitor.interval-popover'| translate}}"></i>
                             </label>
@@ -62,7 +62,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group m-0">
-                            <label>{{'account.funding-monitor.holding-type-lable'| translate}}
+                            <label>{{'common.holding-type-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'account.funding-monitor.holding-type-popover'| translate}}"></i>
                             </label>
@@ -85,12 +85,12 @@
                                 id="assetId" placeholder="{{'common.asset-id-lable'| translate}}" (change)="getAsset(fundingMonitorForm.holding)">
                         </div>
                         <div class="form-group m-0" *ngIf="fundingMonitorForm.holdingType == 2">
-                            <label>{{'account.funding-monitor.currency-ticker-lable'| translate}}
+                            <label>{{'common.currency-ticker-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'account.funding-monitor.currency-ticker-popover'| translate}}"></i>
                             </label>
                             <input type="text" class="form-control" name="currency" #currency="ngModel" [(ngModel)]="fundingMonitorForm.holding"
-                                id="currencyId" placeholder="{{'account.funding-monitor.currency-ticker-lable'" (change)="getCurrency(fundingMonitorForm.holding)">
+                                id="currencyId" placeholder="{{'common.currency-ticker-label'| translate}}" (change)="getCurrency(fundingMonitorForm.holding)">
                         </div>
                     </div>
                 </div>
@@ -98,24 +98,24 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group m-0">
-                            <label>{{'account.funding-monitor.admin-password-lable'| translate}}
+                            <label>{{'account.funding-monitor.admin-password-label'| translate}}
                                 <i class="
-                                fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave" container="body"
-                                ngbPopover="{{'account.funding-monitor.admin-password-popover'| translate}}"></i>
+                                fa fa-question-circle-o" placement="right"
+                                    triggers="mouseenter:mouseleave" container="body" ngbPopover="{{'account.funding-monitor.admin-password-popover'| translate}}"></i>
                             </label>
                             <input type="password" class="form-control" name="adminPassword" #adminPassword="ngModel"
-                                [(ngModel)]="fundingMonitorForm.adminPassword" id="adminPassword" placeholder="{{'account.funding-monitor.admin-password-lable'| translate}}"
+                                [(ngModel)]="fundingMonitorForm.adminPassword" id="adminPassword" placeholder="{{'account.funding-monitor.admin-password-label'| translate}}"
                                 required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group m-0">
-                            <label>{{'account.funding-monitor.secret-phrase-lable'| translate}}
+                            <label>{{'common.secret-phrase-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'account.funding-monitor.secret-phrase-popover'| translate}}"></i>
                             </label>
                             <input type="password" class="form-control" name="secretPhrase" #secretPhrase="ngModel"
-                                [(ngModel)]="fundingMonitorForm.secretPhrase" id="secretPhrase" placeholder="{{'account.funding-monitor.secret-phrase-lable'| translate}}"
+                                [(ngModel)]="fundingMonitorForm.secretPhrase" id="secretPhrase" placeholder="{{'common.secret-phrase-label'| translate}}"
                                 required>
                         </div>
                     </div>

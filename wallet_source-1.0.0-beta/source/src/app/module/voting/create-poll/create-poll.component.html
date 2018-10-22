@@ -87,8 +87,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group" *ngIf=" votingModel==3 ">
-                                                <label for="currency">{{'voting.create-poll.currency-ticker-label' |
-                                                    translate}}
+                                                <label for="currency">{{'common.currency-ticker-label' | translate}}
                                                     <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
                                                         container="body" placement="top" [ngbPopover]="'voting.create-poll.currency-ticker-popover' | translate"></i>
                                                 </label>
@@ -134,7 +133,7 @@
                                                 maxlength="1000" required></textarea>
                                             <div *ngIf="pollDescription?.invalid && (pollDescription?.dirty || pollDescription?.touched)"
                                                 class="input-error">
-                                                {{ 'voting.description-popover' | translate}}
+                                                {{ 'common.description-required' | translate}}
                                             </div>
                                         </div>
                                     </div>
@@ -305,13 +304,13 @@
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="ucsb"> {{ 'common.valid-lable' | translate}}</div>
+                                    <div class="ucsb"> {{ 'common.valid-label' | translate}}</div>
                                     <h4 [innerHTML]=" validBytes | txIsValid "></h4>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="ucsb"> {{ 'common.service-fee-lable' | translate}}</div>
+                                    <div class="ucsb"> {{ 'common.service-fee-label' | translate}}</div>
                                     <h4>{{ tx_fee | amountTkn }}
-                                        <small> XIN</small>
+                                        <small> {{'common.xin-unit-text'| translate}}</small>
                                     </h4>
                                 </div>
                                 <div class="col-md-4">
@@ -322,7 +321,7 @@
 
                             <button type="button" [ngClass]="{'btn-success': !signedTx, 'btn-danger': signedTx}" class="btn btn-raised mr-1 mb-0"
                                 (click)="signedTx = !signedTx">
-                                <i class="fa fa-key"></i> {{ 'common.signed-transaction-lable' | translate}}
+                                <i class="fa fa-key"></i> {{ 'common.signed-transaction-label' | translate}}
                             </button>
 
                             <div class="form-group" *ngIf="signedTx">

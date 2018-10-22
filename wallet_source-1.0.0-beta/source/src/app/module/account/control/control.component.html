@@ -50,9 +50,9 @@
                                     <div class="row mt-3">
                                         <div class="col-md-6">
                                             <div class="form-group m-0">
-                                                <label>{{'account.control.minimum-approval-account-lable'| translate}}
+                                                <label>{{'account.control.minimum-approval-account-label'| translate}}
                                                     <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                        placement="right" container="body" ngbPopover="{{'account.control.minimum-approval-account-lable-popover'| translate}}">
+                                                        placement="right" container="body" ngbPopover="{{'account.control.minimum-approval-account-label-popover'| translate}}">
                                                     </i>
                                                 </label>
                                                 <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
@@ -97,12 +97,12 @@
                             class="form-bordered mt-4">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="ucsb">{{'account.control.control-model-lable'| translate}}
+                                    <div class="ucsb">{{'account.control.control-model-label'| translate}}
                                     </div>
                                     <h4> Account Approval </h4>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="ucsb">{{'account.control.control-approval-accounts-lable'| translate}}
+                                    <div class="ucsb">{{'account.control.control-approval-accounts-label'| translate}}
                                     </div>
                                     <div>
                                         <h4 *ngFor="let account of setAccountControlForm.approveAccounts">
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="ucsb">{{'account.control.quorum-lable'| translate}}
+                                    <div class="ucsb">{{'account.control.quorum-label'| translate}}
                                     </div>
                                     <h4> {{setAccountControlForm.quorum}} </h4>
                                 </div>
@@ -119,22 +119,22 @@
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="ucsb">{{'common.valid-lable'| translate}}
+                                    <div class="ucsb">{{'common.valid-label'| translate}}
                                     </div>
                                     <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="ucsb">{{'common.service-fee-lable'| translate}}
+                                    <div class="ucsb">{{'common.service-fee-label'| translate}}
                                     </div>
                                     <h4>{{tx_fee | amountTkn}}
-                                        <small> XIN</small>
+                                        <small> {{'common.xin-unit-text'| translate}}</small>
                                     </h4>
                                 </div>
                             </div>
 
                             <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
                                 class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
-                                <i class="fa fa-key"></i> {{'common.signed-transaction-lable'| translate}}
+                                <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
                             </button>
 
                             <div class="form-group mt-4" *ngIf="unsignedTx">
