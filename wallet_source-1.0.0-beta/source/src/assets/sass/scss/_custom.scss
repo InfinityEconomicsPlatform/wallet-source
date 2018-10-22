@@ -1614,3 +1614,31 @@ form .form-control-position.position-left{
   font-size: 50px;
   }
 }
+
+.tag-pagination ngb-pagination{
+  -webkit-box-flex: 1; 
+    -ms-flex: 1 1 80%;
+     flex: 1 1 80%; 
+     text-align: right; 
+         display: flex;
+    justify-content: flex-end;
+}
+
+.tag-pagination a.page-link {
+    border-radius: 100% !important;
+    color: #cfdfeb !important;
+    padding: 0 !important;
+    line-height: 32px !important;
+    font-size: 14px !important;
+}
+
+.ngx-datatable.table-light .datatable-body-cell{
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.ngx-datatable.table-light .datatable-body .datatable-body-row{
+  border-left: none !important;
+}
+
+
