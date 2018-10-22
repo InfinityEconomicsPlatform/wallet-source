@@ -13,203 +13,196 @@ import { ShareToQuantityPipe } from '../../../../pipes/share-to-quantity.pipe';
 import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
 
 @Component({
-  selector: 'app-publish-exchange-sell-offer',
-  templateUrl: './publish-exchange-sell-offer.component.html',
-  styleUrls: ['./publish-exchange-sell-offer.component.scss']
+    selector: 'app-publish-exchange-sell-offer',
+    templateUrl: './publish-exchange-sell-offer.component.html',
+    styleUrls: ['./publish-exchange-sell-offer.component.scss']
 })
 export class PublishExchangeSellOfferComponent implements OnInit {
 
-  constructor(public router: Router,
-    public route: ActivatedRoute,
-    public currenciesService: CurrenciesService,
-    public accountService: AccountService,
-    public sessionStorageService: SessionStorageService,
-    public cryptoService: CryptoService,
-    public shareToQuantityPipe: ShareToQuantityPipe,
-    public amountToQuantPipe: AmountToQuantPipe,
-    public optionService: OptionService,
-    public _location: Location) {
-  }
-
-  publishExchangeOfferForm: any = {};
-  accountControl:any = {};
-  expirationHeight = 1440;
-  days = 1;
-
-  transactionBytes: any;
-  tx_fee: any;
-  tx_amount: any;
-  tx_total: any;
-  validBytes: any;
-
-  ngOnInit() {
-    this.publishExchangeOfferForm = DataStoreService.get('publish-exchange-sell-offer');
-
-    if (!this.publishExchangeOfferForm) {
-      this.route.params.subscribe(params => {
-        this.router.navigate(['/currencies/trade', params['id']]);
-      });
-    }else{
-      this.checkControlEnabled();
-      this.getBlockChainStatus();
-    }
-  }
-
-  checkControlEnabled() {
-    this.accountControl.hasControl = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY);
-    this.accountControl.controlDetails = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_JSONCONTROL_KEY);
-    this.accountControl.phasingFinishHeight = this.optionService.getOption('TX_HEIGHT','');
-    this.publishExchangeOfferForm.expirationHeight = this.accountControl.phasingFinishHeight||1440;
-  };
-
-  getBlockChainStatus() {
-    this.currenciesService.getBlockChainStatus().subscribe((success) => {
-      this.publishExchangeOfferForm.currentHeight = success.numberOfBlocks;
-    });
-  };
-
-  increment() {
-    if (this.expirationHeight >= 14400) {
-      this.expirationHeight = 14400;
-      return;
-    } else {
-      this.expirationHeight = this.expirationHeight + 1440;
+    constructor(public router: Router,
+        public route: ActivatedRoute,
+        public currenciesService: CurrenciesService,
+        public accountService: AccountService,
+        public sessionStorageService: SessionStorageService,
+        public cryptoService: CryptoService,
+        public shareToQuantityPipe: ShareToQuantityPipe,
+        public amountToQuantPipe: AmountToQuantPipe,
+        public optionService: OptionService,
+        public _location: Location) {
     }
 
-    this.publishExchangeOfferForm.expirationHeight = this.expirationHeight;
-    this.days = parseInt((this.expirationHeight / 1440) + '');
-  };
+    publishExchangeOfferForm: any = {};
+    accountControl: any = {};
+    expirationHeight = 1440;
+    days = 1;
 
-  decrement() {
-    if (this.expirationHeight <= 1440) {
-      this.expirationHeight = 1440;
-      return;
-    } else {
-      this.expirationHeight = this.expirationHeight - 1440;
-    }
+    transactionBytes: any;
+    tx_fee: any;
+    tx_amount: any;
+    tx_total: any;
+    validBytes: any;
 
-    this.publishExchangeOfferForm.expirationHeight = this.expirationHeight;
-    this.days = parseInt((this.expirationHeight / 1440) + '');
-  };
+    ngOnInit() {
+        this.publishExchangeOfferForm = DataStoreService.get('publish-exchange-sell-offer');
 
-  max() {
-    this.expirationHeight = 14400;
-    this.publishExchangeOfferForm.expirationHeight = 14400;
-
-    this.days = parseInt((this.expirationHeight / 1440) + '');
-
-  };
-
-  min() {
-    this.expirationHeight = 1440;
-    this.publishExchangeOfferForm.expirationHeight = 1440;
-    this.days = parseInt((this.expirationHeight / 1440) + '');
-  };
-
-
-  publishExchangeOffer() {
-
-    var publishExchangeOfferForm = this.publishExchangeOfferForm;
-    var currency = publishExchangeOfferForm.currencyId;
-    var limits:any = {};
-
-    publishExchangeOfferForm.buyRate = publishExchangeOfferForm.sellRate;
-    publishExchangeOfferForm.buyLimit = 0;
-    publishExchangeOfferForm.initialBuySupply = 0;
-    publishExchangeOfferForm.sellLimit = publishExchangeOfferForm.initialSellSupply;
-
-    limits.buyRate = parseInt((this.amountToQuantPipe.transform(publishExchangeOfferForm.buyRate) / Math.pow(10, publishExchangeOfferForm.decimals)) + '');
-    limits.sellRate = parseInt((this.amountToQuantPipe.transform(publishExchangeOfferForm.sellRate) / Math.pow(10, publishExchangeOfferForm.decimals)) + '');
-
-    limits.totalBuy = parseInt((publishExchangeOfferForm.buyLimit * Math.pow(10, publishExchangeOfferForm.decimals)) + '');
-    limits.totalSell = parseInt((publishExchangeOfferForm.sellLimit * Math.pow(10, publishExchangeOfferForm.decimals)) + '');
-
-    var supply:any = {};
-
-    supply.initialBuy = parseInt((publishExchangeOfferForm.initialBuySupply * Math.pow(10, publishExchangeOfferForm.decimals)) + '');
-    supply.initialSell = parseInt((publishExchangeOfferForm.initialSellSupply * Math.pow(10, publishExchangeOfferForm.decimals)) + '');
-
-    var expirationHeight = parseInt(publishExchangeOfferForm.expirationHeight) + parseInt(publishExchangeOfferForm.currentHeight);
-
-    this.publishExchangeOfferForm.expirationHeight = expirationHeight;
-
-    var fee = 1;
-    var publicKey = this.accountService.getAccountDetailsFromSession('publicKey');
-    var secret = this.publishExchangeOfferForm.secretPhrase;
-    var secretPhraseHex;
-
-    if (secret) {
-      secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
-    } else {
-      secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
-    }
-    
-    this.currenciesService.publishExchangeOffer(publicKey, currency, limits,
-      supply, expirationHeight, fee)
-      .subscribe((success_) => {
-        success_.subscribe((success) => {
-        if (!success.errorCode) {
-          var unsignedBytes = success.unsignedTransactionBytes;
-            var signatureHex = this.cryptoService.signatureHex(unsignedBytes, secretPhraseHex);
-
-            this.transactionBytes = this.cryptoService.signTransactionHex(unsignedBytes, signatureHex);
-            this.tx_fee = success.transactionJSON.feeTQT / 100000000;
-            this.tx_amount = success.transactionJSON.amountTQT / 100000000;
-            this.tx_total = this.tx_fee + this.tx_amount;
-            this.validBytes = true;
-        } else {
-          alertFunctions.InfoAlertBox('Error',
-              'Sorry, an error occured! Reason: ' + success.errorDescription,
-              'OK',
-              'error').then((isConfirm: any) => {
-
-              });
-        }
-      }, function (error) {
-        alertFunctions.InfoAlertBox('Error',
-            AppConstants.getNoConnectionMessage,
-            'OK',
-            'error').then((isConfirm: any) => {
-
-            });
-      });
-    })
-
-  };
-
-  broadcastTransaction(transactionBytes) {
-    this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
-
-      if (!success.errorCode) {
-        alertFunctions.InfoAlertBox('Success',
-          'Transaction succesfull broadcasted with Id : ' + success.transaction,
-          'OK',
-          'success').then((isConfirm: any) => {
+        if (!this.publishExchangeOfferForm) {
             this.route.params.subscribe(params => {
-              this.router.navigate(['/currencies/trade', params['id']]);
+                this.router.navigate(['/currencies/trade', params['id']]);
             });
-          });
+        } else {
+            this.checkControlEnabled();
+            this.getBlockChainStatus();
+        }
+    }
 
-      } else {
-        alertFunctions.InfoAlertBox('Error',
-          'Unable to broadcast transaction. Reason: ' + success.errorDescription,
-          'OK',
-          'error').then((isConfirm: any) => {
+    checkControlEnabled() {
+        this.accountControl.hasControl = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY);
+        this.accountControl.controlDetails = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_JSONCONTROL_KEY);
+        this.accountControl.phasingFinishHeight = this.optionService.getOption('TX_HEIGHT', '');
+        this.publishExchangeOfferForm.expirationHeight = this.accountControl.phasingFinishHeight || 1440;
+    };
 
-          });
-      }
+    getBlockChainStatus() {
+        this.currenciesService.getBlockChainStatus().subscribe((success) => {
+            this.publishExchangeOfferForm.currentHeight = success.numberOfBlocks;
+        });
+    };
 
-    }, (error) => {
-      alertFunctions.InfoAlertBox('Error',
-        AppConstants.getNoConnectionMessage,
-        'OK',
-        'error').then((isConfirm: any) => {
+    increment() {
+        if (this.expirationHeight >= 14400) {
+            this.expirationHeight = 14400;
+            return;
+        } else {
+            this.expirationHeight = this.expirationHeight + 1440;
+        }
+
+        this.publishExchangeOfferForm.expirationHeight = this.expirationHeight;
+        this.days = parseInt((this.expirationHeight / 1440) + '');
+    };
+
+    decrement() {
+        if (this.expirationHeight <= 1440) {
+            this.expirationHeight = 1440;
+            return;
+        } else {
+            this.expirationHeight = this.expirationHeight - 1440;
+        }
+
+        this.publishExchangeOfferForm.expirationHeight = this.expirationHeight;
+        this.days = parseInt((this.expirationHeight / 1440) + '');
+    };
+
+    max() {
+        this.expirationHeight = 14400;
+        this.publishExchangeOfferForm.expirationHeight = 14400;
+
+        this.days = parseInt((this.expirationHeight / 1440) + '');
+
+    };
+
+    min() {
+        this.expirationHeight = 1440;
+        this.publishExchangeOfferForm.expirationHeight = 1440;
+        this.days = parseInt((this.expirationHeight / 1440) + '');
+    };
+
+
+    publishExchangeOffer() {
+
+        var publishExchangeOfferForm = this.publishExchangeOfferForm;
+        var currency = publishExchangeOfferForm.currencyId;
+        var limits: any = {};
+
+        publishExchangeOfferForm.buyRate = publishExchangeOfferForm.sellRate;
+        publishExchangeOfferForm.buyLimit = 0;
+        publishExchangeOfferForm.initialBuySupply = 0;
+        publishExchangeOfferForm.sellLimit = publishExchangeOfferForm.initialSellSupply;
+
+        limits.buyRate = parseInt((this.amountToQuantPipe.transform(publishExchangeOfferForm.buyRate) / Math.pow(10, publishExchangeOfferForm.decimals)) + '');
+        limits.sellRate = parseInt((this.amountToQuantPipe.transform(publishExchangeOfferForm.sellRate) / Math.pow(10, publishExchangeOfferForm.decimals)) + '');
+
+        limits.totalBuy = parseInt((publishExchangeOfferForm.buyLimit * Math.pow(10, publishExchangeOfferForm.decimals)) + '');
+        limits.totalSell = parseInt((publishExchangeOfferForm.sellLimit * Math.pow(10, publishExchangeOfferForm.decimals)) + '');
+
+        var supply: any = {};
+
+        supply.initialBuy = parseInt((publishExchangeOfferForm.initialBuySupply * Math.pow(10, publishExchangeOfferForm.decimals)) + '');
+        supply.initialSell = parseInt((publishExchangeOfferForm.initialSellSupply * Math.pow(10, publishExchangeOfferForm.decimals)) + '');
+
+        var expirationHeight = parseInt(publishExchangeOfferForm.expirationHeight) + parseInt(publishExchangeOfferForm.currentHeight);
+
+        this.publishExchangeOfferForm.expirationHeight = expirationHeight;
+
+        var fee = 1;
+        var publicKey = this.accountService.getAccountDetailsFromSession('publicKey');
+        var secret = this.publishExchangeOfferForm.secretPhrase;
+        var secretPhraseHex;
+
+        if (secret) {
+            secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
+        } else {
+            secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
+        }
+
+        this.currenciesService.publishExchangeOffer(publicKey, currency, limits,
+            supply, expirationHeight, fee)
+            .subscribe((success_) => {
+                success_.subscribe((success) => {
+                    if (!success.errorCode) {
+                        var unsignedBytes = success.unsignedTransactionBytes;
+                        var signatureHex = this.cryptoService.signatureHex(unsignedBytes, secretPhraseHex);
+
+                        this.transactionBytes = this.cryptoService.signTransactionHex(unsignedBytes, signatureHex);
+                        this.tx_fee = success.transactionJSON.feeTQT / 100000000;
+                        this.tx_amount = success.transactionJSON.amountTQT / 100000000;
+                        this.tx_total = this.tx_fee + this.tx_amount;
+                        this.validBytes = true;
+                    } else {
+                        alertFunctions.InfoAlertBox('Error',
+                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                            'OK',
+                            'error').then((isConfirm: any) => {
+
+                            });
+                    }
+                }, function (error) {
+                    alertFunctions.InfoAlertBox('Error',
+                        AppConstants.getNoConnectionMessage,
+                        'OK',
+                        'error').then((isConfirm: any) => {
+
+                        });
+                });
+            })
+
+    };
+
+    broadcastTransaction(transactionBytes) {
+        this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
+
+            if (!success.errorCode) {
+                alertFunctions.InfoAlertBox('Success',
+                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'OK',
+                    'success').then((isConfirm: any) => {
+                        this.route.params.subscribe(params => {
+                            this.router.navigate(['/currencies/trade', params['id']]);
+                        });
+                    });
+
+            } else {
+                alertFunctions.InfoAlertBox('Error',
+                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                    'OK',
+                    'error').then((isConfirm: any) => {
+
+                    });
+            }
 
         });
-    });
-  }
+    }
 
-  goBack() {
-    this._location.back();
-  }
+    goBack() {
+        this._location.back();
+    }
 }

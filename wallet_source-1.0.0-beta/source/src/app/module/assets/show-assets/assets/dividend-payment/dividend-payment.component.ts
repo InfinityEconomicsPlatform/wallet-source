@@ -71,7 +71,7 @@ export class DividendPaymentComponent implements OnInit {
     onTabChange() {
         this.routeChange.next();
     }
-    
+
     dividendPayment() {
         const amountPerQuant = this.amountToQuantPipe.transform(this.dividendPaymentForm.amountPerQuant);
         /* amountPerQuant = parseInt(amountPerQuant / Math.pow(10, parseInt(this.dividendPaymentForm.decimals, 10)), 10);
@@ -138,14 +138,6 @@ export class DividendPaymentComponent implements OnInit {
                             this.router.navigate(['/assets/show-assets']);
                         });
                 }
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     };
 

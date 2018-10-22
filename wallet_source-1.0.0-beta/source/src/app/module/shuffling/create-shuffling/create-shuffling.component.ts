@@ -194,13 +194,6 @@ export class CreateShufflingComponent implements OnInit {
 
                                 });
                         }
-                    }, (error) => {
-                        alertFunctions.InfoAlertBox('Error',
-                            AppConstants.getNoConnectionMessage,
-                            'OK',
-                            'error').then((isConfirm: any) => {
-
-                            });
                     });
                 })
         } else {
@@ -233,13 +226,6 @@ export class CreateShufflingComponent implements OnInit {
                     });
             }
 
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     }
 

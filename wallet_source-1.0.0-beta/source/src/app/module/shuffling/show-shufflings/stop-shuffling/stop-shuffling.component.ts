@@ -9,88 +9,81 @@ import { CryptoService } from '../../../../services/crypto.service';
 import * as alertFunctions from "../../../../shared/data/sweet-alerts";
 
 @Component({
-  selector: 'app-stop-shuffling',
-  templateUrl: './stop-shuffling.component.html',
-  styleUrls: ['./stop-shuffling.component.scss']
+    selector: 'app-stop-shuffling',
+    templateUrl: './stop-shuffling.component.html',
+    styleUrls: ['./stop-shuffling.component.scss']
 })
 export class StopShufflingComponent implements OnInit {
 
-  stopShuffleForm: any = {};
-  showStop = true;
+    stopShuffleForm: any = {};
+    showStop = true;
 
-  constructor(public activatedRoute: ActivatedRoute,
-    private _location: Location,
-    private shufflingService: ShufflingService,
-    private accountService: AccountService,
-    private sessionStorageService: SessionStorageService,
-    private cryptoService: CryptoService,
-    private router: Router) { }
+    constructor(public activatedRoute: ActivatedRoute,
+        private _location: Location,
+        private shufflingService: ShufflingService,
+        private accountService: AccountService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        private router: Router) { }
 
-  ngOnInit() {
-    this.activatedRoute.queryParams.subscribe((params: any) => {
-      if (!params.id) {
-        this._location.back();
-      }
-      this.stopShuffleForm.shufflingFullHash = params.id;
-    });
-  }
-
-  stopShuffle() {
-
-    var fee = 1;
-
-    this.showStop = false;
-
-    var shufflingFullHash = this.stopShuffleForm.shufflingFullHash;
-    var secret = this.stopShuffleForm.secretPhrase;
-    var secretPhraseHex;
-    if (secret) {
-      secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
-    } else {
-      secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
+    ngOnInit() {
+        this.activatedRoute.queryParams.subscribe((params: any) => {
+            if (!params.id) {
+                this._location.back();
+            }
+            this.stopShuffleForm.shufflingFullHash = params.id;
+        });
     }
 
-    this.shufflingService.stopShuffler(shufflingFullHash, this.cryptoService.secretPhraseFromPrivateKey(secretPhraseHex), fee)
-    .subscribe( (success_) => {
-      success_.subscribe((success) => {
+    stopShuffle() {
 
-        if (!success.errorCode) {
+        var fee = 1;
 
-          var result = 'Shuffler succesfully stopped';
-          var resType = 'success';
+        this.showStop = false;
 
-          if (success.stoppedShuffler == false) {
-            result = "No running shuffler found. Please start the shuffler before stopping.";
-            var resType = 'info';
-          };
-
-          alertFunctions.InfoAlertBox('Success',
-            'Stop shuffle: ' + result,
-            'OK',
-            'success').then((isConfirm: any) => {
-              this.router.navigate(['/shuffling/show-shufflings/my']);
-            });
-
+        var shufflingFullHash = this.stopShuffleForm.shufflingFullHash;
+        var secret = this.stopShuffleForm.secretPhrase;
+        var secretPhraseHex;
+        if (secret) {
+            secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
         } else {
-          alertFunctions.InfoAlertBox('Error',
-            'Sorry, an error occured! Reason: ' + success.errorDescription,
-            'OK',
-            'error').then((isConfirm: any) => {
-              this.router.navigate(['/shuffling/show-shufflings/my']);
-            });
+            secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
         }
-      }, (error) => {
-        alertFunctions.InfoAlertBox('Error',
-          AppConstants.getNoConnectionMessage,
-          'OK',
-          'error').then((isConfirm: any) => {
-            this.router.navigate(['/shuffling/show-shufflings/my']);
-          });
-      })
-    });
-  }
 
-  goBack() {
-    this._location.back();
-  }
+        this.shufflingService.stopShuffler(shufflingFullHash, this.cryptoService.secretPhraseFromPrivateKey(secretPhraseHex), fee)
+            .subscribe((success_) => {
+                success_.subscribe((success) => {
+
+                    if (!success.errorCode) {
+
+                        var result = 'Shuffler succesfully stopped';
+                        var resType = 'success';
+
+                        if (success.stoppedShuffler == false) {
+                            result = "No running shuffler found. Please start the shuffler before stopping.";
+                            var resType = 'info';
+                        };
+
+                        alertFunctions.InfoAlertBox('Success',
+                            'Stop shuffle: ' + result,
+                            'OK',
+                            'success').then((isConfirm: any) => {
+                                this.router.navigate(['/shuffling/show-shufflings/my']);
+                            });
+
+                    } else {
+                        alertFunctions.InfoAlertBox('Error',
+                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                            'OK',
+                            'error').then((isConfirm: any) => {
+                                this.router.navigate(['/shuffling/show-shufflings/my']);
+                            });
+                    }
+                })
+            });
+    }
+
+    goBack() {
+        this._location.back();
+    }
 }

@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {CryptoService} from '../../../services/crypto.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {SessionStorageService} from '../../../services/session-storage.service';
-import {AmountToQuantPipe} from '../../../pipes/amount-to-quant.pipe';
-import {AliasesService} from '../../aliases/aliases.service';
-import {AccountService} from '../account.service';
+import { CryptoService } from '../../../services/crypto.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { AmountToQuantPipe } from '../../../pipes/amount-to-quant.pipe';
+import { AliasesService } from '../../aliases/aliases.service';
+import { AccountService } from '../account.service';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
-import {AppConstants} from '../../../config/constants';
-import {CurrenciesService} from '../../currencies/currencies.service';
+import { AppConstants } from '../../../config/constants';
+import { CurrenciesService } from '../../currencies/currencies.service';
 
 @Component({
-  selector: 'app-balance-lease',
-  templateUrl: './balance-lease.component.html',
-  styleUrls: ['./balance-lease.component.scss']
+    selector: 'app-balance-lease',
+    templateUrl: './balance-lease.component.html',
+    styleUrls: ['./balance-lease.component.scss']
 })
 export class BalanceLeaseComponent implements OnInit {
 
@@ -20,12 +20,12 @@ export class BalanceLeaseComponent implements OnInit {
     public hasReceiverPublicKey: boolean;
     openBookMarks: boolean = false;
     minPeriod = 1440;
-    blockheight=1
+    blockheight = 1
     balanceLeaseForm: any = {
         'recipientRS': '',
         'period': 1440
     }
-    accountDetails: any ={
+    accountDetails: any = {
     };
 
     validForm = false;
@@ -38,20 +38,19 @@ export class BalanceLeaseComponent implements OnInit {
     tx_total: any;
 
     constructor(public sessionStorageService: SessionStorageService,
-                public accountService: AccountService,
-                public cryptoService: CryptoService,
-                public amountToQuant: AmountToQuantPipe,
-                public router: Router,
-                public currenciesService: CurrenciesService,
-                public activatedRoute: ActivatedRoute,
-                public aliasesService: AliasesService) {
+        public accountService: AccountService,
+        public cryptoService: CryptoService,
+        public amountToQuant: AmountToQuantPipe,
+        public router: Router,
+        public currenciesService: CurrenciesService,
+        public activatedRoute: ActivatedRoute,
+        public aliasesService: AliasesService) {
         this.hasPrivateMessage = false;
         this.hasReceiverPublicKey = false;
     }
     ngOnInit() {
-        this.currenciesService.getBlockChainStatus().subscribe( (success) => {
+        this.currenciesService.getBlockChainStatus().subscribe((success) => {
             this.blockheight = parseInt(success.numberOfBlocks);
-        }, (error) => {
         });
     }
     min() {
@@ -97,8 +96,6 @@ export class BalanceLeaseComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     };
 
@@ -135,26 +132,19 @@ export class BalanceLeaseComponent implements OnInit {
                         'OK',
                         'error').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
             })
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-            });
         });
     };
-    getAndVerifyAccount(){
+    getAndVerifyAccount() {
 
         if (this.blockheight < 3000) {
             alertFunctions.InfoAlertBox('info',
                 'The balance leasing feature is available starting from block : 3\'000. This is about 2 days from genesis block creation date. Please try again as soon this block height is reached.',
                 'OK',
                 'info').then(() => {
-            });
+                });
             return;
         }
 
@@ -212,11 +202,11 @@ export class BalanceLeaseComponent implements OnInit {
                         'Sorry, an error occured! Reason: This account has no visible public key because it never had any outbound transaction. Encrypted messages or balance leasing is not available without a public key. Ask the account holder for his public key and add the key on the former page to this transaction',
                         'OK',
                         'error').then(() => {
-                    });
+                        });
                     return;
                 }
 
-                let encrypted = {data: '', nonce: ''};
+                let encrypted = { data: '', nonce: '' };
                 if (hasMessageAdded) {
                     if (!recipientPublicKey) {
                         recipientPublicKey = pubkey;
@@ -249,7 +239,7 @@ export class BalanceLeaseComponent implements OnInit {
                     'OK',
                     'error').then(() => {
 
-                });
+                    });
             }
         }, function (error) {
             alertFunctions.InfoAlertBox('Error',
@@ -257,7 +247,7 @@ export class BalanceLeaseComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 
@@ -269,8 +259,8 @@ export class BalanceLeaseComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                    // this.router.navigate(['/account/transactions/pending']);
-                });
+                        // this.router.navigate(['/account/transactions/pending']);
+                    });
 
             } else {
                 alertFunctions.InfoAlertBox('Error',
@@ -278,7 +268,7 @@ export class BalanceLeaseComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
         }, function (error) {
@@ -287,7 +277,7 @@ export class BalanceLeaseComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
 

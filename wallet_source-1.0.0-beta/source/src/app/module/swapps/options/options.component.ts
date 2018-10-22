@@ -70,7 +70,7 @@ export class OptionsComponent implements OnInit {
         return finalJson;
     }
 
-    nodeUrl(){
+    nodeUrl() {
         var connectionMode = this.optionsForm.CONNECTION_MODE;
         if (connectionMode === 'AUTO') {
             return true;
@@ -89,15 +89,6 @@ export class OptionsComponent implements OnInit {
         } else if (url) {
             this.localhostService.getPeerState(url).subscribe((success) => {
                 this.updateOptions();
-            }, (error) => {
-                AlertFunctions.InfoAlertBox(
-                    'Error',
-                    'Sorry, an error occured! Reason: This node URL is not valid',
-                    'OK',
-                    'error')
-                    .then((isConfirm: any) => {
-
-                    });
             });
         }
     }
@@ -108,7 +99,7 @@ export class OptionsComponent implements OnInit {
             finalOptions = [];
         for (let key in options) {
             if (options.hasOwnProperty(key)) {
-                let option = {'publicKey': publicKey, 'optionName': key, 'value': options[key]};
+                let option = { 'publicKey': publicKey, 'optionName': key, 'value': options[key] };
                 finalOptions.push(option);
             }
         }
@@ -125,7 +116,7 @@ export class OptionsComponent implements OnInit {
                 this.optionService.emitOptionsChanged();
             })
 
-        }, (error)=> {
+        }, (error) => {
 
         });
     }

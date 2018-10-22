@@ -122,14 +122,6 @@ export class CancelOrderComponent implements OnInit {
                             this.router.navigate(['assets/my-open-orders/buy']);
                         });
                 }
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    '' + AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     };
 

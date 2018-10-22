@@ -38,7 +38,7 @@ export class CancelSubscriptionsComponent implements OnInit {
         private cryptoService: CryptoService,
         public toastr: ToastsManager,
         vcr: ViewContainerRef) {
-            this.toastr.setRootViewContainerRef(vcr);
+        this.toastr.setRootViewContainerRef(vcr);
     }
 
     ngOnInit() {
@@ -89,7 +89,7 @@ export class CancelSubscriptionsComponent implements OnInit {
                             'error').then((isConfirm: any) => {
                             });
                     }
-                }, function(error) {
+                }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
@@ -117,13 +117,6 @@ export class CancelSubscriptionsComponent implements OnInit {
                 }
 
 
-            }, (error) => {
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     };
 }

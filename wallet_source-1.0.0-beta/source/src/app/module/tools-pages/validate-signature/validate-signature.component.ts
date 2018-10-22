@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ToolsService} from '../tools.service';
+import { Component, OnInit } from '@angular/core';
+import { ToolsService } from '../tools.service';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
-import {AppConstants} from '../../../config/constants';
+import { AppConstants } from '../../../config/constants';
 
 @Component({
     selector: 'app-validate-signature',
@@ -44,14 +44,8 @@ export class ValidateSignatureComponent implements OnInit {
                     'Sorry, an error occured! Reason: ' + success['errorDescription'],
                     'OK',
                     'error').then((isConfirm: any) => {
-                });
+                    });
             }
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-            });
         });
 
     };

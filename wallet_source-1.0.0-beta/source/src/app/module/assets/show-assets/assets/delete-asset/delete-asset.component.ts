@@ -106,14 +106,6 @@ export class DeleteAssetComponent implements OnInit {
                             this.router.navigate(['/assets/show-assets']);
                         });
                 }
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     };
 

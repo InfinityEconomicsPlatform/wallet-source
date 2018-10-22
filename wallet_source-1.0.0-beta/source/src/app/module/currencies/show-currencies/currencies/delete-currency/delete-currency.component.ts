@@ -106,12 +106,6 @@ export class DeleteCurrencyComponent implements OnInit {
                                             'error').then((isConfirm: any) => {
                                             });
                                     }
-                                }, (error) => {
-                                    alertFunctions.InfoAlertBox('Error',
-                                        AppConstants.getNoConnectionMessage,
-                                        'OK',
-                                        'error').then((isConfirm: any) => {
-                                        });
                                 });
                             });
                     } else {
@@ -123,12 +117,6 @@ export class DeleteCurrencyComponent implements OnInit {
                     }
                 }
 
-            }, (error) => {
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-                    });
             });
 
 
@@ -205,13 +193,6 @@ export class DeleteCurrencyComponent implements OnInit {
                     });
             }
 
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     }
 

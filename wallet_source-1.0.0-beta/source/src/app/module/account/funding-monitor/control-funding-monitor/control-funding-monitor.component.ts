@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CurrenciesService} from '../../../currencies/currencies.service';
-import {AssetsService} from '../../../assets/assets.service';
-import {OptionService} from '../../../../services/option.service';
-import {AccountService} from '../../account.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CurrenciesService } from '../../../currencies/currencies.service';
+import { AssetsService } from '../../../assets/assets.service';
+import { OptionService } from '../../../../services/option.service';
+import { AccountService } from '../../account.service';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
-import {AmountToQuantPipe} from '../../../../pipes/amount-to-quant.pipe';
-import {ShareToQuantityPipe} from '../../../../pipes/share-to-quantity.pipe';
+import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
+import { ShareToQuantityPipe } from '../../../../pipes/share-to-quantity.pipe';
 
 @Component({
-  selector: 'app-control-funding-monitor',
-  templateUrl: './control-funding-monitor.component.html',
-  styleUrls: ['./control-funding-monitor.component.scss']
+    selector: 'app-control-funding-monitor',
+    templateUrl: './control-funding-monitor.component.html',
+    styleUrls: ['./control-funding-monitor.component.scss']
 })
 export class ControlFundingMonitorComponent implements OnInit {
 
@@ -21,11 +21,11 @@ export class ControlFundingMonitorComponent implements OnInit {
     connectionMode: string;
 
     constructor(private route: ActivatedRoute,
-                private router: Router,
-                private accountService: AccountService,
-                private optionService: OptionService,
-                private assetsService: AssetsService,
-                private currenciesService: CurrenciesService) {
+        private router: Router,
+        private accountService: AccountService,
+        private optionService: OptionService,
+        private assetsService: AssetsService,
+        private currenciesService: CurrenciesService) {
         this.holdingOptions = [
             { label: 'XIN', value: '0' },
             { label: 'Asset', value: '1' },
@@ -117,10 +117,6 @@ export class ControlFundingMonitorComponent implements OnInit {
                     'Unable start the monitor for account property : ' + property + '. Reason: ' + success.errorDescription,
                     'OK', 'error');
             }
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                'Unable start the monitor for account property : ' + property + '. Reason: ' + error,
-                'OK', 'error');
         })
     }
 

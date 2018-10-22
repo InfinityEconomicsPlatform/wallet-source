@@ -108,14 +108,6 @@ export class BuyAliasComponent implements OnInit {
                             this.router.navigate(['/aliases/buy-offers']);
                         });
                 }
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     };
 
