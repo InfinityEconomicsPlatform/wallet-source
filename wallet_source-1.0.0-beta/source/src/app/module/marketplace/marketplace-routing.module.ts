@@ -7,6 +7,7 @@ import { ListingComponent } from './listing/listing.component';
 import { PurchasedComponent } from './purchased/purchased.component';
 import { ListAProductComponent } from './list-a-product/list-a-product.component';
 import { SearchComponent } from './search/search.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 const routes: Routes = [
     {
@@ -45,6 +46,10 @@ const routes: Routes = [
     {
         path: 'purchased',
         component: PurchasedComponent
+    },
+    {
+        path: 'product-details',
+        component: ProductDetailsComponent
     }
 ];
 

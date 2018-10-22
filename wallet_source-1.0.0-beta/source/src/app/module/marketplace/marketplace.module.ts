@@ -21,6 +21,7 @@ import { CurrenciesComponent } from './list-a-product/currencies/currencies.comp
 import { TransactionHashComponent } from './list-a-product/transaction-hash/transaction-hash.component';
 import { SecretHashComponent } from './list-a-product/secret-hash/secret-hash.component';
 import { SearchComponent } from './search/search.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import { SearchComponent } from './search/search.component';
         CurrenciesComponent,
         TransactionHashComponent,
         SecretHashComponent,
-        SearchComponent
+        SearchComponent,
+        ProductDetailsComponent
     ],
     providers: [
         MarketplaceService
