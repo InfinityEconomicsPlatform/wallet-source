@@ -50,8 +50,6 @@ export class DividentHistoryComponent implements OnInit {
                     this.page.totalElements = this.page.pageNumber * 10 + this.dividends.length;
                     this.page.totalPages = this.page.pageNumber;
                 }
-            }, (error) => {
-                console.log(error);
             });
     }
     goToTransactionDetails(id) {

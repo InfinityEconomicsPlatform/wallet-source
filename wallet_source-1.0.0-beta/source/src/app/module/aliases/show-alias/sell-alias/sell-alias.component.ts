@@ -83,8 +83,6 @@ export class SellAliasComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     }
 

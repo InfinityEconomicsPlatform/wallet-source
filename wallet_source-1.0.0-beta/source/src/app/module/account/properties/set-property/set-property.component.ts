@@ -64,8 +64,6 @@ export class SetPropertyComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.properties.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         } else if (this.propertyType === 'MY') {
             this.accountService.getAccountProperties(this.accountId, '', '', startIndex, endIndex)
@@ -78,8 +76,6 @@ export class SetPropertyComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.properties.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         }
 
@@ -109,8 +105,6 @@ export class SetPropertyComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     };
     setAccount() {

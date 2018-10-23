@@ -112,8 +112,6 @@ export class SendDeferredComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     };
 

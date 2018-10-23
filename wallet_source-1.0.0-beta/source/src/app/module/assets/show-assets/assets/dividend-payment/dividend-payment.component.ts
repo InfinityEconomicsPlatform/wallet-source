@@ -56,13 +56,11 @@ export class DividendPaymentComponent implements OnInit {
                     this.dividendPaymentForm.assetId = success.asset;
                     this.dividendPaymentForm.decimals = success.decimals;
                     this.dividendPaymentForm.name = success.name;
-                }, (error) => {
                 });
 
                 this.currenciesService.getBlockChainStatus().subscribe((success: any) => {
                     this.dividendPaymentForm.height = success.numberOfBlocks;
                     this.dividendPaymentForm.height = this.dividendPaymentForm.height - 1;
-                }, (error) => {
                 });
             }
         })

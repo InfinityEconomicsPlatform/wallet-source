@@ -47,8 +47,6 @@ export class MyTradesComponent implements OnInit {
                     this.page.totalElements = this.page.pageNumber * 10 + this.myTrades.length;
                     this.page.totalPages = this.page.pageNumber;
                 }
-            }, (error) => {
-                console.log(error);
             });
     }
     reload() {

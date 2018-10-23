@@ -93,8 +93,6 @@ export class TransferCurrencyComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     }
 

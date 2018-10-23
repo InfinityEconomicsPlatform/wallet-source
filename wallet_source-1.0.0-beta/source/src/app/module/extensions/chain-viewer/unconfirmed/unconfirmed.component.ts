@@ -26,8 +26,6 @@ export class UnconfirmedComponent implements OnInit {
     setPage(pageInfo) {
         this.extensionsService.getUnconfirmedTransactions().subscribe((success: any) => {
             this.rows = success.unconfirmedTransactions;
-        }, (error) => {
-            console.log(error);
         });
     }
 

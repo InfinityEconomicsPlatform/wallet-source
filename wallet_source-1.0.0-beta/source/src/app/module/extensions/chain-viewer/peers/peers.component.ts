@@ -58,8 +58,6 @@ export class PeersComponent implements OnInit {
         this.extensionsService.getPeers(this.page.pageNumber + 1, this.page.size).subscribe((success: any) => {
             this.rows = success;
             this.getCPULoadHistory();
-        }, (error) => {
-            console.log(error)
         });
     }
 

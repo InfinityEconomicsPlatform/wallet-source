@@ -37,8 +37,6 @@ export class SearchCurrenciesComponent {
                     }
                     this.rows = result1.currencies;
 
-                }, (error) => {
-                    console.log(error);
                 });
         }
     }

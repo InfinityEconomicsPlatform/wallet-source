@@ -93,11 +93,7 @@ export class TradeDeskComponent implements OnInit {
                 this.accountDetails = success;
                 this.quantityQNT = success.quantityQNT;
                 this.unconfirmedQuantityQNT = success.unconfirmedQuantityQNT;
-            }, (error) => {
-                console.log(error);
             });
-        }, (error) => {
-            console.log(error);
         });
     }
     buyFormOnChange() {
@@ -181,8 +177,6 @@ export class TradeDeskComponent implements OnInit {
                     this.sellOrdersPage.totalPages = this.sellOrdersPage.pageNumber;
                 }
 
-            }, (error) => {
-                console.log(error);
             });
     }
     getBuyOrders(pageInfo?){
@@ -217,8 +211,6 @@ export class TradeDeskComponent implements OnInit {
                     this.buyOrdersPage.totalPages = this.buyOrdersPage.pageNumber;
                 }
 
-            }, (error) => {
-                console.log(error);
             });
     }
     getAssetLastTrades(pageInfo?){

@@ -30,7 +30,6 @@ export class ShufflingDetailsComponent implements OnInit {
   getShuffleDetails() {
     this.shufflingService.getShuffling(this.shufflingId).subscribe((success) => {
         this.shuffle = success;
-    }, (error) => {
     });
   }
 

@@ -54,7 +54,6 @@ export class TransferAssetComponent implements OnInit {
                     this.transferAssetForm.assetId = success.asset;
                     this.transferAssetForm.decimals = success.decimals;
                     this.transferAssetForm.name = success.name;
-                }, (error) => {
                 });
             }
         })
@@ -86,8 +85,6 @@ export class TransferAssetComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     }
 

@@ -51,7 +51,6 @@ export class DeleteSharesComponent implements OnInit {
                     this.deleteAssetForm.assetId = success.asset;
                     this.deleteAssetForm.decimals = success.decimals;
                     this.deleteAssetForm.name = success.name;
-                }, (error) => {
                 });
             }
         })

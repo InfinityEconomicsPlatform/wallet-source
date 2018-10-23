@@ -175,11 +175,7 @@ export class DetailsComponent {
 
                 }
                 this.accountAssetXmcValue = sum;
-            }, (error) => {
-
             });
-        }, (error) => {
-
         });
     };
 
@@ -208,11 +204,7 @@ export class DetailsComponent {
                     sum = sum + (units * price);
                 }
                 this.accountCurrencyXmcValue = sum;
-            }, (error) => {
-
             });
-        }, (error) => {
-
         });
     };
 

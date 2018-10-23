@@ -42,8 +42,6 @@ export class CompilerComponent implements OnInit {
 
                         });
                 }
-            }, (error) => {
-                console.log(error);
             });
     }
 

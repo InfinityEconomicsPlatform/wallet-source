@@ -204,8 +204,6 @@ export class TradeDeskComponent implements OnInit {
                 }
                 this.buyOffersRows = offersResponse.offers;
 
-            }, (error) => {
-                console.log(error);
             });
     }
 
@@ -236,8 +234,6 @@ export class TradeDeskComponent implements OnInit {
                 }
                 this.sellOffersRows = offersResponse.offers;
 
-            }, (error) => {
-                console.log(error);
             });
     }
 

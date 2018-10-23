@@ -23,8 +23,6 @@ export class SearchAccountComponent implements OnInit {
             this.accountService.searchAccounts(query)
                 .subscribe((success: any) => {
                     this.accounts = success.accounts;
-                }, (error) => {
-                    console.log(error);
                 });
         } else {
         }

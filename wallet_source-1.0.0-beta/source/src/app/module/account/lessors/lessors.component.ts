@@ -29,8 +29,6 @@ export class LessorsComponent implements OnInit {
                 // }
                 this.currentHeight = success.height;
                 this.accountLeases = this.commonService.sanitizeJson(success.accountLeases);
-            }, (error) => {
-                console.log(error);
             });
     }
     goToAccountDetails(accountID) {

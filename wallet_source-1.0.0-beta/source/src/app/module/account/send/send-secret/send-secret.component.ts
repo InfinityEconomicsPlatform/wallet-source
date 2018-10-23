@@ -113,8 +113,6 @@ export class SendSecretComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     };
 

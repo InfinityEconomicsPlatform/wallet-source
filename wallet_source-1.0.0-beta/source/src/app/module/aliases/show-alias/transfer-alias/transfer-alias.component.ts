@@ -79,8 +79,6 @@ export class TransferAliasComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     }
 

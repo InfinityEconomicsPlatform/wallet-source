@@ -41,8 +41,6 @@ export class BtcDetailComponent implements OnInit {
         this.txApperances = success.txApperances;
         this.balance = success.balance;
 
-    }, (error) => {
-
     });
 };
 

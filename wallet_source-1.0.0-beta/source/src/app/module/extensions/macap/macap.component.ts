@@ -26,8 +26,6 @@ export class MacapComponent implements OnInit {
             this.page.size
         ).subscribe((success: any) => {
             this.rows = success;
-        }, (error) => {
-            console.log(error);
         });
     }
 

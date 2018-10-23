@@ -69,8 +69,6 @@ export class CreateSubscriptionComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     }
 

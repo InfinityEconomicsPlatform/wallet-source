@@ -106,8 +106,6 @@ export class PollsComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.polls.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         } else {
             this.votingService.getAccountPolls(this.accountId, startIndex, endIndex, this.includeFinished)
@@ -119,8 +117,6 @@ export class PollsComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.polls.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         }
 
@@ -169,11 +165,7 @@ export class PollsComponent implements OnInit {
                                 this.page.totalElements = this.polls.length;
                             }
 
-                        }, (error) => {
-                            console.log(error);
                         });
-                }, (error) => {
-                    console.log(error);
                 });
         } else {
             this.reload();

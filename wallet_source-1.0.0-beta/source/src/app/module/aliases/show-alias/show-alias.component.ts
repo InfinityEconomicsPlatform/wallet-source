@@ -59,8 +59,6 @@ export class ShowAliasComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.rows.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         } else {
             this.reload();

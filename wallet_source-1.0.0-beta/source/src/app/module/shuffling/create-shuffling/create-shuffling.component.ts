@@ -105,8 +105,6 @@ export class CreateShufflingComponent implements OnInit {
             } else {
                 this.assetError = success.errorDescription.replace('&#34;', '"').replace('&#34;', '"');
             }
-        }, (error) => {
-            console.log(error);
         });
     }
 
@@ -121,7 +119,6 @@ export class CreateShufflingComponent implements OnInit {
             } else {
                 this.currencyError = success.errorDescription.replace('&#34;', '"').replace('&#34;', '"');
             }
-        }, (error) => {
         });
     };
 
