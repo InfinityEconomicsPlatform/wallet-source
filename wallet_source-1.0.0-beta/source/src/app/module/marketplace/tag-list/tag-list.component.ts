@@ -13,7 +13,7 @@ import { DataStoreService } from 'app/services/data-store.service';
 export class TagListComponent implements OnInit {
     tagListings: any[] = [];
     page = new Page();
-    tag: any = {};
+    tag: string = "";
 
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
@@ -24,7 +24,7 @@ export class TagListComponent implements OnInit {
     ngOnInit() {
         this.tag = DataStoreService.get('marketplace_tag');
         if (typeof (this.tag) !== 'undefined') {
-            this.marketplaceService.searchDGSGoods(this.tag.tag).subscribe((success: any) => {
+            this.marketplaceService.searchDGSGoods(this.tag).subscribe((success: any) => {
                 this.tagListings = success.goods;
             }, (error) => {
                 console.log(error);
@@ -36,7 +36,16 @@ export class TagListComponent implements OnInit {
 
     searchByTerm(searchType, searchTerm) {
         DataStoreService.set('marketplace_search_details', { 'searchType': searchType, 'searchTerm': searchTerm });
-        this.router.navigateByUrl('/marketplace/seller');
+        if (searchType == 'account_id') {
+            this.router.navigateByUrl('/marketplace/seller');
+        } else {
+            this.router.navigateByUrl('/marketplace/search');
+        }
+    }
+
+    openTag(tag) {
+        DataStoreService.set('marketplace_tag', tag);
+        this.router.navigateByUrl('/marketplace/tag');
     }
 
 }

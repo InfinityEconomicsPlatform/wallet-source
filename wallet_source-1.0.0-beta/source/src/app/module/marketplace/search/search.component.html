@@ -37,7 +37,9 @@
                                             <li>
                                                 <i class="icon-tags"></i>
                                                 <strong>{{ 'marketplace.tag.tags' | translate }}: </strong>
-                                                <a>{{ good.tags }}</a>
+                                                <a *ngFor="let tag of good.parsedTags" (click)="openTag(tag)">
+                                                    {{ tag }}
+                                                </a>
                                             </li>
                                             <li>
                                                 <i class="icon-Account"></i>

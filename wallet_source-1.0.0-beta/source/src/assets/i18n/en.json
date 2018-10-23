@@ -2023,7 +2023,8 @@
         "list-a-product": "List A Product",
         "product-listed": "Products Listed",
         "search": "Search",
-        "seller": "Seller"
+        "seller": "Seller",
+        "product-details": "Product Information"
     },
     "marketplace": {
         "store": {
@@ -2139,7 +2140,17 @@
             "hash_algorithm": "Hash Algorithm"
         },
         "purchased": {
-            "title": "Purchased Products "
+            "title": "Purchased Products"
+        },
+        "product-details": {
+            "title": "Product Information",
+            "product": "Product",
+            "seller": "Seller",
+            "date": "Date",
+            "price": "Price",
+            "quantity": "Quantity",
+            "purchase": "Purchase",
+            "view-store": "View Store"
         }
     }
 }

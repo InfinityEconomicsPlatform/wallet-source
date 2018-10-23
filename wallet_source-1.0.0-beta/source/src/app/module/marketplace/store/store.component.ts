@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Page } from '../../../config/page';
 import { MarketplaceService } from '../marketplace.service';
 import { SessionStorageService } from '../../../services/session-storage.service';
-import { AppConstants } from '../../../config/constants';
 import { CryptoService } from '../../../services/crypto.service';
 import { AccountService } from '../../account/account.service';
 import { DataStoreService } from 'app/services/data-store.service';
@@ -83,6 +82,11 @@ export class StoreComponent implements OnInit {
     openTag(tag) {
         DataStoreService.set('marketplace_tag', tag);
         this.router.navigateByUrl('/marketplace/tag');
+    }
+
+    productDetails(product) {
+        DataStoreService.set('marketplace_product', product);
+        this.router.navigateByUrl('/marketplace/product-details');
     }
 
     getRecentListings() {

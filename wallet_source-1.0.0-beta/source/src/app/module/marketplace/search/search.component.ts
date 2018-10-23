@@ -63,4 +63,18 @@ export class SearchComponent implements OnInit {
             this.location.back();
         }
     }
+
+    searchByTerm(searchType, searchTerm) {
+        DataStoreService.set('marketplace_search_details', { 'searchType': searchType, 'searchTerm': searchTerm });
+        if (searchType == 'account_id') {
+            this.router.navigateByUrl('/marketplace/seller');
+        } else {
+            this.router.navigateByUrl('/marketplace/search');
+        }
+    }
+
+    openTag(tag) {
+        DataStoreService.set('marketplace_tag', tag);
+        this.router.navigateByUrl('/marketplace/tag');
+    }
 }
