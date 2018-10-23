@@ -14,6 +14,16 @@ export class ProductDetailsComponent implements OnInit {
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
         public location: Location) {
+        this.product = {
+            name: "",
+            parsedTags: [],
+            quantity: 0,
+            priceTQT: 0,
+            sellerRS: '',
+            description: '',
+            tags: '',
+            timestamp: 0
+        }
     }
 
     ngOnInit() {
