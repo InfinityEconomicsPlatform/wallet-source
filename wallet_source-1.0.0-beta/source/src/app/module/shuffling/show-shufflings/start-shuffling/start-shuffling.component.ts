@@ -9,85 +9,78 @@ import { CryptoService } from '../../../../services/crypto.service';
 import * as alertFunctions from "../../../../shared/data/sweet-alerts";
 
 @Component({
-  selector: 'app-start-shuffling',
-  templateUrl: './start-shuffling.component.html',
-  styleUrls: ['./start-shuffling.component.scss']
+    selector: 'app-start-shuffling',
+    templateUrl: './start-shuffling.component.html',
+    styleUrls: ['./start-shuffling.component.scss']
 })
 export class StartShufflingComponent implements OnInit {
 
-  startShuffleForm: any = {};
-  showStart = true;
-  publicKey: any;
+    startShuffleForm: any = {};
+    showStart = true;
+    publicKey: any;
 
-  constructor(public activatedRoute: ActivatedRoute,
-    private _location: Location,
-    private shufflingService: ShufflingService,
-    private accountService: AccountService,
-    private sessionStorageService: SessionStorageService,
-    private cryptoService: CryptoService,
-    private router: Router) { }
+    constructor(public activatedRoute: ActivatedRoute,
+        private _location: Location,
+        private shufflingService: ShufflingService,
+        private accountService: AccountService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        private router: Router) { }
 
-  ngOnInit() {
-    this.activatedRoute.queryParams.subscribe((params: any) => {
-      if (!params.id) {
-        this._location.back();
-      }
-      this.startShuffleForm.shufflingFullHash = params.id;
-    });
-  }
-
-  startShuffle() {
-    var fee = 1;
-
-    this.showStart = false;
-
-    var shufflingFullHash = this.startShuffleForm.shufflingFullHash;
-    var publicKey = this.accountService.getAccountDetailsFromSession('publicKey');
-    var recipientPublickey = this.startShuffleForm.recipientPublickey;
-
-    var secret = this.startShuffleForm.secretPhrase;
-    var secretPhraseHex;
-    if (secret) {
-      secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
-    } else {
-      secretPhraseHex =
-        this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
+    ngOnInit() {
+        this.activatedRoute.queryParams.subscribe((params: any) => {
+            if (!params.id) {
+                this._location.back();
+            }
+            this.startShuffleForm.shufflingFullHash = params.id;
+        });
     }
 
-    this.shufflingService.startShuffler(this.cryptoService.secretPhraseFromPrivateKey(secretPhraseHex),
-      shufflingFullHash, undefined, recipientPublickey, fee)
-      .subscribe((success_) => {
+    startShuffle() {
+        var fee = 1;
 
-        success_.subscribe((success) => {
-          if (!success.errorCode) {
+        this.showStart = false;
 
-            alertFunctions.InfoAlertBox('Success',
-              'Shuffling ' + success.shuffling + ' successfull started. Recipient: ' + success.recipientRS + ' ',
-              'OK',
-              'success').then((isConfirm: any) => {
-                this.router.navigate(['/shuffling/show-shufflings/my']);
-              });
+        var shufflingFullHash = this.startShuffleForm.shufflingFullHash;
+        var publicKey = this.accountService.getAccountDetailsFromSession('publicKey');
+        var recipientPublickey = this.startShuffleForm.recipientPublickey;
 
-          } else {
-            alertFunctions.InfoAlertBox('Error',
-              'Sorry, an error occured! Reason: ' + success.errorDescription,
-              'OK',
-              'error').then((isConfirm: any) => {
-                this.router.navigate(['/shuffling/show-shufflings/my']);
-              });
-          }
-        }, (error) => {
-          alertFunctions.InfoAlertBox('Error',
-            AppConstants.getNoConnectionMessage,
-            'OK',
-            'error').then((isConfirm: any) => {
-              this.router.navigate(['/shuffling/show-shufflings/my']);
-            });
-        });
-      })
-  }
+        var secret = this.startShuffleForm.secretPhrase;
+        var secretPhraseHex;
+        if (secret) {
+            secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
+        } else {
+            secretPhraseHex =
+                this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
+        }
 
-  goBack() {
-    this._location.back();
-  }
+        this.shufflingService.startShuffler(this.cryptoService.secretPhraseFromPrivateKey(secretPhraseHex),
+            shufflingFullHash, undefined, recipientPublickey, fee)
+            .subscribe((success_) => {
+
+                success_.subscribe((success) => {
+                    if (!success.errorCode) {
+
+                        alertFunctions.InfoAlertBox('Success',
+                            'Shuffling ' + success.shuffling + ' successfull started. Recipient: ' + success.recipientRS + ' ',
+                            'OK',
+                            'success').then((isConfirm: any) => {
+                                this.router.navigate(['/shuffling/show-shufflings/my']);
+                            });
+
+                    } else {
+                        alertFunctions.InfoAlertBox('Error',
+                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                            'OK',
+                            'error').then((isConfirm: any) => {
+                                this.router.navigate(['/shuffling/show-shufflings/my']);
+                            });
+                    }
+                });
+            })
+    }
+
+    goBack() {
+        this._location.back();
+    }
 }

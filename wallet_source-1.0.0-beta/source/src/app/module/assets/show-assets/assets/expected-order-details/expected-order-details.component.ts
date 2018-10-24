@@ -47,8 +47,6 @@ export class ExpectedOrderDetailsComponent implements OnInit {
                     this.asset = success.asset;
                     this.getAskOrders();
                     this.getBidOrders();
-                }, (error) => {
-                    console.log(error);
                 });
         } else {
         }
@@ -86,8 +84,6 @@ export class ExpectedOrderDetailsComponent implements OnInit {
                     this.askOrdersPage.totalElements = this.askOrdersPage.pageNumber * 10 + this.askOrdersRows.length;
                     this.askOrdersPage.totalPages = this.askOrdersPage.pageNumber;
                 }
-            }, (error) => {
-                console.log(error);
             });
     }
     getBidOrders(pageInfo?){
@@ -122,8 +118,6 @@ export class ExpectedOrderDetailsComponent implements OnInit {
                     this.bidOrdersPage.totalElements = this.bidOrdersPage.pageNumber * 10 + this.bidOrdersRows.length;
                     this.bidOrdersPage.totalPages = this.bidOrdersPage.pageNumber;
                 }
-            }, (error) => {
-                console.log(error);
             });
     }
 

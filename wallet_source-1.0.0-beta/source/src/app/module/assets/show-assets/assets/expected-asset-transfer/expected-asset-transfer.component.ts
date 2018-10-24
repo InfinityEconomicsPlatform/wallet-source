@@ -27,8 +27,6 @@ export class ExpectedAssetTransferComponent implements OnInit {
         this.assetsService.getExpectedAssetTransfers('', this.accountRs)
             .subscribe((success: any) => {
                 this.transfers = success.transfers;
-            }, (error) => {
-                console.log(error);
             });
     }
     goToAccountDetails(id) {

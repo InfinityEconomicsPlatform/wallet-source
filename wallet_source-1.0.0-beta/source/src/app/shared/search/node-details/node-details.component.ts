@@ -82,8 +82,6 @@ export class NodeDetailsComponent implements OnInit {
             this.freeMemory = this.buildChartDataArray(this.node.history_freeMemory);
             this.requestProcessingTime = this.buildChartDataArray(this.node.history_requestProcessingTime);
             this.numberOfActivePeers = this.buildChartDataArray(this.node.history_numberOfActivePeers);
-        }, (error) => {
-            console.log(error);
         })
     }
 

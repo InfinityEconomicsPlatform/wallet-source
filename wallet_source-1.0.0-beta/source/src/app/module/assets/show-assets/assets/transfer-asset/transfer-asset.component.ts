@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {CryptoService} from '../../../../../services/crypto.service';
-import {AppConstants} from '../../../../../config/constants';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Location} from '@angular/common';
+import { CryptoService } from '../../../../../services/crypto.service';
+import { AppConstants } from '../../../../../config/constants';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import * as alertFunctions from '../../../../../shared/data/sweet-alerts';
-import {SessionStorageService} from '../../../../../services/session-storage.service';
-import {CommonService} from '../../../../../services/common.service';
-import {AssetsService} from '../../../assets.service';
-import {ShareToQuantityPipe} from '../../../../../pipes/share-to-quantity.pipe';
-import {AliasesService} from '../../../../aliases/aliases.service';
+import { SessionStorageService } from '../../../../../services/session-storage.service';
+import { CommonService } from '../../../../../services/common.service';
+import { AssetsService } from '../../../assets.service';
+import { ShareToQuantityPipe } from '../../../../../pipes/share-to-quantity.pipe';
+import { AliasesService } from '../../../../aliases/aliases.service';
 
 @Component({
-  selector: 'app-transfer-asset',
-  templateUrl: './transfer-asset.component.html',
-  styleUrls: ['./transfer-asset.component.scss']
+    selector: 'app-transfer-asset',
+    templateUrl: './transfer-asset.component.html',
+    styleUrls: ['./transfer-asset.component.scss']
 })
 export class TransferAssetComponent implements OnInit {
 
@@ -34,14 +34,14 @@ export class TransferAssetComponent implements OnInit {
     }
 
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private assetsService: AssetsService,
-                private aliasesService: AliasesService,
-                private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                public shareToQuantityPipe: ShareToQuantityPipe,
-                private _location: Location) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private assetsService: AssetsService,
+        private aliasesService: AliasesService,
+        private sessionStorageService: SessionStorageService,
+        private cryptoService: CryptoService,
+        public shareToQuantityPipe: ShareToQuantityPipe,
+        private _location: Location) {
     }
 
     ngOnInit() {
@@ -54,7 +54,6 @@ export class TransferAssetComponent implements OnInit {
                     this.transferAssetForm.assetId = success.asset;
                     this.transferAssetForm.decimals = success.decimals;
                     this.transferAssetForm.name = success.name;
-                }, (error) => {
                 });
             }
         })
@@ -68,12 +67,12 @@ export class TransferAssetComponent implements OnInit {
         this.openBookMarks = true;
     }
 
-    hideBookmark(){
+    hideBookmark() {
         this.openBookMarks = false;
     }
     searchAliases() {
         this.aliasesService.searchAlias(this.transferAssetForm.recipientRS).subscribe((success) => {
-            var aliases = success.aliases ||[];
+            var aliases = success.aliases || [];
             for (var i = 0; i < aliases.length; i++) {
                 var alias = aliases[i];
                 if (alias.aliasName.toUpperCase() === this.transferAssetForm.recipientRS.toUpperCase()) {
@@ -86,8 +85,6 @@ export class TransferAssetComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     }
 
@@ -116,14 +113,14 @@ export class TransferAssetComponent implements OnInit {
                             AppConstants.getNoConnectionMessage,
                             'OK',
                             'error').then((isConfirm: any) => {
-                        });
+                            });
                     }
                 }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
             })
     }
@@ -136,24 +133,16 @@ export class TransferAssetComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/assets/show-assets']);
-                    });
+                            this.router.navigate(['/assets/show-assets']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                        this.router.navigate(['/assets/show-assets']);
-                    });
+                            this.router.navigate(['/assets/show-assets']);
+                        });
                 }
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                });
             });
     };
 

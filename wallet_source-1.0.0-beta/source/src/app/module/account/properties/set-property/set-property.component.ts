@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {SessionStorageService} from '../../../../services/session-storage.service';
-import {AliasesService} from '../../../aliases/aliases.service';
-import {AccountService} from '../../account.service';
-import {CryptoService} from '../../../../services/crypto.service';
-import {AppConstants} from '../../../../config/constants';
+import { SessionStorageService } from '../../../../services/session-storage.service';
+import { AliasesService } from '../../../aliases/aliases.service';
+import { AccountService } from '../../account.service';
+import { CryptoService } from '../../../../services/crypto.service';
+import { AppConstants } from '../../../../config/constants';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Page} from '../../../../config/page';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Page } from '../../../../config/page';
 
 @Component({
-  selector: 'app-set-property',
-  templateUrl: './set-property.component.html',
-  styleUrls: ['./set-property.component.scss']
+    selector: 'app-set-property',
+    templateUrl: './set-property.component.html',
+    styleUrls: ['./set-property.component.scss']
 })
 export class SetPropertyComponent implements OnInit {
     openBookMarks: boolean = false;
@@ -29,11 +29,11 @@ export class SetPropertyComponent implements OnInit {
     tx_amount: any;
     tx_total: any;
     constructor(private aliasesService: AliasesService,
-                private accountService: AccountService,
-                private cryptoService: CryptoService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private sessionStorageService: SessionStorageService) {
+        private accountService: AccountService,
+        private cryptoService: CryptoService,
+        private route: ActivatedRoute,
+        private router: Router,
+        private sessionStorageService: SessionStorageService) {
     }
 
     ngOnInit() {
@@ -43,7 +43,7 @@ export class SetPropertyComponent implements OnInit {
             this.accountId = this.accountService.getAccountDetailsFromSession('accountId');
             this.accountRs = this.accountService.getAccountDetailsFromSession('accountRs');
 
-            this.setPage({offset: 0});
+            this.setPage({ offset: 0 });
         });
     }
     setPage(pageInfo) {
@@ -54,7 +54,7 @@ export class SetPropertyComponent implements OnInit {
         let endIndex = ((this.page.pageNumber + 1) * 10) - 1;
 
         if (this.propertyType === 'ALL') {
-            this.accountService.getAccountProperties('', this.accountId,'' ,startIndex, endIndex)
+            this.accountService.getAccountProperties('', this.accountId, '', startIndex, endIndex)
                 .subscribe((success: any) => {
                     this.properties = success.properties;
                     this.mode = 2;
@@ -64,11 +64,9 @@ export class SetPropertyComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.properties.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
-        } else if(this.propertyType === 'MY') {
-            this.accountService.getAccountProperties(this.accountId,'' ,'' ,startIndex, endIndex)
+        } else if (this.propertyType === 'MY') {
+            this.accountService.getAccountProperties(this.accountId, '', '', startIndex, endIndex)
                 .subscribe((success: any) => {
                     this.properties = success.properties;
                     this.mode = 1;
@@ -78,14 +76,12 @@ export class SetPropertyComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.properties.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         }
 
     }
     reload() {
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
     loadBookmarkView() {
         this.openBookMarks = true;
@@ -109,14 +105,12 @@ export class SetPropertyComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     };
-    setAccount(){
+    setAccount() {
         this.setAccountPropertyForm.recipientRS = this.accountService.getAccountDetailsFromSession('accountRs');
     }
-    setAccountProperty(){
+    setAccountProperty() {
         let form = this.setAccountPropertyForm;
         let account = form.recipientRS;
         let key = form.key;
@@ -154,15 +148,8 @@ export class SetPropertyComponent implements OnInit {
                         'OK',
                         'error').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
-            }, (error) => {
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                });
             });
     }
     broadcastTransaction = function (transactionBytes) {
@@ -173,7 +160,7 @@ export class SetPropertyComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                });
+                    });
 
             } else {
                 alertFunctions.InfoAlertBox('Error',
@@ -181,7 +168,7 @@ export class SetPropertyComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
         }, function (error) {
@@ -190,14 +177,14 @@ export class SetPropertyComponent implements OnInit {
                 'OK',
                 'error').then((isConfirm: any) => {
 
-            });
+                });
         });
     };
-    goToDeleteProperty(id, property, mode){
-        this.router.navigate(['/account/properties/delete-property'], {queryParams: {id: id, property: property, mode: mode}})
+    goToDeleteProperty(id, property, mode) {
+        this.router.navigate(['/account/properties/delete-property'], { queryParams: { id: id, property: property, mode: mode } })
     }
     goToAccountDetails(id) {
-        this.router.navigate(['/account/properties/account-details'], { queryParams: { id: id }});
+        this.router.navigate(['/account/properties/account-details'], { queryParams: { id: id } });
     }
 
     goBack() {

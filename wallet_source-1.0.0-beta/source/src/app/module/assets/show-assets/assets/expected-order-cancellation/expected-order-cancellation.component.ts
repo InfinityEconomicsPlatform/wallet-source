@@ -25,8 +25,6 @@ export class ExpectedOrderCancellationComponent implements OnInit {
         this.assetsService.getExpectedOrderCancellations()
             .subscribe((success: any) => {
                 this.orderCancellations = success.orderCancellations;
-            }, (error) => {
-                console.log(error);
             });
     }
     goToAccountDetails(id) {

@@ -30,7 +30,6 @@ export class AtDetailsComponent implements OnInit {
     getAtDetails() {
       this.atService.getAT(this.atId).subscribe((success) => {
           this.atDetails = success;
-      }, (error) => {
       });
     }
     goToAccountDetails(accountID) {

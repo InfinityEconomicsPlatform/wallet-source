@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import {CommonService} from '../../../services/common.service';
-import {AccountService} from '../account.service';
-import {SessionStorageService} from '../../../services/session-storage.service';
-import {AppConstants} from '../../../config/constants';
-import {AssetsService} from '../../assets/assets.service';
-import {QuantToAmountPipe} from '../../../pipes/quant-to-amount.pipe';
-import {CurrenciesService} from '../../currencies/currencies.service';
-import {CryptoService} from "../../../services/crypto.service";
+import { CommonService } from '../../../services/common.service';
+import { AccountService } from '../account.service';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { AppConstants } from '../../../config/constants';
+import { AssetsService } from '../../assets/assets.service';
+import { QuantToAmountPipe } from '../../../pipes/quant-to-amount.pipe';
+import { CurrenciesService } from '../../currencies/currencies.service';
+import { CryptoService } from "../../../services/crypto.service";
 import * as alertFunctions from "../../../shared/data/sweet-alerts";
-import {FeeService} from "../../../services/fee.service";
-import {TranslateService} from '@ngx-translate/core';
+import { FeeService } from "../../../services/fee.service";
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -39,7 +39,7 @@ export class DetailsComponent {
         name: '',
         description: '',
         secret: '',
-        accountPublicKey:'',
+        accountPublicKey: '',
         secretPhraseHex: '',
         fee: 1
     };
@@ -55,14 +55,14 @@ export class DetailsComponent {
     selectedLanguage: string;
 
     constructor(public commonsService: CommonService,
-                public accountService: AccountService,
-                public assetsService: AssetsService,
-                public sessionStorageService: SessionStorageService,
-                public quantToAmountPipe: QuantToAmountPipe,
-                public currenciesService: CurrenciesService,
-                public cryptoService: CryptoService,
-                public translate: TranslateService,
-                public feeService: FeeService) {
+        public accountService: AccountService,
+        public assetsService: AssetsService,
+        public sessionStorageService: SessionStorageService,
+        public quantToAmountPipe: QuantToAmountPipe,
+        public currenciesService: CurrenciesService,
+        public cryptoService: CryptoService,
+        public translate: TranslateService,
+        public feeService: FeeService) {
         this.getAccountDetails();
     }
 
@@ -73,7 +73,7 @@ export class DetailsComponent {
         this.getCurrenciesXmcValue();
 
         let accountRS = this.accountService.getAccountDetailsFromSession('accountRs');
-        this.accountService.getAccountDetails(accountRS).subscribe( (success) => {
+        this.accountService.getAccountDetails(accountRS).subscribe((success) => {
 
             // Account is unknown
             if (success.errorCode === 5) {
@@ -103,7 +103,7 @@ export class DetailsComponent {
 
             }
 
-            this.accountService.getPhasingOnlyControl(accountRS).subscribe( (success) => {
+            this.accountService.getPhasingOnlyControl(accountRS).subscribe((success) => {
                 if (success.account) {
 
                     this.multisig = 'controlled';
@@ -119,7 +119,7 @@ export class DetailsComponent {
                     this.whitelistedRS = '';
                     for (let i = 0; i < this.WhitelistAccountRS; i++) {
 
-                        this.whitelistedRS =  this.whitelistedRS + '<br/>' + success.whitelist[i].whitelistedRS;
+                        this.whitelistedRS = this.whitelistedRS + '<br/>' + success.whitelist[i].whitelistedRS;
                     }
 
                     this.sessionStorageService.saveToSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY,
@@ -135,9 +135,6 @@ export class DetailsComponent {
                         '');
 
                 }
-            }, (error) => {
-
-
             });
 
             this.leasesDetected = false;
@@ -147,8 +144,6 @@ export class DetailsComponent {
             }
 
             this.account = success;
-
-        }, (error) => {
 
         });
     };
@@ -174,17 +169,13 @@ export class DetailsComponent {
                     let price = trade.priceTQT;
                     let units = currentAsset.quantityQNT;
 
-                    let amount = ( price * units ) / 100000000;
+                    let amount = (price * units) / 100000000;
 
                     sum = sum + amount;
 
                 }
                 this.accountAssetXmcValue = sum;
-            }, (error) => {
-
             });
-        }, (error) => {
-
         });
     };
 
@@ -201,7 +192,7 @@ export class DetailsComponent {
                 currencyIds.push(currencyId);
             }
 
-            this.currenciesService.getMultipleCurrenctLastExchanges(currencyIds).subscribe( (success_) => {
+            this.currenciesService.getMultipleCurrenctLastExchanges(currencyIds).subscribe((success_) => {
 
                 let sum = 0;
                 let currencies = success_.exchanges || [];
@@ -210,14 +201,10 @@ export class DetailsComponent {
                     let currentCurrency = currenciesInfos[exchange.currency];
                     let price = this.quantToAmountPipe.transform(exchange.rateTQT);
                     let units = currentCurrency.units;
-                    sum = sum + (units * price );
+                    sum = sum + (units * price);
                 }
                 this.accountCurrencyXmcValue = sum;
-            }, (error) => {
-
             });
-        }, (error) => {
-
         });
     };
 
@@ -229,7 +216,7 @@ export class DetailsComponent {
         return false;
     };
 
-    onChangeAccountInfo (e) {
+    onChangeAccountInfo(e) {
         let totalFee = this.feeService.getSetAccountFee(this.setAccountParams.name,
             this.setAccountParams.description);
 
@@ -251,64 +238,50 @@ export class DetailsComponent {
 
         this.accountService.setAccountInfo(this.setAccountParams.accountPublicKey, this.setAccountParams.name, this.setAccountParams.description, this.setAccountParams.fee)
             .subscribe((success_) => {
-               success_.subscribe((success) => {
-                   if (!success.errorCode) {
-                       let unsignedBytes = success.unsignedTransactionBytes;
-                       let signatureHex = this.cryptoService.signatureHex(unsignedBytes, secretPhraseHex);
-                       this.transactionBytes = this.cryptoService.signTransactionHex(unsignedBytes, signatureHex);
-                       //$scope.transactionJSON = success.transactionJSON;
-                       this.validBytes = true;
+                success_.subscribe((success) => {
+                    if (!success.errorCode) {
+                        let unsignedBytes = success.unsignedTransactionBytes;
+                        let signatureHex = this.cryptoService.signatureHex(unsignedBytes, secretPhraseHex);
+                        this.transactionBytes = this.cryptoService.signTransactionHex(unsignedBytes, signatureHex);
+                        //$scope.transactionJSON = success.transactionJSON;
+                        this.validBytes = true;
 
-                       this.tx_fee = success.transactionJSON.feeTQT / 100000000;
-                       this.tx_amount = success.transactionJSON.amountTQT / 100000000;
-                       this.tx_total = this.tx_fee + this.tx_amount;
+                        this.tx_fee = success.transactionJSON.feeTQT / 100000000;
+                        this.tx_amount = success.transactionJSON.amountTQT / 100000000;
+                        this.tx_total = this.tx_fee + this.tx_amount;
 
-                   } else {
-                       alertFunctions.InfoAlertBox('Error',
-                           'Sorry, an error occured! Reason: ' + success.errorDescription,
-                           'OK',
-                           'error').then(() => {
-                       });
-                   }
-               });
-
-            }, (error) => {
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm:any) => {
-
+                    } else {
+                        alertFunctions.InfoAlertBox('Error',
+                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                            'OK',
+                            'error').then(() => {
+                            });
+                    }
                 });
+
             });
     };
 
-    broadcastTransaction (transactionBytes) {
+    broadcastTransaction(transactionBytes) {
         this.accountService.broadcastTransaction(transactionBytes)
             .subscribe((success: any) => {
                 if (!success.errorCode) {
                     alertFunctions.InfoAlertBox('Success',
                         'Transaction succesfull broadcasted with id ' + success.transaction,
                         'OK',
-                        'success').then((isConfirm:any) => {
+                        'success').then((isConfirm: any) => {
 
-                    });
+                        });
                     //$rootScope.$broadcast('reload-dashboard');
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
-                        'error').then((isConfirm:any) => {
+                        'error').then((isConfirm: any) => {
 
-                    });
+                        });
                 }
 
-            }, (error) => {
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm:any) => {
-
-                });
             });
     };
 

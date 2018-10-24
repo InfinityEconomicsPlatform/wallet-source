@@ -101,16 +101,9 @@ export class DeletePropertyComponent implements OnInit {
 
                         });
                 }
-            }, (error) => {
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     }
-    broadcastTransaction = function(transactionBytes) {
+    broadcastTransaction = function (transactionBytes) {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
@@ -129,13 +122,6 @@ export class DeletePropertyComponent implements OnInit {
                     });
             }
 
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     };
     goBack() {

@@ -1,32 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
-import {CryptoService} from '../../../../services/crypto.service';
-import {SessionStorageService} from '../../../../services/session-storage.service';
-import {Location} from '@angular/common';
-import {ActivatedRoute, Router} from '@angular/router';
-import {DataStoreService} from '../../../../services/data-store.service';
-import {ShareToQuantityPipe} from '../../../../pipes/share-to-quantity.pipe';
-import {AmountToQuantPipe} from '../../../../pipes/amount-to-quant.pipe';
-import {AccountService} from '../../../account/account.service';
-import {AppConstants} from '../../../../config/constants';
-import {AssetsService} from '../../assets.service';
+import { CryptoService } from '../../../../services/crypto.service';
+import { SessionStorageService } from '../../../../services/session-storage.service';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataStoreService } from '../../../../services/data-store.service';
+import { ShareToQuantityPipe } from '../../../../pipes/share-to-quantity.pipe';
+import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
+import { AccountService } from '../../../account/account.service';
+import { AppConstants } from '../../../../config/constants';
+import { AssetsService } from '../../assets.service';
 
 @Component({
-  selector: 'app-trade-desk-buy-asset',
-  templateUrl: './trade-desk-buy-asset.component.html',
-  styleUrls: ['./trade-desk-buy-asset.component.scss']
+    selector: 'app-trade-desk-buy-asset',
+    templateUrl: './trade-desk-buy-asset.component.html',
+    styleUrls: ['./trade-desk-buy-asset.component.scss']
 })
 export class TradeDeskBuyAssetComponent implements OnInit {
 
     constructor(public router: Router,
-                public route: ActivatedRoute,
-                public assetsService: AssetsService,
-                public accountService: AccountService,
-                public sessionStorageService: SessionStorageService,
-                public cryptoService: CryptoService,
-                public shareToQuantityPipe: ShareToQuantityPipe,
-                public amountToQuantPipe: AmountToQuantPipe,
-                public _location: Location) {
+        public route: ActivatedRoute,
+        public assetsService: AssetsService,
+        public accountService: AccountService,
+        public sessionStorageService: SessionStorageService,
+        public cryptoService: CryptoService,
+        public shareToQuantityPipe: ShareToQuantityPipe,
+        public amountToQuantPipe: AmountToQuantPipe,
+        public _location: Location) {
     }
 
     buyAssetForm: any = {};
@@ -44,7 +44,7 @@ export class TradeDeskBuyAssetComponent implements OnInit {
             this.route.params.subscribe(params => {
                 this.router.navigate(['/assets/trade', params['id']]);
             });
-        }else{
+        } else {
             this.buyAsset();
         }
     }
@@ -55,7 +55,7 @@ export class TradeDeskBuyAssetComponent implements OnInit {
 
         var buyAssetForm = this.buyAssetForm;
         var asset = buyAssetForm.assetId;
-        var quantity=  parseInt(this.shareToQuantityPipe.transform(buyAssetForm.quantity, buyAssetForm.decimals));
+        var quantity = parseInt(this.shareToQuantityPipe.transform(buyAssetForm.quantity, buyAssetForm.decimals));
         var price = parseInt((this.amountToQuantPipe.transform(buyAssetForm.price) / Math.pow(10, buyAssetForm.decimals)) + '');
         var requestType = buyAssetForm.requestType;
 
@@ -88,15 +88,8 @@ export class TradeDeskBuyAssetComponent implements OnInit {
                             'OK',
                             'error').then((isConfirm: any) => {
 
-                        });
+                            });
                     }
-                }, (error) => {
-                    alertFunctions.InfoAlertBox('Error',
-                        AppConstants.getNoConnectionMessage,
-                        'OK',
-                        'error').then((isConfirm: any) => {
-
-                    });
                 });
             })
 
@@ -111,10 +104,10 @@ export class TradeDeskBuyAssetComponent implements OnInit {
                     'Transaction succesfull broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
-                    this.route.params.subscribe(params => {
-                        this.router.navigate(['/assets/trade', params['id']]);
+                        this.route.params.subscribe(params => {
+                            this.router.navigate(['/assets/trade', params['id']]);
+                        });
                     });
-                });
 
             } else {
                 alertFunctions.InfoAlertBox('Error',
@@ -122,16 +115,9 @@ export class TradeDeskBuyAssetComponent implements OnInit {
                     'OK',
                     'error').then((isConfirm: any) => {
 
-                });
+                    });
             }
 
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-            });
         });
     }
 

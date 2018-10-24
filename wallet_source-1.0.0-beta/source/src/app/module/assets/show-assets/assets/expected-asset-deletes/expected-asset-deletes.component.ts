@@ -27,8 +27,6 @@ export class ExpectedAssetDeletesComponent implements OnInit {
         this.assetsService.getExpectedAssetDeletes('', this.accountRs)
             .subscribe((success: any) => {
                 this.deletes = success.deletes;
-            }, (error) => {
-                console.log(error);
             });
     }
     goToAccountDetails(id) {

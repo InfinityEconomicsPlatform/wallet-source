@@ -56,13 +56,11 @@ export class DividendPaymentComponent implements OnInit {
                     this.dividendPaymentForm.assetId = success.asset;
                     this.dividendPaymentForm.decimals = success.decimals;
                     this.dividendPaymentForm.name = success.name;
-                }, (error) => {
                 });
 
                 this.currenciesService.getBlockChainStatus().subscribe((success: any) => {
                     this.dividendPaymentForm.height = success.numberOfBlocks;
                     this.dividendPaymentForm.height = this.dividendPaymentForm.height - 1;
-                }, (error) => {
                 });
             }
         })
@@ -71,7 +69,7 @@ export class DividendPaymentComponent implements OnInit {
     onTabChange() {
         this.routeChange.next();
     }
-    
+
     dividendPayment() {
         const amountPerQuant = this.amountToQuantPipe.transform(this.dividendPaymentForm.amountPerQuant);
         /* amountPerQuant = parseInt(amountPerQuant / Math.pow(10, parseInt(this.dividendPaymentForm.decimals, 10)), 10);
@@ -138,14 +136,6 @@ export class DividendPaymentComponent implements OnInit {
                             this.router.navigate(['/assets/show-assets']);
                         });
                 }
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     };
 

@@ -51,7 +51,6 @@ export class DeleteSharesComponent implements OnInit {
                     this.deleteAssetForm.assetId = success.asset;
                     this.deleteAssetForm.decimals = success.decimals;
                     this.deleteAssetForm.name = success.name;
-                }, (error) => {
                 });
             }
         })
@@ -111,14 +110,6 @@ export class DeleteSharesComponent implements OnInit {
                             this.router.navigate(['/assets/show-assets']);
                         });
                 }
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     };
 

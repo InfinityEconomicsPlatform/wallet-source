@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CommonService} from '../../../services/common.service';
-import {SubscriptionService} from '../subscription.service';
-import {SessionStorageService} from '../../../services/session-storage.service';
-import {AppConstants} from '../../../config/constants';
-import {CryptoService} from '../../../services/crypto.service';
-import {AmountToQuantPipe} from '../../../pipes/amount-to-quant.pipe';
-import {AccountService} from '../../account/account.service';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../../../services/common.service';
+import { SubscriptionService } from '../subscription.service';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { AppConstants } from '../../../config/constants';
+import { CryptoService } from '../../../services/crypto.service';
+import { AmountToQuantPipe } from '../../../pipes/amount-to-quant.pipe';
+import { AccountService } from '../../account/account.service';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
-import {AliasesService} from '../../aliases/aliases.service';
+import { AliasesService } from '../../aliases/aliases.service';
 
 @Component({
     selector: 'app-create-subscription',
@@ -35,15 +35,15 @@ export class CreateSubscriptionComponent implements OnInit {
     openBookMarks: boolean = false;
 
     constructor(private commonService: CommonService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private _location: Location,
-                private subscriptionService: SubscriptionService,
-                private sessionStorageService: SessionStorageService,
-                public amountToQuant: AmountToQuantPipe,
-                private cryptoService: CryptoService,
-                public accountService: AccountService,
-                public aliasesService: AliasesService) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private _location: Location,
+        private subscriptionService: SubscriptionService,
+        private sessionStorageService: SessionStorageService,
+        public amountToQuant: AmountToQuantPipe,
+        private cryptoService: CryptoService,
+        public accountService: AccountService,
+        public aliasesService: AliasesService) {
     }
 
     ngOnInit() {
@@ -69,8 +69,6 @@ export class CreateSubscriptionComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     }
 
@@ -94,7 +92,7 @@ export class CreateSubscriptionComponent implements OnInit {
                         'This account never had an outbound transaction. Make sure this account is the right one. In doubt, ask the account holder for his public key and add it on the former page to this transaction.',
                         'OK',
                         'success').then((isConfirm: any) => {
-                    });
+                        });
                 }
 
                 this.subscriptionService.createSubscription(
@@ -120,7 +118,7 @@ export class CreateSubscriptionComponent implements OnInit {
                                 AppConstants.getNoConnectionMessage,
                                 'OK',
                                 'error').then((isConfirm: any) => {
-                            });
+                                });
                         }
                     })
 
@@ -130,7 +128,7 @@ export class CreateSubscriptionComponent implements OnInit {
                         AppConstants.getNoConnectionMessage,
                         'OK',
                         'error').then((isConfirm: any) => {
-                    });
+                        });
                 });
 
             } else {
@@ -138,15 +136,8 @@ export class CreateSubscriptionComponent implements OnInit {
                     AppConstants.getNoConnectionMessage,
                     'OK',
                     'error').then((isConfirm: any) => {
-                });
+                    });
             }
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-            });
         });
     }
 
@@ -158,26 +149,18 @@ export class CreateSubscriptionComponent implements OnInit {
                         'Transaction succesfull broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
-                        this.router.navigate(['/subscriptions/my-subscriptions']);
-                    });
+                            this.router.navigate(['/subscriptions/my-subscriptions']);
+                        });
                 } else {
                     alertFunctions.InfoAlertBox('Error',
                         'Unable to broadcast transaction. Reason: ' + success.errorDescription,
                         'OK',
                         'error').then((isConfirm: any) => {
-                        this.router.navigate(['/subscriptions/create-subscription']);
-                    });
+                            this.router.navigate(['/subscriptions/create-subscription']);
+                        });
                 }
 
 
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                });
             });
     };
 

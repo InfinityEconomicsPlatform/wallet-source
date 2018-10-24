@@ -99,8 +99,6 @@ export class AssetsComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.assets.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         } else {
             this.assetsService.getAccountAssets(this.accountId)
@@ -112,8 +110,6 @@ export class AssetsComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.assets.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         }
 
@@ -167,8 +163,6 @@ export class AssetsComponent implements OnInit {
             this.assetsService.serachAssets(query)
                 .subscribe((success: any) => {
                     this.assets = success.assets;
-                }, (error) => {
-                    console.log(error);
                 });
         } else {
             this.reload();

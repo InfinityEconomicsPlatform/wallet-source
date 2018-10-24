@@ -69,8 +69,6 @@ export class OrderTradeDetailsComponent implements OnInit {
                     this.orderTradesPage.totalPages = this.orderTradesPage.pageNumber;
                 }
 
-            }, (error) => {
-                console.log(error);
             });
     }
     goToTransactionDetails(id) {

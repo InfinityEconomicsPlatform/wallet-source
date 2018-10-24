@@ -41,8 +41,6 @@ export class PollVotersComponent implements OnInit {
         this.votingService.getPollVotes(pollId, this.page.pageNumber * 10, ((this.page.pageNumber + 1) * 10) - 1).subscribe((pollVotes: any) => {
             this.voters = pollVotes.votes;
             this.page.totalElements = pollVotes.votes.length;
-        }, (error) => {
-
         })
     }
 

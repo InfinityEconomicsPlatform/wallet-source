@@ -125,26 +125,8 @@ export class PollVoteComponent implements OnInit {
                             this._location.back();
                         });
                 }
-            }, (error) => {
-                AlertFunctions.InfoAlertBox(
-                    'Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error')
-                    .then((isConfirm: any) => {
-
-                    });
             });
 
-        }, (error) => {
-            AlertFunctions.InfoAlertBox(
-                'Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error')
-                .then((isConfirm: any) => {
-
-                });
         });
     }
 
@@ -169,15 +151,6 @@ export class PollVoteComponent implements OnInit {
 
                     });
             }
-        }, (error) => {
-            AlertFunctions.InfoAlertBox(
-                'Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error')
-                .then((isConfirm: any) => {
-
-                });
         })
     }
 

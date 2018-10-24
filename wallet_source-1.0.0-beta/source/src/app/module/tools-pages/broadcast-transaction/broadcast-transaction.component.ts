@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ToolsService} from '../tools.service';
-import {AppConstants} from '../../../config/constants';
+import { Component, OnInit } from '@angular/core';
+import { ToolsService } from '../tools.service';
+import { AppConstants } from '../../../config/constants';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
 
 @Component({
@@ -45,12 +45,6 @@ export class BroadcastTransactionComponent implements OnInit {
                     'error').then((isConfirm: any) => {
                     });
             }
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-            });
         });
 
     };

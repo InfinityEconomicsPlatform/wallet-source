@@ -31,8 +31,6 @@ export class SearchAssetsComponent implements OnInit {
             this.assetsService.serachAssets(query)
                 .subscribe((success: any) => {
                     this.assets = success.assets;
-                }, (error) => {
-                    console.log(error);
                 });
         } else {
         }

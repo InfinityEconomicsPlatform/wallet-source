@@ -112,8 +112,6 @@ export class SendMessageComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     };
 

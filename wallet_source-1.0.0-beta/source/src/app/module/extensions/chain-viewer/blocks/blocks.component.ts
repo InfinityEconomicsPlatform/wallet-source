@@ -28,8 +28,6 @@ export class BlocksComponent implements OnInit {
             endIndex = ((this.page.pageNumber + 1) * this.page.size) - 1;
         this.extensionsService.getBlocks(startIndex, endIndex).subscribe((success: any) => {
             this.rows = success.blocks;
-        }, (error) => {
-            console.log(error);
         })
     }
 

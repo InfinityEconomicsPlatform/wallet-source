@@ -92,13 +92,6 @@ export class JoinShufflingComponent implements OnInit {
                                 'error').then((isConfirm: any) => {
                                 });
                         }
-                    }, (error) => {
-                        alertFunctions.InfoAlertBox('Error',
-                            AppConstants.getNoConnectionMessage,
-                            'OK',
-                            'error').then((isConfirm: any) => {
-
-                            });
                     });
                 })
         } else {
@@ -130,13 +123,6 @@ export class JoinShufflingComponent implements OnInit {
                     });
             }
 
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     }
 

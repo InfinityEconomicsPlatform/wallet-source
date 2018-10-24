@@ -29,7 +29,6 @@ export class CurrencyDetailsComponent implements OnInit {
   getCurrencyDetails(currencyId) {
     this.currenciesService.getCurrency(currencyId).subscribe((success) => {
       this.currencyDetails = success;
-    }, (error) => {
     });
   }
 

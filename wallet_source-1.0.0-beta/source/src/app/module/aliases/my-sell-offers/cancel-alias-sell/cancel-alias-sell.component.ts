@@ -112,14 +112,6 @@ export class CancelAliasSellComponent implements OnInit {
                             this.router.navigate(['/aliases/my-sell-offers']);
                         });
                 }
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     };
 

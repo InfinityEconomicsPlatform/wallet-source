@@ -47,7 +47,6 @@ export class DeleteAssetComponent implements OnInit {
                 this.assetsService.getAsset(assetId, true).subscribe((success: any) => {
                     this.deleteAssetFullForm.assetId = success.asset;
                     this.deleteAssetFullForm.name = success.name;
-                }, (error) => {
                 });
             }
         })
@@ -106,14 +105,6 @@ export class DeleteAssetComponent implements OnInit {
                             this.router.navigate(['/assets/show-assets']);
                         });
                 }
-            }, (error) => {
-
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
-                    'OK',
-                    'error').then((isConfirm: any) => {
-
-                    });
             });
     };
 

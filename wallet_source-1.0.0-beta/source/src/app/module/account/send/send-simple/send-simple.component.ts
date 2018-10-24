@@ -109,8 +109,6 @@ export class SendSimpleComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     };
 
@@ -148,13 +146,6 @@ export class SendSimpleComponent implements OnInit {
                 }
             })
 
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     };
 

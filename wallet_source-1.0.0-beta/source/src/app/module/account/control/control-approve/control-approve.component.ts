@@ -65,16 +65,9 @@ export class ControlApproveComponent implements OnInit {
 
                     });
             }
-        }, (error) => {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     };
-    broadcastTransaction = function(transactionBytes) {
+    broadcastTransaction = function (transactionBytes) {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
@@ -93,7 +86,7 @@ export class ControlApproveComponent implements OnInit {
                     });
             }
 
-        }, function(error) {
+        }, function (error) {
             alertFunctions.InfoAlertBox('Error',
                 AppConstants.getNoConnectionMessage,
                 'OK',

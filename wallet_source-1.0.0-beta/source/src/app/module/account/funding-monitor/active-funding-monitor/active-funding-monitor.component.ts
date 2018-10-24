@@ -7,9 +7,9 @@ import * as alertFunctions from '../../../../shared/data/sweet-alerts';
 import { AppConstants } from '../../../../config/constants';
 
 @Component({
-  selector: 'app-active-funding-monitor',
-  templateUrl: './active-funding-monitor.component.html',
-  styleUrls: ['./active-funding-monitor.component.scss']
+    selector: 'app-active-funding-monitor',
+    templateUrl: './active-funding-monitor.component.html',
+    styleUrls: ['./active-funding-monitor.component.scss']
 })
 export class ActiveFundingMonitorComponent implements OnInit {
     monitors: any;
@@ -17,13 +17,13 @@ export class ActiveFundingMonitorComponent implements OnInit {
     secretPhrase: string = '';
 
     constructor(private sessionStorageService: SessionStorageService,
-                private cryptoService: CryptoService,
-                private accountService: AccountService) {
+        private cryptoService: CryptoService,
+        private accountService: AccountService) {
 
     }
 
     ngOnInit() {
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
 
     setPage(pageInfo) {
@@ -34,7 +34,7 @@ export class ActiveFundingMonitorComponent implements OnInit {
     }
 
     reload() {
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
 
     getFundingMonitors() {
@@ -49,8 +49,6 @@ export class ActiveFundingMonitorComponent implements OnInit {
                 this.page.totalElements = this.page.pageNumber * 10 + this.monitors.length;
                 this.page.totalPages = this.page.pageNumber;
             }
-        }, (error) => {
-            console.log(error);
         })
     }
 
@@ -93,7 +91,7 @@ export class ActiveFundingMonitorComponent implements OnInit {
                     ).subscribe((success: any) => {
                         if (success.stopped === 1) {
                             alertFunctions.InfoAlertBox('Success',
-                                'Funding monitor for property: '+ fund.property +' successfully stopped',
+                                'Funding monitor for property: ' + fund.property + ' successfully stopped',
                                 'OK', 'success');
                         } else {
                             alertFunctions.InfoAlertBox('Error',

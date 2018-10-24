@@ -29,8 +29,6 @@ export class TransactionsComponent implements OnInit {
             endIndex = ((this.page.pageNumber + 1) * this.page.size) - 1;
         this.extensionsService.getTransactions(startIndex, endIndex).subscribe((success: any) => {
             this.rows = success.transactions;
-        }, (error) => {
-            console.log(error);
         });
     }
 

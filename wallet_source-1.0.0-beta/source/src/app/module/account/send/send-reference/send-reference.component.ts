@@ -113,8 +113,6 @@ export class SendReferenceComponent implements OnInit {
                     }
                 }
             }
-        }, (error) => {
-
         });
     };
 

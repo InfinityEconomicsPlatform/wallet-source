@@ -1,4 +1,4 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as AlertFunctions from '../../../shared/data/sweet-alerts';
 import { CurrenciesService } from '../../../module/currencies/currencies.service';
@@ -45,18 +45,18 @@ export class CreatePollComponent implements OnInit {
     errorMessage: string = '';
 
     constructor(private router: Router,
-                private currenciesService: CurrenciesService,
-                private assetsService: AssetsService,
-                private commonService: CommonService,
-                private cryptoService: CryptoService,
-                private sessionStorageService: SessionStorageService,
-                private votingService: VotingService) {
+        private currenciesService: CurrenciesService,
+        private assetsService: AssetsService,
+        private commonService: CommonService,
+        private cryptoService: CryptoService,
+        private sessionStorageService: SessionStorageService,
+        private votingService: VotingService) {
         this.votingModel = 0;
         this.votingOptions = [
-            {label: 'Account', value: 0},
-            {label: 'Balance', value: 1},
-            {label: 'Asset', value: 2},
-            {label: 'Currency', value: 3}
+            { label: 'Account', value: 0 },
+            { label: 'Balance', value: 1 },
+            { label: 'Asset', value: 2 },
+            { label: 'Currency', value: 3 }
         ];
     }
 
@@ -192,8 +192,6 @@ export class CreatePollComponent implements OnInit {
             } else {
                 this.assetError = success.errorDescription.replace('&#34;', '"').replace('&#34;', '"');
             }
-        }, (error) => {
-            console.log(error);
         });
     }
 
@@ -206,8 +204,6 @@ export class CreatePollComponent implements OnInit {
             } else {
                 this.currencyError = success.errorDescription.replace('&#34;', '"').replace('&#34;', '"');
             }
-        }, (error) => {
-            console.log(error);
         });
     }
 
@@ -263,12 +259,7 @@ export class CreatePollComponent implements OnInit {
                     } else {
                         this.showError('Sorry, an error occured! Reason: ' + success.errorDescription);
                     }
-                }, (error) => {
-                    this.showError(AppConstants.getNoConnectionMessage);
                 })
-            }, (error) => {
-                console.log(error);
-                this.showError(AppConstants.getNoConnectionMessage);
             });
         } else {
             this.showError(this.errorMessage);
@@ -289,8 +280,6 @@ export class CreatePollComponent implements OnInit {
             } else {
                 this.showError('Unable to broadcast transaction. Reason: ' + success.errorDescription);
             }
-        }, (error) => {
-            this.showError(AppConstants.getNoConnectionMessage);
         })
     }
 

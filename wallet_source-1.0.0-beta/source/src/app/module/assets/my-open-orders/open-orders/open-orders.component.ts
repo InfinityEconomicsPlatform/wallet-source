@@ -55,8 +55,6 @@ export class OpenOrdersComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.orders.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         } else {
             this.assetsService.getAccountCurrentAskOrders(this.accountRs, startIndex, endIndex)
@@ -68,8 +66,6 @@ export class OpenOrdersComponent implements OnInit {
                         this.page.totalElements = this.page.pageNumber * 10 + this.orders.length;
                         this.page.totalPages = this.page.pageNumber;
                     }
-                }, (error) => {
-                    console.log(error);
                 });
         }
 

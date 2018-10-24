@@ -59,8 +59,6 @@ export class BlockTransactionDetailsComponent implements OnInit {
                 }
             }
             this.rows = row;
-        }, (error) => {
-            console.log("error");
         });
     }
 
