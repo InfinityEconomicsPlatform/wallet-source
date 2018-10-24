@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from '../../../config/page';
+import { Router } from '@angular/router';
+import { MarketplaceService } from '../marketplace.service';
+import { Location } from '@angular/common';
+import { AccountService } from 'app/module/account/account.service';
+import { DataStoreService } from 'app/services/data-store.service';
 
 @Component({
     selector: 'app-listing',
@@ -8,52 +13,29 @@ import { Page } from '../../../config/page';
 })
 export class ListingComponent implements OnInit {
     page = new Page();
-    products_listed: any[] = [
-        {
-            "seller": "15323192282528158131",
-            "quantity": 2,
-            "goods": "11813734897437346473",
-            "description": "Testing the DGS.",
-            "sellerRS": "XIN-L6FM-89WK-VK8P-FCRBB",
-            "delisted": false,
-            "parsedTags": [
-                "test",
-                "product",
-                "tag"
-            ],
-            "tags": "test, product, tag, extra",
-            "priceTQT": "200000000",
-            "numberOfPublicFeedbacks": 0,
-            "name": "Test Product",
-            "numberOfPurchases": 0,
-            "timestamp": 31436434
-        },
-        {
-            "seller": "15323192282528158131",
-            "quantity": 2,
-            "goods": "11813734897437346473",
-            "description": "Testing the DGS.",
-            "sellerRS": "XIN-L6FM-89WK-VK8P-FCRBB",
-            "delisted": false,
-            "parsedTags": [
-                "test",
-                "product",
-                "tag"
-            ],
-            "tags": "test, product, tag, extra",
-            "priceTQT": "200000000",
-            "numberOfPublicFeedbacks": 0,
-            "name": "Worthless Junk",
-            "numberOfPurchases": 0,
-            "timestamp": 31436434
-        }
-    ];
+    products_listed: any[] = [];
+    accountRs: string = "";
 
-    constructor() {
+    constructor(public router: Router,
+        private marketplaceService: MarketplaceService,
+        public location: Location,
+        private accountService: AccountService) {
 
     }
 
     ngOnInit() {
+        this.accountRs = this.accountService.getAccountDetailsFromSession('accountRs');
+
+        this.marketplaceService.getDGSGoods(this.accountRs).subscribe((success: any) => {
+            this.products_listed = success.goods;
+            this.page.totalElements = success.goods.length;
+        }, (error) => {
+            console.log(error);
+        });
     }
 
+    productDetails(product) {
+        DataStoreService.set('marketplace_product', product);
+        this.router.navigateByUrl('/marketplace/product-details');
+    }
 }

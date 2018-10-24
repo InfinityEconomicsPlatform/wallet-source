@@ -14,13 +14,13 @@
                                     [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
                                     [offset]="page.pageNumber" [limit]="page.size">
                                     <ngx-datatable-column prop="name" name="{{ 'marketplace.listing.product_list_name' | translate }}">
-                                        <ng-template let-value="value" ngx-datatable-cell-template>
-                                            <span class="text-yellow">{{value}}</span>
+                                        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                            <a class="text-yellow" (click)="productDetails(row)">{{ value }}</a>
                                         </ng-template>
                                     </ngx-datatable-column>
                                     <ngx-datatable-column prop="quantity" name="{{ 'marketplace.listing.product_list_quantity' | translate }}">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                            {{ value }}
                                         </ng-template>
                                     </ngx-datatable-column>
                                     <ngx-datatable-column prop="priceTQT" name="{{ 'marketplace.listing.product_list_price' | translate }}">
@@ -28,16 +28,17 @@
                                             <div [innerHTML]="value | amountTqt"></div>
                                         </ng-template>
                                     </ngx-datatable-column>
-                                    <ngx-datatable-column headerClass="width-40-per" cellClass="width-40-per" prop="finished" name="{{ 'marketplace.listing.product_list_actions' | translate }}">
+                                    <ngx-datatable-column headerClass="width-40-per" cellClass="width-40-per" prop="finished"
+                                        name="{{ 'marketplace.listing.product_list_actions' | translate }}">
                                         <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                             <div class="btn-group btn-group-justified btn-group-raised">
-                                                <a class="text-blue mr-4" triggers="mouseenter:mouseleave"
-                                                    container="body" placement="top" [ngbPopover]="'common.change-price' | translate">
-                                                    <!-- <i class="fa fa-sort"></i> -->Change Price
+                                                <a class="text-blue mr-4" triggers="mouseenter:mouseleave" container="body"
+                                                    placement="top" [ngbPopover]="'common.change-price' | translate">
+                                                    Change Price
                                                 </a>
-                                                <a class="text-blue mr-4" triggers="mouseenter:mouseleave"
-                                                    container="body" placement="top" [ngbPopover]="'common.change-quantity' | translate">
-                                                    <!-- <i class="fa fa-exchange"></i> -->Change Quantity
+                                                <a class="text-blue mr-4" triggers="mouseenter:mouseleave" container="body"
+                                                    placement="top" [ngbPopover]="'common.change-quantity' | translate">
+                                                    Change Quantity
                                                 </a>
                                                 <a class="btn btn-sm btn-grey btn-icon" triggers="mouseenter:mouseleave"
                                                     container="body" placement="top" [ngbPopover]="'common.remove-product' | translate">
