@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { PollsComponent } from './show-polls/polls/polls.component';
 import { CreatePollComponent } from './create-poll/create-poll.component';
 import { VotingRoutingModule } from './voting-routing.module';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ArchwizardModule } from 'angular-archwizard';
 import { FormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -22,7 +21,6 @@ import { ShowPollsComponent } from './show-polls/show-polls.component';
     imports: [
         CommonModule,
         VotingRoutingModule,
-        Ng2SmartTableModule,
         ArchwizardModule,
         FormsModule,
         NgxChartsModule,

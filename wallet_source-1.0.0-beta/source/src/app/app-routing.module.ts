@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { FullLayoutComponent } from "./layouts/full/full-layout.component";
 import { ContentLayoutComponent } from "./layouts/content/content-layout.component";
-//import { HorizontalLayoutComponent } from "./layouts/horizontal/horizontal-layout.component";
 
 import { FULL_ROUTES } from "./shared/routes/full-layout.routes";
 import { CONTENT_ROUTES } from "./shared/routes/content-layout.routes";
-//import { HORIZONTAL_ROUTES } from "./shared/routes/horizontal-layout.routes";
 
 import { AuthGuard } from './shared/auth/auth-guard.service';
 
@@ -17,7 +15,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes, { 'useHash': true, enableTracing: false})],
+    imports: [RouterModule.forRoot(appRoutes, { 'useHash': true, enableTracing: false })],
     exports: [RouterModule]
 })
 

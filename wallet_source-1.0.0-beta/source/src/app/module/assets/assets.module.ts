@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ArchwizardModule } from 'angular-archwizard';
 import { FormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -50,7 +49,6 @@ import {PricePerShareBuyOrderPipe} from '../../pipes/price-per-share-buy-order.p
     imports: [
         CommonModule,
         AssetsRoutingModule,
-        Ng2SmartTableModule,
         ArchwizardModule,
         FormsModule,
         SharedModule,

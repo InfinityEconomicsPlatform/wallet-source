@@ -1,17 +1,16 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ShowCurrenciesComponent} from './show-currencies/show-currencies.component';
-import {MyOpenOffersComponent} from './my-open-offers/my-open-offers.component';
-import {MyTransfersComponent} from './my-transfers/my-transfers.component';
-import {IssueCurrencyComponent} from './issue-currency/issue-currency.component';
-import {CurrenciesRoutingModule} from './currencies-routing.module';
-import {ArchwizardModule} from 'angular-archwizard';
-import {Ng2SmartTableModule} from 'ng2-smart-table';
-import {SharedModule} from '../../shared/shared.module';
-import {CurrencyDetailsComponent} from './currency-details/currency-details.component';
-import {CurrenciesService} from './currencies.service';
-import {SendCurrenciesComponent} from './send-currencies/send-currencies.component';
-import {FormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ShowCurrenciesComponent } from './show-currencies/show-currencies.component';
+import { MyOpenOffersComponent } from './my-open-offers/my-open-offers.component';
+import { MyTransfersComponent } from './my-transfers/my-transfers.component';
+import { IssueCurrencyComponent } from './issue-currency/issue-currency.component';
+import { CurrenciesRoutingModule } from './currencies-routing.module';
+import { ArchwizardModule } from 'angular-archwizard';
+import { SharedModule } from '../../shared/shared.module';
+import { CurrencyDetailsComponent } from './currency-details/currency-details.component';
+import { CurrenciesService } from './currencies.service';
+import { SendCurrenciesComponent } from './send-currencies/send-currencies.component';
+import { FormsModule } from '@angular/forms';
 import { CurrenciesComponent } from './show-currencies/currencies/currencies.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SearchCurrenciesComponent } from './search-currencies/search-currencies.component';
@@ -29,7 +28,7 @@ import { PublishExchangeBuyOfferComponent } from './trade-desk/publish-exchange-
 import { PublishExchangeSellOfferComponent } from './trade-desk/publish-exchange-sell-offer/publish-exchange-sell-offer.component';
 import { TransferCurrencyComponent } from './show-currencies/currencies/transfer-currency/transfer-currency.component';
 import { DeleteCurrencyComponent } from './show-currencies/currencies/delete-currency/delete-currency.component';
-import {AliasesService} from '../aliases/aliases.service';
+import { AliasesService } from '../aliases/aliases.service';
 import { OpenOffersComponent } from './my-open-offers/open-offers/open-offers.component';
 import { CancelOfferComponent } from './my-open-offers/cancel-offer/cancel-offer.component';
 import { LastExchangesComponent } from './last-exchanges/last-exchanges.component';
@@ -40,7 +39,6 @@ import { MyExchangesComponent } from './my-exchanges/my-exchanges.component';
         CommonModule,
         CurrenciesRoutingModule,
         SharedModule,
-        Ng2SmartTableModule,
         ArchwizardModule,
         FormsModule,
         NgxDatatableModule

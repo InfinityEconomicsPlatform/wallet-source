@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {LocalDataSource} from 'ng2-smart-table';
-import {AssetsService} from '../assets.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Page} from '../../../config/page';
-import {SessionStorageService} from '../../../services/session-storage.service';
-import {AccountService} from '../../account/account.service';
-import {DataStoreService} from '../../../services/data-store.service';
+import { AssetsService } from '../assets.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Page } from '../../../config/page';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { AccountService } from '../../account/account.service';
+import { DataStoreService } from '../../../services/data-store.service';
 
 @Component({
-  selector: 'app-last-trade',
-  templateUrl: './last-trades.component.html',
-  styleUrls: ['./last-trades.component.scss']
+    selector: 'app-last-trade',
+    templateUrl: './last-trades.component.html',
+    styleUrls: ['./last-trades.component.scss']
 })
 export class LastTradesComponent implements OnInit {
     page = new Page();
@@ -18,17 +17,17 @@ export class LastTradesComponent implements OnInit {
     accountId: any;
     accountRs: any;
     constructor(public router: Router,
-                public sessionStorageService: SessionStorageService,
-                public assetsService: AssetsService,
-                public route: ActivatedRoute,
-                public accountService: AccountService) {
+        public sessionStorageService: SessionStorageService,
+        public assetsService: AssetsService,
+        public route: ActivatedRoute,
+        public accountService: AccountService) {
         this.page.pageNumber = 0;
         this.page.size = 10;
     }
 
     ngOnInit() {
         this.accountRs = this.accountService.getAccountDetailsFromSession('accountRs');
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
     setPage(pageInfo) {
 
@@ -51,19 +50,19 @@ export class LastTradesComponent implements OnInit {
             });
     }
     reload() {
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
     goToTransactionDetails(id) {
-        DataStoreService.set('transaction-details', { id, type: 'onlyID', view: 'transactionDetail'});
+        DataStoreService.set('transaction-details', { id, type: 'onlyID', view: 'transactionDetail' });
         this.router.navigate(['/assets/last-trades/transaction-details']);
     }
     goToAssetDetails(id) {
-        this.router.navigate(['/assets/last-trades/asset-details'],{ queryParams: { id: id }});
+        this.router.navigate(['/assets/last-trades/asset-details'], { queryParams: { id: id } });
     }
     goToAccountDetails(accountID) {
-        this.router.navigate(['/assets/last-trades/account-details'], { queryParams: { id: accountID }});
+        this.router.navigate(['/assets/last-trades/account-details'], { queryParams: { id: accountID } });
     }
-    goToTradeDesk(id){
+    goToTradeDesk(id) {
         this.router.navigate(['/assets/trade', id]);
     }
 }

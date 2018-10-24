@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from '../../../services/common.service';
@@ -6,7 +6,6 @@ import { SubscriptionService } from '../subscription.service';
 import { SessionStorageService } from '../../../services/session-storage.service';
 import { AppConstants } from '../../../config/constants';
 import { CryptoService } from '../../../services/crypto.service';
-import { ToastsManager } from 'ng2-toastr';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
 
 @Component({
@@ -35,10 +34,7 @@ export class CancelSubscriptionsComponent implements OnInit {
         private _location: Location,
         private subscriptionService: SubscriptionService,
         private sessionStorageService: SessionStorageService,
-        private cryptoService: CryptoService,
-        public toastr: ToastsManager,
-        vcr: ViewContainerRef) {
-            this.toastr.setRootViewContainerRef(vcr);
+        private cryptoService: CryptoService) {
     }
 
     ngOnInit() {
@@ -89,7 +85,7 @@ export class CancelSubscriptionsComponent implements OnInit {
                             'error').then((isConfirm: any) => {
                             });
                     }
-                }, function(error) {
+                }, function (error) {
                     alertFunctions.InfoAlertBox('Error',
                         AppConstants.getNoConnectionMessage,
                         'OK',

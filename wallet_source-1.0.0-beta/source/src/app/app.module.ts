@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from "./shared/shared.module";
-import { ToastModule, ToastOptions } from 'ng2-toastr/ng2-toastr';
 
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -19,8 +18,6 @@ import { HorizontalLayoutComponent } from "./layouts/horizontal/horizontal-layou
 
 import * as $ from 'jquery';
 
-import { CustomOption } from "./shared/toastr/custom-option";
-
 import { AuthService } from './shared/auth/auth.service';
 import { AuthGuard } from './shared/auth/auth-guard.service';
 
@@ -32,10 +29,8 @@ import { SwappService } from './services/swapp.service';
 import { MomentModule } from 'ngx-moment';
 
 import { MatchHeightModule } from "./shared/directives/match-height.directive";
-import { HorizontalMenuComponent } from "./shared/horizontal-menu/horizontal-menu.component";
-
 import { ResponseInterceptor } from './interceptors/response-interceptor';
-import { BroadcastService} from './services/broadcast.service';
+import { BroadcastService } from './services/broadcast.service';
 import { LocalhostService } from './services/localhost.service';
 import { NodeService } from './services/node.service';
 import { OptionService } from './services/option.service';
@@ -67,7 +62,6 @@ export function createTranslateLoader(http: HttpClient) {
         AppComponent,
         FullLayoutComponent,
         HorizontalLayoutComponent,
-        HorizontalMenuComponent,
         ContentLayoutComponent,
     ],
     imports: [
@@ -75,7 +69,6 @@ export function createTranslateLoader(http: HttpClient) {
         StoreModule.forRoot({}),
         SharedModule,
         HttpClientModule,
-        ToastModule.forRoot(),
         NgbModule.forRoot(),
         AppRoutingModule,
         MatchHeightModule,
@@ -90,13 +83,8 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         })
-        // AgmCoreModule.forRoot({
-        //     apiKey: 'AIzaSyBr5_picK8YJK7fFR2CPzTVMj6GG1TtRGo'
-        // })
     ],
     providers: [
-        // Toastr and auth providers
-        { provide: ToastOptions, useClass: CustomOption },
         AuthService,
         AuthGuard,
         LoginService,
