@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShowCampaignsComponent } from './show-campaigns/show-campaigns.component';
 import { CreateCampaignComponent } from './create-campaign/create-campaign.component';
-import {CrowdfundingRoutingModule} from './crowdfunding-routing.module';
-import {SharedModule} from '../../shared/shared.module';
-import {Ng2SmartTableModule} from 'ng2-smart-table';
+import { CrowdfundingRoutingModule } from './crowdfunding-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 import { ArchwizardModule } from 'angular-archwizard';
 import { FormsModule } from '@angular/forms';
 import { CampaignsComponent } from './show-campaigns/campaigns/campaigns.component';
@@ -15,25 +14,24 @@ import { ReserveFoundersComponent } from './show-campaigns/campaigns/reserve-fou
 import { ReserveUnitsComponent } from './show-campaigns/campaigns/reserve-units/reserve-units.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CrowdfundingRoutingModule,
-    SharedModule,
-    Ng2SmartTableModule,
-    ArchwizardModule,
-    FormsModule,
-    NgxDatatableModule,
-    CurrenciesModule
-  ],
-  declarations: [
-    ShowCampaignsComponent,
-    CreateCampaignComponent,
-    CampaignsComponent,
-    ReserveFoundersComponent,
-    ReserveUnitsComponent
-  ],
-  providers: [
-    CrowdfundingService
-  ]
+    imports: [
+        CommonModule,
+        CrowdfundingRoutingModule,
+        SharedModule,
+        ArchwizardModule,
+        FormsModule,
+        NgxDatatableModule,
+        CurrenciesModule
+    ],
+    declarations: [
+        ShowCampaignsComponent,
+        CreateCampaignComponent,
+        CampaignsComponent,
+        ReserveFoundersComponent,
+        ReserveUnitsComponent
+    ],
+    providers: [
+        CrowdfundingService
+    ]
 })
 export class CrowdfundingModule { }

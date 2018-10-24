@@ -2,29 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '../../../services/session-storage.service';
 import { DashboardService } from '../dashboard.service';
-import { AppConstants } from '../../../config/constants';
 import { RootScope } from '../../../config/root-scope';
 import { AmChartsService, AmChart } from "@amcharts/amcharts3-angular";
-import {Observable} from 'rxjs/Observable';
-import {TranslateService} from '@ngx-translate/core';
+import { Observable } from 'rxjs/Observable';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-    
+
     accountRs: string;
     accountValuation: number;
     balanceTQT: any;
     selectedLanguage: string;
 
     constructor(private router: Router,
-                private dashboardService: DashboardService,
-                public translate: TranslateService,
-                private sessionStorageService: SessionStorageService,
-                private amChartsService: AmChartsService) {
+        private dashboardService: DashboardService,
+        public translate: TranslateService,
+        private sessionStorageService: SessionStorageService,
+        private amChartsService: AmChartsService) {
         this.accountValuation = 0.00;
         this.accountRs = "";
     }
@@ -47,7 +46,7 @@ export class DashboardComponent implements OnInit {
             panEventsEnabled: false,
             dataProvider: data,
             color: "#2B2929",
-            maxZoomFactor:20,
+            maxZoomFactor: 20,
             valueAxes: [{
                 position: "left",
                 title: "Price (USD)"
@@ -56,13 +55,13 @@ export class DashboardComponent implements OnInit {
                 id: "g1",
                 fillAlphas: 0.4,
                 valueField: "value",
-                fillColors: ["#E72D45","#ffffff"],
+                fillColors: ["#E72D45", "#ffffff"],
                 lineAlpha: 1,
                 lineColor: "#E72D45",
                 lineThickness: 2,
                 balloonText: "<div> 1 XIN: <b>[[value]]</b> USD </div>"
             }],
-            plotAreaBorderColor:'#F00',
+            plotAreaBorderColor: '#F00',
             // "chartScrollbar: {
             //     "graph: "g1",
             //     "scrollbarHeight: 80,
@@ -90,7 +89,7 @@ export class DashboardComponent implements OnInit {
                 parseDates: true,
                 minPeriod: "mm",
                 gridAlpha: 0.4,
-		        gridColor: "#D4D2D2",
+                gridColor: "#D4D2D2",
             },
             panelsSettings: {
                 panEventsEnabled: false,
@@ -109,7 +108,7 @@ export class DashboardComponent implements OnInit {
             }
         });
     }
-    
+
     ngOnDestroy() {
         if (this.chart) {
             this.amChartsService.destroyChart(this.chart);
@@ -125,7 +124,7 @@ export class DashboardComponent implements OnInit {
         RootScope.set({}); //force load again TODO: need to change implementation/reload
     };
 
-    getMarketData(){
+    getMarketData() {
         // this.dashboardService.getMarketData('XIN', 'BTC').subscribe(data => {
         //     if(data.Response == 'Success'){
         //         let points = [];
@@ -139,32 +138,32 @@ export class DashboardComponent implements OnInit {
         //     }
         // })
 
-        Observable.forkJoin(this.dashboardService.getMarketData('BTC', 'USD'),this.dashboardService.getMarketData('XIN', 'BTC'))
-        .subscribe((successNext: any) => {
-            let [btcToUsdResult, xinToBtcResult] = successNext;
+        Observable.forkJoin(this.dashboardService.getMarketData('BTC', 'USD'), this.dashboardService.getMarketData('XIN', 'BTC'))
+            .subscribe((successNext: any) => {
+                let [btcToUsdResult, xinToBtcResult] = successNext;
 
-            if(btcToUsdResult.Response == 'Success' && xinToBtcResult.Response == 'Success'){
-                let points = [];
-                for(let i = 0; i < xinToBtcResult.Data.length; i++){
-                    let value = 0;//xinToBtcResult.Data[i].close
+                if (btcToUsdResult.Response == 'Success' && xinToBtcResult.Response == 'Success') {
+                    let points = [];
+                    for (let i = 0; i < xinToBtcResult.Data.length; i++) {
+                        let value = 0;//xinToBtcResult.Data[i].close
 
-                    if(btcToUsdResult.Data[i].time == xinToBtcResult.Data[i].time){
-                        points.push({
-                            date: xinToBtcResult.Data[i].time * 1000,
-                            value: xinToBtcResult.Data[i].close * btcToUsdResult.Data[i].close
-                        });
+                        if (btcToUsdResult.Data[i].time == xinToBtcResult.Data[i].time) {
+                            points.push({
+                                date: xinToBtcResult.Data[i].time * 1000,
+                                value: xinToBtcResult.Data[i].close * btcToUsdResult.Data[i].close
+                            });
+                        }
                     }
+                    this.renderChart(points);
                 }
-                this.renderChart(points);
-            }
-        });
+            });
     }
 
-    chartClicked(){
+    chartClicked() {
 
     }
 
-    navigateTo(route){
+    navigateTo(route) {
         this.router.navigate([route]);
     }
 
