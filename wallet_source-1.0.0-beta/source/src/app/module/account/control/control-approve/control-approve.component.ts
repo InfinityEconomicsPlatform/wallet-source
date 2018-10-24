@@ -86,13 +86,6 @@ export class ControlApproveComponent implements OnInit {
                     });
             }
 
-        }, function (error) {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     };
     goBack() {

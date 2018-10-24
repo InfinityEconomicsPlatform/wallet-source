@@ -135,13 +135,6 @@ export class SendDeferredComponent implements OnInit {
                     });
             }
 
-        }, function (error) {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     };
 
@@ -217,13 +210,6 @@ export class SendDeferredComponent implements OnInit {
                         });
                 }
             });
-        }, function (error) {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     };
 
@@ -357,13 +343,6 @@ export class SendDeferredComponent implements OnInit {
 
                     });
             }
-        }, function (error) {
-            alertFunctions.InfoAlertBox('Error',
-                AppConstants.getNoConnectionMessage,
-                'OK',
-                'error').then((isConfirm: any) => {
-
-                });
         });
     };
 

@@ -91,12 +91,8 @@ export class TradeDeskComponent implements OnInit {
                     this.accountDetails = success;
                     this.units = success.units;
                     this.unconfirmedUnits = success.unconfirmedUnits;
-                }, function (error) {
-                    console.log(error);
                 });
 
-            }, function (error) {
-                console.log(error);
             });
         })
     }

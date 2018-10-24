@@ -31,13 +31,6 @@ export class ChainStatisticsComponent implements OnInit {
 
           });
       }
-    }, function (error) {
-      alertFunctions.InfoAlertBox('Error',
-        'Sorry, an error occured! Reason: ' + error.errorDescription,
-        'OK',
-        'error').then((isConfirm: any) => {
-
-        });
     });
 
   };
