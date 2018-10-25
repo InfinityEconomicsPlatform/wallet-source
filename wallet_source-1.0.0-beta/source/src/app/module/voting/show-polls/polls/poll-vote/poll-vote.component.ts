@@ -7,6 +7,7 @@ import { CryptoService } from '../../../../../services/crypto.service';
 import { SessionStorageService } from '../../../../../services/session-storage.service';
 import { AppConstants } from '../../../../../config/constants';
 import * as AlertFunctions from '../../../../../shared/data/sweet-alerts';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-poll-vote',
@@ -27,7 +28,13 @@ export class PollVoteComponent implements OnInit {
     validBytes: boolean;
     signedTx: boolean = true;
 
-    constructor(private _location: Location, private route: ActivatedRoute, public votingService: VotingService, public commonService: CommonService, private cryptoService: CryptoService, public sessionStorageService: SessionStorageService) {
+    constructor(private _location: Location,
+        private route: ActivatedRoute,
+        public votingService: VotingService,
+        public commonService: CommonService,
+        private cryptoService: CryptoService,
+        public sessionStorageService: SessionStorageService,
+        public translate: TranslateService) {
         this.poll = {
             options: []
         }
@@ -76,14 +83,21 @@ export class PollVoteComponent implements OnInit {
         if (this.isStepOneFormValid) {
             this.castVote();
         } else {
-            AlertFunctions.InfoAlertBox(
-                'Error',
-                'You have to select atleast min. ' + this.poll.minNumberOfOptions + ' and max. ' + this.poll.maxNumberOfOptions + ' options.',
-                'OK',
-                'error')
-                .then((isConfirm: any) => {
+            this.translate.get('sweet-alert.Poll option value error', {
+                minNumberOfOptions: this.poll.minNumberOfOptions,
+                maxNumberOfOptions: this.poll.maxNumberOfOptions
+            }).subscribe((res: string) => {
+                console.log(res);
+                AlertFunctions.InfoAlertBox(
+                    'Error',
+                    res,
+                    'OK',
+                    'error')
+                    .then((isConfirm: any) => {
 
-                });
+                    });
+            });
+
         }
     }
 
@@ -135,7 +149,7 @@ export class PollVoteComponent implements OnInit {
             if (!success.errorCode) {
                 AlertFunctions.InfoAlertBox(
                     'Success',
-                    'Transaction successful broadcasted with Id : ' + success.transaction + '',
+                    'Transaction successfully broadcasted with Id : ' + success.transaction + '',
                     'OK',
                     'success')
                     .then((isConfirm: any) => {
