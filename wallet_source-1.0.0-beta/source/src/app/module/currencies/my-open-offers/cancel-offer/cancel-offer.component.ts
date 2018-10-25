@@ -62,8 +62,6 @@ export class CancelOfferComponent implements OnInit {
 
                 this.cancelExchangeOffer();
 
-            }, function (error) {
-                console.log(error);
             });
         })
     }
@@ -139,13 +137,6 @@ export class CancelOfferComponent implements OnInit {
 
                                 });
                         }
-                    }, function (error) {
-                        alertFunctions.InfoAlertBox('Error',
-                            AppConstants.getNoConnectionMessage,
-                            'OK',
-                            'error').then((isConfirm: any) => {
-
-                            });
                     });
                 })
         });

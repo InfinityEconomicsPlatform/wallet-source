@@ -58,8 +58,6 @@ export class DeleteCurrencyComponent implements OnInit {
                 this.deleteCurrencyForm.decimals = success.decimals;
                 this.deleteCurrencyForm.ticker = success.code;
 
-            }, function (error) {
-                console.log(error);
             });
         })
     }
@@ -160,13 +158,6 @@ export class DeleteCurrencyComponent implements OnInit {
 
                             });
                     }
-                }, function (error) {
-                    alertFunctions.InfoAlertBox('Error',
-                        AppConstants.getNoConnectionMessage,
-                        'OK',
-                        'error').then((isConfirm: any) => {
-
-                        });
                 });
             })
     }

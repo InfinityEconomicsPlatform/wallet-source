@@ -116,12 +116,6 @@ export class EditAliasComponent implements OnInit {
                             'error').then((isConfirm: any) => {
                             });
                     }
-                }, function (error) {
-                    alertFunctions.InfoAlertBox('Error',
-                        AppConstants.getNoConnectionMessage,
-                        'OK',
-                        'error').then((isConfirm: any) => {
-                        });
                 });
             })
     }

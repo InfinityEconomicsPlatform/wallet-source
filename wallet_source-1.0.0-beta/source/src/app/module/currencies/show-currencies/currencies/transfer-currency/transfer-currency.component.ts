@@ -58,8 +58,6 @@ export class TransferCurrencyComponent implements OnInit {
                 this.transferCurrencyForm.decimals = success.decimals;
                 this.transferCurrencyForm.ticker = success.code;
 
-            }, function (error) {
-                console.log(error);
             });
         })
     }
@@ -134,13 +132,6 @@ export class TransferCurrencyComponent implements OnInit {
 
                             });
                     }
-                }, function (error) {
-                    alertFunctions.InfoAlertBox('Error',
-                        AppConstants.getNoConnectionMessage,
-                        'OK',
-                        'error').then((isConfirm: any) => {
-
-                        });
                 });
             })
     }
