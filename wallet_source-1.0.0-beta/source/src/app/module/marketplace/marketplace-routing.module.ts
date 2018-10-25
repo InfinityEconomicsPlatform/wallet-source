@@ -8,6 +8,9 @@ import { PurchasedComponent } from './purchased/purchased.component';
 import { ListAProductComponent } from './list-a-product/list-a-product.component';
 import { SearchComponent } from './search/search.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ChangePriceComponent } from './listing/change-price/change-price.component';
+import { ChangeQuantityComponent } from './listing/change-quantity/change-quantity.component';
+import { DeleteProductComponent } from './listing/delete-product/delete-product.component';
 
 const routes: Routes = [
     {
@@ -50,6 +53,18 @@ const routes: Routes = [
     {
         path: 'product-details',
         component: ProductDetailsComponent
+    },
+    {
+        path: 'change-price',
+        component: ChangePriceComponent
+    },
+    {
+        path: 'change-quantity',
+        component: ChangeQuantityComponent
+    },
+    {
+        path: 'remove-product',
+        component: DeleteProductComponent
     }
 ];
 

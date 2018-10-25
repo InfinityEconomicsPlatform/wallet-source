@@ -33,15 +33,18 @@
                                         <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                             <div class="btn-group btn-group-justified btn-group-raised">
                                                 <a class="text-blue mr-4" triggers="mouseenter:mouseleave" container="body"
-                                                    placement="top" [ngbPopover]="'common.change-price' | translate">
+                                                    placement="top" [ngbPopover]="'common.change-price' | translate"
+                                                    (click)="changePrice(row)">
                                                     Change Price
                                                 </a>
                                                 <a class="text-blue mr-4" triggers="mouseenter:mouseleave" container="body"
-                                                    placement="top" [ngbPopover]="'common.change-quantity' | translate">
+                                                    placement="top" [ngbPopover]="'common.change-quantity' | translate"
+                                                    (click)="changeQuantity(row)">
                                                     Change Quantity
                                                 </a>
                                                 <a class="btn btn-sm btn-grey btn-icon" triggers="mouseenter:mouseleave"
-                                                    container="body" placement="top" [ngbPopover]="'common.remove-product' | translate">
+                                                    container="body" placement="top" [ngbPopover]="'common.remove-product' | translate"
+                                                    (click)="deleteProduct(row)">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </div>

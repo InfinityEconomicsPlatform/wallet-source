@@ -38,4 +38,19 @@ export class ListingComponent implements OnInit {
         DataStoreService.set('marketplace_product', product);
         this.router.navigateByUrl('/marketplace/product-details');
     }
+
+    changePrice(product) {
+        DataStoreService.set('marketplace_product', product);
+        this.router.navigateByUrl('/marketplace/change-price');
+    }
+
+    changeQuantity(product) {
+        DataStoreService.set('marketplace_product', product);
+        this.router.navigateByUrl('/marketplace/change-quantity');
+    }
+
+    deleteProduct(product) {
+        DataStoreService.set('marketplace_product', product);
+        this.router.navigateByUrl('/marketplace/remove-product');
+    }
 }

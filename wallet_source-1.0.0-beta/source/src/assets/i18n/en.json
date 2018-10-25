@@ -2024,7 +2024,10 @@
         "product-listed": "Products Listed",
         "search": "Search",
         "seller": "Seller",
-        "product-details": "Product Information"
+        "product-details": "Product Information",
+        "change-price": "Change Price",
+        "change-quantity": "Change Quantity",
+        "remove-product": "Remove Product"
     },
     "marketplace": {
         "store": {
@@ -2150,7 +2153,18 @@
             "price": "Price",
             "quantity": "Quantity",
             "purchase": "Purchase",
-            "view-store": "View Store"
+            "view-store": "View Store",
+            "change-price": "Change Price",
+            "cancel": "Cancel",
+            "change-quantity": "Change Quantity",
+            "remove-product": "Remove Product",
+            "current_price": "Current Price",
+            "new_price": "New Price",
+            "passphrase": "Passphrase",
+            "fee": "Fee",
+            "minimum_fee": "Minimum Fee",
+            "current_quantity": "Current Quantity",
+            "new_quantity": "New Quantity"
         }
     }
 }

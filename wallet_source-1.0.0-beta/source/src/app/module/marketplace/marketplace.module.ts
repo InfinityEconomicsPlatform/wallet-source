@@ -22,6 +22,9 @@ import { TransactionHashComponent } from './list-a-product/transaction-hash/tran
 import { SecretHashComponent } from './list-a-product/secret-hash/secret-hash.component';
 import { SearchComponent } from './search/search.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ChangePriceComponent } from './listing/change-price/change-price.component';
+import { ChangeQuantityComponent } from './listing/change-quantity/change-quantity.component';
+import { DeleteProductComponent } from './listing/delete-product/delete-product.component';
 
 @NgModule({
     imports: [
@@ -47,7 +50,10 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
         TransactionHashComponent,
         SecretHashComponent,
         SearchComponent,
-        ProductDetailsComponent
+        ProductDetailsComponent,
+        ChangePriceComponent,
+        ChangeQuantityComponent,
+        DeleteProductComponent
     ],
     providers: [
         MarketplaceService
