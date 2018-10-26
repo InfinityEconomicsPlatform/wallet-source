@@ -112,7 +112,7 @@ export class CreateAliasComponent implements OnInit {
                 // TODO: reload logic
                 if (!success.errorCode) {
                     alertFunctions.InfoAlertBox('Success',
-                        'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                        'Transaction succesfully broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
                             this.router.navigate(['/aliases/show-alias']);

@@ -1637,6 +1637,7 @@
     },
     "sweet-alert": {
         "info": "Info",
+        "Success": "Success",
         "Confirm": "Confirm",
         "Are you sure, want to stop this monitor?": "Are you sure, want to stop this monitor?",
         "OK": "OK",
@@ -1646,7 +1647,20 @@
         "Unable to get Active nodes": "Unable to get Active nodes",
         "Sorry, an error occured! Reason: ": "Sorry, an error occured! Reason: ",
         "balance-lease-start-block-error-msg": "The balance leasing feature is available starting from block : 3,000. This is about 2 days from genesis block creation date. Please try again as soon this block height is reached.",
-        "balance-lease-visible-key-error-msg": "Sorry, an error occured! Reason: This account has no visible public key because it never had any outbound transaction. Encrypted messages or balance leasing is not available without a public key. Ask the account holder for his public key and add the key on the former page to this transaction"
+        "balance-lease-visible-key-error-msg": "Sorry, an error occured! Reason: This account has no visible public key because it never had any outbound transaction. Encrypted messages or balance leasing is not available without a public key. Ask the account holder for his public key and add the key on the former page to this transaction",
+        "balance-lease-account-never-outbound-transaction-error-msg": "Note: This account never had an outbound transaction. Make sure this account is the right one. In doubt, ask the account holder for his public key and add it on the former page to this transaction.",
+        "send-simple-visible-key-error-msg": "Sorry, an error occured! Reason: This account has no visible public key because it never had any outbound transaction. Encrypted messages are not available without a public key. Ask the account holder for his public key and add the key on the former page to this transaction",
+        "send-simple-account-outbound-transaction-info-msg": "Note: This account never had an outbound transaction. Make sure this account is the right one. In doubt, ask the account holder for his public key and add it on the former page to this transaction.",
+        "block-generation-localhost-error-msg": "Localhost (127.0.0.1) is not available. For security reasons localhost is mandatory for block generation.",
+        "control-add-accounts-error-msg": "You can add only maximum 10 accounts.",
+        "control-quorum-number-error-msg":"This control setup is not valid, please check quorum and number of approval accounts.",
+        "issue-asset-info-msg": "Note: ' + 'Singleton Assets are temporarily disabled. Please see forum for more informations.",
+        "at-compiler-output-code-error-msg": "Unable to generate Output code, please check your code.",
+        "issue-currency-select-currency-error-msg": "Form error. At least one currency type must be selected",
+        "create-escrow-outbound-transaction-success-msg": "This account never had an outbound transaction. Make sure this account is the right one. In doubt, ask the account holder for his public key and add it on the former page to this transaction.",
+        "succesfully-broadcasted": "Transaction succesfully broadcasted with Id : ",
+        "unable-broadcast-transaction": "Unable to broadcast transaction. Reason: ",
+        "unable-stop-funding-monitor": "Unable to stop funding monitor. Reason: Wrong secret or property."
     },
     "breadcrumbs": {
         "account": "Account",

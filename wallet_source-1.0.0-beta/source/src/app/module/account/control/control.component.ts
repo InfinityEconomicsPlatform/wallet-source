@@ -52,7 +52,7 @@ export class ControlComponent implements OnInit {
     addNewAccount() {
         if (this.setAccountControlForm.approveAccounts.length >= 10) {
             alertFunctions.InfoAlertBox('Error',
-                'You can add only maximum 10 accounts.',
+                'control-add-accounts-error-msg',
                 'OK',
                 'error').then((isConfirm: any) => {
 
@@ -130,7 +130,7 @@ export class ControlComponent implements OnInit {
             this.setAccountControl();
         } else {
             alertFunctions.InfoAlertBox('Error',
-                'This control setup is not valid, please check quorum and number of approval accounts.',
+                'control-quorum-number-error-msg',
                 'OK',
                 'error').then((isConfirm: any) => {
                 });
@@ -188,7 +188,7 @@ export class ControlComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'Transaction succesfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.router.navigate(['/crowdfunding/show-campaigns']);

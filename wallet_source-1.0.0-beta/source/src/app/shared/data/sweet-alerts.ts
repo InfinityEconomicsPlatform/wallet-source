@@ -75,10 +75,11 @@ export function InfoAlertBox(
     buttonText,
     messageType
 ) {
-    // messageTitle = (keyData['sweet-alert'][messageTitle] != '') ? keyData['sweet-alert'][messageTitle] : messageTitle;
-    // messageText = (keyData['sweet-alert'][messageText.replace("&#34;", '"').replace("&#34;", '"')] != '') ?
-    //     keyData['sweet-alert'][messageText.replace("&#34;", '"').replace("&#34;", '"')] :
-    //     messageText.replace("&#34;", '"').replace("&#34;", '"');
+    console.log('messageText', messageText);
+    messageTitle = (keyData['sweet-alert'][messageTitle] != '') ? keyData['sweet-alert'][messageTitle] : messageTitle;
+    messageText = (keyData['sweet-alert'][messageText.replace("&#34;", '"').replace("&#34;", '"')] != '') ?
+    keyData['sweet-alert'][messageText.replace("&#34;", '"').replace("&#34;", '"')] :
+    messageText.replace("&#34;", '"').replace("&#34;", '"');
     return swal({
         title: messageTitle,
         text: messageText,

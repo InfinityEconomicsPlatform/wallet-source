@@ -75,7 +75,7 @@ export class ActiveFundingMonitorComponent implements OnInit {
                                 'OK', 'success');
                         } else {
                             alertFunctions.InfoAlertBox('Error',
-                                'Unable to stop funding monitor. Reason: Wrong secret or property.',
+                                'unable-stop-funding-monitor',
                                 'OK', 'error');
                         }
                         this.getFundingMonitors();
@@ -95,7 +95,7 @@ export class ActiveFundingMonitorComponent implements OnInit {
                                 'OK', 'success');
                         } else {
                             alertFunctions.InfoAlertBox('Error',
-                                'Unable to stop funding monitor. Reason: Wrong secret or property.',
+                                'unable-stop-funding-monitor',
                                 'OK', 'error');
                         }
                         this.getFundingMonitors();

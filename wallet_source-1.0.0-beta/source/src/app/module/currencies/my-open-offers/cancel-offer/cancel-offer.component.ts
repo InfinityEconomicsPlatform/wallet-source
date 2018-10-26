@@ -147,7 +147,7 @@ export class CancelOfferComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'Transaction succesfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.route.params.subscribe(params => {

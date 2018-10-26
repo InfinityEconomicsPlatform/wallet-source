@@ -63,7 +63,7 @@ export class IssueAssetComponent implements OnInit {
 
         if (parseInt(shares) === 1) {
             alertFunctions.InfoAlertBox('info',
-                'Note: ' + 'Singleton Assets are temporarily disabled. Please see forum for more informations.',
+                'issue-asset-info-msg',
                 'OK',
                 'info').then((isConfirm: any) => {
                 });
@@ -98,7 +98,7 @@ export class IssueAssetComponent implements OnInit {
             .subscribe((success) => {
                 if (!success.errorCode) {
                     alertFunctions.InfoAlertBox('Success',
-                        'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                        'Transaction succesfully broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
                             this.router.navigate(['/assets/show-assets']);

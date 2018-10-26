@@ -174,7 +174,7 @@ export class CreateCampaignComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'Transaction succesfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.router.navigate(['/crowdfunding/show-campaigns']);

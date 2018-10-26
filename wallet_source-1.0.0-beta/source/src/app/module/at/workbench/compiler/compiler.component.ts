@@ -35,7 +35,7 @@ export class CompilerComponent implements OnInit {
                     this.outputCode = "";
                     AlertFunctions.InfoAlertBox(
                         'Error',
-                        'Unable to generate Output code, please check your code.',
+                        'at-compiler-output-code-error-msg',
                         'OK',
                         'error')
                         .then((isConfirm: any) => {

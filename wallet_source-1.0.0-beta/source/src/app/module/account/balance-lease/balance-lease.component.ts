@@ -141,7 +141,7 @@ export class BalanceLeaseComponent implements OnInit {
 
         if (this.blockheight < 3000) {
             alertFunctions.InfoAlertBox('info',
-                'The balance leasing feature is available starting from block : 3\'000. This is about 2 days from genesis block creation date. Please try again as soon this block height is reached.',
+                'balance-lease-start-block-error-msg',
                 'OK',
                 'info').then(() => {
                 });
@@ -199,7 +199,7 @@ export class BalanceLeaseComponent implements OnInit {
 
                 if (!recipientPublicKey && !hasPublicKeyAdded) {
                     alertFunctions.InfoAlertBox('Error',
-                        'Sorry, an error occured! Reason: This account has no visible public key because it never had any outbound transaction. Encrypted messages or balance leasing is not available without a public key. Ask the account holder for his public key and add the key on the former page to this transaction',
+                        'balance-lease-visible-key-error-msg',
                         'OK',
                         'error').then(() => {
                         });
@@ -249,7 +249,7 @@ export class BalanceLeaseComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'Transaction succesfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         // this.router.navigate(['/account/transactions/pending']);

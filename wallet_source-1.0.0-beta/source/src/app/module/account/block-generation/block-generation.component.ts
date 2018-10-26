@@ -33,7 +33,7 @@ export class BlockGenerationComponent implements OnInit {
     displayNotificationAlert() {
         if (this.connectionMode !== 'LOCAL_HOST' && this.connectionMode !== 'TESTNET' && this.connectionMode !== 'DEVTESTNET') {
             alertFunctions.InfoAlertBox('Error',
-                'Localhost (127.0.0.1) is not available. For security reasons localhost is mandatory for block generation.',
+                'block-generation-localhost-error-msg',
                 'OK', 'error');
         } else {
             this.hasLocal = true;

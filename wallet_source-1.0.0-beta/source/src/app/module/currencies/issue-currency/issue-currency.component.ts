@@ -137,7 +137,7 @@ export class IssueCurrencyComponent implements OnInit {
         var type = this.sumArray(issueCurrencyForm2.types);
         if (!(type > 0)) {
             alertFunctions.InfoAlertBox('Error',
-                'Form error. Atleast one currency type must be selected',
+                'issue-currency-select-currency-error-msg',
                 'OK',
                 'error').then((isConfirm: any) => {
 
@@ -213,7 +213,7 @@ export class IssueCurrencyComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'Transaction succesfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.route.params.subscribe(params => {

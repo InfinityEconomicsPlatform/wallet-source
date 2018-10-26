@@ -267,7 +267,7 @@ export class DetailsComponent {
             .subscribe((success: any) => {
                 if (!success.errorCode) {
                     alertFunctions.InfoAlertBox('Success',
-                        'Transaction succesfull broadcasted with id ' + success.transaction,
+                        'Transaction succesfully broadcasted with id ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
 

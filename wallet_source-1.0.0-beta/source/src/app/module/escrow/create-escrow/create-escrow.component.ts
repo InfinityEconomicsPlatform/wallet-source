@@ -148,7 +148,7 @@ export class CreateEscrowComponent implements OnInit {
             alertFunctions
               .InfoAlertBox(
                 "Success",
-                "This account never had an outbound transaction. Make sure this account is the right one. In doubt, ask the account holder for his public key and add it on the former page to this transaction.",
+                "create-escrow-outbound-transaction-success-msg",
                 "OK",
                 "success"
               )

@@ -77,12 +77,12 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group m-0" *ngIf="fundingMonitorForm.holdingType == 1">
-                            <label>{{'common.asset-id-lable'| translate}}
+                            <label>{{'common.asset-id-label'| translate}}
                                 <i class="fa fa-question-circle-o" placement="right" triggers="mouseenter:mouseleave"
                                     container="body" ngbPopover="{{'common.asset-id-popover'| translate}}"></i>
                             </label>
                             <input type="text" class="form-control" name="asset" #asset="ngModel" [(ngModel)]="fundingMonitorForm.holding"
-                                id="assetId" placeholder="{{'common.asset-id-lable'| translate}}" (change)="getAsset(fundingMonitorForm.holding)">
+                                id="assetId" placeholder="{{'common.asset-id-label'| translate}}" (change)="getAsset(fundingMonitorForm.holding)">
                         </div>
                         <div class="form-group m-0" *ngIf="fundingMonitorForm.holdingType == 2">
                             <label>{{'common.currency-ticker-label'| translate}}

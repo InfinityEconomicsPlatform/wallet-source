@@ -208,7 +208,7 @@ export class SendMessageComponent implements OnInit {
 
                 if (!recipientPublicKey && !hasPublicKeyAdded && hasMessageAdded) {
                     alertFunctions.InfoAlertBox('Error',
-                        'Sorry, an error occured! Reason: This account has no visible public key because it never had any outbound transaction. Encrypted messages are not available without a public key. Ask the account holder for his public key and add the key on the former page to this transaction',
+                        'send-simple-account-outbound-transaction-info-msg',
                         'OK',
                         'error').then(() => {
 
@@ -259,7 +259,7 @@ export class SendMessageComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'Transaction succesfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.router.navigate(['/account/transactions/pending']);
