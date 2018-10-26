@@ -98,7 +98,7 @@ export class IssueAssetComponent implements OnInit {
             .subscribe((success) => {
                 if (!success.errorCode) {
                     alertFunctions.InfoAlertBox('Success',
-                        'Transaction succesfully broadcasted with Id : ' + success.transaction,
+                        'Transaction successfully broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
                             this.router.navigate(['/assets/show-assets']);

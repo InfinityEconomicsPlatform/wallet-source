@@ -249,7 +249,7 @@ export class BalanceLeaseComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfully broadcasted with Id : ' + success.transaction,
+                    'Transaction successfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         // this.router.navigate(['/account/transactions/pending']);

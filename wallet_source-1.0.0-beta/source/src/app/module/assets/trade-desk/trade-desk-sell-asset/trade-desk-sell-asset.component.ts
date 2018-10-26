@@ -101,7 +101,7 @@ export class TradeDeskSellAssetComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfully broadcasted with Id : ' + success.transaction,
+                    'Transaction successfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.route.params.subscribe(params => {

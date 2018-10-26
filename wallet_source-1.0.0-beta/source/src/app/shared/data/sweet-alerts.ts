@@ -75,11 +75,24 @@ export function InfoAlertBox(
     buttonText,
     messageType
 ) {
-    console.log('messageText', messageText);
-    messageTitle = (keyData['sweet-alert'][messageTitle] != '') ? keyData['sweet-alert'][messageTitle] : messageTitle;
-    messageText = (keyData['sweet-alert'][messageText.replace("&#34;", '"').replace("&#34;", '"')] != '') ?
-    keyData['sweet-alert'][messageText.replace("&#34;", '"').replace("&#34;", '"')] :
-    messageText.replace("&#34;", '"').replace("&#34;", '"');
+     console.log(messageText)
+    // console.log(messageText.includes("Transaction successfully broadcasted with Id :"));
+    if (messageText.includes("Transaction successfully broadcasted with Id :")) {
+        messageText = messageText.replace("Transaction successfully broadcasted with Id :", keyData['sweet-alert']['success-broadcast-message'])
+        //console.log(messageText)
+    } else if (messageText.includes("Unable to broadcast transaction. Reason:")) {
+        messageText = messageText.replace("Unable to broadcast transaction. Reason:", keyData['sweet-alert']['unable-broadcast-transaction'])
+        //console.log(messageText)
+    } else if (messageText.includes("Sorry, an error occured! Reason: ")) {
+        messageText = messageText.replace("Sorry, an error occured! Reason: ", keyData['sweet-alert']['unable-broadcast-transaction'])
+        //console.log(messageText)
+    }
+    messageTitle = (keyData['sweet-alert'][messageTitle] != undefined) ? keyData['sweet-alert'][messageTitle] : messageTitle;
+    messageText = (keyData['sweet-alert'][messageText.replace("&#34;", '"').replace("&#34;", '"')] != undefined) ?
+        keyData['sweet-alert'][messageText.replace("&#34;", '"').replace("&#34;", '"')] :
+        messageText.replace("&#34;", '"').replace("&#34;", '"');
+    // console.log(messageTitle)
+    // console.log(messageText)
     return swal({
         title: messageTitle,
         text: messageText,

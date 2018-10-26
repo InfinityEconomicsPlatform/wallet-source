@@ -92,7 +92,7 @@ export class CreatePollComponent implements OnInit {
         if (this.pollOptions.length < 10) {
             this.pollOptions.push({});
         } else {
-            this.showError('You can add maximum 10 options');
+            this.showError('max-ten-option-error');
         }
         this.validateStepTwo();
     }
@@ -104,7 +104,7 @@ export class CreatePollComponent implements OnInit {
         }
 
         if (this.votingModel == 2 && !this.assetId) {
-            this.showError('Enter the asset ID (numeric)');
+            this.showError('Enter the asset ID');
             return;
         }
 
@@ -129,37 +129,37 @@ export class CreatePollComponent implements OnInit {
         this.isSecondStepValid = false;
 
         if (this.minNumberOfOptions == null) {
-            this.errorMessage = 'Enter minimum number of option a voter can choose.';
+            this.errorMessage = 'Enter minimum number option';
             return;
         }
 
         if (this.maxNumberOfOptions == null) {
-            this.errorMessage = 'Enter maximum number of option a voter can choose.';
+            this.errorMessage = 'Enter maximum number option';
             return;
         }
 
         if (this.finishHeight == null) {
-            this.errorMessage = 'Enter the height of the block.';
+            this.errorMessage = 'Enter the height block';
             return;
         }
 
         if (this.finishHeight < 1440 || this.finishHeight > 20000) {
-            this.errorMessage = 'The height of the block should be greater than 1440 or less than 20000.';
+            this.errorMessage = 'Block Height Value';
             return;
         }
 
         if (this.minNumberOfOptions < 1 || this.minNumberOfOptions > 10) {
-            this.errorMessage = 'Minimum number of options a voter can choose should be between 1 to 10.';
+            this.errorMessage = 'Minimum number of options';
             return;
         }
 
         if (this.maxNumberOfOptions < 1 || this.maxNumberOfOptions > 10) {
-            this.errorMessage = 'Maximum number of options a voter can choose should be between 1 to 10.';
+            this.errorMessage = 'Maximum number of options';
             return;
         }
 
         if (this.minNumberOfOptions > this.maxNumberOfOptions) {
-            this.errorMessage = 'The minimum number of options cannot be greater than maximum number of options.';
+            this.errorMessage = 'Minimum number of options greater';
             return;
         }
 

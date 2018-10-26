@@ -240,7 +240,7 @@ export class CreateEscrowComponent implements OnInit {
           alertFunctions
             .InfoAlertBox(
               "Success",
-              "Transaction succesfull broadcasted with Id : " +
+              "Transaction successfully broadcasted with Id : " +
                 success.transaction,
               "OK",
               "success"
