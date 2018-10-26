@@ -56,7 +56,7 @@ export class StopShufflingComponent implements OnInit {
 
                     if (!success.errorCode) {
 
-                        var result = 'Shuffler succesfully stopped';
+                        var result = 'Shuffler successfully stopped';
                         var resType = 'success';
 
                         if (success.stoppedShuffler == false) {

@@ -47,7 +47,7 @@ export class JoinShufflingComponent implements OnInit {
 
             if (!this.isLocalhostOrTestnet) {
                 alertFunctions.InfoAlertBox('Error',
-                    'You must be connected to localhost or testnet to perform shuffling',
+                    'shuffling-connection-error-msg',
                     'OK',
                     'error').then((isConfirm: any) => {
                         this.router.navigate(['/shuffling/show-shufflings/all']);
@@ -96,7 +96,7 @@ export class JoinShufflingComponent implements OnInit {
                 })
         } else {
             alertFunctions.InfoAlertBox('Error',
-                'You must be connected to localhost or testnet to perform shuffling',
+                'shuffling-connection-error-msg',
                 'OK',
                 'error').then((isConfirm: any) => {
                 });
@@ -108,7 +108,7 @@ export class JoinShufflingComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'Transaction successfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.router.navigate(['/shuffling/show-shufflings/all']);

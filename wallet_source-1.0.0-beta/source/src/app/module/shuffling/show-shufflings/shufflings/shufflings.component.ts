@@ -190,7 +190,7 @@ export class ShufflingsComponent implements OnInit {
                   alertFunctions
                     .InfoAlertBox(
                       "Success",
-                      "Succesfully stopped all the shufflers on testnet node",
+                      "shufflers-stop-success-msg",
                       "OK",
                       "success"
                     )

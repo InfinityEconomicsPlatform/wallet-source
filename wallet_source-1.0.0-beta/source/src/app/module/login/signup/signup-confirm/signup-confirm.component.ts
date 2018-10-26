@@ -34,7 +34,7 @@ export class SignupConfirmComponent implements OnInit {
         } else {
             alertFunctions.InfoAlertBox(
                 'Error',
-                'Please enter same Passphrase',
+                'sign-up-confirm-error-msg',
                 'OK',
                 'error')
                 .then((isConfirm: any) => {

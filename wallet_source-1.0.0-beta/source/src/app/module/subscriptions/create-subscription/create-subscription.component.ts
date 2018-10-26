@@ -89,7 +89,7 @@ export class CreateSubscriptionComponent implements OnInit {
                 this.accountDetails = success;
                 if (!recipientPublicKey) {
                     alertFunctions.InfoAlertBox('Success',
-                        'This account never had an outbound transaction. Make sure this account is the right one. In doubt, ask the account holder for his public key and add it on the former page to this transaction.',
+                        'create-subscription-outbound transaction-msg',
                         'OK',
                         'success').then((isConfirm: any) => {
                         });
@@ -146,7 +146,7 @@ export class CreateSubscriptionComponent implements OnInit {
             .subscribe((success) => {
                 if (!success.errorCode) {
                     alertFunctions.InfoAlertBox('Success',
-                        'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                        'Transaction successfully broadcasted with Id : ' + success.transaction,
                         'OK',
                         'success').then((isConfirm: any) => {
                             this.router.navigate(['/subscriptions/my-subscriptions']);

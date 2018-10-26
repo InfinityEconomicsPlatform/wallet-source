@@ -1675,7 +1675,12 @@
         "Maximum number of options": "Maximum number of options a voter can choose should be between 1 to 10.",
         "Minimum number of options greater": "The minimum number of options cannot be greater than maximum number of options.",
         "Please enter all the options.": "Please enter all the options.",
-        "Poll option value error": "You have to select atleast min. {{minNumberOfOptions}} and max. {{maxNumberOfOptions}} options."
+        "Poll option value error": "You have to select atleast min. {{minNumberOfOptions}} and max. {{maxNumberOfOptions}} options.",
+        "sign-up-confirm-error-msg": "Please enter same Passphrase",
+        "create-shuffle-localhost-mandatory-error-msg": "Localhost (127.0.0.1) is not available. For security reasons localhost is mandatory to create a shuffle.",
+        "shuffling-connection-error-msg": "You must be connected to localhost or testnet to perform shuffling",
+        "shufflers-stop-success-msg": "Successfully stopped all the shufflers on testnet node",
+        "create-subscription-outbound transaction-msg": "This account never had an outbound transaction. Make sure this account is the right one. In doubt, ask the account holder for his public key and add it on the former page to this transaction."
     },
     "breadcrumbs": {
         "account": "Account",

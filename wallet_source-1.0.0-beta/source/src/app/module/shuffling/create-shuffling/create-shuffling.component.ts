@@ -56,7 +56,7 @@ export class CreateShufflingComponent implements OnInit {
         if (!this.isLocalhostOrTestnet) {
 
             alertFunctions.InfoAlertBox('Error',
-                'Localhost (127.0.0.1) is not available. For security reasons localhost is mandatory to create a shuffle.',
+                'create-shuffle-localhost-mandatory-error-msg',
                 'OK',
                 'error').then((isConfirm: any) => {
                 });
@@ -195,7 +195,7 @@ export class CreateShufflingComponent implements OnInit {
                 })
         } else {
             alertFunctions.InfoAlertBox('Error',
-                'You must be connected to localhost or testnet to perform shuffling',
+                'shuffling-connection-error-msg',
                 'OK',
                 'error').then((isConfirm: any) => {
 
@@ -208,7 +208,7 @@ export class CreateShufflingComponent implements OnInit {
 
             if (!success.errorCode) {
                 alertFunctions.InfoAlertBox('Success',
-                    'Transaction succesfull broadcasted with Id : ' + success.transaction,
+                    'Transaction successfully broadcasted with Id : ' + success.transaction,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.router.navigate(['/shuffling/show-shufflings/my']);
