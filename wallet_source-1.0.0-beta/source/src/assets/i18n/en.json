@@ -2164,7 +2164,10 @@
             "fee": "Fee",
             "minimum_fee": "Minimum Fee",
             "current_quantity": "Current Quantity",
-            "new_quantity": "New Quantity"
+            "new_quantity": "New Quantity",
+            "success": "Success",
+            "success_message": "Change saved successfully",
+            "ok": "Okay"
         }
     }
 }

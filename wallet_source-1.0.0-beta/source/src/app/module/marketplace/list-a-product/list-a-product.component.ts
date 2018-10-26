@@ -12,7 +12,8 @@ export class ListAProductComponent implements OnInit {
     isAdvancedSettings: boolean = false;
     tabSelected: string = 'no-approval';
 
-    constructor(public router: Router, private marketplaceService: MarketplaceService) {
+    constructor(public router: Router,
+        private marketplaceService: MarketplaceService) {
 
     }
 

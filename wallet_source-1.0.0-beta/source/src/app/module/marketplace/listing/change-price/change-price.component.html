@@ -86,9 +86,10 @@
                                                     </label>
                                                     <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <div class="col-10 pl-0">
-                                                            <input type="text" id="tags" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            <input type="text" id="updatedPrice" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                                 placeholder="{{ 'marketplace.product-details.new_price' | translate}}"
-                                                                name="tags" required />
+                                                                [(ngModel)]="newPrice" #updatedPrice="ngModel" minValue="1"
+                                                                name="updatedPrice" required />
                                                         </div>
                                                         <div class="col-2 text-right pl-0">
                                                             <span class="input-group-text">
@@ -107,7 +108,8 @@
                                                         <div class="col-10 pl-0">
                                                             <input type="text" id="tags" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                                 placeholder="{{ 'marketplace.product-details.minimum_fee' | translate}}"
-                                                                name="tags" required />
+                                                                name="tags" value="{{ feeTQT | amountTqt }}" [readOnly]="true"
+                                                                required />
                                                         </div>
                                                         <div class="col-2 text-right pl-0">
                                                             <span class="input-group-text">
@@ -121,7 +123,8 @@
                                         <div class="form-group">
                                             <label>{{ 'marketplace.product-details.passphrase' | translate }}</label>
                                             <div class="position-relative">
-                                                <input type="text" id="passphrase" class="form-control" placeholder="{{ 'marketplace.product-details.passphrase' | translate }}"
+                                                <input type="text" id="passphrase" class="form-control" [(ngModel)]="secretPhrase"
+                                                    #passphrase="ngModel" placeholder="{{ 'marketplace.product-details.passphrase' | translate }}"
                                                     name="passphrase" required />
                                             </div>
                                         </div>
@@ -133,7 +136,7 @@
                                     <a class="btn btn-border mr-3" (click)="location.back()">
                                         {{ 'marketplace.product-details.cancel' | translate }}
                                     </a>
-                                    <a class="btn btn-gradient">
+                                    <a class="btn btn-gradient" (click)="changePrice(product.goods, this.newPrice, this.secretPhrase, this.feeTQT)">
                                         {{ 'marketplace.product-details.change-price' | translate }}
                                     </a>
                                 </div>
