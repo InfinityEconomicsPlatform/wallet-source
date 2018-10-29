@@ -13,24 +13,24 @@
                                 <ngx-datatable class="material" [rows]="purchased_products" [columnMode]="'force'"
                                     [rowHeight]="'auto'" [footerHeight]="50" [externalPaging]="true" [count]="page.totalElements"
                                     [offset]="page.pageNumber" [limit]="page.size">
-                                    <ngx-datatable-column prop="name" name="Purchase Date">
+                                    <ngx-datatable-column prop="timestamp" name="Purchase Date">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                            {{ value | timestamp }}
                                         </ng-template>
                                     </ngx-datatable-column>
-                                    <ngx-datatable-column prop="votingModel" name="Product">
+                                    <ngx-datatable-column prop="name" name="Product">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                            {{ value }}
                                         </ng-template>
                                     </ngx-datatable-column>
-                                    <ngx-datatable-column prop="options" name="Price">
+                                    <ngx-datatable-column prop="priceTQT" name="Price">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                            {{ value | amountTqt}}
                                         </ng-template>
                                     </ngx-datatable-column>
-                                    <ngx-datatable-column prop="finished" name="Seller">
+                                    <ngx-datatable-column prop="sellerRS" name="Seller">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{value}}
+                                            <a class="hyperlink">{{ value }}</a>
                                         </ng-template>
                                     </ngx-datatable-column>
                                 </ngx-datatable>

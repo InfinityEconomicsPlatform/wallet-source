@@ -196,9 +196,10 @@ export class MarketplaceService {
         return this.http.get(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
     }
 
-    getDGSPurchases(buyer: any, lastIndex?: any) {
+    getDGSPurchases(seller?: any, buyer?: any, lastIndex?: any) {
         let params = {
             'requestType': 'getDGSPurchases',
+            'seller': seller,
             'buyer': buyer,
             'lastIndex': lastIndex
         };

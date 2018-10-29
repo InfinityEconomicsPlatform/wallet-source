@@ -44,7 +44,7 @@ export class StoreComponent implements OnInit {
     getCounts() {
         this.accountId = this.accountService.getAccountDetailsFromSession('accountId');
 
-        this.marketplaceService.getDGSPurchases(this.accountId).subscribe((success: any) => {
+        this.marketplaceService.getDGSPurchases(null, this.accountId).subscribe((success: any) => {
             this.count.purchased_products = success.purchases.length;
         }, (error) => {
             console.log("Error: getDGSPurchases ", error);

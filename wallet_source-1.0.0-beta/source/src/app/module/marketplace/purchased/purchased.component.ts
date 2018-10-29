@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from '../../../config/page';
+import { Router } from '@angular/router';
+import { MarketplaceService } from '../marketplace.service';
+import { AccountService } from 'app/module/account/account.service';
 
 @Component({
     selector: 'app-purchased',
@@ -9,12 +12,22 @@ import { Page } from '../../../config/page';
 export class PurchasedComponent implements OnInit {
     purchased_products: any[] = [];
     page = new Page();
+    accountRs: any;
 
-    constructor() {
+    constructor(public router: Router,
+        private marketplaceService: MarketplaceService,
+        private accountService: AccountService) {
 
     }
 
     ngOnInit() {
+        this.accountRs = this.accountService.getAccountDetailsFromSession('accountRs');
+
+        this.marketplaceService.getDGSPurchases(null, this.accountRs).subscribe((success: any) => {
+            this.purchased_products = success.purchases;
+        }, (error) => {
+            console.log("Purchased Products:", error);
+        });
 
     }
 
