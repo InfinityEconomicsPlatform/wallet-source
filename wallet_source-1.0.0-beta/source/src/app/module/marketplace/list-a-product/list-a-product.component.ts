@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
     styleUrls: ['./list-a-product.component.scss']
 })
 export class ListAProductComponent implements OnInit {
-    isAdvancedSettings: boolean = false;
     tabSelected: string = 'no-approval';
 
     constructor(public router: Router,
