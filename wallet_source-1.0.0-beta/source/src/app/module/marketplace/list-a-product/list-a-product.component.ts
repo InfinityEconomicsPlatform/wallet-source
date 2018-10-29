@@ -65,5 +65,4 @@ export class ListAProductComponent implements OnInit {
             console.log("List a Product:", error);
         })
     }
-
 }
