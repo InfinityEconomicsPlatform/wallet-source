@@ -37,7 +37,7 @@ export class ChangePriceComponent implements OnInit {
             if (!success.errorCode) {
                 alertFunction.InfoAlertBox(
                     "Success",
-                    "Change saved successfully",
+                    "Changes saved successfully",
                     "OK",
                     'success'
                 ).then((isConfirm: any) => {

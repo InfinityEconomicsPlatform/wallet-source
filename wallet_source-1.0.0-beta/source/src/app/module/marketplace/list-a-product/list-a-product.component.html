@@ -13,14 +13,16 @@
                                 <div class="form-group">
                                     <label>{{ 'marketplace.list-a-product.name' | translate }}</label>
                                     <div class="position-relative">
-                                        <input type="text" id="name" class="form-control" placeholder="{{ 'marketplace.list-a-product.name_placeholder' | translate }}"
+                                        <input type="text" id="name" class="form-control" [(ngModel)]="product.name"
+                                            #productName="ngModel" placeholder="{{ 'marketplace.list-a-product.name_placeholder' | translate }}"
                                             name="name" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>{{ 'marketplace.list-a-product.description' | translate }}</label>
                                     <div class="position-relative">
-                                        <textarea id="description" class="form-control" placeholder="{{ 'marketplace.list-a-product.description_placeholder' | translate }}"
+                                        <textarea id="description" class="form-control" [(ngModel)]="product.description"
+                                            #productDescription="ngModel" placeholder="{{ 'marketplace.list-a-product.description_placeholder' | translate }}"
                                             name="description" required></textarea>
                                     </div>
                                 </div>
@@ -33,7 +35,8 @@
                                                     container="body" placement="right" [ngbPopover]="'marketplace.list-a-product.tag_popover' | translate"></i>
                                             </label>
                                             <div class="position-relative">
-                                                <input type="text" id="tags" class="form-control" placeholder="{{ 'marketplace.list-a-product.tags_placeholder' | translate}}"
+                                                <input type="text" id="tags" class="form-control" [(ngModel)]="product.tags"
+                                                    #productTags="ngModel" placeholder="{{ 'marketplace.list-a-product.tags_placeholder' | translate}}"
                                                     name="tags" required />
                                             </div>
                                         </div>
@@ -44,6 +47,7 @@
                                             <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                 <div class="col-10 pl-0">
                                                     <input type="number" id="price" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                        [(ngModel)]="product.priceTQT" #productPrice="ngModel"
                                                         placeholder="{{ 'marketplace.list-a-product.price_placeholder' | translate }}"
                                                         name="price" required>
                                                 </div>
@@ -60,7 +64,8 @@
                                         <div class="form-group m-0">
                                             <label>{{ 'marketplace.list-a-product.quantity' | translate }}</label>
                                             <div class="input-group m-0">
-                                                <input type="number" id="quantity" class="form-control" placeholder="{{ 'marketplace.list-a-product.quantity_placeholder' | translate }}"
+                                                <input type="number" id="quantity" class="form-control" [(ngModel)]="product.quantity"
+                                                    #productQuantity="ngModel" placeholder="{{ 'marketplace.list-a-product.quantity_placeholder' | translate }}"
                                                     name="quantity" required>
                                             </div>
                                         </div>
@@ -71,7 +76,7 @@
                                             <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                 <div class="col-10 pl-0">
                                                     <input type="number" id="fee" class="pl-0 mb-0 pt-0 pb-0 form-control"
-                                                        placeholder="{{ 'marketplace.list-a-product.fee_placeholder' | translate }}"
+                                                        [(ngModel)]="product.feeTQT" #productFee="ngModel" placeholder="{{ 'marketplace.list-a-product.fee_placeholder' | translate }}"
                                                         name="fee" required>
                                                 </div>
                                                 <div class="col-2 text-right pl-0">
@@ -84,13 +89,14 @@
                                 <div class="form-group">
                                     <label>{{ 'marketplace.list-a-product.passphrase' | translate }}</label>
                                     <div class="position-relative">
-                                        <input type="text" id="passphrase" class="form-control" placeholder="{{ 'marketplace.list-a-product.passphrase_placeholder' | translate }}"
+                                        <input type="text" id="passphrase" class="form-control" [(ngModel)]="product.secretPhrase"
+                                            #passphrase="ngModel" placeholder="{{ 'marketplace.list-a-product.passphrase_placeholder' | translate }}"
                                             name="passphrase" required />
                                     </div>
                                 </div>
 
                                 <div class="mt-4">
-                                    <button type="button" class="btn btn-gradient mr-1 float-right">
+                                    <button type="button" class="btn btn-gradient mr-1 float-right" (click)="putProductForSale(product)">
                                         {{ 'marketplace.list-a-product.putForSale' | translate }}
                                     </button>
                                 </div>
