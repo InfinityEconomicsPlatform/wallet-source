@@ -1676,7 +1676,9 @@
         "Purchased Products": "Purchased Products",
         "MY STORE": "MY STORE",
         "My Products For Sale": "My Products For Sale",
-        "List A Product": "List A Product"
+        "List A Product": "List A Product",
+        "My Pending Orders": "My Pending Orders",
+        "My Completed Orders": "My Completed Orders"
     },
     "sweet-alert": {
         "info": "Info",
@@ -2027,7 +2029,9 @@
         "product-details": "Product Information",
         "change-price": "Change Price",
         "change-quantity": "Change Quantity",
-        "remove-product": "Remove Product"
+        "remove-product": "Remove Product",
+        "pending-orders": "Pending Orders",
+        "completed-orders": "Completed Orders"
     },
     "marketplace": {
         "store": {
@@ -2168,6 +2172,30 @@
             "success": "Success",
             "success_message": "Change saved successfully",
             "ok": "Okay"
+        },
+        "pending-orders": {
+            "title": "Pending Orders",
+            "price": "Price",
+            "quantity": "Quantity",
+            "buyer": "Buyer",
+            "delivery-deadline": "Delivery Deadline",
+            "id": "Product ID",
+            "listing_date": "Listing Date",
+            "deliver-product": "Deliver Product",
+            "no-orders": "No Data Available"
+        },
+        "completed-orders": {
+            "title": "Completed Orders",
+            "price": "Price",
+            "quantity": "Quantity",
+            "order": "Order Status",
+            "buyer": "Buyer",
+            "delivery-deadline": "Delivery Deadline",
+            "id": "Product ID",
+            "order-date": "Order Date",
+            "no-orders": "No Data Available",
+            "complete": "Completed",
+            "pending": "Pending"
         }
     }
 }

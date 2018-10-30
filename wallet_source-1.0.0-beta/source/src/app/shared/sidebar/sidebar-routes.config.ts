@@ -732,6 +732,26 @@ export const ROUTES: RouteInfo[] = [
                 badgeClass: '',
                 isExternalLink: false,
                 submenu: []
+            },
+            {
+                path: '/marketplace/pending-orders',
+                title: 'My Pending Orders',
+                icon: '',
+                class: '',
+                badge: '',
+                badgeClass: '',
+                isExternalLink: false,
+                submenu: []
+            },
+            {
+                path: '/marketplace/completed-orders',
+                title: 'My Completed Orders',
+                icon: '',
+                class: '',
+                badge: '',
+                badgeClass: '',
+                isExternalLink: false,
+                submenu: []
             }
         ],
         isSwapp: true,

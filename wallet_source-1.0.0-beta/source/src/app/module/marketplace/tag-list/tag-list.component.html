@@ -15,7 +15,7 @@
                             <div class="col-md-10">
                                 <div class="row">
                                     <div class="col-md-7 ">
-                                        <h2><a>{{ good.name }}</a></h2>
+                                        <h2><a (click)="productDetails(good)">{{ good.name }}</a></h2>
                                         <h4>{{ good.priceTQT | amountTqt }} {{ 'common.xin-unit-text' | translate }}</h4>
                                     </div>
                                     <div class="col-md-5 text-right time">
@@ -46,7 +46,7 @@
                                             <li>
                                                 <i class="icon-Blockexplorer"></i>
                                                 <strong>{{ 'marketplace.tag.id' | translate }}: </strong>
-                                                <a>{{ good.goods }}</a>
+                                                <a (click)="productDetails(good)">{{ good.goods }}</a>
                                             </li>
                                         </ul>
                                     </div>

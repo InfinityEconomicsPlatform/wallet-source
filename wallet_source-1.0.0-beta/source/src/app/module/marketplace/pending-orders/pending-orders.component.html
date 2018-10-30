@@ -3,17 +3,12 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">
-                        {{ 'marketplace.tag.title' | translate }} -
-                        {{ (searchData.searchType == 'account_id') ? ('marketplace.tag.seller' | translate) :
-                        ('marketplace.tag.search' | translate) }}
-                        '{{ searchData.searchTerm }}'
-                    </h2>
+                    <h2 class="main-title">{{ 'marketplace.pending-orders.title' | translate }}</h2>
                     <app-breadcrumb></app-breadcrumb>
                 </div>
                 <div class="card-body mt-4">
-                    <div class="card-block mt-2" *ngIf="goods.length > 0">
-                        <div class="row  tag-details shadow-box mb-3" *ngFor="let good of goods">
+                    <div class="card-block mt-2">
+                        <div class="row tag-details shadow-box mb-3" *ngFor="let good of pendingProducts">
                             <div class="col-md-2">
                                 <i class="icon-placeholder placeholder-icon"></i>
                             </div>
@@ -31,29 +26,45 @@
                                         <ul class="mt-2 tag-info mb-0">
                                             <li>
                                                 <i class="icon-Account"></i>
-                                                <strong>{{ 'marketplace.tag.quantity' | translate }}: </strong>
+                                                <strong>{{ 'marketplace.pending-orders.quantity' | translate }}:
+                                                </strong>
                                                 {{ good.quantity }}
                                             </li>
                                             <li>
-                                                <i class="icon-tags"></i>
-                                                <strong>{{ 'marketplace.tag.tags' | translate }}: </strong>
-                                                <a *ngFor="let tag of good.parsedTags" (click)="openTag(tag)">
-                                                    {{ tag }}
+                                                <i class="icon-Account"></i>
+                                                <strong>{{ 'marketplace.pending-orders.buyer' | translate }}: </strong>
+                                                <a (click)="searchByTerm('account_id', good.buyerRS)">
+                                                    {{ good.buyerRS }}
                                                 </a>
                                             </li>
                                             <li>
                                                 <i class="icon-Account"></i>
-                                                <strong>{{ 'marketplace.tag.seller' | translate }}: </strong>
-                                                <a>{{ good.sellerRS }}</a>
+                                                <strong>
+                                                    {{ 'marketplace.pending-orders.delivery-deadline' | translate }}:
+                                                </strong>
+                                                {{ good.deliveryDeadlineTimestamp | timestamp }}
                                             </li>
                                             <li>
                                                 <i class="icon-Blockexplorer"></i>
-                                                <strong>{{ 'marketplace.tag.id' | translate }}: </strong>
+                                                <strong>{{ 'marketplace.pending-orders.id' | translate }}: </strong>
                                                 <a (click)="productDetails(good)">{{ good.goods }}</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-12">
+                                <hr>
+                                <div>
+                                    <button type="button" class="btn btn-gradient float-right" (click)="deliverProduct(product)">
+                                        {{ 'marketplace.pending-orders.deliver-product' | translate }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="completedOrders.length == 0">
+                            <div class="col-md-12">
+                                <p class="text-center">{{ 'marketplace.pending-orders.no-orders' | translate }}</p>
                             </div>
                         </div>
                     </div>

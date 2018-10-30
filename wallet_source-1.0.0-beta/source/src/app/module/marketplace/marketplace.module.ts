@@ -17,6 +17,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ChangePriceComponent } from './listing/change-price/change-price.component';
 import { ChangeQuantityComponent } from './listing/change-quantity/change-quantity.component';
 import { DeleteProductComponent } from './listing/delete-product/delete-product.component';
+import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
+import { CompletedOrdersComponent } from './completed-orders/completed-orders.component';
 
 @NgModule({
     imports: [
@@ -37,7 +39,9 @@ import { DeleteProductComponent } from './listing/delete-product/delete-product.
         ProductDetailsComponent,
         ChangePriceComponent,
         ChangeQuantityComponent,
-        DeleteProductComponent
+        DeleteProductComponent,
+        PendingOrdersComponent,
+        CompletedOrdersComponent
     ],
     providers: [
         MarketplaceService

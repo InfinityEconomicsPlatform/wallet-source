@@ -20,6 +20,12 @@ export class ProductDetailsComponent implements OnInit {
         this.product = DataStoreService.get('marketplace_product');
         if (typeof (this.product) == "undefined") {
             this.location.back();
+        } else {
+            this.marketplaceService.getDGSGood(this.product.goods).subscribe((success: any) => {
+                this.product = success;
+            }, (error) => {
+                console.log("Product Details: ", error);
+            });
         }
     }
 }

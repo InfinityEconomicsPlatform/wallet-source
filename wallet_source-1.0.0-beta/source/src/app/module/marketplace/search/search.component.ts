@@ -77,4 +77,9 @@ export class SearchComponent implements OnInit {
         DataStoreService.set('marketplace_tag', tag);
         this.router.navigateByUrl('/marketplace/tag');
     }
+
+    productDetails(product) {
+        DataStoreService.set('marketplace_product', product);
+        this.router.navigateByUrl('/marketplace/product-details');
+    }
 }
