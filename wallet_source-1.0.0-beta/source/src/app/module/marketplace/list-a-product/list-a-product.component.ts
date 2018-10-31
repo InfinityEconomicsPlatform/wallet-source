@@ -35,7 +35,7 @@ export class ListAProductComponent implements OnInit {
         let priceTQT = this.amountToQuant.transform(product.priceTQT);
         let feeTQT = this.amountToQuant.transform(product.feeTQT);
 
-        this.marketplaceService.dgsListing(product.secretPhrase, product.name, product.description, product.quantity, priceTQT, feeTQT).subscribe((success: any) => {
+        this.marketplaceService.dgsListing(product.secretPhrase, product.name, product.description, product.tags, product.quantity, priceTQT, feeTQT).subscribe((success: any) => {
             if (!success.errorCode) {
                 alertFunction.InfoAlertBox(
                     "Success",

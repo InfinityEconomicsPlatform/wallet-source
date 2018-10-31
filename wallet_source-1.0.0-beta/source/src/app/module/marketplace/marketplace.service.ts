@@ -47,12 +47,13 @@ export class MarketplaceService {
         return this.http.post(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
     }
 
-    dgsListing(secretPhrase, name, description, quantity, priceTQT, feeTQT) {
+    dgsListing(secretPhrase, name, description, tags, quantity, priceTQT, feeTQT) {
         let params = {
             'requestType': 'dgsListing',
             'secretPhrase': secretPhrase,
             'name': name,
             'description': description,
+            'tags': tags,
             'quantity': quantity,
             'priceTQT': priceTQT,
             'feeTQT': feeTQT,
