@@ -76,7 +76,7 @@ export class MarketplaceService {
         return this.http.post(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
     }
 
-    dgsPurchase(goods, quantity, deliveryDeadlineTimestamp, secretPhrase, feeTQT) {
+    dgsPurchase(goods, quantity, deliveryDeadlineTimestamp, secretPhrase, feeTQT, priceTQT) {
         let params = {
             'requestType': 'dgsPurchase',
             'goods': goods,
@@ -84,6 +84,7 @@ export class MarketplaceService {
             'deliveryDeadlineTimestamp': deliveryDeadlineTimestamp,
             'secretPhrase': secretPhrase,
             'feeTQT': feeTQT,
+            'priceTQT': priceTQT,
             'deadline': this.deadline
         };
 

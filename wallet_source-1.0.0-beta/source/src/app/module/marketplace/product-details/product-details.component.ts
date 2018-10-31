@@ -28,4 +28,9 @@ export class ProductDetailsComponent implements OnInit {
             });
         }
     }
+
+    purchaseProduct(product) {
+        DataStoreService.set('marketplace_product', product);
+        this.router.navigateByUrl('/marketplace/purchase');
+    }
 }

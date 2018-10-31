@@ -2171,7 +2171,9 @@
             "new_quantity": "New Quantity",
             "success": "Success",
             "success_message": "Change saved successfully",
-            "ok": "Okay"
+            "ok": "Okay",
+            "total_price": "Total Price",
+            "delivery-deadline": "Delivery Deadline (Hours)"
         },
         "pending-orders": {
             "title": "Pending Orders",
