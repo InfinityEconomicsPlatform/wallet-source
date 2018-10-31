@@ -2031,7 +2031,8 @@
         "change-quantity": "Change Quantity",
         "remove-product": "Remove Product",
         "pending-orders": "Pending Orders",
-        "completed-orders": "Completed Orders"
+        "completed-orders": "Completed Orders",
+        "delivery": "Delivery"
     },
     "marketplace": {
         "store": {
@@ -2173,7 +2174,8 @@
             "success_message": "Change saved successfully",
             "ok": "Okay",
             "total_price": "Total Price",
-            "delivery-deadline": "Delivery Deadline (Hours)"
+            "delivery-deadline": "Delivery Deadline (Hours)",
+            "delivery": "Delivery"
         },
         "pending-orders": {
             "title": "Pending Orders",

@@ -13,6 +13,7 @@ import { ChangeQuantityComponent } from './listing/change-quantity/change-quanti
 import { DeleteProductComponent } from './listing/delete-product/delete-product.component';
 import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
 import { CompletedOrdersComponent } from './completed-orders/completed-orders.component';
+import { DeliverComponent } from './deliver/deliver.component';
 
 const routes: Routes = [
     {
@@ -75,6 +76,10 @@ const routes: Routes = [
     {
         path: 'completed-orders',
         component: CompletedOrdersComponent
+    },
+    {
+        path: 'delivery',
+        component: DeliverComponent
     }
 ];
 

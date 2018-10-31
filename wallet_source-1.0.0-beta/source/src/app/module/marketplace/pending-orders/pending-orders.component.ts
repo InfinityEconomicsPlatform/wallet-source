@@ -34,4 +34,8 @@ export class PendingOrdersComponent implements OnInit {
         this.router.navigateByUrl('/marketplace/product-details');
     }
 
+    deliverProduct(product) {
+        DataStoreService.set('marketplace_product', product);
+        this.router.navigateByUrl('/marketplace/delivery');
+    }
 }
