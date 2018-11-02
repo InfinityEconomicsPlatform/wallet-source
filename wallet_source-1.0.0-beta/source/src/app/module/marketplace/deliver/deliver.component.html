@@ -8,7 +8,62 @@
                 </div>
                 <div class="card-body mt-4 product-info">
                     <div class="card-block mt-2">
-
+                        <div class="row">
+                            <div class="col-md-3">
+                                <i class="icon-placeholder placeholder-icon xl-icon"></i>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row mb-3">
+                                    <div class="col-md-3 col-lg-2">
+                                        <strong>{{ 'marketplace.product-details.product' | translate }}</strong>
+                                    </div>
+                                    <div class="col-md-9 col-lg-10">{{ product.name }}</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3 col-lg-2">
+                                        <strong>{{ 'marketplace.product-details.date' | translate }}</strong>
+                                    </div>
+                                    <div class="col-md-9 col-lg-10">{{ product.timestamp | timestamp }}</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3 col-lg-2">
+                                        <strong>{{ 'marketplace.product-details.price' | translate }}</strong>
+                                    </div>
+                                    <div class="col-md-9 col-lg-10">
+                                        {{ product.priceTQT | amountTqt }} {{ 'common.xin-unit-text' | translate }}
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3 col-lg-2">
+                                        <strong>{{ 'marketplace.product-details.seller' | translate }}</strong>
+                                    </div>
+                                    <div class="col-md-9 col-lg-10">
+                                        <a class="hyperlink">
+                                            {{ product.sellerRS }} ({{ 'marketplace.product-details.view-store'|
+                                            translate }})
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3 col-lg-2">
+                                        <strong>{{ 'marketplace.product-details.quantity' | translate }}</strong>
+                                    </div>
+                                    <div class="col-md-9 col-lg-10">{{ product.quantity }}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <p class="pt-2 pb-2">
+                                    {{ product.description }}
+                                </p>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="text-right mt-4">
+                                    <a class="btn btn-gradient" (click)="purchaseProduct(product)">
+                                        {{ 'marketplace.product-details.purchase' | translate }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
