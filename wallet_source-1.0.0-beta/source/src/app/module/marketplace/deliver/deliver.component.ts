@@ -58,5 +58,4 @@ export class DeliverComponent implements OnInit {
 
         });
     }
-
 }
