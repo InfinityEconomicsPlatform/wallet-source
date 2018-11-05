@@ -7,6 +7,7 @@ import { AccountService } from '../../account.service';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
 import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
 import { ShareToQuantityPipe } from '../../../../pipes/share-to-quantity.pipe';
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-control-funding-monitor',
@@ -25,7 +26,8 @@ export class ControlFundingMonitorComponent implements OnInit {
         private accountService: AccountService,
         private optionService: OptionService,
         private assetsService: AssetsService,
-        private currenciesService: CurrenciesService) {
+        private currenciesService: CurrenciesService,
+        private commonService: CommonService) {
         this.holdingOptions = [
             { label: 'XIN', value: '0' },
             { label: 'Asset', value: '1' },
@@ -50,9 +52,12 @@ export class ControlFundingMonitorComponent implements OnInit {
 
     displayNotificationAlert() {
         if (this.connectionMode !== 'LOCAL_HOST' && this.connectionMode !== 'TESTNET' && this.connectionMode !== 'DEVTESTNET') {
-            alertFunctions.InfoAlertBox('Error',
-                'block-generation-localhost-error-msg',
-                'OK', 'error');
+            let title: string = this.commonService.translateAlertTitle('Error');
+            let errMsg: string = this.commonService.translateInfoMessage('block-generation-localhost-error-msg');
+            alertFunctions.InfoAlertBox(title,
+                errMsg,
+                'OK',
+                'error');
         } else {
             this.hasLocal = true;
         }
@@ -96,8 +101,11 @@ export class ControlFundingMonitorComponent implements OnInit {
 
         this.accountService.startFundingMonitor(property, amount, threshold, interval, holding, holdingType, secretPhrase, adminPassword).subscribe((success: any) => {
             if (!success.errorCode) {
-                alertFunctions.InfoAlertBox('Success',
-                    'Monitor for account property : ' + property + ' successful started.',
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let errMsg: string = this.commonService.translateInfoMessageWithParams('funding-monitor-start-success-msg',
+                this.fundingMonitorForm);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK', 'success')
                     .then((isConfirm) => {
                         this.fundingMonitorForm = {
@@ -113,9 +121,13 @@ export class ControlFundingMonitorComponent implements OnInit {
                         this.router.navigateByUrl('/account/funding-monitor/active-monitors');
                     });
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Unable start the monitor for account property : ' + property + '. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateInfoMessageWithParams('unable-start-monitor-msg',
+                this.fundingMonitorForm);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK', 'error');
+                    // 'Unable start the monitor for account property : ' + property + '. Reason: ' + success.errorDescription,
             }
         })
     }

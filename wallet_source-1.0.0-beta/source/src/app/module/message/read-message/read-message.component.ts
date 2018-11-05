@@ -22,7 +22,8 @@ export class ReadMessageComponent implements OnInit {
         public cryptoService: CryptoService,
         public messageService: MessageService,
         public activatedRoute: ActivatedRoute,
-        private _location: Location) { }
+        private _location: Location,
+        public commonService: CommonService) { }
 
     ngOnInit() {
 
@@ -81,11 +82,13 @@ export class ReadMessageComponent implements OnInit {
                         this.message = 'Non readable message string.';
                     }
                 } else {
-                    alertFunctions.InfoAlertBox('Error',
-                        'Sorry, an error occured! Reason: ' + success.errorDescription,
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
+                    success.errCode, success.params);
+                    alertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
                         'error').then((isConfirm: any) => {
-
                         });
                 }
 

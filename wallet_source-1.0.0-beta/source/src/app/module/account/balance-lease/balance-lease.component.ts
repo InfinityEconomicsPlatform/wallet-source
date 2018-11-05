@@ -8,6 +8,7 @@ import { AccountService } from '../account.service';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
 import { AppConstants } from '../../../config/constants';
 import { CurrenciesService } from '../../currencies/currencies.service';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
     selector: 'app-balance-lease',
@@ -44,7 +45,8 @@ export class BalanceLeaseComponent implements OnInit {
         public router: Router,
         public currenciesService: CurrenciesService,
         public activatedRoute: ActivatedRoute,
-        public aliasesService: AliasesService) {
+        public aliasesService: AliasesService,
+        public commonService: CommonService) {
         this.hasPrivateMessage = false;
         this.hasReceiverPublicKey = false;
     }
@@ -127,11 +129,13 @@ export class BalanceLeaseComponent implements OnInit {
 
                     return transactionBytes;
                 } else {
-                    alertFunctions.InfoAlertBox('Error',
-                        'Sorry, an error occured! Reason: ' + success.errorDescription,
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
+                    success.errCode, success.params);
+                    alertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
                         'error').then((isConfirm: any) => {
-
                         });
                 }
             })
@@ -140,8 +144,10 @@ export class BalanceLeaseComponent implements OnInit {
     getAndVerifyAccount() {
 
         if (this.blockheight < 3000) {
-            alertFunctions.InfoAlertBox('info',
-                'balance-lease-start-block-error-msg',
+            let title: string = this.commonService.translateAlertTitle('Info');
+            let errMsg: string = this.commonService.translateInfoMessage('balance-lease-start-block-error-msg');
+            alertFunctions.InfoAlertBox(title,
+                errMsg,
                 'OK',
                 'info').then(() => {
                 });
@@ -198,8 +204,10 @@ export class BalanceLeaseComponent implements OnInit {
                 this.accountDetails = success;
 
                 if (!recipientPublicKey && !hasPublicKeyAdded) {
-                    alertFunctions.InfoAlertBox('Error',
-                        'balance-lease-visible-key-error-msg',
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let msg: string = this.commonService.translateInfoMessage('balance-lease-visible-key-error-msg');
+                    alertFunctions.InfoAlertBox(title,
+                        msg,
                         'OK',
                         'error').then(() => {
                         });
@@ -234,11 +242,13 @@ export class BalanceLeaseComponent implements OnInit {
                 }
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Sorry, an error occured! Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
+                success.errCode, success.params);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then(() => {
-
                     });
             }
         });
@@ -248,19 +258,23 @@ export class BalanceLeaseComponent implements OnInit {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
-                alertFunctions.InfoAlertBox('Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction,
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                alertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
                     'success').then((isConfirm: any) => {
-                        // this.router.navigate(['/account/transactions/pending']);
+                       // this.router.navigate(['/account/transactions/pending']);
                     });
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
-
                     });
             }
 

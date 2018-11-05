@@ -4,6 +4,7 @@ import * as alertFunctions from '../../../../shared/data/sweet-alerts';
 import {SessionStorageService} from '../../../../services/session-storage.service';
 import {CryptoService} from '../../../../services/crypto.service';
 import {AccountService} from '../../account.service';
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
   selector: 'app-claim',
@@ -20,7 +21,8 @@ export class ClaimComponent implements OnInit {
     transactionJSON: any;
   constructor(public sessionStorageService: SessionStorageService,
               public accountService: AccountService,
-              public cryptoService: CryptoService) { }
+              public cryptoService: CryptoService,
+              public commonService: CommonService) { }
 
   ngOnInit() {
   }
@@ -42,12 +44,13 @@ export class ClaimComponent implements OnInit {
                     this.validBytes = true;
 
                 } else {
-                    alertFunctions.InfoAlertBox('Error',
-                        'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                    alertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
                         'error').then((isConfirm: any) => {
-
-                    });
+                        });
                 }
             });
     }
@@ -55,20 +58,24 @@ export class ClaimComponent implements OnInit {
     broadcastTransaction = function(transactionBytes) {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
             if (!success.errorCode) {
-                alertFunctions.InfoAlertBox('Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction,
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                alertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
                     'success').then((isConfirm: any) => {
-                    this.router.navigate(['/account/transactions/pending']);
+                        this.router.navigate(['/account/transactions/pending']);
                 });
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
-
-                });
+                    });
             }
 
         });

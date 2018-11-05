@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ShareToQuantityPipe } from '../../../pipes/share-to-quantity.pipe';
 import { AppConstants } from '../../../config/constants';
 import { CryptoService } from '../../../services/crypto.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'app-issue-asset',
@@ -37,7 +38,8 @@ export class IssueAssetComponent implements OnInit {
         private sessionStorageService: SessionStorageService,
         private cryptoService: CryptoService,
         public shareToQuantityPipe: ShareToQuantityPipe,
-        private _location: Location) {
+        private _location: Location,
+        public translate: TranslateService) {
     }
 
     ngOnInit() {
@@ -62,10 +64,12 @@ export class IssueAssetComponent implements OnInit {
         }
 
         if (parseInt(shares) === 1) {
-            alertFunctions.InfoAlertBox('info',
-                'issue-asset-info-msg',
+            const title: string = this.commonService.translateAlertTitle('info');
+            const msg: string = this.commonService.translateInfoMessage('issue-asset-info-msg');
+            alertFunctions.InfoAlertBox(title,
+                msg,
                 'OK',
-                'info').then((isConfirm: any) => {
+                'error').then((isConfirm: any) => {
                 });
             return;
         }
@@ -83,8 +87,12 @@ export class IssueAssetComponent implements OnInit {
                         this.tx_amount = success.transactionJSON.amountTQT / 100000000;
                         this.tx_total = this.tx_fee + this.tx_amount;
                     } else {
-                        alertFunctions.InfoAlertBox('Error',
-                            'Sorry, an error occured! Reason: ' + success.errorDescription + ' ' + AppConstants.getNoConnectionMessage,
+                        console.log('success.errCode', success.errCode);
+                        let title: string = this.commonService.translateAlertTitle('Error');
+                        let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
+                         success.errCode, success.params);
+                        alertFunctions.InfoAlertBox(title,
+                            errMsg,
                             'OK',
                             'error').then((isConfirm: any) => {
                             });
@@ -97,15 +105,20 @@ export class IssueAssetComponent implements OnInit {
         this.commonService.broadcastTransaction(transactionBytes)
             .subscribe((success) => {
                 if (!success.errorCode) {
-                    alertFunctions.InfoAlertBox('Success',
-                        'Transaction successfully broadcasted with Id : ' + success.transaction,
+                    let title: string = this.commonService.translateAlertTitle('Success');
+                    let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                    msg += success.transaction;
+                    alertFunctions.InfoAlertBox(title,
+                        msg,
                         'OK',
                         'success').then((isConfirm: any) => {
                             this.router.navigate(['/assets/show-assets']);
                         });
                 } else {
-                    alertFunctions.InfoAlertBox('Error',
-                        'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                    alertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
                         'error').then((isConfirm: any) => {
                         });

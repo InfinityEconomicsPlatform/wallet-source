@@ -5,6 +5,7 @@ import { SessionStorageService } from '../../../../services/session-storage.serv
 import { AccountService } from '../../account.service';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
 import { AppConstants } from '../../../../config/constants';
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-active-funding-monitor',
@@ -18,7 +19,8 @@ export class ActiveFundingMonitorComponent implements OnInit {
 
     constructor(private sessionStorageService: SessionStorageService,
         private cryptoService: CryptoService,
-        private accountService: AccountService) {
+        private accountService: AccountService,
+        private commonService: CommonService) {
 
     }
 
@@ -70,13 +72,20 @@ export class ActiveFundingMonitorComponent implements OnInit {
                         undefined
                     ).subscribe((success: any) => {
                         if (success.stopped === 1) {
-                            alertFunctions.InfoAlertBox('Success',
-                                'Funding monitor for property: ' + fund.property + ' successfully stopped',
-                                'OK', 'success');
+                            let title: string = this.commonService.translateAlertTitle('Success');
+                            let msg: string = this.commonService.translateInfoMessageWithParams('funding-monitor-stopped-success-msg',
+                            fund);
+                            alertFunctions.InfoAlertBox(title,
+                                msg,
+                                'OK',
+                                'success');
                         } else {
-                            alertFunctions.InfoAlertBox('Error',
-                                'unable-stop-funding-monitor',
-                                'OK', 'error');
+                            let title: string = this.commonService.translateAlertTitle('Error');
+                            let errMsg: string = this.commonService.translateInfoMessage('unable-stop-funding-monitor');
+                            alertFunctions.InfoAlertBox(title,
+                                errMsg,
+                                'OK',
+                                'error');
                         }
                         this.getFundingMonitors();
                     })
@@ -90,13 +99,19 @@ export class ActiveFundingMonitorComponent implements OnInit {
                         undefined
                     ).subscribe((success: any) => {
                         if (success.stopped === 1) {
-                            alertFunctions.InfoAlertBox('Success',
-                                'Funding monitor for property: ' + fund.property + ' successfully stopped',
-                                'OK', 'success');
+                            let title: string = this.commonService.translateAlertTitle('Success');
+                            let errMsg: string = this.commonService.translateInfoMessage('funding-monitor-stopped-success-msg');
+                            alertFunctions.InfoAlertBox(title,
+                                errMsg,
+                                'OK',
+                                'success');
                         } else {
-                            alertFunctions.InfoAlertBox('Error',
-                                'unable-stop-funding-monitor',
-                                'OK', 'error');
+                            let title: string = this.commonService.translateAlertTitle('Error');
+                            let errMsg: string = this.commonService.translateInfoMessage('unable-stop-funding-monitor');
+                            alertFunctions.InfoAlertBox(title,
+                                errMsg,
+                                'OK',
+                                'error');
                         }
                         this.getFundingMonitors();
                     })

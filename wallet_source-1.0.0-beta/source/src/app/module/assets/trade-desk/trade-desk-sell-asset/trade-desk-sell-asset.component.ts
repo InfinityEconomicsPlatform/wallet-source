@@ -10,6 +10,7 @@ import { ShareToQuantityPipe } from '../../../../pipes/share-to-quantity.pipe';
 import { DataStoreService } from '../../../../services/data-store.service';
 import { AppConstants } from '../../../../config/constants';
 import { CryptoService } from '../../../../services/crypto.service';
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-trade-desk-sell-asset',
@@ -26,7 +27,8 @@ export class TradeDeskSellAssetComponent implements OnInit {
         public cryptoService: CryptoService,
         public shareToQuantityPipe: ShareToQuantityPipe,
         public amountToQuantPipe: AmountToQuantPipe,
-        public _location: Location) {
+        public _location: Location,
+        public commonService: CommonService) {
     }
 
     sellAssetForm: any = {};
@@ -83,11 +85,13 @@ export class TradeDeskSellAssetComponent implements OnInit {
                         this.validBytes = true;
 
                     } else {
-                        alertFunctions.InfoAlertBox('Error',
-                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                        let title: string = this.commonService.translateAlertTitle('Error');
+                        let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
+                        success.errCode, success.params);
+                        alertFunctions.InfoAlertBox(title,
+                            errMsg,
                             'OK',
                             'error').then((isConfirm: any) => {
-
                             });
                     }
                 });
@@ -100,8 +104,11 @@ export class TradeDeskSellAssetComponent implements OnInit {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
-                alertFunctions.InfoAlertBox('Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction,
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                alertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.route.params.subscribe(params => {
@@ -110,11 +117,12 @@ export class TradeDeskSellAssetComponent implements OnInit {
                     });
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
-
                     });
             }
 

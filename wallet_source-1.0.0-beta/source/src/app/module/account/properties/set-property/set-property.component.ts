@@ -7,6 +7,7 @@ import { AppConstants } from '../../../../config/constants';
 import * as alertFunctions from '../../../../shared/data/sweet-alerts';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Page } from '../../../../config/page';
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-set-property',
@@ -33,7 +34,8 @@ export class SetPropertyComponent implements OnInit {
         private cryptoService: CryptoService,
         private route: ActivatedRoute,
         private router: Router,
-        private sessionStorageService: SessionStorageService) {
+        private sessionStorageService: SessionStorageService,
+        private commonService: CommonService) {
     }
 
     ngOnInit() {
@@ -143,8 +145,11 @@ export class SetPropertyComponent implements OnInit {
                     this.tx_total = this.tx_fee + this.tx_amount;
 
                 } else {
-                    alertFunctions.InfoAlertBox('Error',
-                        'Sorry, an error occured! Reason: ' + success.errorDescription,
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
+                    success.errCode, success.params);
+                    alertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
                         'error').then((isConfirm: any) => {
 
@@ -156,18 +161,22 @@ export class SetPropertyComponent implements OnInit {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
-                alertFunctions.InfoAlertBox('Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction,
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                alertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
                     'success').then((isConfirm: any) => {
                     });
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
-
                     });
             }
 

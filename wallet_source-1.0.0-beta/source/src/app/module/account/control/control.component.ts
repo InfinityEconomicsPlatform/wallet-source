@@ -51,8 +51,10 @@ export class ControlComponent implements OnInit {
 
     addNewAccount() {
         if (this.setAccountControlForm.approveAccounts.length >= 10) {
-            alertFunctions.InfoAlertBox('Error',
-                'control-add-accounts-error-msg',
+            let title: string = this.commonService.translateAlertTitle('Error');
+            let errMsg: string = this.commonService.translateInfoMessage('control-add-accounts-error-msg');
+            alertFunctions.InfoAlertBox(title,
+                errMsg,
                 'OK',
                 'error').then((isConfirm: any) => {
 
@@ -129,8 +131,10 @@ export class ControlComponent implements OnInit {
         if (totalAccounts.length > quorum) {
             this.setAccountControl();
         } else {
-            alertFunctions.InfoAlertBox('Error',
-                'control-quorum-number-error-msg',
+            let title: string = this.commonService.translateAlertTitle('Error');
+            let errMsg: string = this.commonService.translateInfoMessage('control-quorum-number-error-msg');
+            alertFunctions.InfoAlertBox(title,
+                errMsg,
                 'OK',
                 'error').then((isConfirm: any) => {
                 });
@@ -172,8 +176,11 @@ export class ControlComponent implements OnInit {
                 } else {
 
 
-                    alertFunctions.InfoAlertBox('Error',
-                        'Sorry, an error occured! Reason: ' + success.errorDescription,
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
+                    success.errCode, success.params);
+                    alertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
                         'error').then((isConfirm: any) => {
 
@@ -187,19 +194,23 @@ export class ControlComponent implements OnInit {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
-                alertFunctions.InfoAlertBox('Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction,
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                alertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.router.navigate(['/crowdfunding/show-campaigns']);
                     });
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
-
                     });
             }
         });

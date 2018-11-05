@@ -5,11 +5,12 @@ import { AppConstants } from '../config/constants';
 import { HttpProviderService } from './http-provider.service';
 import { NodeService } from './node.service';
 import { OptionService } from './option.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
 export class CommonService {
 
-  constructor(public sessionStorageService: SessionStorageService, private http: HttpProviderService, private _sanitizer: DomSanitizer, private nodeService: NodeService, private optionService: OptionService) { }
+  constructor(public sessionStorageService: SessionStorageService, private http: HttpProviderService, private _sanitizer: DomSanitizer, private nodeService: NodeService, private optionService: OptionService, public translate: TranslateService) { }
 
 
   convertToArray(object) {
@@ -67,5 +68,46 @@ export class CommonService {
           }
       }
       return obj
+  }
+  translateErrorMessage(messKey, errCode) {
+    var message = ''
+    this.translate.get('sweet-alert.' + messKey).subscribe((res: string) => {
+        message = res;
+    });
+    this.translate.get('error-alert-msg.' + errCode).subscribe((res: string) => {
+        message = message + res;
+    });
+    return message;
+  }
+  translateErrorMessageParams(messKey, errCode, params) {
+    var message = ''
+    this.translate.get('sweet-alert.' + messKey).subscribe((res: string) => {
+        message = res;
+    });
+    this.translate.get('error-alert-msg.' + errCode, {params}).subscribe((res: string) => {
+        message = message + res;
+    });
+    return message;
+  }
+  translateAlertTitle(alertTitle) {
+    var title = ''
+    this.translate.get('sweet-alert.' + alertTitle).subscribe((res: string) => {
+        title = res;
+    });
+    return title;
+  }
+  translateInfoMessage(alertMessageKey) {
+    var message = ''
+    this.translate.get('sweet-alert.' + alertMessageKey).subscribe((res: string) => {
+        message = res;
+    });
+    return message;
+  }
+  translateInfoMessageWithParams(alertMessageKey, params) {
+    var message = ''
+    this.translate.get('sweet-alert.' + alertMessageKey, {params}).subscribe((res: string) => {
+        message = res;
+    });
+    return message;
   }
 }

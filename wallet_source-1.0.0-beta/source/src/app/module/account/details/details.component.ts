@@ -251,8 +251,11 @@ export class DetailsComponent {
                         this.tx_total = this.tx_fee + this.tx_amount;
 
                     } else {
-                        alertFunctions.InfoAlertBox('Error',
-                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                        let title: string = this.commonsService.translateAlertTitle('Error');
+                        let errMsg: string = this.commonsService.translateErrorMessageParams( 'sorry-error-occurred',
+                        success.errCode, success.params);
+                        alertFunctions.InfoAlertBox(title,
+                            errMsg,
                             'OK',
                             'error').then(() => {
                             });
@@ -266,19 +269,22 @@ export class DetailsComponent {
         this.accountService.broadcastTransaction(transactionBytes)
             .subscribe((success: any) => {
                 if (!success.errorCode) {
-                    alertFunctions.InfoAlertBox('Success',
-                        'Transaction successfully broadcasted with id ' + success.transaction,
+                    let title: string = this.commonsService.translateAlertTitle('Success');
+                    let msg: string = this.commonsService.translateInfoMessage('success-broadcast-message');
+                    msg += success.transaction;
+                    alertFunctions.InfoAlertBox(title,
+                        msg,
                         'OK',
                         'success').then((isConfirm: any) => {
-
                         });
                     //$rootScope.$broadcast('reload-dashboard');
                 } else {
-                    alertFunctions.InfoAlertBox('Error',
-                        'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                    let title: string = this.commonsService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonsService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                    alertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
                         'error').then((isConfirm: any) => {
-
                         });
                 }
 

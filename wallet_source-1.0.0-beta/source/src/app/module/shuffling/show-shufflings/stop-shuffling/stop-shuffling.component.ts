@@ -7,6 +7,7 @@ import { AppConstants } from '../../../../config/constants';
 import { SessionStorageService } from '../../../../services/session-storage.service';
 import { CryptoService } from '../../../../services/crypto.service';
 import * as alertFunctions from "../../../../shared/data/sweet-alerts";
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'app-stop-shuffling',
@@ -24,7 +25,8 @@ export class StopShufflingComponent implements OnInit {
         private accountService: AccountService,
         private sessionStorageService: SessionStorageService,
         private cryptoService: CryptoService,
-        private router: Router) { }
+        private router: Router,
+        private translate: TranslateService) { }
 
     ngOnInit() {
         this.activatedRoute.queryParams.subscribe((params: any) => {
@@ -56,11 +58,17 @@ export class StopShufflingComponent implements OnInit {
 
                     if (!success.errorCode) {
 
-                        var result = 'Shuffler successfully stopped';
+                        var result = '';
                         var resType = 'success';
+                        this.translate.get('shuffling.stop-shuffling.shuffler-stop-success').subscribe((res: string) => {
+                            result = res;
+                        });
 
                         if (success.stoppedShuffler == false) {
-                            result = "No running shuffler found. Please start the shuffler before stopping.";
+
+                            this.translate.get('shuffling.stop-shuffling.no-running-shuffler').subscribe((res: string) => {
+                                result = res;
+                            });
                             var resType = 'info';
                         };
 

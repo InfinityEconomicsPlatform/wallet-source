@@ -3,6 +3,7 @@ import { OptionService } from '../../../services/option.service';
 import { AccountService } from '../account.service';
 import { SessionStorageService } from '../../../services/session-storage.service';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
     selector: 'app-block-generation',
@@ -20,7 +21,8 @@ export class BlockGenerationComponent implements OnInit {
 
     constructor(public optionsService: OptionService,
                 public accountService: AccountService,
-                public sessionStorageService: SessionStorageService) {
+                public sessionStorageService: SessionStorageService,
+                public commonService: CommonService) {
         this.generationStatus = '<span class="label label-warning">Unkown Account</span>';
     }
 
@@ -32,9 +34,12 @@ export class BlockGenerationComponent implements OnInit {
 
     displayNotificationAlert() {
         if (this.connectionMode !== 'LOCAL_HOST' && this.connectionMode !== 'TESTNET' && this.connectionMode !== 'DEVTESTNET') {
-            alertFunctions.InfoAlertBox('Error',
-                'block-generation-localhost-error-msg',
-                'OK', 'error');
+            let title: string = this.commonService.translateAlertTitle('Error');
+            let msg: string = this.commonService.translateInfoMessage('block-generation-localhost-error-msg');
+            alertFunctions.InfoAlertBox(title,
+                msg,
+                'OK',
+                'error');
         } else {
             this.hasLocal = true;
         }
