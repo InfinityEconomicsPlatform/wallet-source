@@ -11,6 +11,8 @@ import { DataStoreService } from 'app/services/data-store.service';
 })
 export class DeliverComponent implements OnInit {
     product: any = {};
+    goodsData: string = "";
+
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
         public location: Location) {

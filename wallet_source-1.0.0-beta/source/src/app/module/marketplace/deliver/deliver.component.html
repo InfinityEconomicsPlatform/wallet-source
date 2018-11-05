@@ -57,9 +57,79 @@
                                 </p>
                             </div>
                             <div class="col-md-12">
+                                <form class="form inner-form mt-2">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>
+                                                        {{ 'marketplace.product-details.current_price' | translate }}
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <textarea id="data" class="form-control" value="" [(ngModel)]="goodsData"
+                                                            #data="ngModel" name="data"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>
+                                                        {{ 'marketplace.product-details.discount' | translate }}
+                                                    </label>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-10 pl-0">
+                                                            <input type="text" id="updatedPrice" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                placeholder="{{ 'marketplace.product-details.discount' | translate}}"
+                                                                [(ngModel)]="newPrice" #updatedPrice="ngModel" minValue="1"
+                                                                name="updatedPrice" required />
+                                                        </div>
+                                                        <div class="col-2 text-right pl-0">
+                                                            <span class="input-group-text">
+                                                                {{ 'common.xin-unit-text' | translate }}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>
+                                                        {{ 'marketplace.product-details.fee' | translate }}
+                                                    </label>
+                                                    <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
+                                                        <div class="col-10 pl-0">
+                                                            <input type="text" id="tags" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                                placeholder="{{ 'marketplace.product-details.minimum_fee' | translate}}"
+                                                                name="tags" value="{{ feeTQT | amountTqt }}" [readOnly]="true"
+                                                                required />
+                                                        </div>
+                                                        <div class="col-2 text-right pl-0">
+                                                            <span class="input-group-text">
+                                                                {{ 'common.xin-unit-text' | translate }}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ 'marketplace.product-details.passphrase' | translate }}</label>
+                                            <div class="position-relative">
+                                                <input type="text" id="passphrase" class="form-control" [(ngModel)]="secretPhrase"
+                                                    #passphrase="ngModel" placeholder="{{ 'marketplace.product-details.passphrase' | translate }}"
+                                                    name="passphrase" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-12">
                                 <div class="text-right mt-4">
-                                    <a class="btn btn-gradient" (click)="purchaseProduct(product)">
-                                        {{ 'marketplace.product-details.purchase' | translate }}
+                                    <a class="btn btn-border mr-3" (click)="location.back()">
+                                        {{ 'marketplace.product-details.cancel' | translate }}
+                                    </a>
+                                    <a class="btn btn-gradient" (click)="deliverProduct(product)">
+                                        {{ 'marketplace.product-details.deliver' | translate }}
                                     </a>
                                 </div>
                             </div>

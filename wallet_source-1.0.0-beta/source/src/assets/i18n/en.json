@@ -2175,7 +2175,9 @@
             "ok": "Okay",
             "total_price": "Total Price",
             "delivery-deadline": "Delivery Deadline (Hours)",
-            "delivery": "Delivery"
+            "delivery": "Delivery",
+            "deliver": "Deliver",
+            "discount": "Discount"
         },
         "pending-orders": {
             "title": "Pending Orders",
