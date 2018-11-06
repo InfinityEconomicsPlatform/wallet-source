@@ -8,6 +8,7 @@ import { SessionStorageService } from '../../../services/session-storage.service
 import { CryptoService } from '../../../services/crypto.service';
 import { OptionService } from '../../../services/option.service';
 import { Location } from '@angular/common';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
     selector: 'app-issue-currency',
@@ -46,7 +47,8 @@ export class IssueCurrencyComponent implements OnInit {
         public accountService: AccountService,
         public sessionStorageService: SessionStorageService,
         public cryptoService: CryptoService,
-        public _location: Location) {
+        public _location: Location,
+        public commonService: CommonService) {
     }
 
     ngOnInit() {
@@ -136,11 +138,12 @@ export class IssueCurrencyComponent implements OnInit {
         var typesArray = issueCurrencyForm2.types;
         var type = this.sumArray(issueCurrencyForm2.types);
         if (!(type > 0)) {
-            alertFunctions.InfoAlertBox('Error',
-                'issue-currency-select-currency-error-msg',
+            let title: string = this.commonService.translateAlertTitle('Error');
+            let msg: string = this.commonService.translateInfoMessage('issue-currency-select-currency-error-msg');
+            alertFunctions.InfoAlertBox(title,
+                msg,
                 'OK',
                 'error').then((isConfirm: any) => {
-
                 });
             return;
         }
@@ -196,11 +199,13 @@ export class IssueCurrencyComponent implements OnInit {
                         this.validBytes = true;
 
                     } else {
-                        alertFunctions.InfoAlertBox('Error',
-                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                        let title: string = this.commonService.translateAlertTitle('Error');
+                        let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
+                        success.errCode, success.params);
+                        alertFunctions.InfoAlertBox(title,
+                            errMsg,
                             'OK',
                             'error').then((isConfirm: any) => {
-
                             });
                     }
                 });
@@ -212,8 +217,11 @@ export class IssueCurrencyComponent implements OnInit {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
-                alertFunctions.InfoAlertBox('Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction,
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                alertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.route.params.subscribe(params => {
@@ -222,11 +230,12 @@ export class IssueCurrencyComponent implements OnInit {
                     });
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
-
                     });
             }
 

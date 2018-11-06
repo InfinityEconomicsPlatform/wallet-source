@@ -11,6 +11,7 @@ import { CryptoService } from '../../../../services/crypto.service';
 import { OptionService } from '../../../../services/option.service';
 import { ShareToQuantityPipe } from '../../../../pipes/share-to-quantity.pipe';
 import { AmountToQuantPipe } from '../../../../pipes/amount-to-quant.pipe';
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-publish-exchange-sell-offer',
@@ -28,7 +29,8 @@ export class PublishExchangeSellOfferComponent implements OnInit {
         public shareToQuantityPipe: ShareToQuantityPipe,
         public amountToQuantPipe: AmountToQuantPipe,
         public optionService: OptionService,
-        public _location: Location) {
+        public _location: Location,
+        public commonService: CommonService) {
     }
 
     publishExchangeOfferForm: any = {};
@@ -158,11 +160,13 @@ export class PublishExchangeSellOfferComponent implements OnInit {
                         this.tx_total = this.tx_fee + this.tx_amount;
                         this.validBytes = true;
                     } else {
-                        alertFunctions.InfoAlertBox('Error',
-                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                        let title: string = this.commonService.translateAlertTitle('Error');
+                        let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                        success.errCode, success.params);
+                        alertFunctions.InfoAlertBox(title,
+                            errMsg,
                             'OK',
                             'error').then((isConfirm: any) => {
-
                             });
                     }
                 });
@@ -174,8 +178,11 @@ export class PublishExchangeSellOfferComponent implements OnInit {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
-                alertFunctions.InfoAlertBox('Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction,
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                alertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.route.params.subscribe(params => {
@@ -184,11 +191,12 @@ export class PublishExchangeSellOfferComponent implements OnInit {
                     });
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
-
                     });
             }
 
