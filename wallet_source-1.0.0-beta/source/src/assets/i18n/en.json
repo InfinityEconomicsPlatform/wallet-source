@@ -2177,7 +2177,8 @@
             "delivery-deadline": "Delivery Deadline (Hours)",
             "delivery": "Delivery",
             "deliver": "Deliver",
-            "discount": "Discount"
+            "discount": "Discount",
+            "data": "Data"
         },
         "pending-orders": {
             "title": "Pending Orders",

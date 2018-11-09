@@ -63,10 +63,10 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>
-                                                        {{ 'marketplace.product-details.current_price' | translate }}
+                                                        {{ 'marketplace.product-details.data' | translate }}
                                                     </label>
                                                     <div class="input-group">
-                                                        <textarea id="data" class="form-control" value="" [(ngModel)]="goodsData"
+                                                        <textarea id="data" class="form-control" value="" [(ngModel)]="goodsToEncrypt"
                                                             #data="ngModel" name="data"></textarea>
                                                     </div>
                                                 </div>
@@ -78,10 +78,10 @@
                                                     </label>
                                                     <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <div class="col-10 pl-0">
-                                                            <input type="text" id="updatedPrice" class="pl-0 mb-0 pt-0 pb-0 form-control"
+                                                            <input type="text" id="discountPrice" class="pl-0 mb-0 pt-0 pb-0 form-control"
                                                                 placeholder="{{ 'marketplace.product-details.discount' | translate}}"
-                                                                [(ngModel)]="newPrice" #updatedPrice="ngModel" minValue="1"
-                                                                name="updatedPrice" required />
+                                                                [(ngModel)]="discount" #discountPrice="ngModel"
+                                                                minValue="1" name="discountPrice" required />
                                                         </div>
                                                         <div class="col-2 text-right pl-0">
                                                             <span class="input-group-text">
