@@ -3,6 +3,7 @@ import * as AlertFunctions from '../../../../shared/data/sweet-alerts';
 
 import { HttpClient } from "@angular/common/http";
 import { AppConstants } from "../../../../config/constants";
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-compiler',
@@ -13,7 +14,8 @@ export class CompilerComponent implements OnInit {
     atTextCode: string = "";
     outputCode: string = "";
 
-    constructor(public httpClient: HttpClient) {
+    constructor(public httpClient: HttpClient,
+        public commonService: CommonService) {
 
     }
 
@@ -33,13 +35,12 @@ export class CompilerComponent implements OnInit {
                     this.outputCode = success.data;
                 } else {
                     this.outputCode = "";
-                    AlertFunctions.InfoAlertBox(
-                        'Error',
-                        'at-compiler-output-code-error-msg',
+                    const title: string = this.commonService.translateAlertTitle('Error');
+                    const msg: string = this.commonService.translateInfoMessage('at-compiler-output-code-error-msg');
+                    AlertFunctions.InfoAlertBox(title,
+                        msg,
                         'OK',
-                        'error')
-                        .then((isConfirm: any) => {
-
+                        'error').then((isConfirm: any) => {
                         });
                 }
             });

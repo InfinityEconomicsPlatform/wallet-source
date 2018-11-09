@@ -88,8 +88,10 @@ export class CreateSubscriptionComponent implements OnInit {
             if (!success['errorCode'] || success['errorCode'] === 5) {
                 this.accountDetails = success;
                 if (!recipientPublicKey) {
-                    alertFunctions.InfoAlertBox('Success',
-                        'create-subscription-outbound transaction-msg',
+                    let title: string = this.commonService.translateAlertTitle('Success');
+                    let msg: string = this.commonService.translateInfoMessage('create-subscription-outbound transaction-msg');
+                    alertFunctions.InfoAlertBox(title,
+                        msg,
                         'OK',
                         'success').then((isConfirm: any) => {
                         });
@@ -114,8 +116,11 @@ export class CreateSubscriptionComponent implements OnInit {
                             this.tx_total = this.tx_fee + this.tx_amount;
 
                         } else {
-                            alertFunctions.InfoAlertBox('Sorry, an error occured! Reason: ' + result.errorDescription,
-                                AppConstants.getNoConnectionMessage,
+                            let title: string = this.commonService.translateAlertTitle('Error');
+                            let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                                result.errCode, result.params);
+                            alertFunctions.InfoAlertBox(title,
+                                errMsg,
                                 'OK',
                                 'error').then((isConfirm: any) => {
                                 });
@@ -124,16 +129,22 @@ export class CreateSubscriptionComponent implements OnInit {
 
 
                 }, (err) => {
-                    alertFunctions.InfoAlertBox('Sorry, an error occured! Reason: ' + err.errorDescription,
-                        AppConstants.getNoConnectionMessage,
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                        err.errCode, err.params);
+                    alertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
                         'error').then((isConfirm: any) => {
                         });
                 });
 
             } else {
-                alertFunctions.InfoAlertBox('Sorry, an error occured! Reason: ' + success['errorDescription'],
-                    AppConstants.getNoConnectionMessage,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                    success['errCode'], success['params']);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
                     });
@@ -145,15 +156,20 @@ export class CreateSubscriptionComponent implements OnInit {
         this.commonService.broadcastTransaction(transactionBytes)
             .subscribe((success) => {
                 if (!success.errorCode) {
-                    alertFunctions.InfoAlertBox('Success',
-                        'Transaction successfully broadcasted with Id : ' + success.transaction,
+                    let title: string = this.commonService.translateAlertTitle('Success');
+                    let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                    msg += success.transaction;
+                    alertFunctions.InfoAlertBox(title,
+                        msg,
                         'OK',
                         'success').then((isConfirm: any) => {
                             this.router.navigate(['/subscriptions/my-subscriptions']);
                         });
                 } else {
-                    alertFunctions.InfoAlertBox('Error',
-                        'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                    alertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
                         'error').then((isConfirm: any) => {
                             this.router.navigate(['/subscriptions/create-subscription']);

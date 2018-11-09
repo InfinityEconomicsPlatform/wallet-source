@@ -7,6 +7,7 @@ import { AppConstants } from '../../../../config/constants';
 import { SessionStorageService } from '../../../../services/session-storage.service';
 import { CryptoService } from '../../../../services/crypto.service';
 import * as alertFunctions from "../../../../shared/data/sweet-alerts";
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-start-shuffling',
@@ -25,7 +26,8 @@ export class StartShufflingComponent implements OnInit {
         private accountService: AccountService,
         private sessionStorageService: SessionStorageService,
         private cryptoService: CryptoService,
-        private router: Router) { }
+        private router: Router,
+        private commonService: CommonService) { }
 
     ngOnInit() {
         this.activatedRoute.queryParams.subscribe((params: any) => {
@@ -61,16 +63,21 @@ export class StartShufflingComponent implements OnInit {
                 success_.subscribe((success) => {
                     if (!success.errorCode) {
 
-                        alertFunctions.InfoAlertBox('Success',
-                            'Shuffling ' + success.shuffling + ' successfull started. Recipient: ' + success.recipientRS + ' ',
+                        let title: string = this.commonService.translateAlertTitle('Success');
+                        let msg: string = this.commonService.translateInfoMessageWithParams('shuffling-started-success', success);
+                        alertFunctions.InfoAlertBox(title,
+                            msg,
                             'OK',
                             'success').then((isConfirm: any) => {
                                 this.router.navigate(['/shuffling/show-shufflings/my']);
                             });
 
                     } else {
-                        alertFunctions.InfoAlertBox('Error',
-                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                        let title: string = this.commonService.translateAlertTitle('Error');
+                        let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                            success.errCode, success.params);
+                        alertFunctions.InfoAlertBox(title,
+                            errMsg,
                             'OK',
                             'error').then((isConfirm: any) => {
                                 this.router.navigate(['/shuffling/show-shufflings/my']);

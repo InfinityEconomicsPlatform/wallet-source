@@ -1687,7 +1687,9 @@
         "funding-monitor-stopped-success-msg": "Funding monitor for property: {{params.property}} successfully stopped",
         "funding-monitor-start-success-msg": "Monitor for account property : {{params.property}} successful started.",
         "unable-start-monitor-msg": "Unable start the monitor for account property : {{params.property}}. Reason: ",
-        "not-delete-currency-msg": "Sorry, You can not delete currency {{params.currencyId}}"
+        "not-delete-currency-msg": "Sorry, You can not delete currency {{params.currencyId}}",
+        "shuffling-started-success": "Shuffling {{params.shuffling}} successfull started. Recipient: {{params.recipientRS}}",
+        "stop-shuffle": "Stop shuffle: {{params}}"
     },
     "error-alert-msg": {
         "1001": "Failed to add peer",

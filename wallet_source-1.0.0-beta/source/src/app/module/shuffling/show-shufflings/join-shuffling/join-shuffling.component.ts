@@ -7,6 +7,7 @@ import { AppConstants } from '../../../../config/constants';
 import { SessionStorageService } from '../../../../services/session-storage.service';
 import { CryptoService } from '../../../../services/crypto.service';
 import * as alertFunctions from "../../../../shared/data/sweet-alerts";
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-join-shuffling',
@@ -31,7 +32,8 @@ export class JoinShufflingComponent implements OnInit {
         private accountService: AccountService,
         private sessionStorageService: SessionStorageService,
         private cryptoService: CryptoService,
-        private router: Router) { }
+        private router: Router,
+        private commonService: CommonService) { }
 
     ngOnInit() {
         this.activatedRoute.queryParams.subscribe((params: any) => {
@@ -46,8 +48,10 @@ export class JoinShufflingComponent implements OnInit {
             this.isLocalhostOrTestnet = this.shufflingService.isLocalHostOrTestnet() || false;
 
             if (!this.isLocalhostOrTestnet) {
-                alertFunctions.InfoAlertBox('Error',
-                    'shuffling-connection-error-msg',
+                const title: string = this.commonService.translateAlertTitle('Error');
+                const msg: string = this.commonService.translateInfoMessage('shuffling-connection-error-msg');
+                alertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
                     'error').then((isConfirm: any) => {
                         this.router.navigate(['/shuffling/show-shufflings/all']);
@@ -86,8 +90,11 @@ export class JoinShufflingComponent implements OnInit {
                             this.tx_total = this.tx_fee + this.tx_amount;
                             this.validBytes = true;
                         } else {
-                            alertFunctions.InfoAlertBox('Error',
-                                'Sorry, an error occured! Reason: ' + success.errorDescription,
+                            let title: string = this.commonService.translateAlertTitle('Error');
+                            let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                                success.errCode, success.params);
+                            alertFunctions.InfoAlertBox(title,
+                                errMsg,
                                 'OK',
                                 'error').then((isConfirm: any) => {
                                 });
@@ -95,8 +102,10 @@ export class JoinShufflingComponent implements OnInit {
                     });
                 })
         } else {
-            alertFunctions.InfoAlertBox('Error',
-                'shuffling-connection-error-msg',
+            const title: string = this.commonService.translateAlertTitle('Error');
+            const msg: string = this.commonService.translateInfoMessage('shuffling-connection-error-msg');
+            alertFunctions.InfoAlertBox(title,
+                msg,
                 'OK',
                 'error').then((isConfirm: any) => {
                 });
@@ -107,19 +116,23 @@ export class JoinShufflingComponent implements OnInit {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
 
             if (!success.errorCode) {
-                alertFunctions.InfoAlertBox('Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction,
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                alertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
                     'success').then((isConfirm: any) => {
                         this.router.navigate(['/shuffling/show-shufflings/all']);
                     });
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
-
                     });
             }
 

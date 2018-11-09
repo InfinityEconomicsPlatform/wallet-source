@@ -7,7 +7,8 @@ import { AppConstants } from '../../../../config/constants';
 import { SessionStorageService } from '../../../../services/session-storage.service';
 import { CryptoService } from '../../../../services/crypto.service';
 import * as alertFunctions from "../../../../shared/data/sweet-alerts";
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-stop-shuffling',
@@ -26,7 +27,8 @@ export class StopShufflingComponent implements OnInit {
         private sessionStorageService: SessionStorageService,
         private cryptoService: CryptoService,
         private router: Router,
-        private translate: TranslateService) { }
+        private translate: TranslateService,
+        private commonService: CommonService) { }
 
     ngOnInit() {
         this.activatedRoute.queryParams.subscribe((params: any) => {
@@ -71,17 +73,21 @@ export class StopShufflingComponent implements OnInit {
                             });
                             var resType = 'info';
                         };
-
-                        alertFunctions.InfoAlertBox('Success',
-                            'Stop shuffle: ' + result,
+                        let title: string = this.commonService.translateAlertTitle('Success');
+                        let msg: string = this.commonService.translateInfoMessageWithParams('stop-shuffle', result);
+                        alertFunctions.InfoAlertBox(title,
+                            msg,
                             'OK',
                             'success').then((isConfirm: any) => {
                                 this.router.navigate(['/shuffling/show-shufflings/my']);
                             });
 
                     } else {
-                        alertFunctions.InfoAlertBox('Error',
-                            'Sorry, an error occured! Reason: ' + success.errorDescription,
+                        let title: string = this.commonService.translateAlertTitle('Error');
+                        let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                            success.errCode, success.params);
+                        alertFunctions.InfoAlertBox(title,
+                            errMsg,
                             'OK',
                             'error').then((isConfirm: any) => {
                                 this.router.navigate(['/shuffling/show-shufflings/my']);
