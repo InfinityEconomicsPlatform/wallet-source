@@ -92,11 +92,12 @@ export class ResponseInterceptor implements HttpInterceptor {
                     }
                 }
 
-                alertFunctions.InfoAlertBox('Error',
-                    AppConstants.getNoConnectionMessage,
+                let title: string = _this.commonService.translateAlertTitle('Error');
+                let errMsg: string = _this.commonService.translateInfoMessage('network-error');
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
-
                     });
 
                 return Observable.of(response);

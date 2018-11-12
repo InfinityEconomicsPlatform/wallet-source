@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToolsService } from '../tools.service';
 import { AppConstants } from '../../../config/constants';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
     selector: 'app-parse-transaction',
@@ -15,7 +16,8 @@ export class ParseTransactionComponent implements OnInit {
         'Json': ''
     }
 
-    constructor(public toolsService: ToolsService) {
+    constructor(public toolsService: ToolsService,
+        public commonService: CommonService) {
     }
 
     ngOnInit() {
@@ -42,9 +44,11 @@ export class ParseTransactionComponent implements OnInit {
                 this.parseTransactionForm.json = JSON.stringify(success);
 
             } else {
-
-                alertFunctions.InfoAlertBox('Error',
-                    'Sorry, an error occured! Reason: ' + success['errorDescription'],
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                    success['errCode'], success['params']);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
                     });

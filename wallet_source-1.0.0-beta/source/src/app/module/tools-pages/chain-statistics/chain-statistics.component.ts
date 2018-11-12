@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolsService } from '../tools.service';
 import * as alertFunctions from "../../../shared/data/sweet-alerts";
+import { CommonService } from '../../../services/common.service';
 
 @Component({
   selector: 'app-chain-statistics',
@@ -9,7 +10,8 @@ import * as alertFunctions from "../../../shared/data/sweet-alerts";
 })
 export class ChainStatisticsComponent implements OnInit {
 
-  constructor(public toolsService: ToolsService) { }
+  constructor(public toolsService: ToolsService,
+    public commonService: CommonService) { }
 
   chainStatistics: any = {};
   ngOnInit() {
@@ -24,12 +26,14 @@ export class ChainStatisticsComponent implements OnInit {
         this.chainStatistics = success;
 
       } else {
-        alertFunctions.InfoAlertBox('Error',
-          'Sorry, an error occured! Reason: ' + success.errorDescription,
-          'OK',
-          'error').then((isConfirm: any) => {
-
-          });
+        let title: string = this.commonService.translateAlertTitle('Error');
+        let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+        success.errCode, success.params);
+        alertFunctions.InfoAlertBox(title,
+            errMsg,
+            'OK',
+            'error').then((isConfirm: any) => {
+            });
       }
     });
 

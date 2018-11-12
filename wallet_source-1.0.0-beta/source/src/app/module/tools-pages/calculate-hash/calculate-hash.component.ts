@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolsService } from '../tools.service';
 import * as alertFunctions from "../../../shared/data/sweet-alerts";
+import { CommonService } from '../../../services/common.service';
 
 @Component({
   selector: 'app-calculate-hash',
@@ -14,7 +15,8 @@ export class CalculateHashComponent implements OnInit {
     output: '',
     algo: 2
   }
-  constructor(public toolsService: ToolsService) { }
+  constructor(public toolsService: ToolsService,
+    public commonService: CommonService) { }
 
   ngOnInit() {
   }
@@ -27,12 +29,14 @@ export class CalculateHashComponent implements OnInit {
         this.calculateHashForm.output = success.hash;
 
       } else {
-        alertFunctions.InfoAlertBox('Error',
-          'Sorry, an error occured! Reason: ' + success.errorDescription,
-          'OK',
-          'error').then((isConfirm: any) => {
-
-          });
+        let title: string = this.commonService.translateAlertTitle('Error');
+        let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+            success.errCode, success.params);
+        alertFunctions.InfoAlertBox(title,
+            errMsg,
+            'OK',
+            'error').then((isConfirm: any) => {
+            });
       }
     });
 
