@@ -83,21 +83,13 @@ export class PollVoteComponent implements OnInit {
         if (this.isStepOneFormValid) {
             this.castVote();
         } else {
-            this.translate.get('sweet-alert.Poll option value error', {
-                minNumberOfOptions: this.poll.minNumberOfOptions,
-                maxNumberOfOptions: this.poll.maxNumberOfOptions
-            }).subscribe((res: string) => {
-                console.log(res);
-                AlertFunctions.InfoAlertBox(
-                    'Error',
-                    res,
-                    'OK',
-                    'error')
-                    .then((isConfirm: any) => {
-
-                    });
-            });
-
+            let title: string = this.commonService.translateAlertTitle('Error');
+            let errMsg: string = this.commonService.translateInfoMessageWithParams('Poll option value error', this.poll);
+            AlertFunctions.InfoAlertBox(title,
+                errMsg,
+                'OK',
+                'error').then((isConfirm: any) => {
+                });
         }
     }
 
@@ -130,12 +122,13 @@ export class PollVoteComponent implements OnInit {
 
                     this.validBytes = true;
                 } else {
-                    AlertFunctions.InfoAlertBox(
-                        'Error',
-                        'Sorry, an error occured! Reason: ' + success.errorDescription,
+                    let title: string = this.commonService.translateAlertTitle('Error');
+                    let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                    success.errCode, success.params);
+                    AlertFunctions.InfoAlertBox(title,
+                        errMsg,
                         'OK',
-                        'error')
-                        .then((isConfirm: any) => {
+                        'error').then((isConfirm: any) => {
                             this._location.back();
                         });
                 }
@@ -147,22 +140,22 @@ export class PollVoteComponent implements OnInit {
     broadcastTransaction(transactionBytes) {
         this.commonService.broadcastTransaction(this.transactionBytes).subscribe((success: any) => {
             if (!success.errorCode) {
-                AlertFunctions.InfoAlertBox(
-                    'Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction + '',
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                AlertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
-                    'success')
-                    .then((isConfirm: any) => {
+                    'success').then((isConfirm: any) => {
                         this._location.back();
                     });
             } else {
-                AlertFunctions.InfoAlertBox(
-                    'Error',
-                    'Unable to broadcast transaction. Reason: ' + success.errorDescription,
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                AlertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
-                    'Error')
-                    .then((isConfirm: any) => {
-
+                    'error').then((isConfirm: any) => {
                     });
             }
         })

@@ -175,7 +175,15 @@ export class CreatePollComponent implements OnInit {
         }
 
         if (this.pollOptions.length < this.maxNumberOfOptions) {
-            this.errorMessage = 'Enter minimum ' + this.maxNumberOfOptions + ' option(s) & maximum 10 options for the voters to choose from.';
+            let title: string = this.commonService.translateAlertTitle('Error');
+            let errMsg : string = this.commonService.translateInfoMessageWithParams('enter-minimum-options', this.maxNumberOfOptions);
+            AlertFunctions.InfoAlertBox(title,
+                errMsg,
+                'OK',
+                'error')
+                .then((isConfirm: any) => {
+                });
+            // this.errorMessage = 'Enter minimum ' + this.maxNumberOfOptions + ' option(s) & maximum 10 options for the voters to choose from.';
             return;
         }
 
@@ -257,7 +265,14 @@ export class CreatePollComponent implements OnInit {
                         this.validBytes = true;
 
                     } else {
-                        this.showError('Sorry, an error occured! Reason: ' + success.errorDescription);
+                        let title: string = this.commonService.translateAlertTitle('Error');
+                        let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                        success.errCode, success.params);
+                        AlertFunctions.InfoAlertBox(title,
+                            errMsg,
+                            'OK',
+                            'error').then((isConfirm: any) => {
+                            });
                     }
                 })
             });
@@ -269,24 +284,32 @@ export class CreatePollComponent implements OnInit {
     broadcastTransaction(transactionBytes: string) {
         this.commonService.broadcastTransaction(transactionBytes).subscribe((success) => {
             if (!success.errorCode) {
-                AlertFunctions.InfoAlertBox(
-                    'Success',
-                    'Transaction successfully broadcasted with Id : ' + success.transaction + '',
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let msg: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                msg += success.transaction;
+                AlertFunctions.InfoAlertBox(title,
+                    msg,
                     'OK',
-                    'success')
-                    .then((isConfirm: any) => {
+                    'success').then((isConfirm: any) => {
                         this.router.navigate(['/voting/show-polls/my']);
                     });
             } else {
-                this.showError('Unable to broadcast transaction. Reason: ' + success.errorDescription);
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                AlertFunctions.InfoAlertBox(title,
+                    errMsg,
+                    'OK',
+                    'error').then((isConfirm: any) => {
+                    });
             }
         })
     }
 
     showError(message: string): void {
-        AlertFunctions.InfoAlertBox(
-            'Error',
-            message,
+        let title: string = this.commonService.translateAlertTitle('Error');
+        let errMsg : string = this.commonService.translateInfoMessage(message);
+        AlertFunctions.InfoAlertBox(title,
+            errMsg,
             'OK',
             'error')
             .then((isConfirm: any) => {
