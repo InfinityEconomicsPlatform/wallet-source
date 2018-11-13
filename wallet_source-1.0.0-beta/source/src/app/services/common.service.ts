@@ -69,24 +69,33 @@ export class CommonService {
       }
       return obj
   }
-  translateErrorMessage(messKey, errCode) {
+  translateErrorMessage(messKey, success) {
     var message = ''
     this.translate.get('sweet-alert.' + messKey).subscribe((res: string) => {
         message = res;
     });
-    this.translate.get('error-alert-msg.' + errCode).subscribe((res: string) => {
-        message = message + res;
-    });
+    if(!success.errCode){
+        message += success.errorDescription;
+    }else{
+        this.translate.get('error-alert-msg.' + success.errCode).subscribe((res: string) => {
+            message += res;
+        });
+    }
     return message;
   }
-  translateErrorMessageParams(messKey, errCode, params) {
+  translateErrorMessageParams(messKey, success) {
     var message = ''
     this.translate.get('sweet-alert.' + messKey).subscribe((res: string) => {
         message = res;
     });
-    this.translate.get('error-alert-msg.' + errCode, {params}).subscribe((res: string) => {
-        message = message + res;
-    });
+    if(!success.errCode){
+        message += success.errorDescription;
+    }else{
+        let params: object = success.params;
+        this.translate.get('error-alert-msg.' + success.errCode, {params}).subscribe((res: string) => {
+            message += res;
+        });
+    }
     return message;
   }
   translateAlertTitle(alertTitle) {

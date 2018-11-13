@@ -133,7 +133,7 @@ export class SendDeferredComponent implements OnInit {
 
             } else {
                 let title: string = this.commonService.translateAlertTitle('Error');
-                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success);
                 alertFunctions.InfoAlertBox(title,
                     errMsg,
                     'OK',
@@ -210,7 +210,7 @@ export class SendDeferredComponent implements OnInit {
                 } else {
                     let title: string = this.commonService.translateAlertTitle('Error');
                     let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
-                    success.errCode, success.params);
+                    success);
                     alertFunctions.InfoAlertBox(title,
                         errMsg,
                         'OK',
@@ -349,7 +349,7 @@ export class SendDeferredComponent implements OnInit {
             } else {
                 let title: string = this.commonService.translateAlertTitle('Error');
                 let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
-                success.errCode, success.params);
+                success);
                 alertFunctions.InfoAlertBox(title,
                     errMsg,
                     'OK',

@@ -124,7 +124,7 @@ export class PollVoteComponent implements OnInit {
                 } else {
                     let title: string = this.commonService.translateAlertTitle('Error');
                     let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
-                    success.errCode, success.params);
+                    success);
                     AlertFunctions.InfoAlertBox(title,
                         errMsg,
                         'OK',
@@ -151,7 +151,7 @@ export class PollVoteComponent implements OnInit {
                     });
             } else {
                 let title: string = this.commonService.translateAlertTitle('Error');
-                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success);
                 AlertFunctions.InfoAlertBox(title,
                     errMsg,
                     'OK',

@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { LoginService } from '../../../../services/login.service';
 import { DataStoreService } from '../../../../services/data-store.service';
 import * as alertFunctions from "../../../../shared/data/sweet-alerts";
+import { CommonService } from '../../../../services/common.service';
 
 @Component({
     selector: 'app-signup-confirm',
@@ -13,7 +14,9 @@ export class SignupConfirmComponent implements OnInit {
     secret: string;
     model: Login = new Login();
 
-    constructor(public router: Router, public loginService: LoginService) {
+    constructor(public router: Router,
+        public loginService: LoginService,
+        public commonService: CommonService) {
 
     }
 
@@ -32,13 +35,12 @@ export class SignupConfirmComponent implements OnInit {
             }
             this.router.navigateByUrl('/dashboard');
         } else {
-            alertFunctions.InfoAlertBox(
-                'Error',
-                'sign-up-confirm-error-msg',
+            let title: string = this.commonService.translateAlertTitle('Success');
+            let msg: string = this.commonService.translateInfoMessage('sign-up-confirm-error-msg');
+            alertFunctions.InfoAlertBox(title,
+                msg,
                 'OK',
-                'error')
-                .then((isConfirm: any) => {
-
+                'success').then((isConfirm: any) => {
                 });
         }
     }

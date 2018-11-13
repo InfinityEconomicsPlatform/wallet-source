@@ -31,7 +31,7 @@ export class CalculateHashComponent implements OnInit {
       } else {
         let title: string = this.commonService.translateAlertTitle('Error');
         let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
-            success.errCode, success.params);
+            success);
         alertFunctions.InfoAlertBox(title,
             errMsg,
             'OK',

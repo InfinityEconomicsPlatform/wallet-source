@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToolsService } from '../tools.service';
 import * as alertFunctions from '../../../shared/data/sweet-alerts';
 import { AppConstants } from '../../../config/constants';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
     selector: 'app-validate-signature',
@@ -18,7 +19,8 @@ export class ValidateSignatureComponent implements OnInit {
         'message': ''
     }
 
-    constructor(public toolsService: ToolsService) {
+    constructor(public toolsService: ToolsService,
+        public commonService: CommonService) {
     }
 
     ngOnInit() {
@@ -40,8 +42,11 @@ export class ValidateSignatureComponent implements OnInit {
                 }
 
             } else {
-                alertFunctions.InfoAlertBox('Error',
-                    'Sorry, an error occured! Reason: ' + success['errorDescription'],
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
+                success);
+                alertFunctions.InfoAlertBox(title,
+                    errMsg,
                     'OK',
                     'error').then((isConfirm: any) => {
                     });

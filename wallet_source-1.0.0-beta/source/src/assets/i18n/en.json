@@ -1690,7 +1690,8 @@
         "unable-start-monitor-msg": "Unable start the monitor for account property : {{params.property}}. Reason: ",
         "not-delete-currency-msg": "Sorry, You can not delete currency {{params.currencyId}}",
         "shuffling-started-success": "Shuffling {{params.shuffling}} successfull started. Recipient: {{params.recipientRS}}",
-        "stop-shuffle": "Stop shuffle: {{params}}"
+        "stop-shuffle": "Stop shuffle: {{params}}",
+        "unable-get-node": "Unable to get Active nodes"
     },
     "error-alert-msg": {
         "1001": "Failed to add peer",

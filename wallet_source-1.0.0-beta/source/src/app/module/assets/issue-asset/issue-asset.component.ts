@@ -89,8 +89,7 @@ export class IssueAssetComponent implements OnInit {
                     } else {
                         console.log('success.errCode', success.errCode);
                         let title: string = this.commonService.translateAlertTitle('Error');
-                        let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
-                         success.errCode, success.params);
+                        let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred', success);
                         alertFunctions.InfoAlertBox(title,
                             errMsg,
                             'OK',
@@ -116,7 +115,7 @@ export class IssueAssetComponent implements OnInit {
                         });
                 } else {
                     let title: string = this.commonService.translateAlertTitle('Error');
-                    let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                    let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success);
                     alertFunctions.InfoAlertBox(title,
                         errMsg,
                         'OK',

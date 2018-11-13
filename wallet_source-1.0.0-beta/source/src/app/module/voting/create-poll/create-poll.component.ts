@@ -267,7 +267,7 @@ export class CreatePollComponent implements OnInit {
                     } else {
                         let title: string = this.commonService.translateAlertTitle('Error');
                         let errMsg: string = this.commonService.translateErrorMessageParams('sorry-error-occurred',
-                        success.errCode, success.params);
+                        success);
                         AlertFunctions.InfoAlertBox(title,
                             errMsg,
                             'OK',
@@ -294,8 +294,9 @@ export class CreatePollComponent implements OnInit {
                         this.router.navigate(['/voting/show-polls/my']);
                     });
             } else {
+                console.log('success1', success);
                 let title: string = this.commonService.translateAlertTitle('Error');
-                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success.errCode);
+                let errMsg: string = this.commonService.translateErrorMessage('unable-broadcast-transaction', success);
                 AlertFunctions.InfoAlertBox(title,
                     errMsg,
                     'OK',

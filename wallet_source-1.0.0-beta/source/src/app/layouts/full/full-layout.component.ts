@@ -57,7 +57,12 @@ export class FullLayoutComponent implements OnInit {
                 this.sessionStorageService.saveToSession(NodeConfig.SESSION_PEER_NODES, response);
                 this.optionsConfigurationService.loadOptions();
             }, function (error) {
-                alertFunction.InfoAlertBox("Error", 'Unable to get Active nodes', 'Ok', 'error');
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let msg: string = this.commonService.translateInfoMessage('unable-get-node');
+                alertFunction.InfoAlertBox(title,
+                    msg,
+                    'OK',
+                    'error');
             });
         }
         this.optionsConfigurationService.loadOptions();
