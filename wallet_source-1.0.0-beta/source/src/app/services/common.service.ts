@@ -75,7 +75,7 @@ export class CommonService {
         message = res;
     });
     if(!success.errCode){
-        message += success.errorDescription;
+        message += success.errorDescription.replace('&#34;', '"').replace('&#34;', '"');
     }else{
         this.translate.get('error-alert-msg.' + success.errCode).subscribe((res: string) => {
             message += res;
@@ -89,7 +89,7 @@ export class CommonService {
         message = res;
     });
     if(!success.errCode){
-        message += success.errorDescription;
+        message += success.errorDescription.replace('&#34;', '"').replace('&#34;', '"');
     }else{
         let params: object = success.params;
         this.translate.get('error-alert-msg.' + success.errCode, {params}).subscribe((res: string) => {

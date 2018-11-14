@@ -77,7 +77,6 @@ export function InfoAlertBox(
     messageType
 )
 {
-    messageText.replace("&#34;", '"').replace("&#34;", '"');
     return swal({
         title: messageTitle,
         text: messageText,
