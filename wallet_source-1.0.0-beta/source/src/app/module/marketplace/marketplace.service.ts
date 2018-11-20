@@ -51,7 +51,7 @@ export class MarketplaceService {
         return this.http.post(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
     }
 
-    dgsListing(secretPhrase, name, description, tags, quantity, priceTQT, feeTQT) {
+    dgsListing(secretPhrase, name, description, tags, quantity, priceTQT, feeTQT, messageFile, messageIsPrunable) {
         let params = {
             'requestType': 'dgsListing',
             'secretPhrase': secretPhrase,
@@ -61,6 +61,8 @@ export class MarketplaceService {
             'quantity': quantity,
             'priceTQT': priceTQT,
             'feeTQT': feeTQT,
+            'messageFile': messageFile,
+            'messageIsPrunable': messageIsPrunable,
             'deadline': this.deadline
         };
 
@@ -263,4 +265,24 @@ export class MarketplaceService {
         return this.http.get(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
     }
 
+    uploadTaggedData(file, secretPhrase, feeTQT) {
+        let params = {
+            'requestType': 'uploadTaggedData',
+            'file': file,
+            'secretPhrase': secretPhrase,
+            'feeTQT': feeTQT,
+            'deadline': this.deadline
+        }
+
+        return this.http.post(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
+    }
+
+    downloadTaggedData(transaction) {
+        let params = {
+            'requestType': 'downloadTaggedData',
+            'transaction': transaction
+        }
+
+        return this.http.get(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
+    }
 }

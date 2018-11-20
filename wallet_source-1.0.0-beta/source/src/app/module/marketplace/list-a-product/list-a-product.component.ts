@@ -18,7 +18,9 @@ export class ListAProductComponent implements OnInit {
         priceTQT: 0,
         quantity: 0,
         feeTQT: 1,
-        secretPhrase: ''
+        secretPhrase: '',
+        messageFile: '',
+        messageIsPrunable: true
     };
 
     constructor(public router: Router,
@@ -34,8 +36,9 @@ export class ListAProductComponent implements OnInit {
     putProductForSale(product) {
         let priceTQT = this.amountToQuant.transform(product.priceTQT);
         let feeTQT = this.amountToQuant.transform(product.feeTQT);
+        let messageFile = '';
 
-        this.marketplaceService.dgsListing(product.secretPhrase, product.name, product.description, product.tags, product.quantity, priceTQT, feeTQT).subscribe((success: any) => {
+        this.marketplaceService.dgsListing(product.secretPhrase, product.name, product.description, product.tags, product.quantity, priceTQT, feeTQT, messageFile, product.messageIsPrunable).subscribe((success: any) => {
             if (!success.errorCode) {
                 alertFunction.InfoAlertBox(
                     "Success",

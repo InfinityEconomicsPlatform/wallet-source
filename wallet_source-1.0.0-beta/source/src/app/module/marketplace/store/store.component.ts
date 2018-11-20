@@ -6,6 +6,7 @@ import { SessionStorageService } from '../../../services/session-storage.service
 import { CryptoService } from '../../../services/crypto.service';
 import { AccountService } from '../../account/account.service';
 import { DataStoreService } from 'app/services/data-store.service';
+import { AppConstants } from 'app/config/constants';
 
 @Component({
     selector: 'app-store',
@@ -21,6 +22,7 @@ export class StoreComponent implements OnInit {
     tags: any[] = [];
     term: string = "";
     searchType: string = "account_id";
+    imageBaseUrl: string = AppConstants.marketPlaceConfig.apiUrl + "/" + AppConstants.marketPlaceConfig.endPoint + "?requestType=downloadPrunableMessage&retrieve=true&transaction=";
 
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
@@ -103,5 +105,9 @@ export class StoreComponent implements OnInit {
         }, (error) => {
             console.log("Error: recentListings", error);
         });
+    }
+
+    updateUrl(event) {
+        console.log(event);
     }
 }
