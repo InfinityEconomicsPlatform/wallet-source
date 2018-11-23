@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MarketplaceService } from '../marketplace.service';
 import { DataStoreService } from 'app/services/data-store.service';
+import { AppConstants } from 'app/config/constants';
 
 @Component({
     selector: 'app-product-details',
@@ -11,6 +12,8 @@ import { DataStoreService } from 'app/services/data-store.service';
 })
 export class ProductDetailsComponent implements OnInit {
     product: any = {};
+    imageBaseUrl: string = AppConstants.marketPlaceConfig.apiUrl + "/" + AppConstants.marketPlaceConfig.endPoint + "?requestType=downloadPrunableMessage&retrieve=true&transaction=";
+
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
         public location: Location) {
