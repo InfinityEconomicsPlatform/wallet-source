@@ -4,6 +4,7 @@ import { MarketplaceService } from '../../marketplace.service';
 import { Location } from '@angular/common';
 import { DataStoreService } from 'app/services/data-store.service';
 import * as alertFunction from "../../../../shared/data/sweet-alerts";
+import { AppConstants } from 'app/config/constants';
 
 @Component({
     selector: 'app-change-quantity',
@@ -15,6 +16,7 @@ export class ChangeQuantityComponent implements OnInit {
     newQuantity: number;
     feeTQT: number = 100000000;
     secretPhrase: string = "";
+    imageBaseUrl: string = AppConstants.marketPlaceConfig.apiUrl + "/" + AppConstants.marketPlaceConfig.endPoint + "?requestType=downloadPrunableMessage&retrieve=true&transaction=";
 
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,

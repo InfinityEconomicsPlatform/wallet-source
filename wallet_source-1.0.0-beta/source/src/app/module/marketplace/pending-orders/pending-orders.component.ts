@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MarketplaceService } from '../marketplace.service';
 import { AccountService } from 'app/module/account/account.service';
 import { DataStoreService } from 'app/services/data-store.service';
+import { AppConstants } from 'app/config/constants';
 
 @Component({
     selector: 'app-pending-orders',
@@ -12,6 +13,7 @@ import { DataStoreService } from 'app/services/data-store.service';
 export class PendingOrdersComponent implements OnInit {
     accountRs: any;
     pendingProducts: any[] = [];
+    imageBaseUrl: string = AppConstants.marketPlaceConfig.apiUrl + "/" + AppConstants.marketPlaceConfig.endPoint + "?requestType=downloadPrunableMessage&retrieve=true&transaction=";
 
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,

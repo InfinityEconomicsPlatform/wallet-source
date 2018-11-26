@@ -10,7 +10,7 @@
                     <div class="card-block mt-2">
                         <div class="row tag-details shadow-box mb-3" *ngFor="let good of completedOrders">
                             <div class="col-md-2">
-                                <i class="icon-placeholder placeholder-icon"></i>
+                                <img style="width:4rem;" src="{{ imageBaseUrl + good.goods }}" onError="this.src='./assets/images/no_image_available.png'">
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
