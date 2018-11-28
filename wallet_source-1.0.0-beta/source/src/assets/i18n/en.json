@@ -2086,6 +2086,7 @@
             "name_placeholder": "Item Name",
             "description": "Description",
             "description_placeholder": "Enter the product description",
+            "product_image": "Product Image",
             "tags": "Tags",
             "tags_placeholder": "Tags (Categories)",
             "tag_popover": "Choose upto 3 tags, separate them with comma's",

@@ -26,6 +26,12 @@
                                             name="description" required></textarea>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>{{ 'marketplace.list-a-product.product_image' | translate }} <small>(max size 20KB)</small></label>
+                                    <div class="position-relative">
+                                        <input type="file" (change)="onFileChange($event)" accept="image/*" #productImage/>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -96,7 +102,7 @@
                                 </div>
 
                                 <div class="mt-4">
-                                    <button type="button" class="btn btn-gradient mr-1 float-right" (click)="putProductForSale(product)">
+                                    <button type="button" class="btn btn-gradient mr-1 float-right" (click)="putProductForSale(product, productImage)">
                                         {{ 'marketplace.list-a-product.putForSale' | translate }}
                                     </button>
                                 </div>
