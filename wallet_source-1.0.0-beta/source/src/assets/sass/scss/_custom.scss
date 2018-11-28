@@ -1662,3 +1662,21 @@ form .form-control-position.position-left{
     align-items: center;
     justify-content: center;
 }
+.product-detail-img {
+    width: auto;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: 220px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
