@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { MarketplaceService } from '../marketplace.service';
 import { DataStoreService } from 'app/services/data-store.service';
 import * as alertFunction from "../../../shared/data/sweet-alerts";
+import { CommonService } from 'app/services/common.service';
 
 @Component({
     selector: 'app-purchase',
@@ -19,7 +20,8 @@ export class PurchaseComponent implements OnInit {
 
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
-        public location: Location) {
+        public location: Location,
+        private commonService: CommonService) {
 
     }
 
@@ -41,18 +43,25 @@ export class PurchaseComponent implements OnInit {
         let totalPriceTQT = quantity * priceTQT;
         this.marketplaceService.dgsPurchase(goods, quantity, deliveryDeadlineTimestamp, secretPhrase, feeTQT, totalPriceTQT).subscribe((success: any) => {
             if (!success.errorCode) {
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let message: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                message += success.transaction;
+
                 alertFunction.InfoAlertBox(
-                    "Success",
-                    "Order placed successfully",
+                    title,
+                    message,
                     "OK",
                     'success'
                 ).then((isConfirm: any) => {
                     this.router.navigateByUrl('/marketplace/store');
                 });
             } else {
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('sorry-error-occurred', success);
+
                 alertFunction.InfoAlertBox(
-                    "Error",
-                    success.errorDescription,
+                    title,
+                    errMsg,
                     "OK",
                     'error'
                 )

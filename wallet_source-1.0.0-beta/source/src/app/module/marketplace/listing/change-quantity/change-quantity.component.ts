@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { DataStoreService } from 'app/services/data-store.service';
 import * as alertFunction from "../../../../shared/data/sweet-alerts";
 import { AppConstants } from 'app/config/constants';
+import { CommonService } from 'app/services/common.service';
 
 @Component({
     selector: 'app-change-quantity',
@@ -20,7 +21,8 @@ export class ChangeQuantityComponent implements OnInit {
 
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
-        public location: Location) {
+        public location: Location,
+        private commonService: CommonService) {
 
     }
 
@@ -34,18 +36,24 @@ export class ChangeQuantityComponent implements OnInit {
     changeQuantity(goods, newQuantity, secretPhrase, feeTQT) {
         this.marketplaceService.dgsQuantityChange(goods, newQuantity, secretPhrase, feeTQT).subscribe((success: any) => {
             if (!success.errorCode) {
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let message: string = this.commonService.translateInfoMessage('changes-saved-success');
+
                 alertFunction.InfoAlertBox(
-                    "Success",
-                    "Change saved successfully",
+                    title,
+                    message,
                     "OK",
                     'success'
                 ).then((isConfirm: any) => {
                     this.router.navigateByUrl('/marketplace/product-listed');
                 });
             } else {
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('sorry-error-occurred', success);
+
                 alertFunction.InfoAlertBox(
-                    "Error",
-                    success.errorDescription,
+                    title,
+                    errMsg,
                     "OK",
                     'error'
                 )

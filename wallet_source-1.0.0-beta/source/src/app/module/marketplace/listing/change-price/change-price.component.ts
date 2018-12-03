@@ -6,6 +6,7 @@ import { DataStoreService } from 'app/services/data-store.service';
 import { AmountToQuantPipe } from 'app/pipes/amount-to-quant.pipe';
 import * as alertFunction from "../../../../shared/data/sweet-alerts";
 import { AppConstants } from 'app/config/constants';
+import { CommonService } from 'app/services/common.service';
 
 @Component({
     selector: 'app-change-price',
@@ -22,7 +23,8 @@ export class ChangePriceComponent implements OnInit {
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
         private amountToQuant: AmountToQuantPipe,
-        public location: Location) {
+        public location: Location,
+        private commonService: CommonService) {
 
     }
 
@@ -37,18 +39,24 @@ export class ChangePriceComponent implements OnInit {
         let priceTQT = this.amountToQuant.transform(price);
         this.marketplaceService.dgsPriceChange(goods, priceTQT, secretPhrase, feeTQT).subscribe((success: any) => {
             if (!success.errorCode) {
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let message: string = this.commonService.translateInfoMessage('changes-saved-success');
+
                 alertFunction.InfoAlertBox(
-                    "Success",
-                    "Changes saved successfully",
+                    title,
+                    message,
                     "OK",
                     'success'
                 ).then((isConfirm: any) => {
                     this.router.navigateByUrl('/marketplace/product-listed');
                 });
             } else {
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('sorry-error-occurred', success);
+
                 alertFunction.InfoAlertBox(
-                    "Error",
-                    success.errorDescription,
+                    title,
+                    errMsg,
                     "OK",
                     'error'
                 )

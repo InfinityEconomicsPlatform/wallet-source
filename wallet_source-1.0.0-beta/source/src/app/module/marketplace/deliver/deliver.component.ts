@@ -5,6 +5,7 @@ import { MarketplaceService } from '../marketplace.service';
 import { DataStoreService } from 'app/services/data-store.service';
 import { AmountToQuantPipe } from 'app/pipes/amount-to-quant.pipe';
 import * as alertFunction from "../../../shared/data/sweet-alerts";
+import { CommonService } from 'app/services/common.service';
 
 @Component({
     selector: 'app-deliver',
@@ -24,7 +25,8 @@ export class DeliverComponent implements OnInit {
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
         private amountToQuant: AmountToQuantPipe,
-        public location: Location) {
+        public location: Location,
+        private commonService: CommonService) {
     }
 
     ngOnInit() {
@@ -38,21 +40,28 @@ export class DeliverComponent implements OnInit {
         let discountTQT = this.amountToQuant.transform(this.discount);
         this.marketplaceService.dgsDelivery(product.purchase, discountTQT, this.goodsToEncrypt, this.goodsIsText, this.goodsData, this.goodsNonce, this.secretPhrase, this.feeTQT).subscribe((success: any) => {
             if (!success.errorCode) {
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let message: string = this.commonService.translateInfoMessage('success-broadcast-message');
+                message += success.transaction;
+
                 alertFunction.InfoAlertBox(
-                    "Success",
-                    "Broadcast successful",
+                    title,
+                    message,
                     "OK",
                     'success'
                 ).then((isConfirm: any) => {
                     this.router.navigateByUrl('/marketplace/pending-orders');
                 });
             } else {
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('sorry-error-occurred', success);
+                
                 alertFunction.InfoAlertBox(
-                    "Error",
-                    success.errorDescription,
+                    title,
+                    errMsg,
                     "OK",
                     'error'
-                )
+                );
             }
         }, (error) => {
 

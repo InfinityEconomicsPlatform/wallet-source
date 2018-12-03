@@ -1706,7 +1706,11 @@
         "not-delete-currency-msg": "Sorry, You can not delete currency {{params.currencyId}}",
         "shuffling-started-success": "Shuffling {{params.shuffling}} successfull started. Recipient: {{params.recipientRS}}",
         "stop-shuffle": "Stop shuffle: {{params}}",
-        "unable-get-node": "Unable to get Active nodes"
+        "unable-get-node": "Unable to get Active nodes",
+        "error-image-size": "Image size should less than 20KBs",
+        "success-product-listing": "Product listed for sale successfully",
+        "changes-saved-success": "Changes saved successfully",
+        "product-deleted": "Successfully removed the product from listing."
     },
     "error-alert-msg": {
         "1001": "Failed to add peer",

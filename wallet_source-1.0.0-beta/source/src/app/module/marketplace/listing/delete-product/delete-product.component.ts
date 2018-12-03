@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { DataStoreService } from 'app/services/data-store.service';
 import * as alertFunction from "../../../../shared/data/sweet-alerts";
 import { AppConstants } from 'app/config/constants';
+import { CommonService } from 'app/services/common.service';
 
 @Component({
     selector: 'app-delete-product',
@@ -19,7 +20,8 @@ export class DeleteProductComponent implements OnInit {
 
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
-        public location: Location) {
+        public location: Location,
+        private commonService: CommonService) {
 
     }
 
@@ -33,21 +35,27 @@ export class DeleteProductComponent implements OnInit {
     delete(goods, secretPhrase, feeTQT) {
         this.marketplaceService.dgsDelisting(goods, secretPhrase, feeTQT).subscribe((success: any) => {
             if (!success.errorCode) {
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let message: string = this.commonService.translateInfoMessage('product-deleted');
+
                 alertFunction.InfoAlertBox(
-                    "Success",
-                    "Successfully removed the product from listing.",
+                    title,
+                    message,
                     "OK",
                     'success'
                 ).then((isConfirm: any) => {
                     this.router.navigateByUrl('/marketplace/product-listed');
                 });
             } else {
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('sorry-error-occurred', success);
+
                 alertFunction.InfoAlertBox(
-                    "Error",
-                    success.errorDescription,
+                    title,
+                    errMsg,
                     "OK",
                     'error'
-                )
+                );
             }
         }, (error) => {
             console.log("Change Price:", error);

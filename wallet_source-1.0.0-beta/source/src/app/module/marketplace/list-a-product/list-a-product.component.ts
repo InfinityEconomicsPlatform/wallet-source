@@ -5,6 +5,7 @@ import { AmountToQuantPipe } from 'app/pipes/amount-to-quant.pipe';
 import * as alertFunction from "../../../shared/data/sweet-alerts";
 import { HttpClient } from '@angular/common/http';
 import { AppConstants } from 'app/config/constants';
+import { CommonService } from 'app/services/common.service';
 
 @Component({
     selector: 'app-list-a-product',
@@ -29,7 +30,8 @@ export class ListAProductComponent implements OnInit {
     constructor(public router: Router,
         private marketplaceService: MarketplaceService,
         private amountToQuant: AmountToQuantPipe,
-        public http: HttpClient) {
+        public http: HttpClient,
+        private commonService: CommonService) {
 
     }
 
@@ -41,9 +43,12 @@ export class ListAProductComponent implements OnInit {
         if ((event.target.files[0].size / 1024) < 20) {
             this.selectedFile = event.target.files[0];
         } else {
+            let title: string = this.commonService.translateAlertTitle('Error');
+            let errMsg: string = this.commonService.translateInfoMessage('error-image-size');
+
             alertFunction.InfoAlertBox(
-                "Error",
-                "Image size should less than 20KBs",
+                title,
+                errMsg,
                 "OK",
                 'error'
             ).then((isConfirm: any) => {
@@ -70,9 +75,12 @@ export class ListAProductComponent implements OnInit {
 
         this.http.post(AppConstants.marketPlaceConfig.apiUrl + '/' + AppConstants.pollConfig.pollEndPoint, formdata).subscribe((success: any) => {
             if (!success.errorCode) {
+                let title: string = this.commonService.translateAlertTitle('Success');
+                let message: string = this.commonService.translateInfoMessage('success-product-listing');
+
                 alertFunction.InfoAlertBox(
-                    "Success",
-                    "Product listed for sale successfully",
+                    title,
+                    message,
                     "OK",
                     'success'
                 ).then((isConfirm: any) => {
@@ -90,12 +98,15 @@ export class ListAProductComponent implements OnInit {
                     productImage.value = "";
                 });
             } else {
+                let title: string = this.commonService.translateAlertTitle('Error');
+                let errMsg: string = this.commonService.translateErrorMessage('sorry-error-occurred', success);
+
                 alertFunction.InfoAlertBox(
-                    "Error",
-                    success.errorDescription,
+                    title,
+                    errMsg,
                     "OK",
                     'error'
-                )
+                );
             }
         }, (error) => {
             console.log("List a Product:", error);
