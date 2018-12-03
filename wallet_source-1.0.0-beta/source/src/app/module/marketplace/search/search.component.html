@@ -15,7 +15,9 @@
                     <div class="card-block mt-2" *ngIf="goods.length > 0">
                         <div class="row  tag-details shadow-box mb-3" *ngFor="let good of goods">
                             <div class="col-md-2">
-                                <i class="icon-placeholder placeholder-icon"></i>
+                                <div class="sort-img">
+                                    <img style="width:4rem;" src="{{ imageBaseUrl + good.goods }}" onError="this.src='./assets/images/no_image_available.png'">
+                                </div>
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
