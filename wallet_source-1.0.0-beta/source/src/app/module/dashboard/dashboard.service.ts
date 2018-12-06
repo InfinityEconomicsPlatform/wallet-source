@@ -48,7 +48,7 @@ export class DashboardService {
     var params = {
       aggregate: 6,
       e: 'CCCAGG',
-      extraParams: '',
+      extraParams: '1',
       limit: 120,
       tryConversion: false,
       fsym,
