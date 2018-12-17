@@ -145,7 +145,7 @@ export class DashboardComponent implements OnInit {
                 if (btcToUsdResult.Response == 'Success' && xinToBtcResult.Response == 'Success') {
                     let points = [];
                     for (let i = 0; i < xinToBtcResult.Data.length; i++) {
-                        let value = 0;//xinToBtcResult.Data[i].close
+                        let value = 0;
 
                         if (btcToUsdResult.Data[i].time == xinToBtcResult.Data[i].time) {
                             points.push({

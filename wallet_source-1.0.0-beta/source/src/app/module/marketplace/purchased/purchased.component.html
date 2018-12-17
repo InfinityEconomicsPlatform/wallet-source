@@ -19,8 +19,16 @@
                                         </ng-template>
                                     </ngx-datatable-column>
                                     <ngx-datatable-column prop="name" name="Product">
+                                        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                            <span *ngIf="row.pending">{{ value }}</span>
+                                            <a class="hyperlink" *ngIf="!row.pending" (click)="decryptGood()">
+                                                {{ value }}
+                                            </a>
+                                        </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column prop="pending" name="Order Status">
                                         <ng-template let-value="value" ngx-datatable-cell-template>
-                                            {{ value }}
+                                            {{ value ? "Pending" : "Complete" }}
                                         </ng-template>
                                     </ngx-datatable-column>
                                     <ngx-datatable-column prop="priceTQT" name="Price">

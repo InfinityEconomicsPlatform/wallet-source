@@ -31,4 +31,8 @@ export class PurchasedComponent implements OnInit {
 
     }
 
+    decryptGood() {
+        console.log("Clicked");
+    }
+
 }
