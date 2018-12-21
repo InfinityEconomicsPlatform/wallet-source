@@ -17,7 +17,7 @@
 								<img src="/assets/images/login-logo.png" alt="">
 							</div>
 							<div class="form-group text-left sign_in_inputs">
-								<label><img src="/assets/images/language.png" alt="">Language</label>
+								<label><img src="/assets/images/language.png" alt="">{{ 'welcome.language-label' | translate}}</label>
 								<select class="form-control" [(ngModel)]="selectedLanguage" (ngModelChange)="changeLanguage($event)" name="language">
 									<option *ngFor="let language of languages" [ngValue]="language.code">
 										{{language.name}}
@@ -26,7 +26,7 @@
 							</div>
 
 							<div class="form-group text-left sign_in_inputs">
-								<label><img src="/assets/images/lock.png" alt="">Passphrase</label>
+								<label><img src="/assets/images/lock.png" alt="">{{ 'welcome.passphrase-label' | translate}}</label>
 								<input type="password" name="passPhrase" [(ngModel)]="model.passPhrase" #passPhrase="ngModel" class="form-control p_input" required
 									   placeholder="{{ 'login.passphrase_placeholder' | translate | germanUmlautTransform}}">
 								<div *ngIf="passPhrase?.invalid && (passPhrase?.dirty || passPhrase?.touched)" class="input-error">
@@ -37,7 +37,7 @@
 							</div>
 							<button type="submit" [disabled]="f.invalid" class="btn btn-primary btn-block enter-btn mt-4 btn-gradient col-md-8" (click)="loginToAccount()">{{'welcome.redirect_login_btn' | translate}}</button>
 						</form>
-						<p class="note text-center mt-4 mb-4"><span>Note:</span> Every transaction will get signed locally and transmitted to a random node without revealing your wallet passphrase or private keys.</p>
+						<p class="note text-center mt-4 mb-4" [innerHTML]="'welcome.welcome-note' | translate"></p>
 						<p class="sign-up text-center mb-0">{{ 'welcome.no_account' | translate}}?<a href="javascript:void(0)" (click)="signUp()"> {{ 'welcome.redirect_signup_btn' | translate}}</a></p>
 					</div>
 				</div>
@@ -48,7 +48,7 @@
 							<div class="centering text-center">
 								<div class="col-md-7 browser-text">
 									<p>
-										Chrome v49+ | IE v11+ | Firefox v50+ | Opera v42+ | Android v4.4+ | Chrome for Android v55+
+                                        {{'welcome.browsers-version-text' | translate}}
 									</p>
 								</div>
 								<!-- <img src="images/angularjs.svg" class="grayscale" alt="" width="15" style="margin-top: 10px; margin-bottom:5px;">
