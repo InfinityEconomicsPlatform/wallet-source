@@ -35,7 +35,8 @@ export class SetPropertyComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private sessionStorageService: SessionStorageService,
-        private commonService: CommonService) {
+        private commonService: CommonService,
+        private activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
@@ -46,6 +47,11 @@ export class SetPropertyComponent implements OnInit {
             this.accountRs = this.accountService.getAccountDetailsFromSession('accountRs');
 
             this.setPage({ offset: 0 });
+        });
+        this.activatedRoute.queryParams.subscribe((params: any) => {
+            if (params.recipient) {
+                this.setAccountPropertyForm.recipientRS = params.recipient;
+            }
         });
     }
     setPage(pageInfo) {
@@ -86,7 +92,8 @@ export class SetPropertyComponent implements OnInit {
         this.setPage({ offset: 0 });
     }
     loadBookmarkView() {
-        this.openBookMarks = true;
+       // this.openBookMarks = true;
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'set-property' } });
     }
     bookmarkSelected(e) {
         this.setAccountPropertyForm.recipientRS = e.data.account;

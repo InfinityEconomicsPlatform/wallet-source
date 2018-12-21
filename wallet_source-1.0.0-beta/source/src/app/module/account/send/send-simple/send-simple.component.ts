@@ -88,7 +88,7 @@ export class SendSimpleComponent implements OnInit {
     }
 
     loadBookmarkView() {
-        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'sendmessage' } });
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'simple' } });
         //this.openBookMarks = true;
     }
 

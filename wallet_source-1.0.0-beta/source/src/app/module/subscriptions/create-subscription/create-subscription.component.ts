@@ -43,10 +43,16 @@ export class CreateSubscriptionComponent implements OnInit {
         public amountToQuant: AmountToQuantPipe,
         private cryptoService: CryptoService,
         public accountService: AccountService,
-        public aliasesService: AliasesService) {
+        public aliasesService: AliasesService,
+        public activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
+        this.activatedRoute.queryParams.subscribe((params: any) => {
+            if (params.recipient) {
+                this.subscriptionForm.recipientRS = params.recipient;
+            }
+        });
     }
 
     bookmarkSelected(e) {
@@ -181,7 +187,9 @@ export class CreateSubscriptionComponent implements OnInit {
     };
 
     loadBookmarkView() {
-        this.openBookMarks = true;
+        // this.openBookMarks = true;
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'create-subscription' } });
+
     }
 
     goBack() {

@@ -38,6 +38,11 @@ export class BookmarkListComponent implements OnInit {
             case 'deferred':
             case 'reference':
             case 'secret':
+            case 'create-subscription':
+            case 'create-escrow':
+            case 'balance-lease':
+            case 'set-property':
+            case 'control':
                 this.isSelectView = true;
                 break;
         }
@@ -59,7 +64,22 @@ export class BookmarkListComponent implements OnInit {
     onAction(action, row) {
         if (action === 'select') {
             this.selectEvent.emit(row);
-            if (this.viewFor === 'sendmessage') {
+            if (this.viewFor === 'control') {
+                this.router.navigate(['account/control'],
+                    { queryParams: {'recipient': row.accountRS}});
+            } else if (this.viewFor === 'set-property') {
+                this.router.navigate(['account/properties/set-property'],
+                    { queryParams: {'recipient': row.accountRS}});
+            } else if (this.viewFor === 'balance-lease') {
+                this.router.navigate(['account/balance-lease'],
+                    { queryParams: {'recipient': row.accountRS}});
+            } else if (this.viewFor === 'create-escrow') {
+                this.router.navigate(['escrow/create-escrow'],
+                    { queryParams: {'recipient': row.accountRS}});
+            } else if (this.viewFor === 'create-subscription') {
+                this.router.navigate(['subscriptions/create-subscription'],
+                    { queryParams: {'recipient': row.accountRS}});
+            } else if (this.viewFor === 'sendmessage') {
                 this.router.navigate(['messages/send-message'],
                     { queryParams: {'recipient': row.accountRS}});
             } else {

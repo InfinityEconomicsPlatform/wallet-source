@@ -106,7 +106,7 @@ export class ControlComponent implements OnInit {
     }
 
     bookmarkSelected(e) {
-        this.setAccountControlForm.approveAccounts[this.bookMarkIndex].value = e.data.account; // {value: e.data.account};
+        this.setAccountControlForm.approveAccounts[this.bookMarkIndex].value = e.accountRS; // {value: e.data.account};
         this.openBookMarks = false;
     }
 

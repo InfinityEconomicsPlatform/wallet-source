@@ -51,6 +51,11 @@ export class BalanceLeaseComponent implements OnInit {
         this.hasReceiverPublicKey = false;
     }
     ngOnInit() {
+        this.activatedRoute.queryParams.subscribe((params: any) => {
+            if (params.recipient) {
+                this.balanceLeaseForm.recipientRS = params.recipient;
+            }
+        });
         this.currenciesService.getBlockChainStatus().subscribe((success) => {
             this.blockheight = parseInt(success.numberOfBlocks);
         });
@@ -282,7 +287,8 @@ export class BalanceLeaseComponent implements OnInit {
     };
 
     loadBookmarkView() {
-        this.openBookMarks = true;
+       // this.openBookMarks = true;
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'balance-lease' } });
     }
     bookmarkSelected(e) {
         this.balanceLeaseForm.recipientRS = e.data.account;

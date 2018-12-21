@@ -54,10 +54,16 @@ export class CreateEscrowComponent implements OnInit {
         public amountToQuant: AmountToQuantPipe,
         public cryptoService: CryptoService,
         public accountService: AccountService,
-        public aliasesService: AliasesService
+        public aliasesService: AliasesService,
+        public activatedRoute: ActivatedRoute
     ) { }
 
     ngOnInit() {
+        this.activatedRoute.queryParams.subscribe((params: any) => {
+            if (params.recipient) {
+                this.escrowForm.recipientRS = params.recipient;
+            }
+        });
         this.escrowForm.escrowDeadline = 1;
         this.escrowForm.deadlineAction = this.deadlineActionOptions[0].value;
     }
@@ -68,7 +74,8 @@ export class CreateEscrowComponent implements OnInit {
     }
 
     loadBookmarkView() {
-        this.openBookMarks = true;
+       // this.openBookMarks = true;
+        this.router.navigate(['/account/send/bookmark-list-only'], { queryParams: { fromView: 'create-escrow' } });
     }
 
     goBack() {

@@ -163,15 +163,15 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">My Bookmarks</h4>
+                <h4 class="card-title">{{'account.my-bookmarks.my-bookmark-title'| translate}}</h4>
                 <h5 class="back-button" (click)="goBack()">
-                    <i class="fa fa-chevron-left"></i> Back
+                    <i class="fa fa-chevron-left"></i> {{'common.back-btn'| translate}}
                 </h5>
             </div>
             <div class="card-body">
                 <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
-                    <h5 class="mb-1">Bookmark List</h5>
-                    <app-bookmark-list [viewFor]="'sendxin'" (selectEvent)="bookmarkSelected($event)"></app-bookmark-list>
+                    <h5 class="mb-1">{{'account.my-bookmarks.bookmark-list-label'| translate}}</h5>
+                    <app-bookmark-list [viewFor]="'control'" (selectEvent)="bookmarkSelected($event)"></app-bookmark-list>
                 </div>
             </div>
         </div>
