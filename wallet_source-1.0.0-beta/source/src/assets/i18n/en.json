@@ -104,6 +104,7 @@
     "fiat-balance-total-tooltip": "Fiat money equivalent, based on last completed trade on XIN exchange.",
     "account-name-tooltip": "The public account name for this account.",
     "account-description-tooltip": "The public account description for this account.",
+    "set-account-info-label": "Set Account Info",
     "send-xin": {
       "send-xin-title": "SEND XIN",
       "deferred-title": "SEND DEFERRED XIN",
@@ -602,9 +603,13 @@
     "currency-label": "Currency",
     "type-label": "Type",
     "secret-phrase-label": "Secret phrase",
-    "currency-ticker-label": "Currency Ticker"
+    "currency-ticker-label": "Currency Ticker",
+    "expert-wallet":"Expert Wallet",
+    "basic-wallet":"Basic Wallet"
   },
   "transaction-details": {
+    "transaction-details-label":"Transaction Details",
+    "block-details-label":"Block Details",
     "transaction-id-label": "Transaction ID",
     "block-id-label": "Block ID",
     "transaction-time-label": "Transaction Time",
@@ -734,7 +739,10 @@
       "title": "My Open Orders",
       "buy-title": "Buy Offers",
       "sell-title": "Sell Offers",
-      "cancel-table-action": "Cancel"
+      "cancel-table-action": "Cancel",
+      "cancel-order-confirmation-label": "Cancel Order Confirmation",
+      "bid-order-id-label": "Bid Order Id",
+      "ask-order-id-label": "Ask Order Id"
     },
     "my-trades": {
       "title": "My Trades"

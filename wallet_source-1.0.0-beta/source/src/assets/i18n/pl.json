@@ -3,7 +3,11 @@
     "title": "Witaj w Infinity Economics",
     "redirect_login_btn": "Moje konto",
     "redirect_signup_btn": "Rejestracja",
-    "no_account": "Nie masz konta"
+    "no_account": "Nie masz konta",
+    "language-label": "Language",
+    "passphrase-label": "Passphrase",
+    "welcome-note": "<span>Note:</span> Every transaction will get signed locally and transmitted to a random node without revealing your wallet passphrase or private keys.",
+    "browsers-version-text": "Chrome v49+ | IE v11+ | Firefox v50+ | Opera v42+ | Android v4.4+ | Chrome for Android v55+"
   },
   "signup": {
     "disclaimer": {
@@ -62,6 +66,7 @@
     "fiat-balance-total-tooltip": "Ekwiwalent pieniężny w walucie Fiat oparty na ostatnio dokonanej transakcji na giełdzie XIN.",
     "account-name-tooltip": "Publiczna nawa konta",
     "account-description-tooltip": "Publiczny opis konta",
+    "set-account-info-label": "Set Account Info",
     "send-xin": {
       "send-xin-title": "WYŚLIJ XIN",
       "deferred-title": "WYŚLIJ PRZELEW ODROCZONY XIN",
@@ -392,7 +397,9 @@
     "currency-label": "Waluta",
     "type-label": "Typ",
     "secret-phrase-label": "Sekretna fraza",
-    "currency-ticker-label": "Skrót waluty"
+    "currency-ticker-label": "Skrót waluty",
+    "expert-wallet":"Expert Wallet",
+    "basic-wallet":"Basic Wallet"
   },
   "table-header": {
     "name": "Nazwa",
@@ -503,7 +510,10 @@
       "title": "Moje otwarte zamówienia",
       "buy-title": "Oferty kupna",
       "sell-title": "Oferty sprzedaży",
-      "cancel-table-action": "Anuluj"
+      "cancel-table-action": "Anuluj",
+      "cancel-order-confirmation-label": "Cancel Order Confirmation",
+      "bid-order-id-label": "Bid Order Id",
+      "ask-order-id-label": "Ask Order Id"
     },
     "my-trades": {
       "title": "Moje transakcje"
@@ -955,6 +965,8 @@
     }
   },
   "transaction-details": {
+    "transaction-details-label":"Transaction Details",
+    "block-details-label":"Block Details",
     "transaction-id-label": "ID transakcji",
     "block-id-label": "ID bloku",
     "transaction-time-label": "Czas Transakcji",

@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="card-block mr-3 ml-3">
                         <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                            <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                                 <form #f="ngForm" class="form inner-form form-bordered" novalidate>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -135,7 +135,7 @@
                                                         </div>
                                                         <div class="col-2">
                                                             <span class="input-group-text text-left">
-                                                                {{ publishExchangeOfferForm.days }} Day(s)
+                                                                {{ publishExchangeOfferForm.days }} {{'common.days-text'| translate}}
                                                             </span>
                                                         </div>
                                                         <div class="col-4 pr-1 text-right btn-icon-group">
@@ -178,7 +178,7 @@
                                     </div>
                                 </form>
                             </aw-wizard-step>
-                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
+                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }" class="form-bordered mt-4">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="ucsb"> {{'common.ticker-label'| translate}}

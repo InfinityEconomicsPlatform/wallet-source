@@ -32,7 +32,9 @@
             <li class="wallet-switch">
                 <a href="javascript:void(0)" (click)="triggerClick()">
                     <i class="icon-wallet"></i>
-                    <span class="menu-title">{{isExpertWallet ? 'Expert Wallet' : 'Basic Wallet'}}</span>
+                    <!-- <span class="menu-title">{{isExpertWallet ? 'common.expert-wallet'| translate : 'common.basic-wallet'| translate}}</span> -->
+                    <span class="menu-title" *ngIf="isExpertWallet">{{'common.expert-wallet'| translate}}</span>
+                    <span class="menu-title" *ngIf="!isExpertWallet">{{'common.basic-wallet'| translate}}</span>
                 </a>
                 <ui-switch (change)="switchWallet()" [(ngModel)]="isExpertWallet" size="small"></ui-switch>
             </li>

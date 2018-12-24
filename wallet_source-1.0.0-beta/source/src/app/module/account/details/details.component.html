@@ -286,19 +286,19 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">Set Account Info</h2>
+                    <h2 class="main-title">{{'account.set-account-info-label' | translate}}</h2>
                 </div>
                 <div class="card-header"></div>
                 <div class="card-body">
                     <div class="card-block ml-1 mr-1 ml-md-3 mr-md-3">
                         <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                            <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '&#xe93a;', fontFamily: 'icomoon' }">
+                            <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '&#xe93a;', fontFamily: 'icomoon' }">
                                 <form class="form">
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Account Name
+                                                    <label>{{'account.account-name-label' | translate}}
                                                         <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right"
                                                             triggers="mouseenter:mouseleave" container="body"
                                                             ngbPopover="Account name max. 100 characters."></i>
@@ -312,7 +312,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Account Description
+                                                    <label>{{'account.account-description-label' | translate}}
                                                         <i class="fa fa-question-circle-o ml-1 info-yellow" placement="right"
                                                             triggers="mouseenter:mouseleave" container="body"
                                                             ngbPopover="Account description with max. 1'000 characters"></i>
@@ -328,22 +328,22 @@
                                         <div class="mt-2"></div>
                                         <button type="button" class="btn btn-gradient mr-1 mb-0 float-right" (click)="createSetAccountInfoTransaction();"
                                             awNextStep>
-                                            Next <i class="icon-next_arrow"></i>
+                                            {{'common.next-btn' | translate}}<i class="icon-next_arrow"></i>
                                         </button>
                                     </div>
                                 </form>
                             </aw-wizard-step>
-                            <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '&#xe939;', fontFamily: 'icomoon' }"
+                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '&#xe939;', fontFamily: 'icomoon' }"
                                 class="form-bordered mt-4">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="ucsb"> Account Name
+                                        <div class="ucsb"> {{'account.account-name-label'| translate}}
                                         </div>
                                         <h4> {{setAccountParams.name || " " }} </h4>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="ucsb"> Account Description
+                                        <div class="ucsb"> {{'account.account-description-label'| translate}}
                                         </div>
                                         <h4> {{setAccountParams.description}} </h4>
                                     </div>
@@ -351,12 +351,12 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="ucsb"> Valid
+                                        <div class="ucsb"> {{'common.valid-label'| translate}}
                                         </div>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="ucsb"> Service Fee
+                                        <div class="ucsb"> {{'common.service-fee-label'| translate}}
                                         </div>
                                         <h4> {{tx_fee | amountTkn }}
                                             <small>{{'common.xin-unit-text'| translate}}</small>
@@ -366,7 +366,7 @@
 
                                 <button type="button" [ngClass]="{'btn-success': !signedTx, 'btn-danger': signedTx}"
                                     class="btn btn-raised mr-1 mb-0" (click)="signedTx = !signedTx">
-                                    <i class="fa fa-envelope-o"></i> Signed Transaction
+                                    <i class="fa fa-envelope-o"></i> {{'common.signed-transaction-label'| translate}}
                                 </button>
                                 <hr *ngIf="signedTx">
                                 <div class="form-group" *ngIf="signedTx">
@@ -378,10 +378,10 @@
 
                                 <button type="button" [disabled]="!validBytes" (click)="broadcastTransaction(transactionBytes)"
                                     class="btn btn-gradient float-right">
-                                    <i class="fa fa-check"></i> Finish
+                                    <i class="fa fa-check"></i> {{'common.finish-btn'| translate}}
                                 </button>
                                 <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
-                                    <i class="fa fa-chevron-left"></i> Previous
+                                    <i class="fa fa-chevron-left"></i> {{'common.previous-btn'| translate}}
                                 </button>
                             </aw-wizard-step>
                         </aw-wizard>
