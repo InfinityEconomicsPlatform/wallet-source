@@ -26,7 +26,7 @@
                                         <ngx-datatable-column prop="transaction" [name]="'table-header.details' | translate">
                                             <ng-template let-value="value" ngx-datatable-cell-template>
                                                 <button class="btn btn-outline-danger actionBtn" (click)="goToDetails(value)"
-                                                    ngbPopover="Details" triggers="mouseenter:mouseleave">
+                                                    ngbPopover="{{'common.details-table-action'| translate}}" triggers="mouseenter:mouseleave">
                                                     <i class="fa fa-list-ul font-medium-1"></i>
                                                 </button>
                                             </ng-template>

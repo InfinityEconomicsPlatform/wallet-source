@@ -1986,6 +1986,21 @@
     "stop-shuffling": "Stop Shuffling",
     "publish-exchange-offer": "Publish Exchange Offer",
     "publish-exchange-buy-offer": "Publish Exchange Buy Offer",
-    "publish-exchange-sell-offer": "Publish Exchange Sell Offer"
+    "publish-exchange-sell-offer": "Publish Exchange Sell Offer",
+    "send-assets": "Send Assets",
+    "send-currencies": "Send Currencies",
+    "transaction-types": "Transaction Types",
+    "tool": "Tool",
+    "service-fees": "Service Fees",
+    "generate-signature": "Generate Signature",
+    "validate-signature": "Validate Signature",
+    "parse-transaction": "Parse Transaction",
+    "broadcast-transaction": "Broadcast Transaction",
+    "calculate-hash": "Calculate Hash",
+    "chain-statistics":"Chain Statistics",
+    "user-guide": "User Guide",
+    "marketplace": "Marketplace",
+    "tag": "Tag",
+    "purchase": "Purchase"
   }
 }

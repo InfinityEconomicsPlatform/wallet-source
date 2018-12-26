@@ -753,6 +753,18 @@
     "publish-exchange-offer": "Publiczne oferty wymiany",
     "publish-exchange-buy-offer": "Publiczne oferty zakupu",
     "publish-exchange-sell-offer": "Publiczne oferty sprzedaży",
+    "send-assets":"Send Assets",
+    "send-currencies":"Send Currencies",
+    "transaction-types":"Transaction Types",
+    "service-fees": "Service Fees",
+    "generate-signature": "Generate Signature",
+    "validate-signature":"Validate Signature",
+    "parse-transaction": "Parse Transaction",
+    "broadcast-transaction": "Broadcast Transaction",
+    "calculate-hash": "Calculate Hash",
+    "chain-statistics":"Chain Statistics",
+    "user-guide": "User Guide",
+    "tool":"Tool",
     "marketplace": "Rynek",
     "tag": "Tag",
     "purchase": "Zakup"
@@ -1057,8 +1069,8 @@
       "title": "Oddaj głos",
       "poll-name-popover": "Nazwa ankiety",
       "poll-description-popover": "Opis ankiety",
-      "available-option-label": "Dostępne opcje do wyboru (maks. {{Max.numerOfOpcje}} opcja)\n",
-      "available-option-popover": "Możesz wybrać maksymalnie {{maks. Liczba opcji}} opcje(i) dla tej ankiety"
+      "available-option-label": "Dostępne opcje do wyboru (maks. {{maxNumberOfOptions}} opcja)\n",
+      "available-option-popover": "Możesz wybrać maksymalnie {{maxNumberOfOptions}} opcje(i) dla tej ankiety"
     },
     "voting-list": {
       "title": "Lista głosowania"

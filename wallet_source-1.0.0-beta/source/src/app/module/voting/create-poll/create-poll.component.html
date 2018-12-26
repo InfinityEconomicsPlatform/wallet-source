@@ -11,7 +11,7 @@
                 <div class="card-block ml-md-3 mr-md-3">
                     <aw-wizard [navBarLayout]="'large-filled-symbols'">
 
-                        <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }" [canExit]="!createPollForm.invalid">
+                        <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }" [canExit]="!createPollForm.invalid">
                             <form class="form inner-form mt-4" #createPollForm="ngForm" novalidate>
                                 <div class="form-body">
                                     <div class="row">
@@ -148,7 +148,7 @@
                         </aw-wizard-step>
 
 
-                        <aw-wizard-step stepTitle="Options" [navigationSymbol]="{ symbol: '2' }" [canExit]="!createPollForm2.invalid"
+                        <aw-wizard-step stepTitle="{{'common.options-step'| translate}}" [navigationSymbol]="{ symbol: '2' }" [canExit]="!createPollForm2.invalid"
                             (stepEnter)="getBlockChainStatus(); validateStepTwo();">
                             <form class="form inner-form mt-4" #createPollForm2="ngForm" novalidate>
                                 <div class="form-body">
@@ -290,7 +290,7 @@
                                 </div>
                             </form>
                         </aw-wizard-step>
-                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '3' }" class="form-bordered mt-4">
+                        <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '3' }" class="form-bordered mt-4">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="ucsb"> {{ 'common.name-label' | translate}}</div>
