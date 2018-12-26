@@ -13,7 +13,7 @@
             <div class="card-body">
                 <div class="card-block ml-3 mr-3">
                     <aw-wizard [navBarLayout]="'large-filled-symbols'">
-                        <aw-wizard-step stepTitle="Details" [navigationSymbol]="{ symbol: '1' }">
+                        <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                             <form class="form" #f="ngForm" novalidate>
                                 <div class="form-body">
                                     <div class="row">
@@ -83,7 +83,7 @@
                                 </div>
                             </form>
                         </aw-wizard-step>
-                        <aw-wizard-step stepTitle="Confirm" [navigationSymbol]="{ symbol: '2' }">
+                        <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="ucsb"> {{'common.asset-id-label'| translate}}
