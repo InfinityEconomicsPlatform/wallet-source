@@ -67,6 +67,8 @@
     "account-name-tooltip": "Publiczna nawa konta",
     "account-description-tooltip": "Publiczny opis konta",
     "set-account-info-label": "Set Account Info",
+    "account-name-placeholder": "Account name or leave blank to delete account info.",
+    "account-description-placeholder": "Account description or leave blank to delete account info.",
     "send-xin": {
       "send-xin-title": "WYŚLIJ XIN",
       "deferred-title": "WYŚLIJ PRZELEW ODROCZONY XIN",

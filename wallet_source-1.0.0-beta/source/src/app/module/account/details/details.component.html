@@ -306,7 +306,7 @@
                                                     <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <input type="text" name="name" [(ngModel)]="setAccountParams.name"
                                                             (ngModelChange)="onChangeAccountInfo($event)" class="pl-0 mb-0 pt-0 pb-0 form-control"
-                                                            placeholder="Account name or leave blank to delete account info.">
+                                                            placeholder="{{'account.account-name-placeholder'| translate}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -320,7 +320,7 @@
                                                     <div class="input-group m-0 sign_in_inputs row form-border-bottom pb-1">
                                                         <input type="text" name="description" [(ngModel)]="setAccountParams.description"
                                                             (ngModelChange)="onChangeAccountInfo($event)" class="pl-0 mb-0 pt-0 pb-0 form-control"
-                                                            placeholder="Account description or leave blank to delete account info." />
+                                                            placeholder="{{'account.account-description-placeholder'| translate}}" />
                                                     </div>
                                                 </div>
                                             </div>

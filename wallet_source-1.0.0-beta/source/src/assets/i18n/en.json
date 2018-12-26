@@ -105,6 +105,8 @@
     "account-name-tooltip": "The public account name for this account.",
     "account-description-tooltip": "The public account description for this account.",
     "set-account-info-label": "Set Account Info",
+    "account-name-placeholder": "Account name or leave blank to delete account info.",
+    "account-description-placeholder": "Account description or leave blank to delete account info.",
     "send-xin": {
       "send-xin-title": "SEND XIN",
       "deferred-title": "SEND DEFERRED XIN",
