@@ -285,4 +285,13 @@ export class MarketplaceService {
 
         return this.http.get(AppConstants.marketPlaceConfig.apiUrl, AppConstants.pollConfig.pollEndPoint, params);
     }
+
+    decryptFrom() {
+        let params = {
+            'requestType': 'decryptFrom',
+            'data': '',
+            'nonce': '',
+            'account': ''
+        }
+    }
 }

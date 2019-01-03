@@ -752,16 +752,6 @@ export const ROUTES: RouteInfo[] = [
                 badgeClass: '',
                 isExternalLink: false,
                 submenu: []
-            },
-            {
-                path: '/marketplace/list-a-product',
-                title: 'List A Product',
-                icon: '',
-                class: '',
-                badge: '',
-                badgeClass: '',
-                isExternalLink: false,
-                submenu: []
             }
         ],
         isSwapp: true,
