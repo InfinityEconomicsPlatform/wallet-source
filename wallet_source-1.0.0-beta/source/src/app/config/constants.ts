@@ -68,7 +68,7 @@ export class AppConstants {
         'crowdfundingEndPoint': 'api'
     };
     public static options = {
-        'TX_HEIGHT': ''
+        'TX_HEIGHT': 10080
     };
     public static peerEndpoints = [
         'http://185.35.137.7:8888/api/nodes',

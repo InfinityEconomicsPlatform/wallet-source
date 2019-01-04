@@ -8,6 +8,7 @@ import { AppConstants } from '../../../config/constants';
 import { SessionStorageService } from '../../../services/session-storage.service';
 import { CryptoService } from "../../../services/crypto.service";
 import * as alertFunctions from "../../../shared/data/sweet-alerts";
+import {TransactionService} from '../../../services/transaction.service';
 import { CommonService } from '../../../services/common.service';
 
 @Component({
@@ -22,7 +23,10 @@ export class ControlComponent implements OnInit {
 
     accountId = '';
     accountRs = '';
-    hasControl = '';
+    hasControl = true;
+    jsonControl = '';
+    removeControlModalFlag = false;
+    publicKey: any;
 
     openBookMarks = false;
     bookMarkIndex = 0;
@@ -30,6 +34,7 @@ export class ControlComponent implements OnInit {
     setAccountControlForm: any = {
         approveAccounts: []
     };
+    removeAccountControlForm: any = {};
 
     tx_fee: any;
     tx_amount: any;
@@ -44,6 +49,7 @@ export class ControlComponent implements OnInit {
         public _location: Location,
         public cryptoService: CryptoService,
         public commonService: CommonService,
+        public transactionService: TransactionService,
         public router: Router) {
         this.page.pageNumber = 0;
         this.page.size = 10;
@@ -68,14 +74,41 @@ export class ControlComponent implements OnInit {
 
         this.accountId = this.accountService.getAccountDetailsFromSession('accountId');
         this.accountRs = this.accountService.getAccountDetailsFromSession('accountRs');
-
-        this.hasControl = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY);
+        this.accountService.getAccountDetails(this.accountRs).subscribe((success: any) => {
+            
+            this.accountService.getPhasingOnlyControl(this.accountRs).subscribe((successPhasing: any) => {
+                if (successPhasing.account) {
+    
+                    this.sessionStorageService.saveToSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY,
+                        true);
+                        this.sessionStorageService.saveToSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_JSONCONTROL_KEY,
+                            successPhasing);
+    
+                } else {
+    
+                    this.sessionStorageService.saveToSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY,
+                        false);
+                        this.sessionStorageService.saveToSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_JSONCONTROL_KEY,
+                        '');
+    
+                }
+                this.hasControl = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY);
+                this.jsonControl = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_JSONCONTROL_KEY);
+                this.removeAccountControlForm.jsonControl = this.jsonControl;
+            }, function (error) {
+    
+    
+            });
+        });
 
         this.setPage({ offset: 0 });
     }
 
     setPage(pageInfo) {
         this.page.pageNumber = pageInfo.offset;
+        this.transactionService.getBlockChainStatus().subscribe((success) => {
+            // this.sessionStorageService.saveToSession(AppConstants.baseConfig.SESSION_CURRENT_BLOCK, success.numberOfBlocks);
+        });
         this.accountService.getVoterPhasedTransactions(
             this.accountId,
             this.page.pageNumber * 10,
@@ -189,6 +222,43 @@ export class ControlComponent implements OnInit {
 
             });
     }
+    removeControlModal(){
+        this.removeControlModalFlag = true;
+    }
+    removeAccountControl() {
+        var removeAccountControlForm = this.removeAccountControlForm;
+        var fee = 1;
+        var publicKey = this.commonService.getAccountDetailsFromSession('publicKey');
+        var secret = removeAccountControlForm.secretPhrase;
+        var secretPhraseHex;
+        if (secret) {
+            secretPhraseHex = this.cryptoService.secretPhraseToPrivateKey(secret);
+        } else {
+            secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
+        }
+        this.accountService.removeAccountControl(publicKey, fee)
+            .subscribe((success_) => {
+                success_.subscribe((success) => {
+                    if (!success.errorCode) {
+                        var unsignedBytes = success.unsignedTransactionBytes;
+                        var signatureHex = this.cryptoService.signatureHex(unsignedBytes, secretPhraseHex);
+                        this.transactionBytes = this.cryptoService.signTransactionHex(unsignedBytes, signatureHex);
+    
+                        this.validBytes = true;
+                        this.tx_fee = success.transactionJSON.feeTQT / 100000000;
+                    } else {
+                        let title: string = this.commonService.translateAlertTitle('Error');
+                        let errMsg: string = this.commonService.translateErrorMessageParams( 'sorry-error-occurred',
+                        success);
+                            alertFunctions.InfoAlertBox(title,
+                            errMsg,
+                            'OK',
+                            'error').then((isConfirm: any) => {
+                        });
+                    }
+                });
+            });
+    };
 
     broadcastTransaction(transactionBytes) {
         this.accountService.broadcastTransaction(transactionBytes).subscribe((success) => {
@@ -201,7 +271,9 @@ export class ControlComponent implements OnInit {
                     msg,
                     'OK',
                     'success').then((isConfirm: any) => {
-                        this.router.navigate(['/crowdfunding/show-campaigns']);
+                        if (!this.removeControlModalFlag) {
+                            this.router.navigate(['/account/transactions']);
+                        }
                     });
 
             } else {

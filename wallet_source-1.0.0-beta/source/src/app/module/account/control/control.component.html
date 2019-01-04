@@ -1,23 +1,35 @@
 <div class="row" [hidden]="openBookMarks">
     <div class="col-md-12">
+           
         <div class="card">
-            <div class="card-block main-card-block">
+
+            <div class="card-block main-card-block" *ngIf="!hasControl">
                 <div class="border-bt">
                     <h2 class="main-title">{{'account.control.control-title'| translate}}</h2>
                     <app-breadcrumb></app-breadcrumb>
                 </div>
             </div>
+            <div class="card-block main-card-block" *ngIf="hasControl">
+                    <div class="border-bt">
+                        <h2 class="main-title">Remove Account Control Details</h2>
+                        <app-breadcrumb></app-breadcrumb>
+                    </div>
+                </div>
             <div class="card-body">
                 <div class="card-block ml-md-3 mr-md-3 ml-1 mr-1 mt-4">
-                    <aw-wizard [navBarLayout]="'large-filled-symbols'">
+                    <div class="block-button">
+                        <a class="btn btn-gradient mt-3 mb-0" *ngIf="hasControl && !removeControlModalFlag" (click)="removeControlModal();" href="javascript:void(0)">
+                            <i class="fa fa-times"></i>Remove Account Control</a>
+                    </div>
+                    <aw-wizard [navBarLayout]="'large-filled-symbols'" *ngIf="!hasControl">
                         <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                             <form class="form inner-form" #f="ngForm" novalidate>
                                 <div class="form-body">
                                     <div class="block-button">
-                                        <a class="btn btn-gradient mt-3 mb-0" (click)="addNewAccount();" href="javascript:void(0)">
-                                            <i class="fa fa-user-plus"></i>{{'account.control.add-approval-account-btn'|
-                                            translate}}</a>
-                                    </div>
+                                                            <a class="btn btn-gradient mt-3 mb-0" *ngIf="!hasControl" (click)="addNewAccount();" href="javascript:void(0)">
+                                                                <i class="fa fa-user-plus"></i>{{'account.control.add-approval-account-btn'|
+                                                                    translate}}</a>
+                                                        </div>
                                     <div class="row">
                                         <div class="col-md-6 mt-3" *ngFor="let account of setAccountControlForm.approveAccounts; trackBy:indexTracker; index as i">
                                             <div class="form-group mb-0">
@@ -154,6 +166,88 @@
                             </div>
                         </aw-wizard-step>
                     </aw-wizard>
+                    <aw-wizard [navBarLayout]="'large-filled-symbols'" *ngIf="removeControlModalFlag">
+                            <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
+                                <form class="form inner-form" #f1="ngForm" novalidate>
+                                    <div class="form-body">
+                                        <div class="row">
+                                                <div class="col-md-6">
+                                                        <div class="ucsb">Controlled Account
+                                                        </div>
+                                                        <h4> {{ jsonControl.accountRS }} </h4>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="ucsb">Control Model
+                                                        </div>
+                                                        <div>
+                                                            <h6> {{ jsonControl.votingModel|controlModel }} Approval </h6>
+                                                        </div>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="left mt-4">
+                                        <button [disabled]="f1.invalid" type="button" class="btn btn-gradient mr-1 mb-0 float-right"
+                                            (click)="removeAccountControl()" awNextStep>
+                                            <i class="fa fa-chevron-right"></i>{{'common.next-btn'| translate}}
+                                        </button>
+                                    </div>
+                                </form>
+                            </aw-wizard-step>
+                            <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }"
+                                class="form-bordered mt-4">
+                                <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="ucsb">Controlled Account
+                                            </div>
+                                            <h4> {{removeAccountControlForm.jsonControl.accountRS }} </h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="ucsb">Control Model
+                                            </div>
+                                            <div>
+                                                <h4>{{ removeAccountControlForm.jsonControl.votingModel|controlModel }} Approval
+                                                </h4>
+                                            </div>
+                                        </div>
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="ucsb">{{'common.valid-label'| translate}}
+                                        </div>
+                                        <h4 [innerHTML]="validBytes | txIsValid"></h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="ucsb">{{'common.service-fee-label'| translate}}
+                                        </div>
+                                        <h4>{{tx_fee | amountTkn}}
+                                            <small> {{'common.xin-unit-text'| translate}}</small>
+                                        </h4>
+                                    </div>
+                                </div>
+    
+                                <button type="button" [ngClass]="{'btn-success': !unsignedTx, 'btn-danger': unsignedTx}"
+                                    class="btn btn-raised mr-1 mb-0" (click)="unsignedTx = !unsignedTx">
+                                    <i class="fa fa-key"></i> {{'common.signed-transaction-label'| translate}}
+                                </button>
+    
+                                <div class="form-group mt-4" *ngIf="unsignedTx">
+                                    <div class="position-relative sign_in_inputs">
+                                        <textarea disabled="true" rows="3" type="text" [(ngModel)]="transactionBytes" class="form-control pl-0"
+                                            name="key"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" [disabled]="!validBytes" class="btn btn-gradient float-right"
+                                        (click)="broadcastTransaction(transactionBytes)">
+                                        <i class="fa fa-check"></i>{{'common.finish-btn'| translate}}
+                                    </button>
+                                    <button type="button" class="btn btn-gradient mr-1 float-right" awPreviousStep>
+                                        <i class="fa fa-chevron-left"></i>{{'common.previous-btn'| translate}}
+                                    </button>
+                                </div>
+                            </aw-wizard-step>
+                        </aw-wizard>
                 </div>
             </div>
         </div>
