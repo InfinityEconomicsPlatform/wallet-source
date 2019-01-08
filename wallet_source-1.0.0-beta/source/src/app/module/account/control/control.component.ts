@@ -74,33 +74,9 @@ export class ControlComponent implements OnInit {
 
         this.accountId = this.accountService.getAccountDetailsFromSession('accountId');
         this.accountRs = this.accountService.getAccountDetailsFromSession('accountRs');
-        this.accountService.getAccountDetails(this.accountRs).subscribe((success: any) => {
-            
-            this.accountService.getPhasingOnlyControl(this.accountRs).subscribe((successPhasing: any) => {
-                if (successPhasing.account) {
-    
-                    this.sessionStorageService.saveToSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY,
-                        true);
-                        this.sessionStorageService.saveToSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_JSONCONTROL_KEY,
-                            successPhasing);
-    
-                } else {
-    
-                    this.sessionStorageService.saveToSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY,
-                        false);
-                        this.sessionStorageService.saveToSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_JSONCONTROL_KEY,
-                        '');
-    
-                }
-                this.hasControl = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY);
-                this.jsonControl = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_JSONCONTROL_KEY);
-                this.removeAccountControlForm.jsonControl = this.jsonControl;
-            }, function (error) {
-    
-    
-            });
-        });
-
+        this.hasControl = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_HASCONTROL_KEY);
+        this.jsonControl = this.sessionStorageService.getFromSession(AppConstants.controlConfig.SESSION_ACCOUNT_CONTROL_JSONCONTROL_KEY);
+        this.removeAccountControlForm.jsonControl = this.jsonControl;
         this.setPage({ offset: 0 });
     }
 
@@ -124,7 +100,7 @@ export class ControlComponent implements OnInit {
     }
     goToApproveRequest(row) {
         DataStoreService.set('approve', {
-            transaction: row.transaction, fullhash: row.fullhash, sender: row.senderRS, recipient: row.recipientRS,
+            transaction: row.transaction, fullhash: row.fullHash, sender: row.senderRS, recipient: row.recipientRS,
             amount: row.amountTQT, timestamp: row.timestamp, type: row.type, subtype: row.subtype
         });
         this.router.navigate(['/account/control/control-approve']);
@@ -271,9 +247,7 @@ export class ControlComponent implements OnInit {
                     msg,
                     'OK',
                     'success').then((isConfirm: any) => {
-                        if (!this.removeControlModalFlag) {
-                            this.router.navigate(['/account/transactions']);
-                        }
+                        this.router.navigate(['/account/transactions']);
                     });
 
             } else {

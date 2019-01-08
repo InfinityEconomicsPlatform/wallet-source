@@ -203,7 +203,7 @@ export class AccountService {
             this.optionsService.getOption('RANDOMIZE_NODES', '')), AppConstants.accountConfig.accountEndPoint, params);
     };
 
-    approveTransactions(accountPublicKey, transactionFullHash, fee, revealedSecret) {
+    approveTransactions(accountPublicKey, transactionFullHash, fee, revealedSecret?) {
         let params = {
             'requestType': 'approveTransaction',
             'transactionFullHash': transactionFullHash,

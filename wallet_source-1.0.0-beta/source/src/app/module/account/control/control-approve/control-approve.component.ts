@@ -48,7 +48,7 @@ export class ControlApproveComponent implements OnInit {
             secretPhraseHex = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_PRIVATE_KEY);
         }
 
-        this.accountService.approveTransactions(accountPublicKey, fullhash, fee, secretPhraseHex).subscribe((success: any) => {
+        this.accountService.approveTransactions(accountPublicKey, fullhash, fee).subscribe((success: any) => {
 
             if (!success.errorCode) {
                 let unsignedBytes = success.unsignedTransactionBytes;
@@ -80,6 +80,7 @@ export class ControlApproveComponent implements OnInit {
                     msg,
                     'OK',
                     'success').then((isConfirm: any) => {
+                        this.router.navigate(['/account/control']);
                     });
 
             } else {
