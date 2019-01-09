@@ -169,7 +169,7 @@
                     <aw-wizard [navBarLayout]="'large-filled-symbols'" *ngIf="removeControlModalFlag">
                             <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                                 <form class="form inner-form" #f1="ngForm" novalidate>
-                                    <div class="form-body mt-4">
+                                    <div class="form-body mt-4 form-bordered">
                                         <div class="row">
                                                 <div class="col-md-6">
                                                         <div class="ucsb">Controlled Account
@@ -180,7 +180,7 @@
                                                         <div class="ucsb">Control Model
                                                         </div>
                                                         <div>
-                                                            <h6> {{ jsonControl.votingModel|controlModel }} Approval </h6>
+                                                            <h4> {{ jsonControl.votingModel|controlModel }} Approval </h4>
                                                         </div>
                                                     </div>
                                         </div>
