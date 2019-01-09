@@ -16,11 +16,11 @@
                     </div>
                 </div>
             <div class="card-body">
-                <div class="card-block ml-md-3 mr-md-3 ml-1 mr-1 mt-4">
                     <div class="block-button">
-                        <a class="btn btn-gradient mt-3 mb-0" *ngIf="hasControl && !removeControlModalFlag" (click)="removeControlModal();" href="javascript:void(0)">
+                        <a class="btn btn-gradient ml-4 mb-0" *ngIf="hasControl && !removeControlModalFlag" (click)="removeControlModal();" href="javascript:void(0)">
                             <i class="fa fa-times"></i>Remove Account Control</a>
                     </div>
+                <div class="card-block ml-md-3 mr-md-3 ml-1 mr-1 mt-0">
                     <aw-wizard [navBarLayout]="'large-filled-symbols'" *ngIf="!hasControl">
                         <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                             <form class="form inner-form" #f="ngForm" novalidate>
@@ -169,7 +169,7 @@
                     <aw-wizard [navBarLayout]="'large-filled-symbols'" *ngIf="removeControlModalFlag">
                             <aw-wizard-step stepTitle="{{'common.details-step'| translate}}" [navigationSymbol]="{ symbol: '1' }">
                                 <form class="form inner-form" #f1="ngForm" novalidate>
-                                    <div class="form-body">
+                                    <div class="form-body mt-4">
                                         <div class="row">
                                                 <div class="col-md-6">
                                                         <div class="ucsb">Controlled Account
@@ -196,12 +196,12 @@
                             <aw-wizard-step stepTitle="{{'common.confirm-step'| translate}}" [navigationSymbol]="{ symbol: '2' }"
                                 class="form-bordered mt-4">
                                 <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="ucsb">Controlled Account
                                             </div>
                                             <h4> {{removeAccountControlForm.jsonControl.accountRS }} </h4>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="ucsb">Control Model
                                             </div>
                                             <div>
@@ -212,12 +212,12 @@
                                 </div>
     
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="ucsb">{{'common.valid-label'| translate}}
                                         </div>
                                         <h4 [innerHTML]="validBytes | txIsValid"></h4>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="ucsb">{{'common.service-fee-label'| translate}}
                                         </div>
                                         <h4>{{tx_fee | amountTkn}}
