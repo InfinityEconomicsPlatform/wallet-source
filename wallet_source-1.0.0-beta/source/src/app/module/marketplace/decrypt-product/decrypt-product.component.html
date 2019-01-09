@@ -3,64 +3,71 @@
         <div class="card">
             <div class="card-block main-card-block">
                 <div class="border-bt">
-                    <h2 class="main-title">{{ 'marketplace.product-details.title' | translate }}</h2>
+                    <h2 class="main-title">{{ 'Product Details' | translate }}</h2>
                     <app-breadcrumb></app-breadcrumb>
                 </div>
                 <div class="card-body mt-4 product-info">
                     <div class="card-block mt-2">
                         <div class="row">
                             <div class="col-md-3">
-                                <div class="product-detail-img"><img style="width:8rem;" src="{{ imageBaseUrl + product.goods }}"
+                                <div class="product-detail-img"><img style="width:8rem;" src="{{ imageBaseUrl + details.good }}"
                                         onError="this.src='./assets/images/no_image_available.png'"></div>
                             </div>
                             <div class="col-md-9">
                                 <div class="row mb-3">
                                     <div class="col-md-3 col-lg-2">
-                                        <strong>{{ 'marketplace.product-details.product' | translate }}</strong>
+                                        <strong>{{ 'Product' | translate }}</strong>
                                     </div>
-                                    <div class="col-md-9 col-lg-10">{{ product.name }}</div>
+                                    <div class="col-md-9 col-lg-10">{{details.name}}</div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-3 col-lg-2">
-                                        <strong>{{ 'marketplace.product-details.date' | translate }}</strong>
+                                        <strong>{{ 'Date' | translate }}</strong>
                                     </div>
-                                    <div class="col-md-9 col-lg-10">{{ product.timestamp | timestamp }}</div>
+                                    <div class="col-md-9 col-lg-10">{{ details.timestamp |
+                                        timestamp }}</div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-3 col-lg-2">
-                                        <strong>{{ 'marketplace.product-details.price' | translate }}</strong>
+                                        <strong>{{ 'Price' | translate }}</strong>
                                     </div>
                                     <div class="col-md-9 col-lg-10">
-                                        {{ product.priceTQT | amountTqt }} {{ 'common.xin-unit-text' | translate }}
+                                        {{ details.priceTQT | amountTqt }} {{ 'common.xin-unit-text' | translate }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-3 col-lg-2">
-                                        <strong>{{ 'marketplace.product-details.seller' | translate }}</strong>
+                                        <strong>{{ 'BuyerRS' | translate }}</strong>
                                     </div>
                                     <div class="col-md-9 col-lg-10">
-                                        <a class="hyperlink">
-                                            {{ product.sellerRS }} ({{ 'marketplace.product-details.view-store'|
-                                            translate }})
-                                        </a>
+                                        {{ details.buyerRS }}
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-3 col-lg-2">
+                                        <strong>{{ 'SellerRs' | translate }}</strong>
+                                    </div>
+                                    <div class="col-md-9 col-lg-10">
+                                        {{ details.sellerRS }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-3 col-lg-2">
-                                        <strong>{{ 'marketplace.product-details.quantity' | translate }}</strong>
+                                        <strong>{{ 'Quantity' | translate }}</strong>
                                     </div>
-                                    <div class="col-md-9 col-lg-10">{{ product.quantity }}</div>
+                                    <div class="col-md-9 col-lg-10">{{ details.quantity }}</div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <p class="pt-2 pb-2">
-                                    {{ product.description }}
+                                    <input type="text" class="form-control" placeholder="Enter your passphrase">
                                 </p>
                             </div>
                             <div class="col-md-12">
                                 <div class="text-right mt-4">
-                                    <a class="btn btn-gradient" (click)="purchaseProduct(product)">
-                                        {{ 'marketplace.product-details.purchase' | translate }}
+                                    <a class="btn btn-gradient">
+                                        {{ 'Decrypt' | translate }}
                                     </a>
                                 </div>
                             </div>

@@ -19,9 +19,10 @@
                                         </ng-template>
                                     </ngx-datatable-column>
                                     <ngx-datatable-column prop="name" name="Product">
-                                        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                        <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                                            ngx-datatable-cell-template>
                                             <span *ngIf="row.pending">{{ value }}</span>
-                                            <a class="hyperlink" *ngIf="!row.pending" (click)="decryptGood()">
+                                            <a class="hyperlink" *ngIf="!row.pending" (click)="decryptGood(purchased_products[rowIndex],rowIndex)">
                                                 {{ value }}
                                             </a>
                                         </ng-template>

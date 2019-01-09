@@ -14,7 +14,7 @@ import { DeleteProductComponent } from './listing/delete-product/delete-product.
 import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
 import { CompletedOrdersComponent } from './completed-orders/completed-orders.component';
 import { DeliverComponent } from './deliver/deliver.component';
-
+import { DecryptProductComponent } from './decrypt-product/decrypt-product.component'
 const routes: Routes = [
     {
         path: '',
@@ -80,6 +80,10 @@ const routes: Routes = [
     {
         path: 'delivery',
         component: DeliverComponent
+    },
+    {
+        path: 'decrypt-product',
+        component: DecryptProductComponent
     }
 ];
 

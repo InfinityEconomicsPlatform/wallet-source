@@ -3,7 +3,7 @@ import { Page } from '../../../config/page';
 import { Router } from '@angular/router';
 import { MarketplaceService } from '../marketplace.service';
 import { AccountService } from 'app/module/account/account.service';
-
+import { DataStoreService } from 'app/services/data-store.service';
 @Component({
     selector: 'app-purchased',
     templateUrl: './purchased.component.html',
@@ -31,8 +31,10 @@ export class PurchasedComponent implements OnInit {
 
     }
 
-    decryptGood() {
-        console.log("Clicked");
+    decryptGood(value) {
+        DataStoreService.set('decrypt_value', value);
+        this.router.navigateByUrl('/marketplace/decrypt-product');
+
     }
 
 }

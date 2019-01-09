@@ -20,6 +20,7 @@ import { DeleteProductComponent } from './listing/delete-product/delete-product.
 import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
 import { CompletedOrdersComponent } from './completed-orders/completed-orders.component';
 import { DeliverComponent } from './deliver/deliver.component';
+import { DecryptProductComponent } from './decrypt-product/decrypt-product.component';
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import { DeliverComponent } from './deliver/deliver.component';
         DeleteProductComponent,
         PendingOrdersComponent,
         CompletedOrdersComponent,
-        DeliverComponent
+        DeliverComponent,
+        DecryptProductComponent
     ],
     providers: [
         MarketplaceService
