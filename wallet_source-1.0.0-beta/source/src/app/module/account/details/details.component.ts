@@ -10,6 +10,7 @@ import { CryptoService } from "../../../services/crypto.service";
 import * as alertFunctions from "../../../shared/data/sweet-alerts";
 import { FeeService } from "../../../services/fee.service";
 import { TranslateService } from '@ngx-translate/core';
+import {RootScope} from '../../../config/root-scope';
 
 
 @Component({
@@ -144,6 +145,7 @@ export class DetailsComponent {
             }
 
             this.account = success;
+            RootScope.set({ balanceTQT: success.balanceTQT})
 
         });
     };
