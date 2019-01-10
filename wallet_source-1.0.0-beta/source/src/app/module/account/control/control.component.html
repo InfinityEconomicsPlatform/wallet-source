@@ -40,8 +40,8 @@
                                                             name="account-{{i}}" [(ngModel)]="setAccountControlForm.approveAccounts[i].value"
                                                             #accountRs="ngModel" required>
                                                     </div>
-                                                    <div class="col-2 col-lg-1">
-                                                        <span class="btn btn-grey" triggers="mouseenter:mouseleave"
+                                                    <div class="col-2 col-lg-1 pl-0">
+                                                        <span class="btn btn-grey input-group-text" triggers="mouseenter:mouseleave"
                                                             placement="top" (click)="loadBookmarkView(i)" container="body"
                                                             [ngbPopover]="'common.open-bookmark-tooltip' | translate">
                                                             <i class="fa fa-address-card"></i>
