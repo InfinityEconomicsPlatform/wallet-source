@@ -102,25 +102,24 @@ export class ControlComponent implements OnInit {
         (this.page.pageNumber + 1) * 10 - 1
       )
       .subscribe(response => {
-        //this.rows = response.transactions;
-        this.getAprrovedTransactionNumber(response.transactions);
+        this.rows = response.transactions;
+        this.getAprrovedTransactionNumber();
       });
   }
-  getAprrovedTransactionNumber(transactions) {
-    transactions.forEach((item, index) => {
-      this.getApprovedNumber(item.transaction, index, transactions);
+  getAprrovedTransactionNumber() {
+    this.rows.forEach((item, index) => {
+      this.getApprovedNumber(item.transaction, index);
     });
   }
-  getApprovedNumber(transactionId, index, transactions) {
+  getApprovedNumber(transactionId, index) {
     this.accountService.getApprovalAccountList(transactionId).subscribe(
       (success: any) => {
-        transactions[index].approvals =
+        this.rows[index].approvals =
           success.votes.length +
           "/" +
-          transactions[index].attachment["phasingQuorum"];
-        if (transactions.length - 1 == index) {
-          this.rows = transactions;
-        }
+          this.rows[index].attachment["phasingQuorum"];
+
+        this.rows = [...this.rows];
       },
       error => {
         console.log(error);
