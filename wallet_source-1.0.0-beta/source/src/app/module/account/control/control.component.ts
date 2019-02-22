@@ -102,31 +102,30 @@ export class ControlComponent implements OnInit {
         (this.page.pageNumber + 1) * 10 - 1
       )
       .subscribe(response => {
-        this.rows = response.transactions;
-        this.getAprrovedTransactionNumber();
+        //this.rows = response.transactions;
+        this.getAprrovedTransactionNumber(response.transactions);
       });
   }
-  getAprrovedTransactionNumber() {
-    this.rows.map(async item => {
-      let approvedNumber = await this.getApprovedNumber(item.transaction);
-
-      item.approvals = approvedNumber + "/" + item.attachment["phasingQuorum"];
-      return item;
+  getAprrovedTransactionNumber(transactions) {
+    transactions.forEach((item, index) => {
+      this.getApprovedNumber(item.transaction, index, transactions);
     });
-    this.rows = this.rows;
   }
-  getApprovedNumber(transactionId) {
-    return new Promise((resolve, reject) => {
-      this.accountService.getApprovalAccountList(transactionId).subscribe(
-        (success: any) => {
-          console.log(success);
-          resolve(success.votes.length);
-        },
-        error => {
-          console.log(error);
+  getApprovedNumber(transactionId, index, transactions) {
+    this.accountService.getApprovalAccountList(transactionId).subscribe(
+      (success: any) => {
+        transactions[index].approvals =
+          success.votes.length +
+          "/" +
+          transactions[index].attachment["phasingQuorum"];
+        if (transactions.length - 1 == index) {
+          this.rows = transactions;
         }
-      );
-    });
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   goToDetails(row) {
