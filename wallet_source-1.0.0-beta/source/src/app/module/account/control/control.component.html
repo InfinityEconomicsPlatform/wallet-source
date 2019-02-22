@@ -333,6 +333,11 @@
                                 <a class="hyperlink" (click)="accountDetail(value)">{{value}}</a>
                             </ng-template>
                         </ngx-datatable-column>
+                        <ngx-datatable-column prop="approvals" [name]="'table-header.approvals'| translate">
+                            <ng-template let-value="value" ngx-datatable-cell-template>
+                                <a>{{value}}</a>
+                            </ng-template>
+                        </ngx-datatable-column>
                         <ngx-datatable-column prop="timestamp" [name]="'table-header.actions'| translate">
                             <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                                 <div class="btn-group-raised">

@@ -606,12 +606,12 @@
     "type-label": "Type",
     "secret-phrase-label": "Secret phrase",
     "currency-ticker-label": "Currency Ticker",
-    "expert-wallet":"Expert Wallet",
-    "basic-wallet":"Basic Wallet"
+    "expert-wallet": "Expert Wallet",
+    "basic-wallet": "Basic Wallet"
   },
   "transaction-details": {
-    "transaction-details-label":"Transaction Details",
-    "block-details-label":"Block Details",
+    "transaction-details-label": "Transaction Details",
+    "block-details-label": "Block Details",
     "transaction-id-label": "Transaction ID",
     "block-id-label": "Block ID",
     "transaction-time-label": "Transaction Time",
@@ -714,7 +714,8 @@
     "participants": "Participants",
     "stage": "Stage",
     "assigne": "Assigne",
-    "voter": "Voter"
+    "voter": "Voter",
+    "approvals": "approvals"
   },
   "assets": {
     "show": {
@@ -1999,7 +2000,7 @@
     "parse-transaction": "Parse Transaction",
     "broadcast-transaction": "Broadcast Transaction",
     "calculate-hash": "Calculate Hash",
-    "chain-statistics":"Chain Statistics",
+    "chain-statistics": "Chain Statistics",
     "user-guide": "User Guide",
     "marketplace": "Marketplace",
     "tag": "Tag",
