@@ -31,16 +31,20 @@ export class AppConstants {
         'USE_LOCAL_NODE': 0,
         'AUTO_UPDATE': 1,
         'CONNECTION_MODE': 'AUTO', //'HTTPS', // 'DEVTESTNET' TESTNET', // AUTO
-        'VERSION': '1.0.0' + 'Beta',
+        'VERSION': '1.0.1',
         'RANDOMIZE_NODES': 1,
         'TESTNET': 1,
-        'TESTNET_URL': 'http://185.35.138.140:9876',
-        'DEVTESTNET_URL': 'http://185.35.138.140:9000',
+        // 'TESTNET_URL': 'http://185.35.138.140:9876',
+        // 'DEVTESTNET_URL': 'http://185.35.138.140:9000',
+        // 'FOUNDATION_URL': 'http://46.244.20.41:23457',
         'LOCALTESTNET_URL': 'http://localhost:9876',
-        'FOUNDATION_URL': 'http://46.244.20.41:23457',
         'HTTPS_URL': 'https://ssl.infinity-economics.org',
         'LOCAL_HOST_URL': 'http://localhost:23457',
-        'EXTENSIONS': 1
+        'EXTENSIONS': 1,
+        /* ----- New Node endpoints ----- */
+        'FOUNDATION_URL': 'http://159.89.117.247:23457',
+        'TESTNET_URL': 'http://142.93.129.78:9876',
+        'DEVTESTNET_URL': 'http://142.93.129.78:9876'
     };
     public static addressBookConfig = {
         'tableAddressBook': 'addressBook'
@@ -49,7 +53,9 @@ export class AppConstants {
         'assetsEndPoint': 'api'
     };
     public static peerConfig = {
-        'apiUrl': 'http://185.103.75.217:8888',
+        // 'apiUrl': 'http://185.103.75.217:8888',
+        /* ----- New Node endpoints ----- */
+        'apiUrl': 'http://35.204.224.241:8888',
         'peerEndPoint': 'api/nodes',
         'SESSION_PEER_URL_KEY': 'peerKey'
     };
@@ -71,62 +77,80 @@ export class AppConstants {
         'TX_HEIGHT': 10080
     };
     public static peerEndpoints = [
-        'http://185.35.137.7:8888/api/nodes',
-        'http://185.35.139.102:8888/api/nodes',
-        'http://185.35.139.103:8888/api/nodes',
-        'http://185.35.139.104:8888/api/nodes',
-        'http://185.35.139.105:8888/api/nodes',
-        'http://46.244.20.41:8888/api/nodes',
-        'http://185.35.139.101:8888/api/nodes',
-        'http://208.95.1.177:8888/api/nodes',
-        'http://199.127.137.169:8888/api/nodes',
-        'http://185.103.75.217:8888/api/nodes'
+        // 'http://185.35.137.7:8888/api/nodes',
+        // 'http://185.35.139.102:8888/api/nodes',
+        // 'http://185.35.139.103:8888/api/nodes',
+        // 'http://185.35.139.104:8888/api/nodes',
+        // 'http://185.35.139.105:8888/api/nodes',
+        // 'http://46.244.20.41:8888/api/nodes',
+        // 'http://185.35.139.101:8888/api/nodes',
+        // 'http://208.95.1.177:8888/api/nodes',
+        // 'http://199.127.137.169:8888/api/nodes',
+        // 'http://185.103.75.217:8888/api/nodes'
+        /* ----- New Node endpoints ----- */
+        'http://35.204.224.241:8888/api/nodes'
     ];
 
     public static peerEndpointsMap = {
-        DEFAULT: ['http://185.35.137.7:8888/api/nodes',
-            'http://185.35.139.102:8888/api/nodes',
-            'http://185.35.139.103:8888/api/nodes',
-            'http://185.35.139.104:8888/api/nodes',
-            'http://185.35.139.105:8888/api/nodes',
-            'http://46.244.20.41:8888/api/nodes',
-            'http://185.35.139.101:8888/api/nodes',
-            'http://208.95.1.177:8888/api/nodes',
-            'http://199.127.137.169:8888/api/nodes',
-            'http://185.103.75.217:8888/api/nodes'],
+        DEFAULT: [
+            // 'http://185.35.137.7:8888/api/nodes',
+            // 'http://185.35.139.102:8888/api/nodes',
+            // 'http://185.35.139.103:8888/api/nodes',
+            // 'http://185.35.139.104:8888/api/nodes',
+            // 'http://185.35.139.105:8888/api/nodes',
+            // 'http://46.244.20.41:8888/api/nodes',
+            // 'http://185.35.139.101:8888/api/nodes',
+            // 'http://208.95.1.177:8888/api/nodes',
+            // 'http://199.127.137.169:8888/api/nodes',
+            // 'http://185.103.75.217:8888/api/nodes',
+            /* ----- New Node endpoints ----- */
+            'http://35.204.224.241:8888/api/nodes'
+        ],
         DEVTESTNET: [
             'http://185.35.138.132:9999/api/nodes',
         ],
         TESTNET: [
-            'http://185.35.138.140:8888/api/v1/nodes',
+            'http://185.35.138.140:8888/api/v1/nodes'
         ]
 
     };
 
     public static nodeEndpoints = [
-        'http://185.103.75.217:23457/',
-        'http://185.35.137.7:23457/',
-        'http://185.35.139.102:23457/',
-        'http://185.35.139.103:23457/',
-        'http://185.35.139.104:23457/',
-        'http://185.35.139.105:23457/',
-        'http://46.244.20.41:23457/',
-        'http://185.35.139.101:23457/',
+        // 'http://185.103.75.217:23457/',
+        // 'http://185.35.137.7:23457/',
+        // 'http://185.35.139.102:23457/',
+        // 'http://185.35.139.103:23457/',
+        // 'http://185.35.139.104:23457/',
+        // 'http://185.35.139.105:23457/',
+        // 'http://46.244.20.41:23457/',
+        // 'http://185.35.139.101:23457/',
         'http://208.95.1.177:23457/',
-        'http://199.127.137.169:23457/'
+        'http://199.127.137.169:23457/',
+        /* ----- New End Points ----- */
+        'http://159.89.117.247:23457/',
+        'http://167.99.242.171:23457',
+        'http://159.89.166.20:23457',
+        'http://159.89.96.210:23457',
+        'http://167.99.71.157:23457'
     ];
 
     public static chainEndpoints = [
-        'http://185.103.75.217:23457/',
-        'http://185.35.137.7:23457/',
-        'http://185.35.139.102:23457/',
-        'http://185.35.139.103:23457/',
-        'http://185.35.139.104:23457/',
-        'http://185.35.139.105:23457/',
-        'http://46.244.20.41:23457/',
-        'http://185.35.139.101:23457/',
+        // 'http://185.103.75.217:23457/',
+        // 'http://185.35.137.7:23457/',
+        // 'http://185.35.139.102:23457/',
+        // 'http://185.35.139.103:23457/',
+        // 'http://185.35.139.104:23457/',
+        // 'http://185.35.139.105:23457/',
+        // 'http://46.244.20.41:23457/',
+        // 'http://185.35.139.101:23457/',
         'http://208.95.1.177:23457/',
-        'http://199.127.137.169:23457/'
+        'http://199.127.137.169:23457/',
+        /* ----- New End Points ----- */
+        'http://159.89.117.247:23457/',
+        'http://167.99.242.171:23457',
+        'http://159.89.166.20:23457',
+        'http://159.89.96.210:23457',
+        'http://167.99.71.157:23457'
     ];
 
     public static loginConfig = {

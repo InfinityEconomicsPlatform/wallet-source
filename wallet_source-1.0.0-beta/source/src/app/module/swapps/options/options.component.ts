@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { OptionService } from "../../../services/option.service";
-import { SessionStorageService } from "../../../services/session-storage.service";
-import { CommonService } from "../../../services/common.service";
-import { NodeService } from "../../../services/node.service";
-import { LocalhostService } from "../../../services/localhost.service";
-import { AppConstants } from "../../../config/constants";
-import * as AlertFunctions from "../../../shared/data/sweet-alerts";
+import { OptionService } from '../../../services/option.service';
+import { SessionStorageService } from '../../../services/session-storage.service';
+import { CommonService } from '../../../services/common.service';
+import { NodeService } from '../../../services/node.service';
+import { LocalhostService } from '../../../services/localhost.service';
+import { AppConstants } from '../../../config/constants';
+import * as AlertFunctions from '../../../shared/data/sweet-alerts';
 import { isBoolean } from 'util';
 
 @Component({
@@ -15,14 +15,20 @@ import { isBoolean } from 'util';
 })
 export class OptionsComponent implements OnInit {
     CONNECTION_MODES: any[] = [];
-    connectedURL: string = '';
+    connectedURL = '';
 
     optionsForm: any;
     activeIds: string[] = [];
 
-    constructor(public optionService: OptionService, public sessionStorageService: SessionStorageService, public commonService: CommonService, public localhostService: LocalhostService, public nodeService: NodeService) {
+    constructor(
+        public optionService: OptionService,
+        public sessionStorageService: SessionStorageService,
+        public commonService: CommonService,
+        public localhostService: LocalhostService,
+        public nodeService: NodeService
+    ) {
         this.CONNECTION_MODES = ['AUTO', 'HTTPS', 'FOUNDATION', 'MANUAL', 'LOCAL_HOST', 'TESTNET', 'LOCALTESTNET', 'DEVTESTNET'];
-        this.activeIds = ["nodeAndConnections", "blocksAndConfirmations", "wallet", "extensions"];
+        this.activeIds = ['nodeAndConnections', 'blocksAndConfirmations', 'wallet', 'extensions'];
         this.optionsForm = {
             CONNECTION_MODE: '',
             USER_NODE_URL: '',
@@ -34,7 +40,7 @@ export class OptionsComponent implements OnInit {
     }
 
     ngOnInit() {
-        let publicKey = this.commonService.getAccountDetailsFromSession('publicKey');
+        const publicKey = this.commonService.getAccountDetailsFromSession('publicKey');
 
         this.optionService.loadOptions(publicKey, (optionsObject) => {
             this.optionsForm = this.copyJson(optionsObject, this.optionsForm);
@@ -43,16 +49,19 @@ export class OptionsComponent implements OnInit {
             this.sessionStorageService.saveToSession(AppConstants.baseConfig.SESSION_APP_OPTIONS, AppConstants.DEFAULT_OPTIONS);
         });
 
-        this.connectedURL = this.nodeService.getNodeUrl(this.optionService.getOption('CONNECTION_MODE', publicKey), this.optionService.getOption('RANDOMIZE_NODES', publicKey));
+        this.connectedURL = this.nodeService.getNodeUrl(
+            this.optionService.getOption('CONNECTION_MODE', publicKey),
+            this.optionService.getOption('RANDOMIZE_NODES', publicKey)
+        );
     }
 
     copyJson(fromJson, toJson) {
         fromJson = fromJson || {};
         toJson = toJson || {};
-        for (let key in fromJson) {
+        for (const key in fromJson) {
             if (fromJson.hasOwnProperty(key)) {
                 if (!isNaN(fromJson[key]) && !isBoolean(fromJson[key])) {
-                    fromJson[key] = parseInt(fromJson[key]);
+                    fromJson[key] = parseInt(fromJson[key], 10);
                 }
                 toJson[key] = fromJson[key];
             }
@@ -61,8 +70,8 @@ export class OptionsComponent implements OnInit {
     }
 
     getOptionsJsonObject(options) {
-        let finalJson = {};
-        for (let key in AppConstants.DEFAULT_OPTIONS) {
+        const finalJson = {};
+        for (const key in AppConstants.DEFAULT_OPTIONS) {
             if (AppConstants.DEFAULT_OPTIONS.hasOwnProperty(key)) {
                 finalJson[key] = options[key];
             }
@@ -71,7 +80,7 @@ export class OptionsComponent implements OnInit {
     }
 
     nodeUrl() {
-        var connectionMode = this.optionsForm.CONNECTION_MODE;
+        const connectionMode = this.optionsForm.CONNECTION_MODE;
         if (connectionMode === 'AUTO') {
             return true;
         }
@@ -79,8 +88,8 @@ export class OptionsComponent implements OnInit {
     }
 
     validateAndUpdate() {
-        let url = this.optionsForm.USER_NODE_URL;
-        let connectionMode = this.optionsForm.CONNECTION_MODE;
+        const url = this.optionsForm.USER_NODE_URL;
+        const connectionMode = this.optionsForm.CONNECTION_MODE;
 
         this.updateConnectionMode(this.optionsForm);
 
@@ -94,19 +103,17 @@ export class OptionsComponent implements OnInit {
     }
 
     updateOptions() {
-        let publicKey = this.commonService.getAccountDetailsFromSession('publicKey'),
+        const publicKey = this.commonService.getAccountDetailsFromSession('publicKey'),
             options = this.getOptionsJsonObject(this.optionsForm),
             finalOptions = [];
-        for (let key in options) {
+        for (const key in options) {
             if (options.hasOwnProperty(key)) {
-                let option = { 'publicKey': publicKey, 'optionName': key, 'value': options[key] };
+                const option = { 'publicKey': publicKey, 'optionName': key, 'value': options[key] };
                 finalOptions.push(option);
             }
         }
 
         this.optionService.updateOptions(finalOptions, (success) => {
-            let publicKey = this.commonService.getAccountDetailsFromSession('publicKey');
-
             this.optionService.loadOptions(publicKey, (optionsObject) => {
                 this.sessionStorageService.saveToSession(AppConstants.baseConfig.SESSION_APP_OPTIONS, optionsObject);
                 this.nodeService.clearNodeConfig();
@@ -114,7 +121,7 @@ export class OptionsComponent implements OnInit {
             }, (error) => {
                 this.sessionStorageService.saveToSession(AppConstants.baseConfig.SESSION_APP_OPTIONS, AppConstants.DEFAULT_OPTIONS);
                 this.optionService.emitOptionsChanged();
-            })
+            });
 
         }, (error) => {
 
@@ -122,10 +129,10 @@ export class OptionsComponent implements OnInit {
     }
 
     updateConnectionMode(form) {
-        let connectionMode = this.optionsForm.CONNECTION_MODE;
+        const connectionMode = this.optionsForm.CONNECTION_MODE;
 
         if (connectionMode === 'LOCAL_HOST') {
-            this.optionsForm.USER_NODE_URL = 'http://localhost:23457';
+            this.optionsForm.USER_NODE_URL = AppConstants.DEFAULT_OPTIONS.USER_NODE_URL;
             this.optionsForm.RANDOMIZE_NODES = 0;
             this.optionsForm.TESTNET = false;
             this.optionsForm.EXTENSIONS = 1;
@@ -134,7 +141,7 @@ export class OptionsComponent implements OnInit {
             this.optionsForm.TESTNET = false;
             this.optionsForm.EXTENSIONS = 1;
         } else if (connectionMode === 'HTTPS') {
-            this.optionsForm.USER_NODE_URL = 'https://ssl.infinity-economics.org';
+            this.optionsForm.USER_NODE_URL = AppConstants.DEFAULT_OPTIONS.HTTPS_URL;
             this.optionsForm.RANDOMIZE_NODES = 0;
             this.optionsForm.TESTNET = false;
             this.optionsForm.EXTENSIONS = 1;
@@ -143,22 +150,22 @@ export class OptionsComponent implements OnInit {
             this.optionsForm.TESTNET = false;
             this.optionsForm.EXTENSIONS = 1;
         } else if (connectionMode === 'FOUNDATION') {
-            this.optionsForm.USER_NODE_URL = 'http://46.244.20.41:23457';
+            this.optionsForm.USER_NODE_URL = AppConstants.DEFAULT_OPTIONS.FOUNDATION_URL;
             this.optionsForm.RANDOMIZE_NODES = 0;
             this.optionsForm.TESTNET = false;
             this.optionsForm.EXTENSIONS = 1;
         } else if (connectionMode === 'TESTNET') {
-            this.optionsForm.USER_NODE_URL = 'http://185.35.138.140:9876';
+            this.optionsForm.USER_NODE_URL = AppConstants.DEFAULT_OPTIONS.TESTNET_URL;
             this.optionsForm.RANDOMIZE_NODES = 0;
             this.optionsForm.TESTNET = true;
             this.optionsForm.EXTENSIONS = 1;
         } else if (connectionMode === 'LOCALTESTNET') {
-            this.optionsForm.USER_NODE_URL = 'http://localhost:9876';
+            this.optionsForm.USER_NODE_URL = AppConstants.DEFAULT_OPTIONS.LOCALTESTNET_URL;
             this.optionsForm.RANDOMIZE_NODES = 0;
             this.optionsForm.TESTNET = true;
             this.optionsForm.EXTENSIONS = 1;
         } else if (connectionMode === 'DEVTESTNET') {
-            this.optionsForm.USER_NODE_URL = 'http://185.35.138.140:9000';
+            this.optionsForm.USER_NODE_URL = AppConstants.DEFAULT_OPTIONS.DEVTESTNET_URL;
             this.optionsForm.RANDOMIZE_NODES = 0;
             this.optionsForm.TESTNET = true;
             this.optionsForm.DEVNET = true;
@@ -167,7 +174,7 @@ export class OptionsComponent implements OnInit {
     }
 
     isValidUrl() {
-        let url = this.optionsForm.USER_NODE_URL;
+        const url = this.optionsForm.USER_NODE_URL;
         if (url) {
             return this.localhostService.isValidUrl(url);
         } else {

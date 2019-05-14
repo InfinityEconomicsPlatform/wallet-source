@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {AccountService} from '../../account.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {DataStoreService} from '../../../../services/data-store.service';
-import {Page} from '../../../../config/page';
+import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../account.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataStoreService } from '../../../../services/data-store.service';
+import { Page } from '../../../../config/page';
 
 @Component({
     selector: 'app-completed-transactions',
@@ -15,8 +15,8 @@ export class CompletedTransactionsComponent implements OnInit {
     rows = new Array<any>();
 
     constructor(private accountService: AccountService,
-                private route: ActivatedRoute,
-                private router: Router) {
+        private route: ActivatedRoute,
+        private router: Router) {
         this.page.pageNumber = 0;
         this.page.size = 10
     }
@@ -32,18 +32,18 @@ export class CompletedTransactionsComponent implements OnInit {
     accountRs = '';
 
     filters = [
-        {name: 'Payment', appName: '', icon: 'icon-payment', popoverText: 'Payment', isEnabled: false},
-        {name: 'Assets', appName: 'Assets', icon: 'icon-asset', popoverText: 'Asset', isEnabled: false},
-        {name: 'Currencies', appName: 'Currencies', icon: 'icon-currency', popoverText: 'Currency', isEnabled: false},
-        {name: 'Messages', appName: '', icon: 'icon-messages1', popoverText: 'Messages', isEnabled: false},
-        {name: 'Voting', appName: 'Voting', icon: 'icon-voting', popoverText: 'Voting', isEnabled: false},
-        {name: 'MultiSig', appName: '', icon: 'icon-multisig', popoverText: 'MultiSig', isEnabled: false},
-        {name: 'Aliases', appName: 'Aliases', icon: 'icon-alias', popoverText: 'Alias', isEnabled: false},
-        {name: 'Account', appName: '', icon: 'icon-account', popoverText: 'Account', isEnabled: false},
-        {name: 'Escrow', appName: 'Escrow', icon: 'icon-escrow', popoverText: 'Escrow', isEnabled: false},
-        {name: 'Subscriptions', appName: 'Subscriptions', icon: 'icon-subscription', popoverText: 'Subscription', isEnabled: false},
-        {name: 'Shuffling', appName: 'Shuffling', icon: 'icon-shuffles', popoverText: 'Shuffles', isEnabled: false},
-        {name: 'AT', appName: 'AT', icon: 'icon-AT1', popoverText: 'AT', isEnabled: false}
+        { name: 'Payment', appName: '', icon: 'icon-payment', popoverText: 'Payment', isEnabled: false },
+        { name: 'Assets', appName: 'Assets', icon: 'icon-asset', popoverText: 'Asset', isEnabled: false },
+        { name: 'Currencies', appName: 'Currencies', icon: 'icon-currency', popoverText: 'Currency', isEnabled: false },
+        { name: 'Messages', appName: '', icon: 'icon-messages1', popoverText: 'Messages', isEnabled: false },
+        { name: 'Voting', appName: 'Voting', icon: 'icon-voting', popoverText: 'Voting', isEnabled: false },
+        { name: 'MultiSig', appName: '', icon: 'icon-multisig', popoverText: 'MultiSig', isEnabled: false },
+        { name: 'Aliases', appName: 'Aliases', icon: 'icon-alias', popoverText: 'Alias', isEnabled: false },
+        { name: 'Account', appName: '', icon: 'icon-account', popoverText: 'Account', isEnabled: false },
+        { name: 'Escrow', appName: 'Escrow', icon: 'icon-escrow', popoverText: 'Escrow', isEnabled: false },
+        { name: 'Subscriptions', appName: 'Subscriptions', icon: 'icon-subscription', popoverText: 'Subscription', isEnabled: false },
+        { name: 'Shuffling', appName: 'Shuffling', icon: 'icon-shuffles', popoverText: 'Shuffles', isEnabled: false },
+        { name: 'AT', appName: 'AT', icon: 'icon-AT1', popoverText: 'AT', isEnabled: false }
     ];
 
     applyFilter(filter) {
@@ -161,7 +161,7 @@ export class CompletedTransactionsComponent implements OnInit {
             obj.isEnabled = (obj.name == filter.name) ? true : false;
         });
 
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
 
     ngOnInit() {
@@ -169,7 +169,7 @@ export class CompletedTransactionsComponent implements OnInit {
         this.accountId = this.accountService.getAccountDetailsFromSession('accountId');
         this.accountRs = this.accountService.getAccountDetailsFromSession('accountRs');
 
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
 
     setPage(pageInfo) {
@@ -181,8 +181,6 @@ export class CompletedTransactionsComponent implements OnInit {
             this.filter_type,
             this.filter_subtype
         ).subscribe(response => {
-            console.log(response);
-            console.log(this.page.pageNumber)
             this.rows = response.transactions;
             if (this.page.pageNumber === 0 && this.rows.length < 10) {
                 this.page.totalElements = this.rows.length;
@@ -194,12 +192,12 @@ export class CompletedTransactionsComponent implements OnInit {
     }
 
     goToDetails(row) {
-        DataStoreService.set('transaction-details', {id: row.transaction, type: 'onlyID', view: 'transactionDetail'});
+        DataStoreService.set('transaction-details', { id: row.transaction, type: 'onlyID', view: 'transactionDetail' });
         this.router.navigate(['/account/transactions/transaction-details']);
     }
 
     accountDetail(accountID) {
-        this.router.navigate(['/account/transactions/account-details'], {queryParams: {id: accountID}});
+        this.router.navigate(['/account/transactions/account-details'], { queryParams: { id: accountID } });
     }
 
     removeFilter() {
@@ -215,11 +213,11 @@ export class CompletedTransactionsComponent implements OnInit {
             obj.isEnabled = false;
         });
 
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
 
     reload() {
-        this.setPage({offset: 0});
+        this.setPage({ offset: 0 });
     }
 
 }
