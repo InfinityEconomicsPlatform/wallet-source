@@ -11,10 +11,11 @@ import { AmountTqtPipe } from '../../pipes/amount-tqt.pipe';
 import { CommonService } from '../../services/common.service';
 import { OptionService } from '../../services/option.service';
 import { LocalhostService } from '../../services/localhost.service';
-import * as alertFunction from "../../shared/data/sweet-alerts";
+import * as alertFunction from '../../shared/data/sweet-alerts';
+import { BroadcastService } from 'app/services/broadcast.service';
 
-var fireRefreshEventOnWindow = function () {
-    var evt = document.createEvent("HTMLEvents");
+const fireRefreshEventOnWindow = function () {
+    const evt = document.createEvent('HTMLEvents');
     evt.initEvent('resize', true, false);
     window.dispatchEvent(evt);
 };
@@ -36,12 +37,12 @@ export class FullLayoutComponent implements OnInit {
         private amountTqtPipe: AmountTqtPipe,
         private commonService: CommonService,
         private optionService: OptionService,
-        private localhostService: LocalhostService
-    ) {
-    }
+        private localhostService: LocalhostService,
+        private broadcastService: BroadcastService
+    ) { }
 
     ngOnInit() {
-        //sidebar toggle event listner
+        // sidebar toggle event listner
         // this.elementRef.nativeElement.querySelector('#sidebarToggle')
         //     .addEventListener('click', this.onClick.bind(this));
         // //customizer events
@@ -57,8 +58,8 @@ export class FullLayoutComponent implements OnInit {
                 this.sessionStorageService.saveToSession(NodeConfig.SESSION_PEER_NODES, response);
                 this.optionsConfigurationService.loadOptions();
             }, function (error) {
-                let title: string = this.commonService.translateAlertTitle('Error');
-                let msg: string = this.commonService.translateInfoMessage('unable-get-node');
+                const title: string = this.commonService.translateAlertTitle('Error');
+                const msg: string = this.commonService.translateInfoMessage('unable-get-node');
                 alertFunction.InfoAlertBox(title,
                     msg,
                     'OK',
@@ -73,11 +74,9 @@ export class FullLayoutComponent implements OnInit {
     }
 
     onOptionsChanged() {
-
-        var publicKey = this.commonService.getAccountDetailsFromSession('publicKey');
         this.localhostService.getPeerState(this.optionService.getOption('USER_NODE_URL', ''))
             .subscribe((response) => {
-                var uri = new URL(this.optionService.getOption('USER_NODE_URL', ''));
+                const uri = new URL(this.optionService.getOption('USER_NODE_URL', ''));
                 response._id = uri.hostname;
                 this.sessionStorageService.saveToSession(NodeConfig.SESSION_LOCAL_NODE, response);
                 this.sessionStorageService.saveToSession(NodeConfig.SESSION_HAS_LOCAL, true);
@@ -88,13 +87,12 @@ export class FullLayoutComponent implements OnInit {
             });
         this.peerService.getPeers().subscribe((response) => {
             this.sessionStorageService.saveToSession(NodeConfig.SESSION_PEER_NODES, response);
-            // $rootScope.$broadcast('peers-updated');
+            this.broadcastService.broadcast('peers-updated');
         });
     }
 
     getAccountAssetsAndBalances() {
-
-        var accountRs = this.getAccountDetails('accountRs');
+        const accountRs = this.getAccountDetails('accountRs');
         this.dashboardService.getAccountAssetsAndBalances(accountRs)
             .subscribe((response) => {
                 if (response.balanceTQT) {
@@ -106,7 +104,7 @@ export class FullLayoutComponent implements OnInit {
     };
 
     getAccountDetails(keyName) {
-        var accountDetails = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_DETAILS_KEY);
+        const accountDetails = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_DETAILS_KEY);
         if (keyName) {
             return accountDetails[keyName];
         }
@@ -114,7 +112,7 @@ export class FullLayoutComponent implements OnInit {
     }
 
     onClick(event) {
-        //initialize window resizer event on sidebar toggle click event
+        // initialize window resizer event on sidebar toggle click event
         setTimeout(() => { fireRefreshEventOnWindow() }, 300);
     }
 

@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
 import { SessionStorageService } from './session-storage.service';
-import { NodeConfig} from '../config/node-config';
-import {PeerService} from './peer.service';
-import {OptionService} from './option.service';
-import {LocalhostService} from './localhost.service';
-import {AppConstants} from '../config/constants';
-import {BroadcastService} from './broadcast.service';
+import { NodeConfig } from '../config/node-config';
+import { PeerService } from './peer.service';
+import { OptionService } from './option.service';
+import { LocalhostService } from './localhost.service';
+import { AppConstants } from '../config/constants';
+import { BroadcastService } from './broadcast.service';
 
 @Injectable()
 export class NodeService {
 
-  constructor(public sessionService: SessionStorageService,
-              public peerService: PeerService,
-              public optionsService: OptionService,
-              public localHostService: LocalhostService,
-              public broadcastService: BroadcastService) { }
+    constructor(
+        public sessionService: SessionStorageService,
+        public peerService: PeerService,
+        public optionsService: OptionService,
+        public localHostService: LocalhostService,
+        public broadcastService: BroadcastService
+    ) { }
 
     getLocalNode() {
-        let node = this.sessionService.getFromSession(NodeConfig.SESSION_LOCAL_NODE);
+        const node = this.sessionService.getFromSession(NodeConfig.SESSION_LOCAL_NODE);
         if (!node) {
             return this.optionsService.getOption('USER_NODE_URL', '');
         }
@@ -29,9 +31,9 @@ export class NodeService {
     }
 
     getPeerNode(i) {
-        let peerNodes = this.sessionService.getFromSession(NodeConfig.SESSION_PEER_NODES );
+        const peerNodes = this.sessionService.getFromSession(NodeConfig.SESSION_PEER_NODES);
         if (!peerNodes) {
-            return this.peerService.getPeers().subscribe( (response) => {
+            return this.peerService.getPeers().subscribe((response) => {
                 if (this.sessionService) {
                     this.sessionService.saveToSession(NodeConfig.SESSION_PEER_NODES, response);
                 }
@@ -55,7 +57,7 @@ export class NodeService {
     };
 
     getNodesCount() {
-        let total = this.sessionService.getFromSession(NodeConfig.SESSION_PEER_NODES) || [];
+        const total = this.sessionService.getFromSession(NodeConfig.SESSION_PEER_NODES) || [];
         return total.length;
     };
 
@@ -80,7 +82,7 @@ export class NodeService {
 
             return this.optionsService.getOption('USER_NODE_URL', '');
 
-        }else if (connectionMode === 'DEVTESTNET') {
+        } else if (connectionMode === 'DEVTESTNET') {
 
             return this.optionsService.getOption('DEVTESTNET_URL', '');
 
@@ -88,7 +90,7 @@ export class NodeService {
 
             return this.optionsService.getOption('TESTNET_URL', '');
 
-        }else if (connectionMode === 'LOCALTESTNET') {
+        } else if (connectionMode === 'LOCALTESTNET') {
 
             return this.optionsService.getOption('LOCALTESTNET_URL', '');
 

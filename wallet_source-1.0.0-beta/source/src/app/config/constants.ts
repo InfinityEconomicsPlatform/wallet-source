@@ -30,7 +30,7 @@ export class AppConstants {
         'USER_NODE_URL': 'http://localhost:23457',
         'USE_LOCAL_NODE': 0,
         'AUTO_UPDATE': 1,
-        'CONNECTION_MODE': 'AUTO', //'HTTPS', // 'DEVTESTNET' TESTNET', // AUTO
+        'CONNECTION_MODE': 'AUTO', // 'HTTPS', // 'DEVTESTNET' TESTNET', // AUTO
         'VERSION': '1.0.1',
         'RANDOMIZE_NODES': 1,
         'TESTNET': 1,
@@ -84,8 +84,8 @@ export class AppConstants {
         // 'http://185.35.139.105:8888/api/nodes',
         // 'http://46.244.20.41:8888/api/nodes',
         // 'http://185.35.139.101:8888/api/nodes',
-        // 'http://208.95.1.177:8888/api/nodes',
-        // 'http://199.127.137.169:8888/api/nodes',
+        'http://208.95.1.177:8888/api/nodes',
+        'http://199.127.137.169:8888/api/nodes',
         // 'http://185.103.75.217:8888/api/nodes'
         /* ----- New Node endpoints ----- */
         'http://35.204.224.241:8888/api/nodes'
@@ -100,8 +100,8 @@ export class AppConstants {
             // 'http://185.35.139.105:8888/api/nodes',
             // 'http://46.244.20.41:8888/api/nodes',
             // 'http://185.35.139.101:8888/api/nodes',
-            // 'http://208.95.1.177:8888/api/nodes',
-            // 'http://199.127.137.169:8888/api/nodes',
+            'http://208.95.1.177:8888/api/nodes',
+            'http://199.127.137.169:8888/api/nodes',
             // 'http://185.103.75.217:8888/api/nodes',
             /* ----- New Node endpoints ----- */
             'http://35.204.224.241:8888/api/nodes'
@@ -202,7 +202,7 @@ export class AppConstants {
     };
     public static ATConfig = {
         ATEndPoint: 'api',
-        ATCompilerURL: 'http://142.93.63.219:10080', //'http://185.61.149.71:10080'
+        ATCompilerURL: 'http://142.93.63.219:10080', // 'http://185.61.149.71:10080'
     };
     public static messagesConfig = {
         messagesEndPoint: 'api'

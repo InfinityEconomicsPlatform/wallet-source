@@ -38,10 +38,10 @@ export class ExtensionsService {
             return Observable.create((observer) => {
                 let img = new Image();
                 img.src = url;
-                img.onload = function(){
+                img.onload = function () {
                     observer.next(img);
                 };
-                img.onerror = function(err){
+                img.onerror = function (err) {
                     throw observer.throw(err);
                 }
             })
