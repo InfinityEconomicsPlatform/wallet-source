@@ -110,7 +110,8 @@ export class AppConstants {
             'http://185.35.138.132:9999/api/nodes',
         ],
         TESTNET: [
-            'http://185.35.138.140:8888/api/v1/nodes'
+            // 'http://185.35.138.140:8888/api/v1/nodes'
+            'http://142.93.129.208:8888/api/nodes'
         ]
 
     };
