@@ -43,7 +43,7 @@ export class AppConstants {
         'EXTENSIONS': 1,
         /* ----- New Node endpoints ----- */
         'FOUNDATION_URL': 'http://159.89.117.247:23457',
-        'TESTNET_URL': 'http://142.93.129.78:9876',
+        'TESTNET_URL': 'https://secure1.infinity-economics.org',
         'DEVTESTNET_URL': 'http://142.93.129.78:9876'
     };
     public static addressBookConfig = {
