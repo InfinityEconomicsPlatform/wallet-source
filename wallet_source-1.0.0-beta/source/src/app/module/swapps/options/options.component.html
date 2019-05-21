@@ -77,7 +77,7 @@
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" name="randomizeNode"
-                                                        [(ngModel)]="optionsForm.RANDOMIZE_NODES" id="randomizeNode">
+                                                        [(ngModel)]="optionsForm.RANDOMIZE_NODES" id="randomizeNode" disabled>
                                                     <label class="custom-control-label" for="randomizeNode">
                                                         {{'swapps.options.random-node-connect-label' | translate}}
                                                         <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
@@ -273,7 +273,7 @@
                     </ngb-accordion>
                     <div class="row" matchHeight="card">
                         <div class="col-xl-2 mb-4 mt-3">
-                            <div class="card ml-1 mr-1 ml-md-3 mr-md-3 mt-0" [ngClass]="{'disabled':f.invalid}" (click)="validateAndUpdate()">
+                            <div class="card ml-1 mr-1 ml-md-3 mr-md-3 mt-0 disabled" [ngClass]="{'disabled':f.invalid}" >
                                 <div class="card-body">
 
 
