@@ -111,7 +111,7 @@ export class AppConstants {
         ],
         TESTNET: [
             // 'http://185.35.138.140:8888/api/v1/nodes'
-            'http://142.93.129.208:8888/api/nodes'
+            'https://secure1.infinity-economics.org/peerexplorer/api/nodes'
         ]
 
     };
