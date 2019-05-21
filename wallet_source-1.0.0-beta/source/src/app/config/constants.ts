@@ -30,7 +30,7 @@ export class AppConstants {
         'USER_NODE_URL': 'http://localhost:23457',
         'USE_LOCAL_NODE': 0,
         'AUTO_UPDATE': 1,
-        'CONNECTION_MODE': 'AUTO', // 'HTTPS', // 'DEVTESTNET' TESTNET', // AUTO
+        'CONNECTION_MODE': 'TESTNET', // 'HTTPS', // 'DEVTESTNET' TESTNET', // AUTO
         'VERSION': '1.0.1',
         'RANDOMIZE_NODES': 1,
         'TESTNET': 1,
@@ -110,7 +110,8 @@ export class AppConstants {
             'http://185.35.138.132:9999/api/nodes',
         ],
         TESTNET: [
-            'http://185.35.138.140:8888/api/v1/nodes'
+            // 'http://185.35.138.140:8888/api/v1/nodes'
+            'http://142.93.129.208:8888/api/nodes'
         ]
 
     };

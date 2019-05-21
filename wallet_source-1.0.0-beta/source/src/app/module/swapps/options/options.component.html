@@ -32,7 +32,7 @@
                                                 </label>
                                                 <div class="position-relative">
                                                     <select name="connectionMode" class="form-control" [(ngModel)]="optionsForm.CONNECTION_MODE"
-                                                        id="connectionMode" #mode="ngModel" (change)="updateConnectionMode(connectionMode)"
+                                                        id="connectionMode" #mode="ngModel" (change)="updateConnectionMode(connectionMode)" disabled
                                                         required>
                                                         <option *ngFor="let mode of CONNECTION_MODES" value="{{ mode }}">{{
                                                             mode }}</option>

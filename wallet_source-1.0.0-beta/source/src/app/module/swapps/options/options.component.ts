@@ -27,10 +27,10 @@ export class OptionsComponent implements OnInit {
         public localhostService: LocalhostService,
         public nodeService: NodeService
     ) {
-        this.CONNECTION_MODES = ['AUTO', 'FOUNDATION', 'MANUAL', 'LOCAL_HOST', 'TESTNET', 'LOCALTESTNET', 'DEVTESTNET']; // 'HTTPS',
+        this.CONNECTION_MODES = ['TESTNET']; // ['AUTO', 'FOUNDATION', 'MANUAL', 'LOCAL_HOST', 'TESTNET', 'LOCALTESTNET', 'DEVTESTNET']; // 'HTTPS',
         this.activeIds = ['nodeAndConnections', 'blocksAndConfirmations', 'wallet', 'extensions'];
         this.optionsForm = {
-            CONNECTION_MODE: '',
+            CONNECTION_MODE: 'TESTNET',
             USER_NODE_URL: '',
             RANDOMIZE_NODES: 0,
             REFRESH_INTERVAL_MILLI_SECONDS: 60,
