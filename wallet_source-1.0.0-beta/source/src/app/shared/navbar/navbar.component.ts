@@ -56,7 +56,7 @@ export class NavbarComponent implements OnInit {
         this.connectionMode = this.optionService.getOption("CONNECTION_MODE", "");
         this.isExpertWallet = this.loginService.isExpertWallet;
         this.getBadges();
-        this.getLatestNews();
+        // this.getLatestNews();
     }
 
     getBadges() {
