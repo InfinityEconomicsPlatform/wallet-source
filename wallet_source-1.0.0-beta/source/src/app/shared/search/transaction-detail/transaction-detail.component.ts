@@ -11,16 +11,18 @@ import {SearchService} from '../search.service';
 })
 export class TransactionDetailComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute,
-                public searchService: SearchService,
-                private _location: Location) {
-    }
-
     transaction: any = {};
-    view: string = "";
+    view: string;
+
+    constructor(
+        private route: ActivatedRoute,
+        public searchService: SearchService,
+        private _location: Location
+    ) { }
+
 
     ngOnInit() {
-        let sharedData = DataStoreService.get('transaction-details');
+        const sharedData = DataStoreService.get('transaction-details');
 
         if (!this.transaction) {
             this._location.back();
@@ -52,11 +54,7 @@ export class TransactionDetailComponent implements OnInit {
             // ).subscribe(data => {
             //   console.log(data)
             // });
-
         }
-    }
-
-    ngOnDestroy() {
     }
 
     goBack() {

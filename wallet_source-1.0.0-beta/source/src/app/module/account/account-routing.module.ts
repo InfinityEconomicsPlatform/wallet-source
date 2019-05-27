@@ -1,34 +1,34 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {DetailsComponent} from './details/details.component';
-import {SendComponent} from "./send/send.component";
-import {ReceiveTabComponent} from "./receive/receive-tab.component";
-import {HistoryComponent} from "./history/history.component";
-import {ControlComponent} from "./control/control.component";
-import {BalanceLeaseComponent} from "./balance-lease/balance-lease.component";
-import {SearchAccountComponent} from "./search-account/search-account.component";
-import {BookmarkComponent} from "./bookmark/bookmark.component";
+import { DetailsComponent } from './details/details.component';
+import { SendComponent } from './send/send.component';
+import { ReceiveTabComponent } from './receive/receive-tab.component';
+import { HistoryComponent } from './history/history.component';
+import { ControlComponent } from './control/control.component';
+import { BalanceLeaseComponent } from './balance-lease/balance-lease.component';
+import { SearchAccountComponent } from './search-account/search-account.component';
+import { BookmarkComponent } from './bookmark/bookmark.component';
 import { LessorsComponent } from './lessors/lessors.component';
 import { PropertiesComponent } from './properties/properties.component';
 import { BlockGenerationComponent } from './block-generation/block-generation.component';
 import { FundingMonitorComponent } from './funding-monitor/funding-monitor.component';
 import { LedgerViewComponent } from './ledger-view/ledger-view.component';
-import {CompletedTransactionsComponent} from "./history/completed-transactions/completed-transactions.component";
-import {PendingTransactionsComponent} from "./history/pending-transactions/pending-transactions.component";
-import {TransactionDetailComponent} from "../../shared/search/transaction-detail/transaction-detail.component";
-import {AccountDetailComponent} from "../../shared/search/account-detail/account-detail.component";
-import {SetPropertyComponent} from './properties/set-property/set-property.component';
-import {DeletePropertyComponent} from './properties/set-property/delete-property/delete-property.component';
-import {SendSimpleComponent} from './send/send-simple/send-simple.component';
-import {SendDeferredComponent} from './send/send-deferred/send-deferred.component';
-import {SendReferenceComponent} from './send/send-reference/send-reference.component';
-import {SendSecretComponent} from './send/send-secret/send-secret.component';
-import {BookmarkListOnlyComponent} from './send/bookmark-list-only/bookmark-list-only.component';
-import {ControlApproveComponent} from './control/control-approve/control-approve.component';
-import {ClaimComponent} from './receive/claim/claim.component';
-import {ReceiveComponent} from './receive/receive/receive.component';
-import {ControlFundingMonitorComponent} from './funding-monitor/control-funding-monitor/control-funding-monitor.component';
-import {ActiveFundingMonitorComponent} from "./funding-monitor/active-funding-monitor/active-funding-monitor.component";
+import { CompletedTransactionsComponent } from './history/completed-transactions/completed-transactions.component';
+import { PendingTransactionsComponent } from './history/pending-transactions/pending-transactions.component';
+import { TransactionDetailComponent } from '../../shared/search/transaction-detail/transaction-detail.component';
+import { AccountDetailComponent } from '../../shared/search/account-detail/account-detail.component';
+import { SetPropertyComponent } from './properties/set-property/set-property.component';
+import { DeletePropertyComponent } from './properties/set-property/delete-property/delete-property.component';
+import { SendSimpleComponent } from './send/send-simple/send-simple.component';
+import { SendDeferredComponent } from './send/send-deferred/send-deferred.component';
+import { SendReferenceComponent } from './send/send-reference/send-reference.component';
+import { SendSecretComponent } from './send/send-secret/send-secret.component';
+import { BookmarkListOnlyComponent } from './send/bookmark-list-only/bookmark-list-only.component';
+import { ControlApproveComponent } from './control/control-approve/control-approve.component';
+import { ClaimComponent } from './receive/claim/claim.component';
+import { ReceiveComponent } from './receive/receive/receive.component';
+import { ControlFundingMonitorComponent } from './funding-monitor/control-funding-monitor/control-funding-monitor.component';
+import { ActiveFundingMonitorComponent } from './funding-monitor/active-funding-monitor/active-funding-monitor.component';
 
 const routes: Routes = [
     {
@@ -50,16 +50,20 @@ const routes: Routes = [
                 pathMatch: 'full',
                 redirectTo: 'simple'
             },
-            {   path: 'simple',
+            {
+                path: 'simple',
                 component: SendSimpleComponent,
             },
-            {   path: 'deferred',
+            {
+                path: 'deferred',
                 component: SendDeferredComponent,
             },
-            {   path: 'reference',
+            {
+                path: 'reference',
                 component: SendReferenceComponent,
             },
-            {   path: 'secret',
+            {
+                path: 'secret',
                 component: SendSecretComponent,
             }
         ]
@@ -73,10 +77,12 @@ const routes: Routes = [
                 pathMatch: 'full',
                 redirectTo: 'receive'
             },
-            {   path: 'receive',
+            {
+                path: 'receive',
                 component: ReceiveComponent,
             },
-            {   path: 'claim',
+            {
+                path: 'claim',
                 component: ClaimComponent,
             }
         ]
@@ -84,20 +90,22 @@ const routes: Routes = [
     {
         path: 'transactions',
         component: HistoryComponent,
-        children:[
+        children: [
             {
                 path: '',
                 pathMatch: 'full',
                 redirectTo: 'completed'
             },
-            {   path:'completed',
+            {
+                path: 'completed',
                 component: CompletedTransactionsComponent,
                 data: {
                     title: 'Completed Transactions'
                 }
             },
-            
-            {   path:'pending',
+
+            {
+                path: 'pending',
                 component: PendingTransactionsComponent,
                 data: {
                     title: 'Pending Transactions'
@@ -105,9 +113,9 @@ const routes: Routes = [
             }
         ]
     },
-    {   
-        path:'transactions/transaction-details',
-            component: TransactionDetailComponent
+    {
+        path: 'transactions/transaction-details',
+        component: TransactionDetailComponent
     },
     {
         path: 'transactions/account-details',
@@ -117,7 +125,7 @@ const routes: Routes = [
         path: 'control',
         component: ControlComponent
     },
-    {   
+    {
         path: 'control/transaction-details',
         component: TransactionDetailComponent
     },
@@ -158,24 +166,27 @@ const routes: Routes = [
                 pathMatch: 'full',
                 redirectTo: 'set-property'
             },
-            {   path: 'set-property',
+            {
+                path: 'set-property',
                 component: SetPropertyComponent,
                 data: {
-                    propertyType: "SET",
+                    propertyType: 'SET',
                     title: 'Set Account Property'
                 }
             },
-            {   path: 'my-properties',
+            {
+                path: 'my-properties',
                 component: SetPropertyComponent,
                 data: {
-                    propertyType: "MY",
+                    propertyType: 'MY',
                     title: 'My Account Properties'
                 }
             },
-            {   path: 'external-properties',
+            {
+                path: 'external-properties',
                 component: SetPropertyComponent,
                 data: {
-                    propertyType: "ALL",
+                    propertyType: 'ALL',
                     title: 'External Account Properties'
                 },
             }
@@ -202,10 +213,12 @@ const routes: Routes = [
                 pathMatch: 'full',
                 redirectTo: 'control-funding'
             },
-            {   path: 'control-funding',
+            {
+                path: 'control-funding',
                 component: ControlFundingMonitorComponent
             },
-            {   path: 'active-monitors',
+            {
+                path: 'active-monitors',
                 component: ActiveFundingMonitorComponent
             }
         ]
