@@ -55,7 +55,7 @@ export class PendingTransactionsComponent implements OnInit {
 
     accountDetail(accountID) {
         // DataStoreService.set('user-details',{ id: accountID });
-        this.router.navigate(['/account/transactions/user-details'], { queryParams: { id: accountID } });
+        this.router.navigate(['/account/transactions/account-details'], { queryParams: { id: accountID } });
     }
 
     reload() {
