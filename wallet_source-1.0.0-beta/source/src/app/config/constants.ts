@@ -169,8 +169,8 @@ export class AppConstants {
     };
 
     public static fiatConfig = {
-        btcEndpoint: 'http://185.35.139.104/',
-        xinEndpoint: 'http://185.35.139.104/'
+        btcEndpoint: 'http://167.99.242.171',
+        xinEndpoint: 'http://167.99.242.171'
     };
 
     public static marketDataConfig = {
@@ -220,7 +220,7 @@ export class AppConstants {
     public static getNoConnectionMessage = 'network-error';
 
     public static macapViewerConfig = {
-        'macapUrl': 'http://185.103.75.217:8892',
+        'macapUrl': 'http://167.99.242.171:8892',
         'macapEndPoint': 'api/v1/get'
     };
 
