@@ -23,36 +23,36 @@ export class FiatComponent implements OnChanges {
         //console.log(this.amountTqt);
     }
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-        if (changes['amount'] && changes['amount'].previousValue != changes['amount'].currentValue) {
+        if (changes['amount'] && changes['amount'].previousValue !== changes['amount'].currentValue) {
             // console.log("amount")
             // console.log(changes['amount'].currentValue)
             this.getXinPrice(changes['amount'].currentValue);
         }
-        if (changes['amountTqt'] && changes['amountTqt'].previousValue != changes['amountTqt'].currentValue) {
+        if (changes['amountTqt'] && changes['amountTqt'].previousValue !== changes['amountTqt'].currentValue) {
             // console.log("amountTqt")
             // console.log(changes['amountTqt'].currentValue)
-            let finalAmount = this.quantToAmount.transform(changes['amountTqt'].currentValue);
+            const finalAmount = this.quantToAmount.transform(changes['amountTqt'].currentValue);
             this.getXinPrice(finalAmount);
         }
     }
 
     getXinPrice(finalAmount_) {
-        let btcPricePromise = this.fiatService.getBtcPrice();
-        let xinPricePromise = this.fiatService.getXinPrice();
+        const btcPricePromise = this.fiatService.getBtcPrice();
+        const xinPricePromise = this.fiatService.getXinPrice();
 
-        // Observable.forkJoin([btcPricePromise, xinPricePromise])
-        //     .subscribe((success) => {
-        //         let btcPriceJson: any = success[0];
-        //         let xinPriceJson: any = success[1];
+        Observable.forkJoin([btcPricePromise, xinPricePromise])
+            .subscribe((success) => {
+                const btcPriceJson: any = success[0];
+                const xinPriceJson: any = success[1];
 
-        //         this.xinUSDBTC = btcPriceJson.averages.day || 0;
-        //         this.xinPriceUSD = xinPriceJson[0].price_usd || 0;
+                // this.xinUSDBTC = btcPriceJson.averages.day || 0;
+                this.xinPriceUSD = xinPriceJson[0].price_usd || 0;
 
-        //         this.xinPriceBTC = xinPriceJson[0].price_btc || 0;
-        //         this.xinVolume24 = xinPriceJson[0]['24h_volume_usd'] || 0;
-        //         this.xinChange24 = xinPriceJson[0].percent_change_24h || 0;
+                this.xinPriceBTC = xinPriceJson[0].price_btc || 0;
+                this.xinVolume24 = xinPriceJson[0]['24h_volume_usd'] || 0;
+                this.xinChange24 = xinPriceJson[0].percent_change_24h || 0;
 
-        //         this.finalAmount = finalAmount_ * xinPriceJson[0].price_usd;
-        //     });
+                this.finalAmount = finalAmount_ * xinPriceJson[0].price_usd;
+            });
     }
 }
