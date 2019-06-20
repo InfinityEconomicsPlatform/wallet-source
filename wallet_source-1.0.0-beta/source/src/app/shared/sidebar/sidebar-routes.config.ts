@@ -614,22 +614,22 @@ export const ROUTES: RouteInfo[] = [
         path: '/tools',
         title: 'Tools',
         icon: 'icon-Extensions',
-        class: '',
+        class: 'has-sub',
         badge: '',
         badgeClass: '',
         isExternalLink: false,
         isExtensionView: true,
         submenu: [
-            // {
-            //     path: '/tools/overview',
-            //     title: 'Overview',
-            //     icon: '',
-            //     class: '',
-            //     badge: '',
-            //     badgeClass: '',
-            //     isExternalLink: false,
-            //     submenu: []
-            // },
+            {
+                path: '/tools',
+                title: 'Overview',
+                icon: '',
+                class: '',
+                badge: '',
+                badgeClass: '',
+                isExternalLink: false,
+                submenu: []
+            },
             // {
             //     path: '/extensions/chain-viewer',
             //     title: 'Chain Viewer',
@@ -640,16 +640,16 @@ export const ROUTES: RouteInfo[] = [
             //     isExternalLink: false,
             //     submenu: []
             // },
-            // {
-            //     path: '/tools/macap',
-            //     title: 'MaCap Viewer',
-            //     icon: '',
-            //     class: '',
-            //     badge: '',
-            //     badgeClass: '',
-            //     isExternalLink: false,
-            //     submenu: []
-            // },
+            {
+                path: '/tools/macap',
+                title: 'MaCap Viewer',
+                icon: '',
+                class: '',
+                badge: '',
+                badgeClass: '',
+                isExternalLink: false,
+                submenu: []
+            },
             // {
             //     path: '/tools/newsviewer',
             //     title: 'News Center',
