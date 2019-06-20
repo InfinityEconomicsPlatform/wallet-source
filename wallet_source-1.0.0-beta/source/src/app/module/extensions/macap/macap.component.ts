@@ -16,7 +16,8 @@ export class MacapComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        this.page.totalElements = 2244;
+        this.page.totalPages = 225;
     }
 
     setPage(pageInfo) {
