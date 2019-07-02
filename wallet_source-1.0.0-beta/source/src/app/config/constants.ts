@@ -169,8 +169,8 @@ export class AppConstants {
     };
 
     public static fiatConfig = {
-        btcEndpoint: 'http://167.99.242.171',
-        xinEndpoint: 'http://167.99.242.171'
+        btcEndpoint: 'http://167.99.242.171:8080',
+        xinEndpoint: 'http://167.99.242.171:8080'
     };
 
     public static marketDataConfig = {
