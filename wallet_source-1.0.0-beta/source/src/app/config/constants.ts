@@ -27,10 +27,10 @@ export class AppConstants {
         'DEADLINE': '60',
         'REFRESH_INTERVAL_MILLI_SECONDS': '60000',
         'TX_HEIGHT': 7 * 1440,
-        'USER_NODE_URL': 'http://localhost:23457',
+        'USER_NODE_URL': 'https://secure.infinity-economics.org',
         'USE_LOCAL_NODE': 0,
         'AUTO_UPDATE': 1,
-        'CONNECTION_MODE': 'AUTO', // 'HTTPS', // 'DEVTESTNET' TESTNET', // AUTO
+        'CONNECTION_MODE': 'HTTPS', // 'DEVTESTNET' TESTNET', // AUTO
         'VERSION': '1.0.1',
         'RANDOMIZE_NODES': 1,
         'TESTNET': 1,
@@ -38,7 +38,7 @@ export class AppConstants {
         // 'DEVTESTNET_URL': 'http://185.35.138.140:9000',
         // 'FOUNDATION_URL': 'http://46.244.20.41:23457',
         'LOCALTESTNET_URL': 'http://localhost:9876',
-        'HTTPS_URL': 'https://ssl.infinity-economics.org',
+        'HTTPS_URL': 'https://secure.infinity-economics.org',
         'LOCAL_HOST_URL': 'http://localhost:23457',
         'EXTENSIONS': 1,
         /* ----- New Node endpoints ----- */
@@ -52,10 +52,11 @@ export class AppConstants {
     public static assetsConfig = {
         'assetsEndPoint': 'api'
     };
+    // TODO: Not used, can be removed.
     public static peerConfig = {
         // 'apiUrl': 'http://185.103.75.217:8888',
         /* ----- New Node endpoints ----- */
-        'apiUrl': 'http://35.204.224.241:8888',
+        'apiUrl': 'https://secure.infinity-economics.org/peerexplorer', // 'http://35.204.224.241:8888',
         'peerEndPoint': 'api/nodes',
         'SESSION_PEER_URL_KEY': 'peerKey'
     };
@@ -112,10 +113,13 @@ export class AppConstants {
         TESTNET: [
             // 'http://185.35.138.140:8888/api/v1/nodes'
             'http://142.93.129.208:8888/api/nodes'
+        ],
+        HTTPS: [
+            'https://secure.infinity-economics.org/peerexplorer/api/nodes'
         ]
 
     };
-
+    // TODO: Not used, can be removed.
     public static nodeEndpoints = [
         // 'http://185.103.75.217:23457/',
         // 'http://185.35.137.7:23457/',
@@ -134,7 +138,7 @@ export class AppConstants {
         'http://159.89.96.210:23457',
         'http://167.99.71.157:23457'
     ];
-
+    // TODO: Not used, can be removed.
     public static chainEndpoints = [
         // 'http://185.103.75.217:23457/',
         // 'http://185.35.137.7:23457/',
@@ -169,8 +173,8 @@ export class AppConstants {
     };
 
     public static fiatConfig = {
-        btcEndpoint: 'http://167.99.242.171:8080',
-        xinEndpoint: 'http://167.99.242.171:8080'
+        btcEndpoint: 'https://secure.infinity-economics.org', // 'http://167.99.242.171:8080',
+        xinEndpoint: 'https://secure.infinity-economics.org' // 'http://167.99.242.171:8080'
     };
 
     public static marketDataConfig = {
