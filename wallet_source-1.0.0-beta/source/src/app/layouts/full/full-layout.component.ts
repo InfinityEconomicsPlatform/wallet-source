@@ -87,7 +87,11 @@ export class FullLayoutComponent implements OnInit {
             });
         this.peerService.getPeers().subscribe((response) => {
             this.sessionStorageService.saveToSession(NodeConfig.SESSION_PEER_NODES, response);
-            this.broadcastService.broadcast('peers-updated');
+            setTimeout(() => {
+                this.broadcastService.broadcast('peers-updated');
+            }, 1000);
+        }, (error) => {
+            console.log('error', error);
         });
     }
 

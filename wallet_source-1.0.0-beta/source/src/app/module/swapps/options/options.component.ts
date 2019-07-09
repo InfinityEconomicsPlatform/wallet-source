@@ -30,7 +30,7 @@ export class OptionsComponent implements OnInit {
         this.CONNECTION_MODES = ['HTTPS']; // ['AUTO', 'FOUNDATION', 'MANUAL', 'LOCAL_HOST', 'TESTNET', 'LOCALTESTNET', 'DEVTESTNET'];
         this.activeIds = ['nodeAndConnections', 'blocksAndConfirmations', 'wallet', 'extensions'];
         this.optionsForm = {
-            CONNECTION_MODE: '',
+            CONNECTION_MODE: 'HTTPS',
             USER_NODE_URL: '',
             RANDOMIZE_NODES: 0,
             REFRESH_INTERVAL_MILLI_SECONDS: 60,

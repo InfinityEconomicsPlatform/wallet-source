@@ -14,21 +14,24 @@ export class OptionService {
 
     constructor(public sessionStorageService: SessionStorageService) {
 
-        this.open = indexedDB.open("clientIndexedDB", 1);
+        this.open = indexedDB.open('clientIndexedDB', 1);
 
         this.open.onupgradeneeded = () => {
-            var db = this.open.result;
+            const db = this.open.result;
 
-            var optionStore = db.createObjectStore(AppConstants.optionsConfig.tableOptions, { keyPath: ['publicKey', 'optionName'] });
+            const optionStore = db.createObjectStore(AppConstants.optionsConfig.tableOptions, { keyPath: ['publicKey', 'optionName'] });
             optionStore.createIndex('value_idx', 'value', { unique: false });
             optionStore.createIndex('public_key_idx', 'publicKey', { unique: false });
             optionStore.createIndex('option_name_idx', 'optionName', { unique: false });
 
             // account store created here, will move it to proper module
-            var accountStore = db.createObjectStore(AppConstants.addressBookConfig.tableAddressBook, { keyPath: ['publicKey', 'accountRS'] });
-            accountStore.createIndex('tag_idx', 'tags', {unique: false});
-            accountStore.createIndex('public_key_idx', 'publicKey', {unique: false});
-            accountStore.createIndex('account_rs_idx', 'accountRS', {unique: false});
+            var accountStore = db.createObjectStore(
+                AppConstants.addressBookConfig.tableAddressBook,
+                { keyPath: ['publicKey', 'accountRS'] }
+            );
+            accountStore.createIndex('tag_idx', 'tags', { unique: false });
+            accountStore.createIndex('public_key_idx', 'publicKey', { unique: false });
+            accountStore.createIndex('account_rs_idx', 'accountRS', { unique: false });
         }
 
         this.open.onsuccess = (event) => {
@@ -43,10 +46,10 @@ export class OptionService {
     }
 
     createTransaction(tableOptions, callback) {
-        var db = this.open.result;
-        var tx;
+        const db = this.open.result;
+        let tx;
         try {
-            tx = db.transaction(tableOptions, "readwrite");
+            tx = db.transaction(tableOptions, 'readwrite');
             callback(tx)
         } catch (e) {
             console.log(e);
@@ -76,23 +79,23 @@ export class OptionService {
         })
     }
 
-    emitOptionsChanged(){
+    emitOptionsChanged() {
         this.optionsChanged$.emit();
     }
 
     get(tableOptions, index, publicKey, successCallBack, errorCallBack) {
 
         this.createTransaction(tableOptions, tx => {
-            let store = tx.objectStore(tableOptions);
-            let req = store.index(index).openCursor();
-            let results = [];
+            const store = tx.objectStore(tableOptions);
+            const req = store.index(index).openCursor();
+            const results = [];
             req.onsuccess = (e) => {
                 let cursor;
                 if (cursor = e.target.result) {
-                    if (cursor.value['publicKey'] == publicKey) {
+                    if (cursor.value['publicKey'] === publicKey) {
                         results.push(cursor.value);
                     }
-                    cursor["continue"]();
+                    cursor['continue']();
                 } else {
                     successCallBack(results);
                 }
@@ -104,15 +107,15 @@ export class OptionService {
 
     clear(tableOptions, index, publicKey, successCallBack, errorCallBack) {
         this.createTransaction(tableOptions, tx => {
-            let store = tx.objectStore(tableOptions);
-            let req = store.index(index).openCursor();
+            const store = tx.objectStore(tableOptions);
+            const req = store.index(index).openCursor();
             req.onsuccess = (e) => {
                 let cursor;
                 if (cursor = e.target.result) {
-                    if (cursor.value['publicKey'] == publicKey) {
+                    if (cursor.value['publicKey'] === publicKey) {
                         cursor.delete();
                     }
-                    cursor["continue"]();
+                    cursor['continue']();
                 } else {
                     successCallBack('success');
                 }
@@ -126,7 +129,12 @@ export class OptionService {
     }
 
     insertOption(publicKey, optionName, value, successCallBack, errorCallBack) {
-        this.add(AppConstants.optionsConfig.tableOptions, [{ 'publicKey': publicKey, 'optionName': optionName, 'value': value }], successCallBack, errorCallBack);
+        this.add(
+            AppConstants.optionsConfig.tableOptions,
+            [{ 'publicKey': publicKey, 'optionName': optionName, 'value': value }],
+            successCallBack,
+            errorCallBack
+        );
     };
 
     insertOptions(values, successCallBack, errorCallBack) {
@@ -144,7 +152,7 @@ export class OptionService {
     };
 
     clearOptions(publicKey, successCallback, errorCallback) {
-        this.clear(AppConstants.optionsConfig.tableOptions,'public_key_idx', publicKey, successCallback, errorCallback);
+        this.clear(AppConstants.optionsConfig.tableOptions, 'public_key_idx', publicKey, successCallback, errorCallback);
     };
 
     getContactsCount(successCallBack, errorCallBack) {
@@ -153,10 +161,10 @@ export class OptionService {
 
     loadOptions(publicKey, successCallback, errorCallback) {
         this.getAllOptions(publicKey, options => {
-            let finalOptions = JSON.parse(JSON.stringify(AppConstants.DEFAULT_OPTIONS));
+            const finalOptions = JSON.parse(JSON.stringify(AppConstants.DEFAULT_OPTIONS));
 
             for (let i = 0; i < options.length; i++) {
-                let optionObject = options[i];
+                const optionObject = options[i];
                 finalOptions[optionObject.optionName] = optionObject.value;
             }
             this.sessionStorageService.saveToSession(AppConstants.baseConfig.SESSION_APP_OPTIONS, finalOptions);
@@ -167,11 +175,11 @@ export class OptionService {
     };
 
     clearContacts(successCallback, errorCallback) {
-        //this.clear(AppConstants.optionsConfig.tableOptions, successCallback, errorCallback);
+        // this.clear(AppConstants.optionsConfig.tableOptions, successCallback, errorCallback);
     };
 
     getOption(optionName, publicKey?) {
-        let options = this.sessionStorageService.getFromSession(AppConstants.baseConfig.SESSION_APP_OPTIONS);
+        const options = this.sessionStorageService.getFromSession(AppConstants.baseConfig.SESSION_APP_OPTIONS);
         if (options) {
             if (typeof options[optionName] === 'undefined') {
                 return AppConstants.DEFAULT_OPTIONS[optionName];
@@ -186,8 +194,8 @@ export class OptionService {
     }
 
     applyChanges() {
-        let publicKey = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_DETAILS_KEY);
-        let isExtensionEnabled = this.getOption('EXTENSIONS', publicKey);
+        const publicKey = this.sessionStorageService.getFromSession(AppConstants.loginConfig.SESSION_ACCOUNT_DETAILS_KEY);
+        const isExtensionEnabled = this.getOption('EXTENSIONS', publicKey);
         this.watchList.forEach(view => {
             if (isExtensionEnabled) {
                 view.viewContainer.clear();

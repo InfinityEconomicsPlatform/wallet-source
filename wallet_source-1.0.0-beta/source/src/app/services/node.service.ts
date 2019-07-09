@@ -101,7 +101,7 @@ export class NodeService {
 
     getNodeUrl(connectionMode, selectRandom) {
 
-        let node = this.getNode(connectionMode, selectRandom);
+        const node = this.getNode(connectionMode, selectRandom);
 
         if (typeof node === 'string') {
             return node;
@@ -126,7 +126,7 @@ export class NodeService {
 
     appendPortIfNotPresent(url, port) {
 
-        let parser = new URL(url);
+        const parser = new URL(url);
 
         if (!parser.port) {
             return url + ':' + port;
@@ -140,10 +140,10 @@ export class NodeService {
     // };
 
     getLocalNodeUrl() {
-        let node = this.getNode(true, '');
+        const node = this.getNode(true, '');
 
         if (node) {
-            let port = node.apiServerPort;
+            const port = node.apiServerPort;
             return 'http://localhost:' + port;
         }
         throw new Error('Local node not available');

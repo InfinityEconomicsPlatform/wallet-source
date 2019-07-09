@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpProviderService } from './http-provider.service';
-import {AppConstants} from '../config/constants';
-import {OptionService} from './option.service';
+import { AppConstants } from '../config/constants';
+import { OptionService } from './option.service';
 
 @Injectable()
 export class PeerService {
 
-  constructor(public http: HttpProviderService,
-              public optionsService: OptionService) { }
+    constructor(
+        public http: HttpProviderService,
+        public optionsService: OptionService
+    ) { }
 
     getPeers() {
         return this.http.get(this.getPeerEndPoints('')[0], '');
@@ -18,10 +20,10 @@ export class PeerService {
     };
 
     searchIp(ip) {
-        let params = {
+        const params = {
             'ip': ip
         };
-        return this.http.get(this.getPeerEndPoints('')[0], '', params );
+        return this.http.get(this.getPeerEndPoints('')[0], '', params);
     };
 
     getPeerEndPoints(option?) {
