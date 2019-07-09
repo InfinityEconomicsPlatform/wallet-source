@@ -28,13 +28,16 @@
                                             <div class="form-group">
                                                 <label>{{'swapps.options.connection-mode-label' | translate}}
                                                     <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                        container="body" placement="right" ngbPopover="{{'swapps.options.connection-mode-popover' | translate}}"></i>
+                                                        container="body" placement="right"
+                                                        ngbPopover="{{'swapps.options.connection-mode-popover' | translate}}"></i>
                                                 </label>
                                                 <div class="position-relative">
-                                                    <select name="connectionMode" class="form-control" [(ngModel)]="optionsForm.CONNECTION_MODE"
-                                                        id="connectionMode" #mode="ngModel" (change)="updateConnectionMode(connectionMode)"
-                                                        required>
-                                                        <option *ngFor="let mode of CONNECTION_MODES" value="{{ mode }}">{{
+                                                    <select name="connectionMode" class="form-control"
+                                                        [(ngModel)]="optionsForm.CONNECTION_MODE" id="connectionMode"
+                                                        #mode="ngModel" (change)="updateConnectionMode(connectionMode)"
+                                                        disabled required>
+                                                        <option *ngFor="let mode of CONNECTION_MODES"
+                                                            value="{{ mode }}">{{
                                                             mode }}</option>
                                                     </select>
                                                 </div>
@@ -44,11 +47,14 @@
                                             <div class="form-group">
                                                 <label>{{'swapps.options.connection-node-label' | translate}}
                                                     <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                        container="body" placement="right" ngbPopover="{{'swapps.options.connection-node-popover' | translate}}"></i>
+                                                        container="body" placement="right"
+                                                        ngbPopover="{{'swapps.options.connection-node-popover' | translate}}"></i>
                                                 </label>
                                                 <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="{{'swapps.options.connection-node-placeholder' | translate}}"
-                                                        name="connectToNode" [(ngModel)]="optionsForm.USER_NODE_URL" id="connectToNode"
+                                                    <input type="text" class="form-control"
+                                                        placeholder="{{'swapps.options.connection-node-placeholder' | translate}}"
+                                                        name="connectToNode" [(ngModel)]="optionsForm.USER_NODE_URL"
+                                                        id="connectToNode"
                                                         [disabled]="optionsForm.CONNECTION_MODE != 'MANUAL'"
                                                         #userNodeUrl="ngModel" required>
                                                 </div>
@@ -64,10 +70,12 @@
                                             <div class="form-group">
                                                 <label>{{'swapps.options.connected-url-label' | translate}}
                                                     <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                        container="body" placement="right" ngbPopover="{{'swapps.options.connected-url-popover' | translate}}"></i>
+                                                        container="body" placement="right"
+                                                        ngbPopover="{{'swapps.options.connected-url-popover' | translate}}"></i>
                                                 </label>
                                                 <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="{{'swapps.options.connected-url-placeholder' | translate}}"
+                                                    <input type="text" class="form-control"
+                                                        placeholder="{{'swapps.options.connected-url-placeholder' | translate}}"
                                                         name="connectedTo" [(ngModel)]="connectedURL" id="connectTo"
                                                         readonly="true">
                                                 </div>
@@ -76,12 +84,15 @@
                                         <div class="col-md-12 mt-3">
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="randomizeNode"
-                                                        [(ngModel)]="optionsForm.RANDOMIZE_NODES" id="randomizeNode">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        name="randomizeNode" [(ngModel)]="optionsForm.RANDOMIZE_NODES"
+                                                        id="randomizeNode" disabled>
                                                     <label class="custom-control-label" for="randomizeNode">
                                                         {{'swapps.options.random-node-connect-label' | translate}}
-                                                        <i class="fa fa-question-circle-o" triggers="mouseenter:mouseleave"
-                                                            container="body" placement="right" ngbPopover="{{'swapps.options.random-node-connect-popover' | translate}}"></i>
+                                                        <i class="fa fa-question-circle-o"
+                                                            triggers="mouseenter:mouseleave" container="body"
+                                                            placement="right"
+                                                            ngbPopover="{{'swapps.options.random-node-connect-popover' | translate}}"></i>
                                                     </label>
                                                 </div>
                                             </div>
@@ -273,16 +284,15 @@
                     </ngb-accordion>
                     <div class="row" matchHeight="card">
                         <div class="col-xl-2 mb-4 mt-3">
-                            <div class="card ml-1 mr-1 ml-md-3 mr-md-3 mt-0" [ngClass]="{'disabled':f.invalid}" (click)="validateAndUpdate()">
+                            <div class="card ml-1 mr-1 ml-md-3 mr-md-3 mt-0 disabled"
+                                [ngClass]="{'disabled':f.invalid}">
                                 <div class="card-body">
-
-
-
                                     <div class="btn btn-gradient btn-create">
-                                        <span>{{ 'common.save-btn' | translate}} <i class="ft ft-check font-medium-5"></i></span>
+                                        <span>
+                                            {{ 'common.save-btn' | translate}}
+                                            <i class="ft ft-check font-medium-5"></i>
+                                        </span>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
