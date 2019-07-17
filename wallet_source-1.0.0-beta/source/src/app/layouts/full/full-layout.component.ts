@@ -57,6 +57,7 @@ export class FullLayoutComponent implements OnInit {
             this.peerService.getPeers().subscribe((response) => {
                 this.sessionStorageService.saveToSession(NodeConfig.SESSION_PEER_NODES, response);
                 this.optionsConfigurationService.loadOptions();
+                this.broadcastService.broadcast('peers-updated');
             }, function (error) {
                 const title: string = this.commonService.translateAlertTitle('Error');
                 const msg: string = this.commonService.translateInfoMessage('unable-get-node');
