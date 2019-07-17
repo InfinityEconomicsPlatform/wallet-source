@@ -169,8 +169,8 @@ export class AppConstants {
     };
 
     public static fiatConfig = {
-        btcEndpoint: 'http://167.99.242.171',
-        xinEndpoint: 'http://167.99.242.171'
+        btcEndpoint: 'https://secure.infinity-economics.org',
+        xinEndpoint: 'https://secure.infinity-economics.org'
     };
 
     public static marketDataConfig = {
